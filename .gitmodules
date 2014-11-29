@@ -1,0 +1,6 @@
+[submodule "Submodules/JUCE"]
+	path = Submodules/JUCE
+	url = https://github.com/julianstorer/JUCE.git
+[submodule "Submodules/danlin_modules"]
+	path = Submodules/danlin_modules
+	url = https://github.com/danlin/danlin_modules
