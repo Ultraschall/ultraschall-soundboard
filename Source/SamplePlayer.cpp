@@ -61,6 +61,7 @@ void SamplePlayer::update() {
     double current = transportSource->getNextReadPosition();
     double length = transportSource->getTotalLength();
     double progress = (current / length);
+    process = (float) progress;
     if (progress >= 1.0) {
         progress = 1.0;
         transportSource->stop();
@@ -68,7 +69,6 @@ void SamplePlayer::update() {
         playerState = Played;
         sendChangeMessage();
     }
-    process = (float) progress;
 }
 
 void SamplePlayer::timerCallback(int timerID) {
@@ -85,6 +85,8 @@ void SamplePlayer::timerCallback(int timerID) {
                 transportSource->setPosition(0);
                 playerState = Played;
                 fadeOutGain = fadeOutGainBackup;
+                update();
+                sendChangeMessage();
             }
             transportSource->setGain(fadeOutGain);
         }
@@ -97,25 +99,27 @@ void SamplePlayer::startFadeOut() {
         fadeOutGainBackup = transportSource->getGain();
         fadeOutGain = transportSource->getGain();
         fadeOutGainSteps = fadeOutGainBackup / fadeOutSeconds / 10.0f;
+        sendChangeMessage();
     }
 }
 
 void SamplePlayer::stop() {
-    if (isLooping()) {
-        int64 nextReadPosition = transportSource->getNextReadPosition();
-        currentAudioFileSource->setLooping(false);
-        transportSource->setNextReadPosition(nextReadPosition);
-        return;
-    }
     transportSource->stop();
     transportSource->setPosition(0);
+    if (isLooping()) {
+        fadeOut = false;
+        fadeOutGain = fadeOutGainBackup;
+    }
     playerState = Stopped;
+    update();
+    sendChangeMessage();
 }
 
 void SamplePlayer::play() {
     if (!fadeOut) {
         transportSource->start();
         playerState = Playing;
+        sendChangeMessage();
     }
 }
 
@@ -123,6 +127,7 @@ void SamplePlayer::pause() {
     if (!fadeOut) {
         transportSource->stop();
         playerState = Paused;
+        sendChangeMessage();
     }
 }
 
@@ -146,6 +151,7 @@ void SamplePlayer::setLooping(bool value) {
         return;
     }
     currentAudioFileSource->setLooping(value);
+    sendChangeMessage();
 }
 
 String SamplePlayer::getTitle() {
@@ -153,17 +159,13 @@ String SamplePlayer::getTitle() {
 }
 
 String SamplePlayer::getProgressString(bool remaining) {
-    if (remaining) {
+    if (!remaining) {
         Time time(1971, 0, 0, 0, 0, (int) transportSource->getCurrentPosition());
         return time.toString(false, true, true, true);
     } else {
         Time time(1971, 0, 0, 0, 0, (int) (transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
         return "-" + time.toString(false, true, true, true);
     }
-}
-
-void SamplePlayer::changeListenerCallback(ChangeBroadcaster */*source*/) {
-    sendChangeMessage();
 }
 
 float SamplePlayer::getGain() {

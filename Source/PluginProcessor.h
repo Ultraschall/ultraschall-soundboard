@@ -1,9 +1,9 @@
 /*
  ==============================================================================
- 
+
  PluginProcessor.h
  Author:  Daniel Lindenfelser
- 
+
  ==============================================================================
  */
 
@@ -13,41 +13,37 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SamplePlayer.h"
 
+using namespace danlin;
+
 class LookAndFeel_Ultraschall;
 
 static const Identifier DirectoryIdentifier("Directory");
 static const Identifier CurrentDirectoryIdentifier("CurrentDirectory");
 static const Identifier CurrentProgramIndexIdentifier("CurrentProgramIndex");
 
-static const Identifier OscLocalPortNumberIdentifier("OscLocalPortNumber");
+static const Identifier OscReciveEnabledIdentifier("OscReciveEnabled");
+static const Identifier OscRecivePortNumberIdentifier("OscRecivePortNumber");
+
+static const Identifier OscRemoteEnabledIdentifier("OscRemoteEnabled");
 static const Identifier OscRemoteHostnameIdentifier("OscRemoteHostname");
 static const Identifier OscRemotePortNumberIdentifier("OscRemotePortNumber");
-static const Identifier OscRemotePortNumberIdentifier("OscSendEnabled");
-static const Identifier OscRemotePortNumberIdentifier("OscReciveEnabled");
+static const Identifier OscRemoteIsTouchOscIdentifier("OscRemoteIsTouchOsc");
 
 class SoundboardAudioProcessor : public AudioProcessor,
-                                 public ChangeListener {
-    // Global Parameter Numbers
-    static const int GlobalParameterFadeOutTime = 0;
-    static const int GlobalParameterCount = 1;
-
-    // SamplePlayer Parameter Numbers
-    static const int SamplePlayerParameterStatus = 0;
-    static const int SamplePlayerParameterPlay = 1;
-    static const int SamplePlayerParameterPause = 2;
-    static const int SamplePlayerParameterStop = 3;
-    static const int SamplePlayerParameterLoop = 4;
-    static const int SamplePlayerParameterFadeOut = 5;
-    static const int SamplePlayerParameterProcess = 6;
-    static const int SamplePlayerParameterGain = 7;
-    static const int SamplePlayerParameterCount = 8;
-
+                                 public ChangeListener,
+                                 public OscMessageListener,
+                                 public MultiTimer {
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 25;
 
     // Init Program Number
     static const int ProgramNumberInit = 0;
     static const int ProgramNumberCustom = 255;
+
+    // Timer Ids
+    static const int TimerOscServerDelay = 0;
+    static const int TimerOscRefresh = 1;
+
 public:
     SoundboardAudioProcessor();
 
@@ -57,9 +53,9 @@ public:
 
     void releaseResources() override;
 
-    void processBlock(AudioSampleBuffer &, MidiBuffer &) override;
+    void processBlock(AudioSampleBuffer&, MidiBuffer&) override;
 
-    AudioProcessorEditor *createEditor() override;
+    AudioProcessorEditor* createEditor() override;
 
     bool hasEditor() const override;
 
@@ -99,48 +95,40 @@ public:
 
     const String getProgramName(int index) override;
 
-    void changeProgramName(int index, const String &newName) override;
+    void changeProgramName(int index, const String& newName) override;
 
-    void getStateInformation(MemoryBlock &destData) override;
+    void getStateInformation(MemoryBlock& destData) override;
 
-    void setStateInformation(const void *data, int sizeInBytes) override;
+    void setStateInformation(const void* data, int sizeInBytes) override;
 
     int numAudioFiles();
 
-    SamplePlayer *SamplePlayerAtIndex(int index);
+    SamplePlayer* SamplePlayerAtIndex(int index);
 
     void openDirectory(File directory);
 
     int getFadeOutSeconds();
 
-    void setFadeOutSeconds(int seconds);
+    void setFadeOutSeconds(int seconds); 
 
-    int samplerPlayerParameterIndex(int index, int parameter) {
-        return (index * SamplePlayerParameterCount) + parameter;
-    }
-
-    void samplePlayerPlay(int index) {
-        setParameterNotifyingHost(samplerPlayerParameterIndex(index, SamplePlayerParameterPlay), 1.0f);
-    }
-
-    void samplePlayerPause(int index) {
-        setParameterNotifyingHost(samplerPlayerParameterIndex(index, SamplePlayerParameterPause), 1.0f);
-    }
-
-    void samplePlayerStop(int index) {
-        setParameterNotifyingHost(samplerPlayerParameterIndex(index, SamplePlayerParameterStop), 1.0f);
-    }
-
-    void samplePlayerFadeOut(int index) {
-        setParameterNotifyingHost(samplerPlayerParameterIndex(index, SamplePlayerParameterFadeOut), 1.0f);
-    }
-
-    void samplePlayerLoop(int index) {
-        setParameterNotifyingHost(samplerPlayerParameterIndex(index, SamplePlayerParameterLoop), 1.0f);
+    void startOscServer()
+    {
+        oscServer->listen();
     }
 
     // ChangeListener
-    void changeListenerCallback(ChangeBroadcaster *source);
+    void changeListenerCallback(ChangeBroadcaster* source);
+
+    // OscMessageListener
+    void handleOscMessage(osc::ReceivedPacket packet);
+                                     void oscSendPlayerState(int index);
+                                     void oscSendPlayerConfig(int index);
+                                     void oscSendPlayerUpdate();
+                                     void oscSendReset();
+                                     
+    // MultiTimer
+    void timerCallback(int timerID);
+
 private:
     ScopedPointer<LookAndFeel> mLookAndFeel;
 
@@ -160,6 +148,9 @@ private:
     String currentDirectory;
     ScopedPointer<PropertySet> mFallbackProperties;
     ScopedPointer<PropertiesFile> mPropertiesFile;
+
+    // OSC
+    ScopedPointer<OscServer> oscServer;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };

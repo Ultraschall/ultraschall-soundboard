@@ -16,6 +16,7 @@
 #include "AppConfig.h"
 #include "modules/danlin_fontawesome/danlin_fontawesome.h"
 #include "modules/danlin_oscpack/danlin_oscpack.h"
+#include "modules/danlin_oscserver/danlin_oscserver.h"
 #include "modules/juce_audio_basics/juce_audio_basics.h"
 #include "modules/juce_audio_devices/juce_audio_devices.h"
 #include "modules/juce_audio_formats/juce_audio_formats.h"

@@ -12,6 +12,7 @@
               companyEmail="info@ultraschall.fm" companyName="Ultraschall">
   <MAINGROUP id="AXAawk" name="Soundboard">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
+      <FILE id="QXYgra" name="OscSettings.h" compile="0" resource="0" file="Source/OscSettings.h"/>
       <FILE id="i9qTDK" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="BrG2WT" name="PluginProcessor.h" compile="0" resource="0"
@@ -50,12 +51,14 @@
         <MODULEPATH id="juce_data_structures" path="Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="Submodules/JUCE/modules"/>
         <MODULEPATH id="danlin_oscpack" path="Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscserver" path="Submodules/danlin_modules/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>

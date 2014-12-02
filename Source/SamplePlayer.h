@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class SamplePlayer : private MultiTimer, public ChangeBroadcaster, public ChangeListener {
+class SamplePlayer : private MultiTimer, public ChangeBroadcaster {
     static const int UpdateTimerId = 0;
     static const int FadeOutTimerId = 1;
 public:
@@ -44,7 +44,6 @@ public:
     float getGain();
     PlayerState getState();
     AudioSource *getAudioSource();
-    void changeListenerCallback(ChangeBroadcaster *source);
 private:
     void update();
     void loadFileIntoTransport(const File &audioFile);
