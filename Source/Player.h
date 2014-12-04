@@ -12,9 +12,10 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class SamplePlayer : private MultiTimer, public ChangeBroadcaster {
+class Player : private MultiTimer, public ChangeBroadcaster {
     static const int UpdateTimerId = 0;
     static const int FadeOutTimerId = 1;
+
 public:
     enum PlayerState {
         Stopped = 1,
@@ -22,8 +23,8 @@ public:
         Paused = 3,
         Played = 4,
     };
-    SamplePlayer(const File &audioFile, AudioFormatManager *formatManager);
-    ~SamplePlayer();
+    Player(const File& audioFile, AudioFormatManager* formatManager);
+    ~Player();
     String getTitle();
     void play();
     void pause();
@@ -43,10 +44,11 @@ public:
     void setGain(float newGain);
     float getGain();
     PlayerState getState();
-    AudioSource *getAudioSource();
+    AudioSource* getAudioSource();
+
 private:
     void update();
-    void loadFileIntoTransport(const File &audioFile);
+    void loadFileIntoTransport(const File& audioFile);
 
     TimeSliceThread timeSliceThread;
     String title;
@@ -57,12 +59,12 @@ private:
     int fadeOutSeconds;
     bool fadeOut;
     float process;
-    AudioFormatManager *audioFormatManager;
+    AudioFormatManager* audioFormatManager;
     ScopedPointer<AudioTransportSource> transportSource;
     AudioSourcePlayer audioSourcePlayer;
     ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SamplePlayer)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
 
-#endif  // AUDIOFILE_H_INCLUDED
+#endif // AUDIOFILE_H_INCLUDED

@@ -10,7 +10,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include "LookAndFeel.h"
-#include "OscServer.h"
 
 //==============================================================================
 SoundboardAudioProcessor::SoundboardAudioProcessor()
@@ -38,6 +37,10 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 
     mPropertiesFile->setFallbackPropertySet(mFallbackProperties);
 
+    mPropertiesFile->addChangeListener(this);
+
+    settingsComponent = new OscSettings(mPropertiesFile);
+
     mFadeOutRange.start = 1.0;
     mFadeOutRange.end = 30.0;
     mFadeOutRange.interval = 1.0;
@@ -48,8 +51,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     SamplePlayerState.interval = 1.0;
     oscServer = new OscServer(this);
     // delay osc server start
-    startTimer(TimerOscServerDelay, 1000 * 5);
-    startTimer(TimerOscRefresh, 100);
+    startTimer(TimerOscServerDelay, 1000 * 1);
 }
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
@@ -166,6 +168,7 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
             editor->refresh();
         }
         updateHostDisplay();
+        oscSendReset();
     }
 }
 
@@ -252,7 +255,9 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
 
 void SoundboardAudioProcessor::openDirectory(File directory)
 {
-    oscSendReset();
+    if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+        oscSendReset();
+    }
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
     samplePlayers.clear();
@@ -261,27 +266,38 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
             && count <= MaximumSamplePlayers) {
-            SamplePlayer* audioFile = new SamplePlayer(iterator.getFile(), &formatManager);
+            Player* audioFile = new Player(iterator.getFile(), &formatManager);
             audioFile->addChangeListener(this);
             samplePlayers.add(audioFile);
             mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
         }
         count++;
     }
-    SoundboardAudioProcessorEditor* editor = (SoundboardAudioProcessorEditor*)getActiveEditor();
-    if (editor != nullptr) {
+    SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+    if (editor) {
         editor->refresh();
     }
     mPropertiesFile->setValue(CurrentProgramIndexIdentifier.toString(), currentProgramIndex);
     mPropertiesFile->setValue(CurrentDirectoryIdentifier.toString(), currentDirectory);
-    for (int index = 0; index < samplePlayers.size(); index++) {
-        oscSendPlayerConfig(index);
+    if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+        for (int index = 0; index < samplePlayers.size(); index++) {
+            oscSendPlayerConfig(index);
+        }
+    }
+}
+
+void SoundboardAudioProcessor::openSettings()
+{
+    SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+    if (editor) {
+        editor->addAndMakeVisible(settingsComponent);
+        settingsComponent->setBounds(0, 0, editor->getWidth(), editor->getHeight());
     }
 }
 
 void SoundboardAudioProcessor::oscSendPlayerState(int index)
 {
-    SamplePlayer* samplePlayer = SamplePlayerAtIndex(index);
+    Player* samplePlayer = SamplePlayerAtIndex(index);
     String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
     char buffer[1024];
@@ -309,18 +325,18 @@ void SoundboardAudioProcessor::oscSendPlayerState(int index)
 
       << osc::BeginMessage((address + "done").toRawUTF8())
       << samplePlayer->isPlayed() << osc::EndMessage
-    
-    << osc::BeginMessage((address + "progress").toRawUTF8())
-    << samplePlayer->getProgress() << osc::EndMessage
-    
-    << osc::BeginMessage((address + "time").toRawUTF8())
-    << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
-    
-    << osc::BeginMessage((address + "remaining").toRawUTF8())
-    << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
-    
-    << osc::BeginMessage((address + "gain").toRawUTF8())
-    << samplePlayer->getGain() << osc::EndMessage
+
+      << osc::BeginMessage((address + "progress").toRawUTF8())
+      << samplePlayer->getProgress() << osc::EndMessage
+
+      << osc::BeginMessage((address + "time").toRawUTF8())
+      << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
+
+      << osc::BeginMessage((address + "remaining").toRawUTF8())
+      << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
+
+      << osc::BeginMessage((address + "gain").toRawUTF8())
+      << samplePlayer->getGain() << osc::EndMessage
 
       << osc::EndBundle;
 
@@ -329,7 +345,7 @@ void SoundboardAudioProcessor::oscSendPlayerState(int index)
 
 void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 {
-    SamplePlayer* samplePlayer = SamplePlayerAtIndex(index);
+    Player* samplePlayer = SamplePlayerAtIndex(index);
     String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
     char buffer[1024];
@@ -374,10 +390,11 @@ void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 
     oscServer->sendMessage(p);
 }
+
 void SoundboardAudioProcessor::oscSendPlayerUpdate()
 {
     for (int index = 0; index < samplePlayers.size(); index++) {
-        SamplePlayer* samplePlayer = SamplePlayerAtIndex(index);
+        Player* samplePlayer = SamplePlayerAtIndex(index);
         String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
         if (samplePlayer->isPlaying()) {
@@ -404,6 +421,7 @@ void SoundboardAudioProcessor::oscSendPlayerUpdate()
         }
     }
 }
+
 void SoundboardAudioProcessor::oscSendReset()
 {
     for (int index = 0; index < MaximumSamplePlayers; index++) {
@@ -456,10 +474,32 @@ void SoundboardAudioProcessor::oscSendReset()
 
 void SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
 {
-    SamplePlayer* samplePlayer = static_cast<SamplePlayer*>(source);
-    if (samplePlayer) {
-        int index = samplePlayers.indexOf(samplePlayer);
-        oscSendPlayerState(index);
+    if (source == mPropertiesFile) {
+        if (mPropertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+            if (!oscServer->isThreadRunning()) {
+                oscServer->setLocalPortNumber(mPropertiesFile->getIntValue(OscRecivePortNumberIdentifier));
+                oscServer->listen();
+            }
+        }
+        else {
+            if (oscServer->isThreadRunning()) {
+                oscServer->stopListening();
+            }
+        }
+        oscServer->setRemoteHostname(mPropertiesFile->getValue(OscRemoteHostnameIdentifier));
+        oscServer->setRemotePortNumber(mPropertiesFile->getIntValue(OscRemotePortNumberIdentifier));
+        return;
+    }
+    Player* samplePlayer = static_cast<Player*>(source);
+    if (samplePlayer != nullptr) {
+        if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+            int index = samplePlayers.indexOf(samplePlayer);
+            oscSendPlayerState(index);
+        }
+        SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+        if (editor) {
+            editor->refreshTable();
+        }
     }
 }
 
@@ -468,7 +508,7 @@ int SoundboardAudioProcessor::numAudioFiles()
     return samplePlayers.size();
 }
 
-SamplePlayer* SoundboardAudioProcessor::SamplePlayerAtIndex(int index)
+Player* SoundboardAudioProcessor::SamplePlayerAtIndex(int index)
 {
     return samplePlayers[index];
 }
@@ -485,88 +525,91 @@ int SoundboardAudioProcessor::getFadeOutSeconds()
 
 void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
 {
-    try {
-        if (packet.IsBundle()) {
-            osc::ReceivedBundle bundle(packet);
-        }
-        else {
-            osc::ReceivedMessage message(packet);
-            if (String(message.AddressPattern()).startsWith("/ultraschall/soundboard/")) {
-                StringArray messageSplit = StringArray::fromTokens(String(message.AddressPattern()), "/", "");
-                osc::ReceivedMessage::const_iterator arg = message.ArgumentsBegin();
-                if (messageSplit[3] == "player") {
-                    int index = messageSplit[4].getIntValue();
-                    index--;
-                    if (SamplePlayerAtIndex(index)) {
-                        if (index >= 0 && index < MaximumSamplePlayers) {
-                            String command = messageSplit[5];
-                            if (command == "play") {
-                                float value = (arg++)->AsFloat();
-                                if (value) {
-                                    if (!SamplePlayerAtIndex(index)->isPlaying()) {
-                                        SamplePlayerAtIndex(index)->play();
+    if (mPropertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+        oscReceived++;
+        try {
+            if (packet.IsBundle()) {
+                osc::ReceivedBundle bundle(packet);
+            }
+            else {
+                osc::ReceivedMessage message(packet);
+                if (String(message.AddressPattern()).startsWith("/ultraschall/soundboard/")) {
+                    StringArray messageSplit = StringArray::fromTokens(String(message.AddressPattern()), "/", "");
+                    osc::ReceivedMessage::const_iterator arg = message.ArgumentsBegin();
+                    if (messageSplit[3] == "player") {
+                        int index = messageSplit[4].getIntValue();
+                        index--;
+                        if (SamplePlayerAtIndex(index)) {
+                            if (index >= 0 && index < MaximumSamplePlayers) {
+                                String command = messageSplit[5];
+                                if (command == "play") {
+                                    float value = (arg++)->AsFloat();
+                                    if (value) {
+                                        if (!SamplePlayerAtIndex(index)->isPlaying()) {
+                                            SamplePlayerAtIndex(index)->play();
+                                        }
                                     }
                                 }
-                            }
-                            else if (command == "pause") {
-                                float value = (arg++)->AsFloat();
-                                if (value) {
-                                    if (SamplePlayerAtIndex(index)->isPlaying()) {
-                                        SamplePlayerAtIndex(index)->pause();
+                                else if (command == "pause") {
+                                    float value = (arg++)->AsFloat();
+                                    if (value) {
+                                        if (SamplePlayerAtIndex(index)->isPlaying()) {
+                                            SamplePlayerAtIndex(index)->pause();
+                                        }
                                     }
                                 }
-                            }
-                            else if (command == "stop") {
-                                float value = (arg++)->AsFloat();
-                                if (value) {
-                                    SamplePlayerAtIndex(index)->stop();
-                                }
-                            }
-                            else if (command == "trigger") {
-                                float value = (arg++)->AsFloat();
-                                if (value) {
-                                    if (SamplePlayerAtIndex(index)->isPlaying()) {
+                                else if (command == "stop") {
+                                    float value = (arg++)->AsFloat();
+                                    if (value) {
                                         SamplePlayerAtIndex(index)->stop();
                                     }
-                                    else {
-                                        SamplePlayerAtIndex(index)->play();
+                                }
+                                else if (command == "trigger") {
+                                    float value = (arg++)->AsFloat();
+                                    if (value) {
+                                        if (SamplePlayerAtIndex(index)->isPlaying()) {
+                                            SamplePlayerAtIndex(index)->stop();
+                                        }
+                                        else {
+                                            SamplePlayerAtIndex(index)->play();
+                                        }
                                     }
                                 }
-                            }
-                            else if (command == "loop") {
-                                float value = (arg++)->AsFloat();
-                                SamplePlayerAtIndex(index)->setLooping(value);
-                            }
-                            else if (command == "fadeout") {
-                                float value = (arg++)->AsFloat();
-                                if (value) {
-                                    if (SamplePlayerAtIndex(index)->isPlaying()) {
-                                        SamplePlayerAtIndex(index)->startFadeOut();
+                                else if (command == "loop") {
+                                    float value = (arg++)->AsFloat();
+                                    SamplePlayerAtIndex(index)->setLooping(value);
+                                }
+                                else if (command == "fadeout") {
+                                    float value = (arg++)->AsFloat();
+                                    if (value) {
+                                        if (SamplePlayerAtIndex(index)->isPlaying()) {
+                                            SamplePlayerAtIndex(index)->startFadeOut();
+                                        }
                                     }
                                 }
-                            }
-                            else if (command == "gain") {
-                                float value = (arg++)->AsFloat();
-                                SamplePlayerAtIndex(index)->setGain(value);
+                                else if (command == "gain") {
+                                    float value = (arg++)->AsFloat();
+                                    SamplePlayerAtIndex(index)->setGain(value);
+                                }
                             }
                         }
                     }
-                }
-                else if (messageSplit[3] == "fadeout") {
-                    if (messageSplit[4] == "seconds") {
-                        int value = (arg++)->AsInt32();
-                        for (int index = 0; index <= samplePlayers.size(); index++) {
-                            SamplePlayerAtIndex(index)->setFadeOutTime(value);
+                    else if (messageSplit[3] == "fadeout") {
+                        if (messageSplit[4] == "seconds") {
+                            int value = (arg++)->AsInt32();
+                            for (int index = 0; index <= samplePlayers.size(); index++) {
+                                SamplePlayerAtIndex(index)->setFadeOutTime(value);
+                            }
                         }
                     }
                 }
             }
         }
-    }
-    catch (osc::Exception& e) {
-        // any parsing errors such as unexpected argument types, or
-        // missing arguments get thrown as exceptions.
-        std::cout << "error while parsing message:" << std::endl;
+        catch (osc::Exception& e) {
+            // any parsing errors such as unexpected argument types, or
+            // missing arguments get thrown as exceptions.
+            std::cout << "error while parsing message:" << std::endl;
+        }
     }
 }
 
@@ -574,17 +617,25 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
 {
     if (timerID == TimerOscServerDelay) {
         stopTimer(TimerOscServerDelay);
-        startOscServer();
-        oscServer->setRemoteHostname("192.168.178.25");
-        oscServer->setRemotePortNumber(9050);
-        if (oscServer->connect()) {
+        oscServer->setLocalPortNumber(mPropertiesFile->getIntValue(OscRecivePortNumberIdentifier));
+        if (mPropertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+            oscServer->listen();
+        }
+        oscServer->setRemoteHostname(mPropertiesFile->getValue(OscRemoteHostnameIdentifier));
+        oscServer->setRemotePortNumber(mPropertiesFile->getIntValue(OscRemotePortNumberIdentifier));
+        if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
             oscSendReset();
         }
+        startTimer(TimerOscRefresh, 100);
     }
     else if (timerID == TimerOscRefresh) {
-        oscSendPlayerUpdate();
+        if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+            oscSendPlayerUpdate();
+        }
+        oscReceived = 0;
     }
 }
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()

@@ -12,6 +12,8 @@
               companyEmail="info@ultraschall.fm" companyName="Ultraschall">
   <MAINGROUP id="AXAawk" name="Soundboard">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
+      <FILE id="lx1pz6" name="Player.cpp" compile="1" resource="0" file="Source/Player.cpp"/>
+      <FILE id="bzNtR6" name="Player.h" compile="0" resource="0" file="Source/Player.h"/>
       <FILE id="QXYgra" name="OscSettings.h" compile="0" resource="0" file="Source/OscSettings.h"/>
       <FILE id="i9qTDK" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -20,9 +22,6 @@
       <FILE id="fgemth" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="SaW1KJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
-      <FILE id="nBMpbA" name="SamplePlayer.cpp" compile="1" resource="0"
-            file="Source/SamplePlayer.cpp"/>
-      <FILE id="YtLMDI" name="SamplePlayer.h" compile="0" resource="0" file="Source/SamplePlayer.h"/>
       <FILE id="egkYkF" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
       <FILE id="XaP1Et" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
     </GROUP>

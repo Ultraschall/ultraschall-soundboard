@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
+#include "OscSettings.h"
 
 static const int RowIdNum = 1;
 static const int RowIdFile = 2;
@@ -32,38 +33,39 @@ class SoundboardAudioProcessorEditor : public AudioProcessorEditor,
                                        public Slider::Listener,
                                        public MultiTimer {
 public:
-    SoundboardAudioProcessorEditor(SoundboardAudioProcessor &);
-
+    SoundboardAudioProcessorEditor(SoundboardAudioProcessor&);
     ~SoundboardAudioProcessorEditor();
 
     // TableListBoxModel
-    int getNumRows();
+    int getNumRows() override;
 
-    void paintRowBackground(Graphics &g,
-            int rowNumber,
-            int width, int height,
-            bool rowIsSelected);
+    void paintRowBackground(Graphics& g,
+                            int rowNumber,
+                            int width, int height,
+                            bool rowIsSelected) override;
 
-    void paintCell(Graphics &g,
-            int rowNumber,
-            int columnId,
-            int width, int height,
-            bool rowIsSelected);
+    void paintCell(Graphics& g,
+                   int rowNumber,
+                   int columnId,
+                   int width, int height,
+                   bool rowIsSelected) override;
 
-    void cellClicked(int rowNumber, int columnId, const MouseEvent & /*e*/);
+    void cellClicked(int rowNumber, int columnId, const MouseEvent& /*e*/) override;
 
     // Button::Listener
-    void buttonClicked(Button *buttonThatWasClicked);
+    void buttonClicked(Button* buttonThatWasClicked) override;
 
     // Slider::Listener
-    void sliderValueChanged(Slider *slider);
+    void sliderValueChanged(Slider* slider) override;
 
     //==============================================================================
-    void paint(Graphics &) override;
+    void paint(Graphics&) override;
 
     void resized() override;
 
     void refresh();
+
+    void refreshTable();
 
     void timerCallback(int timerID);
 
@@ -74,12 +76,15 @@ private:
     ScopedPointer<ImageButton> loadDirectoryButton;
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;
+    ScopedPointer<ImageButton> settingsButton;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    SoundboardAudioProcessor &processor;
+    SoundboardAudioProcessor& processor;
     bool mPauseState;
     bool mTimerState;
+
+    bool oscIndicator;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessorEditor)
 };

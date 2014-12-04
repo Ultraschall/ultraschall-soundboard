@@ -7,20 +7,21 @@
   ==============================================================================
 */
 
-#include "SamplePlayer.h"
+#include "Player.h"
 
-SamplePlayer::SamplePlayer(const File &audioFile, AudioFormatManager *formatManager)
-        : timeSliceThread("SamplePlayer " + audioFile.getFileNameWithoutExtension()),
-          title(audioFile.getFileNameWithoutExtension()),
-          playerState(Stopped),
-          fadeOutGain(1.0f),
-          fadeOutGainBackup(1.0f),
-          fadeOutGainSteps(0.1f),
-          fadeOutSeconds(4),
-          fadeOut(false),
-          process(0.0f),
-          audioFormatManager(formatManager),
-          transportSource(new AudioTransportSource()) {
+Player::Player(const File& audioFile, AudioFormatManager* formatManager)
+    : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension())
+    , title(audioFile.getFileNameWithoutExtension())
+    , playerState(Stopped)
+    , fadeOutGain(1.0f)
+    , fadeOutGainBackup(1.0f)
+    , fadeOutGainSteps(0.1f)
+    , fadeOutSeconds(4)
+    , fadeOut(false)
+    , process(0.0f)
+    , audioFormatManager(formatManager)
+    , transportSource(new AudioTransportSource())
+{
     timeSliceThread.startThread(3);
     audioSourcePlayer.setSource(transportSource);
     loadFileIntoTransport(audioFile);
@@ -28,7 +29,8 @@ SamplePlayer::SamplePlayer(const File &audioFile, AudioFormatManager *formatMana
     startTimer(FadeOutTimerId, 100);
 }
 
-SamplePlayer::~SamplePlayer() {
+Player::~Player()
+{
     removeAllChangeListeners();
     stopTimer(UpdateTimerId);
     stopTimer(FadeOutTimerId);
@@ -38,30 +40,32 @@ SamplePlayer::~SamplePlayer() {
     transportSource = nullptr;
 }
 
-void SamplePlayer::loadFileIntoTransport(const File &audioFile) {
+void Player::loadFileIntoTransport(const File& audioFile)
+{
     // unload the previous file source and delete it..
     transportSource->stop();
     transportSource->setSource(nullptr);
     currentAudioFileSource = nullptr;
 
-    AudioFormatReader *reader = audioFormatManager->createReaderFor(audioFile);
+    AudioFormatReader* reader = audioFormatManager->createReaderFor(audioFile);
 
     if (reader != nullptr) {
         currentAudioFileSource = new AudioFormatReaderSource(reader, true);
 
         // ..and plug it into our transport source
         transportSource->setSource(currentAudioFileSource,
-                32768, // tells it to buffer this many samples ahead
-                &timeSliceThread, // this is the background thread to use for reading-ahead
-                reader->sampleRate); // allows for sample rate correction
+                                   32768, // tells it to buffer this many samples ahead
+                                   &timeSliceThread, // this is the background thread to use for reading-ahead
+                                   reader->sampleRate); // allows for sample rate correction
     }
 }
 
-void SamplePlayer::update() {
+void Player::update()
+{
     double current = transportSource->getNextReadPosition();
     double length = transportSource->getTotalLength();
     double progress = (current / length);
-    process = (float) progress;
+    process = (float)progress;
     if (progress >= 1.0) {
         progress = 1.0;
         transportSource->stop();
@@ -71,7 +75,8 @@ void SamplePlayer::update() {
     }
 }
 
-void SamplePlayer::timerCallback(int timerID) {
+void Player::timerCallback(int timerID)
+{
     if (timerID == UpdateTimerId) {
         update();
         return;
@@ -93,7 +98,8 @@ void SamplePlayer::timerCallback(int timerID) {
     }
 }
 
-void SamplePlayer::startFadeOut() {
+void Player::startFadeOut()
+{
     if (isPlaying()) {
         fadeOut = true;
         fadeOutGainBackup = transportSource->getGain();
@@ -103,7 +109,8 @@ void SamplePlayer::startFadeOut() {
     }
 }
 
-void SamplePlayer::stop() {
+void Player::stop()
+{
     transportSource->stop();
     transportSource->setPosition(0);
     if (isLooping()) {
@@ -115,7 +122,8 @@ void SamplePlayer::stop() {
     sendChangeMessage();
 }
 
-void SamplePlayer::play() {
+void Player::play()
+{
     if (!fadeOut) {
         transportSource->start();
         playerState = Playing;
@@ -123,7 +131,8 @@ void SamplePlayer::play() {
     }
 }
 
-void SamplePlayer::pause() {
+void Player::pause()
+{
     if (!fadeOut) {
         transportSource->stop();
         playerState = Paused;
@@ -131,19 +140,23 @@ void SamplePlayer::pause() {
     }
 }
 
-float SamplePlayer::getProgress() {
+float Player::getProgress()
+{
     return process;
 }
 
-void SamplePlayer::setFadeOutTime(int seconds) {
+void Player::setFadeOutTime(int seconds)
+{
     fadeOutSeconds = seconds;
 }
 
-bool SamplePlayer::isLooping() {
+bool Player::isLooping()
+{
     return currentAudioFileSource->isLooping();
 }
 
-void SamplePlayer::setLooping(bool value) {
+void Player::setLooping(bool value)
+{
     if (isPlaying() && !value) {
         int64 nextReadPosition = transportSource->getNextReadPosition();
         currentAudioFileSource->setLooping(false);
@@ -154,52 +167,64 @@ void SamplePlayer::setLooping(bool value) {
     sendChangeMessage();
 }
 
-String SamplePlayer::getTitle() {
+String Player::getTitle()
+{
     return title;
 }
 
-String SamplePlayer::getProgressString(bool remaining) {
+String Player::getProgressString(bool remaining)
+{
     if (!remaining) {
-        Time time(1971, 0, 0, 0, 0, (int) transportSource->getCurrentPosition());
+        Time time(1971, 0, 0, 0, 0, (int)transportSource->getCurrentPosition());
         return time.toString(false, true, true, true);
-    } else {
-        Time time(1971, 0, 0, 0, 0, (int) (transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
+    }
+    else {
+        Time time(1971, 0, 0, 0, 0, (int)(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
         return "-" + time.toString(false, true, true, true);
     }
 }
 
-float SamplePlayer::getGain() {
+float Player::getGain()
+{
     return transportSource->getGain();
 }
 
-void SamplePlayer::setGain(float newGain) {
+void Player::setGain(float newGain)
+{
     transportSource->setGain(newGain);
 }
 
-SamplePlayer::PlayerState SamplePlayer::getState() {
+Player::PlayerState Player::getState()
+{
     return playerState;
 }
 
-AudioSource *SamplePlayer::getAudioSource() {
+AudioSource* Player::getAudioSource()
+{
     return transportSource;
 }
 
-bool SamplePlayer::isStopped() {
+bool Player::isStopped()
+{
     return playerState == Stopped;
 }
 
-bool SamplePlayer::isPlayed() {
+bool Player::isPlayed()
+{
     return playerState == Played;
 }
 
-bool SamplePlayer::isPlaying() {
+bool Player::isPlaying()
+{
     return playerState == Playing;
 }
 
-bool SamplePlayer::isPaused() {
+bool Player::isPaused()
+{
     return playerState == Paused;
 }
 
-bool SamplePlayer::isFadingOut() {
+bool Player::isFadingOut()
+{
     return fadeOut;
 }
