@@ -3,6 +3,12 @@ Soundboard
 
 Ultraschall Soundboard VST das Soundboard für Podcaster.
 
+## Installation
+
+- Entpacken des ZIP-Archivs
+- Verschieben der Datei Soundboard.vst nach: USER/Library/Audio/Plug-Ins/VST
+- Die eventuell schon vorhandene, alte Version unter HDD/Library/Audio/Plug-Ins/VST bitte löschen
+
 ## Entwickler HowTo
 
 Den Sourcecode bekommst du wie folgend:
