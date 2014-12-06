@@ -15,8 +15,6 @@
 #include "OscServer.h"
 #include "OscSettings.h"
 
-using namespace danlin;
-
 class LookAndFeel_Ultraschall;
 
 static const Identifier DirectoryIdentifier("Directory");

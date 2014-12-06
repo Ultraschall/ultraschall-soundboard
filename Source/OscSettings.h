@@ -24,10 +24,15 @@ static const Identifier OscRemoteIsTouchOscIdentifier("OscRemoteIsTouchOsc");
 //==============================================================================
 /*
 */
-class OscSettings : public Component, public Button::Listener, public TextEditor::Listener {
+class OscSettings : public Component,
+                public Button::Listener,
+                public TextEditor::Listener,
+                public OscMessageLogger,
+                public ListBoxModel
+{
 public:
-    OscSettings(PropertiesFile* pf)
-        : propertiesFile(pf)
+    OscSettings(PropertiesFile* pf, OscServer* s)
+        : propertiesFile(pf), oscServer(s)
     {
         addAndMakeVisible(receiveEnabled = new ToggleButton("receiveEnabled"));
         receiveEnabled->setButtonText(TRANS("Receive on port:"));
@@ -41,20 +46,17 @@ public:
         sendEnabled->setColour(ToggleButton::ColourIds::textColourId, Colours::grey);
         sendEnabled->setToggleState(propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()), NotificationType::dontSendNotification);
 
-        //        addAndMakeVisible (oscLoggerEnabled = new ToggleButton ("oscLoggerEnabled"));
-        //        oscLoggerEnabled->setButtonText (TRANS("OSC Logger"));
-        //        oscLoggerEnabled->addListener (this);
-        //        oscLoggerEnabled->setColour(ToggleButton::ColourIds::textColourId, Colours::grey);
-        //
-        //        addAndMakeVisible (oscLogger = new TextEditor ("oscLogger"));
-        //        oscLogger->setMultiLine (true);
-        //        oscLogger->setReturnKeyStartsNewLine (false);
-        //        oscLogger->setReadOnly (true);
-        //        oscLogger->setScrollbarsShown (true);
-        //        oscLogger->setCaretVisible (true);
-        //        oscLogger->setPopupMenuEnabled (true);
-        //        oscLogger->setText (String::empty);
+        addAndMakeVisible(oscLoggerEnabled = new ToggleButton("oscLoggerEnabled"));
+        oscLoggerEnabled->setButtonText(TRANS("OSC Logger"));
+        oscLoggerEnabled->addListener(this);
+        oscLoggerEnabled->setColour(ToggleButton::ColourIds::textColourId, Colours::grey);
 
+        addAndMakeVisible(oscLogger = new ListBox("oscLogger"));
+        oscLogger->setColour(ListBox::ColourIds::backgroundColourId, Colours::black);
+        oscLogger->setColour(ListBox::ColourIds::outlineColourId, Colours::black);
+        oscLogger->setColour(ListBox::ColourIds::textColourId, Colours::grey);
+        oscLogger->setModel(this);
+        
         addAndMakeVisible(receivePortNumber = new TextEditor("receivePortNumber"));
         receivePortNumber->setMultiLine(false);
         receivePortNumber->setReturnKeyStartsNewLine(false);
@@ -118,7 +120,7 @@ public:
         remoteHonstname->setColour(TextEditor::ColourIds::outlineColourId, Colours::grey);
 
         addAndMakeVisible(remoteHostLabel = new Label("sendHostLabel",
-                                                    TRANS("Device:\n")));
+                                                      TRANS("Device:\n")));
         remoteHostLabel->setFont(Font(15.00f, Font::plain));
         remoteHostLabel->setJustificationType(Justification::centredLeft);
         remoteHostLabel->setEditable(false, false, false);
@@ -136,8 +138,8 @@ public:
     {
         receiveEnabled = nullptr;
         sendEnabled = nullptr;
-        //        oscLoggerEnabled = nullptr;
-        //        oscLogger = nullptr;
+        oscLoggerEnabled = nullptr;
+        oscLogger = nullptr;
         receivePortNumber = nullptr;
         remotePortNumber = nullptr;
         receiveHostLabel = nullptr;
@@ -156,8 +158,8 @@ public:
     {
         receiveEnabled->setBounds(8, 8, 136, 24);
         sendEnabled->setBounds(8, 40, 136, 24);
-        //        oscLoggerEnabled->setBounds (8, 96, getWidth() - 16, 24);
-        //        oscLogger->setBounds (8, 120, getWidth() - 16, 168);
+        oscLoggerEnabled->setBounds(8, 76, getWidth() - 16, 24);
+        oscLogger->setBounds(8, 100, getWidth() - 16, getHeight() -100 - 42);
         receivePortNumber->setBounds(152, 8, 48, 24);
         remotePortNumber->setBounds(152, 40, 48, 24);
         receiveHostLabel->setBounds(208, 8, 56, 24);
@@ -179,11 +181,16 @@ public:
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(), sendEnabled->getToggleState());
         }
         else if (buttonThatWasClicked == closeButton) {
+            oscServer->removeLogger();
             this->getParentComponent()->removeChildComponent(this);
         }
-        //        else if (buttonThatWasClicked == oscLoggerEnabled)
-        //        {
-        //        }
+        else if (buttonThatWasClicked == oscLoggerEnabled) {
+            if (oscLoggerEnabled->getToggleState()) {
+                oscServer->setLogger(this);
+            } else {
+                oscServer->removeLogger();
+            }
+        }
     }
 
     void textEditorTextChanged(TextEditor& editor)
@@ -199,11 +206,32 @@ public:
         }
     }
 
+    void logOscMessage(juce::String message)
+    {
+        oscLoggerBuffer.add(message);
+        if (oscLoggerBuffer.size() >= 50)
+            oscLoggerBuffer.remove(0);
+        oscLogger->updateContent();
+        oscLogger->scrollToEnsureRowIsOnscreen(oscLoggerBuffer.size());
+        oscLogger->repaint();
+    }
+
+    int getNumRows() {
+        return oscLoggerBuffer.size();
+    }
+    
+    void paintListBoxItem (int rowNumber,
+                          Graphics& g,
+                          int width, int height,
+                          bool rowIsSelected) {
+        g.setColour(Colours::grey);
+        g.drawText(oscLoggerBuffer[rowNumber], 0, 0, width, height, Justification::centredLeft);
+    }
 private:
     ScopedPointer<ToggleButton> receiveEnabled;
     ScopedPointer<ToggleButton> sendEnabled;
-    //    ScopedPointer<ToggleButton> oscLoggerEnabled;
-    //    ScopedPointer<TextEditor> oscLogger;
+    ScopedPointer<ToggleButton> oscLoggerEnabled;
+    ScopedPointer<ListBox> oscLogger;
     ScopedPointer<TextEditor> receivePortNumber;
     ScopedPointer<TextEditor> remotePortNumber;
     ScopedPointer<Label> receiveHostLabel;
@@ -211,8 +239,10 @@ private:
     ScopedPointer<TextEditor> remoteHonstname;
     ScopedPointer<Label> remoteHostLabel;
     ScopedPointer<TextButton> closeButton;
-
+    StringArray oscLoggerBuffer;
+    
     PropertiesFile* propertiesFile;
+    OscServer* oscServer;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OscSettings)
 };
 

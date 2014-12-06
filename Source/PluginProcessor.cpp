@@ -39,8 +39,6 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 
     mPropertiesFile->addChangeListener(this);
 
-    settingsComponent = new OscSettings(mPropertiesFile);
-
     mFadeOutRange.start = 1.0;
     mFadeOutRange.end = 30.0;
     mFadeOutRange.interval = 1.0;
@@ -50,6 +48,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     SamplePlayerState.end = 5;
     SamplePlayerState.interval = 1.0;
     oscServer = new OscServer(this);
+    settingsComponent = new OscSettings(mPropertiesFile, oscServer);
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
 }
