@@ -69,6 +69,10 @@ public:
     void timerCallback(int timerID);
 
 private:
+    static const int TimerIdUpdate = 1;
+    static const int TimerIdBlink = 2;
+    static const int TimerIdRefresh = 3;
+
     ScopedPointer<TableListBox> tableListBox;
     ScopedPointer<ResizableCornerComponent> resizer;
     ComponentBoundsConstrainer resizeLimits;

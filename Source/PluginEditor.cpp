@@ -93,8 +93,9 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     // editor's size to whatever you need it to be.
     setSize(600, 300);
 
-    startTimer(0, (int)(1000 * 0.5));
-    startTimer(1, 50);
+    startTimer(TimerIdBlink, (int)(1000 * 0.5));
+    startTimer(TimerIdUpdate, 50);
+    startTimer(TimerIdRefresh, (int)(1000 * 0.5));
 }
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
@@ -337,16 +338,19 @@ void SoundboardAudioProcessorEditor::cellClicked(int rowNumber, int columnId,
 
 void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 {
-    if (timerID == 1) {
+    if (timerID == TimerIdUpdate) {
         fadeOutSlider->setValue(processor.getFadeOutSeconds(), NotificationType::dontSendNotification);
         if (oscActivityIndicator->getActive() != processor.receivedOscMessages()) {
             oscActivityIndicator->setActive(processor.receivedOscMessages());
             repaint();
         }
     }
-    else if (timerID == 0) {
+    else if (timerID == TimerIdBlink) {
         mPauseState = !mPauseState;
         tableListBox->repaint();
+    }
+    else if (timerID == TimerIdRefresh) {
+        refresh();
     }
 }
 
