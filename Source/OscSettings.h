@@ -39,7 +39,7 @@ public:
         addAndMakeVisible(titleLabel = new Label());
         titleLabel->setText("OSC Einstellungen", NotificationType::dontSendNotification);
         titleLabel->setColour(Label::ColourIds::textColourId, Colours::grey);
-        titleLabel->setFont(Font(24.0 * 0.6));
+        titleLabel->setFont(Font(24.0 * 0.7));
 
         addAndMakeVisible(seperator = new Bar());
 
@@ -191,7 +191,7 @@ public:
     void resized()
     {
         topBar->setBounds(0, 0, getWidth(), 32);
-        titleLabel->setBounds(3, 5, 250, 24);
+        titleLabel->setBounds(3, 5, getWidth(), 24);
 
         receiveEnabled->setBounds(8, 38, 136, 24);
         sendEnabled->setBounds(8, 65, 136, 24);
@@ -208,7 +208,7 @@ public:
         oscLoggerEnabled->setBounds(8, 96, getWidth() - 16, 24);
         seperator->setBounds(0, 94, getWidth(), 28);
 
-        oscLogger->setBounds(0, 123, getWidth(), getHeight() - 123 - 32);
+        oscLogger->setBounds(0, 122, getWidth(), getHeight() - 122 - 32);
 
         closeButton->setBounds(getWidth() - 123, getHeight() - 27, 120, 24);
         buttomBar->setBounds(0, getHeight() - 32, getWidth(), 32);
