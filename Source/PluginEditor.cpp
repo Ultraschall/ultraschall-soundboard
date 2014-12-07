@@ -67,6 +67,9 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     tableListBox->getHeader().addColumn("", RowIdFadeOut, ButtonCellWidth,
                                         ButtonCellWidth, ButtonCellWidth,
                                         TableHeaderComponent::notSortable);
+    tableListBox->getHeader().addColumn("", RowIdGain, ButtonCellWidth,
+                                        ButtonCellWidth, ButtonCellWidth,
+                                        TableHeaderComponent::notSortable);
 
     addAndMakeVisible(buttomBar = new Bar());
 
@@ -117,7 +120,7 @@ void SoundboardAudioProcessorEditor::resized()
     loadDirectoryButton->setBounds(getWidth() - 153, 5, 150, 24);
 
     tableListBox->setBounds(0, 32, getWidth(), getHeight() - 64);
-    tableListBox->getHeader().setColumnWidth(RowIdFile, getWidth() - 261);
+    tableListBox->getHeader().setColumnWidth(RowIdFile, getWidth() - 293);
 
     resizer->setBounds(getWidth() - 16, getHeight() - 16, 16, 16);
 
@@ -246,6 +249,36 @@ void SoundboardAudioProcessorEditor::paintCell(Graphics& g, int rowNumber,
     }
 }
 
+Component* SoundboardAudioProcessorEditor::refreshComponentForCell(int rowNumber, int columnId,
+                                                                   bool isRowSelected, Component* existingComponentToUpdate)
+{
+    if (columnId == RowIdGain) // If it's the ratings column, we'll return our custom component..
+    {
+        Slider* slider = (Slider*)existingComponentToUpdate;
+
+        // If an existing component is being passed-in for updating, we'll re-use it, but
+        // if not, we'll have to create one.
+        if (slider == 0) {
+            slider = new Slider();
+            slider->setRange(0.0, 1.0, 0.01);
+            slider->setValue(1.0);
+            slider->setColour(Slider::ColourIds::rotarySliderFillColourId, Colours::grey.brighter());
+            slider->setSliderStyle(Slider::SliderStyle::Rotary);
+            slider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
+            slider->addListener(this);
+        }
+        slider->setName(String(rowNumber));
+
+        return slider;
+    }
+    else {
+        // for any other column, just return 0, as we'll be painting these columns directly.
+
+        jassert(existingComponentToUpdate == 0);
+        return 0;
+    }
+}
+
 void
 SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
 {
@@ -254,7 +287,13 @@ SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
         if (chooser.browseForDirectory()) {
             File directory = chooser.getResult();
             if (directory.isDirectory()) {
+                gainSliders.clear();
                 processor.openDirectory(directory);
+                for (int i = 0; i < processor.numAudioFiles(); i++) {
+                    Slider* slider = new Slider();
+                    slider->setBounds(0, 0, ButtonCellWidth, ButtonCellWidth);
+                    gainSliders.add(slider);
+                }
                 tableListBox->updateContent();
             }
         }
@@ -314,11 +353,17 @@ void SoundboardAudioProcessorEditor::refresh()
     tableListBox->updateContent();
 }
 
-void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* /*slider*/)
+void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
-    processor.setFadeOutSeconds((int)fadeOutSlider->getValue());
-    fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s",
-                          NotificationType::dontSendNotification);
+    if (slider == fadeOutSlider) {
+        processor.setFadeOutSeconds((int)fadeOutSlider->getValue());
+        fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s",
+                              NotificationType::dontSendNotification);
+    }
+    else {
+        int index = slider->getName().getIntValue();
+        processor.SamplePlayerAtIndex(index)->setGain(slider->getValue());
+    }
 }
 
 void SoundboardAudioProcessorEditor::refreshTable() { tableListBox->repaint(); }

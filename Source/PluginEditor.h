@@ -22,6 +22,7 @@ static const int RowIdTime = 4;
 static const int RowIdPlayPause = 5;
 static const int RowIdStop = 6;
 static const int RowIdFadeOut = 7;
+static const int RowIdGain = 8;
 
 static const int ButtonCellWidth = 32;
 
@@ -48,7 +49,8 @@ public:
 
     void cellClicked(int rowNumber, int columnId,
                      const MouseEvent& /*e*/) override;
-
+    Component* refreshComponentForCell(int rowNumber, int columnId,
+                                       bool isRowSelected, Component* existingComponentToUpdate);
     // Button::Listener
     void buttonClicked(Button* buttonThatWasClicked) override;
 
@@ -84,6 +86,8 @@ private:
     SoundboardAudioProcessor& processor;
     bool mPauseState;
     bool mTimerState;
+
+    OwnedArray<Slider> gainSliders;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessorEditor)
 };
