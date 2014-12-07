@@ -49,6 +49,8 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
     tableListBox->setModel(this);
 
+    tableListBox->setHeaderHeight(21);
+
     tableListBox->getHeader().addColumn("", RowIdNum, 25, 25, 25,
                                         TableHeaderComponent::notSortable);
     tableListBox->getHeader().addColumn("Audio", RowIdFile, 250, 200, INT32_MAX,
