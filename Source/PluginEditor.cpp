@@ -267,6 +267,7 @@ Component* SoundboardAudioProcessorEditor::refreshComponentForCell(int rowNumber
             slider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
             slider->addListener(this);
         }
+        slider->setValue(processor.SamplePlayerAtIndex(rowNumber)->getGain(), NotificationType::dontSendNotification);
         slider->setName(String(rowNumber));
 
         return slider;
@@ -335,8 +336,7 @@ void SoundboardAudioProcessorEditor::cellClicked(int rowNumber, int columnId,
 void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 {
     if (timerID == 1) {
-        fadeOutSlider->setValue(processor.getFadeOutSeconds(),
-                                NotificationType::dontSendNotification);
+        fadeOutSlider->setValue(processor.getFadeOutSeconds(), NotificationType::dontSendNotification);
         if (oscActivityIndicator->getActive() != processor.receivedOscMessages()) {
             oscActivityIndicator->setActive(processor.receivedOscMessages());
             repaint();
