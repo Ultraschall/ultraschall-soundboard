@@ -239,13 +239,13 @@
  #define JucePlugin_EditorRequiresKeyboardFocus  1
 #endif
 #ifndef  JucePlugin_Version
- #define JucePlugin_Version                0.9.3
+ #define JucePlugin_Version                V1.0-rc.2
 #endif
 #ifndef  JucePlugin_VersionCode
- #define JucePlugin_VersionCode            0x903
+ #define JucePlugin_VersionCode            0x2
 #endif
 #ifndef  JucePlugin_VersionString
- #define JucePlugin_VersionString          "0.9.3"
+ #define JucePlugin_VersionString          "V1.0-rc.2"
 #endif
 #ifndef  JucePlugin_VSTUniqueID
  #define JucePlugin_VSTUniqueID            JucePlugin_PluginCode
