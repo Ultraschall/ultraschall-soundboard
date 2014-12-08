@@ -43,26 +43,26 @@ public:
 
         addAndMakeVisible(seperator = new Bar());
 
-        addAndMakeVisible(receiveEnabled = new ToggleButton("receiveEnabled"));
-        receiveEnabled->setButtonText(TRANS("Receive on port:"));
-        receiveEnabled->addListener(this);
-        receiveEnabled->setColour(ToggleButton::ColourIds::textColourId,
+        addAndMakeVisible(localEnabled = new ToggleButton("receiveEnabled"));
+        localEnabled->setButtonText("Receive on port:");
+        localEnabled->addListener(this);
+        localEnabled->setColour(ToggleButton::ColourIds::textColourId,
                                   Colours::grey);
-        receiveEnabled->setToggleState(
+        localEnabled->setToggleState(
             propertiesFile->getBoolValue(OscRecivePortNumberIdentifier.toString()),
             NotificationType::dontSendNotification);
 
-        addAndMakeVisible(sendEnabled = new ToggleButton("sendEnabledButton"));
-        sendEnabled->setButtonText(TRANS("Send on port:"));
-        sendEnabled->addListener(this);
-        sendEnabled->setColour(ToggleButton::ColourIds::textColourId,
+        addAndMakeVisible(remoteEnabled = new ToggleButton("sendEnabledButton"));
+        remoteEnabled->setButtonText("Send on port:");
+        remoteEnabled->addListener(this);
+        remoteEnabled->setColour(ToggleButton::ColourIds::textColourId,
                                Colours::grey);
-        sendEnabled->setToggleState(
+        remoteEnabled->setToggleState(
             propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()),
             NotificationType::dontSendNotification);
 
         addAndMakeVisible(oscLoggerEnabled = new ToggleButton("oscLoggerEnabled"));
-        oscLoggerEnabled->setButtonText(TRANS("OSC Logger"));
+        oscLoggerEnabled->setButtonText("OSC Logger");
         oscLoggerEnabled->addListener(this);
         oscLoggerEnabled->setColour(ToggleButton::ColourIds::textColourId,
                                     Colours::grey);
@@ -73,29 +73,29 @@ public:
         oscLogger->setColour(ListBox::ColourIds::textColourId, Colours::whitesmoke);
         oscLogger->setModel(this);
 
-        addAndMakeVisible(receivePortNumber = new TextEditor("receivePortNumber"));
-        receivePortNumber->setMultiLine(false);
-        receivePortNumber->setReturnKeyStartsNewLine(false);
-        receivePortNumber->setReadOnly(receiveEnabled->getToggleState());
-        receivePortNumber->setScrollbarsShown(true);
-        receivePortNumber->setCaretVisible(true);
-        receivePortNumber->setPopupMenuEnabled(true);
-        receivePortNumber->setText(
+        addAndMakeVisible(localPortNumber = new TextEditor("receivePortNumber"));
+        localPortNumber->setMultiLine(false);
+        localPortNumber->setReturnKeyStartsNewLine(false);
+        localPortNumber->setReadOnly(localEnabled->getToggleState());
+        localPortNumber->setScrollbarsShown(true);
+        localPortNumber->setCaretVisible(true);
+        localPortNumber->setPopupMenuEnabled(true);
+        localPortNumber->setText(
             propertiesFile->getValue(OscRecivePortNumberIdentifier.toString(), ""));
-        receivePortNumber->addListener(this);
-        receivePortNumber->setColour(TextEditor::ColourIds::textColourId,
+        localPortNumber->addListener(this);
+        localPortNumber->setColour(TextEditor::ColourIds::textColourId,
                                      Colours::black);
-        receivePortNumber->setColour(TextEditor::ColourIds::backgroundColourId,
+        localPortNumber->setColour(TextEditor::ColourIds::backgroundColourId,
                                      Colours::grey.brighter());
-        receivePortNumber->setColour(TextEditor::ColourIds::focusedOutlineColourId,
+        localPortNumber->setColour(TextEditor::ColourIds::focusedOutlineColourId,
                                      Colours::grey.brighter().brighter());
-        receivePortNumber->setColour(TextEditor::ColourIds::outlineColourId,
+        localPortNumber->setColour(TextEditor::ColourIds::outlineColourId,
                                      Colours::grey);
 
         addAndMakeVisible(remotePortNumber = new TextEditor("sendPortNumber"));
         remotePortNumber->setMultiLine(false);
         remotePortNumber->setReturnKeyStartsNewLine(false);
-        remotePortNumber->setReadOnly(sendEnabled->getToggleState());
+        remotePortNumber->setReadOnly(remoteEnabled->getToggleState());
         remotePortNumber->setScrollbarsShown(true);
         remotePortNumber->setCaretVisible(true);
         remotePortNumber->setPopupMenuEnabled(true);
@@ -111,33 +111,33 @@ public:
         remotePortNumber->setColour(TextEditor::ColourIds::outlineColourId,
                                     Colours::grey);
 
-        addAndMakeVisible(receiveHostLabel = new Label("receiveHostLabel", TRANS("Host:\n")));
-        receiveHostLabel->setFont(Font(15.00f, Font::plain));
-        receiveHostLabel->setJustificationType(Justification::centredLeft);
-        receiveHostLabel->setEditable(false, false, false);
-        receiveHostLabel->setColour(Label::textColourId, Colours::grey);
+        addAndMakeVisible(localHostLabel = new Label("receiveHostLabel", "Host:"));
+        localHostLabel->setFont(Font(15.00f, Font::plain));
+        localHostLabel->setJustificationType(Justification::centredLeft);
+        localHostLabel->setEditable(false, false, false);
+        localHostLabel->setColour(Label::textColourId, Colours::grey);
 
-        addAndMakeVisible(receiveHonstname = new TextEditor("receiveHonstname"));
-        receiveHonstname->setMultiLine(false);
-        receiveHonstname->setReturnKeyStartsNewLine(false);
-        receiveHonstname->setReadOnly(true);
-        receiveHonstname->setScrollbarsShown(true);
-        receiveHonstname->setCaretVisible(true);
-        receiveHonstname->setPopupMenuEnabled(true);
-        receiveHonstname->setText(SystemStats::getComputerName());
-        receiveHonstname->setColour(TextEditor::ColourIds::textColourId,
+        addAndMakeVisible(localHonstname = new TextEditor("receiveHonstname"));
+        localHonstname->setMultiLine(false);
+        localHonstname->setReturnKeyStartsNewLine(false);
+        localHonstname->setReadOnly(true);
+        localHonstname->setScrollbarsShown(true);
+        localHonstname->setCaretVisible(true);
+        localHonstname->setPopupMenuEnabled(true);
+        localHonstname->setText(SystemStats::getComputerName());
+        localHonstname->setColour(TextEditor::ColourIds::textColourId,
                                     Colours::black);
-        receiveHonstname->setColour(TextEditor::ColourIds::backgroundColourId,
+        localHonstname->setColour(TextEditor::ColourIds::backgroundColourId,
                                     Colours::grey.brighter());
-        receiveHonstname->setColour(TextEditor::ColourIds::focusedOutlineColourId,
+        localHonstname->setColour(TextEditor::ColourIds::focusedOutlineColourId,
                                     Colours::grey.brighter().brighter());
-        receiveHonstname->setColour(TextEditor::ColourIds::outlineColourId,
+        localHonstname->setColour(TextEditor::ColourIds::outlineColourId,
                                     Colours::grey);
 
         addAndMakeVisible(remoteHonstname = new TextEditor("sendHonstname"));
         remoteHonstname->setMultiLine(false);
         remoteHonstname->setReturnKeyStartsNewLine(false);
-        remoteHonstname->setReadOnly(sendEnabled->getToggleState());
+        remoteHonstname->setReadOnly(remoteEnabled->getToggleState());
         remoteHonstname->setScrollbarsShown(true);
         remoteHonstname->setCaretVisible(true);
         remoteHonstname->setPopupMenuEnabled(true);
@@ -153,7 +153,7 @@ public:
         remoteHonstname->setColour(TextEditor::ColourIds::outlineColourId,
                                    Colours::grey);
 
-        addAndMakeVisible(remoteHostLabel = new Label("sendHostLabel", TRANS("Device:\n")));
+        addAndMakeVisible(remoteHostLabel = new Label("sendHostLabel", "Device:"));
         remoteHostLabel->setFont(Font(15.00f, Font::plain));
         remoteHostLabel->setJustificationType(Justification::centredLeft);
         remoteHostLabel->setEditable(false, false, false);
@@ -162,7 +162,7 @@ public:
         addAndMakeVisible(buttomBar = new Bar());
         addAndMakeVisible(closeButton = new AwesomeButton(FA_CHECK));
 
-        closeButton->setButtonText(TRANS("Ok"));
+        closeButton->setButtonText("Ok");
         closeButton->addListener(this);
 
         setSize(600, 400);
@@ -170,17 +170,21 @@ public:
 
     ~OscSettings()
     {
-        receiveEnabled = nullptr;
-        sendEnabled = nullptr;
+        titleLabel = nullptr;
+        localEnabled = nullptr;
+        remoteEnabled = nullptr;
         oscLoggerEnabled = nullptr;
         oscLogger = nullptr;
-        receivePortNumber = nullptr;
+        localPortNumber = nullptr;
         remotePortNumber = nullptr;
-        receiveHostLabel = nullptr;
-        receiveHonstname = nullptr;
+        localHostLabel = nullptr;
+        localHonstname = nullptr;
         remoteHonstname = nullptr;
         remoteHostLabel = nullptr;
         closeButton = nullptr;
+        buttomBar = nullptr;
+        topBar = nullptr;
+        seperator = nullptr;
     }
 
     void paint(Graphics& g)
@@ -193,14 +197,14 @@ public:
         topBar->setBounds(0, 0, getWidth(), 32);
         titleLabel->setBounds(3, 5, getWidth(), 24);
 
-        receiveEnabled->setBounds(8, 38, 136, 24);
-        sendEnabled->setBounds(8, 65, 136, 24);
+        localEnabled->setBounds(8, 38, 136, 24);
+        remoteEnabled->setBounds(8, 65, 136, 24);
 
-        receivePortNumber->setBounds(152, 38, 48, 24);
+        localPortNumber->setBounds(152, 38, 48, 24);
         remotePortNumber->setBounds(152, 65, 48, 24);
 
-        receiveHostLabel->setBounds(208, 38, 56, 24);
-        receiveHonstname->setBounds(272, 38, 150, 24);
+        localHostLabel->setBounds(208, 38, 56, 24);
+        localHonstname->setBounds(272, 38, 150, 24);
 
         remoteHonstname->setBounds(272, 65, 150, 24);
         remoteHostLabel->setBounds(208, 65, 56, 24);
@@ -216,16 +220,16 @@ public:
 
     void buttonClicked(Button* buttonThatWasClicked)
     {
-        if (buttonThatWasClicked == receiveEnabled) {
-            receivePortNumber->setReadOnly(receiveEnabled->getToggleState());
+        if (buttonThatWasClicked == localEnabled) {
+            localPortNumber->setReadOnly(localEnabled->getToggleState());
             propertiesFile->setValue(OscReciveEnabledIdentifier.toString(),
-                                     receiveEnabled->getToggleState());
+                                     localEnabled->getToggleState());
         }
-        else if (buttonThatWasClicked == sendEnabled) {
-            remoteHonstname->setReadOnly(sendEnabled->getToggleState());
-            remotePortNumber->setReadOnly(sendEnabled->getToggleState());
+        else if (buttonThatWasClicked == remoteEnabled) {
+            remoteHonstname->setReadOnly(remoteEnabled->getToggleState());
+            remotePortNumber->setReadOnly(remoteEnabled->getToggleState());
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(),
-                                     sendEnabled->getToggleState());
+                                     remoteEnabled->getToggleState());
         }
         else if (buttonThatWasClicked == closeButton) {
             oscServer->removeLogger();
@@ -243,9 +247,9 @@ public:
 
     void textEditorTextChanged(TextEditor& editor)
     {
-        if (&editor == receivePortNumber) {
+        if (&editor == localPortNumber) {
             propertiesFile->setValue(OscRecivePortNumberIdentifier.toString(),
-                                     receivePortNumber->getText().getIntValue());
+                                     localPortNumber->getText().getIntValue());
         }
         else if (&editor == remotePortNumber) {
             propertiesFile->setValue(OscRemotePortNumberIdentifier.toString(),
@@ -278,19 +282,22 @@ public:
     }
 
 private:
-    ScopedPointer<Label> titleLabel;
-    ScopedPointer<ToggleButton> receiveEnabled;
-    ScopedPointer<ToggleButton> sendEnabled;
+    ScopedPointer<ToggleButton> localEnabled;
+    ScopedPointer<TextEditor> localPortNumber;
+    ScopedPointer<Label> localHostLabel;
+    ScopedPointer<TextEditor> localHonstname;
+
+    ScopedPointer<ToggleButton> remoteEnabled;
+    ScopedPointer<TextEditor> remotePortNumber;
+    ScopedPointer<Label> remoteHostLabel;
+    ScopedPointer<TextEditor> remoteHonstname;
+
     ScopedPointer<ToggleButton> oscLoggerEnabled;
     ScopedPointer<ListBox> oscLogger;
-    ScopedPointer<TextEditor> receivePortNumber;
-    ScopedPointer<TextEditor> remotePortNumber;
-    ScopedPointer<Label> receiveHostLabel;
-    ScopedPointer<TextEditor> receiveHonstname;
-    ScopedPointer<TextEditor> remoteHonstname;
-    ScopedPointer<Label> remoteHostLabel;
+
     StringArray oscLoggerBuffer;
 
+    ScopedPointer<Label> titleLabel;
     ScopedPointer<AwesomeButton> closeButton;
     ScopedPointer<Bar> buttomBar;
     ScopedPointer<Bar> topBar;

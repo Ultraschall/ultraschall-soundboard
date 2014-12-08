@@ -100,11 +100,15 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
+    topBar = nullptr;
+    fadeOutSlider = nullptr;
+    fadeOutLabel = nullptr;
+    loadDirectoryButton = nullptr;
     tableListBox = nullptr;
     resizer = nullptr;
-    loadDirectoryButton = nullptr;
-    fadeOutLabel = nullptr;
-    fadeOutSlider = nullptr;
+    settingsButton = nullptr;
+    oscActivityIndicator = nullptr;
+    buttomBar = nullptr;
 }
 
 //==============================================================================
@@ -367,8 +371,7 @@ void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
                               NotificationType::dontSendNotification);
     }
     else {
-        int index = slider->getName().getIntValue();
-        processor.SamplePlayerAtIndex(index)->setGain(slider->getValue());
+        processor.SamplePlayerAtIndex(tableListBox->getRowNumberOfComponent(slider))->setGain(slider->getValue());
     }
 }
 

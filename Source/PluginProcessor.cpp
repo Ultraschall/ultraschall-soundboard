@@ -13,7 +13,7 @@
 
 //==============================================================================
 SoundboardAudioProcessor::SoundboardAudioProcessor()
-    : mFadeOutSeconds(6)
+    : fadeOutSeconds(6)
 {
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel = new LookAndFeel_Ultraschall());
     formatManager.registerBasicFormats();
@@ -23,34 +23,31 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     options.filenameSuffix = "properties";
     options.folderName = "UltraschallSoundboard";
     options.osxLibrarySubFolder = "Application Support";
-    mPropertiesFile = new PropertiesFile(options);
-    mFallbackProperties = new PropertySet();
-    mFallbackProperties->setValue(CurrentProgramIndexIdentifier.toString(), 255);
+    propertiesFile = new PropertiesFile(options);
+    fallbackProperties = new PropertySet();
+    fallbackProperties->setValue(CurrentProgramIndexIdentifier.toString(), 255);
 
-    mFallbackProperties->setValue(OscReciveEnabledIdentifier.toString(), false);
-    mFallbackProperties->setValue(OscRecivePortNumberIdentifier.toString(), 8050);
+    fallbackProperties->setValue(OscReciveEnabledIdentifier.toString(), false);
+    fallbackProperties->setValue(OscRecivePortNumberIdentifier.toString(), 8050);
 
-    mFallbackProperties->setValue(OscRemoteEnabledIdentifier.toString(), false);
-    mFallbackProperties->setValue(OscRemoteHostnameIdentifier.toString(),
-                                  "localhost");
-    mFallbackProperties->setValue(OscRemotePortNumberIdentifier.toString(), 9050);
-    mFallbackProperties->setValue(OscRemoteIsTouchOscIdentifier.toString(),
-                                  false);
+    fallbackProperties->setValue(OscRemoteEnabledIdentifier.toString(), false);
+    fallbackProperties->setValue(OscRemoteHostnameIdentifier.toString(),
+                                 "localhost");
+    fallbackProperties->setValue(OscRemotePortNumberIdentifier.toString(), 9050);
+    fallbackProperties->setValue(OscRemoteIsTouchOscIdentifier.toString(),
+                                 false);
 
-    mPropertiesFile->setFallbackPropertySet(mFallbackProperties);
+    propertiesFile->setFallbackPropertySet(fallbackProperties);
 
-    mPropertiesFile->addChangeListener(this);
+    propertiesFile->addChangeListener(this);
 
-    mFadeOutRange.start = 1.0;
-    mFadeOutRange.end = 30.0;
-    mFadeOutRange.interval = 1.0;
-    mFadeOutRange.skew = 0.5;
+    fadeOutRange.start = 1.0;
+    fadeOutRange.end = 30.0;
+    fadeOutRange.interval = 1.0;
+    fadeOutRange.skew = 0.5;
 
-    SamplePlayerState.start = 1;
-    SamplePlayerState.end = 5;
-    SamplePlayerState.interval = 1.0;
     oscServer = new OscServer(this);
-    settingsComponent = new OscSettings(mPropertiesFile, oscServer);
+    settingsComponent = new OscSettings(propertiesFile, oscServer);
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
 }
@@ -59,11 +56,11 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
     stopTimer(TimerOscRefresh);
     stopTimer(TimerOscServerDelay);
-    mPropertiesFile->save();
+    propertiesFile->save();
     oscServer = nullptr;
     mLookAndFeel = nullptr;
-    mPropertiesFile = nullptr;
-    mFallbackProperties = nullptr;
+    propertiesFile = nullptr;
+    fallbackProperties = nullptr;
 }
 
 //==============================================================================
@@ -244,7 +241,7 @@ void SoundboardAudioProcessor::setStateInformation(const void* data,
 
 void SoundboardAudioProcessor::openDirectory(File directory)
 {
-    if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
         oscSendReset();
     }
     currentDirectory = directory.getFullPathName();
@@ -256,7 +253,11 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         if (formatManager.findFormatForFileExtension(
                 iterator.getFile().getFileExtension()) != nullptr && count <= MaximumSamplePlayers) {
             Player* audioFile = new Player(iterator.getFile(), &formatManager);
-            audioFile->setFadeOutTime(mFadeOutSeconds);
+            if (audioFile->getState() == Player::Error) {
+                delete audioFile;
+                break;
+            }
+            audioFile->setFadeOutTime(fadeOutSeconds);
             audioFile->addChangeListener(this);
             samplePlayers.add(audioFile);
             mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
@@ -267,11 +268,11 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     if (editor) {
         editor->refresh();
     }
-    mPropertiesFile->setValue(CurrentProgramIndexIdentifier.toString(),
-                              currentProgramIndex);
-    mPropertiesFile->setValue(CurrentDirectoryIdentifier.toString(),
-                              currentDirectory);
-    if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+    propertiesFile->setValue(CurrentProgramIndexIdentifier.toString(),
+                             currentProgramIndex);
+    propertiesFile->setValue(CurrentDirectoryIdentifier.toString(),
+                             currentDirectory);
+    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
         for (int index = 0; index < samplePlayers.size(); index++) {
             oscSendPlayerConfig(index);
         }
@@ -467,11 +468,11 @@ void SoundboardAudioProcessor::oscSendReset()
 void
 SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
 {
-    if (source == mPropertiesFile) {
-        if (mPropertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+    if (source == propertiesFile) {
+        if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
             if (!oscServer->isThreadRunning()) {
                 oscServer->setLocalPortNumber(
-                    mPropertiesFile->getIntValue(OscRecivePortNumberIdentifier));
+                    propertiesFile->getIntValue(OscRecivePortNumberIdentifier));
                 oscServer->listen();
             }
         }
@@ -481,14 +482,14 @@ SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
             }
         }
         oscServer->setRemoteHostname(
-            mPropertiesFile->getValue(OscRemoteHostnameIdentifier));
+            propertiesFile->getValue(OscRemoteHostnameIdentifier));
         oscServer->setRemotePortNumber(
-            mPropertiesFile->getIntValue(OscRemotePortNumberIdentifier));
+            propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
         return;
     }
     Player* samplePlayer = static_cast<Player*>(source);
     if (samplePlayer != nullptr) {
-        if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
             int index = samplePlayers.indexOf(samplePlayer);
             oscSendPlayerState(index);
         }
@@ -508,17 +509,17 @@ Player* SoundboardAudioProcessor::SamplePlayerAtIndex(int index)
 
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
-    mFadeOutSeconds = seconds;
+    fadeOutSeconds = seconds;
     for (int index = 0; index < samplePlayers.size(); index++) {
-        SamplePlayerAtIndex(index)->setFadeOutTime(mFadeOutSeconds);
+        SamplePlayerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
     }
 }
 
-int SoundboardAudioProcessor::getFadeOutSeconds() { return mFadeOutSeconds; }
+int SoundboardAudioProcessor::getFadeOutSeconds() { return fadeOutSeconds; }
 
 void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
 {
-    if (mPropertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+    if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
         oscReceived++;
         try {
             if (packet.IsBundle()) {
@@ -613,21 +614,21 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
     if (timerID == TimerOscServerDelay) {
         stopTimer(TimerOscServerDelay);
         oscServer->setLocalPortNumber(
-            mPropertiesFile->getIntValue(OscRecivePortNumberIdentifier));
-        if (mPropertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+            propertiesFile->getIntValue(OscRecivePortNumberIdentifier));
+        if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
             oscServer->listen();
         }
         oscServer->setRemoteHostname(
-            mPropertiesFile->getValue(OscRemoteHostnameIdentifier));
+            propertiesFile->getValue(OscRemoteHostnameIdentifier));
         oscServer->setRemotePortNumber(
-            mPropertiesFile->getIntValue(OscRemotePortNumberIdentifier));
-        if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+            propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
             oscSendReset();
         }
         startTimer(TimerOscRefresh, 100);
     }
     else if (timerID == TimerOscRefresh) {
-        if (mPropertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
             oscSendPlayerUpdate();
         }
         oscReceived = 0;
