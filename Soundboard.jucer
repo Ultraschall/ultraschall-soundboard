@@ -72,5 +72,6 @@
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled"
                JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_VST3="disabled"
-               JUCE_PLUGINHOST_AU="disabled" JUCE_WEB_BROWSER="disabled" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="disabled"/>
+               JUCE_PLUGINHOST_AU="disabled" JUCE_WEB_BROWSER="disabled" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="disabled"
+               JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
 </JUCERPROJECT>
