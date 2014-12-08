@@ -39,8 +39,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Soundboard";
-    const char* const  versionString  = "V1.0-rc.3";
-    const int          versionNumber  = 0x3;
+    const char* const  versionString  = "V1.0";
+    const int          versionNumber  = 0x0;
 }
 #endif
 
