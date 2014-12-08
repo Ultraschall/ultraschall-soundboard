@@ -15,6 +15,7 @@
 SoundboardAudioProcessor::SoundboardAudioProcessor()
     : fadeOutSeconds(6)
 {
+    playersLock = true;
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel = new LookAndFeel_Ultraschall());
     formatManager.registerBasicFormats();
 
@@ -241,6 +242,7 @@ void SoundboardAudioProcessor::setStateInformation(const void* data,
 
 void SoundboardAudioProcessor::openDirectory(File directory)
 {
+    playersLock = true;
     if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
         oscSendReset();
     }
@@ -253,17 +255,18 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         if (formatManager.findFormatForFileExtension(
                 iterator.getFile().getFileExtension()) != nullptr && count <= MaximumSamplePlayers) {
             Player* audioFile = new Player(iterator.getFile(), &formatManager);
+            samplePlayers.add(audioFile);
             if (audioFile->getState() == Player::Error) {
-                delete audioFile;
+                samplePlayers.removeObject(audioFile);
                 break;
             }
             audioFile->setFadeOutTime(fadeOutSeconds);
             audioFile->addChangeListener(this);
-            samplePlayers.add(audioFile);
             mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
         }
         count++;
     }
+    playersLock = false;
     SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
     if (editor) {
         editor->refresh();

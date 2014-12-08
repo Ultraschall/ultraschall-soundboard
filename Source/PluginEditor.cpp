@@ -360,7 +360,9 @@ void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 
 void SoundboardAudioProcessorEditor::refresh()
 {
-    tableListBox->updateContent();
+    if (!processor.isLoocked()) {
+        tableListBox->updateContent();
+    }
 }
 
 void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)

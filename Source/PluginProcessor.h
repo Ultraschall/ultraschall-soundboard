@@ -68,6 +68,7 @@ public:
     int numAudioFiles();
     Player* SamplePlayerAtIndex(int index);
     void openDirectory(File directory);
+    bool isLoocked() { return playersLock; }
 
     int getFadeOutSeconds();
     void setFadeOutSeconds(int seconds);
@@ -110,6 +111,7 @@ private:
     AudioFormatManager formatManager;
     AudioSourceChannelInfo sourceChannelInfo;
     MixerAudioSource mixerAudioSource;
+    bool playersLock;
 
     // Global Parameter
     int fadeOutSeconds;
@@ -127,6 +129,7 @@ private:
 
     // Settings
     ScopedPointer<OscSettings> settingsComponent;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };
