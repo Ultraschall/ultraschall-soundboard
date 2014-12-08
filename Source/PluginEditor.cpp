@@ -373,7 +373,11 @@ void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
                               NotificationType::dontSendNotification);
     }
     else {
-        processor.SamplePlayerAtIndex(tableListBox->getRowNumberOfComponent(slider))->setGain(slider->getValue());
+        int index = slider->getName().getIntValue();
+        Player* player = processor.SamplePlayerAtIndex(index);
+        if (player != nullptr) {
+            player->setGain(slider->getValue());
+        }
     }
 }
 
