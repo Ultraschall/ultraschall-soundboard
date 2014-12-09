@@ -117,12 +117,14 @@ void Player::startFadeOut()
 
 void Player::stop()
 {
-    transportSource->stop();
-    transportSource->setPosition(0);
-    if (isLooping()) {
+    if (isFadingOut()) {
+        stopTimer(FadeOutTimerId);
         fadeOut = false;
         fadeOutGain = fadeOutGainBackup;
+        transportSource->setGain(fadeOutGain);
     }
+    transportSource->stop();
+    transportSource->setPosition(0);
     playerState = Stopped;
     update();
     sendChangeMessage();
