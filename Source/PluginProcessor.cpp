@@ -304,14 +304,17 @@ void SoundboardAudioProcessor::oscSendPlayerState(int index)
       << osc::BeginMessage((address + "play").toRawUTF8())
       << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "trigger").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
-
       << osc::BeginMessage((address + "pause").toRawUTF8())
       << samplePlayer->isPaused() << osc::EndMessage
 
       << osc::BeginMessage((address + "stop").toRawUTF8())
       << samplePlayer->isStopped() << osc::EndMessage
+
+      << osc::BeginMessage((address + "trigger").toRawUTF8())
+      << samplePlayer->isPlaying() << osc::EndMessage
+
+      << osc::BeginMessage((address + "ftrigger").toRawUTF8())
+      << samplePlayer->isPlaying() << osc::EndMessage
 
       << osc::BeginMessage((address + "fadeout").toRawUTF8())
       << samplePlayer->isFadingOut() << osc::EndMessage
@@ -357,6 +360,12 @@ void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 
       << osc::BeginMessage((address + "stop").toRawUTF8())
       << samplePlayer->isStopped() << osc::EndMessage
+
+      << osc::BeginMessage((address + "trigger").toRawUTF8())
+      << samplePlayer->isPlaying() << osc::EndMessage
+
+      << osc::BeginMessage((address + "ftrigger").toRawUTF8())
+      << samplePlayer->isPlaying() << osc::EndMessage
 
       << osc::BeginMessage((address + "fadeout").toRawUTF8())
       << samplePlayer->isFadingOut() << osc::EndMessage
@@ -437,6 +446,9 @@ void SoundboardAudioProcessor::oscSendReset()
           << osc::EndMessage
 
           << osc::BeginMessage((address + "trigger").toRawUTF8()) << 0
+          << osc::EndMessage
+
+          << osc::BeginMessage((address + "ftrigger").toRawUTF8()) << 0
           << osc::EndMessage
 
           << osc::BeginMessage((address + "fadeout").toRawUTF8()) << 0
@@ -566,11 +578,29 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                 else if (command == "trigger") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
+                                        if (!SamplePlayerAtIndex(index)->isPlaying()) {
+                                            SamplePlayerAtIndex(index)->play();
+                                        }
+                                    }
+                                    else {
                                         if (SamplePlayerAtIndex(index)->isPlaying()) {
                                             SamplePlayerAtIndex(index)->stop();
                                         }
-                                        else {
+                                    }
+                                }
+                                else if (command == "ftrigger") {
+                                    float value = (arg++)->AsFloat();
+                                    if (value) {
+                                        if (!SamplePlayerAtIndex(index)->isPlaying()) {
                                             SamplePlayerAtIndex(index)->play();
+                                        }
+                                    }
+                                    else {
+                                        if (SamplePlayerAtIndex(index)->isFadingOut()) {
+                                            SamplePlayerAtIndex(index)->stop();
+                                        }
+                                        else if (SamplePlayerAtIndex(index)->isPlaying()) {
+                                            SamplePlayerAtIndex(index)->startFadeOut();
                                         }
                                     }
                                 }
