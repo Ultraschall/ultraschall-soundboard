@@ -129,6 +129,8 @@ private:
     // Settings
     ScopedPointer<OscSettings> settingsComponent;
 
+    // Dummy Parameter (Hosts Problems)
+    float dummyParameter;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };

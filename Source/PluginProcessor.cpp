@@ -51,6 +51,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     settingsComponent = new OscSettings(propertiesFile, oscServer);
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
+
+    dummyParameter = 0.0f;
 }
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
@@ -72,9 +74,9 @@ const String SoundboardAudioProcessor::getName() const
 
 int SoundboardAudioProcessor::getNumParameters() { return 1; }
 
-float SoundboardAudioProcessor::getParameter(int /*index*/) { return 0; }
+float SoundboardAudioProcessor::getParameter(int index) { return dummyParameter; }
 
-void SoundboardAudioProcessor::setParameter(int /*index*/, float /*newValue*/) {}
+void SoundboardAudioProcessor::setParameter(int index, float newValue) { dummyParameter = newValue; }
 
 const String SoundboardAudioProcessor::getParameterName(int /*index*/)
 {
@@ -634,7 +636,7 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                 }
             }
         }
-        catch (osc::Exception &/*e*/) {
+        catch (osc::Exception& /*e*/) {
             // any parsing errors such as unexpected argument types, or
             // missing arguments get thrown as exceptions.
             std::cout << "error while parsing message:" << std::endl;
