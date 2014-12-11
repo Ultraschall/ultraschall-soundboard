@@ -53,7 +53,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
     tableListBox->getHeader().addColumn("", RowIdNum, 25, 25, 25,
                                         TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("Audio", RowIdFile, 250, 200, INT32_MAX,
+    tableListBox->getHeader().addColumn("Audio", RowIdFile, 250, 200, 4096,
                                         TableHeaderComponent::notSortable);
     tableListBox->getHeader().addColumn("", RowIdLoop, ButtonCellWidth,
                                         ButtonCellWidth, ButtonCellWidth,
@@ -257,7 +257,7 @@ void SoundboardAudioProcessorEditor::paintCell(Graphics& g, int rowNumber,
 }
 
 Component* SoundboardAudioProcessorEditor::refreshComponentForCell(int rowNumber, int columnId,
-                                                                   bool isRowSelected, Component* existingComponentToUpdate)
+                                                                   bool /*isRowSelected*/, Component* existingComponentToUpdate)
 {
     if (columnId == RowIdGain) // If it's the ratings column, we'll return our custom component..
     {
@@ -376,7 +376,7 @@ void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
         int index = slider->getName().getIntValue();
         Player* player = processor.SamplePlayerAtIndex(index);
         if (player != nullptr) {
-            player->setGain(slider->getValue());
+            player->setGain((float)slider->getValue());
         }
     }
 }

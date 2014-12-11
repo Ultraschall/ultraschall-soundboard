@@ -72,16 +72,16 @@ const String SoundboardAudioProcessor::getName() const
 
 int SoundboardAudioProcessor::getNumParameters() { return 1; }
 
-float SoundboardAudioProcessor::getParameter(int index) { return 0; }
+float SoundboardAudioProcessor::getParameter(int /*index*/) { return 0; }
 
-void SoundboardAudioProcessor::setParameter(int index, float newValue) {}
+void SoundboardAudioProcessor::setParameter(int /*index*/, float /*newValue*/) {}
 
-const String SoundboardAudioProcessor::getParameterName(int index)
+const String SoundboardAudioProcessor::getParameterName(int /*index*/)
 {
     return String();
 }
 
-const String SoundboardAudioProcessor::getParameterText(int index)
+const String SoundboardAudioProcessor::getParameterText(int /*index*/)
 {
     return String();
 }
@@ -167,7 +167,7 @@ const String SoundboardAudioProcessor::getProgramName(int index)
 }
 
 void SoundboardAudioProcessor::changeProgramName(int /*index*/,
-                                                 const String& newName) {}
+                                                 const String& /*newName*/) {}
 
 //==============================================================================
 void SoundboardAudioProcessor::prepareToPlay(double sampleRate,
@@ -185,7 +185,7 @@ void SoundboardAudioProcessor::releaseResources()
 }
 
 void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer,
-                                            MidiBuffer& midiMessages)
+                                            MidiBuffer& /*midiMessages*/)
 {
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
@@ -606,7 +606,7 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                 }
                                 else if (command == "loop") {
                                     float value = (arg++)->AsFloat();
-                                    SamplePlayerAtIndex(index)->setLooping(value);
+                                    SamplePlayerAtIndex(index)->setLooping(value != 0.0f);
                                 }
                                 else if (command == "fadeout") {
                                     float value = (arg++)->AsFloat();
@@ -634,7 +634,7 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                 }
             }
         }
-        catch (osc::Exception& e) {
+        catch (osc::Exception &/*e*/) {
             // any parsing errors such as unexpected argument types, or
             // missing arguments get thrown as exceptions.
             std::cout << "error while parsing message:" << std::endl;

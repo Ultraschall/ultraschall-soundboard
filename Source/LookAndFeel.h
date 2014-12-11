@@ -42,21 +42,21 @@ public:
     void paint(Graphics& g)
     {
         ColourGradient gradiant(Colour::fromRGB(45, 45, 45), 0.0f, 0.0f,
-                                Colour::fromRGB(36, 36, 36), 0.0f, getHeight(), false);
+                                Colour::fromRGB(36, 36, 36), 0.0f, (float)getHeight(), false);
         gradiant.addColour(0.6f, Colour::fromRGB(31, 31, 31));
 
         g.setGradientFill(gradiant);
         g.fillRect(0, 0, getWidth(), getHeight());
 
         g.setColour(Colour::fromRGB(14, 14, 14));
-        g.drawLine(0, 1, getWidth(), 1);
+        g.drawLine(0.0f, 1.0f, (float)getWidth(), 1.0f);
         g.setColour(Colour::fromRGB(19, 19, 19));
-        g.drawLine(0, 2, getWidth(), 2);
+        g.drawLine(0.0f, 2.0f, (float)getWidth(), 2.0f);
         g.setColour(Colour::fromRGB(53, 53, 53));
-        g.drawLine(0, 3, getWidth(), 3);
+        g.drawLine(0.0f, 3.0f, (float)getWidth(), 3.0f);
 
         g.setColour(Colour::fromRGB(21, 21, 21));
-        g.drawLine(0, getHeight(), getWidth(), getHeight());
+        g.drawLine(0.0f, (float)getHeight(), (float)getWidth(), (float)getHeight());
     }
 
 private:
@@ -81,14 +81,14 @@ public:
 
         g.setColour(Colour::fromRGB(188, 188, 188));
         g.setFont(getHeight() * 0.6f);
-        g.drawText(getButtonText(), x + getHeight(), 0.0f, getWidth() - getHeight(), getHeight(), Justification::left);
+        g.drawText(getButtonText(), (int)x + getHeight(), 0, getWidth() - getHeight(), getHeight(), Justification::left);
 
         g.setFont(getFontAwesome(getHeight() * 0.7f));
         g.setColour(Colours::black);
-        g.drawText(icon, x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
+        g.drawText(icon, (int)x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
 
         g.setColour(Colour::fromRGB(188, 188, 188));
-        g.drawText(icon, x, 0, getHeight(), getHeight(), Justification::centred, true);
+        g.drawText(icon, (int)x, 0, getHeight(), getHeight(), Justification::centred, true);
     }
 
 private:
@@ -128,11 +128,11 @@ public:
 
         g.setColour(Colour::fromRGB(188, 188, 188));
         g.setFont(getHeight() * 0.6f);
-        g.drawText(title, x + getHeight(), 0.0f, getWidth() - getHeight(), getHeight(), Justification::left);
+        g.drawText(title, (int)x + getHeight(), 0, getWidth() - getHeight(), getHeight(), Justification::left);
 
         g.setFont(getFontAwesome(getHeight() * 0.4f));
         g.setColour(Colours::black);
-        g.drawText(FA_CIRCLE, x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
+        g.drawText(FA_CIRCLE, (int)x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
 
         if (isActive) {
             g.setColour(Colour::fromRGB(255, 122, 102));
@@ -140,7 +140,7 @@ public:
         else {
             g.setColour(Colour::fromRGB(188, 188, 188));
         }
-        g.drawText(FA_CIRCLE, x, 0, getHeight(), getHeight(), Justification::centred, true);
+        g.drawText(FA_CIRCLE, (int)x, 0, getHeight(), getHeight(), Justification::centred, true);
     }
 
     void setActive(bool value) { isActive = value; }

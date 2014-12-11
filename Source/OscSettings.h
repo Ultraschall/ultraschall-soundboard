@@ -39,7 +39,7 @@ public:
         addAndMakeVisible(titleLabel = new Label());
         titleLabel->setText("OSC Einstellungen", NotificationType::dontSendNotification);
         titleLabel->setColour(Label::ColourIds::textColourId, Colours::grey);
-        titleLabel->setFont(Font(24.0 * 0.7));
+        titleLabel->setFont(Font(24.0f * 0.7f));
 
         addAndMakeVisible(seperator = new Bar());
 
@@ -274,7 +274,7 @@ public:
     int getNumRows() { return oscLoggerBuffer.size(); }
 
     void paintListBoxItem(int rowNumber, Graphics& g, int width, int height,
-                          bool rowIsSelected)
+                          bool /*rowIsSelected*/)
     {
         g.setColour(Colours::grey);
         g.drawText(oscLoggerBuffer[rowNumber], 0, 0, width, height,

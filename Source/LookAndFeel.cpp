@@ -15,7 +15,7 @@ void LookAndFeel_Ultraschall::drawTableHeaderBackground(
     Rectangle<int> r(header.getLocalBounds());
 
     ColourGradient gradiant(Colour::fromRGB(45, 45, 45), 0.0f, 0.0f,
-                            Colour::fromRGB(36, 36, 36), 0.0f, r.getHeight(), false);
+                            Colour::fromRGB(36, 36, 36), 0.0f, (float)r.getHeight(), false);
     gradiant.addColour(0.5f, Colour::fromRGB(31, 31, 31));
     
     g.setGradientFill(gradiant);
@@ -64,10 +64,10 @@ void LookAndFeel_Ultraschall::fillTextEditorBackground(Graphics& g,
     }
 }
 
-void LookAndFeel_Ultraschall::drawTickBox(Graphics& g, Component& c, float x,
+void LookAndFeel_Ultraschall::drawTickBox(Graphics& g, Component& /*c*/, float x,
                                           float y, float w, float h,
                                           bool ticked, bool isEnabled,
-                                          bool isMouseOverButton,
+                                          bool /*isMouseOverButton*/,
                                           bool isButtonDown)
 {
     Path box;

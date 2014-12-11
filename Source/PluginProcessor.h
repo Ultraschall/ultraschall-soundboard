@@ -12,7 +12,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Player.h"
-#include "OscServer.h"
 #include "OscSettings.h"
 
 class LookAndFeel_Ultraschall;

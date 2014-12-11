@@ -68,12 +68,11 @@ void Player::loadFileIntoTransport(const File& audioFile)
 
 void Player::update()
 {
-    double current = transportSource->getNextReadPosition();
-    double length = transportSource->getTotalLength();
-    double progress = (current / length);
-    process = (float)progress;
-    if (progress >= 1.0) {
-        progress = 1.0;
+    int64 current = transportSource->getNextReadPosition();
+    int64 length = transportSource->getTotalLength();
+    process = (float) (current / length);
+    if (process >= 1.0f) {
+        process = 1.0f;
         transportSource->stop();
         transportSource->setPosition(0);
         playerState = Played;
