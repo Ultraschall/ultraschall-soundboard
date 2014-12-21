@@ -58,6 +58,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
     stopTimer(TimerOscRefresh);
+    stopTimer(TimerSettingsDelay);
     stopTimer(TimerOscServerDelay);
     propertiesFile->save();
     oscServer = nullptr;
