@@ -77,7 +77,7 @@
         <MODULEPATH id="danlin_fontawesome" path="Submodules/danlin_modules/modules"/>
       </MODULEPATHS>
     </VS2013>
-    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/VST3 SDK">
+    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/VST3_SDK">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
                        targetName="Soundboard"/>
