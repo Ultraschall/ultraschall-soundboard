@@ -121,5 +121,7 @@
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled"
                JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_VST3="disabled"
                JUCE_PLUGINHOST_AU="disabled" JUCE_WEB_BROWSER="disabled" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="disabled"
-               JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
+               JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"
+               JUCE_ASIO="disabled" JUCE_WASAPI="disabled" JUCE_DIRECTSOUND="disabled"
+               JUCE_ALSA="disabled" JUCE_JACK="disabled" JUCE_USE_ANDROID_OPENSLES="disabled"/>
 </JUCERPROJECT>
