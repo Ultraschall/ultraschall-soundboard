@@ -8,7 +8,7 @@
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="1"
               pluginAUExportPrefix="SoundboardAU" pluginRTASCategory="" aaxIdentifier=""
-              pluginAAXCategory="" jucerVersion="3.1.0" companyWebsite="http://ultraschall.fm"
+              pluginAAXCategory="" jucerVersion="3.1.1" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" companyName="Ultraschall">
   <MAINGROUP id="AXAawk" name="Soundboard">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
@@ -77,6 +77,30 @@
         <MODULEPATH id="danlin_fontawesome" path="Submodules/danlin_modules/modules"/>
       </MODULEPATHS>
     </VS2013>
+    <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="Soundboard"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
+                       targetName="Soundboard"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="danlin_oscserver" path="Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscpack" path="Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_fontawesome" path="Submodules/danlin_modules/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
