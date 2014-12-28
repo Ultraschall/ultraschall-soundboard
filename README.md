@@ -23,9 +23,27 @@ Wenn du dich noch nicht mit dem JUCE Framework auskennst, kannst du dich hier ht
 
 Um das VST Plugin übersetzen zu können brauchst das VST STK von Steinberg. (https://www.steinberg.net/de/company/developer.html)
 
-Das Soundboard sollte unter Mac OS X, Linux und Windows übersetzbar sein.
+Das Soundboard sollte unter Mac OS X, Linux und Windows übersetzbar sein. Die passenden Projektdateien findet ihr unter ./Builds.
 
 Über dein Feedback freuen wir uns natürlich.
+
+### Linux (Ubuntu)
+
+Folgende Pakete werden benötigt.
+```
+sudo apt-get -y install build-essential
+sudo apt-get -y install libfreetype6-dev
+sudo apt-get -y install libx11-dev
+sudo apt-get -y install libxinerama-dev
+sudo apt-get -y install libxcursor-dev
+sudo apt-get -y install mesa-common-dev
+sudo apt-get -y install libasound2-dev
+sudo apt-get -y install freeglut3-dev
+sudo apt-get -y install libxcomposite-dev 
+sudo apt-get -y install libxinerama-dev
+sudo apt-get -y install libxcursor-dev
+sudo apt-get -y install libasound2-dev
+```
 
 ## OSC Kommandos und Nachrichten
 Übersicht der OSC Kommandos und Nachrichten des Ultraschall Soundboards.
