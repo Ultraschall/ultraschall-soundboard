@@ -45,6 +45,10 @@ sudo apt-get -y install libxcursor-dev
 sudo apt-get -y install libasound2-dev
 ```
 
+Von https://github.com/FortAwesome/Font-Awesome/tree/master/fonts muss die Font fontawesome-webfont.ttf installiert werden. (Leider geht die eingebettete Font nicht unter Linux)
+
+Nach dem kompilieren muss die Datei Soundboard.so unter /usr/local/lib/lxvst/ kopiert werden.
+
 ## OSC Kommandos und Nachrichten
 Übersicht der OSC Kommandos und Nachrichten des Ultraschall Soundboards.
 
