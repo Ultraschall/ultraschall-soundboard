@@ -26,17 +26,17 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     options.osxLibrarySubFolder = "Application Support";
     propertiesFile = new PropertiesFile(options);
     fallbackProperties = new PropertySet();
-    fallbackProperties->setValue(CurrentProgramIndexIdentifier.toString(), 255);
+    fallbackProperties->setValue(CurrentProgramIndexIdentifier.toString(), var(255));
 
-    fallbackProperties->setValue(OscReciveEnabledIdentifier.toString(), false);
-    fallbackProperties->setValue(OscRecivePortNumberIdentifier.toString(), 8050);
+    fallbackProperties->setValue(OscReciveEnabledIdentifier.toString(), var(false));
+    fallbackProperties->setValue(OscRecivePortNumberIdentifier.toString(), var(8050));
 
-    fallbackProperties->setValue(OscRemoteEnabledIdentifier.toString(), false);
+    fallbackProperties->setValue(OscRemoteEnabledIdentifier.toString(), var(false));
     fallbackProperties->setValue(OscRemoteHostnameIdentifier.toString(),
                                  "localhost");
-    fallbackProperties->setValue(OscRemotePortNumberIdentifier.toString(), 9050);
+    fallbackProperties->setValue(OscRemotePortNumberIdentifier.toString(), var(9050));
     fallbackProperties->setValue(OscRemoteIsTouchOscIdentifier.toString(),
-                                 false);
+                                 var(false));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
