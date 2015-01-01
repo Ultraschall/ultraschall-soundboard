@@ -48,6 +48,10 @@
  #define   JUCE_WASAPI 0
 #endif
 
+#ifndef    JUCE_WASAPI_EXCLUSIVE
+ //#define JUCE_WASAPI_EXCLUSIVE
+#endif
+
 #ifndef    JUCE_DIRECTSOUND
  #define   JUCE_DIRECTSOUND 0
 #endif
