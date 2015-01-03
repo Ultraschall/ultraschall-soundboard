@@ -690,13 +690,35 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             while (iterator.getNextEvent(midiMessage, sample)) {
                 if (midiMessage.isNoteOnOrOff()) {
                     int index = midiMessage.getNoteNumber();
-                    if (index < numAudioFiles()) {
+                    int function = index / 24;
+                    int playerIndex = index % 24;
+                    if (playerIndex < numAudioFiles()) {
                         if (midiMessage.isNoteOn()) {
-                            if (!SamplePlayerAtIndex(index)->isPlaying()) {
-                                SamplePlayerAtIndex(index)->play();
-                            }
-                            else {
-                                SamplePlayerAtIndex(index)->stop();
+                            switch (function) {
+                            case PlayStop:
+                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
+                                    SamplePlayerAtIndex(playerIndex)->play();
+                                }
+                                else {
+                                    SamplePlayerAtIndex(playerIndex)->stop();
+                                }
+                                break;
+                            case PlayPause:
+                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
+                                    SamplePlayerAtIndex(playerIndex)->play();
+                                }
+                                else {
+                                    SamplePlayerAtIndex(playerIndex)->pause();
+                                }
+                                break;
+                            case PlayFadeOut:
+                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
+                                    SamplePlayerAtIndex(playerIndex)->play();
+                                }
+                                else {
+                                    SamplePlayerAtIndex(playerIndex)->startFadeOut();
+                                }
+                                break;
                             }
                         }
                     }

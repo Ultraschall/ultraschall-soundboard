@@ -88,12 +88,11 @@ public:
 
     // OSC
     OscServer* getOscServer() { return oscServer; }
-
     bool receivedOscMessages() { return oscReceived > 0; }
 
 private:
     // Maximum Number of Sampler Slots
-    static const int MaximumSamplePlayers = 25;
+    static const int MaximumSamplePlayers = 24;
 
     // Init Program Number
     static const int ProgramNumberInit = 0;
@@ -114,8 +113,13 @@ private:
     bool playersLock;
 
     // Global Parameter
+    static const int GlobalParameterCount = 1;
+
     int fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;
+
+    // Player Parameter
+    static const int PlayerParameterCount = 1;
 
     // Settings
     int currentProgramIndex;
@@ -136,6 +140,11 @@ private:
     // MIDI
     MidiBuffer midiBuffer;
     CriticalSection midiCriticalSection;
+    enum MidiFunction {
+        PlayStop = 0,
+        PlayPause = 1,
+        PlayFadeOut = 2
+    };
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };
