@@ -52,6 +52,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
 
+    startTimer(TimerMidiEvents, 20);
+
     dummyParameter = 0.0f;
 }
 
@@ -60,6 +62,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     stopTimer(TimerOscRefresh);
     stopTimer(TimerSettingsDelay);
     stopTimer(TimerOscServerDelay);
+    stopTimer(TimerMidiEvents);
     propertiesFile->save();
     oscServer = nullptr;
     mLookAndFeel = nullptr;
@@ -188,8 +191,12 @@ void SoundboardAudioProcessor::releaseResources()
 }
 
 void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer,
-                                            MidiBuffer& /*midiMessages*/)
+                                            MidiBuffer& midiMessages)
 {
+    if (!midiMessages.isEmpty()) {
+        const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
+        midiBuffer.addEvents(midiMessages, midiMessages.getFirstEventTime(), -1, 0);
+    }
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
@@ -668,6 +675,34 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             oscSendPlayerUpdate();
         }
         oscReceived = 0;
+    }
+    else if (timerID == TimerMidiEvents) {
+        if (!midiBuffer.isEmpty()) {
+            MidiBuffer midiMessages;
+            {
+                const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
+                midiMessages = midiBuffer;
+                midiBuffer.clear();
+            }
+            MidiBuffer::Iterator iterator(midiMessages);
+            MidiMessage midiMessage(0xf0);
+            int sample = 0;
+            while (iterator.getNextEvent(midiMessage, sample)) {
+                if (midiMessage.isNoteOnOrOff()) {
+                    int index = midiMessage.getNoteNumber();
+                    if (index < numAudioFiles()) {
+                        if (midiMessage.isNoteOn()) {
+                            if (!SamplePlayerAtIndex(index)->isPlaying()) {
+                                SamplePlayerAtIndex(index)->play();
+                            }
+                            else {
+                                SamplePlayerAtIndex(index)->stop();
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
