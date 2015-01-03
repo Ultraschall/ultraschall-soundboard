@@ -53,6 +53,83 @@ Nach dem kompilieren muss die Datei Soundboard.so unter /usr/local/lib/lxvst/ ko
 
 Die Binaries kommen am besten unter C:\Program Files\Steinberg\VstPlugins
 
+## MIDI Note Kommandos
+
+HEX|Note|Funktion|Player
+---|----|--------|------
+00|C -1|Play / Stop|1
+01|C#-1|Play / Stop|2
+02|D -1|Play / Stop|3
+03|Eb-1|Play / Stop|4
+04|E -1|Play / Stop|5
+05|F -1|Play / Stop|6
+06|F#-1|Play / Stop|7
+07|G -1|Play / Stop|8
+08|G#-1|Play / Stop|9
+09|A -1|Play / Stop|10
+0A|Bb-1|Play / Stop|11
+0B|B -1|Play / Stop|12
+0C|C 0|Play / Stop|13
+0D|C# 0|Play / Stop|14
+0E|D 0|Play / Stop|15
+0F|Eb 0|Play / Stop|16
+10|E 0|Play / Stop|17
+11|F 0|Play / Stop|18
+12|F# 0|Play / Stop|19
+13|G 0|Play / Stop|20
+14|G# 0|Play / Stop|21
+15|A 0|Play / Stop|22
+16|Bb 0|Play / Stop|23
+17|B 0|Play / Stop|24
+18|C 1|Play / Pause|1
+19|C# 1|Play / Pause|2
+1A|D 1|Play / Pause|3
+1B|Eb 1|Play / Pause|4
+1C|E 1|Play / Pause|5
+1D|F 1|Play / Pause|6
+1E|F# 1|Play / Pause|7
+1F|G 1|Play / Pause|8
+20|G# 1|Play / Pause|9
+21|A 1|Play / Pause|10
+22|Bb 1|Play / Pause|11
+23|B 1|Play / Pause|12
+24|C 2|Play / Pause|13
+25|C# 2|Play / Pause|14
+26|D 2|Play / Pause|15
+27|Eb 2|Play / Pause|16
+28|E 2|Play / Pause|17
+29|F 2|Play / Pause|18
+2A|F# 2|Play / Pause|19
+2B|G 2|Play / Pause|20
+2C|G# 2|Play / Pause|21
+2D|A 2|Play / Pause|22
+2E|Bb 2|Play / Pause|23
+2F|B 2|Play / Pause|24
+30|C 3|Play / Fade-Out|1
+31|C# 3|Play / Fade-Out|2
+32|D 3|Play / Fade-Out|3
+33|Eb 3|Play / Fade-Out|4
+34|E 3|Play / Fade-Out|5
+35|F 3|Play / Fade-Out|6
+36|F# 3|Play / Fade-Out|7
+37|G 3|Play / Fade-Out|8
+38|G# 3|Play / Fade-Out|9
+39|A 3|Play / Fade-Out|10
+3A|Bb 3|Play / Fade-Out|11
+3B|B 3|Play / Fade-Out|12
+3C|C 4|Play / Fade-Out|13
+3D|C# 4|Play / Fade-Out|14
+3E|D 4|Play / Fade-Out|15
+3F|Eb 4|Play / Fade-Out|16
+40|E 4|Play / Fade-Out|17
+41|F 4|Play / Fade-Out|18
+42|F# 4|Play / Fade-Out|19
+43|G 4|Play / Fade-Out|20
+44|G# 4|Play / Fade-Out|21
+45|A 4|Play / Fade-Out|22
+46|Bb 4|Play / Fade-Out|23
+47|B 4|Play / Fade-Out|24
+
 ## OSC Kommandos und Nachrichten
 Übersicht der OSC Kommandos und Nachrichten des Ultraschall Soundboards.
 
