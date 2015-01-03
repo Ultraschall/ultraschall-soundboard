@@ -49,6 +49,10 @@ Von https://github.com/FortAwesome/Font-Awesome/tree/master/fonts muss die Font 
 
 Nach dem kompilieren muss die Datei Soundboard.so unter /usr/local/lib/lxvst/ kopiert werden.
 
+## Windows
+
+Die Binaries kommen am besten unter C:\Program Files\Steinberg\VstPlugins
+
 ## OSC Kommandos und Nachrichten
 Übersicht der OSC Kommandos und Nachrichten des Ultraschall Soundboards.
 
