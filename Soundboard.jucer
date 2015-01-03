@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="CsXMMW" name="Soundboard" projectType="audioplug" version="1.2"
+<JUCERPROJECT id="CsXMMW" name="Soundboard" projectType="audioplug" version="1.3"
               bundleIdentifier="fm.ultraschall.Soundboard" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
               pluginName="Soundboard" pluginDesc="Ultraschall Soundboard" pluginManufacturer="Ultraschall"
@@ -8,7 +8,7 @@
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="1"
               pluginAUExportPrefix="SoundboardAU" pluginRTASCategory="" aaxIdentifier=""
-              pluginAAXCategory="" jucerVersion="3.1.0" companyWebsite="http://ultraschall.fm"
+              pluginAAXCategory="" jucerVersion="3.1.1" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" companyName="Ultraschall">
   <MAINGROUP id="AXAawk" name="Soundboard">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
