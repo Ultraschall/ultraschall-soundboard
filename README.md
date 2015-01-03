@@ -51,7 +51,7 @@ Nach dem kompilieren muss die Datei Soundboard.so unter /usr/local/lib/lxvst/ ko
 
 ## Windows
 
-Die Binaries kommen am besten unter C:\Program Files\Steinberg\VstPlugins
+Die Binaries kommen am besten unter C:\Program Files\VstPlugins
 
 ## MIDI Note Kommandos
 
