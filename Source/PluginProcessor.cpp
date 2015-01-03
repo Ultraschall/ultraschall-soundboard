@@ -53,14 +53,11 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     startTimer(TimerOscServerDelay, 1000 * 1);
 
     startTimer(TimerMidiEvents, 20);
-
-    dummyParameter = 0.0f;
 }
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
     stopTimer(TimerOscRefresh);
-    stopTimer(TimerSettingsDelay);
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
     propertiesFile->save();
@@ -76,20 +73,121 @@ const String SoundboardAudioProcessor::getName() const
     return JucePlugin_Name;
 }
 
-int SoundboardAudioProcessor::getNumParameters() { return 1; }
-
-float SoundboardAudioProcessor::getParameter(int index) { return dummyParameter; }
-
-void SoundboardAudioProcessor::setParameter(int index, float newValue) { dummyParameter = newValue; }
-
-const String SoundboardAudioProcessor::getParameterName(int /*index*/)
+int SoundboardAudioProcessor::getNumParameters()
 {
-    return String();
+    return GlobalParameterCount + (MaximumSamplePlayers * PlayerParameterCount);
 }
 
-const String SoundboardAudioProcessor::getParameterText(int /*index*/)
+float SoundboardAudioProcessor::getParameter(int index)
 {
-    return String();
+    if (index < GlobalParameterCount) {
+        switch (index) {
+        case GlobalParameterFadeOut:
+            return fadeOutRange.convertTo0to1(fadeOutSeconds);
+        default:
+            break;
+        }
+    }
+
+    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+
+    if (playerIndex >= samplePlayers.size()) {
+        return 0;
+    }
+
+    switch (playerParameterIndex) {
+    case PlayerParameterGain:
+        return samplePlayers[playerIndex]->getGain();
+    default:
+        break;
+    }
+
+    return 0;
+}
+
+void SoundboardAudioProcessor::setParameter(int index, float newValue)
+{
+    if (index < GlobalParameterCount) {
+        switch (index) {
+        case GlobalParameterFadeOut:
+            fadeOutSeconds = (int)fadeOutRange.convertFrom0to1(newValue);
+            for (int index = 0; index < samplePlayers.size(); index++) {
+                SamplePlayerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
+            }
+            return;
+        }
+    }
+
+    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+
+    if (playerIndex >= samplePlayers.size()) {
+        return;
+    }
+
+    switch (playerParameterIndex) {
+    case PlayerParameterGain:
+        samplePlayers[playerIndex]->setGain(newValue);
+    default:
+        break;
+    }
+}
+
+const String SoundboardAudioProcessor::getParameterName(int index)
+{
+    if (index < GlobalParameterCount) {
+        switch (index) {
+        case GlobalParameterFadeOut:
+            return "Ausblendzeit:";
+        default:
+            return "-";
+        }
+    }
+
+    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+
+    if (playerIndex >= samplePlayers.size()) {
+        return "-";
+    }
+
+    switch (playerParameterIndex) {
+    case PlayerParameterGain:
+        return "Player " + String(playerIndex + 1) + " Gain";
+    default:
+        break;
+    }
+
+    return "-";
+}
+
+const String SoundboardAudioProcessor::getParameterText(int index)
+{
+    if (index < GlobalParameterCount) {
+        switch (index) {
+        case GlobalParameterFadeOut:
+            return String(fadeOutSeconds) + "s";
+        default:
+            return String::empty;
+        }
+    }
+
+    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+
+    if (playerIndex >= samplePlayers.size()) {
+        return String::empty;
+    }
+
+    switch (playerParameterIndex) {
+    case PlayerParameterGain:
+        return String(SamplePlayerAtIndex(playerIndex)->getGain());
+    default:
+        break;
+    }
+
+    return String::empty;
 }
 
 const String
@@ -277,6 +375,9 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         count++;
     }
     playersLock = false;
+
+    updateHostDisplay();
+
     SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
     if (editor) {
         editor->refresh();
@@ -534,10 +635,7 @@ Player* SoundboardAudioProcessor::SamplePlayerAtIndex(int index)
 
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
-    fadeOutSeconds = seconds;
-    for (int index = 0; index < samplePlayers.size(); index++) {
-        SamplePlayerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
-    }
+    setParameterNotifyingHost(GlobalParameterFadeOut, fadeOutRange.convertTo0to1(seconds));
 }
 
 int SoundboardAudioProcessor::getFadeOutSeconds() { return fadeOutSeconds; }
@@ -692,7 +790,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                     int index = midiMessage.getNoteNumber();
                     int function = index / 24;
                     int playerIndex = index % 24;
-                    if (playerIndex < numAudioFiles()) {
+                    if (playerIndex < samplePlayers.size()) {
                         if (midiMessage.isNoteOn()) {
                             switch (function) {
                             case PlayStop:
@@ -726,6 +824,16 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             }
         }
     }
+}
+
+void SoundboardAudioProcessor::setGain(int playerIndex, float value)
+{
+    if (playerIndex >= samplePlayers.size()) {
+        return;
+    }
+
+    int parameterIndex = GlobalParameterCount + (playerIndex * PlayerParameterCount);
+    setParameterNotifyingHost(parameterIndex, value);
 }
 
 //==============================================================================

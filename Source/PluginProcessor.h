@@ -90,6 +90,9 @@ public:
     OscServer* getOscServer() { return oscServer; }
     bool receivedOscMessages() { return oscReceived > 0; }
 
+    // Parameter Helper
+    void setGain(int playerIndex, float value);
+
 private:
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 24;
@@ -101,8 +104,7 @@ private:
     // Timer Ids
     static const int TimerOscServerDelay = 0;
     static const int TimerOscRefresh = 1;
-    static const int TimerSettingsDelay = 2;
-    static const int TimerMidiEvents = 3;
+    static const int TimerMidiEvents = 2;
     ScopedPointer<LookAndFeel> mLookAndFeel;
 
     // Audio IO
@@ -113,13 +115,19 @@ private:
     bool playersLock;
 
     // Global Parameter
-    static const int GlobalParameterCount = 1;
+    enum GlobalParameter {
+        GlobalParameterFadeOut = 0,
+        GlobalParameterCount = 1
+    };
 
     int fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;
 
     // Player Parameter
-    static const int PlayerParameterCount = 1;
+    enum PlayerParameter {
+        PlayerParameterGain = 0,
+        PlayerParameterCount = 1
+    };
 
     // Settings
     int currentProgramIndex;
@@ -133,9 +141,6 @@ private:
 
     // Settings
     ScopedPointer<OscSettings> settingsComponent;
-
-    // Dummy Parameter (Hosts Problems)
-    float dummyParameter;
 
     // MIDI
     MidiBuffer midiBuffer;
