@@ -100,6 +100,9 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
+    stopTimer(TimerIdBlink);
+    stopTimer(TimerIdUpdate);
+    stopTimer(TimerIdRefresh);
     topBar = nullptr;
     fadeOutSlider = nullptr;
     fadeOutLabel = nullptr;
