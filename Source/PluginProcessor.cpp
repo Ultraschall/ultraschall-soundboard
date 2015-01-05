@@ -817,7 +817,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                     SamplePlayerAtIndex(playerIndex)->startFadeOut();
                                 }
                                 break;
-                            case PlayHold:
+                            case HoldAndPlay:
                                 if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
                                     SamplePlayerAtIndex(playerIndex)->play();
                                 }
@@ -826,7 +826,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                         }
                         else if (midiMessage.isNoteOff()) {
                             switch (function) {
-                            case PlayHold:
+                            case HoldAndPlay:
                                 if (SamplePlayerAtIndex(playerIndex)->isPlaying()) {
                                     SamplePlayerAtIndex(playerIndex)->stop();
                                 }
