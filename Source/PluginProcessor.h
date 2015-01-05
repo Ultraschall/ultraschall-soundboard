@@ -88,12 +88,14 @@ public:
 
     // OSC
     OscServer* getOscServer() { return oscServer; }
-
     bool receivedOscMessages() { return oscReceived > 0; }
+
+    // Parameter Helper
+    void setGain(int playerIndex, float value);
 
 private:
     // Maximum Number of Sampler Slots
-    static const int MaximumSamplePlayers = 25;
+    static const int MaximumSamplePlayers = 24;
 
     // Init Program Number
     static const int ProgramNumberInit = 0;
@@ -102,7 +104,7 @@ private:
     // Timer Ids
     static const int TimerOscServerDelay = 0;
     static const int TimerOscRefresh = 1;
-    static const int TimerSettingsDelay = 2;
+    static const int TimerMidiEvents = 2;
     ScopedPointer<LookAndFeel> mLookAndFeel;
 
     // Audio IO
@@ -113,8 +115,19 @@ private:
     bool playersLock;
 
     // Global Parameter
+    enum GlobalParameter {
+        GlobalParameterFadeOut = 0,
+        GlobalParameterCount = 1
+    };
+
     int fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;
+
+    // Player Parameter
+    enum PlayerParameter {
+        PlayerParameterGain = 0,
+        PlayerParameterCount = 1
+    };
 
     // Settings
     int currentProgramIndex;
@@ -129,8 +142,15 @@ private:
     // Settings
     ScopedPointer<OscSettings> settingsComponent;
 
-    // Dummy Parameter (Hosts Problems)
-    float dummyParameter;
+    // MIDI
+    MidiBuffer midiBuffer;
+    CriticalSection midiCriticalSection;
+    enum MidiFunction {
+        PlayStop = 0,
+        PlayPause = 1,
+        PlayFadeOut = 2,
+        HoldAndPlay = 3
+    };
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };

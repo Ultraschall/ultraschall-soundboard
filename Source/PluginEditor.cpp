@@ -100,6 +100,9 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
+    stopTimer(TimerIdBlink);
+    stopTimer(TimerIdUpdate);
+    stopTimer(TimerIdRefresh);
     topBar = nullptr;
     fadeOutSlider = nullptr;
     fadeOutLabel = nullptr;
@@ -344,6 +347,9 @@ void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 {
     if (timerID == TimerIdUpdate) {
         fadeOutSlider->setValue(processor.getFadeOutSeconds(), NotificationType::dontSendNotification);
+        fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s",
+                              NotificationType::dontSendNotification);
+
         if (oscActivityIndicator->getActive() != processor.receivedOscMessages()) {
             oscActivityIndicator->setActive(processor.receivedOscMessages());
             repaint();
@@ -374,10 +380,7 @@ void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
     }
     else {
         int index = slider->getName().getIntValue();
-        Player* player = processor.SamplePlayerAtIndex(index);
-        if (player != nullptr) {
-            player->setGain((float)slider->getValue());
-        }
+        processor.setGain(index, (float)slider->getValue());
     }
 }
 

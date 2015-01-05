@@ -40,7 +40,7 @@
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <PathRunnable
-         FilePath = "/Applications/Renoise_Reg.app">
+         FilePath = "/Applications/REAPER64.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
