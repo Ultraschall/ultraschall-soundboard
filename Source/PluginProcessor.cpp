@@ -817,6 +817,20 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                     SamplePlayerAtIndex(playerIndex)->startFadeOut();
                                 }
                                 break;
+                            case PlayHold:
+                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
+                                    SamplePlayerAtIndex(playerIndex)->play();
+                                }
+                                break;
+                            }
+                        }
+                        else if (midiMessage.isNoteOff()) {
+                            switch (function) {
+                            case PlayHold:
+                                if (SamplePlayerAtIndex(playerIndex)->isPlaying()) {
+                                    SamplePlayerAtIndex(playerIndex)->stop();
+                                }
+                                break;
                             }
                         }
                     }
