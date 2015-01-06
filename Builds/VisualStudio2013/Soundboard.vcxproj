@@ -190,10 +190,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Player.cpp"/>
-    <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
-    <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
-    <ClCompile Include="..\..\Source\PluginGridEditor.cpp"/>
     <ClCompile Include="..\..\Source\LookAndFeel.cpp"/>
+    <ClCompile Include="..\..\Source\GridComponent.cpp"/>
+    <ClCompile Include="..\..\Source\TableComponent.cpp"/>
+    <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
+    <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1276,11 +1277,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Player.h"/>
-    <ClInclude Include="..\..\Source\OscSettings.h"/>
-    <ClInclude Include="..\..\Source\PluginProcessor.h"/>
-    <ClInclude Include="..\..\Source\PluginEditor.h"/>
-    <ClInclude Include="..\..\Source\PluginGridEditor.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\OscSettings.h"/>
+    <ClInclude Include="..\..\Source\GridComponent.h"/>
+    <ClInclude Include="..\..\Source\TableComponent.h"/>
+    <ClInclude Include="..\..\Source\PluginEditor.h"/>
+    <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.h"/>
     <ClInclude Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\danlin_fontawesome.h"/>
     <ClInclude Include="..\..\Submodules\danlin_modules\modules\danlin_oscpack\src\OscException.h"/>

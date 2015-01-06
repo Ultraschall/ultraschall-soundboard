@@ -25,3 +25,5 @@
 build
 .xcuserstate
 xcuserdata
+MacOSX.iws
+.idea/workspace.xml

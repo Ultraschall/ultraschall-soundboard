@@ -12,22 +12,33 @@
               companyEmail="info@ultraschall.fm" companyName="Ultraschall">
   <MAINGROUP id="AXAawk" name="Soundboard">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
-      <FILE id="lx1pz6" name="Player.cpp" compile="1" resource="0" file="Source/Player.cpp"/>
-      <FILE id="bzNtR6" name="Player.h" compile="0" resource="0" file="Source/Player.h"/>
-      <FILE id="QXYgra" name="OscSettings.h" compile="0" resource="0" file="Source/OscSettings.h"/>
-      <FILE id="i9qTDK" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
+      <GROUP id="{FB4B0928-572A-C01C-A05C-B95A34A23F8C}" name="Player">
+        <FILE id="bzNtR6" name="Player.h" compile="0" resource="0" file="Source/Player.h"/>
+        <FILE id="lx1pz6" name="Player.cpp" compile="1" resource="0" file="Source/Player.cpp"/>
+      </GROUP>
+      <GROUP id="{DF71C459-88E1-22B8-173E-0E97FDEFFA3A}" name="UI">
+        <GROUP id="{580793EB-580F-CCA6-35C4-F3F1D3ABC267}" name="LookAndFeel">
+          <FILE id="egkYkF" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
+          <FILE id="XaP1Et" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
+        </GROUP>
+        <GROUP id="{70E77687-EEA2-8BBD-A6A8-CC058AA7CD69}" name="Components">
+          <FILE id="QXYgra" name="OscSettings.h" compile="0" resource="0" file="Source/OscSettings.h"/>
+          <FILE id="afsCcf" name="GridComponent.h" compile="0" resource="0" file="Source/GridComponent.h"/>
+          <FILE id="Swglwi" name="GridComponent.cpp" compile="1" resource="0"
+                file="Source/GridComponent.cpp"/>
+          <FILE id="TCDTAs" name="TableComponent.h" compile="0" resource="0"
+                file="Source/TableComponent.h"/>
+          <FILE id="JXDH3d" name="TableComponent.cpp" compile="1" resource="0"
+                file="Source/TableComponent.cpp"/>
+        </GROUP>
+        <FILE id="SaW1KJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+        <FILE id="fgemth" name="PluginEditor.cpp" compile="1" resource="0"
+              file="Source/PluginEditor.cpp"/>
+      </GROUP>
       <FILE id="BrG2WT" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="fgemth" name="PluginEditor.cpp" compile="1" resource="0"
-            file="Source/PluginEditor.cpp"/>
-      <FILE id="SaW1KJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
-      <FILE id="jllxSd" name="PluginGridEditor.cpp" compile="1" resource="0"
-            file="Source/PluginGridEditor.cpp"/>
-      <FILE id="q8oXYd" name="PluginGridEditor.h" compile="0" resource="0"
-            file="Source/PluginGridEditor.h"/>
-      <FILE id="egkYkF" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
-      <FILE id="XaP1Et" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
+      <FILE id="i9qTDK" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

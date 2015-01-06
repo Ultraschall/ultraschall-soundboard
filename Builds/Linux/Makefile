@@ -52,10 +52,11 @@ endif
 
 OBJECTS := \
   $(OBJDIR)/Player_a64961ea.o \
-  $(OBJDIR)/PluginProcessor_a059e380.o \
-  $(OBJDIR)/PluginEditor_94d4fb09.o \
-  $(OBJDIR)/PluginGridEditor_9fdb776f.o \
   $(OBJDIR)/LookAndFeel_40552bdf.o \
+  $(OBJDIR)/GridComponent_eb0a5c38.o \
+  $(OBJDIR)/TableComponent_58ca74d8.o \
+  $(OBJDIR)/PluginEditor_94d4fb09.o \
+  $(OBJDIR)/PluginProcessor_a059e380.o \
   $(OBJDIR)/danlin_fontawesome_5dc89e5d.o \
   $(OBJDIR)/danlin_oscpack_78c72fdd.o \
   $(OBJDIR)/danlin_oscserver_19e071d.o \
@@ -95,9 +96,19 @@ $(OBJDIR)/Player_a64961ea.o: ../../Source/Player.cpp
 	@echo "Compiling Player.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/PluginProcessor_a059e380.o: ../../Source/PluginProcessor.cpp
+$(OBJDIR)/LookAndFeel_40552bdf.o: ../../Source/LookAndFeel.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling PluginProcessor.cpp"
+	@echo "Compiling LookAndFeel.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/GridComponent_eb0a5c38.o: ../../Source/GridComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling GridComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/TableComponent_58ca74d8.o: ../../Source/TableComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TableComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/PluginEditor_94d4fb09.o: ../../Source/PluginEditor.cpp
@@ -105,14 +116,9 @@ $(OBJDIR)/PluginEditor_94d4fb09.o: ../../Source/PluginEditor.cpp
 	@echo "Compiling PluginEditor.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/PluginGridEditor_9fdb776f.o: ../../Source/PluginGridEditor.cpp
+$(OBJDIR)/PluginProcessor_a059e380.o: ../../Source/PluginProcessor.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling PluginGridEditor.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/LookAndFeel_40552bdf.o: ../../Source/LookAndFeel.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling LookAndFeel.cpp"
+	@echo "Compiling PluginProcessor.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/danlin_fontawesome_5dc89e5d.o: ../../Submodules/danlin_modules/modules/danlin_fontawesome/danlin_fontawesome.cpp

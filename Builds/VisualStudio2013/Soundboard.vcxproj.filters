@@ -8,6 +8,18 @@
     <Filter Include="Soundboard\Source">
       <UniqueIdentifier>{4B9102D9-7A1B-9F98-25CA-4974F542BE0D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Soundboard\Source\Player">
+      <UniqueIdentifier>{B5B042D0-BE05-854E-8165-2BFBE1034685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Soundboard\Source\UI">
+      <UniqueIdentifier>{A7EBE0C9-EFC4-4EA3-24BF-F992DF05A09B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Soundboard\Source\UI\LookAndFeel">
+      <UniqueIdentifier>{28F5E5B4-5F7C-D38A-B239-0AE0421C8A17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Soundboard\Source\UI\Components">
+      <UniqueIdentifier>{C4EB1133-1BC9-BA26-C918-56F297D0D74E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Juce Modules">
       <UniqueIdentifier>{422C46B7-0467-2DB0-BF3C-16DFCAFD69AC}</UniqueIdentifier>
     </Filter>
@@ -305,18 +317,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Player.cpp">
-      <Filter>Soundboard\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\PluginProcessor.cpp">
-      <Filter>Soundboard\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\PluginEditor.cpp">
-      <Filter>Soundboard\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\PluginGridEditor.cpp">
-      <Filter>Soundboard\Source</Filter>
+      <Filter>Soundboard\Source\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\LookAndFeel.cpp">
+      <Filter>Soundboard\Source\UI\LookAndFeel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\GridComponent.cpp">
+      <Filter>Soundboard\Source\UI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TableComponent.cpp">
+      <Filter>Soundboard\Source\UI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PluginEditor.cpp">
+      <Filter>Soundboard\Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>Soundboard\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.cpp">
@@ -1519,21 +1534,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Player.h">
-      <Filter>Soundboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\OscSettings.h">
-      <Filter>Soundboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PluginProcessor.h">
-      <Filter>Soundboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PluginEditor.h">
-      <Filter>Soundboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PluginGridEditor.h">
-      <Filter>Soundboard\Source</Filter>
+      <Filter>Soundboard\Source\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\LookAndFeel.h">
+      <Filter>Soundboard\Source\UI\LookAndFeel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\OscSettings.h">
+      <Filter>Soundboard\Source\UI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\GridComponent.h">
+      <Filter>Soundboard\Source\UI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TableComponent.h">
+      <Filter>Soundboard\Source\UI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PluginEditor.h">
+      <Filter>Soundboard\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>Soundboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.h">

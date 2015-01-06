@@ -1,11 +1,18 @@
 /*
   ==============================================================================
 
-    PluginGridEditor.cpp
-    Created: 6 Jan 2015 12:21:07am
+    GridComponent.h
+    Created: 6 Jan 2015 2:13:24am
     Author:  Daniel Lindenfelser
 
   ==============================================================================
 */
 
-#include "PluginGridEditor.h"
+#ifndef GRIDCOMPONENT_H_INCLUDED
+#define GRIDCOMPONENT_H_INCLUDED
+
+
+
+
+
+#endif  // GRIDCOMPONENT_H_INCLUDED
