@@ -313,6 +313,9 @@
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
       <Filter>Soundboard\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\PluginGridEditor.cpp">
+      <Filter>Soundboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\LookAndFeel.cpp">
       <Filter>Soundboard\Source</Filter>
     </ClCompile>
@@ -1525,6 +1528,9 @@
       <Filter>Soundboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
+      <Filter>Soundboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PluginGridEditor.h">
       <Filter>Soundboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\LookAndFeel.h">

@@ -40,6 +40,15 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(loadDirectoryButton = new AwesomeButton(FA_FOLDER_OPEN_O));
     loadDirectoryButton->setButtonText("Soundboard Laden");
     loadDirectoryButton->addListener(this);
+    loadDirectoryButton->setColour(TextButton::ColourIds::textColourOnId, Colours::white);
+    loadDirectoryButton->setColour(TextButton::ColourIds::textColourOffId, Colours::white);
+
+    addAndMakeVisible(gridButton = new AwesomeButton(FA_TH));
+    gridButton->setButtonText("Grid");
+    gridButton->addListener(this);
+    gridButton->setColour(TextButton::ColourIds::textColourOnId, Colours::white);
+    gridButton->setColour(TextButton::ColourIds::textColourOffId, Colours::white);
+    gridButton->setVisible(false);
 
     addAndMakeVisible(tableListBox = new TableListBox());
 
@@ -53,7 +62,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
     tableListBox->getHeader().addColumn("", RowIdNum, 25, 25, 25,
                                         TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("Audio", RowIdFile, 250, 200, 4096,
+    tableListBox->getHeader().addColumn("Audio", RowIdFile, 250, 50, 4096,
                                         TableHeaderComponent::notSortable);
     tableListBox->getHeader().addColumn("", RowIdLoop, ButtonCellWidth,
                                         ButtonCellWidth, ButtonCellWidth,
@@ -85,13 +94,13 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     oscActivityIndicator->setTitle(CharPointer_UTF8("OSC Aktivit\xc3\xa4t"));
 
     addAndMakeVisible(resizer = new ResizableCornerComponent(this, &resizeLimits));
-    resizeLimits.setSizeLimits(470, 320, 1024, 768);
+    resizeLimits.setSizeLimits(380, 320, 1024, 768);
 
     refresh();
 
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize(600, 300);
+    setSize(processor.getWindowWidth(), processor.getWindowHeight());
 
     startTimer(TimerIdBlink, (int)(1000 * 0.5));
     startTimer(TimerIdUpdate, 50);
@@ -112,6 +121,7 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     settingsButton = nullptr;
     oscActivityIndicator = nullptr;
     buttomBar = nullptr;
+    gridButton = nullptr;
 }
 
 //==============================================================================
@@ -128,6 +138,7 @@ void SoundboardAudioProcessorEditor::resized()
     fadeOutLabel->setBounds(27, 5, 150, 24);
 
     loadDirectoryButton->setBounds(getWidth() - 153, 5, 150, 24);
+    gridButton->setBounds(getWidth() - 220, 5, 64, 24);
 
     tableListBox->setBounds(0, 32, getWidth(), getHeight() - 64);
     tableListBox->getHeader().setColumnWidth(RowIdFile, getWidth() - 293);
@@ -137,6 +148,9 @@ void SoundboardAudioProcessorEditor::resized()
     settingsButton->setBounds(getWidth() - 123, getHeight() - 27, 120, 24);
     oscActivityIndicator->setBounds(3, getHeight() - 27, 120, 24);
     buttomBar->setBounds(0, getHeight() - 32, getWidth(), 32);
+
+    processor.storeWindowWidth(getWidth());
+    processor.storeWindowHeight(getHeight());
 }
 
 // TableListBoxModel

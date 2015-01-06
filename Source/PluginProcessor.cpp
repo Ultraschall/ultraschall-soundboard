@@ -32,11 +32,12 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     fallbackProperties->setValue(OscRecivePortNumberIdentifier.toString(), var(8050));
 
     fallbackProperties->setValue(OscRemoteEnabledIdentifier.toString(), var(false));
-    fallbackProperties->setValue(OscRemoteHostnameIdentifier.toString(),
-                                 "localhost");
+    fallbackProperties->setValue(OscRemoteHostnameIdentifier.toString(), "localhost");
     fallbackProperties->setValue(OscRemotePortNumberIdentifier.toString(), var(9050));
-    fallbackProperties->setValue(OscRemoteIsTouchOscIdentifier.toString(),
-                                 var(false));
+    fallbackProperties->setValue(OscRemoteIsTouchOscIdentifier.toString(), var(false));
+
+    fallbackProperties->setValue(WindowWidthIdentifier.toString(), var(380));
+    fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
@@ -848,6 +849,23 @@ void SoundboardAudioProcessor::setGain(int playerIndex, float value)
 
     int parameterIndex = GlobalParameterCount + (playerIndex * PlayerParameterCount);
     setParameterNotifyingHost(parameterIndex, value);
+}
+
+int SoundboardAudioProcessor::getWindowWidth()
+{
+    return propertiesFile->getIntValue(WindowWidthIdentifier.toString());
+}
+void SoundboardAudioProcessor::storeWindowWidth(int width)
+{
+    propertiesFile->setValue(WindowWidthIdentifier.toString(), var(width));
+}
+int SoundboardAudioProcessor::getWindowHeight()
+{
+    return propertiesFile->getIntValue(WindowHeightIdentifier.toString());
+}
+void SoundboardAudioProcessor::storeWindowHeight(int height)
+{
+    propertiesFile->setValue(WindowHeightIdentifier.toString(), var(height));
 }
 
 //==============================================================================
