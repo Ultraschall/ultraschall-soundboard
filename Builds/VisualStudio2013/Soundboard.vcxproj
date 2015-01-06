@@ -192,6 +192,7 @@
     <ClCompile Include="..\..\Source\Player.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
+    <ClCompile Include="..\..\Source\PluginGridEditor.cpp"/>
     <ClCompile Include="..\..\Source\LookAndFeel.cpp"/>
     <ClCompile Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
@@ -1278,6 +1279,7 @@
     <ClInclude Include="..\..\Source\OscSettings.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
+    <ClInclude Include="..\..\Source\PluginGridEditor.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel.h"/>
     <ClInclude Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.h"/>
     <ClInclude Include="..\..\Submodules\danlin_modules\modules\danlin_fontawesome\danlin_fontawesome.h"/>

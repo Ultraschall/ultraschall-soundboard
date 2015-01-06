@@ -54,6 +54,7 @@ OBJECTS := \
   $(OBJDIR)/Player_a64961ea.o \
   $(OBJDIR)/PluginProcessor_a059e380.o \
   $(OBJDIR)/PluginEditor_94d4fb09.o \
+  $(OBJDIR)/PluginGridEditor_9fdb776f.o \
   $(OBJDIR)/LookAndFeel_40552bdf.o \
   $(OBJDIR)/danlin_fontawesome_5dc89e5d.o \
   $(OBJDIR)/danlin_oscpack_78c72fdd.o \
@@ -102,6 +103,11 @@ $(OBJDIR)/PluginProcessor_a059e380.o: ../../Source/PluginProcessor.cpp
 $(OBJDIR)/PluginEditor_94d4fb09.o: ../../Source/PluginEditor.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling PluginEditor.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/PluginGridEditor_9fdb776f.o: ../../Source/PluginGridEditor.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling PluginGridEditor.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/LookAndFeel_40552bdf.o: ../../Source/LookAndFeel.cpp

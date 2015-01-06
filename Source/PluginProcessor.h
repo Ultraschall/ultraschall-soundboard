@@ -20,6 +20,9 @@ static const Identifier DirectoryIdentifier("Directory");
 static const Identifier CurrentDirectoryIdentifier("CurrentDirectory");
 static const Identifier CurrentProgramIndexIdentifier("CurrentProgramIndex");
 
+static const Identifier WindowWidthIdentifier("WindowWidth");
+static const Identifier WindowHeightIdentifier("WindowHeight");
+
 class SoundboardAudioProcessor : public AudioProcessor,
                                  public ChangeListener,
                                  public OscMessageListener,
@@ -92,6 +95,10 @@ public:
 
     // Parameter Helper
     void setGain(int playerIndex, float value);
+    int getWindowWidth();
+    void storeWindowWidth(int width);
+    int getWindowHeight();
+    void storeWindowHeight(int height);
 
 private:
     // Maximum Number of Sampler Slots

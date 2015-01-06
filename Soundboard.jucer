@@ -22,6 +22,10 @@
       <FILE id="fgemth" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="SaW1KJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="jllxSd" name="PluginGridEditor.cpp" compile="1" resource="0"
+            file="Source/PluginGridEditor.cpp"/>
+      <FILE id="q8oXYd" name="PluginGridEditor.h" compile="0" resource="0"
+            file="Source/PluginGridEditor.h"/>
       <FILE id="egkYkF" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
       <FILE id="XaP1Et" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
     </GROUP>

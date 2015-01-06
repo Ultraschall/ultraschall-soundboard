@@ -77,6 +77,7 @@ private:
     ScopedPointer<ResizableCornerComponent> resizer;
     ComponentBoundsConstrainer resizeLimits;
     ScopedPointer<AwesomeButton> loadDirectoryButton;
+    ScopedPointer<AwesomeButton> gridButton;
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;
 
