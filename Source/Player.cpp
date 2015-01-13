@@ -11,6 +11,7 @@
 
 Player::Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache)
     : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension())
+        , sortIndex(-1)
     , title(audioFile.getFileNameWithoutExtension())
     , playerState(Stopped)
     , fadeOutGain(1.0f)
@@ -201,3 +202,7 @@ bool Player::isPlaying() { return playerState == Playing; }
 bool Player::isPaused() { return playerState == Paused; }
 
 bool Player::isFadingOut() { return fadeOut; }
+
+void Player::setSortIndex(int value) { sortIndex = value; }
+
+int Player::getSortIndex() { return sortIndex; }

@@ -48,11 +48,15 @@ public:
     PlayerState getState();
     AudioSource* getAudioSource();
     AudioThumbnail* getThumbnail();
+
+    void setSortIndex(int value);
+    int getSortIndex();
 private:
     void update();
     void loadFileIntoTransport(const File& audioFile);
 
     TimeSliceThread timeSliceThread;
+    int sortIndex;
     String title;
     PlayerState playerState;
     float fadeOutGain;
