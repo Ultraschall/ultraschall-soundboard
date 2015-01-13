@@ -42,8 +42,8 @@
         <FILE id="bL49ea" name="PluginProcessor.h" compile="0" resource="0"
               file="../Source/PluginProcessor.h"/>
       </GROUP>
-      <FILE id="Cyv1sI" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
+      <FILE id="ijtcjG" name="StandaloneFilterWindow.h" compile="0" resource="0"
+            file="Source/StandaloneFilterWindow.h"/>
       <FILE id="TNUAuM" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
   </MAINGROUP>

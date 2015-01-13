@@ -137,7 +137,6 @@
     <ClCompile Include="..\..\..\Source\TableComponent.cpp"/>
     <ClCompile Include="..\..\..\Source\PluginEditor.cpp"/>
     <ClCompile Include="..\..\..\Source\PluginProcessor.cpp"/>
-    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
@@ -1227,6 +1226,7 @@
     <ClInclude Include="..\..\..\Source\TableComponent.h"/>
     <ClInclude Include="..\..\..\Source\PluginEditor.h"/>
     <ClInclude Include="..\..\..\Source\PluginProcessor.h"/>
+    <ClInclude Include="..\..\Source\StandaloneFilterWindow.h"/>
     <ClInclude Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\src\FontAwesome.h"/>
     <ClInclude Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\danlin_fontawesome.h"/>
     <ClInclude Include="..\..\..\Submodules\danlin_modules\modules\danlin_oscpack\src\OscException.h"/>

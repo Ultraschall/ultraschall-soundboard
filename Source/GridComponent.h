@@ -11,7 +11,7 @@
 #ifndef GRIDCOMPONENT_H_INCLUDED
 #define GRIDCOMPONENT_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "PluginProcessor.h"
 
 class SoundboardGridCell : public Component, public ChangeListener {

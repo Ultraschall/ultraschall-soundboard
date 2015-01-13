@@ -11,7 +11,7 @@
 #ifndef TABLECOMPONENT_H_INCLUDED
 #define TABLECOMPONENT_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "PluginProcessor.h"
 
 class SoundboardCellButton : public Button,

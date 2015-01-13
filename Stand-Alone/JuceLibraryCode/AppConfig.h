@@ -18,6 +18,53 @@
 // [BEGIN_USER_CODE_SECTION]
 
 // (You can add your own code in this section, and the Introjucer will not overwrite it)
+#ifndef JucePlugin_Build_Standalone
+#define JucePlugin_Build_Standalone 1
+#endif
+
+#ifndef JucePlugin_Name
+#define JucePlugin_Name "Soundboard"
+#endif
+
+#ifndef JucePlugin_IsSynth
+#define JucePlugin_IsSynth 1
+#endif
+
+#ifndef JucePlugin_ManufacturerCode
+#define JucePlugin_ManufacturerCode 'Ultr'
+#endif
+
+#ifndef JucePlugin_PluginCode
+#define JucePlugin_PluginCode 'Soub'
+#endif
+
+#ifndef JucePlugin_ProducesMidiOutput
+#define JucePlugin_ProducesMidiOutput 0
+#endif
+
+#ifndef JucePlugin_WantsMidiInput
+#define JucePlugin_WantsMidiInput 1
+#endif
+
+#ifndef JucePlugin_MaxNumInputChannels
+#define JucePlugin_MaxNumInputChannels 0
+#endif
+
+#ifndef JucePlugin_MaxNumOutputChannels
+#define JucePlugin_MaxNumOutputChannels 2
+#endif
+
+#ifndef JucePlugin_PreferredChannelConfigurations
+#define JucePlugin_PreferredChannelConfigurations { 0, 1 }, { 0, 2 }
+#endif
+
+#ifndef JucePlugin_SilenceInProducesSilenceOut
+#define JucePlugin_SilenceInProducesSilenceOut 0
+#endif
+
+#ifndef JucePlugin_EditorRequiresKeyboardFocus
+#define JucePlugin_EditorRequiresKeyboardFocus 1
+#endif
 
 // [END_USER_CODE_SECTION]
 

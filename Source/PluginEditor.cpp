@@ -60,7 +60,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(oscActivityIndicator = new ActivityIndicator());
     oscActivityIndicator->setTitle(CharPointer_UTF8("OSC Aktivit\xc3\xa4t"));
 
-    if (processor.wrapperType == AudioProcessor::wrapperType_Standalone)
+    if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
         addAndMakeVisible (resizer = new ResizableCornerComponent (this, &resizeLimits));
         resizeLimits.setSizeLimits (380, 320, 1024, 768);

@@ -11,7 +11,7 @@
 #ifndef OSCSETTINGS_H_INCLUDED
 #define OSCSETTINGS_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "LookAndFeel.h"
 
 static const Identifier OscReciveEnabledIdentifier("OscReciveEnabled");

@@ -10,7 +10,7 @@
 #ifndef LOOKANDFEEL_H_INCLUDED
 #define LOOKANDFEEL_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 static const Colour ColourDarkBackground =  Colour::fromRGB(33, 33, 33);
 

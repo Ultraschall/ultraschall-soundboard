@@ -10,7 +10,7 @@
 #ifndef SAMPLEPLAYER_H_INCLUDED
 #define SAMPLEPLAYER_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 class Player : private MultiTimer, public ChangeBroadcaster {
     static const int UpdateTimerId = 0;

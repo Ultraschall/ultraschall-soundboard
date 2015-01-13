@@ -57,7 +57,6 @@ OBJECTS := \
   $(OBJDIR)/TableComponent_f21f3489.o \
   $(OBJDIR)/PluginEditor_ef07f2fa.o \
   $(OBJDIR)/PluginProcessor_319d19ef.o \
-  $(OBJDIR)/MainComponent_a6ffb4a5.o \
   $(OBJDIR)/Main_90ebc5c2.o \
   $(OBJDIR)/danlin_fontawesome_f87f2fce.o \
   $(OBJDIR)/danlin_oscpack_7cfac24e.o \
@@ -119,11 +118,6 @@ $(OBJDIR)/PluginEditor_ef07f2fa.o: ../../../Source/PluginEditor.cpp
 $(OBJDIR)/PluginProcessor_319d19ef.o: ../../../Source/PluginProcessor.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling PluginProcessor.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling MainComponent.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp

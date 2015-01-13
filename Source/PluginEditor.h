@@ -10,7 +10,7 @@
 #ifndef PLUGINEDITOR_H_INCLUDED
 #define PLUGINEDITOR_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "PluginProcessor.h"
 #include "TableComponent.h"
 #include "GridComponent.h"
