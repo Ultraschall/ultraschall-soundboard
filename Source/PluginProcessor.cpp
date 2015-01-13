@@ -365,11 +365,11 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         if (formatManager.findFormatForFileExtension(
                 iterator.getFile().getFileExtension()) != nullptr && count < MaximumSamplePlayers) {
             Player* audioFile = new Player(iterator.getFile(), &formatManager, thumbnailCache);
-            samplePlayers.add(audioFile);
             if (audioFile->getState() == Player::Error) {
-                samplePlayers.removeObject(audioFile);
+                delete audioFile;
                 break;
             }
+            samplePlayers.add(audioFile);
             audioFile->setFadeOutTime(fadeOutSeconds);
             audioFile->addChangeListener(this);
             mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);

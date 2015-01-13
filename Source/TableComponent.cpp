@@ -27,7 +27,7 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
                                         NumberCellWidth, NumberCellWidth, NumberCellWidth,
                                         TableHeaderComponent::notSortable);
     tableListBox->getHeader().addColumn("Audio", ColumnIdFileLabel,
-            max(getWidth() - 293, 293), 1, INT32_MAX, // calculated at resize
+            max(getWidth() - 293, 293), 1, 16000, // calculated at resize
                                         TableHeaderComponent::notSortable);
     tableListBox->getHeader().addColumn("", ColumnIdLoopButton,
                                         ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,

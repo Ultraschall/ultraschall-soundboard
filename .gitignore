@@ -27,3 +27,5 @@ build
 xcuserdata
 MacOSX.iws
 .idea/workspace.xml
+Debug
+Release

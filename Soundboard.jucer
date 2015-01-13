@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="CsXMMW" name="Soundboard" projectType="audioplug" version="1.3"
+<JUCERPROJECT id="CsXMMW" name="Soundboard" projectType="audioplug" version="1.4"
               bundleIdentifier="fm.ultraschall.Soundboard" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
               pluginName="Soundboard" pluginDesc="Ultraschall Soundboard" pluginManufacturer="Ultraschall"
@@ -75,8 +75,6 @@
                        isDebug="1" optimisation="1" targetName="Soundboard"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="0" optimisation="2" targetName="Soundboard"/>
-        <CONFIGURATION name="Release 64bit" winWarningLevel="4" generateManifest="1"
-                       winArchitecture="x64" isDebug="0" optimisation="2" targetName="Soundboard"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="Submodules/JUCE/modules"/>
@@ -142,7 +140,5 @@
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled"
                JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_VST3="disabled"
                JUCE_PLUGINHOST_AU="disabled" JUCE_WEB_BROWSER="disabled" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="disabled"
-               JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"
-               JUCE_ASIO="disabled" JUCE_WASAPI="disabled" JUCE_DIRECTSOUND="disabled"
-               JUCE_ALSA="disabled" JUCE_JACK="disabled" JUCE_USE_ANDROID_OPENSLES="disabled"/>
+               JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
 </JUCERPROJECT>

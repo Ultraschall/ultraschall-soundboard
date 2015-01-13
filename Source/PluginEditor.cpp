@@ -60,8 +60,11 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(oscActivityIndicator = new ActivityIndicator());
     oscActivityIndicator->setTitle(CharPointer_UTF8("OSC Aktivit\xc3\xa4t"));
 
-    addAndMakeVisible(resizer = new ResizableCornerComponent(this, &resizeLimits));
-    resizeLimits.setSizeLimits(380, 320, 1024, 768);
+    if (processor.wrapperType == AudioProcessor::wrapperType_Standalone)
+    {
+        addAndMakeVisible (resizer = new ResizableCornerComponent (this, &resizeLimits));
+        resizeLimits.setSizeLimits (380, 320, 1024, 768);
+    }
 
     refresh();
 
@@ -111,8 +114,10 @@ void SoundboardAudioProcessorEditor::resized()
     table->setBounds(0, 32, getWidth(), getHeight() - 64);
     grid->setBounds(0, 32, getWidth(), getHeight() - 64);
 
-    resizer->setBounds(getWidth() - 16, getHeight() - 16, 16, 16);
-
+    if (resizer)
+    {
+        resizer->setBounds (getWidth () - 16, getHeight () - 16, 16, 16);
+    }
     settingsButton->setBounds(getWidth() - 123, getHeight() - 27, 120, 24);
     oscActivityIndicator->setBounds(3, getHeight() - 27, 120, 24);
     buttomBar->setBounds(0, getHeight() - 32, getWidth(), 32);
