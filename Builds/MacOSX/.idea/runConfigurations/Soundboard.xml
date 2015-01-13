@@ -1,9 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Soundboard" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Soundboard" TARGET_NAME="Soundboard" CONFIG_NAME="Debug" SCHEME_NAME="Soundboard" RUN_PATH="/Applications/REAPER64.app" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+  <configuration default="false" name="Soundboard" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Soundboard" TARGET_NAME="Soundboard" CONFIG_NAME="Debug" SCHEME_NAME="Soundboard" RUN_PATH="/Applications/Plugin Host.app" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
     <envs />
     <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
       <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
     </EXTENSION>
+    <RunnerSettings RunnerId="AppRunner" />
+    <RunnerSettings RunnerId="InstrumentsRunner" />
+    <ConfigurationWrapper RunnerId="AppRunner" />
+    <ConfigurationWrapper RunnerId="InstrumentsRunner" />
     <method />
   </configuration>
 </component>

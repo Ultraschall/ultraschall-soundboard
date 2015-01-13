@@ -25,7 +25,7 @@ public:
         Paused = 3,
         Played = 4
     };
-    Player(const File& audioFile, AudioFormatManager* formatManager);
+    Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache);
     ~Player();
     String getTitle();
     void play();
@@ -47,7 +47,7 @@ public:
     float getGain();
     PlayerState getState();
     AudioSource* getAudioSource();
-
+    AudioThumbnail* getThumbnail();
 private:
     void update();
     void loadFileIntoTransport(const File& audioFile);
@@ -62,6 +62,8 @@ private:
     bool fadeOut;
     float process;
     AudioFormatManager* audioFormatManager;
+    AudioThumbnailCache* thumbnailCache;
+    ScopedPointer<AudioThumbnail> thumbnail;
     ScopedPointer<AudioTransportSource> transportSource;
     AudioSourcePlayer audioSourcePlayer;
     ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;

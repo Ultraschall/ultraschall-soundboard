@@ -18,6 +18,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     playersLock = true;
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel = new LookAndFeel_Ultraschall());
     formatManager.registerBasicFormats();
+    thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
 
     PropertiesFile::Options options;
     options.applicationName = JucePlugin_Name;
@@ -52,7 +53,6 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     settingsComponent = new OscSettings(propertiesFile, oscServer);
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
-
     startTimer(TimerMidiEvents, 20);
 }
 
@@ -66,6 +66,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     mLookAndFeel = nullptr;
     propertiesFile = nullptr;
     fallbackProperties = nullptr;
+    thumbnailCache = nullptr;
 }
 
 //==============================================================================
@@ -362,8 +363,8 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     int count = 0;
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(
-                iterator.getFile().getFileExtension()) != nullptr && count <= MaximumSamplePlayers) {
-            Player* audioFile = new Player(iterator.getFile(), &formatManager);
+                iterator.getFile().getFileExtension()) != nullptr && count < MaximumSamplePlayers) {
+            Player* audioFile = new Player(iterator.getFile(), &formatManager, thumbnailCache);
             samplePlayers.add(audioFile);
             if (audioFile->getState() == Player::Error) {
                 samplePlayers.removeObject(audioFile);
@@ -622,7 +623,7 @@ SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
         }
         SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
         if (editor) {
-            editor->refreshTable();
+            editor->refresh();
         }
     }
 }

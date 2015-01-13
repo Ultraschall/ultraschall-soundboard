@@ -9,7 +9,7 @@
 
 #include "Player.h"
 
-Player::Player(const File& audioFile, AudioFormatManager* formatManager)
+Player::Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache)
     : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension())
     , title(audioFile.getFileNameWithoutExtension())
     , playerState(Stopped)
@@ -20,6 +20,7 @@ Player::Player(const File& audioFile, AudioFormatManager* formatManager)
     , fadeOut(false)
     , process(0.0f)
     , audioFormatManager(formatManager)
+    , thumbnailCache(thumbnailCache)
     , transportSource(new AudioTransportSource())
 {
     timeSliceThread.startThread(3);
@@ -31,9 +32,12 @@ Player::Player(const File& audioFile, AudioFormatManager* formatManager)
 
 Player::~Player()
 {
+    thumbnail->removeAllChangeListeners();
     removeAllChangeListeners();
     stopTimer(UpdateTimerId);
     stopTimer(FadeOutTimerId);
+    thumbnail->setSource(nullptr);
+    thumbnail = nullptr;
     transportSource->setSource(nullptr);
     audioSourcePlayer.setSource(nullptr);
     transportSource->removeAllChangeListeners();
@@ -42,7 +46,6 @@ Player::~Player()
 
 void Player::loadFileIntoTransport(const File& audioFile)
 {
-    // unload the previous file source and delete it..
     transportSource->stop();
     transportSource->setSource(nullptr);
     currentAudioFileSource = nullptr;
@@ -52,13 +55,10 @@ void Player::loadFileIntoTransport(const File& audioFile)
     if (reader != nullptr) {
         currentAudioFileSource = new AudioFormatReaderSource(reader, true);
 
-        // ..and plug it into our transport source
-        transportSource->setSource(
-            currentAudioFileSource,
-            32768, // tells it to buffer this many samples ahead
-            &timeSliceThread, // this is the background thread to use for
-            // reading-ahead
-            reader->sampleRate); // allows for sample rate correction
+        transportSource->setSource(currentAudioFileSource, 32768, &timeSliceThread, reader->sampleRate);
+
+        thumbnail = new AudioThumbnail(1024, *audioFormatManager, *thumbnailCache);
+        thumbnail->setSource(new FileInputSource(audioFile));
         playerState = Ready;
     }
     else {
@@ -66,11 +66,16 @@ void Player::loadFileIntoTransport(const File& audioFile)
     }
 }
 
+AudioThumbnail* Player::getThumbnail()
+{
+    return thumbnail;
+}
+
 void Player::update()
 {
     float current = transportSource->getNextReadPosition();
     float length = transportSource->getTotalLength();
-    process = (float) (current / length);
+    process = (float)(current / length);
     if (process >= 1.0f) {
         process = 1.0f;
         transportSource->stop();

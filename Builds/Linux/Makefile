@@ -64,6 +64,7 @@ OBJECTS := \
   $(OBJDIR)/juce_audio_devices_87a1b42.o \
   $(OBJDIR)/juce_audio_formats_36fb64e2.o \
   $(OBJDIR)/juce_audio_processors_11cdad3c.o \
+  $(OBJDIR)/juce_audio_utils_ceaea402.o \
   $(OBJDIR)/juce_core_dca6a866.o \
   $(OBJDIR)/juce_data_structures_451caba2.o \
   $(OBJDIR)/juce_events_7c4271da.o \
@@ -154,6 +155,11 @@ $(OBJDIR)/juce_audio_formats_36fb64e2.o: ../../Submodules/JUCE/modules/juce_audi
 $(OBJDIR)/juce_audio_processors_11cdad3c.o: ../../Submodules/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling juce_audio_processors.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_audio_utils_ceaea402.o: ../../Submodules/JUCE/modules/juce_audio_utils/juce_audio_utils.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling juce_audio_utils.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/juce_core_dca6a866.o: ../../Submodules/JUCE/modules/juce_core/juce_core.cpp

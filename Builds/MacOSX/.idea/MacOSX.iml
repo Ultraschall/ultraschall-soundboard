@@ -746,6 +746,54 @@
     <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_processors/scanning/juce_PluginListComponent.h">
       <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_processors/scanning/juce_PluginListComponent.h" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioAppComponent.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioAppComponent.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioAppComponent.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioAppComponent.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioDeviceSelectorComponent.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioDeviceSelectorComponent.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioDeviceSelectorComponent.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioDeviceSelectorComponent.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnail.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnail.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnail.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnail.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailBase.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailBase.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/juce_audio_utils.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/juce_audio_utils.h" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/juce_audio_utils.mm">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/juce_audio_utils.mm" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/juce_module_info">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/juce_module_info" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.h">
+      <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.h" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_core/containers/juce_AbstractFifo.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../../Submodules/JUCE/modules/juce_core/containers/juce_AbstractFifo.cpp" isTestSource="false" />
     </content>

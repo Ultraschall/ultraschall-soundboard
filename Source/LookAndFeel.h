@@ -12,6 +12,21 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+static const Colour ColourDarkBackground =  Colour::fromRGB(33, 33, 33);
+
+static const Colour ColourTableCellEven = Colour::fromRGB(44, 44, 44);
+static const Colour ColourTableCellUneven = Colour::fromRGB(46, 47, 49);
+static const Colour ColourTableCellBorder = Colour::fromRGB(39, 39, 41);
+
+static const Colour ColourGridPlayedBackground = Colour::fromRGB(41, 53, 43);
+static const Colour ColourGridPlayed = Colour::fromRGB(131, 222, 92);
+static const Colour ColourGridLoppingBackground = Colour::fromRGB(41, 48, 57);
+static const Colour ColourGridLopping = Colour::fromRGB(126, 189, 229);
+static const Colour ColourGridFadeOutBackground = Colour::fromRGB(51, 41, 52);
+static const Colour ColourGridFadeOut = Colour::fromRGB(225, 123, 180);
+static const Colour ColourGridDefaultBackround = Colour::fromRGB(59, 59, 48);
+static const Colour ColourGridDefault = Colour::fromRGB(241, 231, 106);
+
 class LookAndFeel_Ultraschall : public LookAndFeel_V3 {
 public:
     void drawTableHeaderBackground(Graphics& g,

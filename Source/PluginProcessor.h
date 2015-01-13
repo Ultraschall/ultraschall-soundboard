@@ -117,6 +117,7 @@ private:
     // Audio IO
     OwnedArray<Player> samplePlayers;
     AudioFormatManager formatManager;
+    ScopedPointer<AudioThumbnailCache> thumbnailCache;
     AudioSourceChannelInfo sourceChannelInfo;
     MixerAudioSource mixerAudioSource;
     bool playersLock;

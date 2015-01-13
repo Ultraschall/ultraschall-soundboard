@@ -429,6 +429,24 @@
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_processors\scanning\juce_PluginListComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioAppComponent.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnail.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnailCache.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_MidiKeyboardComponent.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_core\text\juce_CharacterFunctions.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1250,6 +1268,7 @@
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_devices\juce_audio_devices.cpp"/>
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_formats\juce_audio_formats.cpp"/>
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_processors\juce_audio_processors.cpp"/>
+    <ClCompile Include="..\..\Submodules\JUCE\modules\juce_audio_utils\juce_audio_utils.cpp"/>
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_core\juce_core.cpp"/>
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_data_structures\juce_data_structures.cpp"/>
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_events\juce_events.cpp"/>
@@ -1380,6 +1399,14 @@
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_processors\scanning\juce_PluginDirectoryScanner.h"/>
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_processors\scanning\juce_PluginListComponent.h"/>
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_processors\juce_audio_processors.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioAppComponent.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioDeviceSelectorComponent.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnail.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnailBase.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_AudioThumbnailCache.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\gui\juce_MidiKeyboardComponent.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\players\juce_AudioProcessorPlayer.h"/>
+    <ClInclude Include="..\..\Submodules\JUCE\modules\juce_audio_utils\juce_audio_utils.h"/>
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_core\text\juce_CharacterFunctions.h"/>
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_core\text\juce_CharPointer_ASCII.h"/>
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_core\text\juce_CharPointer_UTF8.h"/>
@@ -1726,6 +1753,7 @@
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_formats\juce_module_info"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_plugin_client\juce_module_info"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_processors\juce_module_info"/>
+    <None Include="..\..\Submodules\JUCE\modules\juce_audio_utils\juce_module_info"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_core\juce_module_info"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_data_structures\juce_module_info"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_events\juce_module_info"/>
