@@ -85,7 +85,7 @@ float SoundboardAudioProcessor::getParameter(int index)
     if (index < GlobalParameterCount) {
         switch (index) {
         case GlobalParameterFadeOut:
-            return fadeOutRange.convertTo0to1(fadeOutSeconds);
+            return fadeOutRange.convertTo0to1((float)fadeOutSeconds);
         default:
             break;
         }
@@ -637,7 +637,7 @@ Player* SoundboardAudioProcessor::SamplePlayerAtIndex(int index)
 
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
-    setParameterNotifyingHost(GlobalParameterFadeOut, fadeOutRange.convertTo0to1(seconds));
+    setParameterNotifyingHost(GlobalParameterFadeOut, fadeOutRange.convertTo0to1((float)seconds));
 }
 
 int SoundboardAudioProcessor::getFadeOutSeconds() { return fadeOutSeconds; }

@@ -72,9 +72,9 @@ int SoundboardTableComponent::getNumRows()
 
 void SoundboardTableComponent::paintRowBackground(Graphics& g,
                                                   int rowNumber,
-                                                  int width,
-                                                  int height,
-                                                  bool rowIsSelected)
+                                                  int /*width*/,
+                                                  int /*height*/,
+                                                  bool /*rowIsSelected*/)
 {
     if (rowNumber % 2) {
         g.setColour(ColourTableCellEven);
@@ -90,7 +90,7 @@ void SoundboardTableComponent::paintCell(Graphics& g,
                                          int columnId,
                                          int width,
                                          int height,
-                                         bool rowIsSelected)
+                                         bool /*rowIsSelected*/)
 {
     g.setColour(ColourTableCellBorder);
     g.drawLine((float)width, 0, (float)width, (float)height, 1.5f);
@@ -140,7 +140,7 @@ void SoundboardTableComponent::paintCell(Graphics& g,
     }
 }
 
-void SoundboardTableComponent::cellClicked(int rowNumber,
+void SoundboardTableComponent::cellClicked(int /*rowNumber*/,
                                            int columnId,
                                            const MouseEvent& /*e*/)
 {
@@ -152,7 +152,7 @@ void SoundboardTableComponent::cellClicked(int rowNumber,
 
 Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
                                                              int columnId,
-                                                             bool isRowSelected,
+                                                             bool /*isRowSelected*/,
                                                              Component* existingComponentToUpdate)
 {
     if (columnId == ColumnIdLoopButton) {
@@ -294,7 +294,7 @@ void SoundboardTableComponent::buttonClicked(Button* button)
 }
 
 // Button Listener
-void SoundboardTableComponent::sliderValueChanged(Slider* slider)
+void SoundboardTableComponent::sliderValueChanged(Slider* /*slider*/)
 {
 
 }

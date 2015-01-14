@@ -105,7 +105,7 @@ public:
             } else {
                 g.setColour(ColourGridDefault);
             }
-            g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3, g.getClipBounds().getWidth() - 3);
+            g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
 
             if (player->isPlayed()) {
                 g.setColour(Colours::white.withAlpha(0.5f));
@@ -182,11 +182,11 @@ public:
             }
         } else {
             g.setColour(Colours::grey);
-            g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3, g.getClipBounds().getWidth() - 3);
+            g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
         }
     }
 
-    void changeListenerCallback(ChangeBroadcaster* source) override
+    void changeListenerCallback(ChangeBroadcaster* /*source*/) override
     {
         repaint();
     }

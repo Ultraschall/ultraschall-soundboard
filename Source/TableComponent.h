@@ -44,7 +44,7 @@ public:
     }
 
     // Timer
-    void paintButton(Graphics& g, bool isMouseOverButton, bool isButtonDown) override
+    void paintButton(Graphics& g, bool isMouseOverButton, bool /*isButtonDown*/) override
     {
         g.setColour(ColourTableCellBorder);
         g.drawLine((float) getWidth(), 0, (float) getWidth(), (float) getHeight(), 1.5f);

@@ -74,8 +74,8 @@ AudioThumbnail* Player::getThumbnail()
 
 void Player::update()
 {
-    float current = transportSource->getNextReadPosition();
-    float length = transportSource->getTotalLength();
+    juce::int64 current = transportSource->getNextReadPosition();
+    juce::int64 length = transportSource->getTotalLength ();
     process = (float)(current / length);
     if (process >= 1.0f) {
         process = 1.0f;
