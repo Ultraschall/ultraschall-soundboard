@@ -12,6 +12,8 @@
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
   <MAINGROUP id="aO9Y4k" name="Soundboard">
+    <FILE id="pgyuob" name="Icon.png" compile="0" resource="1" file="Icon.png"/>
+    <FILE id="qtYVP2" name="Icon@2x.png" compile="0" resource="1" file="Icon@2x.png"/>
     <GROUP id="{E54D17CF-AA86-82D4-D347-CD0CD6CE50FA}" name="Source">
       <GROUP id="{5794D306-886F-3127-3006-3034B6DD4959}" name="Player">
         <FILE id="ckr3wg" name="Player.cpp" compile="1" resource="0" file="../Source/Player.cpp"/>
@@ -48,7 +50,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="pgyuob" bigIcon="qtYVP2">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        isDebug="1" optimisation="1" targetName="Soundboard"/>
@@ -72,7 +74,7 @@
         <MODULEPATH id="danlin_oscserver" path="../Submodules/danlin_modules/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2013 targetFolder="Builds/VisualStudio2013">
+    <VS2013 targetFolder="Builds/VisualStudio2013" smallIcon="pgyuob" bigIcon="qtYVP2">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Soundboard"/>
@@ -96,7 +98,7 @@
         <MODULEPATH id="danlin_oscserver" path="../Submodules/danlin_modules/modules"/>
       </MODULEPATHS>
     </VS2013>
-    <LINUX_MAKE targetFolder="Builds/Linux">
+    <LINUX_MAKE targetFolder="Builds/Linux" smallIcon="pgyuob" bigIcon="qtYVP2">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
                        targetName="Soundboard"/>

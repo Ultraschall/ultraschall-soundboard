@@ -58,6 +58,7 @@ OBJECTS := \
   $(OBJDIR)/PluginEditor_ef07f2fa.o \
   $(OBJDIR)/PluginProcessor_319d19ef.o \
   $(OBJDIR)/Main_90ebc5c2.o \
+  $(OBJDIR)/BinaryData_ce4232d4.o \
   $(OBJDIR)/danlin_fontawesome_f87f2fce.o \
   $(OBJDIR)/danlin_oscpack_7cfac24e.o \
   $(OBJDIR)/danlin_oscserver_c3f0f90e.o \
@@ -123,6 +124,11 @@ $(OBJDIR)/PluginProcessor_319d19ef.o: ../../../Source/PluginProcessor.cpp
 $(OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling Main.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling BinaryData.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/danlin_fontawesome_f87f2fce.o: ../../../Submodules/danlin_modules/modules/danlin_fontawesome/danlin_fontawesome.cpp

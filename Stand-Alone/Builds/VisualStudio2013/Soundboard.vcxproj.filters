@@ -1462,6 +1462,9 @@
     <ClCompile Include="..\..\..\Submodules\JUCE\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\danlin_fontawesome.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
@@ -2823,11 +2826,20 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Icon.png">
+      <Filter>Soundboard</Filter>
+    </None>
+    <None Include="..\..\Icon@2x.png">
+      <Filter>Soundboard</Filter>
+    </None>
     <None Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\juce_module_info">
       <Filter>Juce Modules\danlin_fontawesome</Filter>
     </None>
@@ -2869,6 +2881,9 @@
     </None>
     <None Include="..\..\..\Submodules\JUCE\modules\juce_gui_extra\juce_module_info">
       <Filter>Juce Modules\juce_gui_extra</Filter>
+    </None>
+    <None Include=".\icon.ico">
+      <Filter>Juce Library Code</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -1203,6 +1203,7 @@
     <ClCompile Include="..\..\..\Submodules\JUCE\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\danlin_fontawesome.cpp"/>
     <ClCompile Include="..\..\..\Submodules\danlin_modules\modules\danlin_oscpack\danlin_oscpack.cpp"/>
     <ClCompile Include="..\..\..\Submodules\danlin_modules\modules\danlin_oscserver\danlin_oscserver.cpp"/>
@@ -1658,9 +1659,12 @@
     <ClInclude Include="..\..\..\Submodules\JUCE\modules\juce_gui_extra\native\juce_mac_CarbonViewWrapperComponent.h"/>
     <ClInclude Include="..\..\..\Submodules\JUCE\modules\juce_gui_extra\juce_gui_extra.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Icon.png"/>
+    <None Include="..\..\Icon@2x.png"/>
     <None Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\juce_module_info"/>
     <None Include="..\..\..\Submodules\danlin_modules\modules\danlin_oscpack\juce_module_info"/>
     <None Include="..\..\..\Submodules\danlin_modules\modules\danlin_oscserver\juce_module_info"/>
@@ -1675,6 +1679,7 @@
     <None Include="..\..\..\Submodules\JUCE\modules\juce_graphics\juce_module_info"/>
     <None Include="..\..\..\Submodules\JUCE\modules\juce_gui_basics\juce_module_info"/>
     <None Include="..\..\..\Submodules\JUCE\modules\juce_gui_extra\juce_module_info"/>
+    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc"/>
