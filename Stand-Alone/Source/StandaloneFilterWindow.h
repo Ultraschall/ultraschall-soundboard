@@ -378,7 +378,7 @@ public:
     void resized() override
     {
         DocumentWindow::resized();
-        optionsButton.setBounds (getWidth() - 8, 6, 60, getTitleBarHeight() - 8);
+        optionsButton.setBounds (getWidth() - 68, 6, 60, getTitleBarHeight() - 8);
     }
 
     ScopedPointer<StandalonePluginHolder> pluginHolder;
