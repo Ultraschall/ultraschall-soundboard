@@ -34,7 +34,7 @@ public:
                                                  new PropertySet(),
                                                  true);
         mainWindow->setResizeLimits (380, 320, 1024, 768);
-        //mainWindow->setUsingNativeTitleBar (true);
+        mainWindow->setUsingNativeTitleBar (true);
         mainWindow->setResizable (true, true);
         mainWindow->setVisible (true);
     }

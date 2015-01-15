@@ -57,7 +57,6 @@ private:
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;
 
-    ScopedPointer<Bar> buttomBar;
     ScopedPointer<Bar> topBar;
     ScopedPointer<AwesomeButton> settingsButton;
     ScopedPointer<ActivityIndicator> oscActivityIndicator;

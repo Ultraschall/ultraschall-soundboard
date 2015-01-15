@@ -16,8 +16,8 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
 {
     addAndMakeVisible(tableListBox = new TableListBox());
 
-    tableListBox->setColour(TableListBox::ColourIds::backgroundColourId, Colour::fromRGB(35, 35, 35));
-    tableListBox->setColour(TableListBox::ColourIds::textColourId, Colours::grey);
+    tableListBox->setColour(TableListBox::ColourIds::backgroundColourId, ThemeBackground1);
+    tableListBox->setColour(TableListBox::ColourIds::textColourId, ThemeForeground1);
 
     tableListBox->setModel(this);
 
@@ -77,10 +77,10 @@ void SoundboardTableComponent::paintRowBackground(Graphics& g,
                                                   bool /*rowIsSelected*/)
 {
     if (rowNumber % 2) {
-        g.setColour(ColourTableCellEven);
+        g.setColour(ThemeBackground2);
     }
     else {
-        g.setColour(ColourTableCellUneven);
+        g.setColour(ThemeBackground3);
     }
     g.fillAll();
 }
@@ -92,10 +92,10 @@ void SoundboardTableComponent::paintCell(Graphics& g,
                                          int height,
                                          bool /*rowIsSelected*/)
 {
-    g.setColour(ColourTableCellBorder);
+    g.setColour(ThemeBackground1);
     g.drawLine((float)width, 0, (float)width, (float)height, 1.5f);
 
-    g.setColour(Colours::grey);
+    g.setColour(ThemeForeground1);
     String text = String::empty;
 
     switch (columnId) {
@@ -106,30 +106,27 @@ void SoundboardTableComponent::paintCell(Graphics& g,
         text = processor.SamplePlayerAtIndex(rowNumber)->getTitle();
         break;
     case ColumnIdTimeLabel: {
+        Colour colour;
         if (processor.SamplePlayerAtIndex(rowNumber)->isPlayed()) {
-            g.setColour(ColourGridPlayedBackground);
+            colour = ThemeGreen;
         } else if (processor.SamplePlayerAtIndex(rowNumber)->isFadingOut()) {
-            g.setColour(ColourGridFadeOutBackground);
+            colour = ThemeOrange;
         } else if (processor.SamplePlayerAtIndex(rowNumber)->isLooping()) {
-            g.setColour(ColourGridLoppingBackground);
+            colour = ThemeBlue;
         } else {
-            g.setColour(ColourGridDefaultBackround);
+            colour = ThemeYellow;
         }
+
+        g.setColour(colour.withAlpha(0.2f));
         Rectangle<float> processRect = g.getClipBounds().reduced(1).toFloat();
         g.fillRoundedRectangle(processRect, 2);
-        if (processor.SamplePlayerAtIndex(rowNumber)->isPlayed()) {
-            g.setColour(ColourGridPlayed.withAlpha(0.4f));
-        } else if (processor.SamplePlayerAtIndex(rowNumber)->isFadingOut()) {
-            g.setColour(ColourGridFadeOut.withAlpha(0.4f));
-        } else if (processor.SamplePlayerAtIndex(rowNumber)->isLooping()) {
-            g.setColour(ColourGridLopping.withAlpha(0.4f));
-        } else {
-            g.setColour(ColourGridDefault.withAlpha(0.4f));
-        }
+
+        g.setColour(colour);
         if (!processor.SamplePlayerAtIndex(rowNumber)->isPlayed()) {
             g.fillRoundedRectangle(processRect.getX(), processRect.getY(), processRect.getWidth() * processor.SamplePlayerAtIndex(rowNumber)->getProgress(), processRect.getHeight(), 2);
         }
-        g.setColour(Colours::white);
+
+        g.setColour(ThemeForeground1);
         g.drawText(processor.SamplePlayerAtIndex(rowNumber)->getProgressString(mTimerState), 2, 0, width - 4, height, Justification::centred, true);
         break;
     }
@@ -162,6 +159,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             button = new SoundboardCellButton("Loop", FA_REFRESH);
             button->setTag(ButtonTagLoop);
             button->addListener(this);
+            button->setHighlightColour(ThemeBlue);
         }
 
         button->setHighlighted(processor.SamplePlayerAtIndex(rowNumber)->isLooping());
@@ -197,11 +195,13 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             button->setTag(ButtonTagStop);
             button->addListener(this);
             button->setEnabled(false);
+            button->setHighlightColour(ThemeGreen);
         }
 
         button->setRowNumber(rowNumber);
         button->setEnabled(false);
         button->setIcon(FA_SQUARE);
+        button->setHighlighted(false);
 
         if (processor.SamplePlayerAtIndex(rowNumber)->isPlaying() || processor.SamplePlayerAtIndex(rowNumber)->isPaused()) {
             button->setEnabled(true);
@@ -209,6 +209,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         else if (processor.SamplePlayerAtIndex(rowNumber)->isPlayed()) {
             button->setIcon(FA_SQUARE_O);
             button->setEnabled(true);
+            button->setHighlighted(true);
         }
 
         return button;
@@ -220,6 +221,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             button = new SoundboardCellButton("Fade-Out", FA_VOLUME_DOWN);
             button->setTag(ButtonTagFadeOut);
             button->addListener(this);
+            button->setHighlightColour(ThemeOrange);
         }
 
         button->setEnabled(processor.SamplePlayerAtIndex(rowNumber)->isPlaying());
@@ -235,7 +237,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             slider = new Slider();
             slider->setRange(0.0, 1.0, 0.01);
             slider->setValue(1.0);
-            slider->setColour(Slider::ColourIds::rotarySliderFillColourId, Colours::grey.brighter());
+            slider->setColour(Slider::ColourIds::rotarySliderFillColourId, ThemeForeground1.darker());
             slider->setSliderStyle(Slider::SliderStyle::Rotary);
             slider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
         }

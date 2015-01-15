@@ -869,6 +869,105 @@ void SoundboardAudioProcessor::storeWindowHeight(int height)
     propertiesFile->setValue(WindowHeightIdentifier.toString(), var(height));
 }
 
+
+void SoundboardAudioProcessor::SwitchTheme(Themes theme) {
+    switch (theme) {
+        case ThemeTomorrow: {
+            ThemeBackground1 = TomorrowBackground1;
+            ThemeBackground2 = TomorrowBackground2;
+            ThemeBackground3 = TomorrowBackground3;
+            ThemeForeground1 = TomorrowForeground1;
+            ThemeForeground2 = TomorrowForeground2;
+            ThemeRed = TomorrowRed;
+            ThemeOrange = TomorrowOrange;
+            ThemeYellow = TomorrowYellow;
+            ThemeGreen = TomorrowGreen;
+            ThemeAqua = TomorrowAqua;
+            ThemeBlue = TomorrowBlue;
+            ThemePurple = TomorrowPurple;
+            break;
+        };
+        case ThemeTomorrowNightBright: {
+            ThemeBackground1 = TomorrowNightBrightBackground1;
+            ThemeBackground2 = TomorrowNightBrightBackground2;
+            ThemeBackground3 = TomorrowNightBrightBackground3;
+            ThemeForeground1 = TomorrowNightBrightForeground1;
+            ThemeForeground2 = TomorrowNightBrightForeground2;
+            ThemeRed = TomorrowNightBrightRed;
+            ThemeOrange = TomorrowNightBrightOrange;
+            ThemeYellow = TomorrowNightBrightYellow;
+            ThemeGreen = TomorrowNightBrightGreen;
+            ThemeAqua = TomorrowNightBrightAqua;
+            ThemeBlue = TomorrowNightBrightBlue;
+            ThemePurple = TomorrowNightBrightPurple;
+            break;
+        };
+        case ThemeTomorrowNight: {
+            ThemeBackground1 = TomorrowNightBackground1;
+            ThemeBackground2 = TomorrowNightBackground2;
+            ThemeBackground3 = TomorrowNightBackground3;
+            ThemeForeground1 = TomorrowNightForeground1;
+            ThemeForeground2 = TomorrowNightForeground2;
+            ThemeRed = TomorrowNightRed;
+            ThemeOrange = TomorrowNightOrange;
+            ThemeYellow = TomorrowNightYellow;
+            ThemeGreen = TomorrowNightGreen;
+            ThemeAqua = TomorrowNightAqua;
+            ThemeBlue = TomorrowNightBlue;
+            ThemePurple = TomorrowNightPurple;
+            break;
+        };
+        case ThemeTomorrowNightEighties: {
+            ThemeBackground1 = TomorrowNightEightiesBackground1;
+            ThemeBackground2 = TomorrowNightEightiesBackground2;
+            ThemeBackground3 = TomorrowNightEightiesBackground3;
+            ThemeForeground1 = TomorrowNightEightiesForeground1;
+            ThemeForeground2 = TomorrowNightEightiesForeground2;
+            ThemeRed = TomorrowNightEightiesRed;
+            ThemeOrange = TomorrowNightEightiesOrange;
+            ThemeYellow = TomorrowNightEightiesYellow;
+            ThemeGreen = TomorrowNightEightiesGreen;
+            ThemeAqua = TomorrowNightEightiesAqua;
+            ThemeBlue = TomorrowNightEightiesBlue;
+            ThemePurple = TomorrowNightEightiesPurple;
+            break;
+        };
+        case ThemeTomorrowNightBlue: {
+            ThemeBackground1 = TomorrowNightBlueBackground1;
+            ThemeBackground2 = TomorrowNightBlueBackground2;
+            ThemeBackground3 = TomorrowNightBlueBackground3;
+            ThemeForeground1 = TomorrowNightBlueForeground1;
+            ThemeForeground2 = TomorrowNightBlueForeground2;
+            ThemeRed = TomorrowNightBlueRed;
+            ThemeOrange = TomorrowNightBlueOrange;
+            ThemeYellow = TomorrowNightBlueYellow;
+            ThemeGreen = TomorrowNightBlueGreen;
+            ThemeAqua = TomorrowNightBlueAqua;
+            ThemeBlue = TomorrowNightBlueBlue;
+            ThemePurple = TomorrowNightBluePurple;
+            break;
+        };
+        default: {
+            ThemeBackground1 = TomorrowNightBrightBackground1;
+            ThemeBackground2 = TomorrowNightBrightBackground2;
+            ThemeBackground3 = TomorrowNightBrightBackground3;
+            ThemeForeground1 = TomorrowNightBrightForeground1;
+            ThemeForeground2 = TomorrowNightBrightForeground2;
+            ThemeRed = TomorrowNightBrightRed;
+            ThemeOrange = TomorrowNightBrightOrange;
+            ThemeYellow = TomorrowNightBrightYellow;
+            ThemeGreen = TomorrowNightBrightGreen;
+            ThemeAqua = TomorrowNightBrightAqua;
+            ThemeBlue = TomorrowNightBrightBlue;
+            ThemePurple = TomorrowNightBrightPurple;
+        }
+        LookAndFeel::setDefaultLookAndFeel(mLookAndFeel);
+        if (getActiveEditor()) {
+            getActiveEditor()->repaint();
+        }
+    }
+}
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()

@@ -63,66 +63,52 @@ public:
         Rectangle<float> border = g.getClipBounds().reduced(1).toFloat();
         Rectangle<float> cell = border.reduced(2).toFloat();
 
-        g.setColour(ColourDarkBackground);
+        g.setColour(ThemeBackground1);
         g.fillAll();
 
-        g.setColour(Colours::black);
+        g.setColour(ThemeBackground3);
         g.fillRect(border);
 
         if (player) {
+            Colour colour;
             if (player->isPlayed()) {
-                g.setColour(ColourGridPlayedBackground);
+                colour = ThemeGreen;
             } else if (player->isFadingOut()) {
-                g.setColour(ColourGridFadeOutBackground);
+                colour = ThemeOrange;
             } else if (player->isLooping()) {
-                g.setColour(ColourGridLoppingBackground);
+                colour = ThemeBlue;
             } else {
-                g.setColour(ColourGridDefaultBackround);
+                colour = ThemeYellow;
             }
+
+            g.setColour(colour.withAlpha(0.2f));
             g.fillRoundedRectangle(cell, 2);
 
-            if (player->isPlayed()) {
-                g.setColour(ColourGridPlayed.withAlpha(0.5f));
-            } else if (player->isFadingOut()) {
-                g.setColour(ColourGridFadeOut.withAlpha(0.5f));
-            } else if (player->isLooping()) {
-                g.setColour(ColourGridLopping.withAlpha(0.5f));
-            } else {
-                g.setColour(ColourGridDefault.withAlpha(0.5f));
-            }
-
+            g.setColour(colour);
             Rectangle<int> thumbArea = cell.reduced(0, 5).toType<int>();
             if (player->getThumbnail()->getTotalLength() > 0.0) {
                 player->getThumbnail()->drawChannel(g, thumbArea, 0, player->getThumbnail()->getTotalLength(), 1, 1.0f);
             }
 
-            if (player->isPlayed()) {
-                g.setColour(ColourGridPlayed);
-            } else if (player->isFadingOut()) {
-                g.setColour(ColourGridFadeOut);
-            } else if (player->isLooping()) {
-                g.setColour(ColourGridLopping);
-            } else {
-                g.setColour(ColourGridDefault);
-            }
+            g.setColour(colour.brighter(0.4f));
             g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
 
             if (player->isPlayed()) {
-                g.setColour(Colours::white.withAlpha(0.5f));
+                g.setColour(colour.contrasting().withAlpha(0.5f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 g.drawText(FA_SQUARE_O, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
             } else if (player->isFadingOut()) {
-                g.setColour(ColourGridFadeOut.withAlpha(0.4f));
+                g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getGain(), cell.getHeight(), 2);
 
-                g.setColour(Colours::white.withAlpha(0.5f));
+                g.setColour(colour.contrasting().withAlpha(0.5f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
             } else if (player->isLooping()) {
-                g.setColour(ColourGridLopping.withAlpha(0.4f));
+                g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getProgress(), cell.getHeight(), 2);
 
-                g.setColour(Colours::white.withAlpha(0.5f));
+                g.setColour(colour.contrasting().withAlpha(0.5f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 if (player->isPlaying()) {
                     g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
@@ -130,10 +116,10 @@ public:
                     g.drawText(FA_PLAY, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
                 }
             } else {
-                g.setColour(ColourGridDefault.withAlpha(0.4f));
+                g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getProgress(), cell.getHeight(), 2);
 
-                g.setColour(Colours::white.withAlpha(0.5f));
+                g.setColour(colour.contrasting().withAlpha(0.5f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 if (player->isPlaying()) {
                     g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
@@ -145,43 +131,43 @@ public:
             Rectangle<int> info = cell.reduced(1).toType<int>();
             g.resetToDefaultState();
             g.setFont(getHeight() * 0.15f);
-            g.setColour(Colours::white);
+            g.setColour(ThemeForeground1);
             g.drawText(player->getProgressString(progressState), info.getX(), info.getY(), info.getWidth(), info.getHeight(), Justification::bottomLeft, false);
             g.drawText(player->getTitle(), info.getX(), info.getY(), info.getWidth(), info.getHeight(), Justification::centredTop, false);
 
             if (isMouseOver(true)) {
                 Rectangle<int> helperRect = cell.reduced(3).toType<int>();
                 if (player->isLooping()) {
-                    g.setColour(Colours::white.withAlpha(0.75f));
+                    g.setColour(colour.contrasting().withAlpha(0.75f));
                 } else {
-                    g.setColour(Colours::white.withAlpha(0.5f));
+                    g.setColour(colour.contrasting().withAlpha(0.5f));
                 }
                 g.setFont(getFontAwesome(getHeight() * 0.25f));
                 g.drawText(FA_REFRESH, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::topLeft, false);
 
                 if (player->isPlayed()) {
-                    g.setColour(Colours::white.withAlpha(0.5f));
+                    g.setColour(colour.contrasting().withAlpha(0.5f));
                     g.drawText(FA_SQUARE_O, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::bottomRight, false);
                 } else {
                     if (!player->isPaused() && !player->isPlaying()) {
-                        g.setColour(Colours::white.withAlpha(0.25f));
+                        g.setColour(colour.contrasting().withAlpha(0.25f));
                     } else {
-                        g.setColour(Colours::white.withAlpha(0.5f));
+                        g.setColour(colour.contrasting().withAlpha(0.5f));
                     }
                     g.drawText(FA_SQUARE, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::bottomRight, false);
                 }
 
                 if (!player->isPlaying()) {
-                    g.setColour(Colours::white.withAlpha(0.25f));
+                    g.setColour(colour.contrasting().withAlpha(0.25f));
                 } else if(player->isFadingOut()) {
-                    g.setColour(Colours::white.withAlpha(0.75f));
+                    g.setColour(colour.contrasting().withAlpha(0.75f));
                 } else {
-                    g.setColour(Colours::white.withAlpha(0.5f));
+                    g.setColour(colour.contrasting().withAlpha(0.5f));
                 }
                 g.drawText(FA_VOLUME_DOWN, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::topRight, false);
             }
         } else {
-            g.setColour(Colours::grey);
+            g.setColour(ThemeForeground2);
             g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
         }
     }

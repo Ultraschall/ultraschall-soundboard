@@ -24,13 +24,13 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     fadeOutSlider->setRange(1, 30, 1);
     fadeOutSlider->setSkewFactor(0.5);
     fadeOutSlider->setValue(processor.getFadeOutSeconds());
-    fadeOutSlider->setColour(Slider::ColourIds::rotarySliderFillColourId, Colours::grey.brighter());
+    fadeOutSlider->setColour(Slider::ColourIds::rotarySliderFillColourId, ThemeForeground1);
     fadeOutSlider->setSliderStyle(Slider::SliderStyle::Rotary);
     fadeOutSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
     fadeOutSlider->addListener(this);
 
     addAndMakeVisible(fadeOutLabel = new Label());
-    fadeOutLabel->setColour(Label::ColourIds::textColourId, Colours::grey.brighter());
+    fadeOutLabel->setColour(Label::ColourIds::textColourId, ThemeForeground1);
     fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s", NotificationType::dontSendNotification);
 
     addAndMakeVisible(loadDirectoryButton = new AwesomeButton(FA_FOLDER_OPEN_O));
@@ -48,8 +48,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(grid = new SoundboardGridComponent(p));
     grid->setVisible(false);
     addAndMakeVisible(table = new SoundboardTableComponent(p));
-
-    addAndMakeVisible(buttomBar = new Bar());
 
     addAndMakeVisible(settingsButton = new AwesomeButton(FA_COG));
     settingsButton->setButtonText("Einstellungen");
@@ -91,19 +89,18 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     resizer = nullptr;
     settingsButton = nullptr;
     oscActivityIndicator = nullptr;
-    buttomBar = nullptr;
     gridButton = nullptr;
 }
 
 //==============================================================================
 void SoundboardAudioProcessorEditor::paint(Graphics& g)
 {
-    g.fillAll(Colour::fromRGB(33, 33, 33));
+    g.fillAll(ThemeBackground1);
 }
 
 void SoundboardAudioProcessorEditor::resized()
 {
-    topBar->setBounds(0, 0, getWidth(), 32);
+    topBar->setBounds(0, 0, getWidth(), 64);
 
     fadeOutSlider->setBounds(3, 5, 24, 24);
     fadeOutLabel->setBounds(27, 5, 150, 24);
@@ -111,16 +108,15 @@ void SoundboardAudioProcessorEditor::resized()
     loadDirectoryButton->setBounds(getWidth() - 153, 5, 150, 24);
     gridButton->setBounds(getWidth() - 220, 5, 64, 24);
 
-    table->setBounds(0, 32, getWidth(), getHeight() - 64);
-    grid->setBounds(0, 32, getWidth(), getHeight() - 64);
+    table->setBounds(0, 64, getWidth(), getHeight() - 64);
+    grid->setBounds(0, 64, getWidth(), getHeight() - 64);
 
     if (resizer)
     {
         resizer->setBounds (getWidth () - 16, getHeight () - 16, 16, 16);
     }
-    settingsButton->setBounds(getWidth() - 123, getHeight() - 27, 120, 24);
-    oscActivityIndicator->setBounds(3, getHeight() - 27, 120, 24);
-    buttomBar->setBounds(0, getHeight() - 32, getWidth(), 32);
+    settingsButton->setBounds(getWidth() - 123, 32, 120, 24);
+    oscActivityIndicator->setBounds(3, 32, 120, 24);
 
     processor.storeWindowWidth(getWidth());
     processor.storeWindowHeight(getHeight());
@@ -147,6 +143,12 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
             grid->setVisible(false);
             table->setVisible(true);
             table->toFront(true);
+            static int theme = 1;
+            if (theme >= 6)
+                theme = 1;
+            Themes val = static_cast<Themes>(theme);
+            processor.SwitchTheme(val);
+            theme ++;
         }
         else {
             table->setVisible(false);

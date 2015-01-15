@@ -22,6 +22,7 @@ public:
         icon(icon),
         iconRotation(0.0f),
         highlightState(false),
+                                 highlightColour(ThemeForeground2),
         flashing(false),
         flashingState(false),
         rowNumber(-1),
@@ -43,24 +44,29 @@ public:
         }
     }
 
+                                 void setHighlightColour(Colour color) {
+                                     highlightColour = color;
+                                     repaint();
+                                 }
+
     // Timer
     void paintButton(Graphics& g, bool isMouseOverButton, bool /*isButtonDown*/) override
     {
-        g.setColour(ColourTableCellBorder);
+        g.setColour(ThemeBackground1);
         g.drawLine((float) getWidth(), 0, (float) getWidth(), (float) getHeight(), 1.5f);
 
-        g.setColour(colorDefault);
+        g.setColour(ThemeForeground1);
 
         if (flashing) {
             if (flashingState) {
-                g.setColour(colorDisabled);
+                g.setColour(ThemeForeground1.contrasting(0.5));
             }
         } else if (highlightState) {
-            g.setColour(colorHighlight);
+            g.setColour(highlightColour);
         } else if (!isEnabled()) {
-            g.setColour(colorDisabled);
+            g.setColour(ThemeForeground2);
         } else if (isMouseOverButton) {
-            g.setColour(colorMouseOver);
+            g.setColour(ThemeForeground1.contrasting(0.1));
         }
 
         g.setFont(getFontAwesome(getHeight() * 0.7f));
@@ -117,6 +123,7 @@ private:
     float iconRotation;
 
     bool highlightState;
+    Colour highlightColour;
 
     bool flashing;
     bool flashingState;
@@ -124,11 +131,6 @@ private:
 
     int rowNumber;
     int tag;
-
-    const Colour colorDefault = Colours::grey;
-    const Colour colorDisabled = Colours::grey.darker().darker();
-    const Colour colorMouseOver = Colours::grey.brighter();
-    const Colour colorHighlight = Colours::whitesmoke;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardCellButton)
 };
