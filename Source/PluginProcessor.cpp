@@ -17,6 +17,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 {
     playersLock = true;
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel = new LookAndFeel_Ultraschall());
+    SwitchTheme (ThemeTomorrowNightBright);
     formatManager.registerBasicFormats();
     thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
 
@@ -961,10 +962,28 @@ void SoundboardAudioProcessor::SwitchTheme(Themes theme) {
             ThemeBlue = TomorrowNightBrightBlue;
             ThemePurple = TomorrowNightBrightPurple;
         }
-        LookAndFeel::setDefaultLookAndFeel(mLookAndFeel);
-        if (getActiveEditor()) {
-            getActiveEditor()->repaint();
-        }
+    }
+    mLookAndFeel->setColour (TableListBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel->setColour (TableListBox::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
+    mLookAndFeel->setColour (Label::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (ToggleButton::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (ListBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel->setColour (ListBox::outlineColourId, ThemeBackground2);
+    mLookAndFeel->setColour (ListBox::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (TextEditor::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (TextEditor::backgroundColourId, ThemeBackground1);
+    mLookAndFeel->setColour (TextEditor::focusedOutlineColourId, ThemeBackground3);
+    mLookAndFeel->setColour (TextEditor::outlineColourId, ThemeBackground2);
+
+    mLookAndFeel->setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
+    mLookAndFeel->setColour (TextButton::textColourOnId, ThemeForeground1);
+    mLookAndFeel->setColour (TextButton::textColourOffId, ThemeForeground1);
+
+    if (getActiveEditor ())
+    {
+        getActiveEditor ()->lookAndFeelChanged ();
+        getActiveEditor ()->repaint ();
     }
 }
 

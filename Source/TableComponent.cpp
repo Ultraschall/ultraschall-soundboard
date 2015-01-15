@@ -16,9 +16,6 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
 {
     addAndMakeVisible(tableListBox = new TableListBox());
 
-    tableListBox->setColour(TableListBox::ColourIds::backgroundColourId, ThemeBackground1);
-    tableListBox->setColour(TableListBox::ColourIds::textColourId, ThemeForeground1);
-
     tableListBox->setModel(this);
 
     tableListBox->setHeaderHeight(21);
@@ -237,7 +234,6 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             slider = new Slider();
             slider->setRange(0.0, 1.0, 0.01);
             slider->setValue(1.0);
-            slider->setColour(Slider::ColourIds::rotarySliderFillColourId, ThemeForeground1.darker());
             slider->setSliderStyle(Slider::SliderStyle::Rotary);
             slider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
         }

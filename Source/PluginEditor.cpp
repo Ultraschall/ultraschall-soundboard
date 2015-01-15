@@ -24,7 +24,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     fadeOutSlider->setRange(1, 30, 1);
     fadeOutSlider->setSkewFactor(0.5);
     fadeOutSlider->setValue(processor.getFadeOutSeconds());
-    fadeOutSlider->setColour(Slider::ColourIds::rotarySliderFillColourId, ThemeForeground1);
     fadeOutSlider->setSliderStyle(Slider::SliderStyle::Rotary);
     fadeOutSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
     fadeOutSlider->addListener(this);
@@ -36,14 +35,10 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(loadDirectoryButton = new AwesomeButton(FA_FOLDER_OPEN_O));
     loadDirectoryButton->setButtonText("Soundboard Laden");
     loadDirectoryButton->addListener(this);
-    loadDirectoryButton->setColour(TextButton::ColourIds::textColourOnId, Colours::white);
-    loadDirectoryButton->setColour(TextButton::ColourIds::textColourOffId, Colours::white);
 
     addAndMakeVisible(gridButton = new AwesomeButton(FA_TH));
     gridButton->setButtonText("Grid");
     gridButton->addListener(this);
-    gridButton->setColour(TextButton::ColourIds::textColourOnId, Colours::white);
-    gridButton->setColour(TextButton::ColourIds::textColourOffId, Colours::white);
 
     addAndMakeVisible(grid = new SoundboardGridComponent(p));
     grid->setVisible(false);
@@ -52,8 +47,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(settingsButton = new AwesomeButton(FA_COG));
     settingsButton->setButtonText("Einstellungen");
     settingsButton->addListener(this);
-    settingsButton->setColour(TextButton::ColourIds::textColourOnId, Colours::white);
-    settingsButton->setColour(TextButton::ColourIds::textColourOffId, Colours::white);
 
     addAndMakeVisible(oscActivityIndicator = new ActivityIndicator());
     oscActivityIndicator->setTitle(CharPointer_UTF8("OSC Aktivit\xc3\xa4t"));

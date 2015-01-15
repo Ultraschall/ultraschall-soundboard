@@ -38,7 +38,6 @@ public:
         addAndMakeVisible(topBar = new Bar());
         addAndMakeVisible(titleLabel = new Label());
         titleLabel->setText("OSC Einstellungen", NotificationType::dontSendNotification);
-        titleLabel->setColour(Label::ColourIds::textColourId, Colours::grey);
         titleLabel->setFont(Font(24.0f * 0.7f));
 
         addAndMakeVisible(seperator = new Bar());
@@ -46,8 +45,6 @@ public:
         addAndMakeVisible(localEnabled = new ToggleButton("receiveEnabled"));
         localEnabled->setButtonText("Receive on port:");
         localEnabled->addListener(this);
-        localEnabled->setColour(ToggleButton::ColourIds::textColourId,
-                                  Colours::grey);
         localEnabled->setToggleState(
             propertiesFile->getBoolValue(OscRecivePortNumberIdentifier.toString()),
             NotificationType::dontSendNotification);
@@ -55,8 +52,6 @@ public:
         addAndMakeVisible(remoteEnabled = new ToggleButton("sendEnabledButton"));
         remoteEnabled->setButtonText("Send on port:");
         remoteEnabled->addListener(this);
-        remoteEnabled->setColour(ToggleButton::ColourIds::textColourId,
-                               Colours::grey);
         remoteEnabled->setToggleState(
             propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()),
             NotificationType::dontSendNotification);
@@ -64,13 +59,8 @@ public:
         addAndMakeVisible(oscLoggerEnabled = new ToggleButton("oscLoggerEnabled"));
         oscLoggerEnabled->setButtonText("OSC Logger");
         oscLoggerEnabled->addListener(this);
-        oscLoggerEnabled->setColour(ToggleButton::ColourIds::textColourId,
-                                    Colours::grey);
 
         addAndMakeVisible(oscLogger = new ListBox("oscLogger"));
-        oscLogger->setColour(ListBox::ColourIds::backgroundColourId, Colour::fromRGB(44, 44, 44));
-        oscLogger->setColour(ListBox::ColourIds::outlineColourId, Colour::fromRGB(44, 44, 44));
-        oscLogger->setColour(ListBox::ColourIds::textColourId, Colours::whitesmoke);
         oscLogger->setModel(this);
 
         addAndMakeVisible(localPortNumber = new TextEditor("receivePortNumber"));
@@ -83,14 +73,6 @@ public:
         localPortNumber->setText(
             propertiesFile->getValue(OscRecivePortNumberIdentifier.toString(), ""));
         localPortNumber->addListener(this);
-        localPortNumber->setColour(TextEditor::ColourIds::textColourId,
-                                     Colours::black);
-        localPortNumber->setColour(TextEditor::ColourIds::backgroundColourId,
-                                     Colours::grey.brighter());
-        localPortNumber->setColour(TextEditor::ColourIds::focusedOutlineColourId,
-                                     Colours::grey.brighter().brighter());
-        localPortNumber->setColour(TextEditor::ColourIds::outlineColourId,
-                                     Colours::grey);
 
         addAndMakeVisible(remotePortNumber = new TextEditor("sendPortNumber"));
         remotePortNumber->setMultiLine(false);
@@ -102,14 +84,6 @@ public:
         remotePortNumber->setText(
             propertiesFile->getValue(OscRemotePortNumberIdentifier.toString(), ""));
         remotePortNumber->addListener(this);
-        remotePortNumber->setColour(TextEditor::ColourIds::textColourId,
-                                    Colours::black);
-        remotePortNumber->setColour(TextEditor::ColourIds::backgroundColourId,
-                                    Colours::grey.brighter());
-        remotePortNumber->setColour(TextEditor::ColourIds::focusedOutlineColourId,
-                                    Colours::grey.brighter().brighter());
-        remotePortNumber->setColour(TextEditor::ColourIds::outlineColourId,
-                                    Colours::grey);
 
         addAndMakeVisible(localHostLabel = new Label("receiveHostLabel", "Host:"));
         localHostLabel->setFont(Font(15.00f, Font::plain));
@@ -125,14 +99,6 @@ public:
         localHonstname->setCaretVisible(true);
         localHonstname->setPopupMenuEnabled(true);
         localHonstname->setText(SystemStats::getComputerName());
-        localHonstname->setColour(TextEditor::ColourIds::textColourId,
-                                    Colours::black);
-        localHonstname->setColour(TextEditor::ColourIds::backgroundColourId,
-                                    Colours::grey.brighter());
-        localHonstname->setColour(TextEditor::ColourIds::focusedOutlineColourId,
-                                    Colours::grey.brighter().brighter());
-        localHonstname->setColour(TextEditor::ColourIds::outlineColourId,
-                                    Colours::grey);
 
         addAndMakeVisible(remoteHonstname = new TextEditor("sendHonstname"));
         remoteHonstname->setMultiLine(false);
@@ -144,14 +110,6 @@ public:
         remoteHonstname->setText(
             propertiesFile->getValue(OscRemoteHostnameIdentifier.toString(), ""));
         remoteHonstname->addListener(this);
-        remoteHonstname->setColour(TextEditor::ColourIds::textColourId,
-                                   Colours::black);
-        remoteHonstname->setColour(TextEditor::ColourIds::backgroundColourId,
-                                   Colours::grey.brighter());
-        remoteHonstname->setColour(TextEditor::ColourIds::focusedOutlineColourId,
-                                   Colours::grey.brighter().brighter());
-        remoteHonstname->setColour(TextEditor::ColourIds::outlineColourId,
-                                   Colours::grey);
 
         addAndMakeVisible(remoteHostLabel = new Label("sendHostLabel", "Device:"));
         remoteHostLabel->setFont(Font(15.00f, Font::plain));
