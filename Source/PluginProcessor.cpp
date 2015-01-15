@@ -953,8 +953,20 @@ void SoundboardAudioProcessor::SwitchTheme(Themes theme) {
     mLookAndFeel->setColour (ListBox::textColourId, ThemeForeground1);
     mLookAndFeel->setColour (TextEditor::textColourId, ThemeForeground1);
     mLookAndFeel->setColour (TextEditor::backgroundColourId, ThemeBackground1);
-    mLookAndFeel->setColour (TextEditor::focusedOutlineColourId, ThemeBackground3);
+    mLookAndFeel->setColour (TextEditor::focusedOutlineColourId, ThemeBackground2);
     mLookAndFeel->setColour (TextEditor::outlineColourId, ThemeBackground2);
+
+    mLookAndFeel->setColour (ComboBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel->setColour (ComboBox::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (ComboBox::outlineColourId, ThemeBackground2);
+    mLookAndFeel->setColour (ComboBox::buttonColourId, ThemeBackground3);
+    mLookAndFeel->setColour (ComboBox::arrowColourId, ThemeForeground2);
+
+    mLookAndFeel->setColour (PopupMenu::backgroundColourId, ThemeBackground1);
+    mLookAndFeel->setColour (PopupMenu::textColourId, ThemeForeground1);
+    mLookAndFeel->setColour (PopupMenu::headerTextColourId, ThemeForeground1);
+    mLookAndFeel->setColour (PopupMenu::highlightedBackgroundColourId, ThemeBackground2);
+    mLookAndFeel->setColour (PopupMenu::highlightedTextColourId, ThemeForeground1);
 
     mLookAndFeel->setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
     mLookAndFeel->setColour (TextButton::textColourOnId, ThemeForeground1);
