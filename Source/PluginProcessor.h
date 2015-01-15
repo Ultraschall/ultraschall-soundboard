@@ -11,8 +11,8 @@
 #define PLUGINPROCESSOR_H_INCLUDED
 
 #include "JuceHeader.h"
+#include "LookAndFeel.h"
 #include "Player.h"
-#include "OscSettings.h"
 
 class LookAndFeel_Ultraschall;
 
@@ -22,6 +22,8 @@ static const Identifier CurrentProgramIndexIdentifier("CurrentProgramIndex");
 
 static const Identifier WindowWidthIdentifier("WindowWidth");
 static const Identifier WindowHeightIdentifier("WindowHeight");
+
+static const Identifier ThemeIdentifier ("Theme");
 
 class SoundboardAudioProcessor : public AudioProcessor,
                                  public ChangeListener,
@@ -93,6 +95,9 @@ public:
     OscServer* getOscServer() { return oscServer; }
     bool receivedOscMessages() { return oscReceived > 0; }
 
+    // Properties
+    PropertiesFile* getPropertiesFile () { return propertiesFile; }
+
     // Parameter Helper
     void setGain(int playerIndex, float value);
     int getWindowWidth();
@@ -147,9 +152,6 @@ private:
     // OSC
     ScopedPointer<OscServer> oscServer;
     int oscReceived;
-
-    // Settings
-    ScopedPointer<OscSettings> settingsComponent;
 
     // MIDI
     MidiBuffer midiBuffer;

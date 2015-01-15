@@ -17,7 +17,6 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 {
     playersLock = true;
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel = new LookAndFeel_Ultraschall());
-    SwitchTheme (ThemeTomorrowNightBright);
     formatManager.registerBasicFormats();
     thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
 
@@ -41,9 +40,13 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     fallbackProperties->setValue(WindowWidthIdentifier.toString(), var(380));
     fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
+    fallbackProperties->setValue (ThemeIdentifier.toString (), var ((int) ThemeTomorrowNightEighties));
+
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
     propertiesFile->addChangeListener(this);
+
+    SwitchTheme ((Themes) propertiesFile->getIntValue (ThemeIdentifier, (int) ThemeTomorrowNightEighties));
 
     fadeOutRange.start = 1.0;
     fadeOutRange.end = 30.0;
@@ -51,7 +54,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     fadeOutRange.skew = 0.5;
 
     oscServer = new OscServer(this);
-    settingsComponent = new OscSettings(propertiesFile, oscServer);
+
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
     startTimer(TimerMidiEvents, 20);
@@ -393,15 +396,6 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         for (int index = 0; index < samplePlayers.size(); index++) {
             oscSendPlayerConfig(index);
         }
-    }
-}
-
-void SoundboardAudioProcessor::openSettings()
-{
-    SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-    if (editor) {
-        editor->addAndMakeVisible(settingsComponent);
-        settingsComponent->setBounds(0, 0, editor->getWidth(), editor->getHeight());
     }
 }
 
@@ -948,20 +942,6 @@ void SoundboardAudioProcessor::SwitchTheme(Themes theme) {
             ThemePurple = TomorrowNightBluePurple;
             break;
         };
-        default: {
-            ThemeBackground1 = TomorrowNightBrightBackground1;
-            ThemeBackground2 = TomorrowNightBrightBackground2;
-            ThemeBackground3 = TomorrowNightBrightBackground3;
-            ThemeForeground1 = TomorrowNightBrightForeground1;
-            ThemeForeground2 = TomorrowNightBrightForeground2;
-            ThemeRed = TomorrowNightBrightRed;
-            ThemeOrange = TomorrowNightBrightOrange;
-            ThemeYellow = TomorrowNightBrightYellow;
-            ThemeGreen = TomorrowNightBrightGreen;
-            ThemeAqua = TomorrowNightBrightAqua;
-            ThemeBlue = TomorrowNightBrightBlue;
-            ThemePurple = TomorrowNightBrightPurple;
-        }
     }
     mLookAndFeel->setColour (TableListBox::backgroundColourId, ThemeBackground1);
     mLookAndFeel->setColour (TableListBox::textColourId, ThemeForeground1);

@@ -57,6 +57,10 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
         resizeLimits.setSizeLimits (380, 320, 1024, 768);
     }
 
+    addAndMakeVisible(settingsComponent = new OscSettings (processor.getPropertiesFile (), processor.getOscServer (), p));
+    settingsComponent->setVisible (false);
+    settingsComponent->toBack ();
+
     refresh();
 
     // Make sure that before the constructor has finished, you've set the
@@ -113,6 +117,8 @@ void SoundboardAudioProcessorEditor::resized()
 
     processor.storeWindowWidth(getWidth());
     processor.storeWindowHeight(getHeight());
+
+    settingsComponent->setBounds (0, 0, getWidth (), getHeight ());
 }
 
 void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
@@ -129,19 +135,21 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
         }
     }
     else if (settingsButton == buttonThatWasClicked) {
-        processor.openSettings();
+        settingsComponent->setVisible (!settingsComponent->isVisible ());
+        if (settingsComponent->isVisible ())
+        {
+            settingsComponent->toFront (true);
+        }
+        else
+        {
+            settingsComponent->toBack ();
+        }
     }
     else if (gridButton == buttonThatWasClicked) {
         if (grid->isVisible()) {
             grid->setVisible(false);
             table->setVisible(true);
             table->toFront(true);
-            static int theme = 1;
-            if (theme >= 6)
-                theme = 1;
-            Themes val = static_cast<Themes>(theme);
-            processor.SwitchTheme(val);
-            theme ++;
         }
         else {
             table->setVisible(false);

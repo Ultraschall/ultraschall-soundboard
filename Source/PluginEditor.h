@@ -11,11 +11,12 @@
 #define PLUGINEDITOR_H_INCLUDED
 
 #include "JuceHeader.h"
+#include "LookAndFeel.h"
 #include "PluginProcessor.h"
 #include "TableComponent.h"
 #include "GridComponent.h"
 #include "OscSettings.h"
-#include "LookAndFeel.h"
+
 
 //==============================================================================
 /**
@@ -57,6 +58,8 @@ private:
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;
 
+    ScopedPointer<OscSettings> settingsComponent;
+
     ScopedPointer<Bar> topBar;
     ScopedPointer<AwesomeButton> settingsButton;
     ScopedPointer<ActivityIndicator> oscActivityIndicator;
@@ -66,7 +69,7 @@ private:
     SoundboardAudioProcessor& processor;
     bool mPauseState;
     bool mTimerState;
-
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessorEditor)
 };
 

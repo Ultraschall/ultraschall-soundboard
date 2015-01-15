@@ -29,11 +29,13 @@ class OscSettings : public Component,
                     public Button::Listener,
                     public TextEditor::Listener,
                     public OscMessageLogger,
-                    public ListBoxModel {
+                    public ListBoxModel,
+                    public ComboBox::Listener {
 public:
-    OscSettings(PropertiesFile* pf, OscServer* s)
+    OscSettings (PropertiesFile* pf, OscServer* s, SoundboardAudioProcessor& p)
         : propertiesFile(pf)
         , oscServer(s)
+        , processor (p)
     {
         addAndMakeVisible(topBar = new Bar());
         addAndMakeVisible(titleLabel = new Label());
@@ -123,6 +125,15 @@ public:
         closeButton->setButtonText("Ok");
         closeButton->addListener(this);
 
+        addAndMakeVisible (themeComboBox = new ComboBox ());
+        themeComboBox->addItem ("Tomorrow", (int)ThemeTomorrow);
+        themeComboBox->addItem ("TomorrowNight", (int) ThemeTomorrowNight);
+        themeComboBox->addItem ("TomorrowNightBlue", (int) ThemeTomorrowNightBlue);
+        themeComboBox->addItem ("TomorrowNightBright", (int) ThemeTomorrowNightBright);
+        themeComboBox->addItem ("TomorrowNightEighties", (int) ThemeTomorrowNightEighties);
+        themeComboBox->setSelectedId (propertiesFile->getIntValue (ThemeIdentifier, (int) ThemeTomorrowNightEighties));
+        themeComboBox->addListener (this);
+
         setSize(600, 400);
     }
 
@@ -143,17 +154,20 @@ public:
         buttomBar = nullptr;
         topBar = nullptr;
         seperator = nullptr;
+
+        themeComboBox = nullptr;
     }
 
     void paint(Graphics& g)
     {
-        g.fillAll(Colour::fromRGB(62, 62, 62)); // clear the background
+        g.fillAll(ThemeBackground1); // clear the background
     }
 
     void resized()
     {
         topBar->setBounds(0, 0, getWidth(), 32);
         titleLabel->setBounds(3, 5, getWidth(), 24);
+        themeComboBox->setBounds (100, 5, 200, 24);
 
         localEnabled->setBounds(8, 38, 136, 24);
         remoteEnabled->setBounds(8, 65, 136, 24);
@@ -190,8 +204,9 @@ public:
                                      remoteEnabled->getToggleState());
         }
         else if (buttonThatWasClicked == closeButton) {
+            toBack ();
+            setVisible (false);
             oscServer->removeLogger();
-            this->getParentComponent()->removeChildComponent(this);
         }
         else if (buttonThatWasClicked == oscLoggerEnabled) {
             if (oscLoggerEnabled->getToggleState()) {
@@ -234,11 +249,16 @@ public:
     void paintListBoxItem(int rowNumber, Graphics& g, int width, int height,
                           bool /*rowIsSelected*/)
     {
-        g.setColour(Colours::grey);
+        g.setColour(ThemeForeground1);
         g.drawText(oscLoggerBuffer[rowNumber], 0, 0, width, height,
                    Justification::centredLeft);
     }
 
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged)
+    {
+        Themes val = (Themes) comboBoxThatHasChanged->getSelectedId();
+        processor.SwitchTheme (val);
+    }
 private:
     ScopedPointer<ToggleButton> localEnabled;
     ScopedPointer<TextEditor> localPortNumber;
@@ -261,8 +281,12 @@ private:
     ScopedPointer<Bar> topBar;
     ScopedPointer<Bar> seperator;
 
+    ScopedPointer<ComboBox> themeComboBox;
+
     PropertiesFile* propertiesFile;
     OscServer* oscServer;
+    SoundboardAudioProcessor& processor;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OscSettings)
 };
 

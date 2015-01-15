@@ -12,6 +12,7 @@
 #define TABLECOMPONENT_H_INCLUDED
 
 #include "JuceHeader.h"
+#include "LookAndFeel.h"
 #include "PluginProcessor.h"
 
 class SoundboardCellButton : public Button,
