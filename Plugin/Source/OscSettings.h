@@ -30,12 +30,13 @@ class OscSettings : public Component,
                     public TextEditor::Listener,
                     public OscMessageLogger,
                     public ListBoxModel,
-                    public ComboBox::Listener {
+                    public ComboBox::Listener
+{
 public:
-    OscSettings (PropertiesFile* pf, OscServer* s, SoundboardAudioProcessor& p)
+    OscSettings(PropertiesFile* pf, OscServer* s, SoundboardAudioProcessor& p)
         : propertiesFile(pf)
-        , oscServer(s)
-        , processor (p)
+          , oscServer(s)
+          , processor(p)
     {
         addAndMakeVisible(topBar = new Bar());
         addAndMakeVisible(titleLabel = new Label());
@@ -47,12 +48,12 @@ public:
         addAndMakeVisible(localEnabled = new ToggleButton("receiveEnabled"));
         localEnabled->setButtonText("Receive on port:");
         localEnabled->addListener(this);
-        localEnabled->setToggleState(propertiesFile->getBoolValue(OscRecivePortNumberIdentifier.toString()),dontSendNotification);
+        localEnabled->setToggleState(propertiesFile->getBoolValue(OscRecivePortNumberIdentifier.toString()), dontSendNotification);
 
         addAndMakeVisible(remoteEnabled = new ToggleButton("sendEnabledButton"));
         remoteEnabled->setButtonText("Send on port:");
         remoteEnabled->addListener(this);
-        remoteEnabled->setToggleState(propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()),dontSendNotification);
+        remoteEnabled->setToggleState(propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()), dontSendNotification);
 
         addAndMakeVisible(oscLoggerEnabled = new ToggleButton("oscLoggerEnabled"));
         oscLoggerEnabled->setButtonText("OSC Logger");
@@ -68,8 +69,7 @@ public:
         localPortNumber->setScrollbarsShown(true);
         localPortNumber->setCaretVisible(true);
         localPortNumber->setPopupMenuEnabled(true);
-        localPortNumber->setText(
-            propertiesFile->getValue(OscRecivePortNumberIdentifier.toString(), ""));
+        localPortNumber->setText(propertiesFile->getValue(OscRecivePortNumberIdentifier.toString(), ""));
         localPortNumber->addListener(this);
 
         addAndMakeVisible(remotePortNumber = new TextEditor("sendPortNumber"));
@@ -119,14 +119,14 @@ public:
         closeButton->setButtonText("Ok");
         closeButton->addListener(this);
 
-        addAndMakeVisible (themeComboBox = new ComboBox ());
-        themeComboBox->addItem ("Tomorrow", static_cast<int>(ThemeTomorrow));
-        themeComboBox->addItem ("TomorrowNight", static_cast<int>(ThemeTomorrowNight));
-        themeComboBox->addItem ("TomorrowNightBlue", static_cast<int>(ThemeTomorrowNightBlue));
-        themeComboBox->addItem ("TomorrowNightBright", static_cast<int>(ThemeTomorrowNightBright));
-        themeComboBox->addItem ("TomorrowNightEighties", static_cast<int>(ThemeTomorrowNightEighties));
-        themeComboBox->setSelectedId (propertiesFile->getIntValue (ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties)), dontSendNotification);
-        themeComboBox->addListener (this);
+        addAndMakeVisible(themeComboBox = new ComboBox());
+        themeComboBox->addItem("Tomorrow", static_cast<int>(ThemeTomorrow));
+        themeComboBox->addItem("TomorrowNight", static_cast<int>(ThemeTomorrowNight));
+        themeComboBox->addItem("TomorrowNightBlue", static_cast<int>(ThemeTomorrowNightBlue));
+        themeComboBox->addItem("TomorrowNightBright", static_cast<int>(ThemeTomorrowNightBright));
+        themeComboBox->addItem("TomorrowNightEighties", static_cast<int>(ThemeTomorrowNightEighties));
+        themeComboBox->setSelectedId(propertiesFile->getIntValue(ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties)), dontSendNotification);
+        themeComboBox->addListener(this);
 
         setSize(600, 400);
     }
@@ -161,7 +161,7 @@ public:
     {
         topBar->setBounds(0, 0, getWidth(), 32);
         titleLabel->setBounds(3, 5, getWidth(), 24);
-        themeComboBox->setBounds (100, 5, 200, 24);
+        themeComboBox->setBounds(100, 5, 200, 24);
 
         localEnabled->setBounds(8, 38, 136, 24);
         remoteEnabled->setBounds(8, 65, 136, 24);
@@ -186,27 +186,33 @@ public:
 
     void buttonClicked(Button* buttonThatWasClicked) override
     {
-        if (buttonThatWasClicked == localEnabled) {
+        if (buttonThatWasClicked == localEnabled)
+        {
             localPortNumber->setReadOnly(localEnabled->getToggleState());
             propertiesFile->setValue(OscReciveEnabledIdentifier.toString(),
                                      localEnabled->getToggleState());
         }
-        else if (buttonThatWasClicked == remoteEnabled) {
+        else if (buttonThatWasClicked == remoteEnabled)
+        {
             remoteHonstname->setReadOnly(remoteEnabled->getToggleState());
             remotePortNumber->setReadOnly(remoteEnabled->getToggleState());
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(),
                                      remoteEnabled->getToggleState());
         }
-        else if (buttonThatWasClicked == closeButton) {
-            toBack ();
-            setVisible (false);
+        else if (buttonThatWasClicked == closeButton)
+        {
+            toBack();
+            setVisible(false);
             oscServer->removeLogger();
         }
-        else if (buttonThatWasClicked == oscLoggerEnabled) {
-            if (oscLoggerEnabled->getToggleState()) {
+        else if (buttonThatWasClicked == oscLoggerEnabled)
+        {
+            if (oscLoggerEnabled->getToggleState())
+            {
                 oscServer->setLogger(this);
             }
-            else {
+            else
+            {
                 oscServer->removeLogger();
             }
         }
@@ -214,15 +220,18 @@ public:
 
     void textEditorTextChanged(TextEditor& editor) override
     {
-        if (&editor == localPortNumber) {
+        if (&editor == localPortNumber)
+        {
             propertiesFile->setValue(OscRecivePortNumberIdentifier.toString(),
                                      localPortNumber->getText().getIntValue());
         }
-        else if (&editor == remotePortNumber) {
+        else if (&editor == remotePortNumber)
+        {
             propertiesFile->setValue(OscRemotePortNumberIdentifier.toString(),
                                      remotePortNumber->getText().getIntValue());
         }
-        else if (&editor == remoteHonstname) {
+        else if (&editor == remoteHonstname)
+        {
             propertiesFile->setValue(OscRemoteHostnameIdentifier.toString(),
                                      remoteHonstname->getText());
         }
@@ -232,14 +241,18 @@ public:
     {
         oscLoggerBuffer.add(message);
         if (oscLoggerBuffer.size() >= 50)
+        {
             oscLoggerBuffer.remove(0);
+        }
         oscLogger->updateContent();
         oscLogger->scrollToEnsureRowIsOnscreen(oscLoggerBuffer.size());
         oscLogger->repaint();
     }
 
     int getNumRows() override
-    { return oscLoggerBuffer.size(); }
+    {
+        return oscLoggerBuffer.size();
+    }
 
     void paintListBoxItem(int rowNumber, Graphics& g, int width, int height,
                           bool /*rowIsSelected*/) override
@@ -249,13 +262,14 @@ public:
                    Justification::centredLeft);
     }
 
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
+    void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override
     {
         auto val = static_cast<Themes>(comboBoxThatHasChanged->getSelectedId());
-        SwitchTheme (val);
+        SwitchTheme(val);
         processor.getActiveEditor()->lookAndFeelChanged();
         processor.getActiveEditor()->repaint();
     }
+
 private:
     ScopedPointer<ToggleButton> localEnabled;
     ScopedPointer<TextEditor> localPortNumber;
@@ -288,3 +302,4 @@ private:
 };
 
 #endif // OSCSETTINGS_H_INCLUDED
+

@@ -16,39 +16,44 @@
 #include "PluginProcessor.h"
 
 class SoundboardCellButton : public Button,
-                             public Timer {
+                             public Timer
+{
 public:
     SoundboardCellButton(String buttonName, String icon)
         : Button(buttonName),
-        icon(icon),
-        iconRotation(0.0f),
-        highlightState(false),
-                                 highlightColour(ThemeForeground2),
-        flashing(false),
-        flashingState(false),
-        rowNumber(-1),
-        tag(-1)
+          icon(icon),
+          iconRotation(0.0f),
+          highlightState(false),
+          highlightColour(ThemeForeground2),
+          flashing(false),
+          flashingState(false),
+          rowNumber(-1),
+          tag(-1)
     {
     }
+
     ~SoundboardCellButton()
     {
-        if (isTimerRunning()) {
+        if (isTimerRunning())
+        {
             stopTimer();
         }
     }
 
     void setHighlighted(bool value)
     {
-        if (highlightState != value) {
+        if (highlightState != value)
+        {
             highlightState = value;
             repaint();
         }
     }
 
-                                 void setHighlightColour(Colour color) {
-                                     highlightColour = color;
-                                     repaint();
-                                 }
+    void setHighlightColour(Colour color)
+    {
+        highlightColour = color;
+        repaint();
+    }
 
     // Timer
     void paintButton(Graphics& g, bool isMouseOverButton, bool /*isButtonDown*/) override
@@ -58,20 +63,29 @@ public:
 
         g.setColour(ThemeForeground1);
 
-        if (flashing) {
-            if (flashingState) {
+        if (flashing)
+        {
+            if (flashingState)
+            {
                 g.setColour(ThemeForeground1.contrasting(0.5f));
             }
-        } else if (highlightState) {
+        }
+        else if (highlightState)
+        {
             g.setColour(highlightColour);
-        } else if (!isEnabled()) {
+        }
+        else if (!isEnabled())
+        {
             g.setColour(ThemeForeground2);
-        } else if (isMouseOverButton) {
+        }
+        else if (isMouseOverButton)
+        {
             g.setColour(ThemeForeground1.contrasting(0.1f));
         }
 
         g.setFont(getFontAwesome(getHeight() * 0.7f));
-        if (iconRotation != 0) {
+        if (iconRotation != 0)
+        {
             g.addTransform(AffineTransform::rotation(-(float_Pi * iconRotation), getWidth() * 0.5f, getHeight() * 0.5f));
         }
         g.drawText(icon, 0, 0, getWidth(), getHeight(), Justification::centred, true);
@@ -87,13 +101,17 @@ public:
     void setFlashing(bool value)
     {
         flashing = value;
-        if (value) {
-            if (!isTimerRunning()) {
+        if (value)
+        {
+            if (!isTimerRunning())
+            {
                 startTimer(flashingSpeed);
             }
         }
-        else {
-            if (isTimerRunning()) {
+        else
+        {
+            if (isTimerRunning())
+            {
                 stopTimer();
             }
         }
@@ -106,18 +124,33 @@ public:
         repaint();
     }
 
-    void setRotation(float value) {
+    void setRotation(float value)
+    {
         iconRotation = value;
         repaint();
     }
 
     // Row Number
-    void setRowNumber(int value) { rowNumber = value; }
-    int getRowNumber() { return rowNumber; }
+    void setRowNumber(int value)
+    {
+        rowNumber = value;
+    }
+
+    int getRowNumber()
+    {
+        return rowNumber;
+    }
 
     // Tag
-    void setTag(int value) { tag = value; }
-    int getTag() { return tag; }
+    void setTag(int value)
+    {
+        tag = value;
+    }
+
+    int getTag()
+    {
+        return tag;
+    }
 
 private:
     String icon;
@@ -140,7 +173,8 @@ class SoundboardTableComponent : public Component,
                                  public TableListBoxModel,
                                  public MultiTimer,
                                  public Button::Listener,
-                                 public Slider::Listener {
+                                 public Slider::Listener
+{
 public:
     explicit SoundboardTableComponent(SoundboardAudioProcessor&);
     ~SoundboardTableComponent();
@@ -184,11 +218,13 @@ public:
 private:
     SoundboardAudioProcessor& processor;
 
-    enum TimerIds {
+    enum TimerIds
+    {
         TimerIdRepaint = 1
     };
 
-    enum TableColumnIds {
+    enum TableColumnIds
+    {
         ColumnIdNumberLabel = 1,
         ColumnIdFileLabel = 2,
         ColumnIdLoopButton = 3,
@@ -199,7 +235,8 @@ private:
         ColumnIdGainSlider = 8
     };
 
-    enum ButtonTags {
+    enum ButtonTags
+    {
         ButtonTagLoop = 1,
         ButtonTagPlayPause = 2,
         ButtonTagStop = 3,
@@ -219,3 +256,4 @@ private:
 };
 
 #endif // TABLECOMPONENT_H_INCLUDED
+

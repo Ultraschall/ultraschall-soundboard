@@ -15,42 +15,60 @@
 #include "LookAndFeel.h"
 #include "PluginProcessor.h"
 
-class SoundboardGridCell : public Component, public ChangeListener {
+class SoundboardGridCell : public Component, public ChangeListener
+{
 public:
     explicit SoundboardGridCell(Player* p)
         : player(p)
-        , index(-1)
-        , progressState(true)
+          , index(-1)
+          , progressState(true)
     {
         setRepaintsOnMouseActivity(true);
-        if (player) {
+        if (player)
+        {
             player->getThumbnail()->addChangeListener(this);
         }
     }
+
     ~SoundboardGridCell()
     {
     }
 
-    void mouseUp (const MouseEvent& event) override {
-        if (player) {
+    void mouseUp(const MouseEvent& event) override
+    {
+        if (player)
+        {
             Rectangle<float> loopArea(0.0f, 0.0f, getHeight() * 0.5f, getHeight() * 0.5f);
             Rectangle<float> timerArea(0.0f, getHeight() - getHeight() * 0.5f, getHeight() * 0.5f, getHeight() * 0.5f);
             Rectangle<float> fadeoutArea(getWidth() - getHeight() * 0.5f, 0.0f, getHeight() * 0.5f, getHeight() * 0.5f);
             Rectangle<float> stopArea(getWidth() - getHeight() * 0.5f, getHeight() - getHeight() * 0.5f, getHeight() * 0.5f, getHeight() * 0.5f);
-            if (loopArea.contains(event.position)) {
+            if (loopArea.contains(event.position))
+            {
                 player->setLooping(!player->isLooping());
-            } else if (fadeoutArea.contains(event.position)) {
-                if (player->isPlaying()) {
+            }
+            else if (fadeoutArea.contains(event.position))
+            {
+                if (player->isPlaying())
+                {
                     player->startFadeOut();
                 }
-            } else if (stopArea.contains(event.position)) {
+            }
+            else if (stopArea.contains(event.position))
+            {
                 player->stop();
-            } else if (timerArea.contains(event.position)) {
+            }
+            else if (timerArea.contains(event.position))
+            {
                 progressState = !progressState;
-            } else {
-                if (player->isPlaying()) {
+            }
+            else
+            {
+                if (player->isPlaying())
+                {
                     player->pause();
-                } else {
+                }
+                else
+                {
                     player->play();
                 }
             }
@@ -70,15 +88,23 @@ public:
         g.setColour(ThemeBackground3);
         g.fillRect(border);
 
-        if (player) {
+        if (player)
+        {
             Colour colour;
-            if (player->isPlayed()) {
+            if (player->isPlayed())
+            {
                 colour = ThemeGreen;
-            } else if (player->isFadingOut()) {
+            }
+            else if (player->isFadingOut())
+            {
                 colour = ThemeOrange;
-            } else if (player->isLooping()) {
+            }
+            else if (player->isLooping())
+            {
                 colour = ThemeBlue;
-            } else {
+            }
+            else
+            {
                 colour = ThemeYellow;
             }
 
@@ -87,44 +113,58 @@ public:
 
             g.setColour(colour.withAlpha(0.2f));
             auto thumbArea = cell.reduced(0, 5).toType<int>();
-            if (player->getThumbnail()->getTotalLength() > 0.0) {
+            if (player->getThumbnail()->getTotalLength() > 0.0)
+            {
                 player->getThumbnail()->drawChannel(g, thumbArea, 0, player->getThumbnail()->getTotalLength(), 1, 1.0f);
             }
 
             g.setColour(colour.brighter(0.4f));
             g.drawHorizontalLine(static_cast<int>(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
 
-            if (player->isPlayed()) {
+            if (player->isPlayed())
+            {
                 g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
-            } else if (player->isFadingOut()) {
+            }
+            else if (player->isFadingOut())
+            {
                 g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getGain(), cell.getHeight(), 2);
 
                 g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
-            } else if (player->isLooping()) {
+            }
+            else if (player->isLooping())
+            {
                 g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getProgress(), cell.getHeight(), 2);
 
                 g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
-                if (player->isPlaying()) {
+                if (player->isPlaying())
+                {
                     g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
-                } else {
+                }
+                else
+                {
                     g.drawText(FA_PLAY, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
                 }
-            } else {
+            }
+            else
+            {
                 g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getProgress(), cell.getHeight(), 2);
 
                 g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
-                if (player->isPlaying()) {
+                if (player->isPlaying())
+                {
                     g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
-                } else {
+                }
+                else
+                {
                     g.drawText(FA_PLAY, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
                 }
             }
@@ -136,38 +176,55 @@ public:
             g.drawText(player->getProgressString(progressState), info.getX(), info.getY(), info.getWidth(), info.getHeight(), Justification::bottomLeft, false);
             g.drawText(player->getTitle(), info.getX(), info.getY(), info.getWidth(), info.getHeight(), Justification::centredTop, false);
 
-            if (isMouseOver(true)) {
+            if (isMouseOver(true))
+            {
                 auto helperRect = cell.reduced(3).toType<int>();
-                if (player->isLooping()) {
+                if (player->isLooping())
+                {
                     g.setColour(colour);
-                } else {
+                }
+                else
+                {
                     g.setColour(ThemeForeground1.withAlpha(0.5f));
                 }
                 g.setFont(getFontAwesome(getHeight() * 0.25f));
                 g.drawText(FA_REFRESH, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::topLeft, false);
 
-                if (player->isPlayed()) {
+                if (player->isPlayed())
+                {
                     g.setColour(colour);
                     g.drawText(FA_SQUARE_O, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::bottomRight, false);
-                } else {
-                    if (!player->isPaused() && !player->isPlaying()) {
+                }
+                else
+                {
+                    if (!player->isPaused() && !player->isPlaying())
+                    {
                         g.setColour(ThemeForeground1.withAlpha(0.25f));
-                    } else {
+                    }
+                    else
+                    {
                         g.setColour(ThemeForeground1.withAlpha(0.5f));
                     }
                     g.drawText(FA_SQUARE, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::bottomRight, false);
                 }
 
-                if (!player->isPlaying()) {
+                if (!player->isPlaying())
+                {
                     g.setColour(ThemeForeground1.withAlpha(0.25f));
-                } else if(player->isFadingOut()) {
+                }
+                else if (player->isFadingOut())
+                {
                     g.setColour(colour);
-                } else {
+                }
+                else
+                {
                     g.setColour(ThemeForeground1.withAlpha(0.5f));
                 }
                 g.drawText(FA_VOLUME_DOWN, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::topRight, false);
             }
-        } else {
+        }
+        else
+        {
             g.setColour(ThemeForeground2);
             g.drawHorizontalLine(static_cast<int>(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
         }
@@ -177,8 +234,16 @@ public:
     {
         repaint();
     }
-    void setIndex(int value) { index = value; }
-    int getIndex() { return index; }
+
+    void setIndex(int value)
+    {
+        index = value;
+    }
+
+    int getIndex()
+    {
+        return index;
+    }
 
 private:
     Player* player;
@@ -187,7 +252,8 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardGridCell)
 };
 
-class SoundboardGridComponent : public Component, public MultiTimer {
+class SoundboardGridComponent : public Component, public MultiTimer
+{
 public:
     explicit SoundboardGridComponent(SoundboardAudioProcessor&);
     ~SoundboardGridComponent();
@@ -202,7 +268,8 @@ public:
     void updateContent();
 
 private:
-    enum TimerIds {
+    enum TimerIds
+    {
         TimerIdRepaint = 1
     };
 
@@ -212,3 +279,4 @@ private:
 };
 
 #endif // GRIDCOMPONENT_H_INCLUDED
+

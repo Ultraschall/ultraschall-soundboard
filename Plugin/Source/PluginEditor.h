@@ -24,7 +24,8 @@
 class SoundboardAudioProcessorEditor : public AudioProcessorEditor,
                                        public Button::Listener,
                                        public Slider::Listener,
-                                       public MultiTimer {
+                                       public MultiTimer
+{
 public:
     explicit SoundboardAudioProcessorEditor(SoundboardAudioProcessor&);
     ~SoundboardAudioProcessorEditor();
@@ -72,8 +73,9 @@ private:
     SoundboardAudioProcessor& processor;
     bool mPauseState;
     bool mTimerState;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessorEditor)
 };
 
 #endif // PLUGINEDITOR_H_INCLUDED
+

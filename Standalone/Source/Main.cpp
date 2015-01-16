@@ -14,29 +14,42 @@
 Component* createMainContentComponent();
 
 //==============================================================================
-class SoundboardApplication  : public JUCEApplication
+class SoundboardApplication : public JUCEApplication
 {
 public:
     //==============================================================================
-    SoundboardApplication() {}
+    SoundboardApplication()
+    {
+    }
 
-    const String getApplicationName() override       { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override    { return ProjectInfo::versionString; }
-    bool moreThanOneInstanceAllowed() override       { return true; }
+    const String getApplicationName() override
+    {
+        return ProjectInfo::projectName;
+    }
+
+    const String getApplicationVersion() override
+    {
+        return ProjectInfo::versionString;
+    }
+
+    bool moreThanOneInstanceAllowed() override
+    {
+        return true;
+    }
 
     //==============================================================================
-    void initialise (const String& /*commandLine*/) override
+    void initialise(const String& /*commandLine*/) override
     {
         // This method is where you should put your application's initialisation code..
 
-        mainWindow = new StandaloneFilterWindow (getApplicationName(),
-                                                 Colours::black,
-                                                 new PropertySet(),
-                                                 true);
-        mainWindow->setResizeLimits (380, 320, 1024, 768);
-        mainWindow->setUsingNativeTitleBar (true);
-        mainWindow->setResizable (true, true);
-        mainWindow->setVisible (true);
+        mainWindow = new StandaloneFilterWindow(getApplicationName(),
+                                                Colours::black,
+                                                new PropertySet(),
+                                                true);
+        mainWindow->setResizeLimits(380, 320, 1024, 768);
+        mainWindow->setUsingNativeTitleBar(true);
+        mainWindow->setResizable(true, true);
+        mainWindow->setVisible(true);
     }
 
     void shutdown() override
@@ -54,7 +67,7 @@ public:
         quit();
     }
 
-    void anotherInstanceStarted (const String& /*commandLine*/) override
+    void anotherInstanceStarted(const String& /*commandLine*/) override
     {
         // When another instance of the app is launched while this one is running,
         // this method is invoked, and the commandLine parameter tells you what

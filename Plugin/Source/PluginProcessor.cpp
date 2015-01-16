@@ -40,13 +40,13 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     fallbackProperties->setValue(WindowWidthIdentifier.toString(), var(380));
     fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
-    fallbackProperties->setValue (ThemeIdentifier.toString (), var (static_cast<int>(ThemeTomorrowNightEighties)));
+    fallbackProperties->setValue(ThemeIdentifier.toString(), var(static_cast<int>(ThemeTomorrowNightEighties)));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
     propertiesFile->addChangeListener(this);
 
-    SwitchTheme (static_cast<Themes>(propertiesFile->getIntValue (ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties))));
+    SwitchTheme(static_cast<Themes>(propertiesFile->getIntValue(ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties))));
 
     fadeOutRange.start = 1.0;
     fadeOutRange.end = 30.0;
@@ -86,8 +86,10 @@ int SoundboardAudioProcessor::getNumParameters()
 
 float SoundboardAudioProcessor::getParameter(int index)
 {
-    if (index < GlobalParameterCount) {
-        switch (index) {
+    if (index < GlobalParameterCount)
+    {
+        switch (index)
+        {
         case GlobalParameterFadeOut:
             return fadeOutRange.convertTo0to1(static_cast<float>(fadeOutSeconds));
         default:
@@ -98,11 +100,13 @@ float SoundboardAudioProcessor::getParameter(int index)
     auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= numPlayers()) {
+    if (playerIndex >= numPlayers())
+    {
         return 0;
     }
 
-    switch (playerParameterIndex) {
+    switch (playerParameterIndex)
+    {
     case PlayerParameterGain:
         return playerAtIndex(playerIndex)->getGain();
     default:
@@ -114,12 +118,15 @@ float SoundboardAudioProcessor::getParameter(int index)
 
 void SoundboardAudioProcessor::setParameter(int index, float newValue)
 {
-    if (index < GlobalParameterCount) {
-        switch (index) {
+    if (index < GlobalParameterCount)
+    {
+        switch (index)
+        {
         case GlobalParameterFadeOut:
             fadeOutSeconds = static_cast<int>(fadeOutRange.convertFrom0to1(newValue));
-            for (int index = 0; index < numPlayers(); index++) {
-                playerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
+            for (int playerIndex = 0; playerIndex < numPlayers(); playerIndex++)
+            {
+                playerAtIndex(playerIndex)->setFadeOutTime(fadeOutSeconds);
             }
             return;
         }
@@ -133,7 +140,8 @@ void SoundboardAudioProcessor::setParameter(int index, float newValue)
         return;
     }
 
-    switch (playerParameterIndex) {
+    switch (playerParameterIndex)
+    {
     case PlayerParameterGain:
         playerAtIndex(playerIndex)->setGain(newValue);
     default:
@@ -143,8 +151,10 @@ void SoundboardAudioProcessor::setParameter(int index, float newValue)
 
 const String SoundboardAudioProcessor::getParameterName(int index)
 {
-    if (index < GlobalParameterCount) {
-        switch (index) {
+    if (index < GlobalParameterCount)
+    {
+        switch (index)
+        {
         case GlobalParameterFadeOut:
             return "Ausblendzeit:";
         default:
@@ -155,11 +165,13 @@ const String SoundboardAudioProcessor::getParameterName(int index)
     auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= numPlayers()) {
+    if (playerIndex >= numPlayers())
+    {
         return "-";
     }
 
-    switch (playerParameterIndex) {
+    switch (playerParameterIndex)
+    {
     case PlayerParameterGain:
         return "Player " + String(playerIndex + 1) + " Gain";
     default:
@@ -171,8 +183,10 @@ const String SoundboardAudioProcessor::getParameterName(int index)
 
 const String SoundboardAudioProcessor::getParameterText(int index)
 {
-    if (index < GlobalParameterCount) {
-        switch (index) {
+    if (index < GlobalParameterCount)
+    {
+        switch (index)
+        {
         case GlobalParameterFadeOut:
             return String(fadeOutSeconds) + "s";
         default:
@@ -183,11 +197,13 @@ const String SoundboardAudioProcessor::getParameterText(int index)
     auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= numPlayers()) {
+    if (playerIndex >= numPlayers())
+    {
         return String::empty;
     }
 
-    switch (playerParameterIndex) {
+    switch (playerParameterIndex)
+    {
     case PlayerParameterGain:
         return String(playerAtIndex(playerIndex)->getGain());
     default:
@@ -240,9 +256,15 @@ bool SoundboardAudioProcessor::silenceInProducesSilenceOut() const
     return false;
 }
 
-double SoundboardAudioProcessor::getTailLengthSeconds() const { return 0.0; }
+double SoundboardAudioProcessor::getTailLengthSeconds() const
+{
+    return 0.0;
+}
 
-int SoundboardAudioProcessor::getNumPrograms() { return 1; }
+int SoundboardAudioProcessor::getNumPrograms()
+{
+    return 1;
+}
 
 int SoundboardAudioProcessor::getCurrentProgram()
 {
@@ -254,13 +276,15 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
     currentProgramIndex = index;
     if (index == ProgramNumberCustom)
         return;
-    if (index == ProgramNumberInit) {
+    if (index == ProgramNumberInit)
+    {
         currentDirectory = "";
         currentProgramIndex = ProgramNumberCustom;
         mixerAudioSource.removeAllInputs();
         players.clear();
         auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-        if (editor != nullptr) {
+        if (editor != nullptr)
+        {
             editor->refresh();
         }
         updateHostDisplay();
@@ -276,7 +300,9 @@ const String SoundboardAudioProcessor::getProgramName(int index)
 }
 
 void SoundboardAudioProcessor::changeProgramName(int /*index*/,
-                                                 const String& /*newName*/) {}
+                                                 const String& /*newName*/)
+{
+}
 
 //==============================================================================
 void SoundboardAudioProcessor::prepareToPlay(double sampleRate,
@@ -296,7 +322,8 @@ void SoundboardAudioProcessor::releaseResources()
 void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer,
                                             MidiBuffer& midiMessages)
 {
-    if (!midiMessages.isEmpty()) {
+    if (!midiMessages.isEmpty())
+    {
         const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
         midiBuffer.addEvents(midiMessages, midiMessages.getFirstEventTime(), -1, 0);
     }
@@ -313,14 +340,18 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer,
     sourceChannelInfo.numSamples = output.getNumSamples();
     mixerAudioSource.getNextAudioBlock(sourceChannelInfo);
 
-    for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
+    for (int channel = 0; channel < getNumOutputChannels(); ++channel)
+    {
         buffer.copyFrom(channel, 0, output, channel, 0,
                         sourceChannelInfo.numSamples);
     }
 }
 
 //==============================================================================
-bool SoundboardAudioProcessor::hasEditor() const { return true; }
+bool SoundboardAudioProcessor::hasEditor() const
+{
+    return true;
+}
 
 AudioProcessorEditor* SoundboardAudioProcessor::createEditor()
 {
@@ -341,12 +372,15 @@ void SoundboardAudioProcessor::setStateInformation(const void* data,
 {
     ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
     auto program = ValueTree::fromXml(*xmlState);
-    if (program.isValid()) {
+    if (program.isValid())
+    {
         auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
-        if (directoryString != String::empty) {
+        if (directoryString != String::empty)
+        {
             currentProgramIndex = ProgramNumberCustom;
             File directory(directoryString);
-            if (directory.exists()) {
+            if (directory.exists())
+            {
                 openDirectory(directory);
             }
         }
@@ -356,7 +390,8 @@ void SoundboardAudioProcessor::setStateInformation(const void* data,
 void SoundboardAudioProcessor::openDirectory(File directory)
 {
     playersLock = true;
-    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
+    {
         oscSendReset();
     }
     currentDirectory = directory.getFullPathName();
@@ -364,11 +399,14 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     players.clear();
     DirectoryIterator iterator(directory, false);
     auto count = 0;
-    while (iterator.next()) {
+    while (iterator.next())
+    {
         if (formatManager.findFormatForFileExtension(
-                iterator.getFile().getFileExtension()) != nullptr && count < MaximumSamplePlayers) {
+            iterator.getFile().getFileExtension()) != nullptr && count < MaximumSamplePlayers)
+        {
             auto audioFile = new Player(iterator.getFile(), &formatManager, thumbnailCache);
-            if (audioFile->getState() == Player::Error) {
+            if (audioFile->getState() == Player::Error)
+            {
                 delete audioFile;
                 break;
             }
@@ -384,14 +422,16 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     updateHostDisplay();
 
     auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-    if (editor) {
+    if (editor)
+    {
         editor->refresh();
     }
     propertiesFile->setValue(CurrentProgramIndexIdentifier.toString(),
                              currentProgramIndex);
     propertiesFile->setValue(CurrentDirectoryIdentifier.toString(),
                              currentDirectory);
-    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
+    {
         for (int index = 0; index < players.size(); index++)
         {
             oscSendPlayerConfig(index);
@@ -409,43 +449,43 @@ void SoundboardAudioProcessor::oscSendPlayerState(int index)
 
     p << osc::BeginBundleImmediate
 
-      << osc::BeginMessage((address + "play").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
+        << osc::BeginMessage((address + "play").toRawUTF8())
+        << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "pause").toRawUTF8())
-      << samplePlayer->isPaused() << osc::EndMessage
+        << osc::BeginMessage((address + "pause").toRawUTF8())
+        << samplePlayer->isPaused() << osc::EndMessage
 
-      << osc::BeginMessage((address + "stop").toRawUTF8())
-      << samplePlayer->isStopped() << osc::EndMessage
+        << osc::BeginMessage((address + "stop").toRawUTF8())
+        << samplePlayer->isStopped() << osc::EndMessage
 
-      << osc::BeginMessage((address + "trigger").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
+        << osc::BeginMessage((address + "trigger").toRawUTF8())
+        << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "ftrigger").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
+        << osc::BeginMessage((address + "ftrigger").toRawUTF8())
+        << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "fadeout").toRawUTF8())
-      << samplePlayer->isFadingOut() << osc::EndMessage
+        << osc::BeginMessage((address + "fadeout").toRawUTF8())
+        << samplePlayer->isFadingOut() << osc::EndMessage
 
-      << osc::BeginMessage((address + "loop").toRawUTF8())
-      << samplePlayer->isLooping() << osc::EndMessage
+        << osc::BeginMessage((address + "loop").toRawUTF8())
+        << samplePlayer->isLooping() << osc::EndMessage
 
-      << osc::BeginMessage((address + "done").toRawUTF8())
-      << samplePlayer->isPlayed() << osc::EndMessage
+        << osc::BeginMessage((address + "done").toRawUTF8())
+        << samplePlayer->isPlayed() << osc::EndMessage
 
-      << osc::BeginMessage((address + "progress").toRawUTF8())
-      << samplePlayer->getProgress() << osc::EndMessage
+        << osc::BeginMessage((address + "progress").toRawUTF8())
+        << samplePlayer->getProgress() << osc::EndMessage
 
-      << osc::BeginMessage((address + "time").toRawUTF8())
-      << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
+        << osc::BeginMessage((address + "time").toRawUTF8())
+        << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
 
-      << osc::BeginMessage((address + "remaining").toRawUTF8())
-      << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
+        << osc::BeginMessage((address + "remaining").toRawUTF8())
+        << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
 
-      << osc::BeginMessage((address + "gain").toRawUTF8())
-      << samplePlayer->getGain() << osc::EndMessage
+        << osc::BeginMessage((address + "gain").toRawUTF8())
+        << samplePlayer->getGain() << osc::EndMessage
 
-      << osc::EndBundle;
+        << osc::EndBundle;
 
     oscServer->sendMessage(p);
 }
@@ -460,75 +500,77 @@ void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 
     p << osc::BeginBundleImmediate
 
-      << osc::BeginMessage((address + "play").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
+        << osc::BeginMessage((address + "play").toRawUTF8())
+        << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "pause").toRawUTF8())
-      << samplePlayer->isPaused() << osc::EndMessage
+        << osc::BeginMessage((address + "pause").toRawUTF8())
+        << samplePlayer->isPaused() << osc::EndMessage
 
-      << osc::BeginMessage((address + "stop").toRawUTF8())
-      << samplePlayer->isStopped() << osc::EndMessage
+        << osc::BeginMessage((address + "stop").toRawUTF8())
+        << samplePlayer->isStopped() << osc::EndMessage
 
-      << osc::BeginMessage((address + "trigger").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
+        << osc::BeginMessage((address + "trigger").toRawUTF8())
+        << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "ftrigger").toRawUTF8())
-      << samplePlayer->isPlaying() << osc::EndMessage
+        << osc::BeginMessage((address + "ftrigger").toRawUTF8())
+        << samplePlayer->isPlaying() << osc::EndMessage
 
-      << osc::BeginMessage((address + "fadeout").toRawUTF8())
-      << samplePlayer->isFadingOut() << osc::EndMessage
+        << osc::BeginMessage((address + "fadeout").toRawUTF8())
+        << samplePlayer->isFadingOut() << osc::EndMessage
 
-      << osc::BeginMessage((address + "loop").toRawUTF8())
-      << samplePlayer->isLooping() << osc::EndMessage
+        << osc::BeginMessage((address + "loop").toRawUTF8())
+        << samplePlayer->isLooping() << osc::EndMessage
 
-      << osc::BeginMessage((address + "done").toRawUTF8())
-      << samplePlayer->isPlayed() << osc::EndMessage
+        << osc::BeginMessage((address + "done").toRawUTF8())
+        << samplePlayer->isPlayed() << osc::EndMessage
 
-      << osc::BeginMessage((address + "progress").toRawUTF8())
-      << samplePlayer->getProgress() << osc::EndMessage
+        << osc::BeginMessage((address + "progress").toRawUTF8())
+        << samplePlayer->getProgress() << osc::EndMessage
 
-      << osc::BeginMessage((address + "title").toRawUTF8())
-      << samplePlayer->getTitle().toRawUTF8() << osc::EndMessage
+        << osc::BeginMessage((address + "title").toRawUTF8())
+        << samplePlayer->getTitle().toRawUTF8() << osc::EndMessage
 
-      << osc::BeginMessage((address + "time").toRawUTF8())
-      << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
+        << osc::BeginMessage((address + "time").toRawUTF8())
+        << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
 
-      << osc::BeginMessage((address + "remaining").toRawUTF8())
-      << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
+        << osc::BeginMessage((address + "remaining").toRawUTF8())
+        << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
 
-      << osc::BeginMessage((address + "gain").toRawUTF8())
-      << samplePlayer->getGain() << osc::EndMessage
+        << osc::BeginMessage((address + "gain").toRawUTF8())
+        << samplePlayer->getGain() << osc::EndMessage
 
-      << osc::EndBundle;
+        << osc::EndBundle;
 
     oscServer->sendMessage(p);
 }
 
 void SoundboardAudioProcessor::oscSendPlayerUpdate()
 {
-    for (int index = 0; index < numPlayers(); index++) {
+    for (int index = 0; index < numPlayers(); index++)
+    {
         auto samplePlayer = playerAtIndex(index);
         auto address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
-        if (samplePlayer->isPlaying()) {
+        if (samplePlayer->isPlaying())
+        {
             char buffer[1024];
             osc::OutboundPacketStream p(buffer, 1024);
 
             p << osc::BeginBundleImmediate
 
-              << osc::BeginMessage((address + "progress").toRawUTF8())
-              << samplePlayer->getProgress() << osc::EndMessage
+                << osc::BeginMessage((address + "progress").toRawUTF8())
+                << samplePlayer->getProgress() << osc::EndMessage
 
-              << osc::BeginMessage((address + "time").toRawUTF8())
-              << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
+                << osc::BeginMessage((address + "time").toRawUTF8())
+                << samplePlayer->getProgressString(false).toRawUTF8() << osc::EndMessage
 
-              << osc::BeginMessage((address + "remaining").toRawUTF8())
-              << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
+                << osc::BeginMessage((address + "remaining").toRawUTF8())
+                << samplePlayer->getProgressString(true).toRawUTF8() << osc::EndMessage
 
-              << osc::BeginMessage((address + "gain").toRawUTF8())
-              << samplePlayer->getGain() << osc::EndMessage
+                << osc::BeginMessage((address + "gain").toRawUTF8())
+                << samplePlayer->getGain() << osc::EndMessage
 
-              << osc::EndBundle;
+                << osc::EndBundle;
 
             oscServer->sendMessage(p);
         }
@@ -537,53 +579,54 @@ void SoundboardAudioProcessor::oscSendPlayerUpdate()
 
 void SoundboardAudioProcessor::oscSendReset()
 {
-    for (int index = 0; index < MaximumSamplePlayers; index++) {
+    for (int index = 0; index < MaximumSamplePlayers; index++)
+    {
         auto address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
         char buffer[1024];
         osc::OutboundPacketStream p(buffer, 1024);
 
         p << osc::BeginBundleImmediate
 
-          << osc::BeginMessage((address + "play").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "play").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "pause").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "pause").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "stop").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "stop").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "trigger").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "trigger").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "ftrigger").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "ftrigger").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "fadeout").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "fadeout").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "loop").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "loop").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "done").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "done").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "progress").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "progress").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "title").toRawUTF8()) << "Off"
-          << osc::EndMessage
+            << osc::BeginMessage((address + "title").toRawUTF8()) << "Off"
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "time").toRawUTF8()) << "00:00:00"
-          << osc::EndMessage
+            << osc::BeginMessage((address + "time").toRawUTF8()) << "00:00:00"
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "remaining").toRawUTF8()) << "-00:00:00"
-          << osc::EndMessage
+            << osc::BeginMessage((address + "remaining").toRawUTF8()) << "-00:00:00"
+            << osc::EndMessage
 
-          << osc::BeginMessage((address + "gain").toRawUTF8()) << 0
-          << osc::EndMessage
+            << osc::BeginMessage((address + "gain").toRawUTF8()) << 0
+            << osc::EndMessage
 
-          << osc::EndBundle;
+            << osc::EndBundle;
         oscServer->sendMessage(p);
     }
 }
@@ -591,16 +634,21 @@ void SoundboardAudioProcessor::oscSendReset()
 void
 SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
 {
-    if (source == propertiesFile) {
-        if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
-            if (!oscServer->isThreadRunning()) {
+    if (source == propertiesFile)
+    {
+        if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier))
+        {
+            if (!oscServer->isThreadRunning())
+            {
                 oscServer->setLocalPortNumber(
                     propertiesFile->getIntValue(OscRecivePortNumberIdentifier));
                 oscServer->listen();
             }
         }
-        else {
-            if (oscServer->isThreadRunning()) {
+        else
+        {
+            if (oscServer->isThreadRunning())
+            {
                 oscServer->stopListening();
             }
         }
@@ -611,19 +659,25 @@ SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
         return;
     }
     auto samplePlayer = static_cast<Player*>(source);
-    if (samplePlayer != nullptr) {
-        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+    if (samplePlayer != nullptr)
+    {
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
+        {
             auto index = players.indexOf(samplePlayer);
             oscSendPlayerState(index);
         }
         auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-        if (editor) {
+        if (editor)
+        {
             editor->refresh();
         }
     }
 }
 
-int SoundboardAudioProcessor::numPlayers() { return players.size(); }
+int SoundboardAudioProcessor::numPlayers()
+{
+    return players.size();
+}
 
 Player* SoundboardAudioProcessor::playerAtIndex(int index)
 {
@@ -635,78 +689,100 @@ void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
     setParameterNotifyingHost(GlobalParameterFadeOut, fadeOutRange.convertTo0to1(static_cast<float>(seconds)));
 }
 
-int SoundboardAudioProcessor::getFadeOutSeconds() { return fadeOutSeconds; }
+int SoundboardAudioProcessor::getFadeOutSeconds()
+{
+    return fadeOutSeconds;
+}
 
 void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
 {
-    if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+    if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier))
+    {
         oscReceived++;
-        try {
-            if (packet.IsBundle()) {
+        try
+        {
+            if (packet.IsBundle())
+            {
                 osc::ReceivedBundle bundle(packet);
             }
-            else {
+            else
+            {
                 osc::ReceivedMessage message(packet);
                 if (String(message.AddressPattern())
-                        .startsWith("/ultraschall/soundboard/")) {
+                    .startsWith("/ultraschall/soundboard/"))
+                {
                     auto messageSplit = StringArray::fromTokens(
                         String(message.AddressPattern()), "/", "");
                     auto arg = message.ArgumentsBegin();
-                    if (messageSplit[3] == "player") {
+                    if (messageSplit[3] == "player")
+                    {
                         auto index = messageSplit[4].getIntValue();
                         index--;
                         if (playerAtIndex(index))
                         {
-                            if (index >= 0 && index < MaximumSamplePlayers) {
+                            if (index >= 0 && index < MaximumSamplePlayers)
+                            {
                                 auto command = messageSplit[5];
-                                if (command == "play") {
+                                if (command == "play")
+                                {
                                     auto value = (arg++)->AsFloat();
-                                    if (value) {
+                                    if (value)
+                                    {
                                         if (!playerAtIndex(index)->isPlaying())
                                         {
                                             playerAtIndex(index)->play();
                                         }
                                     }
                                 }
-                                else if (command == "pause") {
+                                else if (command == "pause")
+                                {
                                     auto value = (arg++)->AsFloat();
-                                    if (value) {
+                                    if (value)
+                                    {
                                         if (playerAtIndex(index)->isPlaying())
                                         {
                                             playerAtIndex(index)->pause();
                                         }
                                     }
                                 }
-                                else if (command == "stop") {
+                                else if (command == "stop")
+                                {
                                     auto value = (arg++)->AsFloat();
-                                    if (value) {
+                                    if (value)
+                                    {
                                         playerAtIndex(index)->stop();
                                     }
                                 }
-                                else if (command == "trigger") {
+                                else if (command == "trigger")
+                                {
                                     auto value = (arg++)->AsFloat();
-                                    if (value) {
+                                    if (value)
+                                    {
                                         if (!playerAtIndex(index)->isPlaying())
                                         {
                                             playerAtIndex(index)->play();
                                         }
                                     }
-                                    else {
+                                    else
+                                    {
                                         if (playerAtIndex(index)->isPlaying())
                                         {
                                             playerAtIndex(index)->stop();
                                         }
                                     }
                                 }
-                                else if (command == "ftrigger") {
+                                else if (command == "ftrigger")
+                                {
                                     auto value = (arg++)->AsFloat();
-                                    if (value) {
+                                    if (value)
+                                    {
                                         if (!playerAtIndex(index)->isPlaying())
                                         {
                                             playerAtIndex(index)->play();
                                         }
                                     }
-                                    else {
+                                    else
+                                    {
                                         if (playerAtIndex(index)->isFadingOut())
                                         {
                                             playerAtIndex(index)->stop();
@@ -717,30 +793,37 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                         }
                                     }
                                 }
-                                else if (command == "loop") {
+                                else if (command == "loop")
+                                {
                                     auto value = (arg++)->AsFloat();
                                     playerAtIndex(index)->setLooping(value != 0.0f);
                                 }
-                                else if (command == "fadeout") {
+                                else if (command == "fadeout")
+                                {
                                     auto value = (arg++)->AsFloat();
-                                    if (value) {
+                                    if (value)
+                                    {
                                         if (playerAtIndex(index)->isPlaying())
                                         {
                                             playerAtIndex(index)->startFadeOut();
                                         }
                                     }
                                 }
-                                else if (command == "gain") {
+                                else if (command == "gain")
+                                {
                                     auto value = (arg++)->AsFloat();
                                     playerAtIndex(index)->setGain(value);
                                 }
                             }
                         }
                     }
-                    else if (messageSplit[3] == "fadeout") {
-                        if (messageSplit[4] == "seconds") {
+                    else if (messageSplit[3] == "fadeout")
+                    {
+                        if (messageSplit[4] == "seconds")
+                        {
                             int value = (arg++)->AsInt32();
-                            for (int index = 0; index < numPlayers(); index++) {
+                            for (int index = 0; index < numPlayers(); index++)
+                            {
                                 playerAtIndex(index)->setFadeOutTime(value);
                             }
                         }
@@ -748,7 +831,8 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                 }
             }
         }
-        catch (osc::Exception& /*e*/) {
+        catch (osc::Exception& /*e*/)
+        {
             // any parsing errors such as unexpected argument types, or
             // missing arguments get thrown as exceptions.
             std::cout << "error while parsing message:" << std::endl;
@@ -758,30 +842,37 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
 
 void SoundboardAudioProcessor::timerCallback(int timerID)
 {
-    if (timerID == TimerOscServerDelay) {
+    if (timerID == TimerOscServerDelay)
+    {
         stopTimer(TimerOscServerDelay);
         oscServer->setLocalPortNumber(
             propertiesFile->getIntValue(OscRecivePortNumberIdentifier));
-        if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier)) {
+        if (propertiesFile->getBoolValue(OscReciveEnabledIdentifier))
+        {
             oscServer->listen();
         }
         oscServer->setRemoteHostname(
             propertiesFile->getValue(OscRemoteHostnameIdentifier));
         oscServer->setRemotePortNumber(
             propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
-        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
+        {
             oscSendReset();
         }
         startTimer(TimerOscRefresh, 100);
     }
-    else if (timerID == TimerOscRefresh) {
-        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
+    else if (timerID == TimerOscRefresh)
+    {
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
+        {
             oscSendPlayerUpdate();
         }
         oscReceived = 0;
     }
-    else if (timerID == TimerMidiEvents) {
-        if (!midiBuffer.isEmpty()) {
+    else if (timerID == TimerMidiEvents)
+    {
+        if (!midiBuffer.isEmpty())
+        {
             MidiBuffer midiMessages;
             {
                 const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
@@ -791,21 +882,26 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             MidiBuffer::Iterator iterator(midiMessages);
             MidiMessage midiMessage(0xf0);
             auto sample = 0;
-            while (iterator.getNextEvent(midiMessage, sample)) {
-                if (midiMessage.isNoteOnOrOff()) {
+            while (iterator.getNextEvent(midiMessage, sample))
+            {
+                if (midiMessage.isNoteOnOrOff())
+                {
                     auto index = midiMessage.getNoteNumber();
                     auto function = index / 24;
                     auto playerIndex = index % 24;
                     if (playerIndex < numPlayers())
                     {
-                        if (midiMessage.isNoteOn()) {
-                            switch (function) {
+                        if (midiMessage.isNoteOn())
+                        {
+                            switch (function)
+                            {
                             case PlayStop:
                                 if (!playerAtIndex(playerIndex)->isPlaying())
                                 {
                                     playerAtIndex(playerIndex)->play();
                                 }
-                                else {
+                                else
+                                {
                                     playerAtIndex(playerIndex)->stop();
                                 }
                                 break;
@@ -814,7 +910,8 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                 {
                                     playerAtIndex(playerIndex)->play();
                                 }
-                                else {
+                                else
+                                {
                                     playerAtIndex(playerIndex)->pause();
                                 }
                                 break;
@@ -823,7 +920,8 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                 {
                                     playerAtIndex(playerIndex)->play();
                                 }
-                                else {
+                                else
+                                {
                                     playerAtIndex(playerIndex)->startFadeOut();
                                 }
                                 break;
@@ -835,8 +933,10 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                 break;
                             }
                         }
-                        else if (midiMessage.isNoteOff()) {
-                            switch (function) {
+                        else if (midiMessage.isNoteOff())
+                        {
+                            switch (function)
+                            {
                             case HoldAndPlay:
                                 if (playerAtIndex(playerIndex)->isPlaying())
                                 {
@@ -854,7 +954,8 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
 
 void SoundboardAudioProcessor::setGain(int playerIndex, float value)
 {
-    if (playerIndex >= numPlayers()) {
+    if (playerIndex >= numPlayers())
+    {
         return;
     }
 
@@ -866,14 +967,17 @@ int SoundboardAudioProcessor::getWindowWidth()
 {
     return propertiesFile->getIntValue(WindowWidthIdentifier.toString());
 }
+
 void SoundboardAudioProcessor::storeWindowWidth(int width)
 {
     propertiesFile->setValue(WindowWidthIdentifier.toString(), var(width));
 }
+
 int SoundboardAudioProcessor::getWindowHeight()
 {
     return propertiesFile->getIntValue(WindowHeightIdentifier.toString());
 }
+
 void SoundboardAudioProcessor::storeWindowHeight(int height)
 {
     propertiesFile->setValue(WindowHeightIdentifier.toString(), var(height));

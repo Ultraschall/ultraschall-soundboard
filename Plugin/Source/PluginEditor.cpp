@@ -14,9 +14,9 @@
 SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     SoundboardAudioProcessor& p)
     : AudioProcessorEditor(&p)
-    , processor(p)
-    , mPauseState(true)
-    , mTimerState(true)
+      , processor(p)
+      , mPauseState(true)
+      , mTimerState(true)
 {
     addAndMakeVisible(topBar = new Bar());
 
@@ -30,7 +30,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
     addAndMakeVisible(fadeOutLabel = new Label());
     fadeOutLabel->setColour(Label::ColourIds::textColourId, ThemeForeground1);
-    fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s", NotificationType::dontSendNotification);
+    fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s", dontSendNotification);
 
     addAndMakeVisible(loadDirectoryButton = new AwesomeButton(FA_FOLDER_OPEN_O));
     loadDirectoryButton->setButtonText("");
@@ -59,13 +59,13 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
 
     if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
-        addAndMakeVisible (resizer = new ResizableCornerComponent (this, &resizeLimits));
-        resizeLimits.setSizeLimits (380, 320, 1024, 768);
+        addAndMakeVisible(resizer = new ResizableCornerComponent(this, &resizeLimits));
+        resizeLimits.setSizeLimits(380, 320, 1024, 768);
     }
 
-    addAndMakeVisible(settingsComponent = new OscSettings (processor.getPropertiesFile (), processor.getOscServer (), p));
-    settingsComponent->setVisible (false);
-    settingsComponent->toBack ();
+    addAndMakeVisible(settingsComponent = new OscSettings(processor.getPropertiesFile(), processor.getOscServer(), p));
+    settingsComponent->setVisible(false);
+    settingsComponent->toBack();
     listButton->setEnabled(false);
 
     refresh();
@@ -120,7 +120,7 @@ void SoundboardAudioProcessorEditor::resized()
 
     if (resizer)
     {
-        resizer->setBounds (getWidth () - 16, getHeight () - 16, 16, 16);
+        resizer->setBounds(getWidth() - 16, getHeight() - 16, 16, 16);
     }
 
     oscActivityIndicator->setBounds(180, 5, 120, 24);
@@ -128,52 +128,60 @@ void SoundboardAudioProcessorEditor::resized()
     processor.storeWindowWidth(getWidth());
     processor.storeWindowHeight(getHeight());
 
-    settingsComponent->setBounds (0, 0, getWidth (), getHeight ());
+    settingsComponent->setBounds(0, 0, getWidth(), getHeight());
 }
 
 void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
 {
-    if (loadDirectoryButton == buttonThatWasClicked) {
+    if (loadDirectoryButton == buttonThatWasClicked)
+    {
         FileChooser chooser("Open...");
-        if (chooser.browseForDirectory()) {
+        if (chooser.browseForDirectory())
+        {
             auto directory = chooser.getResult();
-            if (directory.isDirectory()) {
+            if (directory.isDirectory())
+            {
                 processor.openDirectory(directory);
                 table->updateContent();
                 grid->updateContent();
             }
         }
     }
-    else if (settingsButton == buttonThatWasClicked) {
-        settingsComponent->setVisible (!settingsComponent->isVisible ());
-        if (settingsComponent->isVisible ())
+    else if (settingsButton == buttonThatWasClicked)
+    {
+        settingsComponent->setVisible(!settingsComponent->isVisible());
+        if (settingsComponent->isVisible())
         {
-            settingsComponent->toFront (true);
+            settingsComponent->toFront(true);
         }
         else
         {
-            settingsComponent->toBack ();
+            settingsComponent->toBack();
         }
     }
-    else if (gridButton == buttonThatWasClicked) {
+    else if (gridButton == buttonThatWasClicked)
+    {
         gridButton->setEnabled(false);
         listButton->setEnabled(true);
 
         table->setVisible(false);
         grid->setVisible(true);
         grid->toFront(true);
-        if (resizer) {
+        if (resizer)
+        {
             resizer->toFront(false);
         }
     }
-    else if (listButton == buttonThatWasClicked) {
+    else if (listButton == buttonThatWasClicked)
+    {
         listButton->setEnabled(false);
         gridButton->setEnabled(true);
 
         grid->setVisible(false);
         table->setVisible(true);
         table->toFront(true);
-        if (resizer) {
+        if (resizer)
+        {
             resizer->toFront(false);
         }
     }
@@ -181,36 +189,40 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
 
 void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 {
-    if (timerID == TimerIdUpdate) {
-        fadeOutSlider->setValue(processor.getFadeOutSeconds(), NotificationType::dontSendNotification);
-        fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s",
-                              NotificationType::dontSendNotification);
+    if (timerID == TimerIdUpdate)
+    {
+        fadeOutSlider->setValue(processor.getFadeOutSeconds(), dontSendNotification);
+        fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s", dontSendNotification);
 
-        if (oscActivityIndicator->getActive() != processor.receivedOscMessages()) {
+        if (oscActivityIndicator->getActive() != processor.receivedOscMessages())
+        {
             oscActivityIndicator->setActive(processor.receivedOscMessages());
-            //repaint();
         }
     }
-    else if (timerID == TimerIdRefresh) {
+    else if (timerID == TimerIdRefresh)
+    {
         refresh();
     }
 }
 
 void SoundboardAudioProcessorEditor::refresh()
 {
-    if (!processor.isLoocked()) {
+    if (!processor.isLoocked())
+    {
         table->updateContent();
     }
 }
 
 void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
-    if (slider == fadeOutSlider) {
+    if (slider == fadeOutSlider)
+    {
         processor.setFadeOutSeconds(static_cast<int>(fadeOutSlider->getValue()));
         fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s",
                               dontSendNotification);
     }
-    else {
+    else
+    {
         auto index = slider->getName().getIntValue();
         processor.setGain(index, static_cast<float>(slider->getValue()));
     }

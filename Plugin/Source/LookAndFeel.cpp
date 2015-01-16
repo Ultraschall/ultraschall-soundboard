@@ -22,9 +22,12 @@ Colour ThemeAqua = TomorrowAqua;
 Colour ThemeBlue = TomorrowBlue;
 Colour ThemePurple = TomorrowPurple;
 
-void SwitchTheme(Themes theme) {
-    switch (theme) {
-        case ThemeTomorrow: {
+void SwitchTheme(Themes theme)
+{
+    switch (theme)
+    {
+    case ThemeTomorrow:
+        {
             ThemeBackground1 = TomorrowBackground1;
             ThemeBackground2 = TomorrowBackground2;
             ThemeBackground3 = TomorrowBackground3;
@@ -39,7 +42,8 @@ void SwitchTheme(Themes theme) {
             ThemePurple = TomorrowPurple;
             break;
         };
-        case ThemeTomorrowNightBright: {
+    case ThemeTomorrowNightBright:
+        {
             ThemeBackground1 = TomorrowNightBrightBackground1;
             ThemeBackground2 = TomorrowNightBrightBackground2;
             ThemeBackground3 = TomorrowNightBrightBackground3;
@@ -54,7 +58,8 @@ void SwitchTheme(Themes theme) {
             ThemePurple = TomorrowNightBrightPurple;
             break;
         };
-        case ThemeTomorrowNight: {
+    case ThemeTomorrowNight:
+        {
             ThemeBackground1 = TomorrowNightBackground1;
             ThemeBackground2 = TomorrowNightBackground2;
             ThemeBackground3 = TomorrowNightBackground3;
@@ -69,7 +74,8 @@ void SwitchTheme(Themes theme) {
             ThemePurple = TomorrowNightPurple;
             break;
         };
-        case ThemeTomorrowNightEighties: {
+    case ThemeTomorrowNightEighties:
+        {
             ThemeBackground1 = TomorrowNightEightiesBackground1;
             ThemeBackground2 = TomorrowNightEightiesBackground2;
             ThemeBackground3 = TomorrowNightEightiesBackground3;
@@ -84,7 +90,8 @@ void SwitchTheme(Themes theme) {
             ThemePurple = TomorrowNightEightiesPurple;
             break;
         };
-        case ThemeTomorrowNightBlue: {
+    case ThemeTomorrowNightBlue:
+        {
             ThemeBackground1 = TomorrowNightBlueBackground1;
             ThemeBackground2 = TomorrowNightBlueBackground2;
             ThemeBackground3 = TomorrowNightBlueBackground3;
@@ -102,34 +109,34 @@ void SwitchTheme(Themes theme) {
     }
     auto& mLookAndFeel = LookAndFeel::getDefaultLookAndFeel();
 
-    mLookAndFeel.setColour (TableListBox::backgroundColourId, ThemeBackground1);
-    mLookAndFeel.setColour (TableListBox::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
-    mLookAndFeel.setColour (Label::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (ToggleButton::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (ListBox::backgroundColourId, ThemeBackground1);
-    mLookAndFeel.setColour (ListBox::outlineColourId, ThemeBackground2);
-    mLookAndFeel.setColour (ListBox::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (TextEditor::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (TextEditor::backgroundColourId, ThemeBackground1);
-    mLookAndFeel.setColour (TextEditor::focusedOutlineColourId, ThemeBackground2);
-    mLookAndFeel.setColour (TextEditor::outlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour(TableListBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour(TableListBox::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(Slider::rotarySliderFillColourId, ThemeForeground1);
+    mLookAndFeel.setColour(Label::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(ToggleButton::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(ListBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour(ListBox::outlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour(ListBox::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(TextEditor::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(TextEditor::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour(TextEditor::focusedOutlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour(TextEditor::outlineColourId, ThemeBackground2);
 
-    mLookAndFeel.setColour (ComboBox::backgroundColourId, ThemeBackground1);
-    mLookAndFeel.setColour (ComboBox::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (ComboBox::outlineColourId, ThemeBackground2);
-    mLookAndFeel.setColour (ComboBox::buttonColourId, ThemeBackground3);
-    mLookAndFeel.setColour (ComboBox::arrowColourId, ThemeForeground2);
+    mLookAndFeel.setColour(ComboBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour(ComboBox::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(ComboBox::outlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour(ComboBox::buttonColourId, ThemeBackground3);
+    mLookAndFeel.setColour(ComboBox::arrowColourId, ThemeForeground2);
 
-    mLookAndFeel.setColour (PopupMenu::backgroundColourId, ThemeBackground1);
-    mLookAndFeel.setColour (PopupMenu::textColourId, ThemeForeground1);
-    mLookAndFeel.setColour (PopupMenu::headerTextColourId, ThemeForeground1);
-    mLookAndFeel.setColour (PopupMenu::highlightedBackgroundColourId, ThemeBackground2);
-    mLookAndFeel.setColour (PopupMenu::highlightedTextColourId, ThemeForeground1);
+    mLookAndFeel.setColour(PopupMenu::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour(PopupMenu::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour(PopupMenu::headerTextColourId, ThemeForeground1);
+    mLookAndFeel.setColour(PopupMenu::highlightedBackgroundColourId, ThemeBackground2);
+    mLookAndFeel.setColour(PopupMenu::highlightedTextColourId, ThemeForeground1);
 
-    mLookAndFeel.setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
-    mLookAndFeel.setColour (TextButton::textColourOnId, ThemeForeground1);
-    mLookAndFeel.setColour (TextButton::textColourOffId, ThemeForeground1);
+    mLookAndFeel.setColour(Slider::rotarySliderFillColourId, ThemeForeground1);
+    mLookAndFeel.setColour(TextButton::textColourOnId, ThemeForeground1);
+    mLookAndFeel.setColour(TextButton::textColourOffId, ThemeForeground1);
 }
 
 void LookAndFeel_Ultraschall::drawTableHeaderBackground(
@@ -142,7 +149,8 @@ void LookAndFeel_Ultraschall::drawTableHeaderBackground(
 
     g.setColour(ThemeBackground2);
 
-    for (int i = header.getNumColumns(true); --i >= 0;) {
+    for (int i = header.getNumColumns(true); --i >= 0;)
+    {
         g.fillRect(header.getColumnPosition(i).removeFromRight(1));
     }
 }
@@ -156,11 +164,12 @@ void LookAndFeel_Ultraschall::drawTableHeaderColumn(
     area.reduce(4, 0);
     g.setColour(ThemeForeground2);
     g.setFont(Font(height * 0.5f, Font::bold));
-    if (columnName == "Time") {
+    if (columnName == "Time")
+    {
         g.drawFittedText(columnName, area, Justification::centred, 1);
     }
-    else {
+    else
+    {
         g.drawFittedText(columnName, area, Justification::centredLeft, 1);
     }
 }
-

@@ -53,6 +53,7 @@ public:
         Paused = 3,
         Played = 4
     };
+
     PlayerState getState();
     AudioSource* getAudioSource();
     AudioThumbnail* getThumbnail();
@@ -87,3 +88,4 @@ private:
 };
 
 #endif // AUDIOFILE_H_INCLUDED
+

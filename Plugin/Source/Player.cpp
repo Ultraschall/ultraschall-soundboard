@@ -11,18 +11,18 @@
 
 Player::Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache)
     : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension())
-    , sortIndex(-1)
-    , title(audioFile.getFileNameWithoutExtension())
-    , playerState(Stopped)
-    , fadeOutGain(1.0f)
-    , fadeOutGainBackup(1.0f)
-    , fadeOutGainSteps(0.1f)
-    , fadeOutSeconds(4)
-    , fadeOut(false)
-    , process(0.0f)
-    , audioFormatManager(formatManager)
-    , thumbnailCache(thumbnailCache)
-    , transportSource(new AudioTransportSource())
+      , sortIndex(-1)
+      , title(audioFile.getFileNameWithoutExtension())
+      , playerState(Stopped)
+      , fadeOutGain(1.0f)
+      , fadeOutGainBackup(1.0f)
+      , fadeOutGainSteps(0.1f)
+      , fadeOutSeconds(4)
+      , fadeOut(false)
+      , process(0.0f)
+      , audioFormatManager(formatManager)
+      , thumbnailCache(thumbnailCache)
+      , transportSource(new AudioTransportSource())
 {
     timeSliceThread.startThread(3);
     audioSourcePlayer.setSource(transportSource);
@@ -163,11 +163,20 @@ void Player::pause()
     }
 }
 
-float Player::getProgress() { return process; }
+float Player::getProgress()
+{
+    return process;
+}
 
-void Player::setFadeOutTime(int seconds) { fadeOutSeconds = seconds; }
+void Player::setFadeOutTime(int seconds)
+{
+    fadeOutSeconds = seconds;
+}
 
-bool Player::isLooping() { return currentAudioFileSource->isLooping(); }
+bool Player::isLooping()
+{
+    return currentAudioFileSource->isLooping();
+}
 
 void Player::setLooping(bool value)
 {
@@ -182,7 +191,10 @@ void Player::setLooping(bool value)
     sendChangeMessage();
 }
 
-String Player::getTitle() { return title; }
+String Player::getTitle()
+{
+    return title;
+}
 
 String Player::getProgressString(bool remaining)
 {
@@ -191,31 +203,61 @@ String Player::getProgressString(bool remaining)
         Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getCurrentPosition()));
         return time.toString(false, true, true, true);
     }
-    else
-    {
-        Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
-        return "-" + time.toString(false, true, true, true);
-    }
+    Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
+    return "-" + time.toString(false, true, true, true);
 }
 
-float Player::getGain() { return transportSource->getGain(); }
+float Player::getGain()
+{
+    return transportSource->getGain();
+}
 
-void Player::setGain(float newGain) { transportSource->setGain(newGain); }
+void Player::setGain(float newGain)
+{
+    transportSource->setGain(newGain);
+}
 
-Player::PlayerState Player::getState() { return playerState; }
+Player::PlayerState Player::getState()
+{
+    return playerState;
+}
 
-AudioSource* Player::getAudioSource() { return transportSource; }
+AudioSource* Player::getAudioSource()
+{
+    return transportSource;
+}
 
-bool Player::isStopped() { return playerState == Stopped; }
+bool Player::isStopped()
+{
+    return playerState == Stopped;
+}
 
-bool Player::isPlayed() { return playerState == Played; }
+bool Player::isPlayed()
+{
+    return playerState == Played;
+}
 
-bool Player::isPlaying() { return playerState == Playing; }
+bool Player::isPlaying()
+{
+    return playerState == Playing;
+}
 
-bool Player::isPaused() { return playerState == Paused; }
+bool Player::isPaused()
+{
+    return playerState == Paused;
+}
 
-bool Player::isFadingOut() { return fadeOut; }
+bool Player::isFadingOut()
+{
+    return fadeOut;
+}
 
-void Player::setSortIndex(int value) { sortIndex = value; }
+void Player::setSortIndex(int value)
+{
+    sortIndex = value;
+}
 
-int Player::getSortIndex() { return sortIndex; }
+int Player::getSortIndex()
+{
+    return sortIndex;
+}

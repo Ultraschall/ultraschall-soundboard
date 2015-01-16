@@ -22,12 +22,13 @@ static const Identifier CurrentProgramIndexIdentifier("CurrentProgramIndex");
 static const Identifier WindowWidthIdentifier("WindowWidth");
 static const Identifier WindowHeightIdentifier("WindowHeight");
 
-static const Identifier ThemeIdentifier ("Theme");
+static const Identifier ThemeIdentifier("Theme");
 
 class SoundboardAudioProcessor : public AudioProcessor,
                                  public ChangeListener,
                                  public OscMessageListener,
-                                 public MultiTimer {
+                                 public MultiTimer
+{
 public:
     SoundboardAudioProcessor();
     ~SoundboardAudioProcessor();
@@ -72,14 +73,17 @@ public:
     Player* playerAtIndex(int index);
 
     void openDirectory(File directory);
-    bool isLoocked() { return playersLock; }
+
+    bool isLoocked()
+    {
+        return playersLock;
+    }
 
     int getFadeOutSeconds();
     void setFadeOutSeconds(int seconds);
-    void openSettings();
 
     // ChangeListener
-    void changeListenerCallback(ChangeBroadcaster* source);
+    void changeListenerCallback(ChangeBroadcaster* source) override;
 
     // OscMessageListener
     void handleOscMessage(osc::ReceivedPacket packet) override;
@@ -89,14 +93,24 @@ public:
     void oscSendReset();
 
     // MultiTimer
-    void timerCallback(int timerID);
+    void timerCallback(int timerID) override;
 
     // OSC
-    OscServer* getOscServer() { return oscServer; }
-    bool receivedOscMessages() { return oscReceived > 0; }
+    OscServer* getOscServer()
+    {
+        return oscServer;
+    }
+
+    bool receivedOscMessages()
+    {
+        return oscReceived > 0;
+    }
 
     // Properties
-    PropertiesFile* getPropertiesFile () { return propertiesFile; }
+    PropertiesFile* getPropertiesFile()
+    {
+        return propertiesFile;
+    }
 
     // Parameter Helper
     void setGain(int playerIndex, float value);
@@ -104,7 +118,7 @@ public:
     void storeWindowWidth(int width);
     int getWindowHeight();
     void storeWindowHeight(int height);
-                                     
+
 private:
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 24;
@@ -128,7 +142,8 @@ private:
     bool playersLock;
 
     // Global Parameter
-    enum GlobalParameter {
+    enum GlobalParameter
+    {
         GlobalParameterFadeOut = 0,
         GlobalParameterCount = 1
     };
@@ -137,7 +152,8 @@ private:
     NormalisableRange<float> fadeOutRange;
 
     // Player Parameter
-    enum PlayerParameter {
+    enum PlayerParameter
+    {
         PlayerParameterGain = 0,
         PlayerParameterCount = 1
     };
@@ -155,14 +171,18 @@ private:
     // MIDI
     MidiBuffer midiBuffer;
     CriticalSection midiCriticalSection;
-    enum MidiFunction {
+
+    enum MidiFunction
+    {
         PlayStop = 0,
         PlayPause = 1,
         PlayFadeOut = 2,
         HoldAndPlay = 3
     };
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };
 
 #endif // PLUGINPROCESSOR_H_INCLUDED
+
