@@ -60,14 +60,14 @@ public:
 
         if (flashing) {
             if (flashingState) {
-                g.setColour(ThemeForeground1.contrasting(0.5));
+                g.setColour(ThemeForeground1.contrasting(0.5f));
             }
         } else if (highlightState) {
             g.setColour(highlightColour);
         } else if (!isEnabled()) {
             g.setColour(ThemeForeground2);
         } else if (isMouseOverButton) {
-            g.setColour(ThemeForeground1.contrasting(0.1));
+            g.setColour(ThemeForeground1.contrasting(0.1f));
         }
 
         g.setFont(getFontAwesome(getHeight() * 0.7f));

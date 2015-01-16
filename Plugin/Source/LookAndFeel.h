@@ -133,15 +133,15 @@ public:
 
         if (spacer) {
             g.setColour(ThemeBackground1.darker().darker());
-            g.drawHorizontalLine(1.0f, 0.0f, (float)getWidth());
+            g.drawHorizontalLine(1, 0.0f, (float)getWidth());
             g.setColour(ThemeBackground1.darker());
-            g.drawHorizontalLine(2.0f, 0.0f, (float)getWidth());
+            g.drawHorizontalLine(2, 0.0f, (float)getWidth());
             g.setColour(ThemeBackground2);
-            g.drawHorizontalLine(2.0f, 0.0f, (float)getWidth());
+            g.drawHorizontalLine(3, 0.0f, (float)getWidth());
         }
 
         g.setColour(ThemeBackground2.darker(0.8f));
-        g.drawHorizontalLine((float)getHeight() - 1.0f, 0.0f, (float)getWidth());
+        g.drawHorizontalLine(getHeight() - 1, 0.0f, (float)getWidth());
     }
 
     void setSpacer(bool value) {
@@ -167,9 +167,9 @@ public:
         gradiant.addColour(0.1f, ThemeForeground1);
 
         g.setGradientFill(gradiant);
-        g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), 5.0f);
+        g.fillRoundedRectangle(0.0f, 0.0f, (float)getWidth(), (float)getHeight(), 5.0f);
         g.setColour(ThemeBackground1);
-        g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5.0f, 1.0f);
+        g.drawRoundedRectangle(0.0f, 0.0f, (float) getWidth(), (float) getHeight(), 5.0f, 1.0f);
     }
 
 private:
