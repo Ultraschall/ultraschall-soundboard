@@ -12,11 +12,12 @@
 #define GRIDCOMPONENT_H_INCLUDED
 
 #include "JuceHeader.h"
+#include "LookAndFeel.h"
 #include "PluginProcessor.h"
 
 class SoundboardGridCell : public Component, public ChangeListener {
 public:
-    SoundboardGridCell(Player* p)
+    explicit SoundboardGridCell(Player* p)
         : player(p)
         , index(-1)
         , progressState(true)
@@ -60,8 +61,8 @@ public:
 
     void paint(Graphics& g) override
     {
-        Rectangle<float> border = g.getClipBounds().reduced(1).toFloat();
-        Rectangle<float> cell = border.reduced(2).toFloat();
+        auto border = g.getClipBounds().reduced(1).toFloat();
+        auto cell = border.reduced(2).toFloat();
 
         g.setColour(ThemeBackground1);
         g.fillAll();
@@ -85,13 +86,13 @@ public:
             g.fillRoundedRectangle(cell, 2);
 
             g.setColour(colour.withAlpha(0.2f));
-            Rectangle<int> thumbArea = cell.reduced(0, 5).toType<int>();
+            auto thumbArea = cell.reduced(0, 5).toType<int>();
             if (player->getThumbnail()->getTotalLength() > 0.0) {
                 player->getThumbnail()->drawChannel(g, thumbArea, 0, player->getThumbnail()->getTotalLength(), 1, 1.0f);
             }
 
             g.setColour(colour.brighter(0.4f));
-            g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
+            g.drawHorizontalLine(static_cast<int>(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
 
             if (player->isPlayed()) {
                 g.setColour(colour.withAlpha(0.9f));
@@ -128,7 +129,7 @@ public:
                 }
             }
 
-            Rectangle<int> info = cell.reduced(1).toType<int>();
+            auto info = cell.reduced(1).toType<int>();
             g.resetToDefaultState();
             g.setFont(getHeight() * 0.15f);
             g.setColour(ThemeForeground1);
@@ -136,7 +137,7 @@ public:
             g.drawText(player->getTitle(), info.getX(), info.getY(), info.getWidth(), info.getHeight(), Justification::centredTop, false);
 
             if (isMouseOver(true)) {
-                Rectangle<int> helperRect = cell.reduced(3).toType<int>();
+                auto helperRect = cell.reduced(3).toType<int>();
                 if (player->isLooping()) {
                     g.setColour(colour);
                 } else {
@@ -168,7 +169,7 @@ public:
             }
         } else {
             g.setColour(ThemeForeground2);
-            g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
+            g.drawHorizontalLine(static_cast<int>(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
         }
     }
 
@@ -188,7 +189,7 @@ private:
 
 class SoundboardGridComponent : public Component, public MultiTimer {
 public:
-    SoundboardGridComponent(SoundboardAudioProcessor&);
+    explicit SoundboardGridComponent(SoundboardAudioProcessor&);
     ~SoundboardGridComponent();
 
     // Component

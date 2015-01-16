@@ -54,7 +54,7 @@ public:
     void paintButton(Graphics& g, bool isMouseOverButton, bool /*isButtonDown*/) override
     {
         g.setColour(ThemeBackground1);
-        g.drawLine((float) getWidth(), 0, (float) getWidth(), (float) getHeight(), 1.5f);
+        g.drawLine(static_cast<float>(getWidth()), 0, static_cast<float>(getWidth()), static_cast<float>(getHeight()), 1.5f);
 
         g.setColour(ThemeForeground1);
 
@@ -128,7 +128,7 @@ private:
 
     bool flashing;
     bool flashingState;
-    static const int flashingSpeed = (int)(1000 * 0.5);
+    static const int flashingSpeed = static_cast<int>(1000 * 0.5);
 
     int rowNumber;
     int tag;
@@ -142,7 +142,7 @@ class SoundboardTableComponent : public Component,
                                  public Button::Listener,
                                  public Slider::Listener {
 public:
-    SoundboardTableComponent(SoundboardAudioProcessor&);
+    explicit SoundboardTableComponent(SoundboardAudioProcessor&);
     ~SoundboardTableComponent();
 
     // Component

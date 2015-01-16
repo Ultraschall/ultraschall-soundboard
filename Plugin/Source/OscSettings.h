@@ -39,7 +39,7 @@ public:
     {
         addAndMakeVisible(topBar = new Bar());
         addAndMakeVisible(titleLabel = new Label());
-        titleLabel->setText("OSC Einstellungen", NotificationType::dontSendNotification);
+        titleLabel->setText("OSC Einstellungen", dontSendNotification);
         titleLabel->setFont(Font(24.0f * 0.7f));
 
         addAndMakeVisible(seperator = new Bar());
@@ -47,16 +47,12 @@ public:
         addAndMakeVisible(localEnabled = new ToggleButton("receiveEnabled"));
         localEnabled->setButtonText("Receive on port:");
         localEnabled->addListener(this);
-        localEnabled->setToggleState(
-            propertiesFile->getBoolValue(OscRecivePortNumberIdentifier.toString()),
-            NotificationType::dontSendNotification);
+        localEnabled->setToggleState(propertiesFile->getBoolValue(OscRecivePortNumberIdentifier.toString()),dontSendNotification);
 
         addAndMakeVisible(remoteEnabled = new ToggleButton("sendEnabledButton"));
         remoteEnabled->setButtonText("Send on port:");
         remoteEnabled->addListener(this);
-        remoteEnabled->setToggleState(
-            propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()),
-            NotificationType::dontSendNotification);
+        remoteEnabled->setToggleState(propertiesFile->getBoolValue(OscRemoteEnabledIdentifier.toString()),dontSendNotification);
 
         addAndMakeVisible(oscLoggerEnabled = new ToggleButton("oscLoggerEnabled"));
         oscLoggerEnabled->setButtonText("OSC Logger");
@@ -83,8 +79,7 @@ public:
         remotePortNumber->setScrollbarsShown(true);
         remotePortNumber->setCaretVisible(true);
         remotePortNumber->setPopupMenuEnabled(true);
-        remotePortNumber->setText(
-            propertiesFile->getValue(OscRemotePortNumberIdentifier.toString(), ""));
+        remotePortNumber->setText(propertiesFile->getValue(OscRemotePortNumberIdentifier.toString(), ""));
         remotePortNumber->addListener(this);
 
         addAndMakeVisible(localHostLabel = new Label("receiveHostLabel", "Host:"));
@@ -109,8 +104,7 @@ public:
         remoteHonstname->setScrollbarsShown(true);
         remoteHonstname->setCaretVisible(true);
         remoteHonstname->setPopupMenuEnabled(true);
-        remoteHonstname->setText(
-            propertiesFile->getValue(OscRemoteHostnameIdentifier.toString(), ""));
+        remoteHonstname->setText(propertiesFile->getValue(OscRemoteHostnameIdentifier.toString(), ""));
         remoteHonstname->addListener(this);
 
         addAndMakeVisible(remoteHostLabel = new Label("sendHostLabel", "Device:"));
@@ -126,12 +120,12 @@ public:
         closeButton->addListener(this);
 
         addAndMakeVisible (themeComboBox = new ComboBox ());
-        themeComboBox->addItem ("Tomorrow", (int)ThemeTomorrow);
-        themeComboBox->addItem ("TomorrowNight", (int) ThemeTomorrowNight);
-        themeComboBox->addItem ("TomorrowNightBlue", (int) ThemeTomorrowNightBlue);
-        themeComboBox->addItem ("TomorrowNightBright", (int) ThemeTomorrowNightBright);
-        themeComboBox->addItem ("TomorrowNightEighties", (int) ThemeTomorrowNightEighties);
-        themeComboBox->setSelectedId (propertiesFile->getIntValue (ThemeIdentifier, (int) ThemeTomorrowNightEighties), NotificationType::dontSendNotification);
+        themeComboBox->addItem ("Tomorrow", static_cast<int>(ThemeTomorrow));
+        themeComboBox->addItem ("TomorrowNight", static_cast<int>(ThemeTomorrowNight));
+        themeComboBox->addItem ("TomorrowNightBlue", static_cast<int>(ThemeTomorrowNightBlue));
+        themeComboBox->addItem ("TomorrowNightBright", static_cast<int>(ThemeTomorrowNightBright));
+        themeComboBox->addItem ("TomorrowNightEighties", static_cast<int>(ThemeTomorrowNightEighties));
+        themeComboBox->setSelectedId (propertiesFile->getIntValue (ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties)), dontSendNotification);
         themeComboBox->addListener (this);
 
         setSize(600, 400);
@@ -158,12 +152,12 @@ public:
         themeComboBox = nullptr;
     }
 
-    void paint(Graphics& g)
+    void paint(Graphics& g) override
     {
         g.fillAll(ThemeBackground1); // clear the background
     }
 
-    void resized()
+    void resized() override
     {
         topBar->setBounds(0, 0, getWidth(), 32);
         titleLabel->setBounds(3, 5, getWidth(), 24);
@@ -190,7 +184,7 @@ public:
         buttomBar->setBounds(0, getHeight() - 32, getWidth(), 32);
     }
 
-    void buttonClicked(Button* buttonThatWasClicked)
+    void buttonClicked(Button* buttonThatWasClicked) override
     {
         if (buttonThatWasClicked == localEnabled) {
             localPortNumber->setReadOnly(localEnabled->getToggleState());
@@ -218,7 +212,7 @@ public:
         }
     }
 
-    void textEditorTextChanged(TextEditor& editor)
+    void textEditorTextChanged(TextEditor& editor) override
     {
         if (&editor == localPortNumber) {
             propertiesFile->setValue(OscRecivePortNumberIdentifier.toString(),
@@ -234,7 +228,7 @@ public:
         }
     }
 
-    void logOscMessage(juce::String message)
+    void logOscMessage(String message) override
     {
         oscLoggerBuffer.add(message);
         if (oscLoggerBuffer.size() >= 50)
@@ -244,19 +238,20 @@ public:
         oscLogger->repaint();
     }
 
-    int getNumRows() { return oscLoggerBuffer.size(); }
+    int getNumRows() override
+    { return oscLoggerBuffer.size(); }
 
     void paintListBoxItem(int rowNumber, Graphics& g, int width, int height,
-                          bool /*rowIsSelected*/)
+                          bool /*rowIsSelected*/) override
     {
         g.setColour(ThemeForeground1);
         g.drawText(oscLoggerBuffer[rowNumber], 0, 0, width, height,
                    Justification::centredLeft);
     }
 
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged)
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
     {
-        Themes val = (Themes) comboBoxThatHasChanged->getSelectedId();
+        auto val = static_cast<Themes>(comboBoxThatHasChanged->getSelectedId());
         SwitchTheme (val);
         processor.getActiveEditor()->lookAndFeelChanged();
         processor.getActiveEditor()->repaint();

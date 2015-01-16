@@ -69,7 +69,7 @@ public:
 
         processor->setPlayConfigDetails (JucePlugin_MaxNumInputChannels,
                                          JucePlugin_MaxNumOutputChannels,
-                                         48000, 512);
+                                         44100, 512);
     }
 
     void deletePlugin()
@@ -138,7 +138,7 @@ public:
             MemoryBlock data;
 
             if (fc.getResult().loadFileAsData (data))
-                processor->setStateInformation (data.getData(), (int) data.getSize());
+                processor->setStateInformation (data.getData(), static_cast<int>(data.getSize()));
             else
                 AlertWindow::showMessageBox (AlertWindow::WarningIcon,
                                              TRANS("Error whilst loading"),
@@ -221,7 +221,7 @@ public:
             MemoryBlock data;
 
             if (data.fromBase64Encoding (settings->getValue ("filterState")) && data.getSize() > 0)
-                processor->setStateInformation (data.getData(), (int) data.getSize());
+                processor->setStateInformation (data.getData(), static_cast<int>(data.getSize()));
         }
     }
 
@@ -274,10 +274,10 @@ public:
                             Colour backgroundColour,
                             PropertySet* settingsToUse,
                             bool takeOwnershipOfSettings)
-        : DocumentWindow (title, backgroundColour, DocumentWindow::minimiseButton | DocumentWindow::closeButton),
+        : DocumentWindow (title, backgroundColour, minimiseButton | closeButton),
           optionsButton ("")
     {
-        setTitleBarButtonsRequired (DocumentWindow::closeButton | DocumentWindow::minimiseButton | DocumentWindow::maximiseButton, true);
+        setTitleBarButtonsRequired (closeButton | minimiseButton | maximiseButton, true);
 
         Component::addAndMakeVisible (optionsButton);
         optionsButton.addListener (this);

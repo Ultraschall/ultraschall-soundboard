@@ -11,7 +11,6 @@
 #define PLUGINPROCESSOR_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "LookAndFeel.h"
 #include "Player.h"
 
 class LookAndFeel_Ultraschall;

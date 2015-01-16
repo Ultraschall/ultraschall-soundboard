@@ -45,7 +45,7 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
                                         ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,
                                         TableHeaderComponent::notSortable);
 
-    startTimer(TimerIdRepaint, (int)(1000 * 0.5));
+    startTimer(TimerIdRepaint, static_cast<int>(1000 * 0.5));
 }
 
 SoundboardTableComponent::~SoundboardTableComponent()
@@ -90,10 +90,10 @@ void SoundboardTableComponent::paintCell(Graphics& g,
                                          bool /*rowIsSelected*/)
 {
     g.setColour(ThemeBackground1);
-    g.drawLine((float)width, 0, (float)width, (float)height, 1.5f);
+    g.drawLine(static_cast<float>(width), 0, static_cast<float>(width), static_cast<float>(height), 1.5f);
 
     g.setColour(ThemeForeground1);
-    String text = String::empty;
+    auto text = String::empty;
 
     switch (columnId) {
     case ColumnIdNumberLabel:
@@ -156,7 +156,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
                                                              Component* existingComponentToUpdate)
 {
     if (columnId == ColumnIdLoopButton) {
-        SoundboardCellButton* button = (SoundboardCellButton*)existingComponentToUpdate;
+        auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
             button = new SoundboardCellButton("Loop", FA_REFRESH);
@@ -171,7 +171,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         return button;
     }
     else if (columnId == ColumnIdPlayPauseButton) {
-        SoundboardCellButton* button = (SoundboardCellButton*)existingComponentToUpdate;
+        auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
             button = new SoundboardCellButton("Play / Pause", FA_PLAY);
@@ -192,7 +192,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         return button;
     }
     else if (columnId == ColumnIdStopButton) {
-        SoundboardCellButton* button = (SoundboardCellButton*)existingComponentToUpdate;
+        auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
             button = new SoundboardCellButton("Stop", FA_SQUARE);
@@ -221,7 +221,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         return button;
     }
     else if (columnId == ColumnIdFadeOutButton) {
-        SoundboardCellButton* button = (SoundboardCellButton*)existingComponentToUpdate;
+        auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
             button = new SoundboardCellButton("Fade-Out", FA_VOLUME_DOWN);
@@ -237,7 +237,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         return button;
     }
     else if (columnId == ColumnIdGainSlider) {
-        Slider* slider = (Slider*)existingComponentToUpdate;
+        auto slider = static_cast<Slider*>(existingComponentToUpdate);
 
         if (slider == nullptr) {
             slider = new Slider();
@@ -254,7 +254,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
     }
     else {
         jassert(existingComponentToUpdate == 0);
-        return 0;
+        return nullptr;
     }
 }
 
@@ -269,12 +269,12 @@ void SoundboardTableComponent::timerCallback(int timerID)
 // Button Listener
 void SoundboardTableComponent::buttonClicked(Button* button)
 {
-    SoundboardCellButton* cellButton = static_cast<SoundboardCellButton*>(button);
+    auto cellButton = static_cast<SoundboardCellButton*>(button);
     if (!cellButton) {
         return;
     }
 
-    Player* player = processor.playerAtIndex(cellButton->getRowNumber());
+    auto player = processor.playerAtIndex(cellButton->getRowNumber());
     if (!player) {
         return;
     }

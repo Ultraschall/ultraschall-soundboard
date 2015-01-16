@@ -40,13 +40,13 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
     fallbackProperties->setValue(WindowWidthIdentifier.toString(), var(380));
     fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
-    fallbackProperties->setValue (ThemeIdentifier.toString (), var ((int) ThemeTomorrowNightEighties));
+    fallbackProperties->setValue (ThemeIdentifier.toString (), var (static_cast<int>(ThemeTomorrowNightEighties)));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
     propertiesFile->addChangeListener(this);
 
-    SwitchTheme ((Themes) propertiesFile->getIntValue (ThemeIdentifier, (int) ThemeTomorrowNightEighties));
+    SwitchTheme (static_cast<Themes>(propertiesFile->getIntValue (ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties))));
 
     fadeOutRange.start = 1.0;
     fadeOutRange.end = 30.0;
@@ -89,14 +89,14 @@ float SoundboardAudioProcessor::getParameter(int index)
     if (index < GlobalParameterCount) {
         switch (index) {
         case GlobalParameterFadeOut:
-            return fadeOutRange.convertTo0to1((float)fadeOutSeconds);
+            return fadeOutRange.convertTo0to1(static_cast<float>(fadeOutSeconds));
         default:
             break;
         }
     }
 
-    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
-    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+    auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
     if (playerIndex >= numPlayers()) {
         return 0;
@@ -117,7 +117,7 @@ void SoundboardAudioProcessor::setParameter(int index, float newValue)
     if (index < GlobalParameterCount) {
         switch (index) {
         case GlobalParameterFadeOut:
-            fadeOutSeconds = (int)fadeOutRange.convertFrom0to1(newValue);
+            fadeOutSeconds = static_cast<int>(fadeOutRange.convertFrom0to1(newValue));
             for (int index = 0; index < numPlayers(); index++) {
                 playerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
             }
@@ -125,8 +125,8 @@ void SoundboardAudioProcessor::setParameter(int index, float newValue)
         }
     }
 
-    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
-    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+    auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
     if (playerIndex >= numPlayers())
     {
@@ -152,8 +152,8 @@ const String SoundboardAudioProcessor::getParameterName(int index)
         }
     }
 
-    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
-    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+    auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
     if (playerIndex >= numPlayers()) {
         return "-";
@@ -180,8 +180,8 @@ const String SoundboardAudioProcessor::getParameterText(int index)
         }
     }
 
-    int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
-    int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
+    auto playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
+    auto playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
     if (playerIndex >= numPlayers()) {
         return String::empty;
@@ -197,14 +197,12 @@ const String SoundboardAudioProcessor::getParameterText(int index)
     return String::empty;
 }
 
-const String
-SoundboardAudioProcessor::getInputChannelName(int channelIndex) const
+const String SoundboardAudioProcessor::getInputChannelName(int channelIndex) const
 {
     return String(channelIndex + 1);
 }
 
-const String
-SoundboardAudioProcessor::getOutputChannelName(int channelIndex) const
+const String SoundboardAudioProcessor::getOutputChannelName(int channelIndex) const
 {
     return String(channelIndex + 1);
 }
@@ -261,7 +259,7 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
         currentProgramIndex = ProgramNumberCustom;
         mixerAudioSource.removeAllInputs();
         players.clear();
-        SoundboardAudioProcessorEditor* editor = (SoundboardAudioProcessorEditor*)getActiveEditor();
+        auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
         if (editor != nullptr) {
             editor->refresh();
         }
@@ -342,9 +340,9 @@ void SoundboardAudioProcessor::setStateInformation(const void* data,
                                                    int sizeInBytes)
 {
     ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
-    ValueTree program = ValueTree::fromXml(*xmlState);
+    auto program = ValueTree::fromXml(*xmlState);
     if (program.isValid()) {
-        String directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
+        auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
         if (directoryString != String::empty) {
             currentProgramIndex = ProgramNumberCustom;
             File directory(directoryString);
@@ -365,11 +363,11 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     mixerAudioSource.removeAllInputs();
     players.clear();
     DirectoryIterator iterator(directory, false);
-    int count = 0;
+    auto count = 0;
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(
                 iterator.getFile().getFileExtension()) != nullptr && count < MaximumSamplePlayers) {
-            Player* audioFile = new Player(iterator.getFile(), &formatManager, thumbnailCache);
+            auto audioFile = new Player(iterator.getFile(), &formatManager, thumbnailCache);
             if (audioFile->getState() == Player::Error) {
                 delete audioFile;
                 break;
@@ -385,7 +383,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
 
     updateHostDisplay();
 
-    SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+    auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
     if (editor) {
         editor->refresh();
     }
@@ -403,8 +401,8 @@ void SoundboardAudioProcessor::openDirectory(File directory)
 
 void SoundboardAudioProcessor::oscSendPlayerState(int index)
 {
-    Player* samplePlayer = playerAtIndex(index);
-    String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
+    auto samplePlayer = playerAtIndex(index);
+    auto address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
     char buffer[1024];
     osc::OutboundPacketStream p(buffer, 1024);
@@ -454,8 +452,8 @@ void SoundboardAudioProcessor::oscSendPlayerState(int index)
 
 void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 {
-    Player* samplePlayer = playerAtIndex(index);
-    String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
+    auto samplePlayer = playerAtIndex(index);
+    auto address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
     char buffer[1024];
     osc::OutboundPacketStream p(buffer, 1024);
@@ -509,8 +507,8 @@ void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 void SoundboardAudioProcessor::oscSendPlayerUpdate()
 {
     for (int index = 0; index < numPlayers(); index++) {
-        Player* samplePlayer = playerAtIndex(index);
-        String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
+        auto samplePlayer = playerAtIndex(index);
+        auto address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
         if (samplePlayer->isPlaying()) {
             char buffer[1024];
@@ -540,7 +538,7 @@ void SoundboardAudioProcessor::oscSendPlayerUpdate()
 void SoundboardAudioProcessor::oscSendReset()
 {
     for (int index = 0; index < MaximumSamplePlayers; index++) {
-        String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
+        auto address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
         char buffer[1024];
         osc::OutboundPacketStream p(buffer, 1024);
 
@@ -612,13 +610,13 @@ SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
             propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
         return;
     }
-    Player* samplePlayer = static_cast<Player*>(source);
+    auto samplePlayer = static_cast<Player*>(source);
     if (samplePlayer != nullptr) {
         if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
-            int index = players.indexOf(samplePlayer);
+            auto index = players.indexOf(samplePlayer);
             oscSendPlayerState(index);
         }
-        SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+        auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
         if (editor) {
             editor->refresh();
         }
@@ -634,7 +632,7 @@ Player* SoundboardAudioProcessor::playerAtIndex(int index)
 
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
-    setParameterNotifyingHost(GlobalParameterFadeOut, fadeOutRange.convertTo0to1((float)seconds));
+    setParameterNotifyingHost(GlobalParameterFadeOut, fadeOutRange.convertTo0to1(static_cast<float>(seconds)));
 }
 
 int SoundboardAudioProcessor::getFadeOutSeconds() { return fadeOutSeconds; }
@@ -651,18 +649,18 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                 osc::ReceivedMessage message(packet);
                 if (String(message.AddressPattern())
                         .startsWith("/ultraschall/soundboard/")) {
-                    StringArray messageSplit = StringArray::fromTokens(
+                    auto messageSplit = StringArray::fromTokens(
                         String(message.AddressPattern()), "/", "");
-                    osc::ReceivedMessage::const_iterator arg = message.ArgumentsBegin();
+                    auto arg = message.ArgumentsBegin();
                     if (messageSplit[3] == "player") {
-                        int index = messageSplit[4].getIntValue();
+                        auto index = messageSplit[4].getIntValue();
                         index--;
                         if (playerAtIndex(index))
                         {
                             if (index >= 0 && index < MaximumSamplePlayers) {
-                                String command = messageSplit[5];
+                                auto command = messageSplit[5];
                                 if (command == "play") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     if (value) {
                                         if (!playerAtIndex(index)->isPlaying())
                                         {
@@ -671,7 +669,7 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                     }
                                 }
                                 else if (command == "pause") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     if (value) {
                                         if (playerAtIndex(index)->isPlaying())
                                         {
@@ -680,13 +678,13 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                     }
                                 }
                                 else if (command == "stop") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     if (value) {
                                         playerAtIndex(index)->stop();
                                     }
                                 }
                                 else if (command == "trigger") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     if (value) {
                                         if (!playerAtIndex(index)->isPlaying())
                                         {
@@ -701,7 +699,7 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                     }
                                 }
                                 else if (command == "ftrigger") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     if (value) {
                                         if (!playerAtIndex(index)->isPlaying())
                                         {
@@ -720,11 +718,11 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                     }
                                 }
                                 else if (command == "loop") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     playerAtIndex(index)->setLooping(value != 0.0f);
                                 }
                                 else if (command == "fadeout") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     if (value) {
                                         if (playerAtIndex(index)->isPlaying())
                                         {
@@ -733,7 +731,7 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                     }
                                 }
                                 else if (command == "gain") {
-                                    float value = (arg++)->AsFloat();
+                                    auto value = (arg++)->AsFloat();
                                     playerAtIndex(index)->setGain(value);
                                 }
                             }
@@ -792,12 +790,12 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             }
             MidiBuffer::Iterator iterator(midiMessages);
             MidiMessage midiMessage(0xf0);
-            int sample = 0;
+            auto sample = 0;
             while (iterator.getNextEvent(midiMessage, sample)) {
                 if (midiMessage.isNoteOnOrOff()) {
-                    int index = midiMessage.getNoteNumber();
-                    int function = index / 24;
-                    int playerIndex = index % 24;
+                    auto index = midiMessage.getNoteNumber();
+                    auto function = index / 24;
+                    auto playerIndex = index % 24;
                     if (playerIndex < numPlayers())
                     {
                         if (midiMessage.isNoteOn()) {
@@ -860,7 +858,7 @@ void SoundboardAudioProcessor::setGain(int playerIndex, float value)
         return;
     }
 
-    int parameterIndex = GlobalParameterCount + (playerIndex * PlayerParameterCount);
+    auto parameterIndex = GlobalParameterCount + (playerIndex * PlayerParameterCount);
     setParameterNotifyingHost(parameterIndex, value);
 }
 

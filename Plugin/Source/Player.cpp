@@ -52,7 +52,7 @@ void Player::loadFileIntoTransport(const File& audioFile)
     transportSource->setSource(nullptr);
     currentAudioFileSource = nullptr;
 
-    AudioFormatReader* reader = audioFormatManager->createReaderFor(audioFile);
+    auto reader = audioFormatManager->createReaderFor(audioFile);
 
     if (reader != nullptr)
     {
@@ -77,7 +77,7 @@ AudioThumbnail* Player::getThumbnail()
 
 void Player::update()
 {
-    process = (float) (transportSource->getCurrentPosition() / transportSource->getLengthInSeconds());
+    process = static_cast<float>(transportSource->getCurrentPosition() / transportSource->getLengthInSeconds());
     if (process >= 1.0f)
     {
         process = 1.0f;
@@ -173,7 +173,7 @@ void Player::setLooping(bool value)
 {
     if (isPlaying() && !value)
     {
-        int64 nextReadPosition = transportSource->getNextReadPosition();
+        auto nextReadPosition = transportSource->getNextReadPosition();
         currentAudioFileSource->setLooping(false);
         transportSource->setNextReadPosition(nextReadPosition);
         return;
@@ -188,12 +188,12 @@ String Player::getProgressString(bool remaining)
 {
     if (!remaining)
     {
-        Time time(1971, 0, 0, 0, 0, (int) transportSource->getCurrentPosition());
+        Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getCurrentPosition()));
         return time.toString(false, true, true, true);
     }
     else
     {
-        Time time(1971, 0, 0, 0, 0, (int) (transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
+        Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
         return "-" + time.toString(false, true, true, true);
     }
 }

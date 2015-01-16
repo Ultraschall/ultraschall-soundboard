@@ -74,9 +74,9 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     // editor's size to whatever you need it to be.
     setSize(processor.getWindowWidth(), processor.getWindowHeight());
 
-    startTimer(TimerIdBlink, (int)(1000 * 0.5));
+    startTimer(TimerIdBlink, static_cast<int>(1000 * 0.5));
     startTimer(TimerIdUpdate, 50);
-    startTimer(TimerIdRefresh, (int)(1000 * 0.5));
+    startTimer(TimerIdRefresh, static_cast<int>(1000 * 0.5));
 }
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
@@ -136,7 +136,7 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
     if (loadDirectoryButton == buttonThatWasClicked) {
         FileChooser chooser("Open...");
         if (chooser.browseForDirectory()) {
-            File directory = chooser.getResult();
+            auto directory = chooser.getResult();
             if (directory.isDirectory()) {
                 processor.openDirectory(directory);
                 table->updateContent();
@@ -206,12 +206,12 @@ void SoundboardAudioProcessorEditor::refresh()
 void SoundboardAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
     if (slider == fadeOutSlider) {
-        processor.setFadeOutSeconds((int)fadeOutSlider->getValue());
+        processor.setFadeOutSeconds(static_cast<int>(fadeOutSlider->getValue()));
         fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s",
-                              NotificationType::dontSendNotification);
+                              dontSendNotification);
     }
     else {
-        int index = slider->getName().getIntValue();
-        processor.setGain(index, (float)slider->getValue());
+        auto index = slider->getName().getIntValue();
+        processor.setGain(index, static_cast<float>(slider->getValue()));
     }
 }

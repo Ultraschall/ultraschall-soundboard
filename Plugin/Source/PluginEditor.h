@@ -26,7 +26,7 @@ class SoundboardAudioProcessorEditor : public AudioProcessorEditor,
                                        public Slider::Listener,
                                        public MultiTimer {
 public:
-    SoundboardAudioProcessorEditor(SoundboardAudioProcessor&);
+    explicit SoundboardAudioProcessorEditor(SoundboardAudioProcessor&);
     ~SoundboardAudioProcessorEditor();
 
     // Button::Listener
@@ -42,7 +42,7 @@ public:
 
     void refresh();
 
-    void timerCallback(int timerID);
+    void timerCallback(int timerID) override;
 
 private:
     static const int TimerIdUpdate = 1;

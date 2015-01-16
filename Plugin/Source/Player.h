@@ -39,7 +39,7 @@ public:
     void startFadeOut();
     bool isFadingOut();
 
-    void timerCallback(int timerID);
+    void timerCallback(int timerID) override;
 
     void setGain(float newGain);
     float getGain();

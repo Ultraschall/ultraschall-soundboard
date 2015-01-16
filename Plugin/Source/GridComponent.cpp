@@ -14,7 +14,7 @@ SoundboardGridComponent::SoundboardGridComponent(SoundboardAudioProcessor& p)
     : processor(p)
 {
     updateContent();
-    startTimer(TimerIdRepaint, (int)(1000 * 0.5));
+    startTimer(TimerIdRepaint, static_cast<int>(1000 * 0.5));
 }
 
 SoundboardGridComponent::~SoundboardGridComponent()
@@ -25,15 +25,15 @@ SoundboardGridComponent::~SoundboardGridComponent()
 
 void SoundboardGridComponent::resized()
 {
-    int cellWidth = getWidth() / 4;
-    int cellHeight = getHeight() / 6;
+    auto cellWidth = getWidth() / 4;
+    auto cellHeight = getHeight() / 6;
     if (cellHeight != 0 && cellWidth != 0) {
         for (int index = 0; index < cells.size(); index++) {
-            int column = index % 4;
-            int row = index / 4;
+            auto column = index % 4;
+            auto row = index / 4;
 
-            int x = column * cellWidth;
-            int y = row * cellHeight;
+            auto x = column * cellWidth;
+            auto y = row * cellHeight;
 
             cells[index]->setBounds(x, y, cellWidth, cellHeight);
         }
@@ -57,12 +57,12 @@ void SoundboardGridComponent::updateContent()
     for (int index = 0; index < 24; index++) {
         if (index < processor.numPlayers())
         {
-            SoundboardGridCell *cell = new SoundboardGridCell(processor.playerAtIndex(index));
+            auto cell = new SoundboardGridCell(processor.playerAtIndex(index));
             cells.add(cell);
             addAndMakeVisible(cell);
             cell->setIndex(index + 1);
         } else {
-            SoundboardGridCell *cell = new SoundboardGridCell(nullptr);
+            auto cell = new SoundboardGridCell(nullptr);
             cells.add(cell);
             addAndMakeVisible(cell);
             cell->setIndex(index + 1);

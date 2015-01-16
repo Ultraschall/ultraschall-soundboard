@@ -100,7 +100,7 @@ void SwitchTheme(Themes theme) {
             break;
         };
     }
-    LookAndFeel& mLookAndFeel = LookAndFeel::getDefaultLookAndFeel();
+    auto& mLookAndFeel = LookAndFeel::getDefaultLookAndFeel();
 
     mLookAndFeel.setColour (TableListBox::backgroundColourId, ThemeBackground1);
     mLookAndFeel.setColour (TableListBox::textColourId, ThemeForeground1);
@@ -135,7 +135,7 @@ void SwitchTheme(Themes theme) {
 void LookAndFeel_Ultraschall::drawTableHeaderBackground(
     Graphics& g, TableHeaderComponent& header)
 {
-    Rectangle<int> r(header.getLocalBounds());
+    auto r(header.getLocalBounds());
 
     g.setColour(ThemeBackground1);
     g.fillRect(r);
