@@ -12,6 +12,7 @@
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
   <MAINGROUP id="aO9Y4k" name="Soundboard">
+    <FILE id="d3B7kd" name="Ultraschall.svg" compile="0" resource="1" file="../Images/Ultraschall.svg"/>
     <FILE id="pgyuob" name="Icon.png" compile="0" resource="1" file="Icon.png"/>
     <FILE id="qtYVP2" name="Icon@2x.png" compile="0" resource="1" file="Icon@2x.png"/>
     <GROUP id="{E54D17CF-AA86-82D4-D347-CD0CD6CE50FA}" name="Source">

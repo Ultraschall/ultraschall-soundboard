@@ -103,6 +103,8 @@ enum Themes {
     ThemeTomorrowNightBlue = 5
 };
 
+void SwitchTheme(Themes theme);
+
 class LookAndFeel_Ultraschall : public LookAndFeel_V3 {
 public:
     void drawTableHeaderBackground(Graphics& g,
@@ -122,17 +124,17 @@ public:
 
     void paint(Graphics& g)
     {
-        ColourGradient gradiant(ThemeBackground1, 0.0f, 0.0f,
-                                ThemeBackground1, 0.0f, (float)getHeight(), false);
-        gradiant.addColour(0.75f, ThemeBackground2);
+        ColourGradient gradiant(ThemeBackground3, 0.0f, 0.0f,
+                                ThemeBackground3, 0.0f, (float)getHeight(), false);
+        gradiant.addColour(0.9f, ThemeBackground2);
 
         g.setGradientFill(gradiant);
         g.fillRect(0, 0, getWidth(), getHeight());
 
         if (spacer) {
-            g.setColour(ThemeBackground1.darker(0.8f));
+            g.setColour(ThemeBackground1.darker().darker());
             g.drawHorizontalLine(1.0f, 0.0f, (float)getWidth());
-            g.setColour(ThemeBackground1.darker(0.4f));
+            g.setColour(ThemeBackground1.darker());
             g.drawHorizontalLine(2.0f, 0.0f, (float)getWidth());
             g.setColour(ThemeBackground2);
             g.drawHorizontalLine(2.0f, 0.0f, (float)getWidth());
@@ -150,6 +152,28 @@ private:
     bool spacer;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Bar)
+};
+
+class Hud : public Component {
+public:
+    Hud()
+    {
+    }
+
+    void paint(Graphics& g)
+    {
+        ColourGradient gradiant(ThemeForeground2, 0.0f, 0.0f,
+                ThemeForeground2, 0.0f, (float)getHeight(), false);
+        gradiant.addColour(0.1f, ThemeForeground1);
+
+        g.setGradientFill(gradiant);
+        g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), 5.0f);
+        g.setColour(ThemeBackground1);
+        g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5.0f, 1.0f);
+    }
+
+private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Hud)
 };
 
 class AwesomeButton : public TextButton {

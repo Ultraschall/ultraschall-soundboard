@@ -84,7 +84,7 @@ public:
             g.setColour(colour.withAlpha(0.2f));
             g.fillRoundedRectangle(cell, 2);
 
-            g.setColour(colour);
+            g.setColour(colour.withAlpha(0.2f));
             Rectangle<int> thumbArea = cell.reduced(0, 5).toType<int>();
             if (player->getThumbnail()->getTotalLength() > 0.0) {
                 player->getThumbnail()->drawChannel(g, thumbArea, 0, player->getThumbnail()->getTotalLength(), 1, 1.0f);
@@ -94,21 +94,21 @@ public:
             g.drawHorizontalLine((int)(g.getClipBounds().getHeight() * 0.5f - 1), g.getClipBounds().getX() + 3.0f, g.getClipBounds().getWidth() - 3.0f);
 
             if (player->isPlayed()) {
-                g.setColour(colour.contrasting().withAlpha(0.5f));
+                g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
-                g.drawText(FA_SQUARE_O, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
+                g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
             } else if (player->isFadingOut()) {
                 g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getGain(), cell.getHeight(), 2);
 
-                g.setColour(colour.contrasting().withAlpha(0.5f));
+                g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
             } else if (player->isLooping()) {
                 g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getProgress(), cell.getHeight(), 2);
 
-                g.setColour(colour.contrasting().withAlpha(0.5f));
+                g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 if (player->isPlaying()) {
                     g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
@@ -119,7 +119,7 @@ public:
                 g.setColour(colour.withAlpha(0.5f));
                 g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getProgress(), cell.getHeight(), 2);
 
-                g.setColour(colour.contrasting().withAlpha(0.5f));
+                g.setColour(colour.withAlpha(0.9f));
                 g.setFont(getFontAwesome(getHeight() * 0.5f));
                 if (player->isPlaying()) {
                     g.drawText(FA_PAUSE, thumbArea.getX(), thumbArea.getY(), thumbArea.getWidth(), thumbArea.getHeight(), Justification::centred, false);
@@ -138,31 +138,31 @@ public:
             if (isMouseOver(true)) {
                 Rectangle<int> helperRect = cell.reduced(3).toType<int>();
                 if (player->isLooping()) {
-                    g.setColour(colour.contrasting().withAlpha(0.75f));
+                    g.setColour(colour);
                 } else {
-                    g.setColour(colour.contrasting().withAlpha(0.5f));
+                    g.setColour(ThemeForeground1.withAlpha(0.5f));
                 }
                 g.setFont(getFontAwesome(getHeight() * 0.25f));
                 g.drawText(FA_REFRESH, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::topLeft, false);
 
                 if (player->isPlayed()) {
-                    g.setColour(colour.contrasting().withAlpha(0.5f));
+                    g.setColour(colour);
                     g.drawText(FA_SQUARE_O, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::bottomRight, false);
                 } else {
                     if (!player->isPaused() && !player->isPlaying()) {
-                        g.setColour(colour.contrasting().withAlpha(0.25f));
+                        g.setColour(ThemeForeground1.withAlpha(0.25f));
                     } else {
-                        g.setColour(colour.contrasting().withAlpha(0.5f));
+                        g.setColour(ThemeForeground1.withAlpha(0.5f));
                     }
                     g.drawText(FA_SQUARE, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::bottomRight, false);
                 }
 
                 if (!player->isPlaying()) {
-                    g.setColour(colour.contrasting().withAlpha(0.25f));
+                    g.setColour(ThemeForeground1.withAlpha(0.25f));
                 } else if(player->isFadingOut()) {
-                    g.setColour(colour.contrasting().withAlpha(0.75f));
+                    g.setColour(colour);
                 } else {
-                    g.setColour(colour.contrasting().withAlpha(0.5f));
+                    g.setColour(ThemeForeground1.withAlpha(0.5f));
                 }
                 g.drawText(FA_VOLUME_DOWN, helperRect.getX(), helperRect.getY(), helperRect.getWidth(), helperRect.getHeight(), Justification::topRight, false);
             }

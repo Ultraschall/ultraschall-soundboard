@@ -22,6 +22,116 @@ Colour ThemeAqua = TomorrowAqua;
 Colour ThemeBlue = TomorrowBlue;
 Colour ThemePurple = TomorrowPurple;
 
+void SwitchTheme(Themes theme) {
+    switch (theme) {
+        case ThemeTomorrow: {
+            ThemeBackground1 = TomorrowBackground1;
+            ThemeBackground2 = TomorrowBackground2;
+            ThemeBackground3 = TomorrowBackground3;
+            ThemeForeground1 = TomorrowForeground1;
+            ThemeForeground2 = TomorrowForeground2;
+            ThemeRed = TomorrowRed;
+            ThemeOrange = TomorrowOrange;
+            ThemeYellow = TomorrowYellow;
+            ThemeGreen = TomorrowGreen;
+            ThemeAqua = TomorrowAqua;
+            ThemeBlue = TomorrowBlue;
+            ThemePurple = TomorrowPurple;
+            break;
+        };
+        case ThemeTomorrowNightBright: {
+            ThemeBackground1 = TomorrowNightBrightBackground1;
+            ThemeBackground2 = TomorrowNightBrightBackground2;
+            ThemeBackground3 = TomorrowNightBrightBackground3;
+            ThemeForeground1 = TomorrowNightBrightForeground1;
+            ThemeForeground2 = TomorrowNightBrightForeground2;
+            ThemeRed = TomorrowNightBrightRed;
+            ThemeOrange = TomorrowNightBrightOrange;
+            ThemeYellow = TomorrowNightBrightYellow;
+            ThemeGreen = TomorrowNightBrightGreen;
+            ThemeAqua = TomorrowNightBrightAqua;
+            ThemeBlue = TomorrowNightBrightBlue;
+            ThemePurple = TomorrowNightBrightPurple;
+            break;
+        };
+        case ThemeTomorrowNight: {
+            ThemeBackground1 = TomorrowNightBackground1;
+            ThemeBackground2 = TomorrowNightBackground2;
+            ThemeBackground3 = TomorrowNightBackground3;
+            ThemeForeground1 = TomorrowNightForeground1;
+            ThemeForeground2 = TomorrowNightForeground2;
+            ThemeRed = TomorrowNightRed;
+            ThemeOrange = TomorrowNightOrange;
+            ThemeYellow = TomorrowNightYellow;
+            ThemeGreen = TomorrowNightGreen;
+            ThemeAqua = TomorrowNightAqua;
+            ThemeBlue = TomorrowNightBlue;
+            ThemePurple = TomorrowNightPurple;
+            break;
+        };
+        case ThemeTomorrowNightEighties: {
+            ThemeBackground1 = TomorrowNightEightiesBackground1;
+            ThemeBackground2 = TomorrowNightEightiesBackground2;
+            ThemeBackground3 = TomorrowNightEightiesBackground3;
+            ThemeForeground1 = TomorrowNightEightiesForeground1;
+            ThemeForeground2 = TomorrowNightEightiesForeground2;
+            ThemeRed = TomorrowNightEightiesRed;
+            ThemeOrange = TomorrowNightEightiesOrange;
+            ThemeYellow = TomorrowNightEightiesYellow;
+            ThemeGreen = TomorrowNightEightiesGreen;
+            ThemeAqua = TomorrowNightEightiesAqua;
+            ThemeBlue = TomorrowNightEightiesBlue;
+            ThemePurple = TomorrowNightEightiesPurple;
+            break;
+        };
+        case ThemeTomorrowNightBlue: {
+            ThemeBackground1 = TomorrowNightBlueBackground1;
+            ThemeBackground2 = TomorrowNightBlueBackground2;
+            ThemeBackground3 = TomorrowNightBlueBackground3;
+            ThemeForeground1 = TomorrowNightBlueForeground1;
+            ThemeForeground2 = TomorrowNightBlueForeground2;
+            ThemeRed = TomorrowNightBlueRed;
+            ThemeOrange = TomorrowNightBlueOrange;
+            ThemeYellow = TomorrowNightBlueYellow;
+            ThemeGreen = TomorrowNightBlueGreen;
+            ThemeAqua = TomorrowNightBlueAqua;
+            ThemeBlue = TomorrowNightBlueBlue;
+            ThemePurple = TomorrowNightBluePurple;
+            break;
+        };
+    }
+    LookAndFeel& mLookAndFeel = LookAndFeel::getDefaultLookAndFeel();
+
+    mLookAndFeel.setColour (TableListBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour (TableListBox::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
+    mLookAndFeel.setColour (Label::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (ToggleButton::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (ListBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour (ListBox::outlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour (ListBox::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (TextEditor::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (TextEditor::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour (TextEditor::focusedOutlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour (TextEditor::outlineColourId, ThemeBackground2);
+
+    mLookAndFeel.setColour (ComboBox::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour (ComboBox::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (ComboBox::outlineColourId, ThemeBackground2);
+    mLookAndFeel.setColour (ComboBox::buttonColourId, ThemeBackground3);
+    mLookAndFeel.setColour (ComboBox::arrowColourId, ThemeForeground2);
+
+    mLookAndFeel.setColour (PopupMenu::backgroundColourId, ThemeBackground1);
+    mLookAndFeel.setColour (PopupMenu::textColourId, ThemeForeground1);
+    mLookAndFeel.setColour (PopupMenu::headerTextColourId, ThemeForeground1);
+    mLookAndFeel.setColour (PopupMenu::highlightedBackgroundColourId, ThemeBackground2);
+    mLookAndFeel.setColour (PopupMenu::highlightedTextColourId, ThemeForeground1);
+
+    mLookAndFeel.setColour (Slider::rotarySliderFillColourId, ThemeForeground1);
+    mLookAndFeel.setColour (TextButton::textColourOnId, ThemeForeground1);
+    mLookAndFeel.setColour (TextButton::textColourOffId, ThemeForeground1);
+}
+
 void LookAndFeel_Ultraschall::drawTableHeaderBackground(
     Graphics& g, TableHeaderComponent& header)
 {

@@ -104,8 +104,7 @@ public:
     void storeWindowWidth(int width);
     int getWindowHeight();
     void storeWindowHeight(int height);
-
-    void SwitchTheme(Themes theme);
+                                     
 private:
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 24;

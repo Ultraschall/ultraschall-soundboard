@@ -1663,6 +1663,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\Images\Ultraschall.svg"/>
     <None Include="..\..\Icon.png"/>
     <None Include="..\..\Icon@2x.png"/>
     <None Include="..\..\..\Submodules\danlin_modules\modules\danlin_fontawesome\juce_module_info"/>

@@ -142,6 +142,7 @@
 		1BFDD118D5A6A1BC894A4F94 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_Time.cpp"; path = "../../../Submodules/JUCE/modules/juce_core/time/juce_Time.cpp"; sourceTree = "SOURCE_ROOT"; };
 		1C1F980B9C9402CD211991FC = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_ReferenceCountedArray.h"; path = "../../../Submodules/JUCE/modules/juce_core/containers/juce_ReferenceCountedArray.h"; sourceTree = "SOURCE_ROOT"; };
 		1C6F7A741D1E808D4A87BA7D = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_TemporaryFile.h"; path = "../../../Submodules/JUCE/modules/juce_core/files/juce_TemporaryFile.h"; sourceTree = "SOURCE_ROOT"; };
+		1CB61A6406D0661640B6276C = {isa = PBXFileReference; lastKnownFileType = file.svg; name = Ultraschall.svg; path = ../../../Images/Ultraschall.svg; sourceTree = "SOURCE_ROOT"; };
 		1CC71AA9AD789412FA44EEE3 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_AudioDeviceSelectorComponent.cpp"; path = "../../../Submodules/JUCE/modules/juce_audio_utils/gui/juce_AudioDeviceSelectorComponent.cpp"; sourceTree = "SOURCE_ROOT"; };
 		1CEB6605D86400F55091E7F1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_OggVorbisAudioFormat.cpp"; path = "../../../Submodules/JUCE/modules/juce_audio_formats/codecs/juce_OggVorbisAudioFormat.cpp"; sourceTree = "SOURCE_ROOT"; };
 		1CFC40897F378105E8DE013F = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_DirectoryContentsList.cpp"; path = "../../../Submodules/JUCE/modules/juce_gui_basics/filebrowser/juce_DirectoryContentsList.cpp"; sourceTree = "SOURCE_ROOT"; };
@@ -938,6 +939,7 @@
 					26AB1808BD7DEFA452A999A0,
 					BD298FBFE58EB404AD193096, ); name = Source; sourceTree = "<group>"; };
 		8423D77EE6D650F6E38770BB = {isa = PBXGroup; children = (
+					1CB61A6406D0661640B6276C,
 					4F51FD93DB1052B90FAF176C,
 					BF0E0C22C1D41A8498AB40F3,
 					1391FC5633F1C6852BFB042E, ); name = Soundboard; sourceTree = "<group>"; };

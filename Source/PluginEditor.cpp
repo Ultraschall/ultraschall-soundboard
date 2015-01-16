@@ -33,19 +33,25 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     fadeOutLabel->setText("Ausblendzeit: " + String(processor.getFadeOutSeconds()) + "s", NotificationType::dontSendNotification);
 
     addAndMakeVisible(loadDirectoryButton = new AwesomeButton(FA_FOLDER_OPEN_O));
-    loadDirectoryButton->setButtonText("Soundboard Laden");
+    loadDirectoryButton->setButtonText("");
     loadDirectoryButton->addListener(this);
 
-    addAndMakeVisible(gridButton = new AwesomeButton(FA_TH));
-    gridButton->setButtonText("Grid");
+    addAndMakeVisible(gridButton = new TextButton());
+    gridButton->setButtonText("G");
     gridButton->addListener(this);
+    gridButton->setConnectedEdges(TextButton::ConnectedOnLeft);
+
+    addAndMakeVisible(listButton = new TextButton());
+    listButton->setButtonText("L");
+    listButton->addListener(this);
+    listButton->setConnectedEdges(TextButton::ConnectedOnRight);
 
     addAndMakeVisible(grid = new SoundboardGridComponent(p));
     grid->setVisible(false);
     addAndMakeVisible(table = new SoundboardTableComponent(p));
 
     addAndMakeVisible(settingsButton = new AwesomeButton(FA_COG));
-    settingsButton->setButtonText("Einstellungen");
+    settingsButton->setButtonText("");
     settingsButton->addListener(this);
 
     addAndMakeVisible(oscActivityIndicator = new ActivityIndicator());
@@ -60,6 +66,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(
     addAndMakeVisible(settingsComponent = new OscSettings (processor.getPropertiesFile (), processor.getOscServer (), p));
     settingsComponent->setVisible (false);
     settingsComponent->toBack ();
+    listButton->setEnabled(false);
 
     refresh();
 
@@ -97,23 +104,26 @@ void SoundboardAudioProcessorEditor::paint(Graphics& g)
 
 void SoundboardAudioProcessorEditor::resized()
 {
-    topBar->setBounds(0, 0, getWidth(), 64);
+    topBar->setBounds(0, 0, getWidth(), 32);
 
     fadeOutSlider->setBounds(3, 5, 24, 24);
     fadeOutLabel->setBounds(27, 5, 150, 24);
 
-    loadDirectoryButton->setBounds(getWidth() - 153, 5, 150, 24);
-    gridButton->setBounds(getWidth() - 220, 5, 64, 24);
+    settingsButton->setBounds(getWidth() - 32, 5, 32, 24);
+    loadDirectoryButton->setBounds(getWidth() - 67, 5, 32, 24);
 
-    table->setBounds(0, 64, getWidth(), getHeight() - 64);
-    grid->setBounds(0, 64, getWidth(), getHeight() - 64);
+    gridButton->setBounds(getWidth() - 160, 11, 60, 18);
+    listButton->setBounds(getWidth() - 220, 11, 60, 18);
+
+    table->setBounds(0, 32, getWidth(), getHeight() - 32);
+    grid->setBounds(0, 32, getWidth(), getHeight() - 32);
 
     if (resizer)
     {
         resizer->setBounds (getWidth () - 16, getHeight () - 16, 16, 16);
     }
-    settingsButton->setBounds(getWidth() - 123, 32, 120, 24);
-    oscActivityIndicator->setBounds(3, 32, 120, 24);
+
+    oscActivityIndicator->setBounds(180, 5, 120, 24);
 
     processor.storeWindowWidth(getWidth());
     processor.storeWindowHeight(getHeight());
@@ -146,15 +156,25 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button* buttonThatWasClicked)
         }
     }
     else if (gridButton == buttonThatWasClicked) {
-        if (grid->isVisible()) {
-            grid->setVisible(false);
-            table->setVisible(true);
-            table->toFront(true);
+        gridButton->setEnabled(false);
+        listButton->setEnabled(true);
+
+        table->setVisible(false);
+        grid->setVisible(true);
+        grid->toFront(true);
+        if (resizer) {
+            resizer->toFront(false);
         }
-        else {
-            table->setVisible(false);
-            grid->setVisible(true);
-            grid->toFront(true);
+    }
+    else if (listButton == buttonThatWasClicked) {
+        listButton->setEnabled(false);
+        gridButton->setEnabled(true);
+
+        grid->setVisible(false);
+        table->setVisible(true);
+        table->toFront(true);
+        if (resizer) {
+            resizer->toFront(false);
         }
     }
 }

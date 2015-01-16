@@ -131,7 +131,7 @@ public:
         themeComboBox->addItem ("TomorrowNightBlue", (int) ThemeTomorrowNightBlue);
         themeComboBox->addItem ("TomorrowNightBright", (int) ThemeTomorrowNightBright);
         themeComboBox->addItem ("TomorrowNightEighties", (int) ThemeTomorrowNightEighties);
-        themeComboBox->setSelectedId (propertiesFile->getIntValue (ThemeIdentifier, (int) ThemeTomorrowNightEighties));
+        themeComboBox->setSelectedId (propertiesFile->getIntValue (ThemeIdentifier, (int) ThemeTomorrowNightEighties), NotificationType::dontSendNotification);
         themeComboBox->addListener (this);
 
         setSize(600, 400);
@@ -257,7 +257,9 @@ public:
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     {
         Themes val = (Themes) comboBoxThatHasChanged->getSelectedId();
-        processor.SwitchTheme (val);
+        SwitchTheme (val);
+        processor.getActiveEditor()->lookAndFeelChanged();
+        processor.getActiveEditor()->repaint();
     }
 private:
     ScopedPointer<ToggleButton> localEnabled;

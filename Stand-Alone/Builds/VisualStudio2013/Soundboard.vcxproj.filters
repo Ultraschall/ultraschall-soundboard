@@ -2834,6 +2834,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\Images\Ultraschall.svg">
+      <Filter>Soundboard</Filter>
+    </None>
     <None Include="..\..\Icon.png">
       <Filter>Soundboard</Filter>
     </None>
