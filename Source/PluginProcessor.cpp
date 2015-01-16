@@ -98,13 +98,13 @@ float SoundboardAudioProcessor::getParameter(int index)
     int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= samplePlayers.size()) {
+    if (playerIndex >= numPlayers()) {
         return 0;
     }
 
     switch (playerParameterIndex) {
     case PlayerParameterGain:
-        return samplePlayers[playerIndex]->getGain();
+        return playerAtIndex(playerIndex)->getGain();
     default:
         break;
     }
@@ -118,8 +118,8 @@ void SoundboardAudioProcessor::setParameter(int index, float newValue)
         switch (index) {
         case GlobalParameterFadeOut:
             fadeOutSeconds = (int)fadeOutRange.convertFrom0to1(newValue);
-            for (int index = 0; index < samplePlayers.size(); index++) {
-                SamplePlayerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
+            for (int index = 0; index < numPlayers(); index++) {
+                playerAtIndex(index)->setFadeOutTime(fadeOutSeconds);
             }
             return;
         }
@@ -128,13 +128,14 @@ void SoundboardAudioProcessor::setParameter(int index, float newValue)
     int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= samplePlayers.size()) {
+    if (playerIndex >= numPlayers())
+    {
         return;
     }
 
     switch (playerParameterIndex) {
     case PlayerParameterGain:
-        samplePlayers[playerIndex]->setGain(newValue);
+        playerAtIndex(playerIndex)->setGain(newValue);
     default:
         break;
     }
@@ -154,7 +155,7 @@ const String SoundboardAudioProcessor::getParameterName(int index)
     int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= samplePlayers.size()) {
+    if (playerIndex >= numPlayers()) {
         return "-";
     }
 
@@ -182,13 +183,13 @@ const String SoundboardAudioProcessor::getParameterText(int index)
     int playerIndex = (index - GlobalParameterCount) / PlayerParameterCount;
     int playerParameterIndex = (index - GlobalParameterCount) % PlayerParameterCount;
 
-    if (playerIndex >= samplePlayers.size()) {
+    if (playerIndex >= numPlayers()) {
         return String::empty;
     }
 
     switch (playerParameterIndex) {
     case PlayerParameterGain:
-        return String(SamplePlayerAtIndex(playerIndex)->getGain());
+        return String(playerAtIndex(playerIndex)->getGain());
     default:
         break;
     }
@@ -259,7 +260,7 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
         currentDirectory = "";
         currentProgramIndex = ProgramNumberCustom;
         mixerAudioSource.removeAllInputs();
-        samplePlayers.clear();
+        players.clear();
         SoundboardAudioProcessorEditor* editor = (SoundboardAudioProcessorEditor*)getActiveEditor();
         if (editor != nullptr) {
             editor->refresh();
@@ -362,7 +363,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     }
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
-    samplePlayers.clear();
+    players.clear();
     DirectoryIterator iterator(directory, false);
     int count = 0;
     while (iterator.next()) {
@@ -373,7 +374,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
                 delete audioFile;
                 break;
             }
-            samplePlayers.add(audioFile);
+            players.add(audioFile);
             audioFile->setFadeOutTime(fadeOutSeconds);
             audioFile->addChangeListener(this);
             mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
@@ -393,7 +394,8 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     propertiesFile->setValue(CurrentDirectoryIdentifier.toString(),
                              currentDirectory);
     if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
-        for (int index = 0; index < samplePlayers.size(); index++) {
+        for (int index = 0; index < players.size(); index++)
+        {
             oscSendPlayerConfig(index);
         }
     }
@@ -401,7 +403,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
 
 void SoundboardAudioProcessor::oscSendPlayerState(int index)
 {
-    Player* samplePlayer = SamplePlayerAtIndex(index);
+    Player* samplePlayer = playerAtIndex(index);
     String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
     char buffer[1024];
@@ -452,7 +454,7 @@ void SoundboardAudioProcessor::oscSendPlayerState(int index)
 
 void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 {
-    Player* samplePlayer = SamplePlayerAtIndex(index);
+    Player* samplePlayer = playerAtIndex(index);
     String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
     char buffer[1024];
@@ -506,8 +508,8 @@ void SoundboardAudioProcessor::oscSendPlayerConfig(int index)
 
 void SoundboardAudioProcessor::oscSendPlayerUpdate()
 {
-    for (int index = 0; index < samplePlayers.size(); index++) {
-        Player* samplePlayer = SamplePlayerAtIndex(index);
+    for (int index = 0; index < numPlayers(); index++) {
+        Player* samplePlayer = playerAtIndex(index);
         String address = "/ultraschall/soundboard/player/" + String(index + 1) + "/";
 
         if (samplePlayer->isPlaying()) {
@@ -613,7 +615,7 @@ SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
     Player* samplePlayer = static_cast<Player*>(source);
     if (samplePlayer != nullptr) {
         if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
-            int index = samplePlayers.indexOf(samplePlayer);
+            int index = players.indexOf(samplePlayer);
             oscSendPlayerState(index);
         }
         SoundboardAudioProcessorEditor* editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
@@ -623,11 +625,11 @@ SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
     }
 }
 
-int SoundboardAudioProcessor::numAudioFiles() { return samplePlayers.size(); }
+int SoundboardAudioProcessor::numPlayers() { return players.size(); }
 
-Player* SoundboardAudioProcessor::SamplePlayerAtIndex(int index)
+Player* SoundboardAudioProcessor::playerAtIndex(int index)
 {
-    return samplePlayers[index];
+    return players[index];
 }
 
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
@@ -655,75 +657,84 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                     if (messageSplit[3] == "player") {
                         int index = messageSplit[4].getIntValue();
                         index--;
-                        if (SamplePlayerAtIndex(index)) {
+                        if (playerAtIndex(index))
+                        {
                             if (index >= 0 && index < MaximumSamplePlayers) {
                                 String command = messageSplit[5];
                                 if (command == "play") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
-                                        if (!SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->play();
+                                        if (!playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->play();
                                         }
                                     }
                                 }
                                 else if (command == "pause") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
-                                        if (SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->pause();
+                                        if (playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->pause();
                                         }
                                     }
                                 }
                                 else if (command == "stop") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
-                                        SamplePlayerAtIndex(index)->stop();
+                                        playerAtIndex(index)->stop();
                                     }
                                 }
                                 else if (command == "trigger") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
-                                        if (!SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->play();
+                                        if (!playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->play();
                                         }
                                     }
                                     else {
-                                        if (SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->stop();
+                                        if (playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->stop();
                                         }
                                     }
                                 }
                                 else if (command == "ftrigger") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
-                                        if (!SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->play();
+                                        if (!playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->play();
                                         }
                                     }
                                     else {
-                                        if (SamplePlayerAtIndex(index)->isFadingOut()) {
-                                            SamplePlayerAtIndex(index)->stop();
+                                        if (playerAtIndex(index)->isFadingOut())
+                                        {
+                                            playerAtIndex(index)->stop();
                                         }
-                                        else if (SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->startFadeOut();
+                                        else if (playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->startFadeOut();
                                         }
                                     }
                                 }
                                 else if (command == "loop") {
                                     float value = (arg++)->AsFloat();
-                                    SamplePlayerAtIndex(index)->setLooping(value != 0.0f);
+                                    playerAtIndex(index)->setLooping(value != 0.0f);
                                 }
                                 else if (command == "fadeout") {
                                     float value = (arg++)->AsFloat();
                                     if (value) {
-                                        if (SamplePlayerAtIndex(index)->isPlaying()) {
-                                            SamplePlayerAtIndex(index)->startFadeOut();
+                                        if (playerAtIndex(index)->isPlaying())
+                                        {
+                                            playerAtIndex(index)->startFadeOut();
                                         }
                                     }
                                 }
                                 else if (command == "gain") {
                                     float value = (arg++)->AsFloat();
-                                    SamplePlayerAtIndex(index)->setGain(value);
+                                    playerAtIndex(index)->setGain(value);
                                 }
                             }
                         }
@@ -731,8 +742,8 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                     else if (messageSplit[3] == "fadeout") {
                         if (messageSplit[4] == "seconds") {
                             int value = (arg++)->AsInt32();
-                            for (int index = 0; index < samplePlayers.size(); index++) {
-                                SamplePlayerAtIndex(index)->setFadeOutTime(value);
+                            for (int index = 0; index < numPlayers(); index++) {
+                                playerAtIndex(index)->setFadeOutTime(value);
                             }
                         }
                     }
@@ -787,36 +798,41 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                     int index = midiMessage.getNoteNumber();
                     int function = index / 24;
                     int playerIndex = index % 24;
-                    if (playerIndex < samplePlayers.size()) {
+                    if (playerIndex < numPlayers())
+                    {
                         if (midiMessage.isNoteOn()) {
                             switch (function) {
                             case PlayStop:
-                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
-                                    SamplePlayerAtIndex(playerIndex)->play();
+                                if (!playerAtIndex(playerIndex)->isPlaying())
+                                {
+                                    playerAtIndex(playerIndex)->play();
                                 }
                                 else {
-                                    SamplePlayerAtIndex(playerIndex)->stop();
+                                    playerAtIndex(playerIndex)->stop();
                                 }
                                 break;
                             case PlayPause:
-                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
-                                    SamplePlayerAtIndex(playerIndex)->play();
+                                if (!playerAtIndex(playerIndex)->isPlaying())
+                                {
+                                    playerAtIndex(playerIndex)->play();
                                 }
                                 else {
-                                    SamplePlayerAtIndex(playerIndex)->pause();
+                                    playerAtIndex(playerIndex)->pause();
                                 }
                                 break;
                             case PlayFadeOut:
-                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
-                                    SamplePlayerAtIndex(playerIndex)->play();
+                                if (!playerAtIndex(playerIndex)->isPlaying())
+                                {
+                                    playerAtIndex(playerIndex)->play();
                                 }
                                 else {
-                                    SamplePlayerAtIndex(playerIndex)->startFadeOut();
+                                    playerAtIndex(playerIndex)->startFadeOut();
                                 }
                                 break;
                             case HoldAndPlay:
-                                if (!SamplePlayerAtIndex(playerIndex)->isPlaying()) {
-                                    SamplePlayerAtIndex(playerIndex)->play();
+                                if (!playerAtIndex(playerIndex)->isPlaying())
+                                {
+                                    playerAtIndex(playerIndex)->play();
                                 }
                                 break;
                             }
@@ -824,8 +840,9 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                         else if (midiMessage.isNoteOff()) {
                             switch (function) {
                             case HoldAndPlay:
-                                if (SamplePlayerAtIndex(playerIndex)->isPlaying()) {
-                                    SamplePlayerAtIndex(playerIndex)->stop();
+                                if (playerAtIndex(playerIndex)->isPlaying())
+                                {
+                                    playerAtIndex(playerIndex)->stop();
                                 }
                                 break;
                             }
@@ -839,7 +856,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
 
 void SoundboardAudioProcessor::setGain(int playerIndex, float value)
 {
-    if (playerIndex >= samplePlayers.size()) {
+    if (playerIndex >= numPlayers()) {
         return;
     }
 

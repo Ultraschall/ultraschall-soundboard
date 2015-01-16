@@ -55,8 +55,9 @@ void SoundboardGridComponent::updateContent()
     cells.clear(true);
 
     for (int index = 0; index < 24; index++) {
-        if (index < processor.numAudioFiles()) {
-            SoundboardGridCell *cell = new SoundboardGridCell(processor.SamplePlayerAtIndex(index));
+        if (index < processor.numPlayers())
+        {
+            SoundboardGridCell *cell = new SoundboardGridCell(processor.playerAtIndex(index));
             cells.add(cell);
             addAndMakeVisible(cell);
             cell->setIndex(index + 1);

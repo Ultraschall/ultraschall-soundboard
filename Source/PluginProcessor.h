@@ -69,8 +69,9 @@ public:
     void getStateInformation(MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
 
-    int numAudioFiles();
-    Player* SamplePlayerAtIndex(int index);
+    int numPlayers();
+    Player* playerAtIndex(int index);
+
     void openDirectory(File directory);
     bool isLoocked() { return playersLock; }
 
@@ -120,7 +121,7 @@ private:
     ScopedPointer<LookAndFeel> mLookAndFeel;
 
     // Audio IO
-    OwnedArray<Player> samplePlayers;
+    OwnedArray<Player> players;
     AudioFormatManager formatManager;
     ScopedPointer<AudioThumbnailCache> thumbnailCache;
     AudioSourceChannelInfo sourceChannelInfo;

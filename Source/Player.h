@@ -1,23 +1,51 @@
 /*
   ==============================================================================
 
-    SamplePlayer.h
-    Author:  Daniel Lindenfelser
+  SamplePlayer.h
+  Author:  Daniel Lindenfelser
 
   ==============================================================================
-*/
+  */
 
 #ifndef SAMPLEPLAYER_H_INCLUDED
 #define SAMPLEPLAYER_H_INCLUDED
 
 #include "JuceHeader.h"
 
-class Player : private MultiTimer, public ChangeBroadcaster {
-    static const int UpdateTimerId = 0;
-    static const int FadeOutTimerId = 1;
-
+class Player : private MultiTimer, public ChangeBroadcaster
+{
 public:
-    enum PlayerState {
+    Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache);
+    ~Player();
+
+    String getTitle();
+
+    void play();
+    void pause();
+    void stop();
+
+    bool isPlaying();
+    bool isPaused();
+    bool isStopped();
+    bool isPlayed();
+
+    void setLooping(bool value);
+    bool isLooping();
+
+    float getProgress();
+    String getProgressString(bool remaining = true);
+
+    void setFadeOutTime(int seconds);
+    void startFadeOut();
+    bool isFadingOut();
+
+    void timerCallback(int timerID);
+
+    void setGain(float newGain);
+    float getGain();
+
+    enum PlayerState
+    {
         Error = -1,
         Ready = 0,
         Stopped = 1,
@@ -25,26 +53,6 @@ public:
         Paused = 3,
         Played = 4
     };
-    Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache);
-    ~Player();
-    String getTitle();
-    void play();
-    void pause();
-    void stop();
-    bool isPlaying();
-    bool isPaused();
-    bool isStopped();
-    bool isPlayed();
-    void setLooping(bool value);
-    bool isLooping();
-    float getProgress();
-    String getProgressString(bool remaining = true);
-    void setFadeOutTime(int seconds);
-    void startFadeOut();
-    bool isFadingOut();
-    void timerCallback(int timerID);
-    void setGain(float newGain);
-    float getGain();
     PlayerState getState();
     AudioSource* getAudioSource();
     AudioThumbnail* getThumbnail();
@@ -52,6 +60,9 @@ public:
     void setSortIndex(int value);
     int getSortIndex();
 private:
+    static const int UpdateTimerId = 0;
+    static const int FadeOutTimerId = 1;
+
     void update();
     void loadFileIntoTransport(const File& audioFile);
 

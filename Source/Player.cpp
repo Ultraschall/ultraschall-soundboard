@@ -1,17 +1,17 @@
 /*
   ==============================================================================
 
-    SamplePlayer.cpp
-    Author:  Daniel Lindenfelser
+  SamplePlayer.cpp
+  Author:  Daniel Lindenfelser
 
   ==============================================================================
-*/
+  */
 
 #include "Player.h"
 
 Player::Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache)
     : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension())
-        , sortIndex(-1)
+    , sortIndex(-1)
     , title(audioFile.getFileNameWithoutExtension())
     , playerState(Stopped)
     , fadeOutGain(1.0f)
@@ -34,6 +34,7 @@ Player::Player(const File& audioFile, AudioFormatManager* formatManager, AudioTh
 Player::~Player()
 {
     thumbnail->removeAllChangeListeners();
+    thumbnail->clear();
     removeAllChangeListeners();
     stopTimer(UpdateTimerId);
     stopTimer(FadeOutTimerId);
@@ -53,7 +54,8 @@ void Player::loadFileIntoTransport(const File& audioFile)
 
     AudioFormatReader* reader = audioFormatManager->createReaderFor(audioFile);
 
-    if (reader != nullptr) {
+    if (reader != nullptr)
+    {
         currentAudioFileSource = new AudioFormatReaderSource(reader, true);
 
         transportSource->setSource(currentAudioFileSource, 32768, &timeSliceThread, reader->sampleRate);
@@ -62,7 +64,8 @@ void Player::loadFileIntoTransport(const File& audioFile)
         thumbnail->setSource(new FileInputSource(audioFile));
         playerState = Ready;
     }
-    else {
+    else
+    {
         playerState = Error;
     }
 }
@@ -74,8 +77,9 @@ AudioThumbnail* Player::getThumbnail()
 
 void Player::update()
 {
-    process = (float)(transportSource->getCurrentPosition() / transportSource->getLengthInSeconds());
-    if (process >= 1.0f) {
+    process = (float) (transportSource->getCurrentPosition() / transportSource->getLengthInSeconds());
+    if (process >= 1.0f)
+    {
         process = 1.0f;
         transportSource->stop();
         transportSource->setPosition(0);
@@ -86,14 +90,18 @@ void Player::update()
 
 void Player::timerCallback(int timerID)
 {
-    if (timerID == UpdateTimerId) {
+    if (timerID == UpdateTimerId)
+    {
         update();
         return;
     }
-    if (timerID == FadeOutTimerId) {
-        if (fadeOut) {
+    if (timerID == FadeOutTimerId)
+    {
+        if (fadeOut)
+        {
             fadeOutGain = fadeOutGain - fadeOutGainSteps;
-            if (fadeOutGain <= 0) {
+            if (fadeOutGain <= 0)
+            {
                 fadeOut = false;
                 transportSource->stop();
                 transportSource->setPosition(0);
@@ -109,7 +117,8 @@ void Player::timerCallback(int timerID)
 
 void Player::startFadeOut()
 {
-    if (isPlaying()) {
+    if (isPlaying())
+    {
         fadeOut = true;
         fadeOutGainBackup = transportSource->getGain();
         fadeOutGain = transportSource->getGain();
@@ -120,7 +129,8 @@ void Player::startFadeOut()
 
 void Player::stop()
 {
-    if (isFadingOut()) {
+    if (isFadingOut())
+    {
         stopTimer(FadeOutTimerId);
         fadeOut = false;
         fadeOutGain = fadeOutGainBackup;
@@ -135,7 +145,8 @@ void Player::stop()
 
 void Player::play()
 {
-    if (!fadeOut) {
+    if (!fadeOut)
+    {
         transportSource->start();
         playerState = Playing;
         sendChangeMessage();
@@ -144,7 +155,8 @@ void Player::play()
 
 void Player::pause()
 {
-    if (!fadeOut) {
+    if (!fadeOut)
+    {
         transportSource->stop();
         playerState = Paused;
         sendChangeMessage();
@@ -159,7 +171,8 @@ bool Player::isLooping() { return currentAudioFileSource->isLooping(); }
 
 void Player::setLooping(bool value)
 {
-    if (isPlaying() && !value) {
+    if (isPlaying() && !value)
+    {
         int64 nextReadPosition = transportSource->getNextReadPosition();
         currentAudioFileSource->setLooping(false);
         transportSource->setNextReadPosition(nextReadPosition);
@@ -173,12 +186,14 @@ String Player::getTitle() { return title; }
 
 String Player::getProgressString(bool remaining)
 {
-    if (!remaining) {
-        Time time(1971, 0, 0, 0, 0, (int)transportSource->getCurrentPosition());
+    if (!remaining)
+    {
+        Time time(1971, 0, 0, 0, 0, (int) transportSource->getCurrentPosition());
         return time.toString(false, true, true, true);
     }
-    else {
-        Time time(1971, 0, 0, 0, 0, (int)(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
+    else
+    {
+        Time time(1971, 0, 0, 0, 0, (int) (transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
         return "-" + time.toString(false, true, true, true);
     }
 }
