@@ -22,10 +22,9 @@
 *.out
 *.app
 .DS_Store
-build
 .xcuserstate
 xcuserdata
 MacOSX.iws
-.idea/workspace.xml
-Debug
-Release
+workspace.xml
+Builds
+JuceLibraryCode
