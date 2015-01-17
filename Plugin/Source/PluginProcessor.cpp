@@ -63,6 +63,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
     stopTimer(TimerOscRefresh);
+    stopTimer(TimerOscDump);
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
     propertiesFile->save();
@@ -432,7 +433,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
                              currentDirectory);
     if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
     {
-        for (int index = 0; index < players.size(); index++)
+        for (int index = 0; index < numPlayers(); index++)
         {
             oscSendPlayerConfig(index);
         }
@@ -860,6 +861,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             oscSendReset();
         }
         startTimer(TimerOscRefresh, 100);
+        startTimer(TimerOscDump, 1000 * 10);
     }
     else if (timerID == TimerOscRefresh)
     {
@@ -868,6 +870,15 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
             oscSendPlayerUpdate();
         }
         oscReceived = 0;
+    }
+    else if (timerID == TimerOscDump) {
+        if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier))
+        {
+            for (int index = 0; index < numPlayers(); index++)
+            {
+                oscSendPlayerConfig(index);
+            }
+        }
     }
     else if (timerID == TimerMidiEvents)
     {

@@ -130,7 +130,8 @@ private:
     // Timer Ids
     static const int TimerOscServerDelay = 0;
     static const int TimerOscRefresh = 1;
-    static const int TimerMidiEvents = 2;
+    static const int TimerOscDump = 2;
+    static const int TimerMidiEvents = 3;
     ScopedPointer<LookAndFeel> mLookAndFeel;
 
     // Audio IO
