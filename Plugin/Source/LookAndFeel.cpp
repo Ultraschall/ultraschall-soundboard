@@ -109,6 +109,11 @@ void SwitchTheme(Themes theme)
     }
     auto& mLookAndFeel = LookAndFeel::getDefaultLookAndFeel();
 
+    mLookAndFeel.setColour(TextButton::buttonColourId, ThemeBackground2);
+    mLookAndFeel.setColour(TextButton::buttonOnColourId, ThemeBackground3);
+    mLookAndFeel.setColour(TextButton::textColourOffId, ThemeForeground1);
+    mLookAndFeel.setColour(TextButton::textColourOnId, ThemeForeground2);
+
     mLookAndFeel.setColour(TableListBox::backgroundColourId, ThemeBackground1);
     mLookAndFeel.setColour(TableListBox::textColourId, ThemeForeground1);
     mLookAndFeel.setColour(Slider::rotarySliderFillColourId, ThemeForeground1);
