@@ -10,8 +10,7 @@
 
 #include "GridComponent.h"
 
-SoundboardGridComponent::SoundboardGridComponent(SoundboardAudioProcessor& p)
-    : processor(p)
+SoundboardGridComponent::SoundboardGridComponent(SoundboardAudioProcessor &p) : processor(p)
 {
     updateContent();
     startTimer(TimerIdRepaint, static_cast<int>(1000 * 0.5));
@@ -25,14 +24,14 @@ SoundboardGridComponent::~SoundboardGridComponent()
 
 void SoundboardGridComponent::resized()
 {
-    auto cellWidth = getWidth() / 4;
+    auto cellWidth  = getWidth() / 4;
     auto cellHeight = getHeight() / 6;
     if (cellHeight != 0 && cellWidth != 0)
     {
         for (int index = 0; index < cells.size(); index++)
         {
             auto column = index % 4;
-            auto row = index / 4;
+            auto row    = index / 4;
 
             auto x = column * cellWidth;
             auto y = row * cellHeight;

@@ -28,14 +28,27 @@
           <FILE id="HaPVOq" name="LookAndFeel.h" compile="0" resource="0" file="../Plugin/Source/LookAndFeel.h"/>
         </GROUP>
         <GROUP id="{CB78AAEC-F3D9-E656-27F5-D3441DE12DA7}" name="Components">
-          <FILE id="nJ8tsf" name="GridComponent.cpp" compile="1" resource="0"
-                file="../Plugin/Source/GridComponent.cpp"/>
-          <FILE id="PJXQSR" name="GridComponent.h" compile="0" resource="0" file="../Plugin/Source/GridComponent.h"/>
-          <FILE id="VPOToX" name="OscSettings.h" compile="0" resource="0" file="../Plugin/Source/OscSettings.h"/>
-          <FILE id="e3c1LL" name="TableComponent.cpp" compile="1" resource="0"
-                file="../Plugin/Source/TableComponent.cpp"/>
-          <FILE id="JUACig" name="TableComponent.h" compile="0" resource="0"
-                file="../Plugin/Source/TableComponent.h"/>
+          <GROUP id="{94E8EC4E-7214-EA29-6A73-C2346F390354}" name="Table">
+            <FILE id="vEj7Pq" name="TableButtonCell.cpp" compile="1" resource="0"
+                  file="../Plugin/Source/TableButtonCell.cpp"/>
+            <FILE id="Vq1rom" name="TableButtonCell.h" compile="0" resource="0"
+                  file="../Plugin/Source/TableButtonCell.h"/>
+            <FILE id="e3c1LL" name="TableComponent.cpp" compile="1" resource="0"
+                  file="../Plugin/Source/TableComponent.cpp"/>
+            <FILE id="JUACig" name="TableComponent.h" compile="0" resource="0"
+                  file="../Plugin/Source/TableComponent.h"/>
+          </GROUP>
+          <GROUP id="{CC2413C5-B48A-A03C-AEDE-8EF0CD7577E6}" name="Grid">
+            <FILE id="POV7eM" name="GridCell.cpp" compile="1" resource="0" file="../Plugin/Source/GridCell.cpp"/>
+            <FILE id="w5hNuL" name="GridCell.h" compile="0" resource="0" file="../Plugin/Source/GridCell.h"/>
+            <FILE id="nJ8tsf" name="GridComponent.cpp" compile="1" resource="0"
+                  file="../Plugin/Source/GridComponent.cpp"/>
+            <FILE id="PJXQSR" name="GridComponent.h" compile="0" resource="0" file="../Plugin/Source/GridComponent.h"/>
+          </GROUP>
+          <FILE id="iH0UKI" name="SettingsComponent.cpp" compile="1" resource="0"
+                file="../Plugin/Source/SettingsComponent.cpp"/>
+          <FILE id="bJaFmS" name="SettingsComponent.h" compile="0" resource="0"
+                file="../Plugin/Source/SettingsComponent.h"/>
         </GROUP>
       </GROUP>
       <GROUP id="{87A7BDC0-4FDD-AD55-C410-E526DC09C46B}" name="Processor">
@@ -72,6 +85,7 @@
         <MODULEPATH id="danlin_fontawesome" path="../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2013 targetFolder="Builds/VisualStudio2013" smallIcon="pgyuob" bigIcon="qtYVP2">
@@ -96,6 +110,7 @@
         <MODULEPATH id="danlin_fontawesome" path="../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </VS2013>
     <LINUX_MAKE targetFolder="Builds/Linux" smallIcon="pgyuob" bigIcon="qtYVP2">
@@ -120,13 +135,14 @@
         <MODULEPATH id="danlin_fontawesome" path="../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULES id="danlin_fontawesome" showAllCode="0" useLocalCopy="0"/>
+    <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="danlin_oscpack" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="danlin_oscserver" showAllCode="0" useLocalCopy="0"/>
+    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_basics" showAllCode="0" useLocalCopy="0"/>
     <MODULES id="juce_audio_devices" showAllCode="0" useLocalCopy="0"/>
     <MODULES id="juce_audio_formats" showAllCode="0" useLocalCopy="0"/>
@@ -138,6 +154,7 @@
     <MODULES id="juce_graphics" showAllCode="0" useLocalCopy="0"/>
     <MODULES id="juce_gui_basics" showAllCode="0" useLocalCopy="0"/>
     <MODULES id="juce_gui_extra" showAllCode="0" useLocalCopy="0"/>
+    <MODULES id="juce_opengl" showAllCode="0" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="enabled"
                JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>

@@ -22,14 +22,27 @@
           <FILE id="XaP1Et" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
         </GROUP>
         <GROUP id="{70E77687-EEA2-8BBD-A6A8-CC058AA7CD69}" name="Components">
-          <FILE id="QXYgra" name="OscSettings.h" compile="0" resource="0" file="Source/OscSettings.h"/>
-          <FILE id="afsCcf" name="GridComponent.h" compile="0" resource="0" file="Source/GridComponent.h"/>
-          <FILE id="Swglwi" name="GridComponent.cpp" compile="1" resource="0"
-                file="Source/GridComponent.cpp"/>
-          <FILE id="TCDTAs" name="TableComponent.h" compile="0" resource="0"
-                file="Source/TableComponent.h"/>
-          <FILE id="JXDH3d" name="TableComponent.cpp" compile="1" resource="0"
-                file="Source/TableComponent.cpp"/>
+          <GROUP id="{2D0E0BDB-F5E2-241D-F142-7687D238D757}" name="Table">
+            <FILE id="ZxMoCM" name="TableButtonCell.cpp" compile="1" resource="0"
+                  file="Source/TableButtonCell.cpp"/>
+            <FILE id="iTdHVg" name="TableButtonCell.h" compile="0" resource="0"
+                  file="Source/TableButtonCell.h"/>
+            <FILE id="TCDTAs" name="TableComponent.h" compile="0" resource="0"
+                  file="Source/TableComponent.h"/>
+            <FILE id="JXDH3d" name="TableComponent.cpp" compile="1" resource="0"
+                  file="Source/TableComponent.cpp"/>
+          </GROUP>
+          <GROUP id="{4AEC3F70-9A59-0A11-E463-729E1755E477}" name="Grid">
+            <FILE id="oCF51O" name="GridCell.cpp" compile="1" resource="0" file="Source/GridCell.cpp"/>
+            <FILE id="rSyQDy" name="GridCell.h" compile="0" resource="0" file="Source/GridCell.h"/>
+            <FILE id="afsCcf" name="GridComponent.h" compile="0" resource="0" file="Source/GridComponent.h"/>
+            <FILE id="Swglwi" name="GridComponent.cpp" compile="1" resource="0"
+                  file="Source/GridComponent.cpp"/>
+          </GROUP>
+          <FILE id="GR3Twu" name="SettingsComponent.cpp" compile="1" resource="0"
+                file="Source/SettingsComponent.cpp"/>
+          <FILE id="LW9pmD" name="SettingsComponent.h" compile="0" resource="0"
+                file="Source/SettingsComponent.h"/>
         </GROUP>
         <FILE id="SaW1KJ" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
         <FILE id="fgemth" name="PluginEditor.cpp" compile="1" resource="0"

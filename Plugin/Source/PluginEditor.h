@@ -15,64 +15,55 @@
 #include "PluginProcessor.h"
 #include "TableComponent.h"
 #include "GridComponent.h"
-#include "OscSettings.h"
+#include "SettingsComponent.h"
 
 
 //==============================================================================
 /**
 */
-class SoundboardAudioProcessorEditor : public AudioProcessorEditor,
-                                       public Button::Listener,
-                                       public Slider::Listener,
-                                       public MultiTimer
+class SoundboardAudioProcessorEditor
+        : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer
 {
 public:
-    explicit SoundboardAudioProcessorEditor(SoundboardAudioProcessor&);
+    explicit SoundboardAudioProcessorEditor(SoundboardAudioProcessor &);
     ~SoundboardAudioProcessorEditor();
 
     // Button::Listener
-    void buttonClicked(Button* buttonThatWasClicked) override;
+    void buttonClicked(Button *buttonThatWasClicked) override;
 
     // Slider::Listener
-    void sliderValueChanged(Slider* slider) override;
+    void sliderValueChanged(Slider *slider) override;
 
     //==============================================================================
-    void paint(Graphics&) override;
-
+    void paint(Graphics &) override;
     void resized() override;
-
     void refresh();
-
     void timerCallback(int timerID) override;
 
 private:
-    static const int TimerIdUpdate = 1;
-    static const int TimerIdBlink = 2;
+    static const int TimerIdUpdate  = 1;
+    static const int TimerIdBlink   = 2;
     static const int TimerIdRefresh = 3;
 
-    ScopedPointer<SoundboardTableComponent> table;
-    ScopedPointer<SoundboardGridComponent> grid;
-    ScopedPointer<ResizableCornerComponent> resizer;
-    ComponentBoundsConstrainer resizeLimits;
-    ScopedPointer<AwesomeButton> loadDirectoryButton;
+    ScopedPointer<SoundboardTableComponent>    table;
+    ScopedPointer<SoundboardGridComponent>     grid;
+    ScopedPointer<SoundboardSettingsComponent> settings;
+
+    ScopedPointer<ResizableCornerComponent> resizableCornerComponent;
+    ComponentBoundsConstrainer              resizeLimits;
+    ScopedPointer<TextButton>               loadDirectoryButton;
 
     ScopedPointer<TextButton> gridButton;
     ScopedPointer<TextButton> listButton;
 
-    ScopedPointer<Slider> fadeOutSlider;
-    ScopedPointer<Label> fadeOutLabel;
-
-    ScopedPointer<OscSettings> settingsComponent;
-
-    ScopedPointer<Bar> topBar;
-    ScopedPointer<AwesomeButton> settingsButton;
-    ScopedPointer<ActivityIndicator> oscActivityIndicator;
+    ScopedPointer<Bar>        topBar;
+    ScopedPointer<TextButton> settingsButton;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    SoundboardAudioProcessor& processor;
-    bool mPauseState;
-    bool mTimerState;
+    SoundboardAudioProcessor &processor;
+    bool                     mPauseState;
+    bool                     mTimerState;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessorEditor)
 };
