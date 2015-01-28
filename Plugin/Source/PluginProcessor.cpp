@@ -468,9 +468,6 @@ void SoundboardAudioProcessor::setGain(int playerIndex, float value)
     {
         return;
     }
-
-    auto parameterIndex = GlobalParameterCount + (playerIndex * PlayerParameterCount);
-    setParameterNotifyingHost(parameterIndex, value);
 }
 
 int SoundboardAudioProcessor::getWindowWidth()

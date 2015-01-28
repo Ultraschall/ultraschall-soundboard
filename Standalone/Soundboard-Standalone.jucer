@@ -138,6 +138,31 @@
         <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
+    <VS2015 targetFolder="Builds/VisualStudio2015">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="Soundboard"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="Soundboard"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../Submodules/JUCE/modules"/>
+        <MODULEPATH id="danlin_oscserver" path="../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscpack" path="../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_fontawesome" path="../Submodules/danlin_modules/modules"/>
+      </MODULEPATHS>
+    </VS2015>
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
