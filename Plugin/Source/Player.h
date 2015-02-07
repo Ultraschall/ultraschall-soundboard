@@ -12,10 +12,10 @@
 
 #include "JuceHeader.h"
 
-class Player : private MultiTimer, public ChangeBroadcaster
+class Player : private MultiTimer, public ChangeBroadcaster, public ChangeListener
 {
 public:
-    Player(const File &audioFile,
+    Player(int index, const File &audioFile,
            AudioFormatManager *formatManager,
            AudioThumbnailCache *thumbnailCache,
            OscProcessor &);
@@ -56,8 +56,11 @@ public:
     AudioSource    *getAudioSource();
     AudioThumbnail *getThumbnail();
 
-    void setSortIndex(int value);
-    int  getSortIndex();
+    void setIndex(int value);
+    int  getIndex();
+    
+    // ChangeListener
+    void changeListenerCallback (ChangeBroadcaster* source) override;
 private:
     static const int UpdateTimerId  = 0;
     static const int FadeOutTimerId = 1;
@@ -67,7 +70,6 @@ private:
 
     int             playerIndex;
     TimeSliceThread timeSliceThread;
-    int             sortIndex;
     String          title;
     PlayerState     playerState;
     float           fadeOutGain;

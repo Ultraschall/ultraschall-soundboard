@@ -9,11 +9,11 @@
 
 #include "Player.h"
 
-Player::Player(const File &audioFile,
+Player::Player(int index, const File &audioFile,
                AudioFormatManager *formatManager,
                AudioThumbnailCache *thumbnailCache,
-               OscProcessor &p) : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()),
-                                  sortIndex(-1),
+               OscProcessor &p) : playerIndex(index),
+                                  timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()),
                                   title(audioFile.getFileNameWithoutExtension()),
                                   playerState(Stopped),
                                   fadeOutGain(1.0f),
@@ -32,6 +32,15 @@ Player::Player(const File &audioFile,
     loadFileIntoTransport(audioFile);
     startTimer(UpdateTimerId, 50);
     startTimer(FadeOutTimerId, 100);
+    
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/play");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/pause");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/stop");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/tigger");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/ftigger");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/loop");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/fadeout");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/gain");
 }
 
 Player::~Player()
@@ -279,12 +288,41 @@ bool Player::isFadingOut()
     return fadeOut;
 }
 
-void Player::setSortIndex(int value)
+void Player::setIndex(int value)
 {
-    sortIndex = value;
+    playerIndex = value;
 }
 
-int Player::getSortIndex()
+int Player::getIndex()
 {
-    return sortIndex;
+    return playerIndex;
+}
+
+void Player::changeListenerCallback (ChangeBroadcaster* source) {
+    OscParameter *parameter = static_cast<OscParameter*>(source);
+    
+    if (parameter) {
+        String address = parameter->getAddress();
+        float value = parameter->getValue();
+        if (address.startsWith("/ultraschall/soundboard/player/" + String(playerIndex))) {
+            if (address.endsWith("/play")) {
+                if (value == 1.0) {
+                    play();
+                }
+            }
+            else if (address.endsWith("/pause")) {
+                pause();
+            }
+            else if (address.endsWith("/stop")) {
+                stop();
+            }
+            else if (address.endsWith("/tigger")) {
+                if (isPlayed()) {
+                    stop();
+                } else {
+                    play();
+                }
+            }
+        }
+    }
 }

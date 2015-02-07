@@ -290,7 +290,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
             && count < MaximumSamplePlayers)
         {
-            auto audioFile = new Player(iterator.getFile(), &formatManager, thumbnailCache, *this);
+            auto audioFile = new Player(count, iterator.getFile(), &formatManager, thumbnailCache, *this);
             if (audioFile->getState() == Player::Error)
             {
                 delete audioFile;
