@@ -102,7 +102,7 @@ public:
 
 private:
     // Maximum Number of Sampler Slots
-    static const int MaximumSamplePlayers = 24;
+    static const int MaximumSamplePlayers = 50;
 
     // Init Program Number
     static const int ProgramNumberInit = 0;
