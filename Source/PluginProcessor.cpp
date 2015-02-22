@@ -739,6 +739,10 @@ void SoundboardAudioProcessor::handleOscMessage(osc::ReceivedPacket packet)
                                 SamplePlayerAtIndex(index)->setFadeOutTime(value);
                             }
                         }
+                    } else if (messageSplit[3] == "stopall") {
+                        for (int index = 0; index < samplePlayers.size(); index++) {
+                            SamplePlayerAtIndex(index)->stop();
+                        }
                     }
                 }
             }
