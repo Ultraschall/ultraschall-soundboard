@@ -215,12 +215,12 @@ ___
 Mit Stop beendet wird die Wiedergabe gestoppet. Player die bereits gespielt wurden werden durch Stop zurück auf nicht gespielt gesetzt.
 
 ___
-**/ultraschall/soundboard/player/*/tigger float (0.0,1.0)**
+**/ultraschall/soundboard/player/*/trigger float (0.0,1.0)**
 
 Dieses Kommando startet einen nicht spielenden Player oder stoppt einen spielenden Player. Somit kann dieser Befehl optimal für kurze Audio Schnipsel verwendet werden, wie z.B. Applaus.
 
 ___
-**/ultraschall/soundboard/player/*/ftigger float (0.0,1.0)**
+**/ultraschall/soundboard/player/*/ftrigger float (0.0,1.0)**
 
 Dieses Kommando startet einen nicht spielenden Player oder startet den Fade-Out eines spielenden Player.
 
