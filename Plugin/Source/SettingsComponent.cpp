@@ -78,7 +78,7 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
 
     addAndMakeVisible(loggerListBox = new ListBox);
 
-    p.addOscParameterListener(this, "/ultraschall/soundboard/fadeout");
+    //p.addOscParameterListener(this, ".+");
 }
 
 SoundboardSettingsComponent::~SoundboardSettingsComponent()
@@ -106,7 +106,7 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
 
     loggerListBox = nullptr;
 
-    processor.removeOscParameterListener(this);
+    //processor.removeOscParameterListener(this);
 }
 
 // Component
@@ -213,8 +213,10 @@ void SoundboardSettingsComponent::paintListBoxItem(int rowNumber, Graphics& g, i
 void SoundboardSettingsComponent::changeListenerCallback (ChangeBroadcaster *source)
 {
     OscParameter* parameter = dynamic_cast<OscParameter*>(source);
+    if (parameter) {
     if (parameter->addressMatch("/ultraschall/soundboard/fadeout"))
     {
         fadeOutSlider->setValue(fadeOutSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+    }
     }
 }

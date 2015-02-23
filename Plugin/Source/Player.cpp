@@ -33,14 +33,7 @@ Player::Player(int index, const File &audioFile,
     startTimer(UpdateTimerId, 50);
     startTimer(FadeOutTimerId, 100);
     
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/play");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/pause");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/stop");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/tigger");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/ftigger");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/loop");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/fadeout");
-    p.addOscParameterListener(this, "/ultraschall/soundboard/player/*/gain");
+//    p.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
 }
 
 Player::~Player()
@@ -96,9 +89,10 @@ void Player::update()
         transportSource->stop();
         transportSource->setPosition(0);
         playerState = Played;
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     }
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress", process);
+    if (static_cast<float>(processor.getOscParameter("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress")->getValue()) != process) {
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress", process);
+    }
 }
 
 void Player::timerCallback(int timerID)
@@ -121,13 +115,8 @@ void Player::timerCallback(int timerID)
                 playerState = Played;
                 fadeOutGain = fadeOutGainBackup;
                 update();
-                processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/play", false);
-                processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
-                processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", false);
-                processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", true);
             }
             transportSource->setGain(fadeOutGain);
-            processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/gain", fadeOutGain);
         }
     }
 }
@@ -140,7 +129,6 @@ void Player::startFadeOut()
         fadeOutGainBackup = transportSource->getGain();
         fadeOutGain       = transportSource->getGain();
         fadeOutGainSteps  = fadeOutGainBackup / fadeOutSeconds / 10.0f;
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/fadeout", true);
     }
 }
 
@@ -156,10 +144,6 @@ void Player::stop()
     transportSource->stop();
     transportSource->setPosition(0);
     playerState = Stopped;
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/play", false);
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", true);
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     update();
     sendChangeMessage();
 }
@@ -170,9 +154,8 @@ void Player::play()
     {
         transportSource->start();
         playerState = Playing;
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/play", true);
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
         processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
         processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     }
 }
@@ -183,9 +166,8 @@ void Player::pause()
     {
         transportSource->stop();
         playerState = Paused;
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/play", false);
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", true);
         processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
         processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     }
 }
@@ -198,7 +180,6 @@ float Player::getProgress()
 void Player::setFadeOutTime(int seconds)
 {
     fadeOutSeconds = seconds;
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/fadeout", seconds);
 }
 
 bool Player::isLooping()
@@ -208,7 +189,6 @@ bool Player::isLooping()
 
 void Player::setLooping(bool value)
 {
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/loop", value);
     if (isPlaying() && !value)
     {
         auto nextReadPosition = transportSource->getNextReadPosition();
@@ -250,7 +230,6 @@ float Player::getGain()
 void Player::setGain(float newGain)
 {
     transportSource->setGain(newGain);
-    processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/gain", newGain);
 }
 
 Player::PlayerState Player::getState()
@@ -291,6 +270,8 @@ bool Player::isFadingOut()
 void Player::setIndex(int value)
 {
     playerIndex = value;
+//    processor.removeOscParameterListener(this);
+//    processor.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
 }
 
 int Player::getIndex()
@@ -300,7 +281,7 @@ int Player::getIndex()
 
 void Player::changeListenerCallback (ChangeBroadcaster* source) {
     OscParameter *parameter = static_cast<OscParameter*>(source);
-    
+
     if (parameter) {
         String address = parameter->getAddress();
         float value = parameter->getValue();
@@ -311,16 +292,22 @@ void Player::changeListenerCallback (ChangeBroadcaster* source) {
                 }
             }
             else if (address.endsWith("/pause")) {
-                pause();
+                if (value == 1.0) {
+                    pause();
+                }
             }
             else if (address.endsWith("/stop")) {
-                stop();
+                if (value == 1.0) {
+                    stop();
+                }
             }
             else if (address.endsWith("/tigger")) {
-                if (isPlayed()) {
-                    stop();
-                } else {
-                    play();
+                if (value == 1.0) {
+                    if (isPlayed()) {
+                        stop();
+                    } else {
+                        play();
+                    }
                 }
             }
         }

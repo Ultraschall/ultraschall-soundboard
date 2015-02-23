@@ -35,7 +35,7 @@ static const Identifier OscRemoteEnabledIdentifier("OscRemoteEnabled");
 static const Identifier OscRemoteHostnameIdentifier("OscRemoteHostname");
 static const Identifier OscRemotePortNumberIdentifier("OscRemotePortNumber");
 
-class SoundboardAudioProcessor : public AudioProcessor, public OscProcessor, public ChangeListener, public MultiTimer
+class SoundboardAudioProcessor : public AudioProcessor, public OscProcessor, public MultiTimer, public OscParameterListener
 {
 public:
     SoundboardAudioProcessor();
@@ -84,9 +84,6 @@ public:
     int  getFadeOutSeconds();
     void setFadeOutSeconds(int seconds);
 
-    // ChangeListener
-    void changeListenerCallback(ChangeBroadcaster *source) override;
-
     // MultiTimer
     void timerCallback(int timerID) override;
 
@@ -106,6 +103,9 @@ public:
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 24;
 
+    // OscParameterListener
+    void handleOscParameterMessage(OscParameter *parameter) override;
+
 private:
     // Init Program Number
     static const int ProgramNumberInit   = 0;
@@ -123,9 +123,6 @@ private:
     MixerAudioSource                   mixerAudioSource;
     bool playersLocked;
 
-    // OSC IO
-    ScopedPointer<OscProcessor> oscProcessor;
-
     int                      fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;
 
@@ -133,8 +130,8 @@ private:
     int                           currentProgramIndex;
     String                        currentDirectory;
     ScopedPointer<PropertySet>    fallbackProperties;
-    ScopedPointer<PropertiesFile> propertiesFile;
-
+    ScopedPointer<PropertiesFile> propertiesFile;   
+    
     // MIDI
     MidiBuffer      midiBuffer;
     CriticalSection midiCriticalSection;

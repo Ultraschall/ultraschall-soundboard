@@ -86,7 +86,7 @@ void SoundboardCellButton::paintButton(Graphics &g, bool isMouseOverButton, bool
     g.drawText(icon, 0, 0, getWidth(), getHeight(), Justification::centred, true);
 }
 
-// MultiTimer
+// Timer
 void SoundboardCellButton::timerCallback()
 {
     flashingState = !flashingState;
