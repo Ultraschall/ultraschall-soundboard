@@ -97,7 +97,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
-    removeOscParameter(".*");
+    removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
     propertiesFile->save();
@@ -369,8 +369,8 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
         setOscParameterValue("/ultraschall/sounboard/setup/osc/remote/port", propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
         setOscParameterValue("/ultraschall/sounboard/setup/osc/remote/enabled", propertiesFile->getBoolValue(OscRemoteEnabledIdentifier));
         
-        setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/enabled", propertiesFile->getBoolValue(OscReceiveEnabledIdentifier));
         setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/port", propertiesFile->getIntValue(OscReceivePortNumberIdentifier));
+        setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/enabled", propertiesFile->getBoolValue(OscReceiveEnabledIdentifier));
     }
     else if (timerID == TimerMidiEvents)
     {
@@ -485,9 +485,47 @@ void SoundboardAudioProcessor::storeWindowHeight(int height)
 
 void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter *parameter) {
     if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/repeater/host")) {
+        getOscServer()->setBridgeHostname(parameter->getValue().toString());
+    }
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/repeater/port"))
+    {
+        getOscServer()->setBridgeHostname(parameter->getValue());
+    }
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/repeater/enabled"))
+    {
+        getOscServer()->setBridgeEnabled(parameter->getValue());
         
     }
-    std:cout << parameter->getAddress() << " " << parameter->getValue().toString() << std::endl;
+
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/remote/host"))
+    {
+        getOscServer()->setRemoteHostname(parameter->getValue().toString());
+    }
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/remote/port"))
+    {
+        getOscServer()->setRemotePortNumber(parameter->getValue());
+    }
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/remote/enabled"))
+    {
+        // TODO: Osc Server disable send?
+    }
+    
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/receive/port"))
+    {
+        getOscServer()->setLocalPortNumber(parameter->getValue());
+    }
+    else if (parameter->addressMatch("/ultraschall/sounboard/setup/osc/receive/enabled"))
+    {
+        if (parameter->getValue())
+        {
+            getOscServer()->listen();
+        } else
+        {
+            getOscServer()->stopListening();
+        }
+    }
+
+    Logger::outputDebugString(parameter->getAddress() + " " + parameter->getValue().toString());
 }
 
 //==============================================================================

@@ -33,7 +33,7 @@ Player::Player(int index, const File &audioFile,
     startTimer(UpdateTimerId, 50);
     startTimer(FadeOutTimerId, 100);
     
-//    p.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
 }
 
 Player::~Player()
@@ -270,8 +270,8 @@ bool Player::isFadingOut()
 void Player::setIndex(int value)
 {
     playerIndex = value;
-//    processor.removeOscParameterListener(this);
-//    processor.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
+    processor.removeOscParameterListener(this);
+    processor.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
 }
 
 int Player::getIndex()
@@ -279,35 +279,32 @@ int Player::getIndex()
     return playerIndex;
 }
 
-void Player::changeListenerCallback (ChangeBroadcaster* source) {
-    OscParameter *parameter = static_cast<OscParameter*>(source);
-
-    if (parameter) {
-        String address = parameter->getAddress();
-        float value = parameter->getValue();
-        if (address.startsWith("/ultraschall/soundboard/player/" + String(playerIndex))) {
-            if (address.endsWith("/play")) {
-                if (value == 1.0) {
-                    play();
-                }
+void Player::handleOscParameterMessage(OscParameter *parameter)
+{
+    String address = parameter->getAddress();
+    float value = parameter->getValue();
+    if (address.startsWith("/ultraschall/soundboard/player/" + String(playerIndex))) {
+        if (address.endsWith("/play")) {
+            if (value == 1.0) {
+                play();
             }
-            else if (address.endsWith("/pause")) {
-                if (value == 1.0) {
-                    pause();
-                }
+        }
+        else if (address.endsWith("/pause")) {
+            if (value == 1.0) {
+                pause();
             }
-            else if (address.endsWith("/stop")) {
-                if (value == 1.0) {
+        }
+        else if (address.endsWith("/stop")) {
+            if (value == 1.0) {
+                stop();
+            }
+        }
+        else if (address.endsWith("/tigger")) {
+            if (value == 1.0) {
+                if (isPlayed()) {
                     stop();
-                }
-            }
-            else if (address.endsWith("/tigger")) {
-                if (value == 1.0) {
-                    if (isPlayed()) {
-                        stop();
-                    } else {
-                        play();
-                    }
+                } else {
+                    play();
                 }
             }
         }

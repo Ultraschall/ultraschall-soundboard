@@ -12,7 +12,7 @@
 
 #include "JuceHeader.h"
 
-class Player : private MultiTimer, public ChangeBroadcaster, public ChangeListener
+class Player : private MultiTimer, public ChangeBroadcaster, public OscParameterListener
 {
 public:
     Player(int index, const File &audioFile,
@@ -60,7 +60,7 @@ public:
     int  getIndex();
     
     // ChangeListener
-    void changeListenerCallback (ChangeBroadcaster* source) override;
+    void handleOscParameterMessage(OscParameter *parameter) override;
 private:
     static const int UpdateTimerId  = 0;
     static const int FadeOutTimerId = 1;
