@@ -12,13 +12,12 @@
 
 #include "JuceHeader.h"
 
-class Player : private MultiTimer, public ChangeBroadcaster, public OscParameterListener
-{
+class Player : private MultiTimer,
+               public ChangeBroadcaster,
+               public OscParameterListener {
 public:
-    Player(int index, const File &audioFile,
-           AudioFormatManager *formatManager,
-           AudioThumbnailCache *thumbnailCache,
-           OscProcessor &);
+    Player(int index, const File& audioFile, AudioFormatManager* formatManager,
+        AudioThumbnailCache* thumbnailCache, OscProcessor&);
     ~Player();
 
     String getTitle();
@@ -35,7 +34,7 @@ public:
     void setLooping(bool value);
     bool isLooping();
 
-    float  getProgress();
+    float getProgress();
     String getProgressString(bool remaining = true);
 
     void setFadeOutTime(int seconds);
@@ -44,48 +43,53 @@ public:
 
     void timerCallback(int timerID) override;
 
-    void  setGain(float newGain);
+    void setGain(float newGain);
     float getGain();
 
-    enum PlayerState
-    {
-        Error = -1, Ready = 0, Stopped = 1, Playing = 2, Paused = 3, Played = 4
+    enum PlayerState {
+        Error = -1,
+        Ready = 0,
+        Stopped = 1,
+        Playing = 2,
+        Paused = 3,
+        Played = 4
     };
 
     PlayerState getState();
-    AudioSource    *getAudioSource();
-    AudioThumbnail *getThumbnail();
+    AudioSource* getAudioSource();
+    AudioThumbnail* getThumbnail();
 
     void setIndex(int value);
-    int  getIndex();
-    
+    int getIndex();
+
     // ChangeListener
-    void handleOscParameterMessage(OscParameter *parameter) override;
+    void handleOscParameterMessage(OscParameter* parameter) override;
+
 private:
-    static const int UpdateTimerId  = 0;
+    static const int UpdateTimerId = 0;
     static const int FadeOutTimerId = 1;
 
     void update();
-    void loadFileIntoTransport(const File &audioFile);
+    void loadFileIntoTransport(const File& audioFile);
 
-    int             playerIndex;
+    int playerIndex;
     TimeSliceThread timeSliceThread;
-    String          title;
-    PlayerState     playerState;
-    float           fadeOutGain;
-    float           fadeOutGainBackup;
-    float           fadeOutGainSteps;
-    int             fadeOutSeconds;
-    bool            fadeOut;
-    float           process;
-    AudioFormatManager  *audioFormatManager;
-    AudioThumbnailCache *thumbnailCache;
-    ScopedPointer<AudioThumbnail>          thumbnail;
-    ScopedPointer<AudioTransportSource>    transportSource;
-    AudioSourcePlayer                      audioSourcePlayer;
+    String title;
+    PlayerState playerState;
+    float fadeOutGain;
+    float fadeOutGainBackup;
+    float fadeOutGainSteps;
+    int fadeOutSeconds;
+    bool fadeOut;
+    float process;
+    AudioFormatManager* audioFormatManager;
+    AudioThumbnailCache* thumbnailCache;
+    ScopedPointer<AudioThumbnail> thumbnail;
+    ScopedPointer<AudioTransportSource> transportSource;
+    AudioSourcePlayer audioSourcePlayer;
     ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;
-    OscProcessor &processor; JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
+    OscProcessor& processor;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
 
 #endif // AUDIOFILE_H_INCLUDED
-

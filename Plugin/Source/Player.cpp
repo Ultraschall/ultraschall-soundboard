@@ -90,9 +90,9 @@ void Player::update()
         transportSource->setPosition(0);
         playerState = Played;
     }
-    if (static_cast<float>(processor.getOscParameter("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress")->getValue()) != process) {
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress", process);
-    }
+//    if (static_cast<float>(processor.getOscParameter("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress")->getValue()) != process) {
+//        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress", process);
+//    }
 }
 
 void Player::timerCallback(int timerID)
@@ -140,6 +140,7 @@ void Player::stop()
         fadeOut     = false;
         fadeOutGain = fadeOutGainBackup;
         transportSource->setGain(fadeOutGain);
+        
     }
     transportSource->stop();
     transportSource->setPosition(0);
@@ -167,7 +168,7 @@ void Player::pause()
         transportSource->stop();
         playerState = Paused;
         processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", false);
-        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/play", false);
         processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     }
 }
@@ -285,28 +286,42 @@ void Player::handleOscParameterMessage(OscParameter *parameter)
     float value = parameter->getValue();
     if (address.startsWith("/ultraschall/soundboard/player/" + String(playerIndex))) {
         if (address.endsWith("/play")) {
-            if (value == 1.0) {
-                play();
+            if (value >= 1) {
+                if (!isPlaying()) {
+                    play();
+                }
             }
         }
         else if (address.endsWith("/pause")) {
-            if (value == 1.0) {
-                pause();
+            if (value >= 1) {
+                if (isPlaying()) {
+                    pause();
+                }
             }
         }
         else if (address.endsWith("/stop")) {
-            if (value == 1.0) {
+            if (value >= 1) {
                 stop();
             }
         }
         else if (address.endsWith("/tigger")) {
-            if (value == 1.0) {
+            if (value >= 1) {
                 if (isPlayed()) {
                     stop();
                 } else {
                     play();
                 }
             }
+        } else if (address.endsWith("/loop")) {
+            setLooping(parameter->getValue());
+        } else if (address.endsWith("/fadeout")) {
+            if (value >= 1) {
+                if (isPlaying()) {
+                    startFadeOut();
+                }
+            }
+        } else if (address.endsWith("/gain")) {
+            setGain(value);
         }
     }
 }

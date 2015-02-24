@@ -21,7 +21,7 @@ class SoundboardSettingsComponent: public Component,
                                    public TextEditor::Listener,
                                    public Slider::Listener,
                                    public ListBoxModel,
-                                   public ChangeListener
+                                   public OscParameterListener
 {
 public:
     explicit SoundboardSettingsComponent(SoundboardAudioProcessor&);
@@ -46,8 +46,9 @@ public:
     int getNumRows() override;
     void paintListBoxItem(int rowNumber, Graphics& g, int width, int height, bool rowIsSelected) override;
 
-    // ChangeListener
-    void changeListenerCallback (ChangeBroadcaster *source);
+    // OscParameterListener
+    void handleOscParameterMessage(OscParameter *parameter) override;
+
 private:
     ScopedPointer<Label> themeLabel;
     ScopedPointer<ComboBox> themeComboBox;

@@ -71,9 +71,6 @@ public:
     void getStateInformation(MemoryBlock &destData) override;
     void setStateInformation(const void *data, int sizeInBytes) override;
 
-    int numPlayers();
-    Player *playerAtIndex(int index);
-
     void openDirectory(File directory);
 
     bool isLoocked()
@@ -106,7 +103,10 @@ public:
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
 
+    int numPlayers();
+    Player *playerAtIndex(int index);
 private:
+
     // Init Program Number
     static const int ProgramNumberInit   = 0;
     static const int ProgramNumberCustom = 255;

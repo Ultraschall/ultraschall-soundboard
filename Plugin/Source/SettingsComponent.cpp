@@ -47,8 +47,8 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscLocalHostnameTextEditor->setReadOnly(true);
     oscLocalHostnameTextEditor->setText(SystemStats::getComputerName(), dontSendNotification);
     addAndMakeVisible(oscLocalPortNumberTextEditor = new TextEditor());
-    oscLocalPortNumberTextEditor->setMultiLine(false);    oscLocalPortNumberTextEditor->setReadOnly(oscLocalEnabledToggleButton->getToggleState());
-    oscLocalPortNumberTextEditor->setText(p.getPropertiesFile()->getValue(OscReceivePortNumberIdentifier.toString(), ""));
+    oscLocalPortNumberTextEditor->setMultiLine(false);
+    oscLocalPortNumberTextEditor->setReadOnly(oscLocalEnabledToggleButton->getToggleState());
 
     addAndMakeVisible(oscRemoteEnabledToggleButton = new ToggleButton());
     oscRemoteEnabledToggleButton->setButtonText(TRANS("Send:"));
@@ -78,7 +78,8 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
 
     addAndMakeVisible(loggerListBox = new ListBox);
 
-    //p.addOscParameterListener(this, ".+");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/fadeout");
+    p.addOscParameterListener(this, "/ultraschall/soundboard/setup/.+");
 }
 
 SoundboardSettingsComponent::~SoundboardSettingsComponent()
@@ -171,7 +172,8 @@ void SoundboardSettingsComponent::textEditorTextChanged(TextEditor& editor)
 {
     if (&editor == oscLocalPortNumberTextEditor)
     {
-        processor.getPropertiesFile()->setValue(OscReceivePortNumberIdentifier.toString(), oscLocalPortNumberTextEditor->getText().getIntValue());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/port",
+                                       oscLocalPortNumberTextEditor->getText().getIntValue());
     }
     else if (&editor == oscRemoteHostnameTextEditor)
     {
@@ -210,13 +212,13 @@ void SoundboardSettingsComponent::paintListBoxItem(int rowNumber, Graphics& g, i
 }
 
 // ChangeListener
-void SoundboardSettingsComponent::changeListenerCallback (ChangeBroadcaster *source)
+void SoundboardSettingsComponent::handleOscParameterMessage(OscParameter *parameter)
 {
-    OscParameter* parameter = dynamic_cast<OscParameter*>(source);
-    if (parameter) {
+    Logger::outputDebugString("handleOscParameterMessage:" + parameter->getAddress());
     if (parameter->addressMatch("/ultraschall/soundboard/fadeout"))
     {
         fadeOutSlider->setValue(fadeOutSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
-    }
+    } else if (parameter->addressMatch("/ultraschall/soundboard/setup/osc/receive/port")) {
+        oscLocalPortNumberTextEditor->setText(parameter->getValue(), dontSendNotification);
     }
 }
