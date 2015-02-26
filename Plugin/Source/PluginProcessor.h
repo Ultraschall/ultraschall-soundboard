@@ -85,10 +85,10 @@ public:
     void timerCallback(int timerID) override;
 
     // Properties
-    PropertiesFile *getPropertiesFile()
-    {
-        return propertiesFile;
-    }
+//    PropertiesFile *getPropertiesFile()
+//    {
+//        return propertiesFile;
+//    }
 
     // Parameter Helper
     void setGain(int playerIndex, float value);

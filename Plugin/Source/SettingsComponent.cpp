@@ -21,7 +21,7 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     themeComboBox->addItem("TomorrowNightBlue", static_cast<int>(ThemeTomorrowNightBlue));
     themeComboBox->addItem("TomorrowNightBright", static_cast<int>(ThemeTomorrowNightBright));
     themeComboBox->addItem("TomorrowNightEighties", static_cast<int>(ThemeTomorrowNightEighties));
-    themeComboBox->setSelectedId(p.getPropertiesFile()->getIntValue(ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties)), dontSendNotification);
+    themeComboBox->setSelectedId(static_cast<int>(p.getOscParameter("/ultraschall/soundboard/setup/ui/theme")->getValue()), dontSendNotification);
     themeComboBox->addListener(this);
 
     addAndMakeVisible(fadeOutLabel = new Label());
@@ -40,7 +40,6 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
 
     addAndMakeVisible(oscLocalEnabledToggleButton = new ToggleButton());
     oscLocalEnabledToggleButton->setButtonText(TRANS("Receive:"));
-    oscLocalEnabledToggleButton->setToggleState(p.getPropertiesFile()->getBoolValue(OscReceivePortNumberIdentifier.toString()), dontSendNotification);
     oscLocalEnabledToggleButton->addListener(this);
     addAndMakeVisible(oscLocalHostnameTextEditor = new TextEditor());
     oscLocalHostnameTextEditor->setMultiLine(false);
@@ -52,29 +51,23 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
 
     addAndMakeVisible(oscRemoteEnabledToggleButton = new ToggleButton());
     oscRemoteEnabledToggleButton->setButtonText(TRANS("Send:"));
-    oscRemoteEnabledToggleButton->setToggleState(p.getPropertiesFile()->getBoolValue(OscRemoteEnabledIdentifier.toString()), dontSendNotification);
     oscRemoteEnabledToggleButton->addListener(this);
     addAndMakeVisible(oscRemoteHostnameTextEditor = new TextEditor());
     oscRemoteHostnameTextEditor->setMultiLine(false);
     oscRemoteHostnameTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
-    oscRemoteHostnameTextEditor->setText(p.getPropertiesFile()->getValue(OscRemoteHostnameIdentifier.toString(), ""), dontSendNotification);
     addAndMakeVisible(oscRemotePortNumberTextEditor = new TextEditor());
     oscRemotePortNumberTextEditor->setMultiLine(false);
     oscRemotePortNumberTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
-    oscRemotePortNumberTextEditor->setText(p.getPropertiesFile()->getValue(OscRemotePortNumberIdentifier.toString(), ""), dontSendNotification);
 
     addAndMakeVisible(oscRepeaterEnabledToggleButton = new ToggleButton());
     oscRepeaterEnabledToggleButton->setButtonText(TRANS("Repeater:"));
-    oscRepeaterEnabledToggleButton->setToggleState(p.getPropertiesFile()->getBoolValue(OscRepeaterEnabledIdentifier.toString()), dontSendNotification);
     oscRepeaterEnabledToggleButton->addListener(this);
     addAndMakeVisible(oscRepeaterHostnameTextEditor = new TextEditor());
     oscRepeaterHostnameTextEditor->setMultiLine(false);
     oscRepeaterHostnameTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
-    oscRepeaterHostnameTextEditor->setText(p.getPropertiesFile()->getValue(OscRepeaterHostnameIdentifier.toString(), ""), dontSendNotification);
     addAndMakeVisible(oscRepeaterPortNumberTextEditor = new TextEditor());
     oscRepeaterPortNumberTextEditor->setMultiLine(false);
     oscRepeaterPortNumberTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
-    oscRepeaterPortNumberTextEditor->setText(p.getPropertiesFile()->getValue(OscRepeaterPortNumberIdentifier.toString(), ""), dontSendNotification);
 
     addAndMakeVisible(loggerListBox = new ListBox);
 
@@ -107,7 +100,7 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
 
     loggerListBox = nullptr;
 
-    //processor.removeOscParameterListener(this);
+    processor.removeOscParameterListener(this);
 }
 
 // Component
@@ -139,10 +132,9 @@ void SoundboardSettingsComponent::resized() {
 // ComboBox Listener
 void SoundboardSettingsComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
 {
-    auto val = static_cast<Themes>(comboBoxThatHasChanged->getSelectedId());
-    SwitchTheme(val);
-    processor.getPropertiesFile()->setValue(ThemeIdentifier.toString(), val);
-    processor.getActiveEditor()->sendLookAndFeelChange();
+    if (comboBoxThatHasChanged == themeComboBox) {
+        processor.setOscParameterValue("/ultraschall/soundboard/sertup/ui/theme", themeComboBox->getSelectedId());
+    }
 }
 
 // Button Listener
@@ -150,20 +142,19 @@ void SoundboardSettingsComponent::buttonClicked(Button* buttonThatWasClicked)
 {
     if (buttonThatWasClicked == oscLocalEnabledToggleButton)
     {
-        oscLocalPortNumberTextEditor->setReadOnly(oscLocalEnabledToggleButton->getToggleState());
-        processor.getPropertiesFile()->setValue(OscReceiveEnabledIdentifier.toString(), oscLocalEnabledToggleButton->getToggleState());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/enabled", oscLocalEnabledToggleButton->getToggleState());
     }
     else if(buttonThatWasClicked == oscRemoteEnabledToggleButton)
     {
         oscRemoteHostnameTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
         oscRemotePortNumberTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
-        processor.getPropertiesFile()->setValue(OscRemoteEnabledIdentifier.toString(), oscRemoteEnabledToggleButton->getToggleState());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/remote/enabled", oscRemoteEnabledToggleButton->getToggleState());
     }
     else if(buttonThatWasClicked == oscRepeaterEnabledToggleButton)
     {
         oscRepeaterHostnameTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
         oscRepeaterPortNumberTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
-        processor.getPropertiesFile()->setValue(OscRepeaterEnabledIdentifier.toString(), oscRepeaterEnabledToggleButton->getToggleState());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/repeater/enabled", oscRepeaterEnabledToggleButton->getToggleState());
     }
 }
 
@@ -172,24 +163,23 @@ void SoundboardSettingsComponent::textEditorTextChanged(TextEditor& editor)
 {
     if (&editor == oscLocalPortNumberTextEditor)
     {
-        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/port",
-                                       oscLocalPortNumberTextEditor->getText().getIntValue());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/receive/port", oscLocalPortNumberTextEditor->getText().getIntValue());
     }
     else if (&editor == oscRemoteHostnameTextEditor)
     {
-        processor.getPropertiesFile()->setValue(OscRemoteHostnameIdentifier.toString(), oscRemoteHostnameTextEditor->getText().getIntValue());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/remote/host", oscRemoteHostnameTextEditor->getText());
     }
     else if (&editor == oscRemotePortNumberTextEditor)
     {
-        processor.getPropertiesFile()->setValue(OscRemotePortNumberIdentifier.toString(), oscRemotePortNumberTextEditor->getText().getIntValue());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/remote/port", oscRemotePortNumberTextEditor->getText().getIntValue());
     }
     else if (&editor == oscRepeaterHostnameTextEditor)
     {
-        processor.getPropertiesFile()->setValue(OscRepeaterHostnameIdentifier.toString(), oscRepeaterHostnameTextEditor->getText().getIntValue());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/repeater/host", oscRepeaterHostnameTextEditor->getText());
     }
     else if (&editor == oscRepeaterPortNumberTextEditor)
     {
-        processor.getPropertiesFile()->setValue(OscRepeaterPortNumberIdentifier.toString(), oscRepeaterPortNumberTextEditor->getText().getIntValue());
+        processor.setOscParameterValue("/ultraschall/sounboard/setup/osc/repeater/port", oscRepeaterPortNumberTextEditor->getText().getIntValue());
     }
 }
 

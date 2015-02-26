@@ -34,6 +34,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
         addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/time"));
         addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/remaining"));
     }
+
+    addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
     
     addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/repeater/enabled"), true);
     addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/repeater/host"), true);
@@ -80,8 +82,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
-    SwitchTheme(static_cast<Themes>(propertiesFile->getIntValue(ThemeIdentifier,
-                                                                static_cast<int>(ThemeTomorrowNightEighties))));
+    setOscParameterValue("/ultraschall/soundboard/setup/ui/theme", propertiesFile->getIntValue(ThemeIdentifier, static_cast<int>(ThemeTomorrowNightEighties)));
 
     fadeOutRange.start    = 1.0;
     fadeOutRange.end      = 30.0;
@@ -523,6 +524,11 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter *parameter
         {
             getOscServer()->stopListening();
         }
+    }
+    else if (parameter->addressMatch("/ultraschall/soundboard/setup/ui/theme")) {
+        SwitchTheme(static_cast<Themes>(static_cast<int>(parameter->getValue())));
+        getActiveEditor()->sendLookAndFeelChange();
+        propertiesFile->setValue(ThemeIdentifier.toString(), parameter->getValue());
     }
 
     Logger::outputDebugString("Internal Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
