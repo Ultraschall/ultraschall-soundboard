@@ -44,8 +44,8 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscLocalEnabledToggleButton->addListener(this);
     addAndMakeVisible(oscLocalHostnameTextEditor = new TextEditor());
     oscLocalHostnameTextEditor->setMultiLine(false);
-    oscLocalHostnameTextEditor->setReadOnly(true);
     oscLocalHostnameTextEditor->setText(SystemStats::getComputerName(), dontSendNotification);
+    oscLocalHostnameTextEditor->setReadOnly(true);
     addAndMakeVisible(oscLocalPortNumberTextEditor = new TextEditor());
     oscLocalPortNumberTextEditor->setMultiLine(false);
     oscLocalPortNumberTextEditor->setReadOnly(oscLocalEnabledToggleButton->getToggleState());

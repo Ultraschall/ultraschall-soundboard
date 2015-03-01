@@ -47,6 +47,7 @@ void SetThemeColors(LookAndFeel *lookAndFeel)
     lookAndFeel->setColour(TextEditor::focusedOutlineColourId, ThemeBackground2);
 
 
+
     lookAndFeel->setColour(ComboBox::backgroundColourId, ThemeBackground1);
     lookAndFeel->setColour(ComboBox::textColourId, ThemeForeground1);
     lookAndFeel->setColour(ComboBox::outlineColourId, ThemeBackground2);
