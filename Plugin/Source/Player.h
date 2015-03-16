@@ -12,10 +12,12 @@
 
 #include "JuceHeader.h"
 
-class Player : private MultiTimer, public ChangeBroadcaster
-{
+class Player : private MultiTimer,
+               public ChangeBroadcaster,
+               public OscParameterListener {
 public:
-    Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache);
+    Player(int index, const File& audioFile, AudioFormatManager* formatManager,
+        AudioThumbnailCache* thumbnailCache, OscProcessor&);
     ~Player();
 
     String getTitle();
@@ -44,8 +46,7 @@ public:
     void setGain(float newGain);
     float getGain();
 
-    enum PlayerState
-    {
+    enum PlayerState {
         Error = -1,
         Ready = 0,
         Stopped = 1,
@@ -58,8 +59,12 @@ public:
     AudioSource* getAudioSource();
     AudioThumbnail* getThumbnail();
 
-    void setSortIndex(int value);
-    int getSortIndex();
+    void setIndex(int value);
+    int getIndex();
+
+    // ChangeListener
+    void handleOscParameterMessage(OscParameter* parameter) override;
+
 private:
     static const int UpdateTimerId = 0;
     static const int FadeOutTimerId = 1;
@@ -67,8 +72,8 @@ private:
     void update();
     void loadFileIntoTransport(const File& audioFile);
 
+    int playerIndex;
     TimeSliceThread timeSliceThread;
-    int sortIndex;
     String title;
     PlayerState playerState;
     float fadeOutGain;
@@ -83,9 +88,8 @@ private:
     ScopedPointer<AudioTransportSource> transportSource;
     AudioSourcePlayer audioSourcePlayer;
     ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;
-
+    OscProcessor& processor;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
 
 #endif // AUDIOFILE_H_INCLUDED
-

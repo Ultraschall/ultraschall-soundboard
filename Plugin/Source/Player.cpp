@@ -9,26 +9,31 @@
 
 #include "Player.h"
 
-Player::Player(const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache)
-    : timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension())
-      , sortIndex(-1)
-      , title(audioFile.getFileNameWithoutExtension())
-      , playerState(Stopped)
-      , fadeOutGain(1.0f)
-      , fadeOutGainBackup(1.0f)
-      , fadeOutGainSteps(0.1f)
-      , fadeOutSeconds(4)
-      , fadeOut(false)
-      , process(0.0f)
-      , audioFormatManager(formatManager)
-      , thumbnailCache(thumbnailCache)
-      , transportSource(new AudioTransportSource())
+Player::Player(int index, const File &audioFile,
+               AudioFormatManager *formatManager,
+               AudioThumbnailCache *thumbnailCache,
+               OscProcessor &p) : playerIndex(index),
+                                  timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()),
+                                  title(audioFile.getFileNameWithoutExtension()),
+                                  playerState(Stopped),
+                                  fadeOutGain(1.0f),
+                                  fadeOutGainBackup(1.0f),
+                                  fadeOutGainSteps(0.1f),
+                                  fadeOutSeconds(4),
+                                  fadeOut(false),
+                                  process(0.0f),
+                                  audioFormatManager(formatManager),
+                                  thumbnailCache(thumbnailCache),
+                                  transportSource(new AudioTransportSource()),
+                                  processor(p)
 {
     timeSliceThread.startThread(3);
     audioSourcePlayer.setSource(transportSource);
     loadFileIntoTransport(audioFile);
     startTimer(UpdateTimerId, 50);
     startTimer(FadeOutTimerId, 100);
+    
+    p.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
 }
 
 Player::~Player()
@@ -46,7 +51,7 @@ Player::~Player()
     transportSource = nullptr;
 }
 
-void Player::loadFileIntoTransport(const File& audioFile)
+void Player::loadFileIntoTransport(const File &audioFile)
 {
     transportSource->stop();
     transportSource->setSource(nullptr);
@@ -70,7 +75,7 @@ void Player::loadFileIntoTransport(const File& audioFile)
     }
 }
 
-AudioThumbnail* Player::getThumbnail()
+AudioThumbnail *Player::getThumbnail()
 {
     return thumbnail;
 }
@@ -84,8 +89,10 @@ void Player::update()
         transportSource->stop();
         transportSource->setPosition(0);
         playerState = Played;
-        sendChangeMessage();
     }
+//    if (static_cast<float>(processor.getOscParameter("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress")->getValue()) != process) {
+//        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/progress", process);
+//    }
 }
 
 void Player::timerCallback(int timerID)
@@ -108,7 +115,6 @@ void Player::timerCallback(int timerID)
                 playerState = Played;
                 fadeOutGain = fadeOutGainBackup;
                 update();
-                sendChangeMessage();
             }
             transportSource->setGain(fadeOutGain);
         }
@@ -119,11 +125,10 @@ void Player::startFadeOut()
 {
     if (isPlaying())
     {
-        fadeOut = true;
+        fadeOut           = true;
         fadeOutGainBackup = transportSource->getGain();
-        fadeOutGain = transportSource->getGain();
-        fadeOutGainSteps = fadeOutGainBackup / fadeOutSeconds / 10.0f;
-        sendChangeMessage();
+        fadeOutGain       = transportSource->getGain();
+        fadeOutGainSteps  = fadeOutGainBackup / fadeOutSeconds / 10.0f;
     }
 }
 
@@ -132,9 +137,10 @@ void Player::stop()
     if (isFadingOut())
     {
         stopTimer(FadeOutTimerId);
-        fadeOut = false;
+        fadeOut     = false;
         fadeOutGain = fadeOutGainBackup;
         transportSource->setGain(fadeOutGain);
+        
     }
     transportSource->stop();
     transportSource->setPosition(0);
@@ -149,7 +155,9 @@ void Player::play()
     {
         transportSource->start();
         playerState = Playing;
-        sendChangeMessage();
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/pause", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     }
 }
 
@@ -159,7 +167,9 @@ void Player::pause()
     {
         transportSource->stop();
         playerState = Paused;
-        sendChangeMessage();
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/stop", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/play", false);
+        processor.setOscParameterValue("/ultraschall/soundboard/player/" + String(playerIndex) + "/done", false);
     }
 }
 
@@ -203,7 +213,13 @@ String Player::getProgressString(bool remaining)
         Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getCurrentPosition()));
         return time.toString(false, true, true, true);
     }
-    Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
+    Time
+            time(1971,
+                 0,
+                 0,
+                 0,
+                 0,
+                 static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
     return "-" + time.toString(false, true, true, true);
 }
 
@@ -222,7 +238,7 @@ Player::PlayerState Player::getState()
     return playerState;
 }
 
-AudioSource* Player::getAudioSource()
+AudioSource *Player::getAudioSource()
 {
     return transportSource;
 }
@@ -252,12 +268,60 @@ bool Player::isFadingOut()
     return fadeOut;
 }
 
-void Player::setSortIndex(int value)
+void Player::setIndex(int value)
 {
-    sortIndex = value;
+    playerIndex = value;
+    processor.removeOscParameterListener(this);
+    processor.addOscParameterListener(this, "/ultraschall/soundboard/player/"  + String(playerIndex) + "/.+");
 }
 
-int Player::getSortIndex()
+int Player::getIndex()
 {
-    return sortIndex;
+    return playerIndex;
+}
+
+void Player::handleOscParameterMessage(OscParameter *parameter)
+{
+    String address = parameter->getAddress();
+    float value = parameter->getValue();
+    if (address.startsWith("/ultraschall/soundboard/player/" + String(playerIndex))) {
+        if (address.endsWith("/play")) {
+            if (value >= 1) {
+                if (!isPlaying()) {
+                    play();
+                }
+            }
+        }
+        else if (address.endsWith("/pause")) {
+            if (value >= 1) {
+                if (isPlaying()) {
+                    pause();
+                }
+            }
+        }
+        else if (address.endsWith("/stop")) {
+            if (value >= 1) {
+                stop();
+            }
+        }
+        else if (address.endsWith("/tigger")) {
+            if (value >= 1) {
+                if (isPlayed()) {
+                    stop();
+                } else {
+                    play();
+                }
+            }
+        } else if (address.endsWith("/loop")) {
+            setLooping(parameter->getValue());
+        } else if (address.endsWith("/fadeout")) {
+            if (value >= 1) {
+                if (isPlaying()) {
+                    startFadeOut();
+                }
+            }
+        } else if (address.endsWith("/gain")) {
+            setGain(value);
+        }
+    }
 }

@@ -12,35 +12,68 @@
 #include "LookAndFeel.h"
 
 SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
-    : processor(p), mTimerState(true)
+    : processor(p)
+    , mTimerState(true)
 {
     addAndMakeVisible(tableListBox = new TableListBox());
     tableListBox->setModel(this);
     tableListBox->setHeaderHeight(21);
-    tableListBox->getHeader().addColumn("", ColumnIdNumberLabel,
-                                        NumberCellWidth, NumberCellWidth, NumberCellWidth,
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("Audio", ColumnIdFileLabel,
-                                        max(getWidth() - 293, 293), 1, 16000, // calculated at resize
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("", ColumnIdLoopButton,
-                                        ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("Time", ColumnIdTimeLabel,
-                                        TimeCellWidth, TimeCellWidth, TimeCellWidth,
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("", ColumnIdPlayPauseButton,
-                                        ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("", ColumnIdStopButton,
-                                        ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("", ColumnIdFadeOutButton,
-                                        ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,
-                                        TableHeaderComponent::notSortable);
-    tableListBox->getHeader().addColumn("", ColumnIdGainSlider,
-                                        ButtonCellWidth, ButtonCellWidth, ButtonCellWidth,
-                                        TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(String::empty,
+            ColumnIdNumberLabel,
+            NumberCellWidth,
+            NumberCellWidth,
+            NumberCellWidth,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(TRANS("Audio"),
+            ColumnIdFileLabel,
+            max(getWidth() - 293, 293), // calculated at resize
+            1,
+            16000,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(String::empty,
+            ColumnIdLoopButton,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(TRANS("Time"),
+            ColumnIdTimeLabel,
+            TimeCellWidth,
+            TimeCellWidth,
+            TimeCellWidth,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(String::empty,
+            ColumnIdPlayPauseButton,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(String::empty,
+            ColumnIdStopButton,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(String::empty,
+            ColumnIdFadeOutButton,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            TableHeaderComponent::notSortable);
+    tableListBox->getHeader()
+        .addColumn(String::empty,
+            ColumnIdGainSlider,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            ButtonCellWidth,
+            TableHeaderComponent::notSortable);
     startTimer(TimerIdRepaint, static_cast<int>(1000 * 0.5));
 }
 
@@ -64,28 +97,26 @@ int SoundboardTableComponent::getNumRows()
 }
 
 void SoundboardTableComponent::paintRowBackground(Graphics& g,
-                                                  int rowNumber,
-                                                  int /*width*/,
-                                                  int /*height*/,
-                                                  bool /*rowIsSelected*/)
+    int rowNumber,
+    int /*width*/,
+    int /*height*/,
+    bool /*rowIsSelected*/)
 {
-    if (rowNumber % 2)
-    {
+    if (rowNumber % 2) {
         g.setColour(ThemeBackground2);
     }
-    else
-    {
+    else {
         g.setColour(ThemeBackground3);
     }
     g.fillAll();
 }
 
 void SoundboardTableComponent::paintCell(Graphics& g,
-                                         int rowNumber,
-                                         int columnId,
-                                         int width,
-                                         int height,
-                                         bool /*rowIsSelected*/)
+    int rowNumber,
+    int columnId,
+    int width,
+    int height,
+    bool /*rowIsSelected*/)
 {
     g.setColour(ThemeBackground1);
     g.drawLine(static_cast<float>(width), 0, static_cast<float>(width), static_cast<float>(height), 1.5f);
@@ -93,78 +124,75 @@ void SoundboardTableComponent::paintCell(Graphics& g,
     g.setColour(ThemeForeground1);
     auto text = String::empty;
 
-    switch (columnId)
-    {
+    switch (columnId) {
     case ColumnIdNumberLabel:
         text = String(rowNumber + 1);
         break;
     case ColumnIdFileLabel:
         text = processor.playerAtIndex(rowNumber)->getTitle();
         break;
-    case ColumnIdTimeLabel:
-        {
-            Colour colour;
-            if (processor.playerAtIndex(rowNumber)->isPlayed())
-            {
-                colour = ThemeGreen;
-            }
-            else if (processor.playerAtIndex(rowNumber)->isFadingOut())
-            {
-                colour = ThemeOrange;
-            }
-            else if (processor.playerAtIndex(rowNumber)->isLooping())
-            {
-                colour = ThemeBlue;
-            }
-            else
-            {
-                colour = ThemeYellow;
-            }
-
-            g.setColour(colour.withAlpha(0.2f));
-            auto processRect = g.getClipBounds().reduced(1).toFloat();
-            g.fillRoundedRectangle(processRect, 2);
-
-            g.setColour(colour);
-            if (!processor.playerAtIndex(rowNumber)->isPlayed())
-            {
-                g.fillRoundedRectangle(processRect.getX(), processRect.getY(), processRect.getWidth() * processor.playerAtIndex(rowNumber)->getProgress(), processRect.getHeight(), 2);
-            }
-
-            g.setColour(ThemeForeground1);
-            g.drawText(processor.playerAtIndex(rowNumber)->getProgressString(mTimerState), 2, 0, width - 4, height, Justification::centred, true);
-            break;
+    case ColumnIdTimeLabel: {
+        Colour colour;
+        if (processor.playerAtIndex(rowNumber)->isPlayed()) {
+            colour = ThemeGreen;
         }
+        else if (processor.playerAtIndex(rowNumber)->isFadingOut()) {
+            colour = ThemeOrange;
+        }
+        else if (processor.playerAtIndex(rowNumber)->isLooping()) {
+            colour = ThemeBlue;
+        }
+        else {
+            colour = ThemeYellow;
+        }
+
+        g.setColour(colour.withAlpha(0.2f));
+        auto processRect = g.getClipBounds().reduced(1).toFloat();
+        g.fillRoundedRectangle(processRect, 2);
+
+        g.setColour(colour);
+        if (!processor.playerAtIndex(rowNumber)->isPlayed()) {
+            g.fillRoundedRectangle(processRect.getX(),
+                processRect.getY(),
+                processRect.getWidth() * processor.playerAtIndex(rowNumber)->getProgress(),
+                processRect.getHeight(),
+                2);
+        }
+
+        g.setColour(ThemeForeground1);
+        g.drawText(processor.playerAtIndex(rowNumber)->getProgressString(mTimerState),
+            2,
+            0,
+            width - 4,
+            height,
+            Justification::centred,
+            true);
+        break;
+    }
     }
 
-    if (text.isNotEmpty())
-    {
+    if (text.isNotEmpty()) {
         g.drawText(text, 4, 0, width - 8, height, Justification::centredLeft, true);
     }
 }
 
-void SoundboardTableComponent::cellClicked(int /*rowNumber*/,
-                                           int columnId,
-                                           const MouseEvent& /*e*/)
+void SoundboardTableComponent::cellClicked(int /*rowNumber*/, int columnId, const MouseEvent& /*e*/)
 {
-    if (columnId == ColumnIdTimeLabel)
-    {
+    if (columnId == ColumnIdTimeLabel) {
         mTimerState = !mTimerState;
         tableListBox->repaint();
     }
 }
 
 Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
-                                                             int columnId,
-                                                             bool /*isRowSelected*/,
-                                                             Component* existingComponentToUpdate)
+    int columnId,
+    bool /*isRowSelected*/,
+    Component* existingComponentToUpdate)
 {
-    if (columnId == ColumnIdLoopButton)
-    {
+    if (columnId == ColumnIdLoopButton) {
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
-        if (button == nullptr)
-        {
+        if (button == nullptr) {
             button = new SoundboardCellButton("Loop", FA_REFRESH);
             button->setTag(ButtonTagLoop);
             button->addListener(this);
@@ -176,23 +204,19 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 
         return button;
     }
-    if (columnId == ColumnIdPlayPauseButton)
-    {
+    if (columnId == ColumnIdPlayPauseButton) {
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
-        if (button == nullptr)
-        {
+        if (button == nullptr) {
             button = new SoundboardCellButton("Play / Pause", FA_PLAY);
             button->setTag(ButtonTagPlayPause);
             button->addListener(this);
         }
 
-        if (processor.playerAtIndex(rowNumber)->isPlaying())
-        {
+        if (processor.playerAtIndex(rowNumber)->isPlaying()) {
             button->setIcon(FA_PAUSE);
         }
-        else
-        {
+        else {
             button->setIcon(FA_PLAY);
         }
         button->setFlashing(processor.playerAtIndex(rowNumber)->isPaused());
@@ -200,12 +224,10 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 
         return button;
     }
-    if (columnId == ColumnIdStopButton)
-    {
+    if (columnId == ColumnIdStopButton) {
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
-        if (button == nullptr)
-        {
+        if (button == nullptr) {
             button = new SoundboardCellButton("Stop", FA_SQUARE);
             button->setTag(ButtonTagStop);
             button->addListener(this);
@@ -218,12 +240,11 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         button->setIcon(FA_SQUARE);
         button->setHighlighted(false);
 
-        if (processor.playerAtIndex(rowNumber)->isPlaying() || processor.playerAtIndex(rowNumber)->isPaused())
-        {
+        if (processor.playerAtIndex(rowNumber)->isPlaying()
+            || processor.playerAtIndex(rowNumber)->isPaused()) {
             button->setEnabled(true);
         }
-        else if (processor.playerAtIndex(rowNumber)->isPlayed())
-        {
+        else if (processor.playerAtIndex(rowNumber)->isPlayed()) {
             button->setIcon(FA_SQUARE_O);
             button->setEnabled(true);
             button->setHighlighted(true);
@@ -231,12 +252,10 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 
         return button;
     }
-    if (columnId == ColumnIdFadeOutButton)
-    {
+    if (columnId == ColumnIdFadeOutButton) {
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
-        if (button == nullptr)
-        {
+        if (button == nullptr) {
             button = new SoundboardCellButton("Fade-Out", FA_VOLUME_DOWN);
             button->setTag(ButtonTagFadeOut);
             button->addListener(this);
@@ -249,12 +268,10 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 
         return button;
     }
-    if (columnId == ColumnIdGainSlider)
-    {
+    if (columnId == ColumnIdGainSlider) {
         auto slider = static_cast<Slider*>(existingComponentToUpdate);
 
-        if (slider == nullptr)
-        {
+        if (slider == nullptr) {
             slider = new Slider();
             slider->setRange(0.0, 1.0, 0.01);
             slider->setValue(1.0);
@@ -275,8 +292,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 // MultiTimer
 void SoundboardTableComponent::timerCallback(int timerID)
 {
-    if (timerID == TimerIdRepaint)
-    {
+    if (timerID == TimerIdRepaint) {
         tableListBox->repaint();
     }
 }
@@ -285,39 +301,31 @@ void SoundboardTableComponent::timerCallback(int timerID)
 void SoundboardTableComponent::buttonClicked(Button* button)
 {
     auto cellButton = static_cast<SoundboardCellButton*>(button);
-    if (!cellButton)
-    {
+    if (!cellButton) {
         return;
     }
 
     auto player = processor.playerAtIndex(cellButton->getRowNumber());
-    if (!player)
-    {
+    if (!player) {
         return;
     }
 
-    if (cellButton->getTag() == ButtonTagLoop)
-    {
+    if (cellButton->getTag() == ButtonTagLoop) {
         player->setLooping(!player->isLooping());
         cellButton->setHighlighted(player->isLooping());
     }
-    else if (cellButton->getTag() == ButtonTagPlayPause)
-    {
-        if (player->isPlaying())
-        {
+    else if (cellButton->getTag() == ButtonTagPlayPause) {
+        if (player->isPlaying()) {
             player->pause();
         }
-        else
-        {
+        else {
             player->play();
         }
     }
-    else if (cellButton->getTag() == ButtonTagStop)
-    {
+    else if (cellButton->getTag() == ButtonTagStop) {
         player->stop();
     }
-    else if (cellButton->getTag() == ButtonTagFadeOut)
-    {
+    else if (cellButton->getTag() == ButtonTagFadeOut) {
         player->startFadeOut();
     }
 

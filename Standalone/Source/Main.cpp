@@ -11,7 +11,7 @@
 #include "JuceHeader.h"
 #include "StandaloneFilterWindow.h"
 
-Component* createMainContentComponent();
+Component *createMainContentComponent();
 
 //==============================================================================
 class SoundboardApplication : public JUCEApplication
@@ -38,14 +38,11 @@ public:
     }
 
     //==============================================================================
-    void initialise(const String& /*commandLine*/) override
+    void initialise(const String & /*commandLine*/) override
     {
         // This method is where you should put your application's initialisation code..
 
-        mainWindow = new StandaloneFilterWindow(getApplicationName(),
-                                                Colours::black,
-                                                new PropertySet(),
-                                                true);
+        mainWindow = new StandaloneFilterWindow(getApplicationName(), Colours::black, new PropertySet(), true);
         mainWindow->setResizeLimits(380, 320, 1024, 768);
         mainWindow->setUsingNativeTitleBar(true);
         mainWindow->setResizable(true, true);
@@ -67,7 +64,7 @@ public:
         quit();
     }
 
-    void anotherInstanceStarted(const String& /*commandLine*/) override
+    void anotherInstanceStarted(const String & /*commandLine*/) override
     {
         // When another instance of the app is launched while this one is running,
         // this method is invoked, and the commandLine parameter tells you what
