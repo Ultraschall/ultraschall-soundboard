@@ -17,10 +17,6 @@
 #include "GridComponent.h"
 #include "SettingsComponent.h"
 
-
-//==============================================================================
-/**
-*/
 class SoundboardAudioProcessorEditor
         : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer
 {
@@ -34,7 +30,6 @@ public:
     // Slider::Listener
     void sliderValueChanged(Slider *slider) override;
 
-    //==============================================================================
     void paint(Graphics &) override;
     void resized() override;
     void refresh();

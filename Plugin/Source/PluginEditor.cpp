@@ -10,7 +10,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-//==============================================================================
 SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioProcessor &p)
         : AudioProcessorEditor(&p), processor(p), mPauseState(true), mTimerState(true)
 {
@@ -80,7 +79,6 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     gridButton          = nullptr;
 }
 
-//==============================================================================
 void SoundboardAudioProcessorEditor::paint(Graphics &g)
 {
     g.fillAll(ThemeBackground1);

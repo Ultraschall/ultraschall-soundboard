@@ -21,7 +21,7 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     themeComboBox->addItem("TomorrowNightBlue", static_cast<int>(ThemeTomorrowNightBlue));
     themeComboBox->addItem("TomorrowNightBright", static_cast<int>(ThemeTomorrowNightBright));
     themeComboBox->addItem("TomorrowNightEighties", static_cast<int>(ThemeTomorrowNightEighties));
-    themeComboBox->setSelectedId(static_cast<int>(p.getOscParameter("/ultraschall/soundboard/setup/ui/theme")->getValue()), dontSendNotification);
+    themeComboBox->setSelectedId(processor.getPropertiesFile()->getIntValue(ThemeIdentifier), dontSendNotification);
     themeComboBox->addListener(this);
 
     addAndMakeVisible(fadeOutLabel = new Label());

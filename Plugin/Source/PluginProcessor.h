@@ -35,7 +35,7 @@ static const Identifier OscRemoteEnabledIdentifier("OscRemoteEnabled");
 static const Identifier OscRemoteHostnameIdentifier("OscRemoteHostname");
 static const Identifier OscRemotePortNumberIdentifier("OscRemotePortNumber");
 
-class SoundboardAudioProcessor : public AudioProcessor, public OscProcessor, public MultiTimer, public OscParameterListener
+class SoundboardAudioProcessor : public AudioProcessor, public OscProcessor, public MultiTimer, public OscParameterListener, public ChangeListener
 {
 public:
     SoundboardAudioProcessor();
@@ -85,10 +85,13 @@ public:
     void timerCallback(int timerID) override;
 
     // Properties
-//    PropertiesFile *getPropertiesFile()
-//    {
-//        return propertiesFile;
-//    }
+    PropertiesFile *getPropertiesFile()
+    {
+        return propertiesFile;
+    }
+    
+    // ChangeListener
+    void changeListenerCallback(ChangeBroadcaster* source);
 
     // Parameter Helper
     void setGain(int playerIndex, float value);
