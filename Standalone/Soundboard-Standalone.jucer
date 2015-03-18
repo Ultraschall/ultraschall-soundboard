@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.4"
+<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
@@ -65,10 +65,10 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="pgyuob" bigIcon="qtYVP2">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Soundboard"/>
-        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="0" optimisation="2" targetName="Soundboard"/>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
+                       isDebug="0" optimisation="2" targetName="Soundboard" cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../Submodules/JUCE/modules"/>

@@ -1,51 +1,13 @@
-/*
-  ==============================================================================
-
-   This file is part of the JUCE library.
-   Copyright (c) 2013 - Raw Material Software Ltd.
-
-   Permission is granted to use this software under the terms of either:
-   a) the GPL v2 (or any later version)
-   b) the Affero GPL v3
-
-   Details of these licenses can be found at: www.gnu.org/licenses
-
-   JUCE is distributed in the hope that it will be useful, but WITHOUT ANY
-   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-   A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-   ------------------------------------------------------------------------------
-
-   To release a closed-source product which uses JUCE, commercial licenses are
-   available: visit www.juce.com for more information.
-
-  ==============================================================================
-*/
-
 #ifndef JUCE_STANDALONEFILTERWINDOW_H_INCLUDED
 #define JUCE_STANDALONEFILTERWINDOW_H_INCLUDED
 
 extern AudioProcessor *JUCE_CALLTYPE createPluginFilter();
 
-//==============================================================================
-/**
-An object that creates and plays a standalone instance of an AudioProcessor.
-
-The object will create your processor using the same createPluginFilter()
-function that the other plugin wrappers use, and will run it through the
-computer's audio/MIDI devices using AudioDeviceManager and AudioProcessorPlayer.
-*/
 class StandalonePluginHolder
 {
 public:
-    /** Creates an instance of the default plugin.
-
-    The settings object can be a PropertySet that the class should use to
-    store its settings - the object that is passed-in will be owned by this
-    class and deleted automatically when no longer needed. (It can also be null)
-    */
-    StandalonePluginHolder(PropertySet *settingsToUse, bool takeOwnershipOfSettings) : settings(settingsToUse,
-                                                                                                takeOwnershipOfSettings)
+    StandalonePluginHolder(PropertySet *settingsToUse, bool takeOwnershipOfSettings)
+        : settings(settingsToUse, takeOwnershipOfSettings)
     {
         createPlugin();
         setupAudioDevices();
