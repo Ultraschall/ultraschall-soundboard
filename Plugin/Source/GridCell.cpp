@@ -121,7 +121,7 @@ void SoundboardGridCell::paint(Graphics &g)
         {
             g.setColour(colour.withAlpha(0.9f));
             g.setFont(getFontAwesome(getHeight() * 0.5f));
-            g.drawText(FA_PLAY,
+            g.drawText(FontAwesome_Play,
                        thumbArea.getX(),
                        thumbArea.getY(),
                        thumbArea.getWidth(),
@@ -136,7 +136,7 @@ void SoundboardGridCell::paint(Graphics &g)
 
             g.setColour(colour.withAlpha(0.9f));
             g.setFont(getFontAwesome(getHeight() * 0.5f));
-            g.drawText(FA_PAUSE,
+            g.drawText(FontAwesome_Pause,
                        thumbArea.getX(),
                        thumbArea.getY(),
                        thumbArea.getWidth(),
@@ -157,7 +157,7 @@ void SoundboardGridCell::paint(Graphics &g)
             g.setFont(getFontAwesome(getHeight() * 0.5f));
             if (player->isPlaying())
             {
-                g.drawText(FA_PAUSE,
+                g.drawText(FontAwesome_Pause,
                            thumbArea.getX(),
                            thumbArea.getY(),
                            thumbArea.getWidth(),
@@ -167,7 +167,7 @@ void SoundboardGridCell::paint(Graphics &g)
             }
             else
             {
-                g.drawText(FA_PLAY,
+                g.drawText(FontAwesome_Play,
                            thumbArea.getX(),
                            thumbArea.getY(),
                            thumbArea.getWidth(),
@@ -189,7 +189,7 @@ void SoundboardGridCell::paint(Graphics &g)
             g.setFont(getFontAwesome(getHeight() * 0.5f));
             if (player->isPlaying())
             {
-                g.drawText(FA_PAUSE,
+                g.drawText(FontAwesome_Pause,
                            thumbArea.getX(),
                            thumbArea.getY(),
                            thumbArea.getWidth(),
@@ -199,7 +199,7 @@ void SoundboardGridCell::paint(Graphics &g)
             }
             else
             {
-                g.drawText(FA_PLAY,
+                g.drawText(FontAwesome_Play,
                            thumbArea.getX(),
                            thumbArea.getY(),
                            thumbArea.getWidth(),
@@ -240,7 +240,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 g.setColour(ThemeForeground1.withAlpha(0.5f));
             }
             g.setFont(getFontAwesome(getHeight() * 0.25f));
-            g.drawText(FA_REFRESH,
+            g.drawText(FontAwesome_Refresh,
                        helperRect.getX(),
                        helperRect.getY(),
                        helperRect.getWidth(),
@@ -251,7 +251,7 @@ void SoundboardGridCell::paint(Graphics &g)
             if (player->isPlayed())
             {
                 g.setColour(colour);
-                g.drawText(FA_SQUARE_O,
+                g.drawText(FontAwesome_Square_O,
                            helperRect.getX(),
                            helperRect.getY(),
                            helperRect.getWidth(),
@@ -269,7 +269,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 {
                     g.setColour(ThemeForeground1.withAlpha(0.5f));
                 }
-                g.drawText(FA_SQUARE,
+                g.drawText(FontAwesome_Square,
                            helperRect.getX(),
                            helperRect.getY(),
                            helperRect.getWidth(),
@@ -290,7 +290,7 @@ void SoundboardGridCell::paint(Graphics &g)
             {
                 g.setColour(ThemeForeground1.withAlpha(0.5f));
             }
-            g.drawText(FA_VOLUME_DOWN,
+            g.drawText(FontAwesome_Volume_Down,
                        helperRect.getX(),
                        helperRect.getY(),
                        helperRect.getWidth(),

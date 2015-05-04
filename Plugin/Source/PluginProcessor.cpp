@@ -106,7 +106,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
-    propertiesFile->save();
+    propertiesFile->saveIfNeeded();
     propertiesFile = nullptr;
     fallbackProperties = nullptr;
 
@@ -221,6 +221,7 @@ void SoundboardAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
+    mixerAudioSource.releaseResources();
 }
 
 void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
@@ -229,6 +230,7 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
         const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
         midiBuffer.addEvents(midiMessages, midiMessages.getFirstEventTime(), -1, 0);
     }
+    
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).

@@ -87,6 +87,11 @@
 #define JUCE_MODULE_AVAILABLE_juce_opengl                1
 
 //==============================================================================
+#ifndef    JUCE_STANDALONE_APPLICATION
+ #define   JUCE_STANDALONE_APPLICATION 1
+#endif
+
+//==============================================================================
 // juce_audio_devices flags:
 
 #ifndef    JUCE_ASIO
@@ -129,7 +134,7 @@
 // juce_audio_formats flags:
 
 #ifndef    JUCE_USE_FLAC
- #define   JUCE_USE_FLAC 1
+ #define   JUCE_USE_FLAC 0
 #endif
 
 #ifndef    JUCE_USE_OGGVORBIS

@@ -193,7 +193,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
-            button = new SoundboardCellButton("Loop", FA_REFRESH);
+            button = new SoundboardCellButton("Loop", FontAwesome_Refresh);
             button->setTag(ButtonTagLoop);
             button->addListener(this);
             button->setHighlightColour(ThemeBlue);
@@ -208,16 +208,16 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
-            button = new SoundboardCellButton("Play / Pause", FA_PLAY);
+            button = new SoundboardCellButton("Play / Pause", FontAwesome_Play);
             button->setTag(ButtonTagPlayPause);
             button->addListener(this);
         }
 
         if (processor.playerAtIndex(rowNumber)->isPlaying()) {
-            button->setIcon(FA_PAUSE);
+            button->setIcon(FontAwesome_Pause);
         }
         else {
-            button->setIcon(FA_PLAY);
+            button->setIcon(FontAwesome_Play);
         }
         button->setFlashing(processor.playerAtIndex(rowNumber)->isPaused());
         button->setRowNumber(rowNumber);
@@ -228,7 +228,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
-            button = new SoundboardCellButton("Stop", FA_SQUARE);
+            button = new SoundboardCellButton("Stop", FontAwesome_Square);
             button->setTag(ButtonTagStop);
             button->addListener(this);
             button->setEnabled(false);
@@ -237,7 +237,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 
         button->setRowNumber(rowNumber);
         button->setEnabled(false);
-        button->setIcon(FA_SQUARE);
+        button->setIcon(FontAwesome_Square);
         button->setHighlighted(false);
 
         if (processor.playerAtIndex(rowNumber)->isPlaying()
@@ -245,7 +245,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             button->setEnabled(true);
         }
         else if (processor.playerAtIndex(rowNumber)->isPlayed()) {
-            button->setIcon(FA_SQUARE_O);
+            button->setIcon(FontAwesome_Square_O);
             button->setEnabled(true);
             button->setHighlighted(true);
         }
@@ -256,7 +256,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
-            button = new SoundboardCellButton("Fade-Out", FA_VOLUME_DOWN);
+            button = new SoundboardCellButton("Fade-Out", FontAwesome_Volume_Down);
             button->setTag(ButtonTagFadeOut);
             button->addListener(this);
             button->setHighlightColour(ThemeOrange);

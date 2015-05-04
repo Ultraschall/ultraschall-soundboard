@@ -20,7 +20,6 @@ class SoundboardSettingsComponent: public Component,
                                    public Button::Listener,
                                    public TextEditor::Listener,
                                    public Slider::Listener,
-                                   public ListBoxModel,
                                    public OscParameterListener
 {
 public:
@@ -41,10 +40,6 @@ public:
 
     // Slider Listener
     void sliderValueChanged (Slider* slider);
-
-    // ListBoxModel
-    int getNumRows() override;
-    void paintListBoxItem(int rowNumber, Graphics& g, int width, int height, bool rowIsSelected) override;
 
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
@@ -70,9 +65,6 @@ private:
     ScopedPointer<ToggleButton> oscRepeaterEnabledToggleButton;
     ScopedPointer<TextEditor> oscRepeaterHostnameTextEditor;
     ScopedPointer<TextEditor> oscRepeaterPortNumberTextEditor;
-
-    ScopedPointer<ListBox> loggerListBox;
-    StringArray logger;
 
     SoundboardAudioProcessor& processor;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardSettingsComponent)

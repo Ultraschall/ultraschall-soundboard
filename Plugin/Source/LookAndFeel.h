@@ -250,7 +250,7 @@ public:
 
         g.setFont(getFontAwesome(getHeight() * 0.4f));
         g.setColour(ThemeForeground2.withAlpha(0.2f));
-        g.drawText(FA_CIRCLE, x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
+        g.drawText(FontAwesome_Circle, x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
 
         if (isActive)
         {
@@ -260,7 +260,7 @@ public:
         {
             g.setColour(ThemeForeground1);
         }
-        g.drawText(FA_CIRCLE, x, 0, getHeight(), getHeight(), Justification::centred, true);
+        g.drawText(FontAwesome_Circle, x, 0, getHeight(), getHeight(), Justification::centred, true);
     }
 
     void setActive(bool value)

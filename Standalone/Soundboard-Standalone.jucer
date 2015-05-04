@@ -12,8 +12,8 @@
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
   <MAINGROUP id="aO9Y4k" name="Soundboard">
-    <FILE id="pgyuob" name="Icon.png" compile="0" resource="0" file="Icon.png"/>
-    <FILE id="qtYVP2" name="Icon@2x.png" compile="0" resource="0" file="Icon@2x.png"/>
+    <FILE id="Eq5hT1" name="Icon.png" compile="0" resource="0" file="Icon.png"/>
+    <FILE id="wfgcjn" name="Icon@2x.png" compile="0" resource="0" file="Icon@2x.png"/>
     <GROUP id="{E54D17CF-AA86-82D4-D347-CD0CD6CE50FA}" name="Source">
       <GROUP id="{5794D306-886F-3127-3006-3034B6DD4959}" name="Player">
         <FILE id="n0IC9n" name="Player.cpp" compile="1" resource="0" file="../Plugin/Source/Player.cpp"/>
@@ -63,7 +63,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="pgyuob" bigIcon="qtYVP2">
+    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="Eq5hT1" bigIcon="wfgcjn">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
                        isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"/>
@@ -88,7 +88,7 @@
         <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2013 targetFolder="Builds/VisualStudio2013" smallIcon="pgyuob" bigIcon="qtYVP2">
+    <VS2013 targetFolder="Builds/VisualStudio2013" smallIcon="Eq5hT1" bigIcon="wfgcjn">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Soundboard"/>
@@ -113,7 +113,7 @@
         <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </VS2013>
-    <LINUX_MAKE targetFolder="Builds/Linux" smallIcon="pgyuob" bigIcon="qtYVP2">
+    <LINUX_MAKE targetFolder="Builds/Linux" smallIcon="Eq5hT1" bigIcon="wfgcjn">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
                        targetName="Soundboard"/>
@@ -138,7 +138,7 @@
         <MODULEPATH id="juce_opengl" path="../Submodules/JUCE/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <VS2015 targetFolder="Builds/VisualStudio2015">
+    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="Eq5hT1" bigIcon="wfgcjn">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Soundboard"/>
@@ -166,21 +166,21 @@
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="danlin_oscpack" showAllCode="0" useLocalCopy="0"/>
+    <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_basics" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_audio_devices" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_audio_formats" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_audio_processors" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_audio_utils" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_core" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_data_structures" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_events" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_graphics" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_gui_basics" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_gui_extra" showAllCode="0" useLocalCopy="0"/>
-    <MODULES id="juce_opengl" showAllCode="0" useLocalCopy="0"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="enabled"
+  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="disabled"
                JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
 </JUCERPROJECT>

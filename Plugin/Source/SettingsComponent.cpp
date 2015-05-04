@@ -75,8 +75,6 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscRepeaterPortNumberTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
     oscRepeaterPortNumberTextEditor->addListener(this);
 
-    addAndMakeVisible(loggerListBox = new ListBox);
-
     // listen to fadeout changes
     p.addOscParameterListener(this, "/ultraschall/soundboard/fadeout");
     // listen to all setup changes
@@ -106,8 +104,6 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
     oscRepeaterHostnameTextEditor = nullptr;
     oscRepeaterPortNumberTextEditor = nullptr;
 
-    loggerListBox = nullptr;
-
     processor.removeOscParameterListener(this);
 }
 
@@ -134,8 +130,6 @@ void SoundboardSettingsComponent::resized()
     oscRepeaterEnabledToggleButton->setBounds(3, 160, 80, 24);
     oscRepeaterHostnameTextEditor->setBounds(86, 160, getWidth() - 144, 24);
     oscRepeaterPortNumberTextEditor->setBounds(getWidth() - 51, 160, 48, 24);
-
-    loggerListBox->setBounds(3, 192, getWidth() - 6, getHeight() - 195);
 }
 
 // ComboBox Listener
@@ -198,18 +192,6 @@ void SoundboardSettingsComponent::sliderValueChanged(Slider* slider)
 {
     processor.setOscParameterValue("/ultraschall/soundboard/fadeout",
         static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
-}
-
-// ListBoxModel
-int SoundboardSettingsComponent::getNumRows()
-{
-    return logger.size();
-}
-
-void SoundboardSettingsComponent::paintListBoxItem(int rowNumber, Graphics& g, int width, int height, bool rowIsSelected)
-{
-    g.setColour(ThemeForeground1);
-    g.drawText(logger[rowNumber], 0, 0, width, height, Justification::centredLeft);
 }
 
 // Osc Parameter Listener

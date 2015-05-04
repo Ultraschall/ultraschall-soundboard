@@ -16,25 +16,25 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(topBar = new Bar());
 
     addAndMakeVisible(loadDirectoryButton = new TextButton());
-    loadDirectoryButton->setButtonText(FA_FOLDER_OPEN_O);
+    loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
     loadDirectoryButton->addListener(this);
 
     addAndMakeVisible(listButton = new TextButton());
     listButton->setLookAndFeel(awesomeLookAndFeel);
-    listButton->setButtonText(FA_LIST);
+    listButton->setButtonText(FontAwesome_List);
     listButton->addListener(this);
     listButton->setConnectedEdges(TextButton::ConnectedOnRight);
 
     addAndMakeVisible(gridButton = new TextButton());
     gridButton->setLookAndFeel(awesomeLookAndFeel);
-    gridButton->setButtonText(FA_TH);
+    gridButton->setButtonText(FontAwesome_Th);
     gridButton->addListener(this);
     gridButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
 
     addAndMakeVisible(settingsButton = new TextButton());
     settingsButton->setLookAndFeel(awesomeLookAndFeel);
-    settingsButton->setButtonText(FA_COG);
+    settingsButton->setButtonText(FontAwesome_Cog);
     settingsButton->addListener(this);
     settingsButton->setConnectedEdges(TextButton::ConnectedOnLeft);
 
