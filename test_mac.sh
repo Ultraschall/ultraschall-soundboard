@@ -14,7 +14,7 @@ cd ../../
 
 echo "Bootstrap Tools"
 cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
-xcodebuild > /dev/null
+xcodebuild -sdk macosx10.9 > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
@@ -24,6 +24,6 @@ echo "Update Projects"
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/MacOSX/
-xcodebuild > /dev/null
+xcodebuild -sdk macosx10.9 > /dev/null
 cd ../../../../
 Projects/Tests/Builds/MacOSX/build/Debug/Tests
