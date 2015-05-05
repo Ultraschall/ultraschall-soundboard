@@ -270,7 +270,7 @@ int Player::getIndex()
 #ifdef UNIT_TEST
 class PlayerTest : public UnitTest {
 public:
-    PlayerTest : UnitTest ("Player Test") {}
+    PlayerTest() : UnitTest ("Player Test") {}
     
 };
 #endif

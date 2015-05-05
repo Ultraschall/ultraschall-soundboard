@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.0.0"
-              bundleIdentifier="com.yourcompany.Tests" includeBinaryInAppConfig="1"
-              jucerVersion="3.1.1">
+              bundleIdentifier="fm.ultraschall.Tests" includeBinaryInAppConfig="1"
+              jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              companyEmail="info@ultraschall.fm">
   <MAINGROUP id="HDVVGK" name="Tests">
     <GROUP id="{17606FA4-CA5B-23DA-3880-7C36CABAA3DF}" name="Plugin">
       <FILE id="tmEYGn" name="PluginEditor.cpp" compile="1" resource="0"
@@ -72,7 +73,6 @@
         <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
@@ -100,7 +100,6 @@
         <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
@@ -128,7 +127,6 @@
         <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
@@ -143,7 +141,6 @@
     <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
@@ -156,5 +153,6 @@
     <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_video" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS/>
+  <JUCEOPTIONS JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_VST3="disabled"
+               JUCE_PLUGINHOST_AU="disabled"/>
 </JUCERPROJECT>

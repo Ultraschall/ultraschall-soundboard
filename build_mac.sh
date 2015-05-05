@@ -16,12 +16,13 @@ cd ../../
 
 cd Projects/Tests/Builds/MacOSX/
 xcodebuild > /dev/null
-cd ../../../
+cd ../../../../
+Projects/Tests/Builds/MacOSX/build/Debug/Tests
 
 cd Projects/Standalone/Builds/MacOSX/
 xcodebuild > /dev/null
-cd ../../../
+cd ../../../../
 
 cd Projects/Plugin/Builds/MacOSX/
 xcodebuild > /dev/null
-cd ../../../
+cd ../../../../
