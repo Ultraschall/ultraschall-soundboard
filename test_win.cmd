@@ -13,8 +13,14 @@ git checkout master > NUL
 git pull > NUL
 cd ../../
 
+echo "Bootstrap Tools"
+cd Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2013/
+msbuild /t:clean > NUL
+msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
+cd ../../../../../../
+
 echo "Update Projects"
-"c:/bin/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
+"./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2013/Debug/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/VisualStudio2015/
