@@ -10,14 +10,18 @@ cd Submodules/danlin_modules
 git checkout master > /dev/null
 git pull > /dev/null
 cd ../../
+/Applications/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Tests/Tests.jucer > /dev/null
+/Applications/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Standalone/Soundboard-Standalone.jucer > /dev/null
+/Applications/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Plugin/Soundboard-Plugin.jucer > /dev/null
 
-/Applications/Introjucer.app/Contents/MacOS/Introjucer --resave Standalone/Soundboard-Standalone.jucer > /dev/null
-/Applications/Introjucer.app/Contents/MacOS/Introjucer --resave Plugin/Soundboard-Plugin.jucer > /dev/null
-
-cd Standalone/Builds/MacOSX/
+cd Projects/Tests/Builds/MacOSX/
 xcodebuild > /dev/null
 cd ../../../
 
-cd Plugin/Builds/MacOSX/
+cd Projects/Standalone/Builds/MacOSX/
+xcodebuild > /dev/null
+cd ../../../
+
+cd Projects/Plugin/Builds/MacOSX/
 xcodebuild > /dev/null
 cd ../../../

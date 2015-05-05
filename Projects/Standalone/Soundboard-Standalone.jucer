@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9"
+              bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
+              jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
+              buildAU="0" buildRTAS="0" buildAAX="0" pluginName="Soundboard"
+              pluginDesc="Soundboard" pluginManufacturer="Ultraschall" pluginManufacturerCode="ULTS"
+              pluginCode="ULTS" pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="1"
+              pluginWantsMidiIn="1" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
+              pluginEditorRequiresKeys="1" pluginAUExportPrefix="SoundboardAU"
+              pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
+  <MAINGROUP id="aO9Y4k" name="Soundboard">
+    <GROUP id="{4964031A-DEB2-073F-7799-6988ADD970F0}" name="Shared">
+      <GROUP id="{EAEF30D3-F3B1-5B55-926D-807DF6AE3AF7}" name="Player">
+        <FILE id="nHpeEt" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
+        <FILE id="U3Pfzt" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
+      </GROUP>
+      <GROUP id="{B6617654-855C-6279-1370-6A87B2034DE3}" name="UserInterface">
+        <GROUP id="{042BAF15-6240-6C8D-B79B-1A50504AB294}" name="GridView">
+          <FILE id="p3xGQF" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.cpp"/>
+          <FILE id="UhfZkI" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.h"/>
+          <FILE id="flBfEm" name="GridComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/GridView/GridComponent.cpp"/>
+          <FILE id="NMPTN3" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridComponent.h"/>
+        </GROUP>
+        <FILE id="ya80oe" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
+        <FILE id="WM8XOK" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>
+        <GROUP id="{99A7612C-A3FB-0190-1BFD-EE174E0806DF}" name="SettingsView">
+          <FILE id="lru7lo" name="SettingsComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.cpp"/>
+          <FILE id="xrZsZP" name="SettingsComponent.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.h"/>
+        </GROUP>
+        <GROUP id="{63AAD6F8-3DAB-D49F-FB9E-113701C5726C}" name="TableView">
+          <FILE id="lqDtaB" name="TableButtonCell.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/TableView/TableButtonCell.cpp"/>
+          <FILE id="ickuis" name="TableButtonCell.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/TableView/TableButtonCell.h"/>
+          <FILE id="cionhD" name="TableComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/TableView/TableComponent.cpp"/>
+          <FILE id="tFYIci" name="TableComponent.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/TableView/TableComponent.h"/>
+        </GROUP>
+      </GROUP>
+    </GROUP>
+    <GROUP id="{EF900499-3FC3-8B21-E80F-2BF37F9BBD42}" name="Standalone">
+      <FILE id="hNY15S" name="Main.cpp" compile="1" resource="0" file="../../Source/Standalone/Main.cpp"/>
+      <FILE id="VdH6VO" name="StandaloneFilterWindow.h" compile="0" resource="0"
+            file="../../Source/Standalone/StandaloneFilterWindow.h"/>
+    </GROUP>
+    <GROUP id="{A73B73AE-531F-19F8-47B4-39B0FD97888E}" name="Plugin">
+      <FILE id="fTHeDo" name="PluginEditor.cpp" compile="1" resource="0"
+            file="../../Source/Plugin/PluginEditor.cpp"/>
+      <FILE id="o17OSG" name="PluginEditor.h" compile="0" resource="0" file="../../Source/Plugin/PluginEditor.h"/>
+      <FILE id="SsZ1Ec" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="../../Source/Plugin/PluginProcessor.cpp"/>
+      <FILE id="ngJF4O" name="PluginProcessor.h" compile="0" resource="0"
+            file="../../Source/Plugin/PluginProcessor.h"/>
+    </GROUP>
+    <FILE id="Eq5hT1" name="Icon.png" compile="0" resource="0" file="Icon.png"/>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
+                       isDebug="0" optimisation="2" targetName="Soundboard" cppLibType="libc++"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../Submodules/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <LINUX_MAKE targetFolder="Builds/Linux" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="Soundboard"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
+                       targetName="Soundboard"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../Submodules/JUCE/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="Soundboard"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="Soundboard"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_opengl" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
+      </MODULEPATHS>
+    </VS2015>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="disabled"
+               JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
+</JUCERPROJECT>
