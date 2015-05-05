@@ -3,6 +3,8 @@ Soundboard
 
 Ultraschall Soundboard VST das Soundboard für Podcaster.
 
+[![Build Status](https://travis-ci.org/Ultraschall/Soundboard.svg?branch=develop)](https://travis-ci.org/Ultraschall/Soundboard)
+
 ## Installation
 
 - Entpacken des ZIP-Archivs
