@@ -15,25 +15,11 @@ cd ../../
 
 echo "Update Projects"
 "c:/bin/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
-"c:/bin/The Introjucer.exe" --resave Projects/Standalone/Standalone.jucer
-"c:/bin/The Introjucer.exe" --resave Projects/Plugin/Plugin.jucer
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild
+msbuild > NUL
 cd Debug
 Tests.exe
 cd ../../../../../
-
-echo "Build Standalone"
-cd Projects/Standalone/Builds/VisualStudio2015/
-msbuild /t:clean > NUL
-msbuild
-cd ../../../../
-
-echo "Build Plugin"
-cd Projects/Plugin/Builds/VisualStudio2015/
-msbuild /t:clean > NUL
-msbuild
-cd ../../../../

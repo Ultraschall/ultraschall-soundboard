@@ -267,10 +267,25 @@ int Player::getIndex()
     return playerIndex;
 }
 
-#ifdef UNIT_TEST
+#if JUCE_UNIT_TESTS
 class PlayerTest : public UnitTest {
 public:
     PlayerTest() : UnitTest ("Player Test") {}
     
+	void initialise() {
+
+	}
+
+	void shutdown() {
+
+	}
+
+	void runTest() {
+		beginTest("load player");
+		expect(false, "fail test");
+		expectEquals(1, 2, "fail equals");
+	}
 };
+
+static PlayerTest playerTest;
 #endif

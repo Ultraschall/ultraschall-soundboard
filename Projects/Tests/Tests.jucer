@@ -3,7 +3,7 @@
 <JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.0.0"
               bundleIdentifier="fm.ultraschall.Tests" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
-              companyEmail="info@ultraschall.fm">
+              companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1">
   <MAINGROUP id="HDVVGK" name="Tests">
     <GROUP id="{17606FA4-CA5B-23DA-3880-7C36CABAA3DF}" name="Plugin">
       <FILE id="tmEYGn" name="PluginEditor.cpp" compile="1" resource="0"
@@ -109,9 +109,9 @@
     <VS2015 targetFolder="Builds/VisualStudio2015">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Tests"/>
+                       isDebug="1" optimisation="1" targetName="Tests" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\GridView&#10;..\..\..\..\Source\Shared\UserInterface\SettingsView&#10;..\..\..\..\Source\Shared\UserInterface\TableView&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Tests"/>
+                       isDebug="0" optimisation="3" targetName="Tests" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\GridView&#10;..\..\..\..\Source\Shared\UserInterface\SettingsView&#10;..\..\..\..\Source\Shared\UserInterface\TableView&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../Submodules/JUCE/modules"/>

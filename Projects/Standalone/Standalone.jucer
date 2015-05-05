@@ -115,9 +115,9 @@
     <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Soundboard"/>
+                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\GridView&#10;..\..\..\..\Source\Shared\UserInterface\SettingsView&#10;..\..\..\..\Source\Shared\UserInterface\TableView&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="2" targetName="Soundboard"/>
+                       isDebug="0" optimisation="2" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\GridView&#10;..\..\..\..\Source\Shared\UserInterface\SettingsView&#10;..\..\..\..\Source\Shared\UserInterface\TableView&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_opengl" path="../../Submodules/JUCE/modules"/>
