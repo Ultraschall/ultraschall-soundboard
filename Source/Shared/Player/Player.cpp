@@ -310,13 +310,13 @@ public:
     }
 
 	void runTest() {
-		initPlayerTest();
-
-        loadFileTest();
-
-        playTest();
-        pauseTest();
-        stopTest();
+//		initPlayerTest();
+//
+//        loadFileTest();
+//
+//        playTest();
+//        pauseTest();
+//        stopTest();
 	}
     
 private:
