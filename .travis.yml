@@ -1,2 +1,4 @@
 language: objective-c
 script: "./test_mac.sh"
+notifications:
+  slack: ultraschallfm:5MKlQKAZHSbPwiP7S9Rih440
