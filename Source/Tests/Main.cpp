@@ -88,7 +88,7 @@ public:
             StringArray messages = result->messages;
             for (int j=0; j<messages.size(); j++)
             {
-                std::cout << result->unitTestName << ": [" << result->subcategoryName << "] " << messages[j] << "\n";
+                std::cout << result->unitTestName << ": [ " << result->subcategoryName << " ] " << messages[j] << "\n";
             }
         }
 
