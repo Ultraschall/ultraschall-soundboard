@@ -9,12 +9,9 @@
 
 #include "Player.h"
 
-Player::Player(int index, const File &audioFile,
-               AudioFormatManager *formatManager,
-               AudioThumbnailCache *thumbnailCache,
-               OscProcessor &p) : playerIndex(index),
-                                  timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()),
-                                  title(audioFile.getFileNameWithoutExtension()),
+Player::Player(int index, const File &audioFile, AudioFormatManager *formatManager, AudioThumbnailCache *thumbnailCache) 
+                                : playerIndex(index), 
+                                  timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()), title(audioFile.getFileNameWithoutExtension()),
                                   playerState(Stopped),
                                   fadeOutGain(1.0f),
                                   fadeOutGainBackup(1.0f),
@@ -24,8 +21,7 @@ Player::Player(int index, const File &audioFile,
                                   process(0.0f),
                                   audioFormatManager(formatManager),
                                   thumbnailCache(thumbnailCache),
-                                  transportSource(new AudioTransportSource()),
-                                  processor(p)
+                                  transportSource(new AudioTransportSource())
 {
     timeSliceThread.startThread(3);
     audioSourcePlayer.setSource(transportSource);
@@ -270,21 +266,63 @@ int Player::getIndex()
 #if JUCE_UNIT_TESTS
 class PlayerTest : public UnitTest {
 public:
-    PlayerTest() : UnitTest ("Player Test") {}
+    PlayerTest() : UnitTest ("Ultraschall: Player") {}
     
 	void initialise() {
-
+        formatManager = new AudioFormatManager();
+        thumbnailCache = new AudioThumbnailCache(thumbnailCacheSize);
+        
+        formatManager->registerBasicFormats();
 	}
 
 	void shutdown() {
-
+        formatManager = nullptr;
+        thumbnailCache = nullptr;
 	}
+
+    void initPlayerTest() {
+        beginTest("init player");
+//        ScopedPointer<File> dummy = new File();
+//        ScopedPointer<Player> player = new Player(1, *dummy, formatManager, thumbnailCache);
+//        player = nullptr;
+//        dummy = nullptr;
+        expect(false, "internal crash");
+    }
+    
+    void loadFileTest() {
+        beginTest("load file");
+        expect(false, "Not implemented");
+    }
+    
+    void playTest() {
+        beginTest("play player");
+        expect(false, "Not implemented");
+    }
+    
+    void pauseTest() {
+        beginTest("pause player");
+        expect(false, "Not implemented");
+    }
+    
+    void stopTest() {
+        beginTest("stop player");
+        expect(false, "Not implemented");
+    }
 
 	void runTest() {
-		beginTest("load player");
-		expect(false, "fail test");
-		expectEquals(1, 2, "fail equals");
+		initPlayerTest();
+
+        loadFileTest();
+
+        playTest();
+        pauseTest();
+        stopTest();
 	}
+    
+private:
+    ScopedPointer<AudioFormatManager> formatManager;
+    ScopedPointer<AudioThumbnailCache> thumbnailCache;
+    const int thumbnailCacheSize = 5;
 };
 
 static PlayerTest playerTest;

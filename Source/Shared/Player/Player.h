@@ -15,8 +15,7 @@
 class Player : private MultiTimer,
                public ChangeBroadcaster {
 public:
-    Player(int index, const File& audioFile, AudioFormatManager* formatManager,
-        AudioThumbnailCache* thumbnailCache, OscProcessor&);
+    Player(int index, const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache);
     ~Player();
 
     String getTitle();
@@ -84,7 +83,7 @@ private:
     ScopedPointer<AudioTransportSource> transportSource;
     AudioSourcePlayer audioSourcePlayer;
     ScopedPointer<AudioFormatReaderSource> currentAudioFileSource;
-    OscProcessor& processor;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
 
