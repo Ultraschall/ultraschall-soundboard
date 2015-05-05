@@ -24,7 +24,7 @@ public:
 
     void initialise(const String & commandLine) override
     {
-                Array<UnitTest*>& allTests = UnitTest::getAllTests();
+        Array<UnitTest*>& allTests = UnitTest::getAllTests();
         int numTestsPassed = 0;
         int numTestsFailed = 0;
 
@@ -88,7 +88,7 @@ public:
             StringArray messages = result->messages;
             for (int j=0; j<messages.size(); j++)
             {
-                std::cout << result->unitTestName << ": " << messages[j] << "\n";
+                std::cout << result->unitTestName << ": [" << result->subcategoryName << "] " << messages[j] << "\n";
             }
         }
 

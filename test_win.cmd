@@ -19,7 +19,7 @@ echo "Update Projects"
 echo "UnitTesting"
 cd Projects/Tests/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild > NUL
+msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
 cd Debug
 Tests.exe
 cd ../../../../../

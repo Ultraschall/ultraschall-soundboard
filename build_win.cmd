@@ -21,7 +21,7 @@ echo "Update Projects"
 echo "UnitTesting"
 cd Projects/Tests/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild
+msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
 cd Debug
 Tests.exe
 cd ../../../../../
@@ -29,11 +29,11 @@ cd ../../../../../
 echo "Build Standalone"
 cd Projects/Standalone/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild
+msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
 cd ../../../../
 
 echo "Build Plugin"
 cd Projects/Plugin/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild
+msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
 cd ../../../../
