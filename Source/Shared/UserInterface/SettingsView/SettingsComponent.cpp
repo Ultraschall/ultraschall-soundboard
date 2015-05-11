@@ -76,9 +76,9 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscRepeaterPortNumberTextEditor->addListener(this);
 
     // listen to fadeout changes
-    p.addOscParameterListener(this, "/ultraschall/soundboard/fadeout");
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/fadeout");
     // listen to all setup changes
-    p.addOscParameterListener(this, "/ultraschall/soundboard/setup/.+");
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/setup/.+");
 }
 
 SoundboardSettingsComponent::~SoundboardSettingsComponent()
@@ -104,7 +104,7 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
     oscRepeaterHostnameTextEditor = nullptr;
     oscRepeaterPortNumberTextEditor = nullptr;
 
-    processor.removeOscParameterListener(this);
+    processor.getOscManager()->removeOscParameterListener(this);
 }
 
 // Component
@@ -136,7 +136,7 @@ void SoundboardSettingsComponent::resized()
 void SoundboardSettingsComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
 {
     if (comboBoxThatHasChanged == themeComboBox) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/ui/theme",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/ui/theme",
             themeComboBox->getSelectedId());
     }
 }
@@ -145,19 +145,19 @@ void SoundboardSettingsComponent::comboBoxChanged(ComboBox* comboBoxThatHasChang
 void SoundboardSettingsComponent::buttonClicked(Button* buttonThatWasClicked)
 {
     if (buttonThatWasClicked == oscLocalEnabledToggleButton) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
             oscLocalEnabledToggleButton->getToggleState());
     }
     else if (buttonThatWasClicked == oscRemoteEnabledToggleButton) {
         oscRemoteHostnameTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
         oscRemotePortNumberTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled",
             oscRemoteEnabledToggleButton->getToggleState());
     }
     else if (buttonThatWasClicked == oscRepeaterEnabledToggleButton) {
         oscRepeaterHostnameTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
         oscRepeaterPortNumberTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled",
             oscRepeaterEnabledToggleButton->getToggleState());
     }
 }
@@ -166,23 +166,23 @@ void SoundboardSettingsComponent::buttonClicked(Button* buttonThatWasClicked)
 void SoundboardSettingsComponent::textEditorTextChanged(TextEditor& editor)
 {
     if (&editor == oscLocalPortNumberTextEditor) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port",
             oscLocalPortNumberTextEditor->getText().getIntValue());
     }
     else if (&editor == oscRemoteHostnameTextEditor) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host",
             oscRemoteHostnameTextEditor->getText());
     }
     else if (&editor == oscRemotePortNumberTextEditor) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port",
             oscRemotePortNumberTextEditor->getText().getIntValue());
     }
     else if (&editor == oscRepeaterHostnameTextEditor) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host",
             oscRepeaterHostnameTextEditor->getText());
     }
     else if (&editor == oscRepeaterPortNumberTextEditor) {
-        processor.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port",
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port",
             oscRepeaterPortNumberTextEditor->getText().getIntValue());
     }
 }
@@ -190,7 +190,7 @@ void SoundboardSettingsComponent::textEditorTextChanged(TextEditor& editor)
 // Slider Listener
 void SoundboardSettingsComponent::sliderValueChanged(Slider* slider)
 {
-    processor.setOscParameterValue("/ultraschall/soundboard/fadeout",
+    processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/fadeout",
         static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
 }
 

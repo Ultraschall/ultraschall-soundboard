@@ -12,48 +12,47 @@
 #include "LookAndFeel.h"
 
 //==============================================================================
-SoundboardAudioProcessor::SoundboardAudioProcessor()
-    : fadeOutSeconds(6)
+SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
 {
+    Logger::setCurrentLogger(logger = FileLogger::createDefaultAppLogger(ProjectInfo::projectName, String(ProjectInfo::projectName) + ".txt", String(ProjectInfo::projectName) + " " + String(ProjectInfo::versionString)));
+
     // Internal OSC Parameter
+    oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
     
-    addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
+    oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/receive/enabled"), true);
+    oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/receive/port"), true);
     
-    addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/receive/enabled"), true);
-    addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/receive/port"), true);
+    oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/remote/enabled"), true);
+    oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/remote/host"), true);
+    oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/remote/port"), true);
     
-    addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/remote/enabled"), true);
-    addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/remote/host"), true);
-    addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/remote/port"), true);
-    
-    addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/repeater/enabled"), true);
-    addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/repeater/host"), true);
-    addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/repeater/port"), true);
+    oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/repeater/enabled"), true);
+    oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/repeater/host"), true);
+    oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/repeater/port"), true);
     
     // External OSC Parameter
-    
-    addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
-    addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
 
     for (int index = 0; index < MaximumSamplePlayers; index++) {
         String indexString = String(index + 1);
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/play"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/pause"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/stop"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/trigger"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/ftrigger"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/loop"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/fadeout"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/gain"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/done"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/progress"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/title"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/time"));
-        addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/remaining"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/play"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/pause"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/stop"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/trigger"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/ftrigger"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/loop"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/fadeout"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/gain"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/done"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/progress"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/title"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/time"));
+        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/remaining"));
     }
 
     // OSC Setup done not listen to all events here
-    addOscParameterListener(this, ".+");
+    oscManager.addOscParameterListener(this, ".+");
 
     defaultLookAndFeel = new LookAndFeel_Ultraschall();
     awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
@@ -103,7 +102,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor()
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
-    removeOscParameter(".+");
+    oscManager.removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
     propertiesFile->saveIfNeeded();
@@ -114,6 +113,9 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
 
     defaultLookAndFeel = nullptr;
     awesomeLookAndFeel = nullptr;
+    
+    Logger::setCurrentLogger(nullptr);
+    logger = nullptr;
 }
 
 //==============================================================================
@@ -381,23 +383,23 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
     if (timerID == TimerOscServerDelay) {
         stopTimer(TimerOscServerDelay);
         
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host",
                              propertiesFile->getValue(OscRepeaterHostnameIdentifier));
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port",
                              propertiesFile->getIntValue(OscRepeaterPortNumberIdentifier));
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled",
                              propertiesFile->getValue(OscRepeaterEnabledIdentifier));
         
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host",
                              propertiesFile->getValue(OscRemoteHostnameIdentifier));
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port",
                              propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled",
                              propertiesFile->getValue(OscRemoteEnabledIdentifier));
         
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port",
                              propertiesFile->getIntValue(OscReceivePortNumberIdentifier));
-        setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
                              propertiesFile->getValue(OscReceiveEnabledIdentifier));
         
     } else if (timerID == TimerMidiEvents) {
@@ -467,12 +469,6 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
 }
 
 //==============================================================================
-void SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
-{
-
-}
-
-//==============================================================================
 void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter)
 {
     if (parameter->addressMatch("/ultraschall/soundboard/player/\\d+/.+")) {
@@ -486,41 +482,39 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscReceiveEnabledIdentifier.toString(), value);
             if (value) {
-                getOscServer()->listen();
+                oscManager.getOscServer()->listen();
             } else {
-                getOscServer()->stopListening();
+                oscManager.getOscServer()->stopListening();
             }
         } else if (parameter->addressMatch(".+/osc/receive/port")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscReceivePortNumberIdentifier.toString(), value);
-            getOscServer()->setLocalPortNumber(value);
+            oscManager.getOscServer()->setLocalPortNumber(value);
             
         } else if (parameter->addressMatch(".+/osc/remote/enabled")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(), value);
-            getOscServer()->setRemoteEnabled(value);
+            oscManager.getOscServer()->setRemoteEnabled(value);
         } else if (parameter->addressMatch(".+/osc/remote/host")) {
             auto value = parameter->getValue().toString();
             propertiesFile->setValue(OscRemoteHostnameIdentifier.toString(), value);
-            getOscServer()->setRemoteHostname(value);
+            oscManager.getOscServer()->setRemoteHostname(value);
         } else if (parameter->addressMatch(".+/osc/remote/port")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscRemotePortNumberIdentifier.toString(), value);
-            getOscServer()->setRemotePortNumber(value);
-            
+            oscManager.getOscServer()->setRemotePortNumber(value);
         } else if (parameter->addressMatch(".+/osc/repeater/enabled")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRepeaterEnabledIdentifier.toString(), value);
-            getOscServer()->setBridgeEnabled(value);
+            oscManager.getOscServer()->setBridgeEnabled(value);
         } else if (parameter->addressMatch(".+/osc/repeater/host")) {
             auto value = parameter->getValue().toString();
             propertiesFile->setValue(OscRepeaterHostnameIdentifier.toString(), value);
-            getOscServer()->setBridgeHostname(value);
+            oscManager.getOscServer()->setBridgeHostname(value);
         } else if (parameter->addressMatch(".+/osc/repeater/port")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscRepeaterPortNumberIdentifier.toString(), value);
-            getOscServer()->setBridgePortNumber(value);
-            
+            oscManager.getOscServer()->setBridgePortNumber(value);
         } else if (parameter->addressMatch(".+/ui/theme$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(ThemeIdentifier.toString(), value);
@@ -533,6 +527,10 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
     } else {
         Logger::outputDebugString("Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
     }
+}
+
+OscManager* SoundboardAudioProcessor::getOscManager() {
+    return &oscManager;
 }
 
 //==============================================================================
