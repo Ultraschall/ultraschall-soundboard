@@ -17,6 +17,7 @@ SoundboardGridCell::SoundboardGridCell(Player *p) : player(p), index(-1), progre
     if (player)
     {
         player->getThumbnail()->addChangeListener(this);
+        player->addChangeListener(this);
     }
 }
 
