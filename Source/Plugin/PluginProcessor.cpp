@@ -14,6 +14,9 @@
 //==============================================================================
 SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
 {
+    defaultLookAndFeel = new LookAndFeel_Ultraschall();
+    awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
+
     Logger::setCurrentLogger(logger = FileLogger::createDefaultAppLogger(ProjectInfo::projectName, String(ProjectInfo::projectName) + ".txt", String(ProjectInfo::projectName) + " " + String(ProjectInfo::versionString)));
 
     // Internal OSC Parameter
@@ -30,9 +33,10 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/repeater/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/repeater/port"), true);
     
-    // External OSC Parameter
+    // OSC Parameter
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/stopall"));
 
     for (int index = 0; index < MaximumSamplePlayers; index++) {
         String indexString = String(index + 1);
@@ -46,16 +50,13 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
         oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/gain"));
         oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/done"));
         oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/progress"));
-        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/title"));
-        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/time"));
-        oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/" + indexString + "/remaining"));
+        oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/player/" + indexString + "/title"));
+        oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/player/" + indexString + "/time"));
+        oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/player/" + indexString + "/remaining"));
     }
 
     // OSC Setup done not listen to all events here
     oscManager.addOscParameterListener(this, ".+");
-
-    defaultLookAndFeel = new LookAndFeel_Ultraschall();
-    awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
 
     playersLocked = true;
     formatManager.registerBasicFormats();
@@ -89,7 +90,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
     SwitchTheme(static_cast<Themes>(propertiesFile->getIntValue(ThemeIdentifier)));
-
+    
     fadeOutRange.start = 1.0;
     fadeOutRange.end = 30.0;
     fadeOutRange.interval = 1.0;
@@ -307,6 +308,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
                 delete audioFile;
                 break;
             }
+            audioFile->addChangeListener(this);
             players.add(audioFile);
             audioFile->setFadeOutTime(fadeOutSeconds);
             mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
@@ -325,6 +327,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     propertiesFile->setValue(CurrentDirectoryIdentifier.toString(), currentDirectory);
     if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
         for (int index = 0; index < numPlayers(); index++) {
+            updatePlayerState(index);
         }
     }
 }
@@ -468,13 +471,48 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
     }
 }
 
+void SoundboardAudioProcessor::updatePlayerState(int playerIndex) {
+    auto addressBase = "/ultraschall/soundboard/player/" + String(playerIndex + 1);
+    auto player = playerAtIndex(playerIndex);
+    oscManager.setOscParameterValue(addressBase + "/play", player->isPlaying());
+    oscManager.setOscParameterValue(addressBase + "/pause", player->isPaused());
+    oscManager.setOscParameterValue(addressBase + "/stop", player->isStopped());
+    oscManager.setOscParameterValue(addressBase + "/trigger", player->isPlaying());
+    oscManager.setOscParameterValue(addressBase + "/ftrigger", player->isPlaying());
+    oscManager.setOscParameterValue(addressBase + "/fadeout", player->isFadingOut());
+    oscManager.setOscParameterValue(addressBase + "/loop", player->isLooping());
+    oscManager.setOscParameterValue(addressBase + "/done", player->isPlayed());
+    oscManager.setOscParameterValue(addressBase + "/progress", player->getProgress());
+    oscManager.setOscParameterValue(addressBase + "/title", player->getTitle());
+    oscManager.setOscParameterValue(addressBase + "/time", player->getProgressString(false));
+    oscManager.setOscParameterValue(addressBase + "/remaining", player->getProgressString(true));
+    oscManager.setOscParameterValue(addressBase + "/gain", player->getGain());
+}
 //==============================================================================
 void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter)
 {
     if (parameter->addressMatch("/ultraschall/soundboard/player/\\d+/.+")) {
+        std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
+        std::smatch match;
+        std::string result;
+        if (std::regex_search(parameter->getAddress().toStdString(), match, re) && match.size() > 1) {
+            result = match.str(1);
+        } else {
+            return;
+        }
+        int playerIndex = String(result).getIntValue();
+        playerIndex--;
+        if (!playerAtIndex(playerIndex))
+            return;
+        
         Logger::outputDebugString("Player Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
         if (parameter->addressMatch(".+/play$")) {
-            Logger::outputDebugString("Play");    
+            if (parameter->getValue()) {
+                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->play();
+                    updatePlayerState(playerIndex);
+                }
+            }
         }
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
         Logger::outputDebugString("Setup Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
@@ -531,6 +569,14 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
 
 OscManager* SoundboardAudioProcessor::getOscManager() {
     return &oscManager;
+}
+
+void SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source) {
+    auto player = static_cast<Player*>(source);
+    if (player) {
+        int playerIndex = players.indexOf(player);
+        updatePlayerState(playerIndex);
+    }
 }
 
 //==============================================================================

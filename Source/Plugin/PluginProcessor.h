@@ -35,7 +35,7 @@ static const Identifier OscRemoteEnabledIdentifier("OscRemoteEnabled");
 static const Identifier OscRemoteHostnameIdentifier("OscRemoteHostname");
 static const Identifier OscRemotePortNumberIdentifier("OscRemotePortNumber");
 
-class SoundboardAudioProcessor : public AudioProcessor, public MultiTimer, public OscParameterListener
+class SoundboardAudioProcessor : public AudioProcessor, public MultiTimer, public OscParameterListener, public ChangeListener
 {
 public:
     SoundboardAudioProcessor();
@@ -109,6 +109,9 @@ public:
     // Player
     int numPlayers();
     Player *playerAtIndex(int index);
+    
+    // ChangeListener
+    void changeListenerCallback(ChangeBroadcaster* source) override;
 private:
 
     // Init Program Number
@@ -138,6 +141,7 @@ private:
     
     // Osc
     OscManager      oscManager;
+    void updatePlayerState(int playerIndex);
     
     // MIDI
     MidiBuffer      midiBuffer;

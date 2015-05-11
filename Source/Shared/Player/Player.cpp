@@ -77,6 +77,9 @@ AudioThumbnail *Player::getThumbnail()
 void Player::update()
 {
     process = static_cast<float>(transportSource->getCurrentPosition() / transportSource->getLengthInSeconds());
+    if (isPlaying()) {
+        sendChangeMessage();
+    }
     if (process >= 1.0f)
     {
         process = 1.0f;
