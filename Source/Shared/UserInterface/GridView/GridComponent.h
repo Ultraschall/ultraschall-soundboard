@@ -16,7 +16,7 @@
 #include "PluginProcessor.h"
 #include "GridCell.h"
 
-class SoundboardGridComponent : public Component, public MultiTimer
+class SoundboardGridComponent : public Component
 {
 public:
     explicit SoundboardGridComponent(SoundboardAudioProcessor &);
@@ -24,9 +24,6 @@ public:
 
     // Component
     void resized() override;
-
-    // MultiTimer
-    void timerCallback(int timerID) override;
 
     // Helper
     void updateContent();
