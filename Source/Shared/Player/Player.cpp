@@ -108,7 +108,9 @@ void Player::timerCallback(int timerID)
                 transportSource->setPosition(0);
                 playerState = Played;
                 fadeOutGain = fadeOutGainBackup;
+                transportSource->setGain(fadeOutGainBackup);
                 update();
+                return;
             }
             transportSource->setGain(fadeOutGain);
         }
