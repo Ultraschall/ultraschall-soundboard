@@ -110,6 +110,7 @@ void Player::timerCallback(int timerID)
                 fadeOutGain = fadeOutGainBackup;
                 transportSource->setGain(fadeOutGainBackup);
                 update();
+                sendChangeMessage();
                 return;
             }
             transportSource->setGain(fadeOutGain);
