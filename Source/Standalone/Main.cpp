@@ -29,6 +29,7 @@ public:
     {
         mainWindow = new StandaloneFilterWindow(getApplicationName(), Colours::black, new PropertySet(), true);
         mainWindow->setResizable(true, true);
+        mainWindow->setResizeLimits(480, 320, INT_MAX, INT_MAX);
         mainWindow->setVisible(true);
         mainWindow->setUsingNativeTitleBar(true);
     }
