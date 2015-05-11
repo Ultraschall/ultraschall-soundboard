@@ -510,9 +510,52 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             if (parameter->getValue()) {
                 if (!playerAtIndex(playerIndex)->isPlaying()) {
                     playerAtIndex(playerIndex)->play();
-                    updatePlayerState(playerIndex);
                 }
             }
+        } else if (parameter->addressMatch(".+/stop$")) {
+            if (parameter->getValue()) {
+                playerAtIndex(playerIndex)->stop();
+            }
+        } else if (parameter->addressMatch(".+/pause$")) {
+            if (parameter->getValue()) {
+                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->pause();
+                }
+            }
+        } else if (parameter->addressMatch(".+/trigger$")) {
+            if (parameter->getValue()) {
+                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->play();
+                }
+            }
+            else {
+                if (playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->stop();
+                }
+            }
+        } else if (parameter->addressMatch(".+/ftrigger$")) {
+            if (parameter->getValue()) {
+                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->play();
+                }
+            }
+            else {
+                if (playerAtIndex(playerIndex)->isFadingOut()) {
+                    playerAtIndex(playerIndex)->stop();
+                } else if (playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->startFadeOut();
+                }
+            }
+        } else if (parameter->addressMatch(".+/loop$")) {
+            playerAtIndex(playerIndex)->setLooping(parameter->getValue());
+        } else if (parameter->addressMatch(".+/fadeout$")) {
+            if (parameter->getValue()) {
+                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                    playerAtIndex(playerIndex)->startFadeOut();
+                }
+            }
+        } else if (parameter->addressMatch(".+/gain$")) {
+            playerAtIndex(playerIndex)->setGain(parameter->getValue());
         }
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
         Logger::outputDebugString("Setup Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
