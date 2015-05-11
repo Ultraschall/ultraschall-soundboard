@@ -13,6 +13,12 @@
 SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioProcessor &p)
         : AudioProcessorEditor(&p), processor(p), mPauseState(true), mTimerState(true)
 {
+#if JUCE_WINDOWS
+#if JUCE_OPENGL
+    openGLContext.attachTo (*getTopLevelComponent());
+#endif
+#endif
+    
     addAndMakeVisible(topBar = new Bar());
 
     addAndMakeVisible(loadDirectoryButton = new TextButton());
