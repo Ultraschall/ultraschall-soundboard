@@ -35,7 +35,7 @@ static const Identifier OscRemoteEnabledIdentifier("OscRemoteEnabled");
 static const Identifier OscRemoteHostnameIdentifier("OscRemoteHostname");
 static const Identifier OscRemotePortNumberIdentifier("OscRemotePortNumber");
 
-class SoundboardAudioProcessor : public AudioProcessor, public OscProcessor, public MultiTimer, public OscParameterListener, public ChangeListener
+class SoundboardAudioProcessor : public AudioProcessor, public MultiTimer, public OscParameterListener, public ChangeListener
 {
 public:
     SoundboardAudioProcessor();
@@ -90,9 +90,6 @@ public:
         return propertiesFile;
     }
     
-    // ChangeListener
-    void changeListenerCallback(ChangeBroadcaster* source);
-
     // Parameter Helper
     void setGain(int playerIndex, float value);
     int  getWindowWidth();
@@ -106,8 +103,15 @@ public:
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
 
+    // Osc
+    OscManager* getOscManager();
+    
+    // Player
     int numPlayers();
     Player *playerAtIndex(int index);
+    
+    // ChangeListener
+    void changeListenerCallback(ChangeBroadcaster* source) override;
 private:
 
     // Init Program Number
@@ -135,10 +139,17 @@ private:
     ScopedPointer<PropertySet>    fallbackProperties;
     ScopedPointer<PropertiesFile> propertiesFile;   
     
+    // Osc
+    OscManager      oscManager;
+    void updatePlayerState(int playerIndex);
+    
     // MIDI
     MidiBuffer      midiBuffer;
     CriticalSection midiCriticalSection;
 
+    // Logger
+    ScopedPointer<FileLogger>      logger;
+    
     enum MidiFunction
     {
         PlayStop = 0, PlayPause = 1, PlayFadeOut = 2, HoldAndPlay = 3

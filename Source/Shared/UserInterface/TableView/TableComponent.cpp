@@ -292,8 +292,10 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 // MultiTimer
 void SoundboardTableComponent::timerCallback(int timerID)
 {
-    if (timerID == TimerIdRepaint) {
-        tableListBox->repaint();
+    if (isVisible()) {
+        if (timerID == TimerIdRepaint) {
+            tableListBox->repaint();
+        }
     }
 }
 

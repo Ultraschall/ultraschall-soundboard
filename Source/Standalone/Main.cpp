@@ -28,10 +28,10 @@ public:
     void initialise(const String & /*commandLine*/) override
     {
         mainWindow = new StandaloneFilterWindow(getApplicationName(), Colours::black, new PropertySet(), true);
-        mainWindow->setResizeLimits(380, 320, 1024, 768);
-        mainWindow->setUsingNativeTitleBar(true);
         mainWindow->setResizable(true, true);
+        mainWindow->setResizeLimits(480, 320, INT_MAX, INT_MAX);
         mainWindow->setVisible(true);
+        mainWindow->setUsingNativeTitleBar(true);
     }
 
     void shutdown() override

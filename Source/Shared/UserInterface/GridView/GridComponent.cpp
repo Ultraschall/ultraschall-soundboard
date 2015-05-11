@@ -13,12 +13,10 @@
 SoundboardGridComponent::SoundboardGridComponent(SoundboardAudioProcessor &p) : processor(p)
 {
     updateContent();
-    startTimer(TimerIdRepaint, static_cast<int>(1000 * 0.5));
 }
 
 SoundboardGridComponent::~SoundboardGridComponent()
 {
-    stopTimer(TimerIdRepaint);
     cells.clear(true);
 }
 
@@ -37,18 +35,6 @@ void SoundboardGridComponent::resized()
             auto y = row * cellHeight;
 
             cells[index]->setBounds(x, y, cellWidth, cellHeight);
-        }
-    }
-}
-
-// MultiTimer
-void SoundboardGridComponent::timerCallback(int timerID)
-{
-    if (timerID == TimerIdRepaint)
-    {
-        if (isVisible())
-        {
-            repaint();
         }
     }
 }

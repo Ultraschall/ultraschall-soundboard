@@ -77,6 +77,9 @@ AudioThumbnail *Player::getThumbnail()
 void Player::update()
 {
     process = static_cast<float>(transportSource->getCurrentPosition() / transportSource->getLengthInSeconds());
+    if (isPlaying()) {
+        sendChangeMessage();
+    }
     if (process >= 1.0f)
     {
         process = 1.0f;
@@ -105,7 +108,10 @@ void Player::timerCallback(int timerID)
                 transportSource->setPosition(0);
                 playerState = Played;
                 fadeOutGain = fadeOutGainBackup;
+                transportSource->setGain(fadeOutGainBackup);
                 update();
+                sendChangeMessage();
+                return;
             }
             transportSource->setGain(fadeOutGain);
         }
