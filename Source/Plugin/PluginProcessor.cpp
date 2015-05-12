@@ -34,9 +34,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/repeater/port"), true);
     
     // OSC Parameter
-    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
-    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/stopall"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/stopall"));
 
     for (int index = 0; index < MaximumSamplePlayers; index++) {
         String indexString = String(index + 1);
@@ -557,6 +556,19 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         } else if (parameter->addressMatch(".+/gain$")) {
             playerAtIndex(playerIndex)->setGain(parameter->getValue());
         }
+    } else if (parameter->addressMatch("/ultraschall/soundboard/player/stopall$")) {
+        if (parameter->getValue()) {
+            for (int index = 0; index < numPlayers(); index++) {
+                Player *player = playerAtIndex(index);
+                if (player) {
+                    if (player->isPlaying()) {
+                        player->stop();
+                    }
+                }
+            }
+        }
+    } else if (parameter->addressMatch("/ultraschall/soundboard/fadeout$")) {
+        setFadeOutSeconds(static_cast<int>(parameter->getValue()));
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
         Logger::outputDebugString("Setup Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
         if (parameter->addressMatch(".+/osc/receive/enabled")) {
@@ -571,7 +583,6 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscReceivePortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setLocalPortNumber(value);
-            
         } else if (parameter->addressMatch(".+/osc/remote/enabled")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(), value);
