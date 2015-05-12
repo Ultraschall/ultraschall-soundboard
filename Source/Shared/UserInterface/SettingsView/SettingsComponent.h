@@ -51,6 +51,9 @@ private:
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;
 
+    ScopedPointer<Slider> gainSlider;
+    ScopedPointer<Label> gainLabel;
+
     ScopedPointer<Bar> oscBar;
     ScopedPointer<Label> oscLabel;
 

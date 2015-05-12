@@ -12,7 +12,7 @@
 #include "LookAndFeel.h"
 
 //==============================================================================
-SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
+SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPercentage(0.33f), duckEnabled(false), fadeOutSeconds(6)
 {
     defaultLookAndFeel = new LookAndFeel_Ultraschall();
     awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
@@ -35,6 +35,9 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : fadeOutSeconds(6)
     
     // OSC Parameter
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/percentage"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/enabled"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/stopall"));
 
     for (int index = 0; index < MaximumSamplePlayers; index++) {
@@ -249,6 +252,11 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
 
     for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
         buffer.copyFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
+    }
+    if (duckEnabled) {
+        buffer.applyGain(masterGain * duckPercentage);
+    } else {
+        buffer.applyGain(masterGain);
     }
 }
 
@@ -505,7 +513,6 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         if (!playerAtIndex(playerIndex))
             return;
         
-        Logger::outputDebugString("Player Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
         if (parameter->addressMatch(".+/play$")) {
             if (parameter->getValue()) {
                 if (!playerAtIndex(playerIndex)->isPlaying()) {
@@ -570,6 +577,12 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         }
     } else if (parameter->addressMatch("/ultraschall/soundboard/fadeout$")) {
         setFadeOutSeconds(static_cast<int>(parameter->getValue()));
+    } else if (parameter->addressMatch("/ultraschall/soundboard/gain$")) {
+        masterGain = static_cast<float>(parameter->getValue());
+    } else if (parameter->addressMatch("/ultraschall/soundboard/duck/percentage$")) {
+        duckPercentage = static_cast<float>(parameter->getValue());
+    } else if (parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
+        duckEnabled = static_cast<bool>(parameter->getValue());
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
         Logger::outputDebugString("Setup Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
         if (parameter->addressMatch(".+/osc/receive/enabled")) {

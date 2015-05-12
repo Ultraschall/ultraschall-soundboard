@@ -33,6 +33,15 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     fadeOutSlider->setTextValueSuffix("s");
     fadeOutSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxRight, true, 48, 24);
     fadeOutSlider->addListener(this);
+    
+    addAndMakeVisible(gainLabel = new Label());
+    gainLabel->setText(TRANS("Master Gain:"), dontSendNotification);
+    addAndMakeVisible(gainSlider = new Slider());
+    gainSlider->setRange(0, 1, 0.01);
+    gainSlider->setValue(processor.getGain());
+    gainSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
+    gainSlider->setSliderStyle(Slider::SliderStyle::Rotary);
+    gainSlider->addListener(this);
 
     addAndMakeVisible(oscBar = new Bar());
     addAndMakeVisible(oscLabel = new Label());
@@ -76,9 +85,11 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscRepeaterPortNumberTextEditor->addListener(this);
 
     // listen to fadeout changes
-    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/fadeout");
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/fadeout$");
     // listen to all setup changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/setup/.+");
+    // listen to gain changes
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/gain$");
 }
 
 SoundboardSettingsComponent::~SoundboardSettingsComponent()
@@ -88,6 +99,9 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
 
     fadeOutLabel = nullptr;
     fadeOutSlider = nullptr;
+    
+    gainLabel = nullptr;
+    gainSlider = nullptr;
 
     oscBar = nullptr;
     oscLabel = nullptr;
@@ -116,6 +130,9 @@ void SoundboardSettingsComponent::resized()
     fadeOutLabel->setBounds(3, 32, 80, 24);
     fadeOutSlider->setBounds(86, 32, 72, 24);
 
+    gainLabel->setBounds(153, 32, 80, 24);
+    gainSlider->setBounds(236, 32, 72, 24);
+    
     oscBar->setBounds(0, 59, getWidth(), 32);
     oscLabel->setBounds(3, 64, 80, 24);
 
@@ -190,8 +207,11 @@ void SoundboardSettingsComponent::textEditorTextChanged(TextEditor& editor)
 // Slider Listener
 void SoundboardSettingsComponent::sliderValueChanged(Slider* slider)
 {
-    processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/fadeout",
-        static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
+    if (slider == fadeOutSlider) {
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/fadeout", static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
+    } else if (slider == gainSlider) {
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/gain", static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
+    }
 }
 
 // Osc Parameter Listener
@@ -199,8 +219,9 @@ void SoundboardSettingsComponent::handleOscParameterMessage(OscParameter* parame
 {
     if (parameter->addressMatch("/ultraschall/soundboard/fadeout")) {
         fadeOutSlider->setValue(fadeOutSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
-
-        // reciver setup
+    }
+    else if (parameter->addressMatch("/ultraschall/soundboard/gain")) {
+        gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     }
     else if (parameter->addressMatch("/ultraschall/soundboard/setup/osc/receive/port")) {
         oscLocalPortNumberTextEditor->setText(parameter->getValue(), dontSendNotification);
@@ -208,8 +229,6 @@ void SoundboardSettingsComponent::handleOscParameterMessage(OscParameter* parame
     else if (parameter->addressMatch("/ultraschall/soundboard/setup/osc/receive/enabled")) {
         oscLocalEnabledToggleButton->setToggleState(parameter->getValue(), dontSendNotification);
         oscLocalPortNumberTextEditor->setReadOnly(parameter->getValue());
-
-        // remote setup
     }
     else if (parameter->addressMatch("/ultraschall/soundboard/setup/osc/remote/host")) {
         oscRemoteHostnameTextEditor->setText(parameter->getValue(), dontSendNotification);
@@ -221,8 +240,6 @@ void SoundboardSettingsComponent::handleOscParameterMessage(OscParameter* parame
         oscRemoteEnabledToggleButton->setToggleState(parameter->getValue(), dontSendNotification);
         oscRemoteHostnameTextEditor->setReadOnly(parameter->getValue());
         oscRemotePortNumberTextEditor->setReadOnly(parameter->getValue());
-
-        // repeater setup
     }
     else if (parameter->addressMatch("/ultraschall/soundboard/setup/osc/repeater/host")) {
         oscRepeaterHostnameTextEditor->setText(parameter->getValue(), dontSendNotification);

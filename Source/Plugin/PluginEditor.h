@@ -48,6 +48,8 @@ private:
     ComponentBoundsConstrainer              resizeLimits;
     ScopedPointer<TextButton>               loadDirectoryButton;
 
+    ScopedPointer<TextButton> duckButton;
+    
     ScopedPointer<TextButton> gridButton;
     ScopedPointer<TextButton> listButton;
 

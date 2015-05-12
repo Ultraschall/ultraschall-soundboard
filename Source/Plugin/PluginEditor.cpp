@@ -24,6 +24,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
+    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnRight);
     loadDirectoryButton->addListener(this);
 
     addAndMakeVisible(listButton = new TextButton());
@@ -36,7 +37,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     gridButton->setLookAndFeel(awesomeLookAndFeel);
     gridButton->setButtonText(FontAwesome_Th);
     gridButton->addListener(this);
-    gridButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
+    gridButton->setConnectedEdges(TextButton::ConnectedOnLeft);
 
     addAndMakeVisible(settingsButton = new TextButton());
     settingsButton->setLookAndFeel(awesomeLookAndFeel);
@@ -44,6 +45,11 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     settingsButton->addListener(this);
     settingsButton->setConnectedEdges(TextButton::ConnectedOnLeft);
 
+    addAndMakeVisible(duckButton = new TextButton());
+    duckButton->setLookAndFeel(awesomeLookAndFeel);
+    duckButton->setButtonText(FontAwesome_Comment_O);
+    duckButton->addListener(this);
+    
     addAndMakeVisible(table = new SoundboardTableComponent(p));
     listButton->setEnabled(false);
 
@@ -94,10 +100,13 @@ void SoundboardAudioProcessorEditor::resized()
 {
     topBar->setBounds(0, 0, getWidth(), 32);
 
-    loadDirectoryButton->setBounds(5, 5, 60, 24);
 
-    listButton->setBounds(getWidth() - 185, 5, 60, 24);
-    gridButton->setBounds(getWidth() - 125, 5, 60, 24);
+    listButton->setBounds(5, 5, 60, 24);
+    gridButton->setBounds(65, 5, 60, 24);
+
+    duckButton->setBounds(140, 5, 60, 24);
+
+    loadDirectoryButton->setBounds(getWidth() - 125, 5, 60, 24);
     settingsButton->setBounds(getWidth() - 65, 5, 60, 24);
 
     table->setBounds(0, 32, getWidth(), getHeight() - 32);
@@ -172,6 +181,14 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
         if (resizableCornerComponent)
         {
             resizableCornerComponent->toFront(false);
+        }
+    }
+    else if (duckButton == buttonThatWasClicked) {
+        processor.toggleDucking();
+        if (processor.isDucking()) {
+            duckButton->setButtonText(FontAwesome_Comment);
+        } else {
+            duckButton->setButtonText(FontAwesome_Comment_O);
         }
     }
 }

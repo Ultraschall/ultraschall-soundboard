@@ -96,6 +96,9 @@ public:
     void storeWindowWidth(int width);
     int  getWindowHeight();
     void storeWindowHeight(int height);
+    float getGain() { return masterGain; }
+    void toggleDucking() { duckEnabled = !duckEnabled; }
+    bool isDucking() { return duckEnabled; }
 
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 24;
@@ -128,7 +131,10 @@ private:
     ScopedPointer<AudioThumbnailCache> thumbnailCache;
     AudioSourceChannelInfo             sourceChannelInfo;
     MixerAudioSource                   mixerAudioSource;
-    bool playersLocked;
+    bool                               playersLocked;
+    float                              masterGain;
+    float                              duckPercentage;
+    bool                               duckEnabled;
 
     int                      fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;
