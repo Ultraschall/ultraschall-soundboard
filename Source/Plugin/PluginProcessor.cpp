@@ -352,6 +352,7 @@ void SoundboardAudioProcessor::setGain(int playerIndex, float value)
     if (playerIndex >= numPlayers()) {
         return;
     }
+    playerAtIndex(playerIndex)->setGain(value);
 }
 
 int SoundboardAudioProcessor::getFadeOutSeconds()

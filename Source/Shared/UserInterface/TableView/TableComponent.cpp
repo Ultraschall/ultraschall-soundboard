@@ -277,6 +277,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             slider->setValue(1.0);
             slider->setSliderStyle(Slider::SliderStyle::Rotary);
             slider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
+            slider->addListener(this);
         }
 
         slider->setValue(processor.playerAtIndex(rowNumber)->getGain(), dontSendNotification);
@@ -335,8 +336,10 @@ void SoundboardTableComponent::buttonClicked(Button* button)
 }
 
 // Button Listener
-void SoundboardTableComponent::sliderValueChanged(Slider* /*slider*/)
+void SoundboardTableComponent::sliderValueChanged(Slider* slider)
 {
+    int index = slider->getName().getIntValue();
+    processor.setGain(index, (float)slider->getValue());
 }
 
 // Helper
