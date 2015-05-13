@@ -20,7 +20,16 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 #endif
     
     addAndMakeVisible(topBar = new Bar());
-
+    
+    addAndMakeVisible(gainSlider = new Slider());
+    gainSlider->setRange(0, 100, 1);
+    gainSlider->setValue(processor.getGain());
+    gainSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
+    gainSlider->setSliderStyle(Slider::SliderStyle::LinearHorizontal);
+    gainSlider->setColour(Slider::ColourIds::thumbColourId, ThemeForeground1);
+    gainSlider->setColour(Slider::ColourIds::trackColourId, ThemeBackground1);
+    gainSlider->addListener(this);
+    
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
@@ -72,6 +81,9 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     startTimer(TimerIdBlink, static_cast<int>(1000 * 0.5));
     startTimer(TimerIdUpdate, 50);
     startTimer(TimerIdRefresh, static_cast<int>(1000 * 0.5));
+    
+    // listen to gain changes
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/gain$");
 }
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
@@ -86,6 +98,7 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     resizableCornerComponent = nullptr;
     settingsButton      = nullptr;
     gridButton          = nullptr;
+    gainSlider          = nullptr;
 }
 
 void SoundboardAudioProcessorEditor::paint(Graphics &g)
@@ -101,7 +114,9 @@ void SoundboardAudioProcessorEditor::resized()
     listButton->setBounds(5, 5, 60, 24);
     gridButton->setBounds(65, 5, 60, 24);
 
-    duckButton->setBounds(140, 5, 60, 24);
+    duckButton->setBounds(260, 5, 60, 24);
+    
+    gainSlider->setBounds(140, 5, 100, 24);
 
     loadDirectoryButton->setBounds(getWidth() - 125, 5, 60, 24);
     settingsButton->setBounds(getWidth() - 65, 5, 60, 24);
@@ -202,8 +217,15 @@ void SoundboardAudioProcessorEditor::refresh()
     }
 }
 
+void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *parameter) {
+    if (parameter->addressMatch("/ultraschall/soundboard/gain")) {
+        gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+    }
+}
+
 void SoundboardAudioProcessorEditor::sliderValueChanged(Slider *slider)
 {
-    auto index = slider->getName().getIntValue();
-    processor.setGain(index, static_cast<float>(slider->getValue()));
+    if (slider == gainSlider) {
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/gain", static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
+    }
 }

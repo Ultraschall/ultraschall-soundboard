@@ -17,8 +17,7 @@
 #include "GridComponent.h"
 #include "SettingsComponent.h"
 
-class SoundboardAudioProcessorEditor
-        : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer
+class SoundboardAudioProcessorEditor : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer, public OscParameterListener
 {
 public:
     explicit SoundboardAudioProcessorEditor(SoundboardAudioProcessor &);
@@ -35,6 +34,8 @@ public:
     void refresh();
     void timerCallback(int timerID) override;
 
+    // OscParameterListener
+    void handleOscParameterMessage(OscParameter *parameter) override;
 private:
     static const int TimerIdUpdate  = 1;
     static const int TimerIdBlink   = 2;
@@ -51,6 +52,9 @@ private:
     
     ScopedPointer<TextButton> gridButton;
     ScopedPointer<TextButton> listButton;
+    
+    ScopedPointer<Slider>     gainSlider;
+
 
     ScopedPointer<Bar>        topBar;
     ScopedPointer<TextButton> settingsButton;
