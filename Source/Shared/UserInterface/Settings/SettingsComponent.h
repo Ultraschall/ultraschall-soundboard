@@ -28,6 +28,7 @@ public:
 
     // Component
     void resized() override;
+    void paint(Graphics &g) override;
 
     // ComboBox Listener
     void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;

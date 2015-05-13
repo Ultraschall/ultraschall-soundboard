@@ -140,24 +140,21 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
     }
     else if (settingsButton == buttonThatWasClicked)
     {
-        settingsButton->setEnabled(false);
-        listButton->setEnabled(true);
-        gridButton->setEnabled(true);
-
-        table->setVisible(false);
-        grid->setVisible(false);
-        settings->setVisible(true);
-        settings->toFront(true);
-        if (resizableCornerComponent)
-        {
-            resizableCornerComponent->toFront(false);
-        }
+        DialogWindow::LaunchOptions launchOptions;
+        launchOptions.componentToCentreAround = this;
+        launchOptions.content.setOwned(new SoundboardSettingsComponent(processor));
+        launchOptions.content->setSize(640, 480);
+        launchOptions.dialogBackgroundColour = Colours::black;
+        launchOptions.dialogTitle = TRANS("Soundboard Settings");
+        launchOptions.escapeKeyTriggersCloseButton = true;
+        launchOptions.resizable = true;
+        launchOptions.useNativeTitleBar = true;
+        launchOptions.runModal();
     }
     else if (gridButton == buttonThatWasClicked)
     {
         gridButton->setEnabled(false);
         listButton->setEnabled(true);
-        settingsButton->setEnabled(true);
 
         settings->setVisible(false);
         table->setVisible(false);
@@ -172,7 +169,6 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
     {
         listButton->setEnabled(false);
         gridButton->setEnabled(true);
-        settingsButton->setEnabled(true);
 
         settings->setVisible(false);
         grid->setVisible(false);

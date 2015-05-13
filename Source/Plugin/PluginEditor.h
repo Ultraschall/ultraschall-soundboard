@@ -15,7 +15,7 @@
 #include "PluginProcessor.h"
 #include "TableComponent.h"
 #include "GridComponent.h"
-#include "SettingsComponent.h"
+#include "SettingsWindow.h"
 
 class SoundboardAudioProcessorEditor
         : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer
@@ -55,7 +55,7 @@ private:
 
     ScopedPointer<Bar>        topBar;
     ScopedPointer<TextButton> settingsButton;
-
+    
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     SoundboardAudioProcessor &processor;

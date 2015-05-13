@@ -320,6 +320,9 @@ public:
     //==============================================================================
     void closeButtonPressed() override
     {
+        if (ModalComponentManager::getInstance()->getNumModalComponents() > 0) {
+            return;
+        }
         JUCEApplicationBase::quit();
     }
 

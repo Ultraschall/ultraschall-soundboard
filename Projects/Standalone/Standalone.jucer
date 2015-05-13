@@ -54,10 +54,6 @@
                 file="../../Source/Shared/UserInterface/Settings/SettingsComponent.cpp"/>
           <FILE id="e6xM1y" name="SettingsComponent.h" compile="0" resource="0"
                 file="../../Source/Shared/UserInterface/Settings/SettingsComponent.h"/>
-          <FILE id="Rgcbw7" name="SettingsWindow.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.cpp"/>
-          <FILE id="Krhr3r" name="SettingsWindow.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.h"/>
         </GROUP>
         <FILE id="ya80oe" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
         <FILE id="WM8XOK" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>

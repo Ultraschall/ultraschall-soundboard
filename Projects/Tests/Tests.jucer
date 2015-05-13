@@ -25,10 +25,6 @@
                 file="../../Source/Shared/UserInterface/Settings/SettingsComponent.cpp"/>
           <FILE id="JYgdkt" name="SettingsComponent.h" compile="0" resource="0"
                 file="../../Source/Shared/UserInterface/Settings/SettingsComponent.h"/>
-          <FILE id="w9ZMih" name="SettingsWindow.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.cpp"/>
-          <FILE id="VbSFxe" name="SettingsWindow.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.h"/>
         </GROUP>
         <GROUP id="{D3C6EDF1-9E9D-777B-0EDB-8B2186F7BDEF}" name="Table">
           <FILE id="F06XvL" name="TableButtonCell.cpp" compile="1" resource="0"

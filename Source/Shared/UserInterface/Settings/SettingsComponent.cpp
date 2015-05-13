@@ -149,6 +149,10 @@ void SoundboardSettingsComponent::resized()
     oscRepeaterPortNumberTextEditor->setBounds(getWidth() - 51, 160, 48, 24);
 }
 
+void SoundboardSettingsComponent::paint(Graphics &g) {
+    g.fillAll(ThemeBackground1);
+}
+
 // ComboBox Listener
 void SoundboardSettingsComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
 {

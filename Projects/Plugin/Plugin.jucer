@@ -47,10 +47,6 @@
             </GROUP>
           </GROUP>
           <GROUP id="{B6443187-1050-1CDE-2A0E-4EE0593A926C}" name="Settings">
-            <FILE id="v67Ais" name="SettingsWindow.cpp" compile="1" resource="0"
-                  file="../../Source/Shared/UserInterface/Settings/SettingsWindow.cpp"/>
-            <FILE id="v4Pduo" name="SettingsWindow.h" compile="0" resource="0"
-                  file="../../Source/Shared/UserInterface/Settings/SettingsWindow.h"/>
             <FILE id="KdToAA" name="SettingsComponent.cpp" compile="1" resource="0"
                   file="../../Source/Shared/UserInterface/Settings/SettingsComponent.cpp"/>
             <FILE id="zxkNJ3" name="SettingsComponent.h" compile="0" resource="0"
