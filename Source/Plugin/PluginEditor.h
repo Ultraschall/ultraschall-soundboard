@@ -42,7 +42,6 @@ private:
 
     ScopedPointer<SoundboardTableComponent>    table;
     ScopedPointer<SoundboardGridComponent>     grid;
-    ScopedPointer<SoundboardSettingsComponent> settings;
 
     ScopedPointer<ResizableCornerComponent> resizableCornerComponent;
     ComponentBoundsConstrainer              resizeLimits;

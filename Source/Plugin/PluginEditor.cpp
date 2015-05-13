@@ -56,9 +56,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(grid = new SoundboardGridComponent(p));
     grid->setVisible(false);
     grid->toBack();
-    addAndMakeVisible(settings = new SoundboardSettingsComponent(p));
-    settings->setVisible(false);
-    settings->toBack();
 
     if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
@@ -111,7 +108,6 @@ void SoundboardAudioProcessorEditor::resized()
 
     table->setBounds(0, 32, getWidth(), getHeight() - 32);
     grid->setBounds(0, 32, getWidth(), getHeight() - 32);
-    settings->setBounds(0, 32, getWidth(), getHeight() - 32);
 
     if (resizableCornerComponent)
     {
@@ -156,7 +152,6 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
         gridButton->setEnabled(false);
         listButton->setEnabled(true);
 
-        settings->setVisible(false);
         table->setVisible(false);
         grid->setVisible(true);
         grid->toFront(true);
@@ -170,7 +165,6 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
         listButton->setEnabled(false);
         gridButton->setEnabled(true);
 
-        settings->setVisible(false);
         grid->setVisible(false);
         table->setVisible(true);
         table->toFront(true);
