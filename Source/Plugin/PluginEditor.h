@@ -15,7 +15,7 @@
 #include "PluginProcessor.h"
 #include "TableComponent.h"
 #include "GridComponent.h"
-#include "SettingsWindow.h"
+#include "SettingsComponent.h"
 
 class SoundboardAudioProcessorEditor
         : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer
