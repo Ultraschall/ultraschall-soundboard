@@ -5,6 +5,43 @@
               jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1">
   <MAINGROUP id="HDVVGK" name="Tests">
+    <GROUP id="{F71CBC7D-7DBE-5EC7-F72F-3986DF1D9230}" name="Shared">
+      <GROUP id="{8F51875C-8284-F238-CBDA-76867131ADFF}" name="Player">
+        <FILE id="TzwFUO" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
+        <FILE id="Sm7jQH" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
+      </GROUP>
+      <GROUP id="{75A41FF6-FE0E-BCAA-CB75-0C69D4143F57}" name="UserInterface">
+        <GROUP id="{51C9F84A-5E29-1A7E-5D13-9A3F5B15CF5C}" name="Grid">
+          <FILE id="KFGq7t" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/Grid/GridCell.cpp"/>
+          <FILE id="m871kV" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/Grid/GridCell.h"/>
+          <FILE id="rTRqwi" name="GridComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Grid/GridComponent.cpp"/>
+          <FILE id="M5jBfw" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/Grid/GridComponent.h"/>
+        </GROUP>
+        <FILE id="ymmSoT" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
+        <FILE id="oYWJIt" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>
+        <GROUP id="{9902C2BD-511F-D92A-A95E-4155A979C000}" name="Settings">
+          <FILE id="ZGhvft" name="SettingsComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsComponent.cpp"/>
+          <FILE id="JYgdkt" name="SettingsComponent.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsComponent.h"/>
+          <FILE id="w9ZMih" name="SettingsWindow.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.cpp"/>
+          <FILE id="VbSFxe" name="SettingsWindow.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.h"/>
+        </GROUP>
+        <GROUP id="{D3C6EDF1-9E9D-777B-0EDB-8B2186F7BDEF}" name="Table">
+          <FILE id="F06XvL" name="TableButtonCell.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableButtonCell.cpp"/>
+          <FILE id="tslTOF" name="TableButtonCell.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableButtonCell.h"/>
+          <FILE id="EhLuqZ" name="TableComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableComponent.cpp"/>
+          <FILE id="WN33nw" name="TableComponent.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableComponent.h"/>
+        </GROUP>
+      </GROUP>
+    </GROUP>
     <GROUP id="{17606FA4-CA5B-23DA-3880-7C36CABAA3DF}" name="Plugin">
       <FILE id="tmEYGn" name="PluginEditor.cpp" compile="1" resource="0"
             file="../../Source/Plugin/PluginEditor.cpp"/>
@@ -13,39 +50,6 @@
             file="../../Source/Plugin/PluginProcessor.cpp"/>
       <FILE id="iijxzR" name="PluginProcessor.h" compile="0" resource="0"
             file="../../Source/Plugin/PluginProcessor.h"/>
-    </GROUP>
-    <GROUP id="{C1ADB1B5-D643-AC08-E476-7A7CE1D54CED}" name="Shared">
-      <GROUP id="{A890D0AB-2851-EB00-30E0-D925998F4DE2}" name="Player">
-        <FILE id="IRNdYt" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
-        <FILE id="aH1YKs" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
-      </GROUP>
-      <GROUP id="{64AFC101-AB99-37D9-167E-11D400A10FBC}" name="UserInterface">
-        <GROUP id="{FF656DEB-9AB7-BF7A-A925-079DE1AB0CAE}" name="GridView">
-          <FILE id="bIJv7r" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.cpp"/>
-          <FILE id="FgSwaX" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.h"/>
-          <FILE id="ripPJo" name="GridComponent.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/GridView/GridComponent.cpp"/>
-          <FILE id="aaUWf7" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridComponent.h"/>
-        </GROUP>
-        <FILE id="A2VWii" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
-        <FILE id="Kf2JfO" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>
-        <GROUP id="{10FEB78D-852E-B6DE-7317-360A34A6AEA2}" name="SettingsView">
-          <FILE id="CIQoqh" name="SettingsComponent.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.cpp"/>
-          <FILE id="drCKQl" name="SettingsComponent.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.h"/>
-        </GROUP>
-        <GROUP id="{7E87CCC6-B7A3-B7B2-CD26-EC1FE71DC0D5}" name="TableView">
-          <FILE id="JHCHOK" name="TableButtonCell.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableButtonCell.cpp"/>
-          <FILE id="N9piHJ" name="TableButtonCell.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableButtonCell.h"/>
-          <FILE id="Wots4v" name="TableComponent.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableComponent.cpp"/>
-          <FILE id="Wzflpa" name="TableComponent.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableComponent.h"/>
-        </GROUP>
-      </GROUP>
     </GROUP>
     <GROUP id="{9F60B8D2-6082-E7AD-68FD-6075FF00122B}" name="Tests">
       <FILE id="AfVdoH" name="Main.cpp" compile="1" resource="0" file="../../Source/Tests/Main.cpp"/>

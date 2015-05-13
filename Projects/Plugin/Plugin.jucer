@@ -27,31 +27,37 @@
           <FILE id="WQMNTQ" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
         </GROUP>
         <GROUP id="{E7A13843-53C7-AC3F-BCC1-2D693E6FB46B}" name="UserInterface">
-          <GROUP id="{AF8051B8-BB5D-3AB3-AC38-3AA57216D55F}" name="GridView">
-            <FILE id="uZTqhB" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.cpp"/>
-            <FILE id="sttKpZ" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.h"/>
-            <FILE id="hUHTFH" name="GridComponent.cpp" compile="1" resource="0"
-                  file="../../Source/Shared/UserInterface/GridView/GridComponent.cpp"/>
-            <FILE id="Ljw3q3" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridComponent.h"/>
+          <GROUP id="{E5529B0F-8754-D3B5-C140-AB55CA58DAA0}" name="Table">
+            <FILE id="Kven7r" name="TableButtonCell.cpp" compile="1" resource="0"
+                  file="../../Source/Shared/UserInterface/Table/TableButtonCell.cpp"/>
+            <FILE id="voLios" name="TableButtonCell.h" compile="0" resource="0"
+                  file="../../Source/Shared/UserInterface/Table/TableButtonCell.h"/>
+            <FILE id="q7Ia6G" name="TableComponent.cpp" compile="1" resource="0"
+                  file="../../Source/Shared/UserInterface/Table/TableComponent.cpp"/>
+            <FILE id="w4Rdiq" name="TableComponent.h" compile="0" resource="0"
+                  file="../../Source/Shared/UserInterface/Table/TableComponent.h"/>
+          </GROUP>
+          <GROUP id="{AF8051B8-BB5D-3AB3-AC38-3AA57216D55F}" name="Grid">
+            <GROUP id="{ED011470-3AB9-9DC9-8507-26776A4ADD11}" name="Grid">
+              <FILE id="WC1qX2" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/Grid/GridCell.cpp"/>
+              <FILE id="hnyqjd" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/Grid/GridCell.h"/>
+              <FILE id="kwPFPV" name="GridComponent.cpp" compile="1" resource="0"
+                    file="../../Source/Shared/UserInterface/Grid/GridComponent.cpp"/>
+              <FILE id="jx1c20" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/Grid/GridComponent.h"/>
+            </GROUP>
+          </GROUP>
+          <GROUP id="{B6443187-1050-1CDE-2A0E-4EE0593A926C}" name="Settings">
+            <FILE id="v67Ais" name="SettingsWindow.cpp" compile="1" resource="0"
+                  file="../../Source/Shared/UserInterface/Settings/SettingsWindow.cpp"/>
+            <FILE id="v4Pduo" name="SettingsWindow.h" compile="0" resource="0"
+                  file="../../Source/Shared/UserInterface/Settings/SettingsWindow.h"/>
+            <FILE id="KdToAA" name="SettingsComponent.cpp" compile="1" resource="0"
+                  file="../../Source/Shared/UserInterface/Settings/SettingsComponent.cpp"/>
+            <FILE id="zxkNJ3" name="SettingsComponent.h" compile="0" resource="0"
+                  file="../../Source/Shared/UserInterface/Settings/SettingsComponent.h"/>
           </GROUP>
           <FILE id="d4qF07" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
           <FILE id="GlC5hO" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>
-          <GROUP id="{B6443187-1050-1CDE-2A0E-4EE0593A926C}" name="SettingsView">
-            <FILE id="TIAYdU" name="SettingsComponent.cpp" compile="1" resource="0"
-                  file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.cpp"/>
-            <FILE id="sm38rC" name="SettingsComponent.h" compile="0" resource="0"
-                  file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.h"/>
-          </GROUP>
-          <GROUP id="{E5529B0F-8754-D3B5-C140-AB55CA58DAA0}" name="TableView">
-            <FILE id="Z8ebtY" name="TableButtonCell.cpp" compile="1" resource="0"
-                  file="../../Source/Shared/UserInterface/TableView/TableButtonCell.cpp"/>
-            <FILE id="gRJEHW" name="TableButtonCell.h" compile="0" resource="0"
-                  file="../../Source/Shared/UserInterface/TableView/TableButtonCell.h"/>
-            <FILE id="RaCjsm" name="TableComponent.cpp" compile="1" resource="0"
-                  file="../../Source/Shared/UserInterface/TableView/TableComponent.cpp"/>
-            <FILE id="yCIWMI" name="TableComponent.h" compile="0" resource="0"
-                  file="../../Source/Shared/UserInterface/TableView/TableComponent.h"/>
-          </GROUP>
         </GROUP>
       </GROUP>
     </GROUP>

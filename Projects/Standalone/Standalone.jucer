@@ -12,39 +12,6 @@
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
   <MAINGROUP id="aO9Y4k" name="Soundboard">
-    <GROUP id="{4964031A-DEB2-073F-7799-6988ADD970F0}" name="Shared">
-      <GROUP id="{EAEF30D3-F3B1-5B55-926D-807DF6AE3AF7}" name="Player">
-        <FILE id="nHpeEt" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
-        <FILE id="U3Pfzt" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
-      </GROUP>
-      <GROUP id="{B6617654-855C-6279-1370-6A87B2034DE3}" name="UserInterface">
-        <GROUP id="{042BAF15-6240-6C8D-B79B-1A50504AB294}" name="GridView">
-          <FILE id="p3xGQF" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.cpp"/>
-          <FILE id="UhfZkI" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridCell.h"/>
-          <FILE id="flBfEm" name="GridComponent.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/GridView/GridComponent.cpp"/>
-          <FILE id="NMPTN3" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/GridView/GridComponent.h"/>
-        </GROUP>
-        <FILE id="ya80oe" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
-        <FILE id="WM8XOK" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>
-        <GROUP id="{99A7612C-A3FB-0190-1BFD-EE174E0806DF}" name="SettingsView">
-          <FILE id="lru7lo" name="SettingsComponent.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.cpp"/>
-          <FILE id="xrZsZP" name="SettingsComponent.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/SettingsView/SettingsComponent.h"/>
-        </GROUP>
-        <GROUP id="{63AAD6F8-3DAB-D49F-FB9E-113701C5726C}" name="TableView">
-          <FILE id="lqDtaB" name="TableButtonCell.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableButtonCell.cpp"/>
-          <FILE id="ickuis" name="TableButtonCell.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableButtonCell.h"/>
-          <FILE id="cionhD" name="TableComponent.cpp" compile="1" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableComponent.cpp"/>
-          <FILE id="tFYIci" name="TableComponent.h" compile="0" resource="0"
-                file="../../Source/Shared/UserInterface/TableView/TableComponent.h"/>
-        </GROUP>
-      </GROUP>
-    </GROUP>
     <GROUP id="{EF900499-3FC3-8B21-E80F-2BF37F9BBD42}" name="Standalone">
       <FILE id="hNY15S" name="Main.cpp" compile="1" resource="0" file="../../Source/Standalone/Main.cpp"/>
       <FILE id="VdH6VO" name="StandaloneFilterWindow.h" compile="0" resource="0"
@@ -58,6 +25,43 @@
             file="../../Source/Plugin/PluginProcessor.cpp"/>
       <FILE id="ngJF4O" name="PluginProcessor.h" compile="0" resource="0"
             file="../../Source/Plugin/PluginProcessor.h"/>
+    </GROUP>
+    <GROUP id="{4964031A-DEB2-073F-7799-6988ADD970F0}" name="Shared">
+      <GROUP id="{EAEF30D3-F3B1-5B55-926D-807DF6AE3AF7}" name="Player">
+        <FILE id="nHpeEt" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
+        <FILE id="U3Pfzt" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
+      </GROUP>
+      <GROUP id="{B6617654-855C-6279-1370-6A87B2034DE3}" name="UserInterface">
+        <GROUP id="{63AAD6F8-3DAB-D49F-FB9E-113701C5726C}" name="Table">
+          <FILE id="uhghpS" name="TableButtonCell.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableButtonCell.cpp"/>
+          <FILE id="cLAWFB" name="TableButtonCell.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableButtonCell.h"/>
+          <FILE id="Yc3Vaf" name="TableComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableComponent.cpp"/>
+          <FILE id="wZ5iKc" name="TableComponent.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Table/TableComponent.h"/>
+        </GROUP>
+        <GROUP id="{042BAF15-6240-6C8D-B79B-1A50504AB294}" name="Grid">
+          <FILE id="Q5LOIt" name="GridCell.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/Grid/GridCell.cpp"/>
+          <FILE id="WtAFYC" name="GridCell.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/Grid/GridCell.h"/>
+          <FILE id="qsGby2" name="GridComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Grid/GridComponent.cpp"/>
+          <FILE id="OwafIB" name="GridComponent.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/Grid/GridComponent.h"/>
+        </GROUP>
+        <GROUP id="{99A7612C-A3FB-0190-1BFD-EE174E0806DF}" name="Settings">
+          <FILE id="hic1Ff" name="SettingsComponent.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsComponent.cpp"/>
+          <FILE id="e6xM1y" name="SettingsComponent.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsComponent.h"/>
+          <FILE id="Rgcbw7" name="SettingsWindow.cpp" compile="1" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.cpp"/>
+          <FILE id="Krhr3r" name="SettingsWindow.h" compile="0" resource="0"
+                file="../../Source/Shared/UserInterface/Settings/SettingsWindow.h"/>
+        </GROUP>
+        <FILE id="ya80oe" name="LookAndFeel.cpp" compile="1" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.cpp"/>
+        <FILE id="WM8XOK" name="LookAndFeel.h" compile="0" resource="0" file="../../Source/Shared/UserInterface/LookAndFeel.h"/>
+      </GROUP>
     </GROUP>
     <FILE id="Eq5hT1" name="Icon.png" compile="0" resource="0" file="Icon.png"/>
   </MAINGROUP>
