@@ -150,7 +150,7 @@ void SoundboardSettingsComponent::resized()
 }
 
 void SoundboardSettingsComponent::paint(Graphics &g) {
-    g.fillAll(ThemeBackground1);
+    g.fillAll(ThemeBackground2);
 }
 
 // ComboBox Listener
