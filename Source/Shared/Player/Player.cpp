@@ -204,13 +204,7 @@ String Player::getProgressString(bool remaining)
         Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getCurrentPosition()));
         return time.toString(false, true, true, true);
     }
-    Time
-            time(1971,
-                 0,
-                 0,
-                 0,
-                 0,
-                 static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
+    Time time(1971, 0, 0, 0, 0, static_cast<int>(transportSource->getLengthInSeconds() - transportSource->getCurrentPosition()));
     return "-" + time.toString(false, true, true, true);
 }
 
