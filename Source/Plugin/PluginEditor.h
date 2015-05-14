@@ -54,6 +54,7 @@ private:
     ScopedPointer<TextButton> listButton;
     
     ScopedPointer<Slider>     gainSlider;
+    ScopedPointer<BubbleMessageComponent> gainBubble;
 
 
     ScopedPointer<Bar>        topBar;

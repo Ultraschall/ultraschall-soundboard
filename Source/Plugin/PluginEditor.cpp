@@ -18,7 +18,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     openGLContext.attachTo (*getTopLevelComponent());
 #endif
 #endif
-    
     addAndMakeVisible(topBar = new Bar());
     
     addAndMakeVisible(gainSlider = new Slider());
@@ -29,6 +28,11 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     gainSlider->setColour(Slider::ColourIds::thumbColourId, ThemeForeground1);
     gainSlider->setColour(Slider::ColourIds::trackColourId, ThemeBackground1);
     gainSlider->addListener(this);
+    gainBubble = new BubbleMessageComponent();
+    gainBubble->addToDesktop(0);
+    gainBubble->setAllowedPlacement(BubbleMessageComponent::BubblePlacement::below);
+    gainBubble->setColour(BubbleMessageComponent::ColourIds::backgroundColourId, ThemeBackground3);
+    gainBubble->setColour(BubbleMessageComponent::ColourIds::outlineColourId, ThemeBackground1);
     
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
@@ -99,6 +103,7 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     settingsButton      = nullptr;
     gridButton          = nullptr;
     gainSlider          = nullptr;
+    gainBubble          = nullptr;
 }
 
 void SoundboardAudioProcessorEditor::paint(Graphics &g)
@@ -220,6 +225,19 @@ void SoundboardAudioProcessorEditor::refresh()
 void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *parameter) {
     if (parameter->addressMatch("/ultraschall/soundboard/gain")) {
         gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+        AttributedString text;
+        String value(gainSlider->getValue());
+        if (value.length() == 1) {
+            text.append("  ");
+        } else if (value.length() == 2) {
+            text.append(" ");
+        }
+        text.append(value, ThemeForeground1);
+        text.append(" %", ThemeForeground1);
+        gainBubble->toFront(false);
+        gainBubble->showAt(gainSlider, text, 500);
+        if (grid->isVisible())
+            grid->resized();
     }
 }
 
