@@ -280,6 +280,7 @@ void SoundboardGridCell::paint(Graphics &g)
             float iconSize = getHeight() * 0.25f;
             Colour iconColour;
             Icon icon;
+            g.setColour(ThemeForeground1);
             if (player->isFading())
             {
                 iconColour = colour;
@@ -295,7 +296,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 icon = FontAwesome_Sort_Amount_Asc;
             }
 
-            g.drawImageAt(FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f), helperRect.getWidth() - iconSize, helperRect.getX());
+            g.drawImageAt(FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f), helperRect.getWidth() - iconSize + helperRect.getX(), helperRect.getX());
         }
     }
     else
