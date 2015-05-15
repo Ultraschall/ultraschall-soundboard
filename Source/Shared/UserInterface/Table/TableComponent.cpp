@@ -62,7 +62,7 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
             TableHeaderComponent::notSortable);
     tableListBox->getHeader()
         .addColumn(String::empty,
-            ColumnIdFadeOutButton,
+                ColumnIdFadeButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
@@ -136,7 +136,7 @@ void SoundboardTableComponent::paintCell(Graphics& g,
         if (processor.playerAtIndex(rowNumber)->isPlayed()) {
             colour = ThemeGreen;
         }
-        else if (processor.playerAtIndex(rowNumber)->isFadingOut()) {
+        else if (processor.playerAtIndex(rowNumber)->isFading()) {
             colour = ThemeOrange;
         }
         else if (processor.playerAtIndex(rowNumber)->isLooping()) {
@@ -169,6 +169,7 @@ void SoundboardTableComponent::paintCell(Graphics& g,
             true);
         break;
     }
+        default:break;
     }
 
     if (text.isNotEmpty()) {
@@ -252,18 +253,23 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
 
         return button;
     }
-    if (columnId == ColumnIdFadeOutButton) {
+    if (columnId == ColumnIdFadeButton) {
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
-            button = new SoundboardCellButton("Fade-Out", FontAwesome_Volume_Down);
-            button->setTag(ButtonTagFadeOut);
+            button = new SoundboardCellButton("Fade-In", FontAwesome_Sort_Amount_Asc);
+            button->setRotation(0.5);
+            button->setTag(ButtonTagFade);
             button->addListener(this);
             button->setHighlightColour(ThemeOrange);
         }
-
-        button->setEnabled(processor.playerAtIndex(rowNumber)->isPlaying());
-        button->setHighlighted(processor.playerAtIndex(rowNumber)->isFadingOut());
+        if (processor.playerAtIndex(rowNumber)->isPlaying()) {
+            button->setIcon(FontAwesome_Sort_Amount_Desc);
+        } else {
+            button->setIcon(FontAwesome_Sort_Amount_Asc);
+        }
+        button->setEnabled(!processor.playerAtIndex(rowNumber)->isFading());
+        button->setHighlighted(processor.playerAtIndex(rowNumber)->isFading());
         button->setRowNumber(rowNumber);
 
         return button;
@@ -328,8 +334,12 @@ void SoundboardTableComponent::buttonClicked(Button* button)
     else if (cellButton->getTag() == ButtonTagStop) {
         player->stop();
     }
-    else if (cellButton->getTag() == ButtonTagFadeOut) {
-        player->startFadeOut();
+    else if (cellButton->getTag() == ButtonTagFade) {
+        if (player->isPlaying()) {
+            player->startFadeOut();
+        } else if (player->isStopped() || player->isPaused()) {
+            player->startFadeIn();
+        }
     }
 
     tableListBox->repaintRow(cellButton->getRowNumber());

@@ -35,9 +35,13 @@ public:
     float getProgress();
     String getProgressString(bool remaining = true);
 
-    void setFadeOutTime(int seconds);
+    void setFadeTime(int seconds);
     void startFadeOut();
     bool isFadingOut();
+    void startFadeIn();
+    bool isFadingIn();
+    bool isFading();
+    void cancelFading();
 
     void timerCallback(int timerID) override;
 
@@ -62,7 +66,7 @@ public:
 
 private:
     static const int UpdateTimerId = 0;
-    static const int FadeOutTimerId = 1;
+    static const int FadeTimerId = 1;
 
     void update();
     void loadFileIntoTransport(const File& audioFile);
@@ -71,11 +75,12 @@ private:
     TimeSliceThread timeSliceThread;
     String title;
     PlayerState playerState;
-    float fadeOutGain;
-    float fadeOutGainBackup;
-    float fadeOutGainSteps;
-    int fadeOutSeconds;
+    float fadeGain;
+    float fadeGainBackup;
+    float fadeGainSteps;
+    int fadeSeconds;
     bool fadeOut;
+    bool fadeIn;
     float process;
     AudioFormatManager* audioFormatManager;
     AudioThumbnailCache* thumbnailCache;

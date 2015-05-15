@@ -68,13 +68,13 @@ private:
         ColumnIdTimeLabel       = 4,
         ColumnIdPlayPauseButton = 5,
         ColumnIdStopButton      = 6,
-        ColumnIdFadeOutButton   = 7,
+        ColumnIdFadeButton = 7,
         ColumnIdGainSlider      = 8
     };
 
     enum ButtonTags
     {
-        ButtonTagLoop = 1, ButtonTagPlayPause = 2, ButtonTagStop = 3, ButtonTagFadeOut = 4
+        ButtonTagLoop = 1, ButtonTagPlayPause = 2, ButtonTagStop = 3, ButtonTagFade = 4
     };
 
     static const int NumberCellWidth = 24;

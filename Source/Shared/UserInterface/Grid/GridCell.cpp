@@ -32,20 +32,18 @@ void SoundboardGridCell::mouseUp(const MouseEvent &event)
         Rectangle<float> loopArea(0.0f, 0.0f, getHeight() * 0.5f, getHeight() * 0.5f);
         Rectangle<float> timerArea(0.0f, getHeight() - getHeight() * 0.5f, getHeight() * 0.5f, getHeight() * 0.5f);
         Rectangle<float> fadeoutArea(getWidth() - getHeight() * 0.5f, 0.0f, getHeight() * 0.5f, getHeight() * 0.5f);
-        Rectangle<float>
-                         stopArea(getWidth() - getHeight() * 0.5f,
-                                  getHeight() - getHeight() * 0.5f,
-                                  getHeight() * 0.5f,
-                                  getHeight() * 0.5f);
+        Rectangle<float> stopArea(getWidth() - getHeight() * 0.5f,  getHeight() - getHeight() * 0.5f,  getHeight() * 0.5f, getHeight() * 0.5f);
+
         if (loopArea.contains(event.position))
         {
             player->setLooping(!player->isLooping());
         }
         else if (fadeoutArea.contains(event.position))
         {
-            if (player->isPlaying())
-            {
+            if (player->isPlaying()) {
                 player->startFadeOut();
+            } else if (player->isStopped() || player->isPaused()) {
+                player->startFadeIn();
             }
         }
         else if (stopArea.contains(event.position))
@@ -90,7 +88,7 @@ void SoundboardGridCell::paint(Graphics &g)
         {
             colour = ThemeGreen;
         }
-        else if (player->isFadingOut())
+        else if (player->isFading())
         {
             colour = ThemeOrange;
         }
@@ -130,7 +128,7 @@ void SoundboardGridCell::paint(Graphics &g)
                        Justification::centred,
                        false);
         }
-        else if (player->isFadingOut())
+        else if (player->isFading())
         {
             g.setColour(colour.withAlpha(0.5f));
             g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getGain(), cell.getHeight(), 2);
@@ -279,25 +277,25 @@ void SoundboardGridCell::paint(Graphics &g)
                            false);
             }
 
-            if (!player->isPlaying())
+            float iconSize = getHeight() * 0.25f;
+            Colour iconColour;
+            Icon icon;
+            if (player->isFading())
             {
-                g.setColour(ThemeForeground1.withAlpha(0.25f));
-            }
-            else if (player->isFadingOut())
-            {
-                g.setColour(colour);
+                iconColour = colour;
             }
             else
             {
-                g.setColour(ThemeForeground1.withAlpha(0.5f));
+                iconColour = ThemeForeground1.withAlpha(0.5f);
             }
-            g.drawText(FontAwesome_Volume_Down,
-                       helperRect.getX(),
-                       helperRect.getY(),
-                       helperRect.getWidth(),
-                       helperRect.getHeight(),
-                       Justification::topRight,
-                       false);
+
+            if (player->isPlaying()) {
+                icon = FontAwesome_Sort_Amount_Desc;
+            } else {
+                icon = FontAwesome_Sort_Amount_Asc;
+            }
+
+            g.drawImageAt(FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f), helperRect.getWidth() - iconSize, helperRect.getX());
         }
     }
     else

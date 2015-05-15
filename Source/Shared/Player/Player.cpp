@@ -12,12 +12,13 @@
 Player::Player(int index, const File &audioFile, AudioFormatManager *formatManager, AudioThumbnailCache *thumbnailCache) 
                                 : playerIndex(index), 
                                   timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()), title(audioFile.getFileNameWithoutExtension()),
-                                  playerState(Stopped),
-                                  fadeOutGain(1.0f),
-                                  fadeOutGainBackup(1.0f),
-                                  fadeOutGainSteps(0.1f),
-                                  fadeOutSeconds(4),
+                                  playerState(Ready),
+                                  fadeGain(1.0f),
+                                  fadeGainBackup(1.0f),
+                                  fadeGainSteps(0.1f),
+                                  fadeSeconds(4),
                                   fadeOut(false),
+                                  fadeIn(false),
                                   process(0.0f),
                                   audioFormatManager(formatManager),
                                   thumbnailCache(thumbnailCache),
@@ -27,7 +28,7 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
     audioSourcePlayer.setSource(transportSource);
     loadFileIntoTransport(audioFile);
     startTimer(UpdateTimerId, 50);
-    startTimer(FadeOutTimerId, 100);
+    startTimer(FadeTimerId, 100);
 }
 
 Player::~Player()
@@ -36,7 +37,7 @@ Player::~Player()
     thumbnail->clear();
     removeAllChangeListeners();
     stopTimer(UpdateTimerId);
-    stopTimer(FadeOutTimerId);
+    stopTimer(FadeTimerId);
     thumbnail->setSource(nullptr);
     thumbnail = nullptr;
     transportSource->setSource(nullptr);
@@ -61,7 +62,7 @@ void Player::loadFileIntoTransport(const File &audioFile)
 
         thumbnail = new AudioThumbnail(1024, *audioFormatManager, *thumbnailCache);
         thumbnail->setSource(new FileInputSource(audioFile));
-        playerState = Ready;
+        playerState = Stopped;
     }
     else
     {
@@ -82,6 +83,7 @@ void Player::update()
     }
     if (process >= 1.0f)
     {
+        cancelFading();
         process = 1.0f;
         transportSource->stop();
         transportSource->setPosition(0);
@@ -96,24 +98,38 @@ void Player::timerCallback(int timerID)
         update();
         return;
     }
-    if (timerID == FadeOutTimerId)
+    if (timerID == FadeTimerId)
     {
-        if (fadeOut)
-        {
-            fadeOutGain = fadeOutGain - fadeOutGainSteps;
-            if (fadeOutGain <= 0)
-            {
-                fadeOut = false;
-                transportSource->stop();
-                transportSource->setPosition(0);
-                playerState = Played;
-                fadeOutGain = fadeOutGainBackup;
-                transportSource->setGain(fadeOutGainBackup);
-                update();
-                sendChangeMessage();
-                return;
+        if (isFading()) {
+            if (fadeOut) {
+                fadeGain = fadeGain - fadeGainSteps;
+                if (fadeGain <= 0) {
+                    fadeOut = false;
+                    transportSource->stop();
+                    transportSource->setPosition(0);
+                    playerState = Played;
+                    fadeGain = fadeGainBackup;
+                    transportSource->setGain(fadeGainBackup);
+                    update();
+                    sendChangeMessage();
+                    return;
+                }
+                transportSource->setGain(fadeGain);
+            } else if (fadeIn) {
+                fadeGain = fadeGain + fadeGainSteps;
+                if (fadeGain >= fadeGainBackup) {
+                    fadeIn = false;
+                    playerState = Playing;
+                    fadeGain = fadeGainBackup;
+                    transportSource->setGain(fadeGainBackup);
+                    update();
+                    sendChangeMessage();
+                    return;
+                }
+                transportSource->setGain(fadeGain);
             }
-            transportSource->setGain(fadeOutGain);
+            update();
+            sendChangeMessage();
         }
     }
 }
@@ -123,22 +139,28 @@ void Player::startFadeOut()
     if (isPlaying())
     {
         fadeOut           = true;
-        fadeOutGainBackup = transportSource->getGain();
-        fadeOutGain       = transportSource->getGain();
-        fadeOutGainSteps  = fadeOutGainBackup / fadeOutSeconds / 10.0f;
+        fadeGainBackup = transportSource->getGain();
+        fadeGain = transportSource->getGain();
+        fadeGainSteps = fadeGainBackup / fadeSeconds / 10.0f;
+    }
+}
+
+void Player::startFadeIn()
+{
+    if (!isPlaying())
+    {
+        fadeIn           = true;
+        fadeGainBackup = transportSource->getGain();
+        fadeGain = 0;
+        fadeGainSteps = fadeGainBackup / fadeSeconds / 10.0f;
+        transportSource->setGain(fadeGain);
+        transportSource->start();
     }
 }
 
 void Player::stop()
 {
-    if (isFadingOut())
-    {
-        stopTimer(FadeOutTimerId);
-        fadeOut     = false;
-        fadeOutGain = fadeOutGainBackup;
-        transportSource->setGain(fadeOutGain);
-        
-    }
+    cancelFading();
     transportSource->stop();
     transportSource->setPosition(0);
     playerState = Stopped;
@@ -169,9 +191,9 @@ float Player::getProgress()
     return process;
 }
 
-void Player::setFadeOutTime(int seconds)
+void Player::setFadeTime(int seconds)
 {
-    fadeOutSeconds = seconds;
+    fadeSeconds = seconds;
 }
 
 bool Player::isLooping()
@@ -327,3 +349,22 @@ private:
 
 static PlayerTest playerTest;
 #endif
+
+bool Player::isFadingIn() {
+    return fadeIn;
+}
+
+bool Player::isFading() {
+    return fadeOut || fadeIn;
+}
+
+void Player::cancelFading() {
+    if (isFading())
+    {
+        stopTimer(FadeTimerId);
+        fadeOut     = false;
+        fadeIn      = false;
+        fadeGain = fadeGainBackup;
+        transportSource->setGain(fadeGain);
+    }
+}
