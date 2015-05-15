@@ -29,3 +29,7 @@ bool Slot::isEmpty() {
 void Slot::loadFile(File file) {
 
 }
+
+void Slot::clear() {
+
+}

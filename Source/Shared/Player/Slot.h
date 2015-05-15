@@ -14,7 +14,7 @@
 #include "JuceHeader.h"
 #include "Player.h"
 
-class Slot {
+class Slot : public ReferenceCountedObject {
 public:
     Slot();
     ~Slot();
@@ -22,6 +22,9 @@ public:
     Player* getPlayer();
     bool isEmpty();
     void loadFile(File file);
+    void clear();
+
+    typedef ReferenceCountedObjectPtr<Slot> Ptr;
 private:
     ScopedPointer<Player> player;
 };

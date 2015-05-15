@@ -21,17 +21,22 @@ public:
     Library();
     ~Library();
 
+    void openDirectory(File directory);
+
     void validateFiles();
     bool addFile(File file);
+    Slot* getSlotWithFile(File file);
 
     Slot* getSlotAtIndex(int index);
+    void moveSlot(int from, int to);
     int numSlots();
 
     Bank* getBankAtIndex(int index);
+    void addSlotToBank(Slot* slot, int bankIndex, int slotIndex);
     int numBanks();
 
 private:
-    OwnedArray<Slot> slots;
+    ReferenceCountedArray<Slot> slots;
     OwnedArray<Bank> banks;
     ScopedPointer<AudioFormatManager> formatManager;
     ScopedPointer<AudioThumbnailCache> thumbnailCache;
