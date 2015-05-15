@@ -278,6 +278,11 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
 {
     ValueTree program("UltraschallSoundboardProgram");
     program.setProperty(DirectoryIdentifier, currentDirectory, nullptr);
+    for (int index = 0; index < numPlayers(); index++) {
+        if (playerAtIndex(index)) {
+            program.setProperty(PlayerGainIdentifier.toString() + String(index), playerAtIndex(index)->getGain(), nullptr);
+        }
+    }
     ScopedPointer<XmlElement> xml(program.createXml());
     copyXmlToBinary(*xml, destData);
 }
@@ -293,6 +298,13 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
             File directory(directoryString);
             if (directory.exists()) {
                 openDirectory(directory);
+            }
+        }
+        for (int index = 0; index < numPlayers(); index++) {
+            if (playerAtIndex(index)) {
+                float gain = program.getProperty(PlayerGainIdentifier.toString() + String(index));
+                playerAtIndex(index)->setGain(gain);
+                updatePlayerState(index);
             }
         }
     }

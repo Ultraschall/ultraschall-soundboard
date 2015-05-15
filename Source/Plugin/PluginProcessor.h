@@ -16,6 +16,7 @@
 class LookAndFeel_Ultraschall;
 
 static const Identifier DirectoryIdentifier("Directory");
+static const Identifier PlayerGainIdentifier("PlayerGain");
 static const Identifier CurrentDirectoryIdentifier("CurrentDirectory");
 static const Identifier CurrentProgramIndexIdentifier("CurrentProgramIndex");
 
