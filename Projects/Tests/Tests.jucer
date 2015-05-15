@@ -7,8 +7,14 @@
   <MAINGROUP id="HDVVGK" name="Tests">
     <GROUP id="{F71CBC7D-7DBE-5EC7-F72F-3986DF1D9230}" name="Shared">
       <GROUP id="{8F51875C-8284-F238-CBDA-76867131ADFF}" name="Player">
+        <FILE id="k701eO" name="Bank.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Bank.cpp"/>
+        <FILE id="OHnKjD" name="Bank.h" compile="0" resource="0" file="../../Source/Shared/Player/Bank.h"/>
+        <FILE id="KVLEiG" name="Library.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Library.cpp"/>
+        <FILE id="bf16WN" name="Library.h" compile="0" resource="0" file="../../Source/Shared/Player/Library.h"/>
         <FILE id="TzwFUO" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
         <FILE id="Sm7jQH" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
+        <FILE id="FJi2rj" name="Slot.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Slot.cpp"/>
+        <FILE id="Ce1UT3" name="Slot.h" compile="0" resource="0" file="../../Source/Shared/Player/Slot.h"/>
       </GROUP>
       <GROUP id="{75A41FF6-FE0E-BCAA-CB75-0C69D4143F57}" name="UserInterface">
         <GROUP id="{51C9F84A-5E29-1A7E-5D13-9A3F5B15CF5C}" name="Grid">

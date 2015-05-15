@@ -79,10 +79,10 @@ public:
             MemoryBlock data;
             processor->getStateInformation(data);
 
-//            if (! fc.getResult().replaceWithData(data.getData(), data.getSize()))
-//                AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-//                                            TRANS("Error whilst saving"),
-//                                            TRANS("Couldn't write to the specified file!"));
+            if (! fc.getResult().replaceWithData(data.getData(), data.getSize()))
+                AlertWindow::showMessageBox(AlertWindow::WarningIcon,
+                                            TRANS("Error whilst saving"),
+                                            TRANS("Couldn't write to the specified file!"));
         }
     }
 
@@ -99,10 +99,10 @@ public:
 
             if (fc.getResult().loadFileAsData(data))
                 processor->setStateInformation(data.getData(), static_cast<int>(data.getSize()));
-//            else
-//                AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-//                                            TRANS("Error whilst loading"),
-//                                            TRANS("Couldn't read from the specified file!"));
+            else
+                AlertWindow::showMessageBox(AlertWindow::WarningIcon,
+                                            TRANS("Error whilst loading"),
+                                            TRANS("Couldn't read from the specified file!"));
         }
     }
 
