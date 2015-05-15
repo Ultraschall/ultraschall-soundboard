@@ -22,7 +22,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     
     addAndMakeVisible(gainSlider = new Slider());
     gainSlider->setRange(0, 100, 1);
-    gainSlider->setValue(gainSlider->proportionOfLengthToValue(processor.getGain()));
+    gainSlider->setValue(gainSlider->proportionOfLengthToValue(processor.getGain()), dontSendNotification);
     gainSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
     gainSlider->setSliderStyle(Slider::SliderStyle::LinearHorizontal);
     gainSlider->setColour(Slider::ColourIds::thumbColourId, ThemeForeground1);
