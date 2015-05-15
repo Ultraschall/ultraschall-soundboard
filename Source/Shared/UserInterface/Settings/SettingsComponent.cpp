@@ -83,6 +83,8 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
 
 SoundboardSettingsComponent::~SoundboardSettingsComponent()
 {
+    processor.getOscManager()->removeOscParameterListener(this);
+    
     themeLabel = nullptr;
     themeComboBox = nullptr;
 
@@ -103,8 +105,6 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
     oscRepeaterEnabledToggleButton = nullptr;
     oscRepeaterHostnameTextEditor = nullptr;
     oscRepeaterPortNumberTextEditor = nullptr;
-
-    processor.getOscManager()->removeOscParameterListener(this);
 }
 
 // Component

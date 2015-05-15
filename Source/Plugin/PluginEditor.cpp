@@ -92,6 +92,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
+    processor.getOscManager()->removeOscParameterListener(this);
     stopTimer(TimerIdBlink);
     stopTimer(TimerIdUpdate);
     stopTimer(TimerIdRefresh);
