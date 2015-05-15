@@ -123,32 +123,19 @@ void SoundboardGridCell::paint(Graphics &g)
                              g.getClipBounds().getX() + 3.0f,
                              g.getClipBounds().getWidth() - 3.0f);
 
+        int iconSize = getHeight() * 0.5f;
+        int iconX = (getWidth() * 0.5f ) - (iconSize * 0.5f);
+        int iconY = (getHeight() * 0.5f) - (iconSize * 0.5f);
         if (player->isPlayed())
         {
-            g.setColour(colour.withAlpha(0.9f));
-            g.setFont(getFontAwesome(getHeight() * 0.5f));
-            g.drawText(FontAwesome_Play,
-                       thumbArea.getX(),
-                       thumbArea.getY(),
-                       thumbArea.getWidth(),
-                       thumbArea.getHeight(),
-                       Justification::centred,
-                       false);
+            FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
         }
         else if (player->isFading())
         {
             g.setColour(colour.withAlpha(0.5f));
             g.fillRoundedRectangle(cell.getX(), cell.getY(), cell.getWidth() * player->getGain(), cell.getHeight(), 2);
 
-            g.setColour(colour.withAlpha(0.9f));
-            g.setFont(getFontAwesome(getHeight() * 0.5f));
-            g.drawText(FontAwesome_Pause,
-                       thumbArea.getX(),
-                       thumbArea.getY(),
-                       thumbArea.getWidth(),
-                       thumbArea.getHeight(),
-                       Justification::centred,
-                       false);
+            FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
         }
         else if (player->isLooping())
         {
@@ -163,23 +150,11 @@ void SoundboardGridCell::paint(Graphics &g)
             g.setFont(getFontAwesome(getHeight() * 0.5f));
             if (player->isPlaying())
             {
-                g.drawText(FontAwesome_Pause,
-                           thumbArea.getX(),
-                           thumbArea.getY(),
-                           thumbArea.getWidth(),
-                           thumbArea.getHeight(),
-                           Justification::centred,
-                           false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
             else
             {
-                g.drawText(FontAwesome_Play,
-                           thumbArea.getX(),
-                           thumbArea.getY(),
-                           thumbArea.getWidth(),
-                           thumbArea.getHeight(),
-                           Justification::centred,
-                           false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
         }
         else
@@ -191,27 +166,13 @@ void SoundboardGridCell::paint(Graphics &g)
                                    cell.getHeight(),
                                    2);
 
-            g.setColour(colour.withAlpha(0.9f));
-            g.setFont(getFontAwesome(getHeight() * 0.5f));
             if (player->isPlaying())
             {
-                g.drawText(FontAwesome_Pause,
-                           thumbArea.getX(),
-                           thumbArea.getY(),
-                           thumbArea.getWidth(),
-                           thumbArea.getHeight(),
-                           Justification::centred,
-                           false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
             else
             {
-                g.drawText(FontAwesome_Play,
-                           thumbArea.getX(),
-                           thumbArea.getY(),
-                           thumbArea.getWidth(),
-                           thumbArea.getHeight(),
-                           Justification::centred,
-                           false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
         }
 
@@ -236,58 +197,45 @@ void SoundboardGridCell::paint(Graphics &g)
 
         if (isMouseOver(true))
         {
+            iconSize = getHeight() * 0.25f;
+            Colour iconColour = colour;
+            g.setColour(ThemeForeground1);
+            
             auto helperRect = cell.reduced(3).toType<int>();
             if (player->isLooping())
             {
-                g.setColour(colour);
+                iconColour = colour;
             }
             else
             {
-                g.setColour(ThemeForeground1.withAlpha(0.5f));
+                iconColour = ThemeForeground1.withAlpha(0.5f);
             }
-            g.setFont(getFontAwesome(getHeight() * 0.25f));
-            g.drawText(FontAwesome_Refresh,
-                       helperRect.getX(),
-                       helperRect.getY(),
-                       helperRect.getWidth(),
-                       helperRect.getHeight(),
-                       Justification::topLeft,
-                       false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Refresh, iconSize, iconColour),
+                                   helperRect.getX(),
+                                   helperRect.getY());
 
             if (player->isPlayed())
             {
-                g.setColour(colour);
-                g.drawText(FontAwesome_Square_O,
-                           helperRect.getX(),
-                           helperRect.getY(),
-                           helperRect.getWidth(),
-                           helperRect.getHeight(),
-                           Justification::bottomRight,
-                           false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Square_O, iconSize, colour),
+                                   helperRect.getWidth() - iconSize + helperRect.getX(),
+                                   helperRect.getHeight() - iconSize + + helperRect.getY());
             }
             else
             {
                 if (!player->isPaused() && !player->isPlaying())
                 {
-                    g.setColour(ThemeForeground1.withAlpha(0.25f));
+                    iconColour = ThemeForeground1.withAlpha(0.25f);
                 }
                 else
                 {
-                    g.setColour(ThemeForeground1.withAlpha(0.5f));
+                    iconColour = ThemeForeground1.withAlpha(0.5f);
                 }
-                g.drawText(FontAwesome_Square,
-                           helperRect.getX(),
-                           helperRect.getY(),
-                           helperRect.getWidth(),
-                           helperRect.getHeight(),
-                           Justification::bottomRight,
-                           false);
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Square, iconSize, colour),
+                                   helperRect.getWidth() - iconSize + helperRect.getX(),
+                                   helperRect.getHeight() - iconSize + + helperRect.getY());
             }
 
-            float iconSize = getHeight() * 0.25f;
-            Colour iconColour;
             Icon icon;
-            g.setColour(ThemeForeground1);
             if (player->isFading())
             {
                 iconColour = colour;
@@ -303,7 +251,9 @@ void SoundboardGridCell::paint(Graphics &g)
                 icon = FontAwesome_Sort_Amount_Asc;
             }
 
-            FontAwesome.drawAt(g, FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f), helperRect.getWidth() - iconSize + helperRect.getX(), helperRect.getX());
+            FontAwesome.drawAt(g, FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f),
+                               helperRect.getWidth() - iconSize + helperRect.getX(),
+                               helperRect.getX());
         }
     }
     else
