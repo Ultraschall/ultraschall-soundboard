@@ -301,7 +301,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 icon = FontAwesome_Sort_Amount_Asc;
             }
 
-            g.drawImageAt(FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f), helperRect.getWidth() - iconSize + helperRect.getX(), helperRect.getX());
+            FontAwesome.drawAt(g, FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f), helperRect.getWidth() - iconSize + helperRect.getX(), helperRect.getX());
         }
     }
     else
