@@ -319,7 +319,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
     players.clear();
-    DirectoryIterator iterator(directory, false);
+    DirectoryIterator iterator(directory, true);
     auto count = 0;
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
