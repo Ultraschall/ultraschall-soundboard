@@ -198,13 +198,13 @@ void SoundboardGridCell::paint(Graphics &g)
         if (isMouseOver(true))
         {
             iconSize = getHeight() * 0.25f;
-            Colour iconColour = colour;
+            Colour iconColour = colour.withAlpha(0.9f);
             g.setColour(ThemeForeground1);
             
             auto helperRect = cell.reduced(3).toType<int>();
             if (player->isLooping())
             {
-                iconColour = colour;
+                iconColour = colour.withAlpha(0.9f);
             }
             else
             {
@@ -230,7 +230,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 {
                     iconColour = ThemeForeground1.withAlpha(0.5f);
                 }
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Square, iconSize, colour),
+                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Square, iconSize, iconColour),
                                    helperRect.getWidth() - iconSize + helperRect.getX(),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
@@ -238,7 +238,7 @@ void SoundboardGridCell::paint(Graphics &g)
             Icon icon;
             if (player->isFading())
             {
-                iconColour = colour;
+                iconColour = colour.withAlpha(0.9f);
             }
             else
             {
