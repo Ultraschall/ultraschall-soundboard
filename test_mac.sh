@@ -14,7 +14,7 @@ cd ../../
 
 echo "Bootstrap Tools"
 cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 > /dev/null
+xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
