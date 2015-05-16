@@ -152,7 +152,7 @@ void Player::startFadeOut()
 
 void Player::startFadeIn()
 {
-    if (!isPlaying() && !isPlayed())
+    if (!isPlaying())
     {
         fadeIn           = true;
         fadeGainBackup = transportSource->getGain();

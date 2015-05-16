@@ -50,7 +50,7 @@ void SoundboardGridCell::mouseUp(const MouseEvent &event)
             if (!player->isFading()) {
                 if (player->isPlaying()) {
                     player->startFadeOut();
-                } else if (player->isStopped() || player->isPaused()) {
+                } else {
                     player->startFadeIn();
                 }
             }
