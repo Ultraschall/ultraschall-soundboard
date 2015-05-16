@@ -24,6 +24,7 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
                                   thumbnailCache(thumbnailCache),
                                   transportSource(new AudioTransportSource())
 {
+    thumbnail = nullptr;
     timeSliceThread.startThread(3);
     audioSourcePlayer.setSource(transportSource);
     loadFileIntoTransport(audioFile);
@@ -33,6 +34,7 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
 
 Player::~Player()
 {
+    removeAllChangeListeners();
     thumbnail->removeAllChangeListeners();
     thumbnail->clear();
     removeAllChangeListeners();
@@ -81,13 +83,18 @@ void Player::update()
     if (isPlaying()) {
         sendChangeMessage();
     }
-    if (process >= 1.0f)
-    {
-        cancelFading();
+
+    if (process >= 1.0f) {
         process = 1.0f;
         transportSource->stop();
         transportSource->setPosition(0);
         playerState = Played;
+        sendChangeMessage();
+    }
+    if (isFading()) {
+        if (!isPlaying()) {
+            cancelFading();
+        }
     }
 }
 
@@ -154,7 +161,8 @@ void Player::startFadeIn()
         fadeGain = 0;
         fadeGainSteps = fadeGainBackup / fadeSeconds / 10.0f;
         transportSource->setGain(fadeGain);
-        transportSource->start();
+        transportSource->setPosition(transportSource->getCurrentPosition());
+        play();
     }
 }
 
