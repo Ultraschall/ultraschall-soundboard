@@ -19,6 +19,10 @@
 
 // (You can add your own code in this section, and the Introjucer will not overwrite it)
 
+#ifndef SHOW_AUDIO_SETTINGS
+#define SHOW_AUDIO_SETTINGS 1
+#endif
+
 #ifndef JucePlugin_Build_Standalone
 #define JucePlugin_Build_Standalone 1
 #endif

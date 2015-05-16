@@ -15,7 +15,7 @@
 #include "LookAndFeel.h"
 #include "PluginProcessor.h"
 
-#if JUCE_STANDALONE_APPLICATION
+#if SHOW_AUDIO_SETTINGS
 extern ScopedPointer<AudioDeviceManager> deviceManager;
 #endif
 

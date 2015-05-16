@@ -97,7 +97,7 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscRepeaterPortNumberTextEditor->addListener(this);
     oscRepeaterPortNumberTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port"), dontSendNotification);
 
-    #if JUCE_STANDALONE_APPLICATION
+    #if SHOW_AUDIO_SETTINGS
     addAndMakeVisible(audioBar = new Bar());
     addAndMakeVisible(audioLabel = new Label());
     audioLabel->setText(TRANS("Audio Settings"), dontSendNotification);
@@ -209,7 +209,7 @@ void SoundboardSettingsComponent::resized()
     oscRepeaterHostnameTextEditor->setBounds(86, elementY, getWidth() - 144, elementHeight);
     oscRepeaterPortNumberTextEditor->setBounds(getWidth() - 51, elementY, 48, elementHeight);
 
-    #if JUCE_STANDALONE_APPLICATION
+    #if SHOW_AUDIO_SETTINGS
     elementY = elementY + elementHeight + 3;
     elementHeight = 32;
 
