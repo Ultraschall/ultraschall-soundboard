@@ -16,7 +16,7 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
                                   fadeGain(1.0f),
                                   fadeGainBackup(1.0f),
                                   fadeGainSteps(0.1f),
-                                  fadeSeconds(4),
+                                  fadeSeconds(6),
                                   fadeOut(false),
                                   fadeIn(false),
                                   process(0.0f),
@@ -154,7 +154,7 @@ void Player::startFadeOut()
 
 void Player::startFadeIn()
 {
-    if (!isPlaying())
+    if (!isPlaying() && !isPlayed())
     {
         fadeIn           = true;
         fadeGainBackup = transportSource->getGain();
@@ -369,7 +369,6 @@ bool Player::isFading() {
 void Player::cancelFading() {
     if (isFading())
     {
-        stopTimer(FadeTimerId);
         fadeOut     = false;
         fadeIn      = false;
         fadeGain = fadeGainBackup;

@@ -63,7 +63,6 @@ public:
 
     void setIndex(int value);
     int getIndex();
-
 private:
     static const int UpdateTimerId = 0;
     static const int FadeTimerId = 1;
