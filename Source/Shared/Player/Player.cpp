@@ -157,9 +157,15 @@ void Player::startFadeIn()
         fadeIn           = true;
         fadeGainBackup = transportSource->getGain();
         fadeGain = 0;
-        fadeGainSteps = fadeGainBackup / fadeSeconds / 10.0f;
+        float fade = fadeSeconds;
+        if (transportSource->getLengthInSeconds() < fade) {
+            fade = float(transportSource->getLengthInSeconds());
+            if (fade <= 0) {
+                fade = 0.1f;
+            }
+        }
+        fadeGainSteps = fadeGainBackup / fade / 10.0f;
         transportSource->setGain(fadeGain);
-        transportSource->setPosition(transportSource->getCurrentPosition());
         play();
     }
 }
@@ -371,5 +377,6 @@ void Player::cancelFading() {
         fadeIn      = false;
         fadeGain = fadeGainBackup;
         transportSource->setGain(fadeGain);
+        update();
     }
 }
