@@ -22,9 +22,9 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
                                   process(0.0f),
                                   audioFormatManager(formatManager),
                                   thumbnailCache(thumbnailCache),
+                                  thumbnail(nullptr),
                                   transportSource(new AudioTransportSource())
 {
-    thumbnail = nullptr;
     timeSliceThread.startThread(3);
     audioSourcePlayer.setSource(transportSource);
     loadFileIntoTransport(audioFile);

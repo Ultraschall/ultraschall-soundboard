@@ -25,8 +25,10 @@ SoundboardGridCell::~SoundboardGridCell()
 {
     if (player)
     {
-        player->getThumbnail()->removeChangeListener(this);
-        player->removeChangeListener(this);
+        if (player->getThumbnail()) {
+            player->removeChangeListener(this);
+            player->getThumbnail()->removeChangeListener(this);
+        }
     }
 }
 
@@ -115,9 +117,10 @@ void SoundboardGridCell::paint(Graphics &g)
 
         g.setColour(colour.withAlpha(0.2f));
         auto thumbArea = cell.reduced(0, 5).toType<int>();
-        if (player->getThumbnail()->getTotalLength() > 0.0)
-        {
-            player->getThumbnail()->drawChannel(g, thumbArea, 0, player->getThumbnail()->getTotalLength(), 1, 1.0f);
+        if (player->getThumbnail()) {
+            if (player->getThumbnail()->getTotalLength() > 0.0) {
+                player->getThumbnail()->drawChannel(g, thumbArea, 0, player->getThumbnail()->getTotalLength(), 1, 1.0f);
+            }
         }
 
         float gainWidth = cell.getWidth() * 0.025f;
