@@ -626,7 +626,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
         duckEnabled = static_cast<bool>(parameter->getValue());
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
-        if (parameter->addressMatch(".+/osc/receive/enabled")) {
+        if (parameter->addressMatch(".+/osc/receive/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscReceiveEnabledIdentifier.toString(), value);
             if (value) {
@@ -634,31 +634,31 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             } else {
                 oscManager.getOscServer()->stopListening();
             }
-        } else if (parameter->addressMatch(".+/osc/receive/port")) {
+        } else if (parameter->addressMatch(".+/osc/receive/port$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscReceivePortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setLocalPortNumber(value);
-        } else if (parameter->addressMatch(".+/osc/remote/enabled")) {
+        } else if (parameter->addressMatch(".+/osc/remote/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(), value);
             oscManager.getOscServer()->setRemoteEnabled(value);
-        } else if (parameter->addressMatch(".+/osc/remote/host")) {
+        } else if (parameter->addressMatch(".+/osc/remote/host$")) {
             auto value = parameter->getValue().toString();
             propertiesFile->setValue(OscRemoteHostnameIdentifier.toString(), value);
             oscManager.getOscServer()->setRemoteHostname(value);
-        } else if (parameter->addressMatch(".+/osc/remote/port")) {
+        } else if (parameter->addressMatch(".+/osc/remote/port$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscRemotePortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setRemotePortNumber(value);
-        } else if (parameter->addressMatch(".+/osc/repeater/enabled")) {
+        } else if (parameter->addressMatch(".+/osc/repeater/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRepeaterEnabledIdentifier.toString(), value);
             oscManager.getOscServer()->setBridgeEnabled(value);
-        } else if (parameter->addressMatch(".+/osc/repeater/host")) {
+        } else if (parameter->addressMatch(".+/osc/repeater/host$")) {
             auto value = parameter->getValue().toString();
             propertiesFile->setValue(OscRepeaterHostnameIdentifier.toString(), value);
             oscManager.getOscServer()->setBridgeHostname(value);
-        } else if (parameter->addressMatch(".+/osc/repeater/port")) {
+        } else if (parameter->addressMatch(".+/osc/repeater/port$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscRepeaterPortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setBridgePortNumber(value);

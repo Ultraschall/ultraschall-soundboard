@@ -22,6 +22,9 @@ echo "Update Projects"
 ./Submodules/JUCE/extras/Introjucer/Builds/Linux/build/Introjucer --resave Projects/Standalone/Standalone.jucer > /dev/null
 ./Submodules/JUCE/extras/Introjucer/Builds/Linux/build/Introjucer --resave Projects/Plugin/Plugin.jucer > /dev/null
 
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+
 echo "UnitTesting"
 cd Projects/Tests/Builds/Linux/
 make -j4
