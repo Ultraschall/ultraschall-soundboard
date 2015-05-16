@@ -112,9 +112,7 @@ void Player::timerCallback(int timerID)
                 fadeGain = fadeGain - fadeGainSteps;
                 if (fadeGain <= 0) {
                     fadeOut = false;
-                    transportSource->stop();
-                    transportSource->setPosition(0);
-                    playerState = Played;
+                    pause();
                     fadeGain = fadeGainBackup;
                     transportSource->setGain(fadeGainBackup);
                     update();
