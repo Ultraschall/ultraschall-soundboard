@@ -23,6 +23,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
     
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/receive/enabled"), true);
+    oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/receive/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/receive/port"), true);
     
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/remote/enabled"), true);
@@ -421,7 +422,9 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                              propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled",
                              propertiesFile->getValue(OscRemoteEnabledIdentifier));
-        
+
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/host",
+                SystemStats::getComputerName());
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port",
                              propertiesFile->getIntValue(OscReceivePortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
