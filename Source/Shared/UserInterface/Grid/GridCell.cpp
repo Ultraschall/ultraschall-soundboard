@@ -95,10 +95,6 @@ void SoundboardGridCell::paint(Graphics &g)
         {
             colour = ThemeGreen;
         }
-        else if (player->isFading())
-        {
-            colour = ThemeOrange;
-        }
         else if (player->isLooping())
         {
             colour = ThemeBlue;
@@ -106,6 +102,10 @@ void SoundboardGridCell::paint(Graphics &g)
         else
         {
             colour = ThemeYellow;
+        }
+        if (player->isFading())
+        {
+            colour = colour.overlaidWith(ThemeOrange.withAlpha(1.0f - player->getGain()));
         }
 
         g.setColour(colour.withAlpha(0.2f));
