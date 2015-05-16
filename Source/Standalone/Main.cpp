@@ -3,6 +3,8 @@
 
 Component *createMainContentComponent();
 
+ScopedPointer<AudioDeviceManager> deviceManager = new AudioDeviceManager();
+
 class SoundboardApplication : public JUCEApplication
 {
 public:
@@ -37,6 +39,7 @@ public:
     void shutdown() override
     {
         mainWindow = nullptr; // (deletes our window)
+        deviceManager = nullptr;
     }
 
     //==============================================================================

@@ -97,6 +97,21 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     oscRepeaterPortNumberTextEditor->addListener(this);
     oscRepeaterPortNumberTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port"), dontSendNotification);
 
+    #if JUCE_STANDALONE_APPLICATION
+    addAndMakeVisible(audioBar = new Bar());
+    addAndMakeVisible(audioLabel = new Label());
+    audioLabel->setText(TRANS("Audio Settings"), dontSendNotification);
+    addAndMakeVisible(audioDeviceSelectorComponent = new AudioDeviceSelectorComponent(*deviceManager,
+            processor.getNumInputChannels(),
+            processor.getNumInputChannels(),
+            processor.getNumOutputChannels(),
+            processor.getNumOutputChannels(),
+            true,
+            false,
+            true,
+            false));
+    #endif
+
     // listen to fadeout changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/fadeout$");
     // listen to all setup changes
@@ -134,6 +149,11 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
     oscRepeaterEnabledToggleButton = nullptr;
     oscRepeaterHostnameTextEditor = nullptr;
     oscRepeaterPortNumberTextEditor = nullptr;
+
+    audioBar = nullptr;
+    audioLabel = nullptr;
+
+    audioDeviceSelectorComponent = nullptr;
 }
 
 // Component
@@ -142,7 +162,7 @@ void SoundboardSettingsComponent::resized()
     int elementHeight = 32;
     int elementY = 0;
     globalBar->setBounds(0, elementY, getWidth(), elementHeight);
-    globalLabel->setBounds(3, elementY + 6, 80, 24);
+    globalLabel->setBounds(3, elementY + 6, getWidth() - 6, 24);
 
     elementY = elementY + elementHeight + 3;
     elementHeight = 24;
@@ -166,7 +186,7 @@ void SoundboardSettingsComponent::resized()
     elementHeight = 32;
 
     oscBar->setBounds(0, elementY, getWidth(), elementHeight);
-    oscLabel->setBounds(3, elementY + 6, 80, 24);
+    oscLabel->setBounds(3, elementY + 6, getWidth() - 6, 24);
 
     elementY = elementY + elementHeight + 3;
     elementHeight = 24;
@@ -188,6 +208,19 @@ void SoundboardSettingsComponent::resized()
     oscRepeaterEnabledToggleButton->setBounds(3, elementY, 80, elementHeight);
     oscRepeaterHostnameTextEditor->setBounds(86, elementY, getWidth() - 144, elementHeight);
     oscRepeaterPortNumberTextEditor->setBounds(getWidth() - 51, elementY, 48, elementHeight);
+
+    #if JUCE_STANDALONE_APPLICATION
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 32;
+
+    audioBar->setBounds(0, elementY, getWidth(), elementHeight);
+    audioLabel->setBounds(3, elementY + 6, getWidth() - 6, 24);
+
+    elementY = elementY + elementHeight + 3;
+    //elementHeight = 200;
+
+    audioDeviceSelectorComponent->setBounds(3, elementY, getWidth() - 6, getHeight() - elementY);
+    #endif
 }
 
 void SoundboardSettingsComponent::paint(Graphics &g) {

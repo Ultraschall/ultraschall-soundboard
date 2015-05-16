@@ -15,6 +15,10 @@
 #include "LookAndFeel.h"
 #include "PluginProcessor.h"
 
+#if JUCE_STANDALONE_APPLICATION
+extern ScopedPointer<AudioDeviceManager> deviceManager;
+#endif
+
 class SoundboardSettingsComponent: public Component,
                                    public ComboBox::Listener,
                                    public Button::Listener,
@@ -72,6 +76,10 @@ private:
     ScopedPointer<ToggleButton> oscRepeaterEnabledToggleButton;
     ScopedPointer<TextEditor> oscRepeaterHostnameTextEditor;
     ScopedPointer<TextEditor> oscRepeaterPortNumberTextEditor;
+
+    ScopedPointer<Bar> audioBar;
+    ScopedPointer<Label> audioLabel;
+    ScopedPointer<AudioDeviceSelectorComponent> audioDeviceSelectorComponent;
 
     SoundboardAudioProcessor& processor;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardSettingsComponent)

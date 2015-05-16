@@ -2,6 +2,7 @@
 #define JUCE_STANDALONEFILTERWINDOW_H_INCLUDED
 
 extern AudioProcessor *JUCE_CALLTYPE createPluginFilter();
+extern ScopedPointer<AudioDeviceManager> deviceManager;
 
 class StandalonePluginHolder
 {
@@ -123,7 +124,7 @@ public:
     {
         DialogWindow::LaunchOptions o;
         o.content
-         .setOwned(new AudioDeviceSelectorComponent(deviceManager,
+         .setOwned(new AudioDeviceSelectorComponent(*deviceManager,
                                                     processor->getNumInputChannels(),
                                                     processor->getNumInputChannels(),
                                                     processor->getNumOutputChannels(),
@@ -147,7 +148,7 @@ public:
     {
         if (settings != nullptr)
         {
-            ScopedPointer<XmlElement> xml(deviceManager.createStateXml());
+            ScopedPointer<XmlElement> xml(deviceManager->createStateXml());
             settings->setValue("audioSetup", xml);
         }
     }
@@ -159,7 +160,7 @@ public:
         if (settings != nullptr)
             savedState = settings->getXmlValue("audioSetup");
 
-        deviceManager.initialise(processor->getNumInputChannels(), processor->getNumOutputChannels(), savedState, true);
+        deviceManager->initialise(processor->getNumInputChannels(), processor->getNumOutputChannels(), savedState, true);
     }
 
     //==============================================================================
@@ -188,14 +189,13 @@ public:
     //==============================================================================
     OptionalScopedPointer<PropertySet> settings;
     ScopedPointer<AudioProcessor>      processor;
-    AudioDeviceManager                 deviceManager;
     AudioProcessorPlayer               player;
 
 private:
     void setupAudioDevices()
     {
-        deviceManager.addAudioCallback(&player);
-        deviceManager.addMidiInputCallback(String::empty, &player);
+        deviceManager->addAudioCallback(&player);
+        deviceManager->addMidiInputCallback(String::empty, &player);
 
         reloadAudioDeviceState();
     }
@@ -204,8 +204,8 @@ private:
     {
         saveAudioDeviceState();
 
-        deviceManager.removeMidiInputCallback(String::empty, &player);
-        deviceManager.removeAudioCallback(&player);
+        deviceManager->removeMidiInputCallback(String::empty, &player);
+        deviceManager->removeAudioCallback(&player);
     }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StandalonePluginHolder)
@@ -285,7 +285,7 @@ public:
 
     AudioDeviceManager &getDeviceManager() const noexcept
     {
-        return pluginHolder->deviceManager;
+        return *deviceManager;
     }
 
     void createEditorComp()
