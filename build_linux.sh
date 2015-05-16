@@ -26,7 +26,7 @@ echo "UnitTesting"
 cd Projects/Tests/Builds/Linux/
 make -j4
 cd ../../../../
-
+./Projects/Tests/Builds/Linux/build/Tests
 
 echo "Build Standalone"
 cd Projects/Standalone/Builds/Linux/
