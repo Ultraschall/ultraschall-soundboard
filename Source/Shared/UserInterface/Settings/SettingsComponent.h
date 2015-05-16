@@ -46,8 +46,14 @@ public:
     void handleOscParameterMessage(OscParameter *parameter) override;
 
 private:
+    ScopedPointer<Bar> globalBar;
+    ScopedPointer<Label> globalLabel;
+
     ScopedPointer<Label> themeLabel;
     ScopedPointer<ComboBox> themeComboBox;
+
+    ScopedPointer<Slider> duckingSlider;
+    ScopedPointer<Label> duckingLabel;
 
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;

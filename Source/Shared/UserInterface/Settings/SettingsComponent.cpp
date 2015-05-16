@@ -13,6 +13,10 @@
 SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcessor& p)
     : processor(p)
 {
+    addAndMakeVisible(globalBar = new Bar());
+    addAndMakeVisible(globalLabel = new Label());
+    globalLabel->setText(TRANS("General"), dontSendNotification);
+
     addAndMakeVisible(themeLabel = new Label());
     themeLabel->setText(TRANS("Theme:"), dontSendNotification);
     addAndMakeVisible(themeComboBox = new ComboBox());
@@ -28,11 +32,21 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     fadeOutLabel->setText(TRANS("Fade-Out:"), dontSendNotification);
     addAndMakeVisible(fadeOutSlider = new Slider());
     fadeOutSlider->setRange(3, 30, 1);
-    fadeOutSlider->setValue(processor.getFadeOutSeconds());
+    fadeOutSlider->setValue(processor.getFadeOutSeconds(), dontSendNotification);
     fadeOutSlider->setSliderStyle(Slider::SliderStyle::Rotary);
     fadeOutSlider->setTextValueSuffix("s");
     fadeOutSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxRight, true, 48, 24);
     fadeOutSlider->addListener(this);
+
+    addAndMakeVisible(duckingLabel = new Label());
+    duckingLabel->setText(TRANS("Ducking:"), dontSendNotification);
+    addAndMakeVisible(duckingSlider = new Slider());
+    duckingSlider->setRange(0, 100, 1);
+    duckingSlider->setValue(duckingSlider->proportionOfLengthToValue(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/duck/percentage")), dontSendNotification);
+    duckingSlider->setSliderStyle(Slider::SliderStyle::Rotary);
+    duckingSlider->setTextValueSuffix("%");
+    duckingSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxRight, true, 48, 24);
+    duckingSlider->addListener(this);
 
     addAndMakeVisible(oscBar = new Bar());
     addAndMakeVisible(oscLabel = new Label());
@@ -42,54 +56,69 @@ SoundboardSettingsComponent::SoundboardSettingsComponent(SoundboardAudioProcesso
     addAndMakeVisible(oscLocalEnabledToggleButton = new ToggleButton());
     oscLocalEnabledToggleButton->setButtonText(TRANS("Receive:"));
     oscLocalEnabledToggleButton->addListener(this);
+    oscLocalEnabledToggleButton->setToggleState(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled"), dontSendNotification);
     addAndMakeVisible(oscLocalHostnameTextEditor = new TextEditor());
     oscLocalHostnameTextEditor->setMultiLine(false);
-    oscLocalHostnameTextEditor->setText(SystemStats::getComputerName(), dontSendNotification);
     oscLocalHostnameTextEditor->setReadOnly(true);
+    oscLocalHostnameTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/receive/host"), dontSendNotification);
     addAndMakeVisible(oscLocalPortNumberTextEditor = new TextEditor());
     oscLocalPortNumberTextEditor->setMultiLine(false);
     oscLocalPortNumberTextEditor->setReadOnly(oscLocalEnabledToggleButton->getToggleState());
     oscLocalPortNumberTextEditor->addListener(this);
+    oscLocalPortNumberTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port"), dontSendNotification);
 
     addAndMakeVisible(oscRemoteEnabledToggleButton = new ToggleButton());
     oscRemoteEnabledToggleButton->setButtonText(TRANS("Send:"));
     oscRemoteEnabledToggleButton->addListener(this);
+    oscRemoteEnabledToggleButton->setToggleState(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled"), dontSendNotification);
     addAndMakeVisible(oscRemoteHostnameTextEditor = new TextEditor());
     oscRemoteHostnameTextEditor->setMultiLine(false);
     oscRemoteHostnameTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
     oscRemoteHostnameTextEditor->addListener(this);
+    oscRemoteHostnameTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host"), dontSendNotification);
     addAndMakeVisible(oscRemotePortNumberTextEditor = new TextEditor());
     oscRemotePortNumberTextEditor->setMultiLine(false);
     oscRemotePortNumberTextEditor->setReadOnly(oscRemoteEnabledToggleButton->getToggleState());
     oscRemotePortNumberTextEditor->addListener(this);
+    oscRemotePortNumberTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port"), dontSendNotification);
 
     addAndMakeVisible(oscRepeaterEnabledToggleButton = new ToggleButton());
     oscRepeaterEnabledToggleButton->setButtonText(TRANS("Repeater:"));
     oscRepeaterEnabledToggleButton->addListener(this);
+    oscRepeaterEnabledToggleButton->setToggleState(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled"), dontSendNotification);
     addAndMakeVisible(oscRepeaterHostnameTextEditor = new TextEditor());
     oscRepeaterHostnameTextEditor->setMultiLine(false);
     oscRepeaterHostnameTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
     oscRepeaterHostnameTextEditor->addListener(this);
+    oscRepeaterHostnameTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host"), dontSendNotification);
     addAndMakeVisible(oscRepeaterPortNumberTextEditor = new TextEditor());
     oscRepeaterPortNumberTextEditor->setMultiLine(false);
     oscRepeaterPortNumberTextEditor->setReadOnly(oscRepeaterEnabledToggleButton->getToggleState());
     oscRepeaterPortNumberTextEditor->addListener(this);
+    oscRepeaterPortNumberTextEditor->setText(processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port"), dontSendNotification);
 
     // listen to fadeout changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/fadeout$");
     // listen to all setup changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/setup/.+");
+    resized();
 }
 
 SoundboardSettingsComponent::~SoundboardSettingsComponent()
 {
     processor.getOscManager()->removeOscParameterListener(this);
-    
+
+    globalBar = nullptr;
+    globalLabel = nullptr;
+
     themeLabel = nullptr;
     themeComboBox = nullptr;
 
     fadeOutLabel = nullptr;
     fadeOutSlider = nullptr;
+
+    duckingLabel = nullptr;
+    duckingSlider = nullptr;
 
     oscBar = nullptr;
     oscLabel = nullptr;
@@ -110,26 +139,55 @@ SoundboardSettingsComponent::~SoundboardSettingsComponent()
 // Component
 void SoundboardSettingsComponent::resized()
 {
-    themeLabel->setBounds(3, 3, 80, 24);
-    themeComboBox->setBounds(86, 3, getWidth() - 89, 24);
+    int elementHeight = 32;
+    int elementY = 0;
+    globalBar->setBounds(0, elementY, getWidth(), elementHeight);
+    globalLabel->setBounds(3, elementY + 6, 80, 24);
 
-    fadeOutLabel->setBounds(3, 32, 80, 24);
-    fadeOutSlider->setBounds(86, 32, 72, 24);
-    
-    oscBar->setBounds(0, 59, getWidth(), 32);
-    oscLabel->setBounds(3, 64, 80, 24);
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 24;
 
-    oscLocalEnabledToggleButton->setBounds(3, 96, 80, 24);
-    oscLocalHostnameTextEditor->setBounds(86, 96, getWidth() - 144, 24);
-    oscLocalPortNumberTextEditor->setBounds(getWidth() - 51, 96, 48, 24);
+    themeLabel->setBounds(3, elementY, 80, elementHeight);
+    themeComboBox->setBounds(86, elementY, getWidth() - 89, elementHeight);
 
-    oscRemoteEnabledToggleButton->setBounds(3, 128, 80, 24);
-    oscRemoteHostnameTextEditor->setBounds(86, 128, getWidth() - 144, 24);
-    oscRemotePortNumberTextEditor->setBounds(getWidth() - 51, 128, 48, 24);
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 24;
 
-    oscRepeaterEnabledToggleButton->setBounds(3, 160, 80, 24);
-    oscRepeaterHostnameTextEditor->setBounds(86, 160, getWidth() - 144, 24);
-    oscRepeaterPortNumberTextEditor->setBounds(getWidth() - 51, 160, 48, 24);
+    fadeOutLabel->setBounds(3, elementY, 80, elementHeight);
+    fadeOutSlider->setBounds(86, elementY, 72, elementHeight);
+
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 24;
+
+    duckingLabel->setBounds(3, elementY, 80, elementHeight);
+    duckingSlider->setBounds(86, elementY, 72, elementHeight);
+
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 32;
+
+    oscBar->setBounds(0, elementY, getWidth(), elementHeight);
+    oscLabel->setBounds(3, elementY + 6, 80, 24);
+
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 24;
+
+    oscLocalEnabledToggleButton->setBounds(3, elementY, 80, elementHeight);
+    oscLocalHostnameTextEditor->setBounds(86, elementY, getWidth() - 144, elementHeight);
+    oscLocalPortNumberTextEditor->setBounds(getWidth() - 51, elementY, 48, elementHeight);
+
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 24;
+
+    oscRemoteEnabledToggleButton->setBounds(3, elementY, 80, elementHeight);
+    oscRemoteHostnameTextEditor->setBounds(86, elementY, getWidth() - 144, elementHeight);
+    oscRemotePortNumberTextEditor->setBounds(getWidth() - 51, elementY, 48, elementHeight);
+
+    elementY = elementY + elementHeight + 3;
+    elementHeight = 24;
+
+    oscRepeaterEnabledToggleButton->setBounds(3, elementY, 80, elementHeight);
+    oscRepeaterHostnameTextEditor->setBounds(86, elementY, getWidth() - 144, elementHeight);
+    oscRepeaterPortNumberTextEditor->setBounds(getWidth() - 51, elementY, 48, elementHeight);
 }
 
 void SoundboardSettingsComponent::paint(Graphics &g) {
@@ -196,6 +254,8 @@ void SoundboardSettingsComponent::sliderValueChanged(Slider* slider)
 {
     if (slider == fadeOutSlider) {
         processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/fadeout", static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
+    } else if (slider == duckingSlider) {
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/duck/percentage", static_cast<float>(duckingSlider->valueToProportionOfLength(duckingSlider->getValue())));
     }
 }
 
@@ -204,6 +264,8 @@ void SoundboardSettingsComponent::handleOscParameterMessage(OscParameter* parame
 {
     if (parameter->addressMatch("/ultraschall/soundboard/fadeout")) {
         fadeOutSlider->setValue(fadeOutSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+    } else if (parameter->addressMatch("/ultraschall/soundboard/duck/percentage")) {
+        duckingSlider->setValue(duckingSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     }
     else if (parameter->addressMatch("/ultraschall/soundboard/setup/osc/receive/port")) {
         oscLocalPortNumberTextEditor->setText(parameter->getValue(), dontSendNotification);

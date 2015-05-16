@@ -61,8 +61,8 @@ void SetThemeColors(LookAndFeel *lookAndFeel)
     lookAndFeel->setColour(PopupMenu::highlightedTextColourId, ThemeForeground1);
 
     lookAndFeel->setColour(Slider::rotarySliderFillColourId, ThemeForeground1);
-    lookAndFeel->setColour(Slider::textBoxBackgroundColourId, ThemeBackground1);
-    lookAndFeel->setColour(Slider::textBoxOutlineColourId, ThemeBackground1);
+    lookAndFeel->setColour(Slider::textBoxBackgroundColourId, ThemeBackground2);
+    lookAndFeel->setColour(Slider::textBoxOutlineColourId, ThemeBackground2);
     lookAndFeel->setColour(Slider::textBoxTextColourId, ThemeForeground1);
 
     lookAndFeel->setColour(TextButton::textColourOnId, ThemeForeground1);

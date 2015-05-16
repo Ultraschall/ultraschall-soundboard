@@ -90,6 +90,9 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     fallbackProperties->setValue(WindowWidthIdentifier.toString(), var(380));
     fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
+    fallbackProperties->setValue(FadeIdentifier.toString(), var(6));
+    fallbackProperties->setValue(DuckingIdentifier.toString(), var(0.33));
+
     fallbackProperties->setValue(ThemeIdentifier.toString(), var(static_cast<int>(ThemeTomorrowNightEighties)));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
@@ -257,7 +260,7 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
         buffer.copyFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
     if (duckEnabled) {
-        buffer.applyGain(masterGain * duckPercentage);
+        buffer.applyGain(duckPercentage * masterGain);
     } else {
         buffer.applyGain(masterGain);
     }
@@ -368,6 +371,12 @@ Player* SoundboardAudioProcessor::playerAtIndex(int index)
 //==============================================================================
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
+    for (int index = 0; index < numPlayers(); index++) {
+        if (playerAtIndex(index)) {
+            playerAtIndex(index)->setFadeTime(seconds);
+        }
+    }
+    propertiesFile->setValue(FadeIdentifier.toString(), var(seconds));
 }
 
 void SoundboardAudioProcessor::setGain(int playerIndex, float value)
@@ -608,7 +617,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
     } else if (parameter->addressMatch("/ultraschall/soundboard/gain$")) {
         masterGain = static_cast<float>(parameter->getValue());
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/percentage$")) {
-        duckPercentage = static_cast<float>(parameter->getValue());
+        setDuckingPercentage(static_cast<float>(parameter->getValue()));
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
         duckEnabled = static_cast<bool>(parameter->getValue());
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
@@ -677,4 +686,9 @@ void SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new SoundboardAudioProcessor();
+}
+
+void SoundboardAudioProcessor::setDuckingPercentage(float percentage) {
+    duckPercentage = percentage;
+    propertiesFile->setValue(DuckingIdentifier.toString(), var(percentage));
 }

@@ -36,6 +36,9 @@ static const Identifier OscRemoteEnabledIdentifier("OscRemoteEnabled");
 static const Identifier OscRemoteHostnameIdentifier("OscRemoteHostname");
 static const Identifier OscRemotePortNumberIdentifier("OscRemotePortNumber");
 
+static const Identifier FadeIdentifier("Fade");
+static const Identifier DuckingIdentifier("Ducking");
+
 class SoundboardAudioProcessor : public AudioProcessor, public MultiTimer, public OscParameterListener, public ChangeListener
 {
 public:
@@ -100,6 +103,7 @@ public:
     float getGain() { return masterGain; }
     void toggleDucking() { duckEnabled = !duckEnabled; }
     bool isDucking() { return duckEnabled; }
+    void setDuckingPercentage(float percentage);
 
     // Maximum Number of Sampler Slots
     static const int MaximumSamplePlayers = 24;
