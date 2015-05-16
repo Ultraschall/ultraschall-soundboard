@@ -14,7 +14,7 @@ cd ../../
 
 echo "Bootstrap Tools"
 cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -sdk macosx10.9 > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
@@ -30,10 +30,10 @@ Projects/Tests/Builds/MacOSX/build/Debug/Tests
 
 echo "Build Standalone"
 cd Projects/Standalone/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -sdk macosx10.9 > /dev/null
 cd ../../../../
 
 echo "Build Plugin"
 cd Projects/Plugin/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -sdk macosx10.9 > /dev/null
 cd ../../../../
