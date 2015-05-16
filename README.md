@@ -236,7 +236,7 @@ ___
 Dieses Kommando setzt den Loop Modus des Players. Mit 1.0 wird der Loop Modus eingeschaltet und mit 0.0 wird der Loop Modus ausgeschaltet.
 
 ___
-**/ultraschall/soundboard/player/*/fadeaut float (1.0)**
+**/ultraschall/soundboard/player/*/fadeout float (1.0)**
 
 Startet den Fade-Out eines laufenden Players.
 
