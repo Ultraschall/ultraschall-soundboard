@@ -106,6 +106,8 @@ void SoundboardGridCell::paint(Graphics &g)
         if (player->isFading())
         {
             colour = colour.overlaidWith(ThemeOrange.withAlpha(1.0f - player->getGain()));
+        } else if (!player->isLooping()) {
+            colour = colour.overlaidWith(ThemeGreen.withAlpha(player->getProgress()));
         }
 
         g.setColour(colour.withAlpha(0.2f));
