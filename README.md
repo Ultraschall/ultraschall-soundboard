@@ -42,10 +42,14 @@ sudo apt-get -y install mesa-common-dev
 sudo apt-get -y install libasound2-dev
 sudo apt-get -y install freeglut3-dev
 sudo apt-get -y install libxcomposite-dev 
-sudo apt-get -y install libxinerama-dev
-sudo apt-get -y install libxcursor-dev
-sudo apt-get -y install libasound2-dev
+sudo apt-get -y install libxrandr-dev
+sudo apt-get -y install libsdl1.2-dev
+sudo apt-get -y install libc++-dev
+
+sudo apt-get -y install clang
+sudo update-alternatives --config c++
 ```
+Zum kompilieren muss clang verwerdent werden! GCC und libstdc++ untersetuetzen einige Features des Soundboard Sourcecodes noch nicht.
 
 Von https://github.com/FortAwesome/Font-Awesome/tree/master/fonts muss die Font fontawesome-webfont.ttf installiert werden. (Leider geht die eingebettete Font nicht unter Linux)
 
