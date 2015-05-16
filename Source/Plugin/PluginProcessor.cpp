@@ -91,14 +91,19 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
     fallbackProperties->setValue(FadeIdentifier.toString(), var(6));
-    fallbackProperties->setValue(DuckingIdentifier.toString(), var(0.33));
+    fallbackProperties->setValue(DuckingIdentifier.toString(), var(0.33f));
 
     fallbackProperties->setValue(ThemeIdentifier.toString(), var(static_cast<int>(ThemeTomorrowNightEighties)));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
+    oscManager.setOscParameterValue("/ultraschall/soundboard/duck/percentage",
+            propertiesFile->getValue(DuckingIdentifier));
+    oscManager.setOscParameterValue("/ultraschall/soundboard/fadeout",
+            propertiesFile->getValue(FadeIdentifier));
+
     SwitchTheme(static_cast<Themes>(propertiesFile->getIntValue(ThemeIdentifier)));
-    
+
     fadeOutRange.start = 1.0;
     fadeOutRange.end = 30.0;
     fadeOutRange.interval = 1.0;
