@@ -84,6 +84,8 @@
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/VST3_SDK">
@@ -109,6 +111,8 @@
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <VS2015 targetFolder="Builds/VisualStudio2015" vstFolder="c:\SDKs\vstsdk2.4">
@@ -134,6 +138,8 @@
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </VS2015>
   </EXPORTFORMATS>
@@ -153,6 +159,8 @@
     <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled"
                JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_VST3="disabled"

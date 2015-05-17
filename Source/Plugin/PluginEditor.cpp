@@ -88,6 +88,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     
     // listen to gain changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/gain$");
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/duck/gain$");
 }
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
@@ -195,8 +196,9 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
         }
     }
     else if (duckButton == buttonThatWasClicked) {
-        processor.toggleDucking();
-        if (processor.isDucking()) {
+        bool ducking = processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/duck/enabled");
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/duck/enabled", !ducking);
+        if (!ducking) {
             duckButton->setButtonText(FontAwesome_Comment);
         } else {
             duckButton->setButtonText(FontAwesome_Comment_O);
@@ -224,7 +226,7 @@ void SoundboardAudioProcessorEditor::refresh()
 }
 
 void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *parameter) {
-    if (parameter->addressMatch("/ultraschall/soundboard/gain")) {
+    if (parameter->addressMatch("/ultraschall/soundboard/gain$")) {
         gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
         AttributedString text;
         String value(gainSlider->getValue());
@@ -239,6 +241,8 @@ void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *par
         gainBubble->showAt(gainSlider, text, 500);
         if (grid->isVisible())
             grid->resized();
+    } else if(parameter->addressMatch("/ultraschall/soundboard/duck/gain$")) {
+        gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     }
 }
 

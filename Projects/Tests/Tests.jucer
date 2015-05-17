@@ -77,6 +77,8 @@
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <LINUX_MAKE targetFolder="Builds/Linux">
@@ -104,6 +106,8 @@
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <VS2015 targetFolder="Builds/VisualStudio2015">
@@ -131,6 +135,8 @@
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </VS2015>
   </EXPORTFORMATS>
@@ -152,6 +158,8 @@
     <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="juce_video" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_VST3="disabled"
                JUCE_PLUGINHOST_AU="disabled"/>

@@ -38,6 +38,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/percentage"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/fade"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/gain"), true);
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/enabled"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/stopall"));
 
@@ -92,6 +94,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
     fallbackProperties->setValue(FadeIdentifier.toString(), var(6));
     fallbackProperties->setValue(DuckingIdentifier.toString(), var(0.33f));
+    fallbackProperties->setValue(DuckingFadeIdentifier.toString(), var(1.0f));
 
     fallbackProperties->setValue(ThemeIdentifier.toString(), var(static_cast<int>(ThemeTomorrowNightEighties)));
 
@@ -99,6 +102,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
     oscManager.setOscParameterValue("/ultraschall/soundboard/duck/percentage",
             propertiesFile->getValue(DuckingIdentifier));
+    oscManager.setOscParameterValue("/ultraschall/soundboard/duck/fade",
+            propertiesFile->getValue(DuckingFadeIdentifier));
     oscManager.setOscParameterValue("/ultraschall/soundboard/fadeout",
             propertiesFile->getValue(FadeIdentifier));
 
@@ -108,6 +113,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     fadeOutRange.end = 30.0;
     fadeOutRange.interval = 1.0;
     fadeOutRange.skew = 0.5;
+
+    duckEnvelope.setTime(1.0f);
 
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
@@ -231,6 +238,7 @@ void SoundboardAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBl
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     mixerAudioSource.prepareToPlay(samplesPerBlock, sampleRate);
+    duckEnvelope.setSampleRate(sampleRate);
 }
 
 void SoundboardAudioProcessor::releaseResources()
@@ -240,13 +248,12 @@ void SoundboardAudioProcessor::releaseResources()
     mixerAudioSource.releaseResources();
 }
 
-void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
-{
+void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffer& midiMessages) {
     if (!midiMessages.isEmpty()) {
         const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
         midiBuffer.addEvents(midiMessages, midiMessages.getFirstEventTime(), -1, 0);
     }
-    
+
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
@@ -264,7 +271,17 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
     for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
         buffer.copyFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
-    if (duckEnabled) {
+
+    if (duckEnvelope.getState()) {
+        float gain = 1.0f;
+        for (int sample = 0; sample < output.getNumSamples(); ++sample) {
+            gain = duckEnvelope.tick() * masterGain;
+            for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
+                buffer.setSample(channel, sample, gain * buffer.getSample(channel, sample));
+            }
+        }
+        getOscManager()->setOscParameterValue("/ultraschall/soundboard/duck/gain", gain);
+    } else if (duckEnabled) {
         buffer.applyGain(duckPercentage * masterGain);
     } else {
         buffer.applyGain(masterGain);
@@ -623,8 +640,18 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         masterGain = static_cast<float>(parameter->getValue());
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/percentage$")) {
         setDuckingPercentage(static_cast<float>(parameter->getValue()));
+    } else if (parameter->addressMatch("/ultraschall/soundboard/duck/fade")) {
+        setDuckingFade(static_cast<float>(parameter->getValue()));
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
-        duckEnabled = static_cast<bool>(parameter->getValue());
+        bool value = static_cast<bool>(parameter->getValue());
+        if (value) {
+            duckEnvelope.setValue(1.0f);
+            duckEnvelope.setTarget(duckPercentage);
+        } else {
+            duckEnvelope.setValue(duckPercentage);
+            duckEnvelope.setTarget(1.0f);
+        }
+        duckEnabled = value;
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
         if (parameter->addressMatch(".+/osc/receive/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
@@ -696,4 +723,9 @@ AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 void SoundboardAudioProcessor::setDuckingPercentage(float percentage) {
     duckPercentage = percentage;
     propertiesFile->setValue(DuckingIdentifier.toString(), var(percentage));
+}
+
+void SoundboardAudioProcessor::setDuckingFade(float seconds) {
+    duckFade = seconds;
+    propertiesFile->setValue(DuckingFadeIdentifier.toString(), var(seconds));
 }
