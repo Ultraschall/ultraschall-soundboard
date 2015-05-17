@@ -2,6 +2,7 @@
 #define JUCE_STANDALONEFILTERWINDOW_H_INCLUDED
 
 extern AudioProcessor *JUCE_CALLTYPE createPluginFilter();
+extern ScopedPointer<AudioDeviceManager> deviceManager;
 
 class StandalonePluginHolder
 {
@@ -21,7 +22,6 @@ public:
         shutDownAudioDevices();
     }
 
-    //==============================================================================
     void createPlugin()
     {
         AudioProcessor::setTypeOfNextNewPlugin(AudioProcessor::wrapperType_Standalone);
@@ -46,8 +46,6 @@ public:
         return (fileSuffix.startsWithChar('.') ? "*" : "*.") + fileSuffix;
     }
 
-
-    //==============================================================================
     File getLastFile() const
     {
         File f;
@@ -106,7 +104,6 @@ public:
         }
     }
 
-    //==============================================================================
     void startPlaying()
     {
         player.setProcessor(processor);
@@ -117,37 +114,11 @@ public:
         player.setProcessor(nullptr);
     }
 
-    //==============================================================================
-    /** Shows an audio properties dialog box modally. */
-    void showAudioSettingsDialog()
-    {
-        DialogWindow::LaunchOptions o;
-        o.content
-         .setOwned(new AudioDeviceSelectorComponent(deviceManager,
-                                                    processor->getNumInputChannels(),
-                                                    processor->getNumInputChannels(),
-                                                    processor->getNumOutputChannels(),
-                                                    processor->getNumOutputChannels(),
-                                                    true,
-                                                    false,
-                                                    true,
-                                                    false));
-        o.content->setSize(500, 450);
-
-        o.dialogTitle                  = TRANS("Audio Settings");
-        o.dialogBackgroundColour       = Colour(0xfff0f0f0);
-        o.escapeKeyTriggersCloseButton = true;
-        o.useNativeTitleBar            = true;
-        o.resizable                    = false;
-
-        o.launchAsync();
-    }
-
     void saveAudioDeviceState()
     {
         if (settings != nullptr)
         {
-            ScopedPointer<XmlElement> xml(deviceManager.createStateXml());
+            ScopedPointer<XmlElement> xml(deviceManager->createStateXml());
             settings->setValue("audioSetup", xml);
         }
     }
@@ -159,10 +130,9 @@ public:
         if (settings != nullptr)
             savedState = settings->getXmlValue("audioSetup");
 
-        deviceManager.initialise(processor->getNumInputChannels(), processor->getNumOutputChannels(), savedState, true);
+        deviceManager->initialise(processor->getNumInputChannels(), processor->getNumOutputChannels(), savedState, true);
     }
 
-    //==============================================================================
     void savePluginState()
     {
         if (settings != nullptr && processor != nullptr)
@@ -185,17 +155,15 @@ public:
         }
     }
 
-    //==============================================================================
     OptionalScopedPointer<PropertySet> settings;
     ScopedPointer<AudioProcessor>      processor;
-    AudioDeviceManager                 deviceManager;
     AudioProcessorPlayer               player;
 
 private:
     void setupAudioDevices()
     {
-        deviceManager.addAudioCallback(&player);
-        deviceManager.addMidiInputCallback(String::empty, &player);
+        deviceManager->addAudioCallback(&player);
+        deviceManager->addMidiInputCallback(String::empty, &player);
 
         reloadAudioDeviceState();
     }
@@ -204,46 +172,21 @@ private:
     {
         saveAudioDeviceState();
 
-        deviceManager.removeMidiInputCallback(String::empty, &player);
-        deviceManager.removeAudioCallback(&player);
+        deviceManager->removeMidiInputCallback(String::empty, &player);
+        deviceManager->removeAudioCallback(&player);
     }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StandalonePluginHolder)
 };
 
-
-//==============================================================================
-/**
-A class that can be used to run a simple standalone application containing your filter.
-
-Just create one of these objects in your JUCEApplicationBase::initialise() method, and
-let it do its work. It will create your filter object using the same createPluginFilter() function
-that the other plugin wrappers use.
-*/
-class StandaloneFilterWindow
-        : public DocumentWindow, public ButtonListener // (can't use Button::Listener due to VC2005 bug)
+class StandaloneFilterWindow : public DocumentWindow
 {
 public:
-    //==============================================================================
-    /** Creates a window with a given title and colour.
-    The settings object can be a PropertySet that the class should use to
-    store its settings (it can also be null). If takeOwnershipOfSettings is
-    true, then the settings object will be owned and deleted by this object.
-    */
     StandaloneFilterWindow(const String &title,
                            Colour backgroundColour,
                            PropertySet *settingsToUse,
-                           bool takeOwnershipOfSettings) : DocumentWindow(title,
-                                                                          backgroundColour,
-                                                                          minimiseButton | closeButton),
-                                                           optionsButton("")
+                           bool takeOwnershipOfSettings) : DocumentWindow(title, backgroundColour, minimiseButton | closeButton | maximiseButton)
     {
-        setTitleBarButtonsRequired(closeButton | minimiseButton | maximiseButton, true);
-
-        Component::addAndMakeVisible(optionsButton);
-        optionsButton.addListener(this);
-        optionsButton.setTriggeredOnMouseDown(true);
-
         pluginHolder = new StandalonePluginHolder(settingsToUse, takeOwnershipOfSettings);
 
         createEditorComp();
@@ -277,15 +220,9 @@ public:
         pluginHolder = nullptr;
     }
 
-    //==============================================================================
     AudioProcessor *getAudioProcessor() const noexcept
     {
         return pluginHolder->processor;
-    }
-
-    AudioDeviceManager &getDeviceManager() const noexcept
-    {
-        return pluginHolder->deviceManager;
     }
 
     void createEditorComp()
@@ -302,7 +239,6 @@ public:
         }
     }
 
-    /** Deletes and re-creates the plugin, resetting it to its default state. */
     void resetToDefaultState()
     {
         pluginHolder->stopPlaying();
@@ -317,7 +253,6 @@ public:
         pluginHolder->startPlaying();
     }
 
-    //==============================================================================
     void closeButtonPressed() override
     {
         if (ModalComponentManager::getInstance()->getNumModalComponents() > 0) {
@@ -326,44 +261,10 @@ public:
         JUCEApplicationBase::quit();
     }
 
-    void buttonClicked(Button *) override
-    {
-//        PopupMenu m;
-//        m.addItem(1, TRANS("Audio Settings..."));
-//        m.addSeparator();
-//        m.addItem(2, TRANS("Save current state..."));
-//        m.addItem(3, TRANS("Load a saved state..."));
-//        m.addSeparator();
-//        m.addItem(4, TRANS("Reset to default state"));
-//
-//        switch (m.showAt(&optionsButton))
-//        {
-//        case 1: pluginHolder->showAudioSettingsDialog();
-//            break;
-//        case 2: pluginHolder->askUserToSaveState();
-//            break;
-//        case 3: pluginHolder->askUserToLoadState();
-//            break;
-//        case 4: resetToDefaultState();
-//            break;
-//        default: break;
-//        }
-    }
-
-    void resized() override
-    {
-        DocumentWindow::resized();
-        optionsButton.setBounds(getWidth() - 68, 6, 60, getTitleBarHeight() - 8);
-    }
-
     ScopedPointer<StandalonePluginHolder> pluginHolder;
 
 private:
-    //==============================================================================
-    TextButton optionsButton;
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StandaloneFilterWindow)
 };
-
 
 #endif // JUCE_STANDALONEFILTERWINDOW_H_INCLUDED

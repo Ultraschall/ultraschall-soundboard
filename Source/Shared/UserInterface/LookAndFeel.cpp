@@ -46,8 +46,6 @@ void SetThemeColors(LookAndFeel *lookAndFeel)
     lookAndFeel->setColour(TextEditor::outlineColourId, ThemeBackground3);
     lookAndFeel->setColour(TextEditor::focusedOutlineColourId, ThemeBackground2);
 
-
-
     lookAndFeel->setColour(ComboBox::backgroundColourId, ThemeBackground1);
     lookAndFeel->setColour(ComboBox::textColourId, ThemeForeground1);
     lookAndFeel->setColour(ComboBox::outlineColourId, ThemeBackground2);
@@ -61,9 +59,12 @@ void SetThemeColors(LookAndFeel *lookAndFeel)
     lookAndFeel->setColour(PopupMenu::highlightedTextColourId, ThemeForeground1);
 
     lookAndFeel->setColour(Slider::rotarySliderFillColourId, ThemeForeground1);
-    lookAndFeel->setColour(Slider::textBoxBackgroundColourId, ThemeBackground1);
-    lookAndFeel->setColour(Slider::textBoxOutlineColourId, ThemeBackground1);
+    lookAndFeel->setColour(Slider::textBoxBackgroundColourId, ThemeBackground2);
+    lookAndFeel->setColour(Slider::textBoxOutlineColourId, ThemeBackground2);
     lookAndFeel->setColour(Slider::textBoxTextColourId, ThemeForeground1);
+    lookAndFeel->setColour(Slider::thumbColourId, ThemeForeground1);
+    lookAndFeel->setColour(Slider::trackColourId, ThemeBackground1);
+
 
     lookAndFeel->setColour(TextButton::textColourOnId, ThemeForeground1);
     lookAndFeel->setColour(TextButton::textColourOffId, ThemeForeground1);
@@ -71,6 +72,9 @@ void SetThemeColors(LookAndFeel *lookAndFeel)
     lookAndFeel->setColour(ListBox::backgroundColourId, ThemeBackground2);
     lookAndFeel->setColour(ListBox::outlineColourId, ThemeBackground1);
     lookAndFeel->setColour(ListBox::textColourId, ThemeForeground1);
+
+    lookAndFeel->setColour(BubbleMessageComponent::backgroundColourId, ThemeBackground3);
+    lookAndFeel->setColour(BubbleMessageComponent::outlineColourId, ThemeBackground1);
 }
 
 void SwitchTheme(Themes theme)

@@ -25,15 +25,11 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     gainSlider->setValue(gainSlider->proportionOfLengthToValue(processor.getGain()), dontSendNotification);
     gainSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
     gainSlider->setSliderStyle(Slider::SliderStyle::LinearHorizontal);
-    gainSlider->setColour(Slider::ColourIds::thumbColourId, ThemeForeground1);
-    gainSlider->setColour(Slider::ColourIds::trackColourId, ThemeBackground1);
     gainSlider->addListener(this);
     gainBubble = new BubbleMessageComponent();
     gainBubble->addToDesktop(0);
     gainBubble->setAllowedPlacement(BubbleMessageComponent::BubblePlacement::below);
-    gainBubble->setColour(BubbleMessageComponent::ColourIds::backgroundColourId, ThemeBackground3);
-    gainBubble->setColour(BubbleMessageComponent::ColourIds::outlineColourId, ThemeBackground1);
-    
+
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
@@ -82,19 +78,16 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     // editor's size to whatever you need it to be.
     setSize(processor.getWindowWidth(), processor.getWindowHeight());
 
-    startTimer(TimerIdBlink, static_cast<int>(1000 * 0.5));
-    startTimer(TimerIdUpdate, 50);
     startTimer(TimerIdRefresh, static_cast<int>(1000 * 0.5));
     
     // listen to gain changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/gain$");
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/duck/gain$");
 }
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
     processor.getOscManager()->removeOscParameterListener(this);
-    stopTimer(TimerIdBlink);
-    stopTimer(TimerIdUpdate);
     stopTimer(TimerIdRefresh);
     topBar              = nullptr;
     loadDirectoryButton = nullptr;
@@ -195,8 +188,9 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
         }
     }
     else if (duckButton == buttonThatWasClicked) {
-        processor.toggleDucking();
-        if (processor.isDucking()) {
+        bool ducking = processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/duck/enabled");
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/duck/enabled", !ducking);
+        if (!ducking) {
             duckButton->setButtonText(FontAwesome_Comment);
         } else {
             duckButton->setButtonText(FontAwesome_Comment_O);
@@ -206,10 +200,7 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
 
 void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 {
-    if (timerID == TimerIdUpdate)
-    {
-    }
-    else if (timerID == TimerIdRefresh)
+    if (timerID == TimerIdRefresh)
     {
         refresh();
     }
@@ -224,7 +215,7 @@ void SoundboardAudioProcessorEditor::refresh()
 }
 
 void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *parameter) {
-    if (parameter->addressMatch("/ultraschall/soundboard/gain")) {
+    if (parameter->addressMatch("/ultraschall/soundboard/gain$")) {
         gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
         AttributedString text;
         String value(gainSlider->getValue());
@@ -239,6 +230,8 @@ void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *par
         gainBubble->showAt(gainSlider, text, 500);
         if (grid->isVisible())
             grid->resized();
+    } else if(parameter->addressMatch("/ultraschall/soundboard/duck/gain$")) {
+        gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     }
 }
 

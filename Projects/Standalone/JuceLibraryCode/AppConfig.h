@@ -19,6 +19,10 @@
 
 // (You can add your own code in this section, and the Introjucer will not overwrite it)
 
+#ifndef SHOW_AUDIO_SETTINGS
+#define SHOW_AUDIO_SETTINGS 1
+#endif
+
 #ifndef JucePlugin_Build_Standalone
 #define JucePlugin_Build_Standalone 1
 #endif
@@ -85,6 +89,8 @@
 #define JUCE_MODULE_AVAILABLE_juce_gui_basics            1
 #define JUCE_MODULE_AVAILABLE_juce_gui_extra             1
 #define JUCE_MODULE_AVAILABLE_juce_opengl                1
+#define JUCE_MODULE_AVAILABLE_stk_core                   1
+#define JUCE_MODULE_AVAILABLE_stk_generators             1
 
 //==============================================================================
 #ifndef    JUCE_STANDALONE_APPLICATION

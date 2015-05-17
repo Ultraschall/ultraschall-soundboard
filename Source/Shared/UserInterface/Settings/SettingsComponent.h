@@ -15,6 +15,10 @@
 #include "LookAndFeel.h"
 #include "PluginProcessor.h"
 
+#if SHOW_AUDIO_SETTINGS
+extern ScopedPointer<AudioDeviceManager> deviceManager;
+#endif
+
 class SoundboardSettingsComponent: public Component,
                                    public ComboBox::Listener,
                                    public Button::Listener,
@@ -46,8 +50,14 @@ public:
     void handleOscParameterMessage(OscParameter *parameter) override;
 
 private:
+    ScopedPointer<Bar> globalBar;
+    ScopedPointer<Label> globalLabel;
+
     ScopedPointer<Label> themeLabel;
     ScopedPointer<ComboBox> themeComboBox;
+
+    ScopedPointer<Slider> duckingSlider;
+    ScopedPointer<Label> duckingLabel;
 
     ScopedPointer<Slider> fadeOutSlider;
     ScopedPointer<Label> fadeOutLabel;
@@ -66,6 +76,10 @@ private:
     ScopedPointer<ToggleButton> oscRepeaterEnabledToggleButton;
     ScopedPointer<TextEditor> oscRepeaterHostnameTextEditor;
     ScopedPointer<TextEditor> oscRepeaterPortNumberTextEditor;
+
+    ScopedPointer<Bar> audioBar;
+    ScopedPointer<Label> audioLabel;
+    ScopedPointer<AudioDeviceSelectorComponent> audioDeviceSelectorComponent;
 
     SoundboardAudioProcessor& processor;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardSettingsComponent)

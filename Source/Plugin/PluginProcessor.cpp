@@ -23,6 +23,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
     
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/receive/enabled"), true);
+    oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/receive/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/receive/port"), true);
     
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/remote/enabled"), true);
@@ -37,6 +38,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/percentage"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/fade"));
+    oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/gain"), true);
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/duck/enabled"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/player/stopall"));
 
@@ -89,16 +92,29 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     fallbackProperties->setValue(WindowWidthIdentifier.toString(), var(380));
     fallbackProperties->setValue(WindowHeightIdentifier.toString(), var(320));
 
+    fallbackProperties->setValue(FadeIdentifier.toString(), var(6));
+    fallbackProperties->setValue(DuckingIdentifier.toString(), var(0.33f));
+    fallbackProperties->setValue(DuckingFadeIdentifier.toString(), var(1.0f));
+
     fallbackProperties->setValue(ThemeIdentifier.toString(), var(static_cast<int>(ThemeTomorrowNightEighties)));
 
     propertiesFile->setFallbackPropertySet(fallbackProperties);
 
+    oscManager.setOscParameterValue("/ultraschall/soundboard/duck/percentage",
+            propertiesFile->getValue(DuckingIdentifier));
+    oscManager.setOscParameterValue("/ultraschall/soundboard/duck/fade",
+            propertiesFile->getValue(DuckingFadeIdentifier));
+    oscManager.setOscParameterValue("/ultraschall/soundboard/fadeout",
+            propertiesFile->getValue(FadeIdentifier));
+
     SwitchTheme(static_cast<Themes>(propertiesFile->getIntValue(ThemeIdentifier)));
-    
+
     fadeOutRange.start = 1.0;
     fadeOutRange.end = 30.0;
     fadeOutRange.interval = 1.0;
     fadeOutRange.skew = 0.5;
+
+    duckEnvelope.setTime(1.0f);
 
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
@@ -222,6 +238,7 @@ void SoundboardAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBl
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     mixerAudioSource.prepareToPlay(samplesPerBlock, sampleRate);
+    duckEnvelope.setSampleRate(sampleRate);
 }
 
 void SoundboardAudioProcessor::releaseResources()
@@ -231,13 +248,12 @@ void SoundboardAudioProcessor::releaseResources()
     mixerAudioSource.releaseResources();
 }
 
-void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
-{
+void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffer& midiMessages) {
     if (!midiMessages.isEmpty()) {
         const GenericScopedLock<CriticalSection> myScopedLock(midiCriticalSection);
         midiBuffer.addEvents(midiMessages, midiMessages.getFirstEventTime(), -1, 0);
     }
-    
+
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
@@ -255,8 +271,18 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
     for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
         buffer.copyFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
-    if (duckEnabled) {
-        buffer.applyGain(masterGain * duckPercentage);
+
+    if (duckEnvelope.getState()) {
+        float gain = 1.0f;
+        for (int sample = 0; sample < output.getNumSamples(); ++sample) {
+            gain = duckEnvelope.tick() * masterGain;
+            for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
+                buffer.setSample(channel, sample, gain * buffer.getSample(channel, sample));
+            }
+        }
+        getOscManager()->setOscParameterValue("/ultraschall/soundboard/duck/gain", gain);
+    } else if (duckEnabled) {
+        buffer.applyGain(duckPercentage * masterGain);
     } else {
         buffer.applyGain(masterGain);
     }
@@ -319,7 +345,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
     players.clear();
-    DirectoryIterator iterator(directory, false);
+    DirectoryIterator iterator(directory, true);
     auto count = 0;
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
@@ -367,6 +393,12 @@ Player* SoundboardAudioProcessor::playerAtIndex(int index)
 //==============================================================================
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
+    for (int index = 0; index < numPlayers(); index++) {
+        if (playerAtIndex(index)) {
+            playerAtIndex(index)->setFadeTime(seconds);
+        }
+    }
+    propertiesFile->setValue(FadeIdentifier.toString(), var(seconds));
 }
 
 void SoundboardAudioProcessor::setGain(int playerIndex, float value)
@@ -421,7 +453,9 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                              propertiesFile->getIntValue(OscRemotePortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/enabled",
                              propertiesFile->getValue(OscRemoteEnabledIdentifier));
-        
+
+        oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/host",
+                SystemStats::getComputerName());
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/port",
                              propertiesFile->getIntValue(OscReceivePortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
@@ -515,7 +549,7 @@ void SoundboardAudioProcessor::updatePlayerState(int playerIndex) {
 //==============================================================================
 void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter)
 {
-    Logger::outputDebugString("Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
+    //Logger::outputDebugString("Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
     if (parameter->addressMatch("/ultraschall/soundboard/player/\\d+/.+")) {
         std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
         std::smatch match;
@@ -605,11 +639,21 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
     } else if (parameter->addressMatch("/ultraschall/soundboard/gain$")) {
         masterGain = static_cast<float>(parameter->getValue());
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/percentage$")) {
-        duckPercentage = static_cast<float>(parameter->getValue());
+        setDuckingPercentage(static_cast<float>(parameter->getValue()));
+    } else if (parameter->addressMatch("/ultraschall/soundboard/duck/fade")) {
+        setDuckingFade(static_cast<float>(parameter->getValue()));
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
-        duckEnabled = static_cast<bool>(parameter->getValue());
+        bool value = static_cast<bool>(parameter->getValue());
+        if (value) {
+            duckEnvelope.setValue(1.0f);
+            duckEnvelope.setTarget(duckPercentage);
+        } else {
+            duckEnvelope.setValue(duckPercentage);
+            duckEnvelope.setTarget(1.0f);
+        }
+        duckEnabled = value;
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {
-        if (parameter->addressMatch(".+/osc/receive/enabled")) {
+        if (parameter->addressMatch(".+/osc/receive/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscReceiveEnabledIdentifier.toString(), value);
             if (value) {
@@ -617,31 +661,31 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             } else {
                 oscManager.getOscServer()->stopListening();
             }
-        } else if (parameter->addressMatch(".+/osc/receive/port")) {
+        } else if (parameter->addressMatch(".+/osc/receive/port$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscReceivePortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setLocalPortNumber(value);
-        } else if (parameter->addressMatch(".+/osc/remote/enabled")) {
+        } else if (parameter->addressMatch(".+/osc/remote/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRemoteEnabledIdentifier.toString(), value);
             oscManager.getOscServer()->setRemoteEnabled(value);
-        } else if (parameter->addressMatch(".+/osc/remote/host")) {
+        } else if (parameter->addressMatch(".+/osc/remote/host$")) {
             auto value = parameter->getValue().toString();
             propertiesFile->setValue(OscRemoteHostnameIdentifier.toString(), value);
             oscManager.getOscServer()->setRemoteHostname(value);
-        } else if (parameter->addressMatch(".+/osc/remote/port")) {
+        } else if (parameter->addressMatch(".+/osc/remote/port$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscRemotePortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setRemotePortNumber(value);
-        } else if (parameter->addressMatch(".+/osc/repeater/enabled")) {
+        } else if (parameter->addressMatch(".+/osc/repeater/enabled$")) {
             auto value = static_cast<bool>(parameter->getValue());
             propertiesFile->setValue(OscRepeaterEnabledIdentifier.toString(), value);
             oscManager.getOscServer()->setBridgeEnabled(value);
-        } else if (parameter->addressMatch(".+/osc/repeater/host")) {
+        } else if (parameter->addressMatch(".+/osc/repeater/host$")) {
             auto value = parameter->getValue().toString();
             propertiesFile->setValue(OscRepeaterHostnameIdentifier.toString(), value);
             oscManager.getOscServer()->setBridgeHostname(value);
-        } else if (parameter->addressMatch(".+/osc/repeater/port")) {
+        } else if (parameter->addressMatch(".+/osc/repeater/port$")) {
             auto value = static_cast<int>(parameter->getValue());
             propertiesFile->setValue(OscRepeaterPortNumberIdentifier.toString(), value);
             oscManager.getOscServer()->setBridgePortNumber(value);
@@ -674,4 +718,14 @@ void SoundboardAudioProcessor::changeListenerCallback(ChangeBroadcaster* source)
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new SoundboardAudioProcessor();
+}
+
+void SoundboardAudioProcessor::setDuckingPercentage(float percentage) {
+    duckPercentage = percentage;
+    propertiesFile->setValue(DuckingIdentifier.toString(), var(percentage));
+}
+
+void SoundboardAudioProcessor::setDuckingFade(float seconds) {
+    duckFade = seconds;
+    propertiesFile->setValue(DuckingFadeIdentifier.toString(), var(seconds));
 }

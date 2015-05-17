@@ -24,7 +24,7 @@ echo "Update Projects"
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 > /dev/null
+xcodebuild -sdk macosx10.9  > /dev/null
 cd ../../../../
 Projects/Tests/Builds/MacOSX/build/Debug/Tests
 

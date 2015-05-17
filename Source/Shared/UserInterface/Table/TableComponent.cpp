@@ -337,7 +337,7 @@ void SoundboardTableComponent::buttonClicked(Button* button)
     else if (cellButton->getTag() == ButtonTagFade) {
         if (player->isPlaying()) {
             player->startFadeOut();
-        } else if (player->isStopped() || player->isPaused()) {
+        } else  {
             player->startFadeIn();
         }
     }
