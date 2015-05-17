@@ -24,7 +24,7 @@ public:
 
     bool moreThanOneInstanceAllowed() override
     {
-        return true;
+        return false;
     }
 
     void initialise(const String & /*commandLine*/) override
@@ -41,18 +41,10 @@ public:
         mainWindow = nullptr; // (deletes our window)
         deviceManager = nullptr;
     }
-
-    //==============================================================================
+    
     void systemRequestedQuit() override
     {
         quit();
-    }
-
-    void anotherInstanceStarted(const String & /*commandLine*/) override
-    {
-        // When another instance of the app is launched while this one is running,
-        // this method is invoked, and the commandLine parameter tells you what
-        // the other instance's command-line arguments were.
     }
 
 private:
