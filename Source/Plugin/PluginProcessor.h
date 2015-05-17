@@ -142,8 +142,6 @@ private:
     float                              duckFade;
     bool                               duckEnabled;
     stk::Envelope                      duckEnvelope;
-    bool                               duckAttack;
-    bool                               duckRelease;
 
     int                      fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;

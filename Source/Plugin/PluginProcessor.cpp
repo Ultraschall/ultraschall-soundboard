@@ -549,7 +549,7 @@ void SoundboardAudioProcessor::updatePlayerState(int playerIndex) {
 //==============================================================================
 void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter)
 {
-    Logger::outputDebugString("Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
+    //Logger::outputDebugString("Command: " + parameter->getAddress() + " " + parameter->getValue().toString());
     if (parameter->addressMatch("/ultraschall/soundboard/player/\\d+/.+")) {
         std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
         std::smatch match;
