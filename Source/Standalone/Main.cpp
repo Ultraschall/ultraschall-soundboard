@@ -41,7 +41,7 @@ public:
         mainWindow = nullptr; // (deletes our window)
         deviceManager = nullptr;
     }
-    
+
     void systemRequestedQuit() override
     {
         quit();

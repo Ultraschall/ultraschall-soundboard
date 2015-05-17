@@ -37,9 +37,7 @@ public:
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
 private:
-    static const int TimerIdUpdate  = 1;
-    static const int TimerIdBlink   = 2;
-    static const int TimerIdRefresh = 3;
+    static const int TimerIdRefresh = 1;
 
     ScopedPointer<SoundboardTableComponent>    table;
     ScopedPointer<SoundboardGridComponent>     grid;

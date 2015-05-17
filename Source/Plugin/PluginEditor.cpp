@@ -25,15 +25,11 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     gainSlider->setValue(gainSlider->proportionOfLengthToValue(processor.getGain()), dontSendNotification);
     gainSlider->setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
     gainSlider->setSliderStyle(Slider::SliderStyle::LinearHorizontal);
-    gainSlider->setColour(Slider::ColourIds::thumbColourId, ThemeForeground1);
-    gainSlider->setColour(Slider::ColourIds::trackColourId, ThemeBackground1);
     gainSlider->addListener(this);
     gainBubble = new BubbleMessageComponent();
     gainBubble->addToDesktop(0);
     gainBubble->setAllowedPlacement(BubbleMessageComponent::BubblePlacement::below);
-    gainBubble->setColour(BubbleMessageComponent::ColourIds::backgroundColourId, ThemeBackground3);
-    gainBubble->setColour(BubbleMessageComponent::ColourIds::outlineColourId, ThemeBackground1);
-    
+
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
@@ -82,8 +78,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     // editor's size to whatever you need it to be.
     setSize(processor.getWindowWidth(), processor.getWindowHeight());
 
-    startTimer(TimerIdBlink, static_cast<int>(1000 * 0.5));
-    startTimer(TimerIdUpdate, 50);
     startTimer(TimerIdRefresh, static_cast<int>(1000 * 0.5));
     
     // listen to gain changes
@@ -94,8 +88,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
     processor.getOscManager()->removeOscParameterListener(this);
-    stopTimer(TimerIdBlink);
-    stopTimer(TimerIdUpdate);
     stopTimer(TimerIdRefresh);
     topBar              = nullptr;
     loadDirectoryButton = nullptr;
@@ -208,10 +200,7 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
 
 void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 {
-    if (timerID == TimerIdUpdate)
-    {
-    }
-    else if (timerID == TimerIdRefresh)
+    if (timerID == TimerIdRefresh)
     {
         refresh();
     }
