@@ -552,7 +552,8 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
         std::smatch match;
         std::string result;
-        if (std::regex_search(parameter->getAddress().toStdString(), match, re) && match.size() > 1) {
+		const std::string search = parameter->getAddress().toStdString();
+        if (std::regex_search(search, match, re) && match.size() > 1) {
             result = match.str(1);
         } else {
             return;
