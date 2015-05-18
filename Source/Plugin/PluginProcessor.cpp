@@ -340,8 +340,6 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
 void SoundboardAudioProcessor::openDirectory(File directory)
 {
     playersLocked = true;
-    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
-    }
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
     players.clear();

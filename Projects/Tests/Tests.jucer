@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.0.0"
+<JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.9.5"
               bundleIdentifier="fm.ultraschall.Tests" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1">

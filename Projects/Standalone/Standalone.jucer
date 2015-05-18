@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9"
+<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9.5"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
