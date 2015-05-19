@@ -208,7 +208,7 @@ void SoundboardAudioProcessorEditor::timerCallback(int timerID)
 
 void SoundboardAudioProcessorEditor::refresh()
 {
-    if (!processor.isLoocked())
+    if (!processor.isLocked())
     {
         table->updateContent();
     }

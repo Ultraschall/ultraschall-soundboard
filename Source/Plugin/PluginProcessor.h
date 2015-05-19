@@ -78,7 +78,7 @@ public:
 
     void openDirectory(File directory);
 
-    bool isLoocked()
+    bool isLocked()
     {
         return playersLocked;
     }
