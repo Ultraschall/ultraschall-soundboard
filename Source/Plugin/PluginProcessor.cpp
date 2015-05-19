@@ -238,7 +238,7 @@ void SoundboardAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBl
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     mixerAudioSource.prepareToPlay(samplesPerBlock, sampleRate);
-    duckEnvelope.setSampleRate(sampleRate);
+    duckEnvelope.setSampleRate(static_cast<float>(sampleRate));
 }
 
 void SoundboardAudioProcessor::releaseResources()
