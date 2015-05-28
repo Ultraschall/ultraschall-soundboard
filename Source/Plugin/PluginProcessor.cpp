@@ -609,13 +609,13 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             playerAtIndex(playerIndex)->setLooping(parameter->getValue());
         } else if (parameter->addressMatch(".+/fadeout$")) {
             if (parameter->getValue()) {
-                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                if (playerAtIndex(playerIndex)->isPlaying()) {
                     playerAtIndex(playerIndex)->startFadeOut();
                 }
             }
         } else if (parameter->addressMatch(".+/fadein$")) {
             if (parameter->getValue()) {
-                if (!playerAtIndex(playerIndex)->isStopped()) {
+                if (playerAtIndex(playerIndex)->isStopped()) {
                     playerAtIndex(playerIndex)->startFadeIn();
                 }
             }
