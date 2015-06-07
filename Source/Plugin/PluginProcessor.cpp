@@ -238,7 +238,7 @@ void SoundboardAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBl
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     mixerAudioSource.prepareToPlay(samplesPerBlock, sampleRate);
-    duckEnvelope.setSampleRate(sampleRate);
+    duckEnvelope.setSampleRate(static_cast<float>(sampleRate));
 }
 
 void SoundboardAudioProcessor::releaseResources()
@@ -340,8 +340,6 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
 void SoundboardAudioProcessor::openDirectory(File directory)
 {
     playersLocked = true;
-    if (propertiesFile->getBoolValue(OscRemoteEnabledIdentifier)) {
-    }
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
     players.clear();
@@ -554,7 +552,8 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
         std::smatch match;
         std::string result;
-        if (std::regex_search(parameter->getAddress().toStdString(), match, re) && match.size() > 1) {
+		const std::string search = parameter->getAddress().toStdString();
+        if (std::regex_search(search, match, re) && match.size() > 1) {
             result = match.str(1);
         } else {
             return;
@@ -610,13 +609,13 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             playerAtIndex(playerIndex)->setLooping(parameter->getValue());
         } else if (parameter->addressMatch(".+/fadeout$")) {
             if (parameter->getValue()) {
-                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                if (playerAtIndex(playerIndex)->isPlaying()) {
                     playerAtIndex(playerIndex)->startFadeOut();
                 }
             }
         } else if (parameter->addressMatch(".+/fadein$")) {
             if (parameter->getValue()) {
-                if (!playerAtIndex(playerIndex)->isStopped()) {
+                if (playerAtIndex(playerIndex)->isStopped()) {
                     playerAtIndex(playerIndex)->startFadeIn();
                 }
             }

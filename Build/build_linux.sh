@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "Update Git Submodules"
 git submodule init > /dev/null
 git submodule update > /dev/null

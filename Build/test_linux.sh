@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "Update Git Submodules"
 git submodule init > /dev/null
 git submodule update > /dev/null
@@ -13,15 +14,18 @@ git pull > /dev/null
 cd ../../
 
 echo "Bootstrap Tools"
-cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 > /dev/null
+cd Submodules/JUCE/extras/Introjucer/Builds/Linux/
+make -j4
 cd ../../../../../../
 
 echo "Update Projects"
-./Submodules/JUCE/extras/Introjucer/Builds/MacOSX/build/Debug/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Tests/Tests.jucer > /dev/null
+./Submodules/JUCE/extras/Introjucer/Builds/Linux/build/Introjucer --resave Projects/Tests/Tests.jucer > /dev/null
+
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 
 echo "UnitTesting"
-cd Projects/Tests/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 > /dev/null
+cd Projects/Tests/Builds/Linux/
+make -j4
 cd ../../../../
-Projects/Tests/Builds/MacOSX/build/Debug/Tests
+./Projects/Tests/Builds/Linux/build/Tests

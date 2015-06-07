@@ -289,4 +289,3 @@ private:
 };
 
 #endif // LOOKANDFEEL_H_INCLUDED
-
