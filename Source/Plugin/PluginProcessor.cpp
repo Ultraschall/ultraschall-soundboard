@@ -137,6 +137,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     
     Logger::setCurrentLogger(nullptr);
     logger = nullptr;
+    FontAwesome::deleteInstance();
 }
 
 //==============================================================================

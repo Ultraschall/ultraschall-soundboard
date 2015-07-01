@@ -1,13 +1,9 @@
 [submodule "Submodules/JUCE"]
 	path = Submodules/JUCE
 	url = https://github.com/julianstorer/JUCE.git
-	ignore = untracked
-	fetchRecurseSubmodules = true
 [submodule "Submodules/danlin_modules"]
 	path = Submodules/danlin_modules
 	url = https://github.com/danlin/danlin_modules
-	ignore = untracked
-	fetchRecurseSubmodules = true
 [submodule "Submodules/stk_module"]
 	path = Submodules/stk_module
 	url = https://github.com/danlin/stk_module.git

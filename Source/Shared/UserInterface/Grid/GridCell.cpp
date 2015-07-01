@@ -143,7 +143,7 @@ void SoundboardGridCell::paint(Graphics &g)
         int iconY = int((getHeight() * 0.5f) - (iconSize * 0.5f));
         if (player->isPlayed())
         {
-            FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+            FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
         }
         else if (player->isLooping())
         {
@@ -155,14 +155,14 @@ void SoundboardGridCell::paint(Graphics &g)
                                    2);
 
             g.setColour(colour.withAlpha(0.9f));
-            g.setFont(getFontAwesome(getHeight() * 0.5f));
+            g.setFont(FontAwesome::getInstance()->getFont(getHeight() * 0.5f));
             if (player->isPlaying())
             {
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
             else
             {
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
         }
         else
@@ -176,11 +176,11 @@ void SoundboardGridCell::paint(Graphics &g)
 
             if (player->isPlaying())
             {
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
             else
             {
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
             }
         }
 
@@ -218,13 +218,13 @@ void SoundboardGridCell::paint(Graphics &g)
             {
                 iconColour = ThemeForeground1.withAlpha(0.5f);
             }
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Refresh, iconSize, iconColour),
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Refresh, iconSize, iconColour),
                                    helperRect.getX(),
                                    helperRect.getY());
 
             if (player->isPlayed())
             {
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Square_O, iconSize, colour),
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Square_O, iconSize, colour),
                                    helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
@@ -238,7 +238,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 {
                     iconColour = ThemeForeground1.withAlpha(0.5f);
                 }
-                FontAwesome.drawAt(g, FontAwesome.getIcon(FontAwesome_Square, iconSize, iconColour),
+                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Square, iconSize, iconColour),
                                    helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
@@ -259,7 +259,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 icon = FontAwesome_Sort_Amount_Asc;
             }
 
-            FontAwesome.drawAt(g, FontAwesome.getRotatedIcon(icon, iconSize, iconColour, 0.5f),
+            FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getRotatedIcon(icon, iconSize, iconColour, 0.5f),
                                helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
                                helperRect.getX());
         }

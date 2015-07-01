@@ -78,7 +78,7 @@ void SoundboardCellButton::paintButton(Graphics &g, bool isMouseOverButton, bool
         g.setColour(ThemeForeground1.contrasting(0.1f));
     }
 
-    g.setFont(getFontAwesome(getHeight() * 0.7f));
+    g.setFont(FontAwesome::getInstance()->getFont(getHeight() * 0.7f));
     if (iconRotation != 0)
     {
         g.addTransform(AffineTransform::rotation(-(float_Pi * iconRotation), getWidth() * 0.5f, getHeight() * 0.5f));
