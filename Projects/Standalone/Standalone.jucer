@@ -28,6 +28,12 @@
     </GROUP>
     <GROUP id="{4964031A-DEB2-073F-7799-6988ADD970F0}" name="Shared">
       <GROUP id="{EAEF30D3-F3B1-5B55-926D-807DF6AE3AF7}" name="Player">
+        <FILE id="f1xwBg" name="Slot.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Slot.cpp"/>
+        <FILE id="AtrZ5B" name="Slot.h" compile="0" resource="0" file="../../Source/Shared/Player/Slot.h"/>
+        <FILE id="yVPG4D" name="Bank.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Bank.cpp"/>
+        <FILE id="CruHzg" name="Bank.h" compile="0" resource="0" file="../../Source/Shared/Player/Bank.h"/>
+        <FILE id="ktkk0S" name="Library.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Library.cpp"/>
+        <FILE id="zNBkhb" name="Library.h" compile="0" resource="0" file="../../Source/Shared/Player/Library.h"/>
         <FILE id="nHpeEt" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
         <FILE id="U3Pfzt" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
       </GROUP>
