@@ -93,22 +93,23 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     // listen to gain changes
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/gain$");
     processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/duck/gain$");
+    processor.getOscManager()->addOscParameterListener(this, "/ultraschall/soundboard/duck/enabled$");
 }
 
 SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
 {
     processor.getOscManager()->removeOscParameterListener(this);
     stopTimer(TimerIdRefresh);
-    topBar              = nullptr;
-    loadDirectoryButton = nullptr;
-    table               = nullptr;
-    grid                = nullptr;
-    resizableCornerComponent = nullptr;
-    settingsButton      = nullptr;
-    gridButton          = nullptr;
-    gainSlider          = nullptr;
-    gainBubble          = nullptr;
-    lockButton          = nullptr;
+    topBar                      = nullptr;
+    loadDirectoryButton         = nullptr;
+    table                       = nullptr;
+    grid                        = nullptr;
+    resizableCornerComponent    = nullptr;
+    settingsButton              = nullptr;
+    gridButton                  = nullptr;
+    gainSlider                  = nullptr;
+    gainBubble                  = nullptr;
+    lockButton                  = nullptr;
 }
 
 void SoundboardAudioProcessorEditor::paint(Graphics &g)
@@ -252,6 +253,9 @@ void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *par
             grid->resized();
     } else if(parameter->addressMatch("/ultraschall/soundboard/duck/gain$")) {
         gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+    } else if(parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
+        bool ducking = parameter->getValue();
+        gainSlider->setEnabled(!ducking);
     }
 }
 
