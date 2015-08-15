@@ -21,7 +21,15 @@ SoundboardGridCell::SoundboardGridCell(Player *p) : player(p), index(-1), progre
     }
 }
 
-SoundboardGridCell::~SoundboardGridCell() {}
+SoundboardGridCell::~SoundboardGridCell() {
+    if (player)
+    {
+        if (player->getThumbnail()) {
+            player->removeChangeListener(this);
+            player->getThumbnail()->removeChangeListener(this);
+        }
+    }
+}
 
 void SoundboardGridCell::mouseUp(const MouseEvent &event)
 {
