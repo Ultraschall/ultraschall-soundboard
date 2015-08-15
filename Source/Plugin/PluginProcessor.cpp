@@ -124,6 +124,9 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
+    mixerAudioSource.removeAllInputs();
+    players.clear();
+    
     oscManager.removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);

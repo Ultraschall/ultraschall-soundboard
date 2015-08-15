@@ -108,6 +108,7 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     gridButton          = nullptr;
     gainSlider          = nullptr;
     gainBubble          = nullptr;
+    lockButton          = nullptr;
 }
 
 void SoundboardAudioProcessorEditor::paint(Graphics &g)
