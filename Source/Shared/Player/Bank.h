@@ -30,7 +30,7 @@ public:
     Slot* getSlotAtIndex(int index);
 private:
     String name;
-    ReferenceCountedArray<Slot> slots;
+    Array<Slot*> slots;
 };
 
 #endif  // BANK_H_INCLUDED

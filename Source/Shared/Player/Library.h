@@ -16,6 +16,8 @@
 #include "Slot.h"
 #include "Bank.h"
 
+const int maxNumThumbsToStore = 128;
+
 class Library {
 public:
     Library();
@@ -36,7 +38,7 @@ public:
     int numBanks();
 
 private:
-    ReferenceCountedArray<Slot> slots;
+    OwnedArray<Slot> slots;
     OwnedArray<Bank> banks;
     ScopedPointer<AudioFormatManager> formatManager;
     ScopedPointer<AudioThumbnailCache> thumbnailCache;

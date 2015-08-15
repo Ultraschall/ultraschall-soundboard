@@ -57,6 +57,7 @@ private:
 
     ScopedPointer<Bar>        topBar;
     ScopedPointer<TextButton> settingsButton;
+    ScopedPointer<TextButton> lockButton;
     
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.

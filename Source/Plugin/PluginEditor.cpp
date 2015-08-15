@@ -33,7 +33,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
-    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnRight);
+    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
     loadDirectoryButton->addListener(this);
 
     addAndMakeVisible(listButton = new TextButton());
@@ -58,6 +58,16 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     duckButton->setLookAndFeel(awesomeLookAndFeel);
     duckButton->setButtonText(FontAwesome_Comment_O);
     duckButton->addListener(this);
+    
+    addAndMakeVisible(lockButton = new TextButton());
+    lockButton->setLookAndFeel(awesomeLookAndFeel);
+    if (processor.getLocked()) {
+        lockButton->setButtonText(FontAwesome_Lock);
+    } else {
+        lockButton->setButtonText(FontAwesome_Unlock);
+    }
+    lockButton->addListener(this);
+    lockButton->setConnectedEdges(TextButton::ConnectedOnRight);
     
     addAndMakeVisible(table = new SoundboardTableComponent(p));
     listButton->setEnabled(false);
@@ -98,6 +108,7 @@ SoundboardAudioProcessorEditor::~SoundboardAudioProcessorEditor()
     gridButton          = nullptr;
     gainSlider          = nullptr;
     gainBubble          = nullptr;
+    lockButton          = nullptr;
 }
 
 void SoundboardAudioProcessorEditor::paint(Graphics &g)
@@ -117,6 +128,7 @@ void SoundboardAudioProcessorEditor::resized()
     
     gainSlider->setBounds(140, 5, 100, 24);
 
+    lockButton->setBounds(getWidth() - 185, 5, 60, 24);
     loadDirectoryButton->setBounds(getWidth() - 125, 5, 60, 24);
     settingsButton->setBounds(getWidth() - 65, 5, 60, 24);
 
@@ -194,6 +206,14 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
             duckButton->setButtonText(FontAwesome_Comment);
         } else {
             duckButton->setButtonText(FontAwesome_Comment_O);
+        }
+    }
+    else if (lockButton == buttonThatWasClicked) {
+        processor.toggleLocked();
+        if (processor.getLocked()) {
+            lockButton->setButtonText(FontAwesome_Lock);
+        } else {
+            lockButton->setButtonText(FontAwesome_Unlock);
         }
     }
 }

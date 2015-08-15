@@ -14,6 +14,7 @@
 //==============================================================================
 SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPercentage(0.33f), duckEnabled(false), fadeOutSeconds(6)
 {
+    locked = false;
     defaultLookAndFeel = new LookAndFeel_Ultraschall();
     awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
 
@@ -123,6 +124,9 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
+    mixerAudioSource.removeAllInputs();
+    players.clear();
+    
     oscManager.removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
@@ -316,6 +320,9 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
 
 void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
+    if (locked) {
+        return;
+    }
     ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
     auto program = ValueTree::fromXml(*xmlState);
     if (program.isValid()) {

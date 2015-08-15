@@ -120,6 +120,10 @@ public:
     
     // ChangeListener
     void changeListenerCallback(ChangeBroadcaster* source) override;
+    
+    bool getLocked() { return locked; }
+    void setLocked(bool lock) { locked = lock; }
+    void toggleLocked() { locked = !locked; }
 private:
 
     // Init Program Number
@@ -142,6 +146,8 @@ private:
     float                              duckFade;
     bool                               duckEnabled;
     stk::Envelope                      duckEnvelope;
+
+    bool                               locked;
 
     int                      fadeOutSeconds;
     NormalisableRange<float> fadeOutRange;

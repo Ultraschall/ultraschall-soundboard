@@ -14,7 +14,7 @@
 #include "JuceHeader.h"
 #include "Player.h"
 
-class Slot : public ReferenceCountedObject {
+class Slot {
 public:
     Slot();
     ~Slot();
@@ -24,9 +24,9 @@ public:
     void loadFile(File file);
     void clear();
 
-    typedef ReferenceCountedObjectPtr<Slot> Ptr;
 private:
     ScopedPointer<Player> player;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Slot)
 };
 
 #endif  // SLOT_H_INCLUDED

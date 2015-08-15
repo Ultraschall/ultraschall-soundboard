@@ -34,18 +34,20 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
 
 Player::~Player()
 {
-    removeAllChangeListeners();
-    thumbnail->removeAllChangeListeners();
-    thumbnail->clear();
-    removeAllChangeListeners();
     stopTimer(UpdateTimerId);
     stopTimer(FadeTimerId);
-    thumbnail->setSource(nullptr);
-    thumbnail = nullptr;
+    
     transportSource->setSource(nullptr);
     audioSourcePlayer.setSource(nullptr);
+    thumbnail->setSource(nullptr);
+    
+    removeAllChangeListeners();
     transportSource->removeAllChangeListeners();
+    thumbnail->removeAllChangeListeners();
+
+    currentAudioFileSource = nullptr;
     transportSource = nullptr;
+    thumbnail = nullptr;
 }
 
 void Player::loadFileIntoTransport(const File &audioFile)

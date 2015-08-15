@@ -21,16 +21,7 @@ SoundboardGridCell::SoundboardGridCell(Player *p) : player(p), index(-1), progre
     }
 }
 
-SoundboardGridCell::~SoundboardGridCell()
-{
-    if (player)
-    {
-        if (player->getThumbnail()) {
-            player->removeChangeListener(this);
-            player->getThumbnail()->removeChangeListener(this);
-        }
-    }
-}
+SoundboardGridCell::~SoundboardGridCell() {}
 
 void SoundboardGridCell::mouseUp(const MouseEvent &event)
 {
@@ -143,7 +134,7 @@ void SoundboardGridCell::paint(Graphics &g)
         int iconY = int((getHeight() * 0.5f) - (iconSize * 0.5f));
         if (player->isPlayed())
         {
-            FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+            FontAwesome::drawAt(g, FontAwesome_Play, iconSize, colour.withAlpha(0.9f), iconX, iconY);
         }
         else if (player->isLooping())
         {
@@ -158,11 +149,11 @@ void SoundboardGridCell::paint(Graphics &g)
             g.setFont(FontAwesome::getInstance()->getFont(getHeight() * 0.5f));
             if (player->isPlaying())
             {
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::drawAt(g, FontAwesome_Pause, iconSize, colour.withAlpha(0.9f), iconX, iconY);
             }
             else
             {
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::drawAt(g, FontAwesome_Play, iconSize, colour.withAlpha(0.9f), iconX, iconY);
             }
         }
         else
@@ -176,11 +167,11 @@ void SoundboardGridCell::paint(Graphics &g)
 
             if (player->isPlaying())
             {
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Pause, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::drawAt(g, FontAwesome_Pause, iconSize, colour.withAlpha(0.9f), iconX, iconY);
             }
             else
             {
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Play, iconSize, colour.withAlpha(0.9f)), iconX, iconY);
+                FontAwesome::drawAt(g, FontAwesome_Play, iconSize, colour.withAlpha(0.9f), iconX, iconY);
             }
         }
 
@@ -218,13 +209,13 @@ void SoundboardGridCell::paint(Graphics &g)
             {
                 iconColour = ThemeForeground1.withAlpha(0.5f);
             }
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Refresh, iconSize, iconColour),
+                FontAwesome::drawAt(g, FontAwesome_Refresh, iconSize,  colour.withAlpha(0.9f),
                                    helperRect.getX(),
                                    helperRect.getY());
 
             if (player->isPlayed())
             {
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Square_O, iconSize, colour),
+                FontAwesome::drawAt(g, FontAwesome_Square_O, iconSize, colour.withAlpha(0.9f),
                                    helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
@@ -238,7 +229,7 @@ void SoundboardGridCell::paint(Graphics &g)
                 {
                     iconColour = ThemeForeground1.withAlpha(0.5f);
                 }
-                FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getIcon(FontAwesome_Square, iconSize, iconColour),
+                FontAwesome::drawAt(g, FontAwesome_Square, iconSize, colour.withAlpha(0.9f),
                                    helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
@@ -259,9 +250,9 @@ void SoundboardGridCell::paint(Graphics &g)
                 icon = FontAwesome_Sort_Amount_Asc;
             }
 
-            FontAwesome::getInstance()->drawAt(g, FontAwesome::getInstance()->getRotatedIcon(icon, iconSize, iconColour, 0.5f),
+            FontAwesome::drawAtRotated(g, icon, iconSize, colour.withAlpha(0.9f),
                                helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
-                               helperRect.getX());
+                               helperRect.getX(), 0.5f);
         }
     }
     else

@@ -10,8 +10,6 @@
 
 #include "Library.h"
 
-const int maxNumThumbsToStore = 128;
-
 Library::Library() {
     formatManager = new AudioFormatManager();
     formatManager->registerBasicFormats();
@@ -19,7 +17,10 @@ Library::Library() {
 }
 
 Library::~Library() {
+    banks.clear(true);
+    slots.clear(true);
     formatManager = nullptr;
+    thumbnailCache = nullptr;
 }
 
 void Library::validateFiles() {
