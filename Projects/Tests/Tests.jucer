@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.9.5"
               bundleIdentifier="fm.ultraschall.Tests" includeBinaryInAppConfig="1"
-              jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="3.2.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1">
   <MAINGROUP id="HDVVGK" name="Tests">
     <GROUP id="{F71CBC7D-7DBE-5EC7-F72F-3986DF1D9230}" name="Shared">
