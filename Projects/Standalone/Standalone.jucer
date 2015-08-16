@@ -170,6 +170,6 @@
     <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="disabled"
+  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="enabled"
                JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
 </JUCERPROJECT>

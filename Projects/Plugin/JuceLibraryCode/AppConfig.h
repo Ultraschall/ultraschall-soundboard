@@ -88,7 +88,7 @@
 // juce_audio_formats flags:
 
 #ifndef    JUCE_USE_FLAC
- #define   JUCE_USE_FLAC 0
+ #define   JUCE_USE_FLAC 1
 #endif
 
 #ifndef    JUCE_USE_OGGVORBIS
