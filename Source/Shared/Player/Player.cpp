@@ -123,6 +123,9 @@ void Player::timerCallback(int timerID)
                 }
                 transportSource->setGain(fadeGain);
             } else if (fadeIn) {
+                if (!transportSource->isPlaying()) {
+                    transportSource->start();
+                }
                 fadeGain = fadeGain + fadeGainSteps;
                 if (fadeGain >= fadeGainBackup) {
                     fadeIn = false;
@@ -156,7 +159,6 @@ void Player::startFadeIn()
 {
     if (!isPlaying())
     {
-        fadeIn           = true;
         fadeGainBackup = transportSource->getGain();
         fadeGain = 0;
         float fade = fadeSeconds;
@@ -167,8 +169,9 @@ void Player::startFadeIn()
             }
         }
         fadeGainSteps = fadeGainBackup / fade / 10.0f;
-        transportSource->setGain(fadeGain);
-        play();
+        transportSource->setGain(0.0);
+        fadeIn = true;
+        playerState = Playing;
     }
 }
 
@@ -184,7 +187,7 @@ void Player::stop()
 
 void Player::play()
 {
-    if (!fadeOut)
+    if (!isFading())
     {
         transportSource->start();
         playerState = Playing;
@@ -193,7 +196,7 @@ void Player::play()
 
 void Player::pause()
 {
-    if (!fadeOut)
+    if (!isFading())
     {
         transportSource->stop();
         playerState = Paused;

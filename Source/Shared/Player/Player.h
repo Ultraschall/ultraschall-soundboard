@@ -80,6 +80,7 @@ private:
     int fadeSeconds;
     bool fadeOut;
     bool fadeIn;
+    CriticalSection fadeCriticalSection;
     float process;
     AudioFormatManager* audioFormatManager;
     AudioThumbnailCache* thumbnailCache;
