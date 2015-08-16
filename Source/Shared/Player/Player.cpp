@@ -162,10 +162,12 @@ void Player::startFadeIn()
         fadeGainBackup = transportSource->getGain();
         fadeGain = 0;
         float fade = fadeSeconds;
-        if (transportSource->getLengthInSeconds() < fade) {
-            fade = float(transportSource->getLengthInSeconds());
-            if (fade <= 0) {
-                fade = 0.1f;
+        if (!isLooping()) {
+            if (transportSource->getLengthInSeconds() < fade) {
+                fade = float(transportSource->getLengthInSeconds());
+                if (fade <= 0) {
+                    fade = 0.1f;
+                }
             }
         }
         fadeGainSteps = fadeGainBackup / fade / 10.0f;
