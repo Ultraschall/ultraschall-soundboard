@@ -127,7 +127,7 @@ class LookAndFeel_Ultraschall_Awesome : public LookAndFeel_Ultraschall
 public:
     Font getTextButtonFont(TextButton &, int buttonHeight) override
     {
-        return getFontAwesome(buttonHeight * 0.7f);
+        return FontAwesome::getInstance()->getFont(buttonHeight * 0.7f);
     }
 
 };
@@ -217,7 +217,7 @@ public:
         g.setFont(getHeight() * 0.6f);
         g.drawText(getButtonText(), x + getHeight(), 0, getWidth() - getHeight(), getHeight(), Justification::left);
 
-        g.setFont(getFontAwesome(getHeight() * 0.7f));
+        g.setFont(FontAwesome::getInstance()->getFont(getHeight() * 0.7f));
         g.setColour(ThemeForeground2.withAlpha(0.2f));
         g.drawText(icon, x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
 
@@ -248,7 +248,7 @@ public:
         g.setFont(getHeight() * 0.6f);
         g.drawText(title, x + getHeight(), 0, getWidth() - getHeight(), getHeight(), Justification::left);
 
-        g.setFont(getFontAwesome(getHeight() * 0.4f));
+        g.setFont(FontAwesome::getInstance()->getFont(getHeight() * 0.4f));
         g.setColour(ThemeForeground2.withAlpha(0.2f));
         g.drawText(FontAwesome_Circle, x + 1, 1, getHeight(), getHeight(), Justification::centred, true);
 

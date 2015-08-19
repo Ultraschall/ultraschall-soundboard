@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9.5"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
-              jucerVersion="3.1.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="3.2.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
               buildAU="0" buildRTAS="0" buildAAX="0" pluginName="Soundboard"
               pluginDesc="Soundboard" pluginManufacturer="Ultraschall" pluginManufacturerCode="ULTS"
@@ -28,6 +28,12 @@
     </GROUP>
     <GROUP id="{4964031A-DEB2-073F-7799-6988ADD970F0}" name="Shared">
       <GROUP id="{EAEF30D3-F3B1-5B55-926D-807DF6AE3AF7}" name="Player">
+        <FILE id="f1xwBg" name="Slot.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Slot.cpp"/>
+        <FILE id="AtrZ5B" name="Slot.h" compile="0" resource="0" file="../../Source/Shared/Player/Slot.h"/>
+        <FILE id="yVPG4D" name="Bank.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Bank.cpp"/>
+        <FILE id="CruHzg" name="Bank.h" compile="0" resource="0" file="../../Source/Shared/Player/Bank.h"/>
+        <FILE id="ktkk0S" name="Library.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Library.cpp"/>
+        <FILE id="zNBkhb" name="Library.h" compile="0" resource="0" file="../../Source/Shared/Player/Library.h"/>
         <FILE id="nHpeEt" name="Player.cpp" compile="1" resource="0" file="../../Source/Shared/Player/Player.cpp"/>
         <FILE id="U3Pfzt" name="Player.h" compile="0" resource="0" file="../../Source/Shared/Player/Player.h"/>
       </GROUP>
@@ -164,6 +170,6 @@
     <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="disabled"
+  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="enabled"
                JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
 </JUCERPROJECT>

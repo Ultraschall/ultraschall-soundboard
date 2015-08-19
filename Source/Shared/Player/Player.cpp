@@ -34,18 +34,20 @@ Player::Player(int index, const File &audioFile, AudioFormatManager *formatManag
 
 Player::~Player()
 {
-    removeAllChangeListeners();
-    thumbnail->removeAllChangeListeners();
-    thumbnail->clear();
-    removeAllChangeListeners();
     stopTimer(UpdateTimerId);
     stopTimer(FadeTimerId);
-    thumbnail->setSource(nullptr);
-    thumbnail = nullptr;
+    
     transportSource->setSource(nullptr);
     audioSourcePlayer.setSource(nullptr);
+    thumbnail->setSource(nullptr);
+    
+    removeAllChangeListeners();
     transportSource->removeAllChangeListeners();
+    thumbnail->removeAllChangeListeners();
+
+    currentAudioFileSource = nullptr;
     transportSource = nullptr;
+    thumbnail = nullptr;
 }
 
 void Player::loadFileIntoTransport(const File &audioFile)
@@ -121,6 +123,9 @@ void Player::timerCallback(int timerID)
                 }
                 transportSource->setGain(fadeGain);
             } else if (fadeIn) {
+                if (!transportSource->isPlaying()) {
+                    transportSource->start();
+                }
                 fadeGain = fadeGain + fadeGainSteps;
                 if (fadeGain >= fadeGainBackup) {
                     fadeIn = false;
@@ -154,19 +159,21 @@ void Player::startFadeIn()
 {
     if (!isPlaying())
     {
-        fadeIn           = true;
         fadeGainBackup = transportSource->getGain();
         fadeGain = 0;
         float fade = fadeSeconds;
-        if (transportSource->getLengthInSeconds() < fade) {
-            fade = float(transportSource->getLengthInSeconds());
-            if (fade <= 0) {
-                fade = 0.1f;
+        if (!isLooping()) {
+            if (transportSource->getLengthInSeconds() < fade) {
+                fade = float(transportSource->getLengthInSeconds());
+                if (fade <= 0) {
+                    fade = 0.1f;
+                }
             }
         }
         fadeGainSteps = fadeGainBackup / fade / 10.0f;
-        transportSource->setGain(fadeGain);
-        play();
+        transportSource->setGain(0.0);
+        fadeIn = true;
+        playerState = Playing;
     }
 }
 
@@ -182,7 +189,7 @@ void Player::stop()
 
 void Player::play()
 {
-    if (!fadeOut)
+    if (!isFading())
     {
         transportSource->start();
         playerState = Playing;
@@ -191,7 +198,7 @@ void Player::play()
 
 void Player::pause()
 {
-    if (!fadeOut)
+    if (!isFading())
     {
         transportSource->stop();
         playerState = Paused;
