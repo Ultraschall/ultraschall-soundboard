@@ -124,6 +124,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
+    oscManager.removeOscParameterListener(this);
     mixerAudioSource.removeAllInputs();
     players.clear();
     
