@@ -15,14 +15,14 @@ cd ../../
 
 echo "Bootstrap Tools"
 cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 > /dev/null
+xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
-./Submodules/JUCE/extras/Introjucer/Builds/MacOSX/build/Debug/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Tests/Tests.jucer > /dev/null
+./Submodules/JUCE/extras/Introjucer/Builds/MacOSX/build/Release/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Tests/Tests.jucer > /dev/null
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 > /dev/null
+xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
 cd ../../../../
-Projects/Tests/Builds/MacOSX/build/Debug/Tests
+Projects/Tests/Builds/MacOSX/build/Release/Tests

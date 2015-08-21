@@ -77,26 +77,26 @@
 #endif
 
 #ifndef    JUCE_USE_CDREADER
- #define   JUCE_USE_CDREADER 0
+ //#define JUCE_USE_CDREADER
 #endif
 
 #ifndef    JUCE_USE_CDBURNER
- #define   JUCE_USE_CDBURNER 0
+ //#define JUCE_USE_CDBURNER
 #endif
 
 //==============================================================================
 // juce_audio_formats flags:
 
 #ifndef    JUCE_USE_FLAC
- #define   JUCE_USE_FLAC 1
+ //#define JUCE_USE_FLAC
 #endif
 
 #ifndef    JUCE_USE_OGGVORBIS
- #define   JUCE_USE_OGGVORBIS 1
+ //#define JUCE_USE_OGGVORBIS
 #endif
 
 #ifndef    JUCE_USE_MP3AUDIOFORMAT
- #define   JUCE_USE_MP3AUDIOFORMAT 1
+ //#define JUCE_USE_MP3AUDIOFORMAT
 #endif
 
 #ifndef    JUCE_USE_LAME_AUDIO_FORMAT
@@ -111,15 +111,15 @@
 // juce_audio_processors flags:
 
 #ifndef    JUCE_PLUGINHOST_VST
- #define   JUCE_PLUGINHOST_VST 0
+ //#define JUCE_PLUGINHOST_VST
 #endif
 
 #ifndef    JUCE_PLUGINHOST_VST3
- #define   JUCE_PLUGINHOST_VST3 0
+ //#define JUCE_PLUGINHOST_VST3
 #endif
 
 #ifndef    JUCE_PLUGINHOST_AU
- #define   JUCE_PLUGINHOST_AU 0
+ //#define JUCE_PLUGINHOST_AU
 #endif
 
 //==============================================================================
@@ -183,11 +183,11 @@
 // juce_gui_extra flags:
 
 #ifndef    JUCE_WEB_BROWSER
- #define   JUCE_WEB_BROWSER 0
+ //#define JUCE_WEB_BROWSER
 #endif
 
 #ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
- #define   JUCE_ENABLE_LIVE_CONSTANT_EDITOR 0
+ //#define JUCE_ENABLE_LIVE_CONSTANT_EDITOR
 #endif
 
 
@@ -255,13 +255,13 @@
  #define JucePlugin_EditorRequiresKeyboardFocus  1
 #endif
 #ifndef  JucePlugin_Version
- #define JucePlugin_Version                1.9.5
+ #define JucePlugin_Version                1.9.6
 #endif
 #ifndef  JucePlugin_VersionCode
- #define JucePlugin_VersionCode            0x10905
+ #define JucePlugin_VersionCode            0x10906
 #endif
 #ifndef  JucePlugin_VersionString
- #define JucePlugin_VersionString          "1.9.5"
+ #define JucePlugin_VersionString          "1.9.6"
 #endif
 #ifndef  JucePlugin_VSTUniqueID
  #define JucePlugin_VSTUniqueID            JucePlugin_PluginCode

@@ -44,7 +44,7 @@ public:
     void textEditorTextChanged(TextEditor& editor) override;
 
     // Slider Listener
-    void sliderValueChanged (Slider* slider);
+    void sliderValueChanged (Slider* slider) override;
 
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
