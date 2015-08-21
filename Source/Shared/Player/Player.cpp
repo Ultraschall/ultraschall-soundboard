@@ -37,13 +37,13 @@ Player::~Player()
     stopTimer(UpdateTimerId);
     stopTimer(FadeTimerId);
     
-    transportSource->setSource(nullptr);
-    audioSourcePlayer.setSource(nullptr);
-    thumbnail->setSource(nullptr);
-    
     removeAllChangeListeners();
     transportSource->removeAllChangeListeners();
     thumbnail->removeAllChangeListeners();
+    
+    transportSource->setSource(nullptr);
+    audioSourcePlayer.setSource(nullptr);
+    thumbnail->setSource(nullptr);
 
     currentAudioFileSource = nullptr;
     transportSource = nullptr;

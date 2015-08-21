@@ -14,14 +14,19 @@
 SoundboardGridCell::SoundboardGridCell(Player *p) : player(p), index(-1), progressState(true)
 {
     setRepaintsOnMouseActivity(true);
-    if (player)
+    if (player != nullptr)
     {
         player->getThumbnail()->addChangeListener(this);
         player->addChangeListener(this);
     }
 }
 
-SoundboardGridCell::~SoundboardGridCell() {}
+SoundboardGridCell::~SoundboardGridCell() {
+    if (player != nullptr) {
+        player->getThumbnail()->removeChangeListener(this);
+        player->removeChangeListener(this);
+    }
+}
 
 void SoundboardGridCell::mouseUp(const MouseEvent &event)
 {

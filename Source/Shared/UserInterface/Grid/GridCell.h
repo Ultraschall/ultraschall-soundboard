@@ -20,6 +20,7 @@ class SoundboardGridCell : public Component, public ChangeListener
 public:
     explicit SoundboardGridCell(Player *p);
     ~SoundboardGridCell();
+    
     void mouseUp(const MouseEvent &event) override;
     void paint(Graphics &g) override;
     void changeListenerCallback(ChangeBroadcaster * /*source*/) override;
@@ -28,7 +29,9 @@ public:
 private:
     Player *player;
     int  index;
-    bool progressState; JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardGridCell)
+    bool progressState;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardGridCell)
 };
 
 #endif  // GRIDCELL_H_INCLUDED
