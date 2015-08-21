@@ -331,6 +331,10 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
             currentProgramIndex = ProgramNumberCustom;
             File directory(directoryString);
             if (directory.exists()) {
+                auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+                if (editor != nullptr) {
+                    editor->preload();
+                }
                 openDirectory(directory);
             }
         }
@@ -373,7 +377,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     updateHostDisplay();
 
     auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-    if (editor) {
+    if (editor != nullptr) {
         editor->refresh();
     }
     propertiesFile->setValue(CurrentProgramIndexIdentifier.toString(), currentProgramIndex);

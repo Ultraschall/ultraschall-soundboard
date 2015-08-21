@@ -144,6 +144,11 @@ void SoundboardAudioProcessorEditor::resized()
     processor.storeWindowWidth(getWidth());
     processor.storeWindowHeight(getHeight());
 }
+
+void SoundboardAudioProcessorEditor::preload() {
+    showTable();
+}
+
 void SoundboardAudioProcessorEditor::showTable() {
     listButton->setEnabled(false);
     gridButton->setEnabled(true);

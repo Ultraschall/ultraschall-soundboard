@@ -36,6 +36,8 @@ public:
 
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
+    
+    void preload();
 private:
     void showTable();
     void showGrid();
