@@ -265,8 +265,6 @@ void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *par
         text.append(" %", ThemeForeground1);
         gainBubble->toFront(false);
         gainBubble->showAt(gainSlider, text, 500);
-        if (grid->isVisible())
-            grid->resized();
     } else if(parameter->addressMatch("/ultraschall/soundboard/duck/gain$")) {
         gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     } else if(parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
