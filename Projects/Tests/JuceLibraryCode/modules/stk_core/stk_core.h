@@ -2,4 +2,3 @@
 // module headers to the correct external folder.
 
 #include "../../../../../Submodules/stk_module/modules/stk_core/stk_core.h"
-

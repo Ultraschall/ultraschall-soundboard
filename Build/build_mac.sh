@@ -22,7 +22,7 @@ cd ../../
 
 echo "Bootstrap Tools"
 cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -configuration Release > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
@@ -32,19 +32,19 @@ echo "Update Projects"
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -configuration Release > /dev/null
 cd ../../../../
 Projects/Tests/Builds/MacOSX/build/Release/Tests
 
 echo "Build Standalone"
 cd Projects/Standalone/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -configuration Release > /dev/null
 cd ../../../../
 cp -rf Projects/Standalone/Builds/MacOSX/build/Release/Soundboard.app Files/Standalone
 
 echo "Build Plugin"
 cd Projects/Plugin/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -configuration Release > /dev/null
 cd ../../../../
 cp -rf ~/Library/Audio/Plug-Ins/VST/Soundboard.vst Files/VST
 cp -rf ~/Library/Audio/Plug-Ins/Components/Soundboard.component Files/AudioUnit

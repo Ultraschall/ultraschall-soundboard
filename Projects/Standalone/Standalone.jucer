@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9.7"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
-              jucerVersion="3.2.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="4.0.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
               buildAU="0" buildRTAS="0" buildAAX="0" pluginName="Soundboard"
               pluginDesc="Soundboard" pluginManufacturer="Ultraschall" pluginManufacturerCode="ULTS"
