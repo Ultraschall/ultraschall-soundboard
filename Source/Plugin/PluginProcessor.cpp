@@ -398,7 +398,7 @@ int SoundboardAudioProcessor::numPlayers()
 
 Player* SoundboardAudioProcessor::playerAtIndex(int index)
 {
-    return players[index];
+    return (index < numPlayers()) ? players[index] : nullptr;
 }
 
 //==============================================================================
