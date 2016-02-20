@@ -361,15 +361,16 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
             && count < MaximumSamplePlayers) {
-            auto audioFile = new Player(count + 1, iterator.getFile(), &formatManager, thumbnailCache);
-            if (audioFile->getState() == Player::Error) {
-                delete audioFile;
-                break;
+            Player* audioFile = new Player(count, iterator.getFile(), &formatManager, thumbnailCache);
+            if (audioFile->getState() != Player::Error) {
+                audioFile->addChangeListener(this);
+                players.add(audioFile);
+                audioFile->setFadeTime(fadeOutSeconds);
+                mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
             }
-            audioFile->addChangeListener(this);
-            players.add(audioFile);
-            audioFile->setFadeTime(fadeOutSeconds);
-            mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
+            else {
+                delete audioFile;
+            }
         }
         count++;
     }
@@ -398,7 +399,7 @@ int SoundboardAudioProcessor::numPlayers()
 
 Player* SoundboardAudioProcessor::playerAtIndex(int index)
 {
-    return players[index];
+    return (index < numPlayers()) ? players[index] : nullptr;
 }
 
 //==============================================================================
