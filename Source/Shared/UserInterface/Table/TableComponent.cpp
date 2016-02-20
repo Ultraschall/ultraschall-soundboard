@@ -118,6 +118,18 @@ void SoundboardTableComponent::paintCell(Graphics& g,
     int height,
     bool /*rowIsSelected*/)
 {
+    // FIXME: JUCE inserts at least 2 rows into the table (juce_ListBox.cpp, line 230).
+    //        But that does not mean that we have at least two players since the number
+    //        of players is the number of audio files within a folder. If there is only 
+    //        one audio file in a folder -> crash!
+    //        
+    //        Until we have a proper solution, let's apply this quick sanity check.
+    ;
+    if(processor.playerAtIndex(rowNumber) == nullptr)
+    {
+        return;
+    }
+   
     g.setColour(ThemeBackground1);
     g.drawLine(static_cast<float>(width), 0, static_cast<float>(width), static_cast<float>(height), 1.5f);
 
@@ -190,6 +202,17 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
     bool /*isRowSelected*/,
     Component* existingComponentToUpdate)
 {
+    // FIXME: JUCE inserts at least 2 rows into the table (juce_ListBox.cpp, line 230).
+    //        But that does not mean that we have at least two players since the number
+    //        of players is the number of audio files within a folder. If there is only 
+    //        one audio file in a folder -> crash!
+    //        
+    //        Until we have a proper solution, let's apply this quick sanity check.
+    if (processor.playerAtIndex(rowNumber) == nullptr)
+    {
+        return nullptr;
+    }
+
     if (columnId == ColumnIdLoopButton) {
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
@@ -311,6 +334,17 @@ void SoundboardTableComponent::buttonClicked(Button* button)
 {
     auto cellButton = static_cast<SoundboardCellButton*>(button);
     if (!cellButton) {
+        return;
+    }
+
+    // FIXME: JUCE inserts at least 2 rows into the table (juce_ListBox.cpp, line 230).
+    //        But that does not mean that we have at least two players since the number
+    //        of players is the number of audio files within a folder. If there is only 
+    //        one audio file in a folder -> crash!
+    //        
+    //        Until we have a proper solution, let's apply this quick sanity check.
+    if (processor.playerAtIndex(cellButton->getRowNumber()) == nullptr)
+    {
         return;
     }
 

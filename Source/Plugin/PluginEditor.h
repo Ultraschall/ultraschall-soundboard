@@ -36,7 +36,12 @@ public:
 
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
+    
+    void preload();
 private:
+    void showTable();
+    void showGrid();
+    
     static const int TimerIdRefresh = 1;
 
     ScopedPointer<SoundboardTableComponent>    table;

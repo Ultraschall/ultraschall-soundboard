@@ -72,10 +72,6 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(table = new SoundboardTableComponent(p));
     listButton->setEnabled(false);
 
-    addAndMakeVisible(grid = new SoundboardGridComponent(p));
-    grid->setVisible(false);
-    grid->toBack();
-
     if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
         addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
@@ -133,8 +129,12 @@ void SoundboardAudioProcessorEditor::resized()
     loadDirectoryButton->setBounds(getWidth() - 125, 5, 60, 24);
     settingsButton->setBounds(getWidth() - 65, 5, 60, 24);
 
-    table->setBounds(0, 32, getWidth(), getHeight() - 32);
-    grid->setBounds(0, 32, getWidth(), getHeight() - 32);
+    if (table != nullptr) {
+        table->setBounds(0, 32, getWidth(), getHeight() - 32);
+    }
+    if (grid != nullptr) {
+        grid->setBounds(0, 32, getWidth(), getHeight() - 32);
+    }
 
     if (resizableCornerComponent)
     {
@@ -143,6 +143,38 @@ void SoundboardAudioProcessorEditor::resized()
 
     processor.storeWindowWidth(getWidth());
     processor.storeWindowHeight(getHeight());
+}
+
+void SoundboardAudioProcessorEditor::preload() {
+    showTable();
+}
+
+void SoundboardAudioProcessorEditor::showTable() {
+    listButton->setEnabled(false);
+    gridButton->setEnabled(true);
+    
+    grid = nullptr;
+    addAndMakeVisible(table = new SoundboardTableComponent(processor));
+    table->toFront(true);
+    if (resizableCornerComponent)
+    {
+        resizableCornerComponent->toFront(false);
+    }
+    resized();
+}
+
+void SoundboardAudioProcessorEditor::showGrid() {
+    gridButton->setEnabled(false);
+    listButton->setEnabled(true);
+    
+    table = nullptr;
+    addAndMakeVisible(grid = new SoundboardGridComponent(processor));
+    grid->toFront(true);
+    if (resizableCornerComponent)
+    {
+        resizableCornerComponent->toFront(false);
+    }
+    resized();
 }
 
 void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
@@ -155,9 +187,9 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
             auto directory = chooser.getResult();
             if (directory.isDirectory())
             {
+                showTable();
                 processor.openDirectory(directory);
                 table->updateContent();
-                grid->updateContent();
             }
         }
     }
@@ -176,29 +208,11 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
     }
     else if (gridButton == buttonThatWasClicked)
     {
-        gridButton->setEnabled(false);
-        listButton->setEnabled(true);
-
-        table->setVisible(false);
-        grid->setVisible(true);
-        grid->toFront(true);
-        if (resizableCornerComponent)
-        {
-            resizableCornerComponent->toFront(false);
-        }
+        showGrid();
     }
     else if (listButton == buttonThatWasClicked)
     {
-        listButton->setEnabled(false);
-        gridButton->setEnabled(true);
-
-        grid->setVisible(false);
-        table->setVisible(true);
-        table->toFront(true);
-        if (resizableCornerComponent)
-        {
-            resizableCornerComponent->toFront(false);
-        }
+        showTable();
     }
     else if (duckButton == buttonThatWasClicked) {
         bool ducking = processor.getOscManager()->getOscParameterValue("/ultraschall/soundboard/duck/enabled");
@@ -231,7 +245,9 @@ void SoundboardAudioProcessorEditor::refresh()
 {
     if (!processor.isLocked())
     {
-        table->updateContent();
+        if (table != nullptr) {
+            table->updateContent();
+        }
     }
 }
 
@@ -249,8 +265,6 @@ void SoundboardAudioProcessorEditor::handleOscParameterMessage(OscParameter *par
         text.append(" %", ThemeForeground1);
         gainBubble->toFront(false);
         gainBubble->showAt(gainSlider, text, 500);
-        if (grid->isVisible())
-            grid->resized();
     } else if(parameter->addressMatch("/ultraschall/soundboard/duck/gain$")) {
         gainSlider->setValue(gainSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     } else if(parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {

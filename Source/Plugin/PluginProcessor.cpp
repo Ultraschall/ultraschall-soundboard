@@ -124,6 +124,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
 SoundboardAudioProcessor::~SoundboardAudioProcessor()
 {
+    oscManager.removeOscParameterListener(this);
     mixerAudioSource.removeAllInputs();
     players.clear();
     
@@ -331,6 +332,10 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
             currentProgramIndex = ProgramNumberCustom;
             File directory(directoryString);
             if (directory.exists()) {
+                auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+                if (editor != nullptr) {
+                    editor->preload();
+                }
                 openDirectory(directory);
             }
         }
@@ -356,15 +361,16 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     while (iterator.next()) {
         if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
             && count < MaximumSamplePlayers) {
-            auto audioFile = new Player(count + 1, iterator.getFile(), &formatManager, thumbnailCache);
-            if (audioFile->getState() == Player::Error) {
-                delete audioFile;
-                break;
+            Player* audioFile = new Player(count, iterator.getFile(), &formatManager, thumbnailCache);
+            if (audioFile->getState() != Player::Error) {
+                audioFile->addChangeListener(this);
+                players.add(audioFile);
+                audioFile->setFadeTime(fadeOutSeconds);
+                mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
             }
-            audioFile->addChangeListener(this);
-            players.add(audioFile);
-            audioFile->setFadeTime(fadeOutSeconds);
-            mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
+            else {
+                delete audioFile;
+            }
         }
         count++;
     }
@@ -373,7 +379,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     updateHostDisplay();
 
     auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-    if (editor) {
+    if (editor != nullptr) {
         editor->refresh();
     }
     propertiesFile->setValue(CurrentProgramIndexIdentifier.toString(), currentProgramIndex);
@@ -393,7 +399,7 @@ int SoundboardAudioProcessor::numPlayers()
 
 Player* SoundboardAudioProcessor::playerAtIndex(int index)
 {
-    return players[index];
+    return (index < numPlayers()) ? players[index] : nullptr;
 }
 
 //==============================================================================

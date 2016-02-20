@@ -13,19 +13,24 @@ git checkout master > NUL
 git pull > NUL
 cd ../../
 
+cd Submodules/danlin_modules
+git checkout master > NUL
+git pull > NUL
+cd ../../
+
 echo "Bootstrap Tools"
-cd Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2013/
+cd Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
+msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /m /nologo
 cd ../../../../../../
 
 echo "Update Projects"
-"./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2013/Debug/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
+"./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/Release/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/VisualStudio2015/
 msbuild /t:clean > NUL
-msbuild /clp:ErrorsOnly;ShowTimestamp /m /nologo
-cd Debug
+msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /m /nologo
+cd Release
 Tests.exe
 cd ../../../../../
