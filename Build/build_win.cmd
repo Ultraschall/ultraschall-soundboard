@@ -9,11 +9,6 @@ echo "Update Git Submodules"
 git submodule init > NUL
 git submodule update > NUL
 
-cd Submodules/JUCE/
-git checkout master > NUL
-git pull > NUL
-cd ../../
-
 cd Submodules/danlin_modules
 git checkout master > NUL
 git pull > NUL
