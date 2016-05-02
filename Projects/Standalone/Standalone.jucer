@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9.7"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
-              jucerVersion="4.0.1" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="4.1.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
               buildAU="0" buildRTAS="0" buildAAX="0" pluginName="Soundboard"
               pluginDesc="Soundboard" pluginManufacturer="Ultraschall" pluginManufacturerCode="ULTS"
@@ -128,6 +128,10 @@
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="0" optimisation="2" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>

@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="CsXMMW" name="Soundboard" projectType="audioplug" version="1.9.8"
               bundleIdentifier="fm.ultraschall.Soundboard" includeBinaryInAppConfig="1"
-              buildVST="1" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
+              buildVST="0" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
               pluginName="Soundboard" pluginDesc="Ultraschall Soundboard" pluginManufacturer="Ultraschall"
               pluginManufacturerCode="Ultr" pluginCode="Soub" pluginChannelConfigs="{0, 1}, {0, 2}"
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
@@ -126,6 +126,10 @@
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="0" optimisation="3" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
