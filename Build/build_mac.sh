@@ -47,8 +47,6 @@ cp -rf ~/Library/Audio/Plug-Ins/Components/Soundboard.component Files/AudioUnit
 echo "Compress Output"
 cd Files/Standalone
 zip -r ../Soundboard.App.Mac.OS.X.zip Soundboard.app
-cd ../VST
-zip -r ../Soundboard.VST.Mac.OS.X.zip Soundboard.vst
 cd ../AudioUnit
 zip -r ../Soundboard.AudioUnit.Mac.OS.X.zip Soundboard.component
 cd ..
