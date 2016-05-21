@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix 
+  xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Module Id="Soundboard" Language="1033" Version="1.9.9.0">
+    <!--<Package Id="*" Keywords="Installer" InstallerVersion="200" Compressed="yes" Manufacturer="Ultraschall" InstallScope="perMachine" Platform="x64"/>-->
+    <Package Id="D87D33CF-8601-4548-867C-59ABAD7F20AF" Keywords="Installer" InstallerVersion="200" Manufacturer="Ultraschall" Platform="x64"/>
+    <Icon Id="Soundboard.exe" SourceFile="../Standalone/Builds/VisualStudio2015/x64/Release/Soundboard.exe" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="Company64Folder" Name="Ultraschall">
+          <Directory Id="INSTALLDIR" Name="Soundboard">
+            <Component Id="ProductComponent" Win64='yes' Guid='D01079E7-BE39-45D7-BFA4-36E81E1473FA'>
+              <File Source="../Standalone/Builds/VisualStudio2015/x64/Release/Soundboard.exe" DiskId='1' KeyPath='yes' ProcessorArchitecture='x64'>
+                <Shortcut Id="desktopShortcut" Directory="DesktopFolder" Name="Ultraschall Soundboard" WorkingDirectory="INSTALLDIR" Advertise="yes" Icon="Soundboard.exe" IconIndex="0" />
+                <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="Soundboard" Advertise="yes" Icon="Soundboard.exe" IconIndex="0" />
+              </File>
+            </Component>
+          </Directory>
+        </Directory>
+        <Directory Id="SteinbergApplication64Folder" Name="Steinberg">
+          <Directory Id="SteinbergVst64Folder" Name="VstPlugins">
+            <Component Id="Vst64Component" Win64='yes' Guid='9666DEF6-3F76-43B6-B7F5-20A407D5D4D8'>
+              <File Source="../Plugin/Builds/VisualStudio2015/x64/Release/Soundboard64.dll" ProcessorArchitecture='x64' />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="SteinbergApplicationFolder" Name="Steinberg">
+          <Directory Id="SteinbergVstFolder" Name="VstPlugins">
+            <Component Id="Vst32Component"  Win64='no' Guid='5A538862-9E6C-4E80-BCDC-F85B0C6BA9C6'>
+              <File Source="../Plugin/Builds/VisualStudio2015/Release/Soundboard32.dll" />
+            </Component>
+          </Directory>
+      </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" />
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuDir" Name="Ultraschall">
+          <Component Id="StartMenuShortcuts" Guid="4C1C3F96-7134-46CD-B50F-7DFF39E65331">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Module>
+</Wix>

@@ -1,31 +1,20 @@
 @echo off
+
 echo "Update Git Submodules"
 git submodule init > NUL
 git submodule update > NUL
 
-cd Submodules/danlin_modules
-git checkout master > NUL
-git pull > NUL
-cd ../../
-
-cd Submodules/danlin_modules
-git checkout master > NUL
-git pull > NUL
-cd ../../
-
 echo "Bootstrap Tools"
-cd Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/
-msbuild /t:clean > NUL
-msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /m /nologo
-cd ../../../../../../
+msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /p:Platform="Win32" /m /nologo "./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/The Introjucer.sln"
 
 echo "Update Projects"
 "./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/Release/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
 
-echo "UnitTesting"
-cd Projects/Tests/Builds/VisualStudio2015/
-msbuild /t:clean > NUL
-msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /m /nologo
-cd Release
-Tests.exe
-cd ../../../../../
+echo "Build Tests"
+msbuild /t:clean "./Projects/Tests/Builds/VisualStudio2015/Tests.sln" > NUL
+msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /p:Platform="Win32" /m /nologo "./Projects/Tests/Builds/VisualStudio2015/Tests.sln"
+msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /p:Platform="x64" /m /nologo "./Projects/Tests/Builds/VisualStudio2015/Tests.sln"
+
+echo "Testing"
+"./Projects/Tests/Builds/VisualStudio2015/x64/Release/Tests.exe"
+"./Projects/Tests/Builds/VisualStudio2015/Release/Tests.exe"
