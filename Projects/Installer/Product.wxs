@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix 
-  xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix
+  xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Name="Ultraschall Soundboard" Id="D87D33CF-8601-4548-867C-59ABAD7F20AF" Language="1033" Version="1.9.9.0" Manufacturer="Ultraschall" UpgradeCode="DAA8EDB1-3FDD-4248-948E-51451834AE37">
-    <!--<Package Id="*" Keywords="Installer" InstallerVersion="200" Compressed="yes" Manufacturer="Ultraschall" InstallScope="perMachine" Platform="x64"/>-->
-    <Package Id="*" Keywords="Installer" InstallerVersion="200" Compressed="yes" Manufacturer="Ultraschall" Platform="x64"/>
+    <Package Id="*" Keywords="Installer" InstallerVersion="301" Compressed="yes" Manufacturer="Ultraschall" Platform="x64"/>
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
-    <Media Id='1' Cabinet='Soundboard.cab' EmbedCab='yes' DiskPrompt="CD-ROM #1" />
+    <Media Id='1' Cabinet='Data.cab' EmbedCab='yes' DiskPrompt="CD-ROM #1" />
     <Property Id='DiskPrompt' Value="Ultraschall Soundboard Installation [1]" />
-    
+
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
     <Icon Id="Soundboard.exe" SourceFile="../Standalone/Builds/VisualStudio2015/x64/Release/Soundboard.exe" />
 
@@ -39,7 +38,7 @@
               <File Source="../Plugin/Builds/VisualStudio2015/Release/Soundboard32.dll" />
             </Component>
           </Directory>
-      </Directory>
+        </Directory>
       </Directory>
       <Directory Id="DesktopFolder" />
       <Directory Id="ProgramMenuFolder">
@@ -52,9 +51,8 @@
       </Directory>
     </Directory>
 
-   <Feature Id='Complete' Title='Ultraschall Soundboard' Description='The complete package.'
-      Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
- 
+    <Feature Id='Complete' Title='Ultraschall Soundboard' Description='The complete package.'
+       Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
       <Feature Id="MainProgram" Title="Standalone" Level="1">
         <ComponentRef Id="ProductComponent" />
         <ComponentRef Id="StartMenuShortcuts" />
