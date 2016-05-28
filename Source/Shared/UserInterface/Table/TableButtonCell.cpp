@@ -56,34 +56,33 @@ void SoundboardCellButton::paintButton(Graphics &g, bool isMouseOverButton, bool
                static_cast<float>(getHeight()),
                1.5f);
 
-    g.setColour(ThemeForeground1);
+	Colour colour;
+
+	colour = ThemeForeground1;
 
     if (flashing)
     {
         if (flashingState)
         {
-            g.setColour(ThemeForeground1.contrasting(0.5f));
+			colour = ThemeForeground1.contrasting(0.5f);
         }
     }
     else if (highlightState)
     {
-        g.setColour(highlightColour);
+		colour = highlightColour;
     }
     else if (!isEnabled())
     {
-        g.setColour(ThemeForeground2);
+		colour = ThemeForeground2;
     }
     else if (isMouseOverButton)
     {
-        g.setColour(ThemeForeground1.contrasting(0.1f));
+		colour = ThemeForeground1.contrasting(0.1f);
     }
 
-    g.setFont(FontAwesome::getInstance()->getFont(getHeight() * 0.7f));
-    if (iconRotation != 0)
-    {
-        g.addTransform(AffineTransform::rotation(-(float_Pi * iconRotation), getWidth() * 0.5f, getHeight() * 0.5f));
-    }
-    g.drawText(icon, 0, 0, getWidth(), getHeight(), Justification::centred, true);
+	auto iconSize = min(getHeight(), getWidth()) * 0.7f;
+
+	FontAwesome::drawCenterdRotated(g, icon, iconSize, colour, Rectangle<int>(getWidth(), getHeight()), iconRotation);
 }
 
 // Timer
