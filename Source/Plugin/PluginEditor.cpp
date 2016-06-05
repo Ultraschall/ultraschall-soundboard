@@ -31,7 +31,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     gainBubble->setAllowedPlacement(BubbleMessageComponent::BubblePlacement::below);
 
     addAndMakeVisible(loadDirectoryButton = new TextButton());
-    loadDirectoryButton->setButtonText(FontAwesome_Folder_Open_O);
+    loadDirectoryButton->setButtonText(FontAwesome_FolderOpenO);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
     loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
     loadDirectoryButton->addListener(this);
@@ -56,7 +56,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 
     addAndMakeVisible(duckButton = new TextButton());
     duckButton->setLookAndFeel(awesomeLookAndFeel);
-    duckButton->setButtonText(FontAwesome_Comment_O);
+    duckButton->setButtonText(FontAwesome_CommentO);
     duckButton->addListener(this);
     
     addAndMakeVisible(lockButton = new TextButton());
@@ -220,7 +220,7 @@ void SoundboardAudioProcessorEditor::buttonClicked(Button *buttonThatWasClicked)
         if (!ducking) {
             duckButton->setButtonText(FontAwesome_Comment);
         } else {
-            duckButton->setButtonText(FontAwesome_Comment_O);
+            duckButton->setButtonText(FontAwesome_CommentO);
         }
     }
     else if (lockButton == buttonThatWasClicked) {

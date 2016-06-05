@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="CsXMMW" name="Soundboard" projectType="audioplug" version="1.9.8"
+<JUCERPROJECT id="CsXMMW" name="Plugin" projectType="audioplug" version="1.9.9"
               bundleIdentifier="fm.ultraschall.Soundboard" includeBinaryInAppConfig="1"
-              buildVST="0" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
+              buildVST="1" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
               pluginName="Soundboard" pluginDesc="Ultraschall Soundboard" pluginManufacturer="Ultraschall"
               pluginManufacturerCode="Ultr" pluginCode="Soub" pluginChannelConfigs="{0, 1}, {0, 2}"
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
@@ -11,7 +11,7 @@
               pluginAAXCategory="" jucerVersion="4.1.0" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" companyName="Ultraschall"
               pluginIsMidiEffectPlugin="0">
-  <MAINGROUP id="AXAawk" name="Soundboard">
+  <MAINGROUP id="AXAawk" name="Plugin">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
       <GROUP id="{96E863BE-1798-DA5A-3A74-AA430C6F5C05}" name="Plugin">
         <FILE id="YqHVN1" name="PluginEditor.cpp" compile="1" resource="0"
@@ -69,9 +69,11 @@
                vst3Folder="~/SDKs/VST3 SDK" extraCompilerFlags="" extraDefs="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"/>
+                       isDebug="1" optimisation="1" targetName="fm.ultraschall.plugins.soundboard"
+                       cppLibType="libc++"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="default"
-                       isDebug="0" optimisation="2" targetName="Soundboard" cppLibType="libc++"/>
+                       isDebug="0" optimisation="2" targetName="fm.ultraschall.plugins.soundboard"
+                       cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
@@ -97,9 +99,9 @@
                 extraLinkerFlags="-stdlib=libc++">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
-                       targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       targetName="fm.ultraschall.plugins.soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
-                       targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       targetName="fm.ultraschall.plugins.soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>
@@ -124,13 +126,13 @@
     <VS2015 targetFolder="Builds/VisualStudio2015" vstFolder="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       isDebug="1" optimisation="1" targetName="Soundboard32" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       isDebug="0" optimisation="3" targetName="Soundboard32" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       isDebug="1" optimisation="1" targetName="Soundboard64" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       isDebug="0" optimisation="3" targetName="Soundboard64" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>

@@ -269,7 +269,7 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
             button->setEnabled(true);
         }
         else if (processor.playerAtIndex(rowNumber)->isPlayed()) {
-            button->setIcon(FontAwesome_Square_O);
+            button->setIcon(FontAwesome_SquareO);
             button->setEnabled(true);
             button->setHighlighted(true);
         }
@@ -280,16 +280,16 @@ Component* SoundboardTableComponent::refreshComponentForCell(int rowNumber,
         auto button = static_cast<SoundboardCellButton*>(existingComponentToUpdate);
 
         if (button == nullptr) {
-            button = new SoundboardCellButton("Fade-In", FontAwesome_Sort_Amount_Asc);
+            button = new SoundboardCellButton("Fade-In", FontAwesome_SortAmountAsc);
             button->setRotation(0.5);
             button->setTag(ButtonTagFade);
             button->addListener(this);
             button->setHighlightColour(ThemeOrange);
         }
         if (processor.playerAtIndex(rowNumber)->isPlaying()) {
-            button->setIcon(FontAwesome_Sort_Amount_Desc);
+            button->setIcon(FontAwesome_SortAmountDesc);
         } else {
-            button->setIcon(FontAwesome_Sort_Amount_Asc);
+            button->setIcon(FontAwesome_SortAmountAsc);
         }
         button->setEnabled(!processor.playerAtIndex(rowNumber)->isFading());
         button->setHighlighted(processor.playerAtIndex(rowNumber)->isFading());

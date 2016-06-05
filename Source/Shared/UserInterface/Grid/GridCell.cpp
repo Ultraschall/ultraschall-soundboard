@@ -220,7 +220,7 @@ void SoundboardGridCell::paint(Graphics &g)
 
             if (player->isPlayed())
             {
-                FontAwesome::drawAt(g, FontAwesome_Square_O, iconSize, colour.withAlpha(0.9f),
+                FontAwesome::drawAt(g, FontAwesome_SquareO, iconSize, colour.withAlpha(0.9f),
                                    helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
@@ -250,9 +250,9 @@ void SoundboardGridCell::paint(Graphics &g)
             }
 
             if (player->isPlaying()) {
-                icon = FontAwesome_Sort_Amount_Desc;
+                icon = FontAwesome_SortAmountDesc;
             } else {
-                icon = FontAwesome_Sort_Amount_Asc;
+                icon = FontAwesome_SortAmountAsc;
             }
 
             FontAwesome::drawAtRotated(g, icon, iconSize, colour.withAlpha(0.9f),

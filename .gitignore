@@ -28,3 +28,6 @@ MacOSX.iws
 workspace.xml
 Builds
 Files
+.vscode/
+Projects/Installer/bin/
+Projects/Installer/obj/

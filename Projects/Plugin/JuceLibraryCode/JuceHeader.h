@@ -41,9 +41,9 @@
 #if ! JUCE_DONT_DECLARE_PROJECTINFO
 namespace ProjectInfo
 {
-    const char* const  projectName    = "Soundboard";
-    const char* const  versionString  = "1.9.8";
-    const int          versionNumber  = 0x10908;
+    const char* const  projectName    = "Plugin";
+    const char* const  versionString  = "1.9.9";
+    const int          versionNumber  = 0x10909;
 }
 #endif
 
