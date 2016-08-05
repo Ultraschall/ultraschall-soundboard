@@ -4,7 +4,7 @@
               bundleIdentifier="fm.ultraschall.Soundboard" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
               pluginName="Soundboard" pluginDesc="Ultraschall Soundboard" pluginManufacturer="Ultraschall"
-              pluginManufacturerCode="Ultr" pluginCode="Soub" pluginChannelConfigs="{0, 1}, {0, 2}"
+              pluginManufacturerCode="Ultr" pluginCode="Soub" pluginChannelConfigs="{1, 1}, {2, 2}"
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="1"
               pluginAUExportPrefix="SoundboardAU" pluginRTASCategory="" aaxIdentifier=""
