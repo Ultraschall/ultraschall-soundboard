@@ -275,7 +275,7 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
     mixerAudioSource.getNextAudioBlock(sourceChannelInfo);
 
     for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
-        buffer.copyFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
+        buffer.addFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
 
     if (duckEnvelope.getState()) {
@@ -566,7 +566,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
         std::smatch match;
         std::string result;
-		const std::string search = parameter->getAddress().toStdString();
+        const std::string search = parameter->getAddress().toStdString();
         if (std::regex_search(search, match, re) && match.size() > 1) {
             result = match.str(1);
         } else {
