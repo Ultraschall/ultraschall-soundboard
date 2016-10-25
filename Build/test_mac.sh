@@ -10,7 +10,7 @@ cd ../../
 
 echo "Bootstrap Tools"
 cd Submodules/JUCE/extras/Projucer/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -configuration Release > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
@@ -18,6 +18,6 @@ echo "Update Projects"
 
 echo "UnitTesting"
 cd Projects/Tests/Builds/MacOSX/
-xcodebuild -sdk macosx10.9 -configuration Release > /dev/null
+xcodebuild -configuration Release > /dev/null
 cd ../../../../
 Projects/Tests/Builds/MacOSX/build/Release/Tests
