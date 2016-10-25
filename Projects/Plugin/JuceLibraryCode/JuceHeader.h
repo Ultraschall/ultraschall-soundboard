@@ -14,23 +14,25 @@
 #define __APPHEADERFILE_CSXMMW__
 
 #include "AppConfig.h"
-#include "modules/danlin_fontawesome/danlin_fontawesome.h"
-#include "modules/danlin_oscpack/danlin_oscpack.h"
-#include "modules/danlin_oscserver/danlin_oscserver.h"
-#include "modules/juce_audio_basics/juce_audio_basics.h"
-#include "modules/juce_audio_devices/juce_audio_devices.h"
-#include "modules/juce_audio_formats/juce_audio_formats.h"
-#include "modules/juce_audio_plugin_client/juce_audio_plugin_client.h"
-#include "modules/juce_audio_processors/juce_audio_processors.h"
-#include "modules/juce_audio_utils/juce_audio_utils.h"
-#include "modules/juce_core/juce_core.h"
-#include "modules/juce_data_structures/juce_data_structures.h"
-#include "modules/juce_events/juce_events.h"
-#include "modules/juce_graphics/juce_graphics.h"
-#include "modules/juce_gui_basics/juce_gui_basics.h"
-#include "modules/juce_gui_extra/juce_gui_extra.h"
-#include "modules/stk_core/stk_core.h"
-#include "modules/stk_generators/stk_generators.h"
+
+#include <danlin_fontawesome/danlin_fontawesome.h>
+#include <danlin_oscpack/danlin_oscpack.h>
+#include <danlin_oscserver/danlin_oscserver.h>
+#include <juce_audio_basics/juce_audio_basics.h>
+#include <juce_audio_devices/juce_audio_devices.h>
+#include <juce_audio_formats/juce_audio_formats.h>
+#include <juce_audio_plugin_client/juce_audio_plugin_client.h>
+#include <juce_audio_processors/juce_audio_processors.h>
+#include <juce_audio_utils/juce_audio_utils.h>
+#include <juce_core/juce_core.h>
+#include <juce_data_structures/juce_data_structures.h>
+#include <juce_events/juce_events.h>
+#include <juce_graphics/juce_graphics.h>
+#include <juce_gui_basics/juce_gui_basics.h>
+#include <juce_gui_extra/juce_gui_extra.h>
+#include <stk_core/stk_core.h>
+#include <stk_generators/stk_generators.h>
+
 
 #if ! DONT_SET_USING_JUCE_NAMESPACE
  // If your code uses a lot of JUCE classes, then this will obviously save you

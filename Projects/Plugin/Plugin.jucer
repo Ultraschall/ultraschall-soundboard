@@ -8,9 +8,9 @@
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="1"
               pluginAUExportPrefix="SoundboardAU" pluginRTASCategory="" aaxIdentifier=""
-              pluginAAXCategory="" jucerVersion="4.1.0" companyWebsite="http://ultraschall.fm"
+              pluginAAXCategory="" jucerVersion="4.2.4" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" companyName="Ultraschall"
-              pluginIsMidiEffectPlugin="0">
+              pluginIsMidiEffectPlugin="0" buildAUv3="0">
   <MAINGROUP id="AXAawk" name="Plugin">
     <GROUP id="{B4FD0EED-E551-562E-91FB-C4DFC6108580}" name="Source">
       <GROUP id="{96E863BE-1798-DA5A-3A74-AA430C6F5C05}" name="Plugin">

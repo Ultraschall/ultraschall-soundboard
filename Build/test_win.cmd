@@ -5,10 +5,10 @@ git submodule init > NUL
 git submodule update > NUL
 
 echo "Bootstrap Tools"
-msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /p:Platform="Win32" /m /nologo "./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/The Introjucer.sln"
+msbuild /clp:ErrorsOnly;ShowTimestamp /property:Configuration=Release /p:Platform="Win32" /m /nologo "./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/Projucer.sln"
 
 echo "Update Projects"
-"./Submodules/JUCE/extras/Introjucer/Builds/VisualStudio2015/Release/The Introjucer.exe" --resave Projects/Tests/Tests.jucer
+"./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/Release/Projucer.exe" --resave Projects/Tests/Tests.jucer
 
 echo "Build Tests"
 msbuild /t:clean "./Projects/Tests/Builds/VisualStudio2015/Tests.sln" > NUL

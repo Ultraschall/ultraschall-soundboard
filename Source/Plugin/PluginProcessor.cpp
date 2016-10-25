@@ -71,7 +71,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
 
     PropertiesFile::Options options;
-    options.applicationName = JucePlugin_Name;
+    options.applicationName = "Ultraschall Soundboard";
     options.filenameSuffix = "properties";
     options.folderName = "UltraschallSoundboard";
     options.osxLibrarySubFolder = "Application Support";
@@ -148,7 +148,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
 //==============================================================================
 const String SoundboardAudioProcessor::getName() const
 {
-    return JucePlugin_Name;
+    return "Ultraschall Soundboard";
 }
 
 const String SoundboardAudioProcessor::getInputChannelName(int channelIndex) const
