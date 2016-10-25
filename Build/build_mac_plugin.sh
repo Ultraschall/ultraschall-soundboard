@@ -15,12 +15,12 @@ git pull > /dev/null
 cd ../../
 
 echo "Bootstrap Tools"
-cd Submodules/JUCE/extras/Introjucer/Builds/MacOSX/
+cd Submodules/JUCE/extras/Projucer/Builds/MacOSX/
 xcodebuild -configuration Release > /dev/null
 cd ../../../../../../
 
 echo "Update Projects"
-./Submodules/JUCE/extras/Introjucer/Builds/MacOSX/build/Release/Introjucer.app/Contents/MacOS/Introjucer --resave Projects/Plugin/Plugin.jucer > /dev/null
+./Submodules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer --resave Projects/Plugin/Plugin.jucer > /dev/null
 
 echo "Build Plugin"
 cd Projects/Plugin/Builds/MacOSX/
