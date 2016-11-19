@@ -16,6 +16,7 @@ var verbosity = Argument<string>("verbosity", "Verbose");
 
 string os = "Windows";
 bool verbose = true;
+string projucer = "";
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -26,6 +27,11 @@ Setup(context =>
     if (IsRunningOnUnix()) {
         // TODO: 19.11.2016 dnl -> detect macOS and Linux here
 	    os = "macOS";
+    }
+    if (os == "Windows") {
+        projucer = "./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/x64/Release/Projucer.exe";
+    } else if (os == "macOS") {
+        projucer = "./Submodules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer";
     }
     if (verbosity != "Verbose" || verbosity != "Diagnostic") {
         verbose = false;
@@ -42,9 +48,11 @@ Teardown(context =>
 ///////////////////////////////////////////////////////////////////////////////
 // TASK DEFINITIONS
 ///////////////////////////////////////////////////////////////////////////////
-
-Task("Install")
-    .Does(() => {});
+Task("Prepare")
+    .WithCriteria(() => !FileExists(projucer))
+    .Does(() => {
+        RunTarget("Bootstrap");
+    });
 
 Task("Bootstrap")
     .Does(() => {
@@ -55,9 +63,6 @@ Task("Bootstrap")
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.x64));
-            Information("Create Projects");
-            StartProcess("./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/x64/Release/Projucer.exe", "--resave Projects/Standalone/Standalone.jucer");
-            StartProcess("./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/x64/Release/Projucer.exe", "--resave Projects/Plugin/Plugin.jucer");
 	    } else if (os == "macOS") {
             Information("Build Projucer");
             DoInDirectory("./Submodules/JUCE/extras/Projucer/Builds/MacOSX", () => {
@@ -66,15 +71,13 @@ Task("Bootstrap")
 		            Configuration = configuration
 		        });
             });
-            Information("Create Projects");
-            StartProcess("./Submodules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer", "--resave Projects/Standalone/Standalone.jucer");
-            StartProcess("./Submodules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer", "--resave Projects/Plugin/Plugin.jucer");
 	    }
     });
 
 Task("Standalone")
     .Does(() => {
         Information("Build Standalone Application");
+        StartProcess(projucer, "--resave Projects/Standalone/Standalone.jucer");
 	    if(os == "Windows") {
             MSBuild("./Projects/Standalone/Builds/VisualStudio2015/Soundboard.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
@@ -93,6 +96,7 @@ Task("Standalone")
 
 Task("Plugin")
     .Does(() => {
+        StartProcess(projucer, "--resave Projects/Plugin/Plugin.jucer");
         if (os == "Windows") {
             Information("Build Plugin 32bit");
 	        MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
@@ -100,6 +104,12 @@ Task("Plugin")
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.Win32));
+            Information("Build Plugin 64bit");
+            MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
+                .SetVerbosity(Verbosity.Minimal)
+                .WithTarget("Build")
+                .SetConfiguration(configuration)
+                .SetPlatformTarget(PlatformTarget.x64));
 	    } else if (os == "macOS") {
             Information("Build Plugin");
 	        DoInDirectory("./Projects/Plugin/Builds/MacOSX", () => {
@@ -108,18 +118,6 @@ Task("Plugin")
                     Configuration = configuration
                 });
             });
-	    }
-    });
-
-Task("Plugin64")
-    .Does(() => {
-	    if (os == "Windows") {
-            Information("Build Plugin 64bit");
-            MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
-                .SetVerbosity(Verbosity.Minimal)
-                .WithTarget("Build")
-                .SetConfiguration(configuration)
-                .SetPlatformTarget(PlatformTarget.x64));
 	    }
     });
 
@@ -148,11 +146,10 @@ Task("Installer")
     });
 
 Task("Build")
-    .IsDependentOn("Bootstrap")
+    .IsDependentOn("Prepare")
     .IsDependentOn("Standalone")
     .IsDependentOn("Plugin")
-    .IsDependentOn("Plugin64")
-    .Does(() => {});
+    .IsDependentOn("Installer");
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
