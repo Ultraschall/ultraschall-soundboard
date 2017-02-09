@@ -21,8 +21,8 @@ echo "Build Plugin"
 cd Projects/Plugin/Builds/MacOSX/
 xcodebuild -configuration Release > /dev/null
 cd ../../../../
-cp -rf ~/Library/Audio/Plug-Ins/VST/Soundboard.vst Files/VST
-cp -rf ~/Library/Audio/Plug-Ins/Components/Soundboard.component Files/AudioUnit
+cp -rf ./Projects/Plugin/Builds/MacOSX/build/Release/Soundboard.vst Files/VST
+cp -rf ./Projects/Plugin/Builds/MacOSX/build/Release/Soundboard.component Files/AudioUnit
 
 echo "Compress Output"
 cd Files//VST
