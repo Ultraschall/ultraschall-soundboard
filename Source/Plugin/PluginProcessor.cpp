@@ -22,19 +22,19 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
     // Internal OSC Parameter
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
-    
+
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/receive/enabled"), true);
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/receive/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/receive/port"), true);
-    
+
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/remote/enabled"), true);
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/remote/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/remote/port"), true);
-    
+
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/repeater/enabled"), true);
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/repeater/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/repeater/port"), true);
-    
+
     // OSC Parameter
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
@@ -127,7 +127,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     oscManager.removeOscParameterListener(this);
     mixerAudioSource.removeAllInputs();
     players.clear();
-    
+
     oscManager.removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
@@ -139,7 +139,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
 
     defaultLookAndFeel = nullptr;
     awesomeLookAndFeel = nullptr;
-    
+
     Logger::setCurrentLogger(nullptr);
     logger = nullptr;
     FontAwesome::deleteInstance();
@@ -451,14 +451,14 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
 {
     if (timerID == TimerOscServerDelay) {
         stopTimer(TimerOscServerDelay);
-        
+
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host",
                              propertiesFile->getValue(OscRepeaterHostnameIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port",
                              propertiesFile->getIntValue(OscRepeaterPortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled",
                              propertiesFile->getValue(OscRepeaterEnabledIdentifier));
-        
+
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host",
                              propertiesFile->getValue(OscRemoteHostnameIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port",
@@ -472,7 +472,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                              propertiesFile->getIntValue(OscReceivePortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
                              propertiesFile->getValue(OscReceiveEnabledIdentifier));
-        
+
     } else if (timerID == TimerMidiEvents) {
         if (!midiBuffer.isEmpty()) {
             MidiBuffer midiMessages;
@@ -576,7 +576,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         playerIndex--;
         if (!playerAtIndex(playerIndex))
             return;
-        
+
         if (parameter->addressMatch(".+/play$")) {
             if (parameter->getValue()) {
                 if (!playerAtIndex(playerIndex)->isPlaying()) {
@@ -589,7 +589,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             }
         } else if (parameter->addressMatch(".+/pause$")) {
             if (parameter->getValue()) {
-                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                if (playerAtIndex(playerIndex)->isPlaying()) {
                     playerAtIndex(playerIndex)->pause();
                 }
             }
