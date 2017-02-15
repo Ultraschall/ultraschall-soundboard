@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="CsXMMW" name="Plugin" projectType="audioplug" version="1.9.9"
+<JUCERPROJECT id="CsXMMW" name="Plugin" projectType="audioplug" version="3.0.0"
               bundleIdentifier="fm.ultraschall.Soundboard" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="0" buildAU="1" buildRTAS="0" buildAAX="0"
               pluginName="Soundboard" pluginDesc="Ultraschall Soundboard" pluginManufacturer="Ultraschall"
