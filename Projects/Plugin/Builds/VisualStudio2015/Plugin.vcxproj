@@ -81,7 +81,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\Submodules\danlin_modules\modules;..\..\..\..\Submodules\JUCE\modules;..\..\..\..\Submodules\stk_module\modules;..\..\..\..\Source\Plugin;..\..\..\..\Source\Shared\Player;..\..\..\..\Source\Shared\UserInterface;..\..\..\..\Source\Shared\UserInterface\Grid;..\..\..\..\Source\Shared\UserInterface\Settings;..\..\..\..\Source\Shared\UserInterface\Table;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=1.9.9;JUCE_APP_VERSION_HEX=0x10909;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=3.0.0;JUCE_APP_VERSION_HEX=0x30000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -122,7 +122,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\Submodules\danlin_modules\modules;..\..\..\..\Submodules\JUCE\modules;..\..\..\..\Submodules\stk_module\modules;..\..\..\..\Source\Plugin;..\..\..\..\Source\Shared\Player;..\..\..\..\Source\Shared\UserInterface;..\..\..\..\Source\Shared\UserInterface\Grid;..\..\..\..\Source\Shared\UserInterface\Settings;..\..\..\..\Source\Shared\UserInterface\Table;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=1.9.9;JUCE_APP_VERSION_HEX=0x10909;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=3.0.0;JUCE_APP_VERSION_HEX=0x30000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -165,7 +165,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\Submodules\danlin_modules\modules;..\..\..\..\Submodules\JUCE\modules;..\..\..\..\Submodules\stk_module\modules;..\..\..\..\Source\Plugin;..\..\..\..\Source\Shared\Player;..\..\..\..\Source\Shared\UserInterface;..\..\..\..\Source\Shared\UserInterface\Grid;..\..\..\..\Source\Shared\UserInterface\Settings;..\..\..\..\Source\Shared\UserInterface\Table;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=1.9.9;JUCE_APP_VERSION_HEX=0x10909;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=3.0.0;JUCE_APP_VERSION_HEX=0x30000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -204,7 +204,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\Submodules\danlin_modules\modules;..\..\..\..\Submodules\JUCE\modules;..\..\..\..\Submodules\stk_module\modules;..\..\..\..\Source\Plugin;..\..\..\..\Source\Shared\Player;..\..\..\..\Source\Shared\UserInterface;..\..\..\..\Source\Shared\UserInterface\Grid;..\..\..\..\Source\Shared\UserInterface\Settings;..\..\..\..\Source\Shared\UserInterface\Table;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=1.9.9;JUCE_APP_VERSION_HEX=0x10909;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=3.0.0;JUCE_APP_VERSION_HEX=0x30000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>

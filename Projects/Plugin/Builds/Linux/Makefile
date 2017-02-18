@@ -26,7 +26,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCER_LINUX_MAKE_7346DA2A=1 -DJUCE_APP_VERSION=1.9.9 -DJUCE_APP_VERSION_HEX=0x10909 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../../../Submodules/danlin_modules/modules -I../../../../Submodules/JUCE/modules -I../../../../Submodules/stk_module/modules -I../../../../Source/Plugin -I../../../../Source/Shared/Player -I../../../../Source/Shared/UserInterface -I../../../../Source/Shared/UserInterface/Grid -I../../../../Source/Shared/UserInterface/Settings -I../../../../Source/Shared/UserInterface/Table
+  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCER_LINUX_MAKE_7346DA2A=1 -DJUCE_APP_VERSION=3.0.0 -DJUCE_APP_VERSION_HEX=0x30000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../../../Submodules/danlin_modules/modules -I../../../../Submodules/JUCE/modules -I../../../../Submodules/stk_module/modules -I../../../../Source/Plugin -I../../../../Source/Shared/Player -I../../../../Source/Shared/UserInterface -I../../../../Source/Shared/UserInterface/Grid -I../../../../Source/Shared/UserInterface/Settings -I../../../../Source/Shared/UserInterface/Table
   JUCE_CFLAGS += $(CFLAGS) $(JUCE_CPPFLAGS) $(TARGET_ARCH) -g -ggdb -fPIC -O0 -stdlib=libc++ -Wno-c++11-narrowing
   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11
   JUCE_LDFLAGS += $(LDFLAGS) $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -Wl,--no-undefined -shared -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2 libcurl x11 xext xinerama) -ldl -lpthread -lrt -stdlib=libc++
@@ -46,7 +46,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCER_LINUX_MAKE_7346DA2A=1 -DJUCE_APP_VERSION=1.9.9 -DJUCE_APP_VERSION_HEX=0x10909 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../../../Submodules/danlin_modules/modules -I../../../../Submodules/JUCE/modules -I../../../../Submodules/stk_module/modules -I../../../../Source/Plugin -I../../../../Source/Shared/Player -I../../../../Source/Shared/UserInterface -I../../../../Source/Shared/UserInterface/Grid -I../../../../Source/Shared/UserInterface/Settings -I../../../../Source/Shared/UserInterface/Table
+  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCER_LINUX_MAKE_7346DA2A=1 -DJUCE_APP_VERSION=3.0.0 -DJUCE_APP_VERSION_HEX=0x30000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../../../Submodules/danlin_modules/modules -I../../../../Submodules/JUCE/modules -I../../../../Submodules/stk_module/modules -I../../../../Source/Plugin -I../../../../Source/Shared/Player -I../../../../Source/Shared/UserInterface -I../../../../Source/Shared/UserInterface/Grid -I../../../../Source/Shared/UserInterface/Settings -I../../../../Source/Shared/UserInterface/Table
   JUCE_CFLAGS += $(CFLAGS) $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -Os -stdlib=libc++ -Wno-c++11-narrowing
   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11
   JUCE_LDFLAGS += $(LDFLAGS) $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) -Wl,--no-undefined -shared -fvisibility=hidden -L/usr/X11R6/lib/ $(shell pkg-config --libs alsa freetype2 libcurl x11 xext xinerama) -ldl -lpthread -lrt -stdlib=libc++

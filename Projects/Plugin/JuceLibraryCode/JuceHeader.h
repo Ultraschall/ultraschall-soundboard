@@ -44,8 +44,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Plugin";
-    const char* const  versionString  = "1.9.9";
-    const int          versionNumber  = 0x10909;
+    const char* const  versionString  = "3.0.0";
+    const int          versionNumber  = 0x30000;
 }
 #endif
 
