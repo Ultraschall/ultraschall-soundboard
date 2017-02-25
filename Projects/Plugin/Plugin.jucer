@@ -168,5 +168,6 @@
     <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
     <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="enabled"
+               JUCE_USE_MP3AUDIOFORMAT="enabled"/>
 </JUCERPROJECT>
