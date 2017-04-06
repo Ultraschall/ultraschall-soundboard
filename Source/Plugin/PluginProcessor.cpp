@@ -321,9 +321,13 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
 
 void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
+    //FIXME: Workaround until the state gain bug is fixed
+    return;
+
     if (locked) {
         return;
     }
+
     ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
     auto program = ValueTree::fromXml(*xmlState);
     if (program.isValid()) {
