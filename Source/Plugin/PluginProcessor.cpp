@@ -321,8 +321,15 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
 
 void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
-    //FIXME: Workaround until the state gain bug is fixed
-    return;
+    //If a player is playing, no preset data should be load
+    for (int index = 0; index < numPlayers(); index++) {
+	    Player *player = playerAtIndex(index);
+	    if (player) {
+		    if (player->isPlaying()) {
+			    return;
+		    }
+	    }
+    }
 
     if (locked) {
         return;
