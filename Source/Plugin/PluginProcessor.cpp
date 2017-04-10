@@ -319,35 +319,47 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
     copyXmlToBinary(*xml, destData);
 }
 
-void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
+bool SoundboardAudioProcessor::AllPlayersStopped() const noexcept
 {
-    //FIXME: Workaround until the state gain bug is fixed
-    return;
-
-    if (locked) {
-        return;
-    }
-
-    ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
-    auto program = ValueTree::fromXml(*xmlState);
-    if (program.isValid()) {
-        auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
-        if (directoryString != String::empty) {
-            currentProgramIndex = ProgramNumberCustom;
-            File directory(directoryString);
-            if (directory.exists()) {
-                auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-                if (editor != nullptr) {
-                    editor->preload();
-                }
-                openDirectory(directory);
+    size_t numberOfActivePlayers = 0;
+    
+    for (int index = 0; index < numPlayers(); index++) {
+        Player* player = playerAtIndex(index);
+        if (player != nullptr) {
+            if (player->isStopped() == false) {
+                ++numberOfActivePlayers;
             }
         }
-        for (int index = 0; index < numPlayers(); index++) {
-            if (playerAtIndex(index)) {
-                float gain = program.getProperty(PlayerGainIdentifier.toString() + String(index));
-                playerAtIndex(index)->setGain(gain);
-                updatePlayerState(index);
+    }
+    
+    return 0 == numberOfActivePlayers;
+}
+
+void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
+{
+    if(AllPlayersStopped() == true) {
+        ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+        auto program = ValueTree::fromXml(*xmlState);
+        if (program.isValid()) {
+            auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
+            if (directoryString != String::empty) {
+                currentProgramIndex = ProgramNumberCustom;
+                File directory(directoryString);
+                if (directory.exists()) {
+                    auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+                    if (editor != nullptr) {
+                        editor->preload();
+                    }
+                    openDirectory(directory);
+                }
+            }
+
+            for (int index = 0; index < numPlayers(); index++) {
+                if (playerAtIndex(index)) {
+                    float gain = program.getProperty(PlayerGainIdentifier.toString() + String(index));
+                    playerAtIndex(index)->setGain(gain);
+                    updatePlayerState(index);
+                }
             }
         }
     }
@@ -396,12 +408,12 @@ void SoundboardAudioProcessor::openDirectory(File directory)
 }
 
 //==============================================================================
-int SoundboardAudioProcessor::numPlayers()
+int SoundboardAudioProcessor::numPlayers() const noexcept
 {
     return players.size();
 }
 
-Player* SoundboardAudioProcessor::playerAtIndex(int index)
+Player* SoundboardAudioProcessor::playerAtIndex(int index) const noexcept
 {
     return (index < numPlayers()) ? players[index] : nullptr;
 }
