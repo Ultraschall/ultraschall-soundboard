@@ -174,7 +174,7 @@ private:
         PlayStop = 0, PlayPause = 1, PlayFadeOut = 2, HoldAndPlay = 3
     };
    
-    bool AllPlayersStopped() const noexcept;
+    bool AllPlayersNotPlaying() const noexcept;
    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)

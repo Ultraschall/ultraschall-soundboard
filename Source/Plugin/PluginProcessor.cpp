@@ -216,7 +216,7 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
         return;
     if (index == ProgramNumberInit) {
         if(!getLocked()) {
-            if(AllPlayersStopped()) {
+            if(AllPlayersNotPlaying()) {
                 auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
                 if (editor != nullptr) {
                     editor->preload();
@@ -326,14 +326,14 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
     copyXmlToBinary(*xml, destData);
 }
 
-bool SoundboardAudioProcessor::AllPlayersStopped() const noexcept
+bool SoundboardAudioProcessor::AllPlayersNotPlaying() const noexcept
 {
     size_t numberOfActivePlayers = 0;
 
     for (int index = 0; index < numPlayers(); index++) {
         Player* player = playerAtIndex(index);
         if (player != nullptr) {
-            if (!player->isStopped()) {
+            if (player->isPlaying()) {
                 ++numberOfActivePlayers;
             }
         }
@@ -345,7 +345,7 @@ bool SoundboardAudioProcessor::AllPlayersStopped() const noexcept
 void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
     if(!getLocked()) {
-        if(AllPlayersStopped()) {
+        if(AllPlayersNotPlaying()) {
             ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
             auto program = ValueTree::fromXml(*xmlState);
             if (program.isValid()) {
