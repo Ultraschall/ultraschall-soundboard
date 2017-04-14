@@ -215,15 +215,22 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
     if (index == ProgramNumberCustom)
         return;
     if (index == ProgramNumberInit) {
-        currentDirectory = "";
-        currentProgramIndex = ProgramNumberCustom;
-        mixerAudioSource.removeAllInputs();
-        players.clear();
-        auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-        if (editor != nullptr) {
-            editor->refresh();
+        if(!getLocked()) {
+            if(AllPlayersStopped()) {
+                auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+                if (editor != nullptr) {
+                    editor->preload();
+                }
+                currentDirectory = "";
+                currentProgramIndex = ProgramNumberCustom;
+                mixerAudioSource.removeAllInputs();
+                players.clear();
+                if (editor != nullptr) {
+                    editor->refresh();
+                }
+                updateHostDisplay();
+            }
         }
-        updateHostDisplay();
     }
 }
 
