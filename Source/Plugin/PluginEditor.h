@@ -38,6 +38,7 @@ public:
     void handleOscParameterMessage(OscParameter *parameter) override;
     
     void preload();
+    void postload();
 private:
     void showTable();
     void showGrid();
@@ -69,6 +70,8 @@ private:
     SoundboardAudioProcessor &processor;
     bool                     mPauseState;
     bool                     mTimerState;
+    
+    bool                     mPreloadGridVisible;
 
 #if JUCE_WINDOWS
 #if JUCE_OPENGL

@@ -226,7 +226,7 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
                 mixerAudioSource.removeAllInputs();
                 players.clear();
                 if (editor != nullptr) {
-                    editor->refresh();
+                    editor->postload();
                 }
                 updateHostDisplay();
             }
@@ -359,6 +359,9 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
                             editor->preload();
                         }
                         openDirectory(directory);
+                        if (editor != nullptr) {
+                            editor->postload();
+                        }
                     }
                 }
 
@@ -369,6 +372,7 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
                         updatePlayerState(index);
                     }
                 }
+                
             }
         }
     }
