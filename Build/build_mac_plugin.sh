@@ -25,9 +25,11 @@ cp -rf ./Projects/Plugin/Builds/MacOSX/build/Release/Soundboard.vst Files/VST
 cp -rf ./Projects/Plugin/Builds/MacOSX/build/Release/Soundboard.component Files/AudioUnit
 
 echo "Compress Output"
-cd Files//VST
+cd Files/VST
 zip -r ../Soundboard.VST.Mac.OS.X.zip Soundboard.vst
 cd ../AudioUnit
 zip -r ../Soundboard.AudioUnit.Mac.OS.X.zip Soundboard.component
 cd ..
+rm -rf VST
+rm -rf AudioUnit
 
