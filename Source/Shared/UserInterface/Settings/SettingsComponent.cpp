@@ -286,7 +286,8 @@ void SoundboardSettingsComponent::textEditorTextChanged(TextEditor& editor)
 void SoundboardSettingsComponent::sliderValueChanged(Slider* slider)
 {
     if (slider == fadeOutSlider) {
-        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/fadeout", static_cast<float>(slider->valueToProportionOfLength(slider->getValue())));
+        auto value = static_cast<int>(slider->getValue());
+        processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/fadeout", value);
     } else if (slider == duckingSlider) {
         processor.getOscManager()->setOscParameterValue("/ultraschall/soundboard/duck/percentage", static_cast<float>(duckingSlider->valueToProportionOfLength(duckingSlider->getValue())));
     }
@@ -296,7 +297,9 @@ void SoundboardSettingsComponent::sliderValueChanged(Slider* slider)
 void SoundboardSettingsComponent::handleOscParameterMessage(OscParameter* parameter)
 {
     if (parameter->addressMatch("/ultraschall/soundboard/fadeout")) {
-        fadeOutSlider->setValue(fadeOutSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+        if (!fadeOutSlider->isMouseButtonDown()) {
+            fadeOutSlider->setValue(fadeOutSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
+        }
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/percentage")) {
         duckingSlider->setValue(duckingSlider->proportionOfLengthToValue(parameter->getValue()), dontSendNotification);
     }
