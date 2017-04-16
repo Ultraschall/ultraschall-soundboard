@@ -434,6 +434,7 @@ Player* SoundboardAudioProcessor::playerAtIndex(int index) const noexcept
 //==============================================================================
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
+    fadeOutSeconds = seconds;
     for (int index = 0; index < numPlayers(); index++) {
         if (playerAtIndex(index)) {
             playerAtIndex(index)->setFadeTime(seconds);
