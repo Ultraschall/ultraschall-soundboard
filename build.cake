@@ -17,6 +17,7 @@ var verbosity = Argument<string>("verbosity", "Verbose");
 string os = "Windows";
 bool verbose = true;
 string projucer = "";
+string artifacts = "./Artifacts";
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -36,6 +37,8 @@ Setup(context =>
     if (verbosity != "Verbose" || verbosity != "Diagnostic") {
         verbose = false;
     }
+    EnsureDirectoryExists(artifacts);
+    CleanDirectory(artifacts);
     Information("Setup");
 });
 
@@ -79,11 +82,15 @@ Task("Standalone")
         Information("Build Standalone Application");
         StartProcess(projucer, "--resave Projects/Standalone/Standalone.jucer");
 	    if(os == "Windows") {
+            EnsureDirectoryExists(artifacts + "/Standalone");
             MSBuild("./Projects/Standalone/Builds/VisualStudio2015/Soundboard.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.x64));
+            CopyFile("./Projects/Standalone/Builds/VisualStudio2015/x64/Release/Soundboard.exe", artifacts + "/Standalone/Soundboard.exe");
+            Zip(artifacts + "/Standalone", artifacts + "/Soundboard.Standalone.Windows.zip");
+            DeleteDirectory(artifacts + "/Standalone", true);
         } else if (os == "macOS") {
 	        DoInDirectory("./Projects/Standalone/Builds/MacOSX", () => {
 	            XCodeBuild(new XCodeBuildSettings {
@@ -98,18 +105,23 @@ Task("Plugin")
     .Does(() => {
         StartProcess(projucer, "--resave Projects/Plugin/Plugin.jucer");
         if (os == "Windows") {
+            EnsureDirectoryExists(artifacts + "/VST");
             Information("Build Plugin 32bit");
 	        MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.Win32));
+            CopyFile("./Projects/Plugin/Builds/VisualStudio2015/Release/Soundboard32.dll", artifacts + "/VST/Soundbaord32.dll");
             Information("Build Plugin 64bit");
             MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.x64));
+            CopyFile("./Projects/Plugin/Builds/VisualStudio2015/x64/Release/Soundboard64.dll", artifacts + "/VST/Soundboard64.dll");
+            Zip("./artefacts/VST", artifacts + "/Soundboard.VST.Windows.zip");
+            DeleteDirectory(artifacts + "/VST", true);
 	    } else if (os == "macOS") {
             Information("Build Plugin");
 	        DoInDirectory("./Projects/Plugin/Builds/MacOSX", () => {
@@ -142,6 +154,8 @@ Task("Installer")
                     OutputFile = "./bin/" + configuration + "/Soundboard"
                 });
             });
+            CopyFile("./Projects/Installer/bin/Release/Soundboard.msi", artifacts + "/Soundboard.msi");
+            CopyFile("./Projects/Installer/bin/Release/Soundboard.msm", artifacts + "/Soundboard.msm");
 	    }
     });
 
