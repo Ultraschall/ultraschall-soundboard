@@ -127,6 +127,8 @@ Task("Plugin")
             Zip("./artefacts/VST", artifacts + "/Soundboard.VST.Windows.zip");
             DeleteDirectory(artifacts + "/VST", true);
 	    } else if (os == "macOS") {
+            EnsureDirectoryExists(artifacts + "/AudioUnit");
+            EnsureDirectoryExists(artifacts + "/VST");
             Information("Build Plugin");
 	        DoInDirectory("./Projects/Plugin/Builds/MacOSX", () => {
                 XCodeBuild(new XCodeBuildSettings {
@@ -134,6 +136,12 @@ Task("Plugin")
                     Configuration = configuration
                 });
             });
+            CopyDirectory("~/Library/Audio/Plug-Ins/Components/Soundboard.component", artifacts + "/AudioUnit/Soundboard.component");
+            CopyDirectory("./Library/Audio/Plug-Ins/Components/Soundboard.vst", artifacts + "/VST/Soundboard.vst");
+            Zip("./artefacts/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
+            Zip("./artefacts/VST", artifacts + "/Soundboard.VST.macOS.zip");
+            DeleteDirectory(artifacts + "/AudioUnit", true);
+            DeleteDirectory(artifacts + "/VST", true);
 	    }
     });
 
