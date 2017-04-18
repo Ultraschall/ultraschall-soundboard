@@ -136,8 +136,8 @@ Task("Plugin")
                     Configuration = configuration
                 });
             });
-            CopyDirectory("~/Library/Audio/Plug-Ins/Components/Soundboard.component", artifacts + "/AudioUnit/Soundboard.component");
-            CopyDirectory("./Library/Audio/Plug-Ins/Components/Soundboard.vst", artifacts + "/VST/Soundboard.vst");
+            CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/Components/Soundboard.component", artifacts + "/AudioUnit/Soundboard.component");
+            CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/VST/Soundboard.vst", artifacts + "/VST/Soundboard.vst");
             Zip("./artefacts/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
             Zip("./artefacts/VST", artifacts + "/Soundboard.VST.macOS.zip");
             DeleteDirectory(artifacts + "/AudioUnit", true);
