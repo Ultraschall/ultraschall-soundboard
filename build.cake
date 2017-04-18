@@ -124,7 +124,7 @@ Task("Plugin")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.x64));
             CopyFile("./Projects/Plugin/Builds/VisualStudio2015/x64/Release/Soundboard64.dll", artifacts + "/VST/Soundboard64.dll");
-            Zip("./artefacts/VST", artifacts + "/Soundboard.VST.Windows.zip");
+            Zip(artifacts + "/VST", artifacts + "/Soundboard.VST.Windows.zip");
             DeleteDirectory(artifacts + "/VST", true);
 	    } else if (os == "macOS") {
             EnsureDirectoryExists(artifacts + "/AudioUnit");
@@ -138,8 +138,8 @@ Task("Plugin")
             });
             CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/Components/Soundboard.component", artifacts + "/AudioUnit/Soundboard.component");
             CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/VST/Soundboard.vst", artifacts + "/VST/Soundboard.vst");
-            Zip("./artefacts/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
-            Zip("./artefacts/VST", artifacts + "/Soundboard.VST.macOS.zip");
+            Zip(artifacts + "/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
+            Zip(artifacts + "/VST", artifacts + "/Soundboard.VST.macOS.zip");
             DeleteDirectory(artifacts + "/AudioUnit", true);
             DeleteDirectory(artifacts + "/VST", true);
 	    }
