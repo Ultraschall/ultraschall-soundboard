@@ -92,12 +92,16 @@ Task("Standalone")
             Zip(artifacts + "/Standalone", artifacts + "/Soundboard.Standalone.Windows.zip");
             DeleteDirectory(artifacts + "/Standalone", true);
         } else if (os == "macOS") {
+            EnsureDirectoryExists(artifacts + "/Standalone");
 	        DoInDirectory("./Projects/Standalone/Builds/MacOSX", () => {
 	            XCodeBuild(new XCodeBuildSettings {
 		            Verbose = verbose,
 		            Configuration = configuration
 		        });
 	        });
+            CopyDirectory("./Projects/Standalone/Builds/MacOSX/build/Release/Soundboard.app", artifacts + "/Standalone/Soundboard.app");
+            Zip(artifacts + "/Standalone", artifacts + "/Soundboard.Standalone.macOS.zip");
+            DeleteDirectory(artifacts + "/Standalone", true);
 	    }
     });
 
