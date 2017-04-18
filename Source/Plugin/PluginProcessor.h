@@ -115,8 +115,8 @@ public:
     OscManager* getOscManager();
     
     // Player
-    int numPlayers();
-    Player *playerAtIndex(int index);
+    int numPlayers() const noexcept;
+    Player *playerAtIndex(int index) const noexcept;
     
     // ChangeListener
     void changeListenerCallback(ChangeBroadcaster* source) override;
@@ -173,6 +173,9 @@ private:
     {
         PlayStop = 0, PlayPause = 1, PlayFadeOut = 2, HoldAndPlay = 3
     };
+   
+    bool AllPlayersNotPlaying() const noexcept;
+   
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)
 };

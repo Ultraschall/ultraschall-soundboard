@@ -146,7 +146,17 @@ void SoundboardAudioProcessorEditor::resized()
 }
 
 void SoundboardAudioProcessorEditor::preload() {
-    showTable();
+    mPreloadGridVisible = grid != nullptr;
+    grid = nullptr;
+    table = nullptr;
+}
+
+void SoundboardAudioProcessorEditor::postload() {
+    if (mPreloadGridVisible) {
+        showGrid();
+    } else {
+        showTable();
+    }
 }
 
 void SoundboardAudioProcessorEditor::showTable() {

@@ -22,19 +22,19 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
     // Internal OSC Parameter
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
-    
+
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/receive/enabled"), true);
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/receive/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/receive/port"), true);
-    
+
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/remote/enabled"), true);
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/remote/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/remote/port"), true);
-    
+
     oscManager.addOscParameter(new OscBooleanParameter("/ultraschall/soundboard/setup/osc/repeater/enabled"), true);
     oscManager.addOscParameter(new OscStringParameter("/ultraschall/soundboard/setup/osc/repeater/host"), true);
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/osc/repeater/port"), true);
-    
+
     // OSC Parameter
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/fadeout"));
     oscManager.addOscParameter(new OscFloatParameter("/ultraschall/soundboard/gain"));
@@ -71,7 +71,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
 
     PropertiesFile::Options options;
-    options.applicationName = JucePlugin_Name;
+    options.applicationName = "Ultraschall Soundboard";
     options.filenameSuffix = "properties";
     options.folderName = "UltraschallSoundboard";
     options.osxLibrarySubFolder = "Application Support";
@@ -127,7 +127,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     oscManager.removeOscParameterListener(this);
     mixerAudioSource.removeAllInputs();
     players.clear();
-    
+
     oscManager.removeOscParameter(".+");
     stopTimer(TimerOscServerDelay);
     stopTimer(TimerMidiEvents);
@@ -139,7 +139,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
 
     defaultLookAndFeel = nullptr;
     awesomeLookAndFeel = nullptr;
-    
+
     Logger::setCurrentLogger(nullptr);
     logger = nullptr;
     FontAwesome::deleteInstance();
@@ -148,7 +148,7 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
 //==============================================================================
 const String SoundboardAudioProcessor::getName() const
 {
-    return JucePlugin_Name;
+    return "Ultraschall Soundboard";
 }
 
 const String SoundboardAudioProcessor::getInputChannelName(int channelIndex) const
@@ -215,15 +215,22 @@ void SoundboardAudioProcessor::setCurrentProgram(int index)
     if (index == ProgramNumberCustom)
         return;
     if (index == ProgramNumberInit) {
-        currentDirectory = "";
-        currentProgramIndex = ProgramNumberCustom;
-        mixerAudioSource.removeAllInputs();
-        players.clear();
-        auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-        if (editor != nullptr) {
-            editor->refresh();
+        if(!getLocked()) {
+            if(AllPlayersNotPlaying()) {
+                auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+                if (editor != nullptr) {
+                    editor->preload();
+                }
+                currentDirectory = "";
+                currentProgramIndex = ProgramNumberCustom;
+                mixerAudioSource.removeAllInputs();
+                players.clear();
+                if (editor != nullptr) {
+                    editor->postload();
+                }
+                updateHostDisplay();
+            }
         }
-        updateHostDisplay();
     }
 }
 
@@ -275,7 +282,7 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
     mixerAudioSource.getNextAudioBlock(sourceChannelInfo);
 
     for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
-        buffer.copyFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
+        buffer.addFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
 
     if (duckEnvelope.getState()) {
@@ -319,31 +326,53 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
     copyXmlToBinary(*xml, destData);
 }
 
-void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
+bool SoundboardAudioProcessor::AllPlayersNotPlaying() const noexcept
 {
-    if (locked) {
-        return;
-    }
-    ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
-    auto program = ValueTree::fromXml(*xmlState);
-    if (program.isValid()) {
-        auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
-        if (directoryString != String::empty) {
-            currentProgramIndex = ProgramNumberCustom;
-            File directory(directoryString);
-            if (directory.exists()) {
-                auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
-                if (editor != nullptr) {
-                    editor->preload();
-                }
-                openDirectory(directory);
+    size_t numberOfActivePlayers = 0;
+
+    for (int index = 0; index < numPlayers(); index++) {
+        Player* player = playerAtIndex(index);
+        if (player != nullptr) {
+            if (player->isPlaying()) {
+                ++numberOfActivePlayers;
             }
         }
-        for (int index = 0; index < numPlayers(); index++) {
-            if (playerAtIndex(index)) {
-                float gain = program.getProperty(PlayerGainIdentifier.toString() + String(index));
-                playerAtIndex(index)->setGain(gain);
-                updatePlayerState(index);
+    }
+
+    return 0 == numberOfActivePlayers;
+}
+
+void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
+{
+    if(!getLocked()) {
+        if(AllPlayersNotPlaying()) {
+            ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+            auto program = ValueTree::fromXml(*xmlState);
+            if (program.isValid()) {
+                auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
+                if (directoryString != String::empty) {
+                    currentProgramIndex = ProgramNumberCustom;
+                    File directory(directoryString);
+                    if (directory.exists()) {
+                        auto editor = static_cast<SoundboardAudioProcessorEditor*>(getActiveEditor());
+                        if (editor != nullptr) {
+                            editor->preload();
+                        }
+                        openDirectory(directory);
+                        if (editor != nullptr) {
+                            editor->postload();
+                        }
+                    }
+                }
+
+                for (int index = 0; index < numPlayers(); index++) {
+                    if (playerAtIndex(index)) {
+                        float gain = program.getProperty(PlayerGainIdentifier.toString() + String(index));
+                        playerAtIndex(index)->setGain(gain);
+                        updatePlayerState(index);
+                    }
+                }
+                
             }
         }
     }
@@ -392,12 +421,12 @@ void SoundboardAudioProcessor::openDirectory(File directory)
 }
 
 //==============================================================================
-int SoundboardAudioProcessor::numPlayers()
+int SoundboardAudioProcessor::numPlayers() const noexcept
 {
     return players.size();
 }
 
-Player* SoundboardAudioProcessor::playerAtIndex(int index)
+Player* SoundboardAudioProcessor::playerAtIndex(int index) const noexcept
 {
     return (index < numPlayers()) ? players[index] : nullptr;
 }
@@ -405,6 +434,7 @@ Player* SoundboardAudioProcessor::playerAtIndex(int index)
 //==============================================================================
 void SoundboardAudioProcessor::setFadeOutSeconds(int seconds)
 {
+    fadeOutSeconds = seconds;
     for (int index = 0; index < numPlayers(); index++) {
         if (playerAtIndex(index)) {
             playerAtIndex(index)->setFadeTime(seconds);
@@ -451,14 +481,14 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
 {
     if (timerID == TimerOscServerDelay) {
         stopTimer(TimerOscServerDelay);
-        
+
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/host",
                              propertiesFile->getValue(OscRepeaterHostnameIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/port",
                              propertiesFile->getIntValue(OscRepeaterPortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/repeater/enabled",
                              propertiesFile->getValue(OscRepeaterEnabledIdentifier));
-        
+
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/host",
                              propertiesFile->getValue(OscRemoteHostnameIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/remote/port",
@@ -472,7 +502,7 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                              propertiesFile->getIntValue(OscReceivePortNumberIdentifier));
         oscManager.setOscParameterValue("/ultraschall/soundboard/setup/osc/receive/enabled",
                              propertiesFile->getValue(OscReceiveEnabledIdentifier));
-        
+
     } else if (timerID == TimerMidiEvents) {
         if (!midiBuffer.isEmpty()) {
             MidiBuffer midiMessages;
@@ -566,7 +596,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         std::regex re("/ultraschall/soundboard/player/(\\d+)/.+");
         std::smatch match;
         std::string result;
-		const std::string search = parameter->getAddress().toStdString();
+        const std::string search = parameter->getAddress().toStdString();
         if (std::regex_search(search, match, re) && match.size() > 1) {
             result = match.str(1);
         } else {
@@ -576,7 +606,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
         playerIndex--;
         if (!playerAtIndex(playerIndex))
             return;
-        
+
         if (parameter->addressMatch(".+/play$")) {
             if (parameter->getValue()) {
                 if (!playerAtIndex(playerIndex)->isPlaying()) {
@@ -589,7 +619,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             }
         } else if (parameter->addressMatch(".+/pause$")) {
             if (parameter->getValue()) {
-                if (!playerAtIndex(playerIndex)->isPlaying()) {
+                if (playerAtIndex(playerIndex)->isPlaying()) {
                     playerAtIndex(playerIndex)->pause();
                 }
             }

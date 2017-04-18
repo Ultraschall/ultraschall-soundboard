@@ -4,8 +4,8 @@
     project - if you alter its contents, your changes may be overwritten!
 
     There's a section below where you can add your own custom code safely, and the
-    Introjucer will preserve the contents of that block, but the best way to change
-    any of these definitions is by using the Introjucer's project settings.
+    Projucer will preserve the contents of that block, but the best way to change
+    any of these definitions is by using the Projucer's project settings.
 
     Any commented-out settings will assume their default values.
 
@@ -17,59 +17,7 @@
 //==============================================================================
 // [BEGIN_USER_CODE_SECTION]
 
-// (You can add your own code in this section, and the Introjucer will not overwrite it)
-
-#ifndef SHOW_AUDIO_SETTINGS
-#define SHOW_AUDIO_SETTINGS 1
-#endif
-
-#ifndef JucePlugin_Build_Standalone
-#define JucePlugin_Build_Standalone 1
-#endif
-
-#ifndef JucePlugin_Name
-#define JucePlugin_Name "Soundboard"
-#endif
-
-#ifndef JucePlugin_IsSynth
-#define JucePlugin_IsSynth 1
-#endif
-
-#ifndef JucePlugin_ManufacturerCode
-#define JucePlugin_ManufacturerCode 'Ultr'
-#endif
-
-#ifndef JucePlugin_PluginCode
-#define JucePlugin_PluginCode 'Soub'
-#endif
-
-#ifndef JucePlugin_ProducesMidiOutput
-#define JucePlugin_ProducesMidiOutput 0
-#endif
-
-#ifndef JucePlugin_WantsMidiInput
-#define JucePlugin_WantsMidiInput 1
-#endif
-
-#ifndef JucePlugin_MaxNumInputChannels
-#define JucePlugin_MaxNumInputChannels 0
-#endif
-
-#ifndef JucePlugin_MaxNumOutputChannels
-#define JucePlugin_MaxNumOutputChannels 2
-#endif
-
-#ifndef JucePlugin_PreferredChannelConfigurations
-#define JucePlugin_PreferredChannelConfigurations { 0, 1 }, { 0, 2 }
-#endif
-
-#ifndef JucePlugin_SilenceInProducesSilenceOut
-#define JucePlugin_SilenceInProducesSilenceOut 0
-#endif
-
-#ifndef JucePlugin_EditorRequiresKeyboardFocus
-#define JucePlugin_EditorRequiresKeyboardFocus 1
-#endif
+// (You can add your own code in this section, and the Projucer will not overwrite it)
 
 // [END_USER_CODE_SECTION]
 
@@ -94,8 +42,14 @@
 
 //==============================================================================
 #ifndef    JUCE_STANDALONE_APPLICATION
- #define   JUCE_STANDALONE_APPLICATION 1
+ #ifdef JucePlugin_Build_Standalone
+  #define  JUCE_STANDALONE_APPLICATION JucePlugin_Build_Standalone
+ #else
+  #define  JUCE_STANDALONE_APPLICATION 1
+ #endif
 #endif
+
+#define JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED 1
 
 //==============================================================================
 // juce_audio_devices flags:
@@ -199,6 +153,14 @@
 
 #ifndef    JUCE_USE_CURL
  //#define JUCE_USE_CURL
+#endif
+
+#ifndef    JUCE_CATCH_UNHANDLED_EXCEPTIONS
+ //#define JUCE_CATCH_UNHANDLED_EXCEPTIONS
+#endif
+
+#ifndef    JUCE_ALLOW_STATIC_NULL_VARIABLES
+ //#define JUCE_ALLOW_STATIC_NULL_VARIABLES
 #endif
 
 //==============================================================================

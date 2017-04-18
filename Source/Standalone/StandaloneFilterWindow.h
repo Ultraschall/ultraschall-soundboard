@@ -29,7 +29,7 @@ public:
         jassert (processor != nullptr); // Your createPluginFilter() function must return a valid object!
         AudioProcessor::setTypeOfNextNewPlugin(AudioProcessor::wrapperType_Undefined);
 
-        processor->setPlayConfigDetails(JucePlugin_MaxNumInputChannels, JucePlugin_MaxNumOutputChannels, 44100, 512);
+        processor->setPlayConfigDetails(0, 2, 44100, 512);
     }
 
     void deletePlugin()
