@@ -385,21 +385,26 @@ void SoundboardAudioProcessor::openDirectory(File directory)
     currentDirectory = directory.getFullPathName();
     mixerAudioSource.removeAllInputs();
     players.clear();
-    DirectoryIterator iterator(directory, true);
+
+    Array<File> files;
+    directory.findChildFiles(files, File::findFiles, false);
+    FileSorter sorter;
+    files.sort (sorter);
+
     auto count = 0;
-    while (iterator.next()) {
-        if (formatManager.findFormatForFileExtension(iterator.getFile().getFileExtension()) != nullptr
-            && count < MaximumSamplePlayers) {
-            Player* audioFile = new Player(count, iterator.getFile(), &formatManager, thumbnailCache);
-            if (audioFile->getState() != Player::Error) {
-                audioFile->addChangeListener(this);
-                players.add(audioFile);
-                audioFile->setFadeTime(fadeOutSeconds);
-                mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
-            }
-            else {
-                delete audioFile;
-            }
+    for (auto& f : files)
+    {   
+        if (MaximumSamplePlayers <= count) {
+            break;
+        }
+        Player* audioFile = new Player(count, f, &formatManager, thumbnailCache);
+        if (audioFile->getState() != Player::Error) {
+            audioFile->addChangeListener(this);
+            players.add(audioFile);
+            audioFile->setFadeTime(fadeOutSeconds);
+            mixerAudioSource.addInputSource(audioFile->getAudioSource(), false);
+        } else {
+            delete audioFile;
         }
         count++;
     }

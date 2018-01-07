@@ -13,6 +13,14 @@
 #include "JuceHeader.h"
 #include "Player.h"
 
+struct FileSorter
+{
+    static int compareElements (const File& f1, const File& f2)
+    {
+        return f1.getFileName().compareNatural (f2.getFileName());
+    }
+};
+
 class LookAndFeel_Ultraschall;
 
 static const Identifier DirectoryIdentifier("Directory");
@@ -125,7 +133,6 @@ public:
     void setLocked(bool lock) { locked = lock; }
     void toggleLocked() { locked = !locked; }
 private:
-
     // Init Program Number
     static const int ProgramNumberInit   = 0;
     static const int ProgramNumberCustom = 255;
