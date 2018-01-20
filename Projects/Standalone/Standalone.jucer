@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9.9"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.4" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="5.2.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
               buildAU="0" buildRTAS="0" buildAAX="0" pluginName="Soundboard"
               pluginDesc="Soundboard" pluginManufacturer="Ultraschall" pluginManufacturerCode="ULTS"
@@ -10,7 +10,9 @@
               pluginWantsMidiIn="1" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
               pluginEditorRequiresKeys="1" pluginAUExportPrefix="SoundboardAU"
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" displaySplashScreen="0"
+              reportAppUsage="1" splashScreenColour="Dark" cppLanguageStandard="11"
+              companyCopyright="Ultraschall">
   <MAINGROUP id="aO9Y4k" name="Soundboard">
     <GROUP id="{EF900499-3FC3-8B21-E80F-2BF37F9BBD42}" name="Standalone">
       <FILE id="hNY15S" name="Main.cpp" compile="1" resource="0" file="../../Source/Standalone/Main.cpp"/>
@@ -71,9 +73,11 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"/>
+                       isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"
+                       enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
-                       isDebug="0" optimisation="2" targetName="Soundboard" cppLibType="libc++"/>
+                       isDebug="0" optimisation="2" targetName="Soundboard" cppLibType="libc++"
+                       enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
@@ -123,18 +127,20 @@
         <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
+    <VS2017 targetFolder="Builds/VisualStudio2017">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
-        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="2" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="Soundboard"
+                       headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="2" targetName="Soundboard" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="Soundboard"
+                       headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
+        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
         <MODULEPATH id="juce_opengl" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../Submodules/JUCE/modules"/>
@@ -150,10 +156,8 @@
         <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
         <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
-        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
-        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
-    </VS2015>
+    </VS2017>
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>

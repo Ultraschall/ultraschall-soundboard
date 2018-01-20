@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_BFIVHQ__
-#define __APPHEADERFILE_BFIVHQ__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -48,5 +47,3 @@ namespace ProjectInfo
     const int          versionNumber  = 0x10909;
 }
 #endif
-
-#endif   // __APPHEADERFILE_BFIVHQ__

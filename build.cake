@@ -1,6 +1,8 @@
-#addin nuget:?package=Cake.XCode
-#addin nuget:?package=Cake.DoInDirectory
-#tool nuget:?package=WiX.Toolset
+#addin "Cake.XCode"
+#addin "Cake.DoInDirectory"
+#addin "Cake.FileHelpers"
+#tool "WiX.Toolset"
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -30,7 +32,7 @@ Setup(context =>
 	    os = "macOS";
     }
     if (os == "Windows") {
-        projucer = "./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/x64/Release/Projucer.exe";
+        projucer = "./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2017/x64/Release/Projucer.exe";
     } else if (os == "macOS") {
         projucer = "./Submodules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer";
     }
@@ -59,9 +61,10 @@ Task("Prepare")
 
 Task("Bootstrap")
     .Does(() => {
+        ReplaceTextInFiles("./Submodules/JUCE/extras/Projucer/JuceLibraryCode/AppConfig.h", "JUCER_ENABLE_GPL_MODE 0", "JUCER_ENABLE_GPL_MODE 1");
 	    if(os == "Windows") {
             Information("Build Projucer");
-            MSBuild("./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/Projucer.sln", settings => settings
+            MSBuild("./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2017/Projucer.sln", settings => settings
                 .SetVerbosity(Verbosity.Quiet)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
@@ -83,12 +86,12 @@ Task("Standalone")
         StartProcess(projucer, "--resave Projects/Standalone/Standalone.jucer");
 	    if(os == "Windows") {
             EnsureDirectoryExists(artifacts + "/Standalone");
-            MSBuild("./Projects/Standalone/Builds/VisualStudio2015/Soundboard.sln", settings => settings
+            MSBuild("./Projects/Standalone/Builds/VisualStudio2017/Soundboard.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.x64));
-            CopyFile("./Projects/Standalone/Builds/VisualStudio2015/x64/Release/Soundboard.exe", artifacts + "/Standalone/Soundboard.exe");
+            CopyFile("./Projects/Standalone/Builds/VisualStudio2017/x64/Release/Soundboard.exe", artifacts + "/Standalone/Soundboard.exe");
             Zip(artifacts + "/Standalone", artifacts + "/Soundboard.Standalone.Windows.zip");
             DeleteDirectory(artifacts + "/Standalone", true);
         } else if (os == "macOS") {
@@ -111,19 +114,19 @@ Task("Plugin")
         if (os == "Windows") {
             EnsureDirectoryExists(artifacts + "/VST");
             Information("Build Plugin 32bit");
-	        MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
+	        MSBuild("./Projects/Plugin/Builds/VisualStudio2017/Plugin.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.Win32));
-            CopyFile("./Projects/Plugin/Builds/VisualStudio2015/Release/Soundboard32.dll", artifacts + "/VST/Soundbaord32.dll");
+            CopyFile("./Projects/Plugin/Builds/VisualStudio2017/Release/Soundboard32.dll", artifacts + "/VST/Soundbaord32.dll");
             Information("Build Plugin 64bit");
-            MSBuild("./Projects/Plugin/Builds/VisualStudio2015/Plugin.sln", settings => settings
+            MSBuild("./Projects/Plugin/Builds/VisualStudio2017/Plugin.sln", settings => settings
                 .SetVerbosity(Verbosity.Minimal)
                 .WithTarget("Build")
                 .SetConfiguration(configuration)
                 .SetPlatformTarget(PlatformTarget.x64));
-            CopyFile("./Projects/Plugin/Builds/VisualStudio2015/x64/Release/Soundboard64.dll", artifacts + "/VST/Soundboard64.dll");
+            CopyFile("./Projects/Plugin/Builds/VisualStudio2017/x64/Release/Soundboard64.dll", artifacts + "/VST/Soundboard64.dll");
             Zip(artifacts + "/VST", artifacts + "/Soundboard.VST.Windows.zip");
             DeleteDirectory(artifacts + "/VST", true);
 	    } else if (os == "macOS") {

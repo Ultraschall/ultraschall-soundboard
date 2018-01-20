@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_CSXMMW__
-#define __APPHEADERFILE_CSXMMW__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -33,6 +32,7 @@
 #include <stk_core/stk_core.h>
 #include <stk_generators/stk_generators.h>
 
+#include "BinaryData.h"
 
 #if ! DONT_SET_USING_JUCE_NAMESPACE
  // If your code uses a lot of JUCE classes, then this will obviously save you
@@ -44,9 +44,7 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Plugin";
-    const char* const  versionString  = "3.0.0";
-    const int          versionNumber  = 0x30000;
+    const char* const  versionString  = "3.1.0";
+    const int          versionNumber  = 0x30100;
 }
 #endif
-
-#endif   // __APPHEADERFILE_CSXMMW__

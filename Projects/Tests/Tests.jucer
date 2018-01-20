@@ -2,8 +2,10 @@
 
 <JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.0"
               bundleIdentifier="fm.ultraschall.Tests" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.4" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
-              companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1">
+              jucerVersion="5.2.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1"
+              displaySplashScreen="0" reportAppUsage="1" splashScreenColour="Dark"
+              cppLanguageStandard="11" companyCopyright="Ultraschall">
   <MAINGROUP id="HDVVGK" name="Tests">
     <GROUP id="{F71CBC7D-7DBE-5EC7-F72F-3986DF1D9230}" name="Shared">
       <GROUP id="{8F51875C-8284-F238-CBDA-76867131ADFF}" name="Player">
@@ -61,9 +63,9 @@
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Tests"/>
+                       isDebug="1" optimisation="1" targetName="Tests" enablePluginBinaryCopyStep="1"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="0" optimisation="3" targetName="Tests"/>
+                       isDebug="0" optimisation="3" targetName="Tests" enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
@@ -116,39 +118,39 @@
         <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <VS2015 targetFolder="Builds/VisualStudio2015">
+    <VS2017 targetFolder="Builds/VisualStudio2017">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Tests" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
-        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Tests" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Tests" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="0" isDebug="1" optimisation="1" targetName="Tests"
+                       headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Tests" headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
+                       debugInformationFormat="ProgramDatabase" enablePluginBinaryCopyStep="0"
+                       linkTimeOptimisation="1" isDebug="0" optimisation="3" targetName="Tests"
+                       headerPath="..\..\..\..\Source\Plugin&#10;..\..\..\..\Source\Shared\Player&#10;..\..\..\..\Source\Shared\UserInterface&#10;..\..\..\..\Source\Shared\UserInterface\Grid&#10;..\..\..\..\Source\Shared\UserInterface\Settings&#10;..\..\..\..\Source\Shared\UserInterface\Table&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_video" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="danlin_fontawesome" path="../../Submodules/danlin_modules/modules"/>
-        <MODULEPATH id="danlin_oscpack" path="../../Submodules/danlin_modules/modules"/>
-        <MODULEPATH id="danlin_oscserver" path="../../Submodules/danlin_modules/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../Submodules/JUCE/modules"/>
-        <MODULEPATH id="stk_core" path="../../Submodules/stk_module/modules"/>
-        <MODULEPATH id="stk_generators" path="../../Submodules/stk_module/modules"/>
+        <MODULEPATH id="stk_generators" path="../../juce"/>
+        <MODULEPATH id="stk_core" path="../../juce"/>
+        <MODULEPATH id="juce_video" path="../../juce"/>
+        <MODULEPATH id="juce_opengl" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_cryptography" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="danlin_oscserver" path="../../juce"/>
+        <MODULEPATH id="danlin_oscpack" path="../../juce"/>
+        <MODULEPATH id="danlin_fontawesome" path="../../juce"/>
       </MODULEPATHS>
-    </VS2015>
+    </VS2017>
   </EXPORTFORMATS>
   <MODULES>
     <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>

@@ -119,7 +119,7 @@ public:
                                   int height,
                                   bool isMouseOver,
                                   bool isMouseDown,
-                                  int columnFlags) override;
+                                  int columnFlags);
 };
 
 class LookAndFeel_Ultraschall_Awesome : public LookAndFeel_Ultraschall
