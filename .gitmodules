@@ -4,6 +4,3 @@
 [submodule "Submodules/danlin_modules"]
 	path = Submodules/danlin_modules
 	url = https://github.com/danlin/danlin_modules
-[submodule "Submodules/stk_module"]
-	path = Submodules/stk_module
-	url = https://github.com/danlin/stk_module.git
