@@ -31,6 +31,9 @@ Setup(context =>
         // TODO: 19.11.2016 dnl -> detect macOS and Linux here
 	    os = "macOS";
     }
+
+    Information(Environment.Platform.Family);
+
     if (os == "Windows") {
         projucer = "./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2017/x64/Release/Projucer.exe";
     } else if (os == "macOS") {
