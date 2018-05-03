@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{218E4129-0FBF-E94A-3956-4BCBE5A54F16}</ProjectGuid>
+    <ProjectGuid>{A105EAB1-C990-7F2B-038C-8FC6CDE55138}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -148,9 +148,12 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp"/>
     <ClCompile Include="..\..\Source\Controller\MainViewController.cpp"/>
+    <ClCompile Include="..\..\Source\Views\BankView.cpp"/>
     <ClCompile Include="..\..\Source\Views\ClipView.cpp"/>
-    <ClCompile Include="..\..\Source\Engine\Core.cpp"/>
+    <ClCompile Include="..\..\Source\Views\DrawingTools.cpp"/>
+    <ClCompile Include="..\..\Source\Engine\ADSR.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Library.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Player.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
@@ -1871,6 +1874,7 @@
     <ClCompile Include="..\..\Submodules\JUCE\modules\juce_video\juce_video.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_devices.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_formats.cpp"/>
@@ -1888,11 +1892,18 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ValueTreeObjectList.h"/>
+    <ClInclude Include="..\..\Source\Utilities.h"/>
+    <ClInclude Include="..\..\Source\Engine\Identifier.h"/>
+    <ClInclude Include="..\..\Source\Models\ClipModel.h"/>
+    <ClInclude Include="..\..\Source\Models\PlayerModel.h"/>
+    <ClInclude Include="..\..\Source\Controller\ClipViewController.h"/>
     <ClInclude Include="..\..\Source\Controller\MainViewController.h"/>
     <ClInclude Include="..\..\Source\Controller\ViewController.h"/>
+    <ClInclude Include="..\..\Source\Views\BankView.h"/>
     <ClInclude Include="..\..\Source\Views\ClipView.h"/>
-    <ClInclude Include="..\..\Source\Engine\Core.h"/>
-    <ClInclude Include="..\..\Source\Engine\Identifier.h"/>
+    <ClInclude Include="..\..\Source\Views\DrawingTools.h"/>
+    <ClInclude Include="..\..\Source\Engine\ADSR.h"/>
     <ClInclude Include="..\..\Source\Engine\Library.h"/>
     <ClInclude Include="..\..\Source\Engine\Player.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
@@ -2562,9 +2573,12 @@
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_video\playback\juce_VideoComponent.h"/>
     <ClInclude Include="..\..\Submodules\JUCE\modules\juce_video\juce_video.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\ic_pause_circle_outline_black_48px.svg"/>
+    <None Include="..\..\Assets\ic_play_circle_outline_black_48px.svg"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>

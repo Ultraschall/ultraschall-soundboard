@@ -11,35 +11,37 @@
 
 #include "JuceHeader.h"
 #include "../Engine/Identifier.h"
+#include "DrawingTools.h"
 
-class ClipView : public ValueTree::Listener, 
-				 public Component
-{
+class ClipView : public Component {
 public:
-	explicit ClipView(const ValueTree v)
-		: state(v) {
-		state.addListener(this);
-	}
+    explicit ClipView();
 
-	~ClipView()
-	{
-		
-	}
+    ~ClipView();
 
-	void paint(Graphics& g) override;
+    void paint(Graphics &g) override;
 
-	void valueTreePropertyChanged(ValueTree& treeWhosePropertyHasChanged, const Identifier& property) override {}
-	void valueTreeChildAdded(ValueTree& parentTree, ValueTree& childWhichHasBeenAdded) override {}
-	void valueTreeChildRemoved(ValueTree& parentTree, ValueTree& childWhichHasBeenRemoved, int indexFromWhichChildWasRemoved) override {}
-	void valueTreeChildOrderChanged(ValueTree& parentTreeWhoseChildrenHaveMoved, int oldIndex, int newIndex) override {}
-	void valueTreeParentChanged(ValueTree& treeWhoseParentHasChanged) override {}
+    void resized() override;
+
+    void setPlaying();
+
+    void setPaused();
+
+    std::unique_ptr<DrawableButton> playButton;
 private:
-	ValueTree state;
+    std::unique_ptr<SvgIcon> playIcon;
+    std::unique_ptr<SvgIcon> pauseIcon;
 
+    enum ClipState {
+        isIdle,
+        isPlaying,
+        isLooping,
+        isFading
+    };
+
+    ClipState state;
+    float progress;
 public:
-	explicit ClipView() {
-		state = ValueTree(IDs::CLIP);
-	}
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ClipView)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ClipView)
 };

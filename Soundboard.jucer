@@ -9,8 +9,26 @@
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
               pluginName="Soundboard" cppLanguageStandard="17">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
+    <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
+      <FILE id="XX9iBe" name="ic_pause_circle_outline_black_48px.svg" compile="0"
+            resource="1" file="Assets/ic_pause_circle_outline_black_48px.svg"/>
+      <FILE id="Qra8mZ" name="ic_play_circle_outline_black_48px.svg" compile="0"
+            resource="1" file="Assets/ic_play_circle_outline_black_48px.svg"/>
+    </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
+      <FILE id="Ku4nfi" name="ValueTreeObjectList.h" compile="0" resource="0"
+            file="Source/ValueTreeObjectList.h"/>
+      <FILE id="qGRR8l" name="Utilities.h" compile="0" resource="0" file="Source/Utilities.h"/>
+      <FILE id="RSI95w" name="Identifier.h" compile="0" resource="0" file="Source/Engine/Identifier.h"/>
+      <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">
+        <FILE id="QDAq2C" name="ClipModel.h" compile="0" resource="0" file="Source/Models/ClipModel.h"/>
+        <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
+      </GROUP>
       <GROUP id="{379205E3-6D4E-6F8F-C7F1-0CB61FA97117}" name="Controller">
+        <FILE id="rLLaav" name="ClipViewController.cpp" compile="1" resource="0"
+              file="Source/Controller/ClipViewController.cpp"/>
+        <FILE id="zK99BP" name="ClipViewController.h" compile="0" resource="0"
+              file="Source/Controller/ClipViewController.h"/>
         <FILE id="lxptz6" name="MainViewController.cpp" compile="1" resource="0"
               file="Source/Controller/MainViewController.cpp"/>
         <FILE id="p55rxH" name="MainViewController.h" compile="0" resource="0"
@@ -19,13 +37,17 @@
               file="Source/Controller/ViewController.h"/>
       </GROUP>
       <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
+        <FILE id="uyqQzQ" name="BankView.cpp" compile="1" resource="0" file="Source/Views/BankView.cpp"/>
+        <FILE id="oKitLd" name="BankView.h" compile="0" resource="0" file="Source/Views/BankView.h"/>
         <FILE id="iT2jcw" name="ClipView.cpp" compile="1" resource="0" file="Source/Views/ClipView.cpp"/>
         <FILE id="HefmFf" name="ClipView.h" compile="0" resource="0" file="Source/Views/ClipView.h"/>
+        <FILE id="rZLU41" name="DrawingTools.cpp" compile="1" resource="0"
+              file="Source/Views/DrawingTools.cpp"/>
+        <FILE id="Q6uDIp" name="DrawingTools.h" compile="0" resource="0" file="Source/Views/DrawingTools.h"/>
       </GROUP>
       <GROUP id="{81DCB5C5-3B4D-1BC4-788D-77AC4750CBCD}" name="Engine">
-        <FILE id="dsSXwI" name="Core.cpp" compile="1" resource="0" file="Source/Engine/Core.cpp"/>
-        <FILE id="gkdeC7" name="Core.h" compile="0" resource="0" file="Source/Engine/Core.h"/>
-        <FILE id="RSI95w" name="Identifier.h" compile="0" resource="0" file="Source/Engine/Identifier.h"/>
+        <FILE id="ovDiTu" name="ADSR.cpp" compile="1" resource="0" file="Source/Engine/ADSR.cpp"/>
+        <FILE id="L3lBjs" name="ADSR.h" compile="0" resource="0" file="Source/Engine/ADSR.h"/>
         <FILE id="aBkk81" name="Library.cpp" compile="1" resource="0" file="Source/Engine/Library.cpp"/>
         <FILE id="lAeKHM" name="Library.h" compile="0" resource="0" file="Source/Engine/Library.h"/>
         <FILE id="Kgpqmb" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>

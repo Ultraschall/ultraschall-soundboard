@@ -16,17 +16,28 @@ namespace IDs {
 #define DECLARE_ID(name) const juce::Identifier name (#name);
 
 	DECLARE_ID(LIBRARY)
+	DECLARE_ID(version)
 	DECLARE_ID(uuid)
 	DECLARE_ID(title)
+    DECLARE_ID(PLAYERS)
+    DECLARE_ID(BANKS)
 
 	DECLARE_ID(PLAYER)
+    // uuid
+    // title
 	DECLARE_ID(path)
+    DECLARE_ID(gain)
 
 	DECLARE_ID(BANK)
-	DECLARE_ID(Clips)
+    // uuid
+    // title
+	DECLARE_ID(CLIPS)
 
 	DECLARE_ID(CLIP)
-	DECLARE_ID(number)
+    // uuid
+	DECLARE_ID(index)
+    DECLARE_ID(playerId)
+
 
 #undef DECLARE_ID
 }

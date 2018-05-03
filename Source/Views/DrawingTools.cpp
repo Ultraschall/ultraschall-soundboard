@@ -1,18 +1,11 @@
 /*
   ==============================================================================
 
-	Core.h
-	Created: 27 Apr 2018 4:36:38pm
-	Author:  danlin
+    DrawingTools.cpp
+    Created: 30 Apr 2018 1:00:13pm
+    Author:  Daniel Lindenfelser
 
   ==============================================================================
 */
 
-#pragma once
-
-#include "Library.h"
-
-
-class Core {
-	std::unique_ptr<Library> library;
-};
+#include "DrawingTools.h"
