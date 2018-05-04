@@ -11,13 +11,24 @@
 #include "MainViewController.h"
 #include "../Views/MainView.h"
 
-MainViewController::MainViewController(Library &core) : ViewController(core) {}
-
 void MainViewController::viewDidLoad() {
     auto myView = dynamic_cast<MainView*>(view.get());
     if (myView == nullptr) return;
 
     myView->toolbar.addDefaultItems(mainToolbarItemFactory);
+}
+
+void MainViewController::showLibrary()
+{
+	auto myView = dynamic_cast<MainView *>(view.get());
+	if (myView != nullptr) {
+		auto current = dynamic_cast<LibraryViewController*>(contentController.get());
+		if (current == nullptr) {
+			contentController = std::make_unique<LibraryViewController>(engine);
+			contentController->init();
+			myView->setContentView(contentController->getView());
+		}
+	}
 }
 
 void MainViewController::loadView() {
@@ -37,8 +48,8 @@ void MainViewController::loadFile() {
 }
 
 void MainViewController::MainToolbarItemFactory::getAllToolbarItemIds(Array<int> &ids) {
-    ids.add(MainToolbarItemIds::showGrid);
-    ids.add(MainToolbarItemIds::showLibrary);
+    ids.add(MainToolbarItemIds::grid);
+    ids.add(MainToolbarItemIds::library);
 	ids.add(flexibleSpacerId);
 	ids.add(MainToolbarItemIds::gain);
 	ids.add(MainToolbarItemIds::talkover);
@@ -48,8 +59,8 @@ void MainViewController::MainToolbarItemFactory::getAllToolbarItemIds(Array<int>
 }
 
 void MainViewController::MainToolbarItemFactory::getDefaultItemSet(Array<int> &ids) {
-    ids.add(MainToolbarItemIds::showGrid);
-    ids.add(MainToolbarItemIds::showLibrary);
+    ids.add(MainToolbarItemIds::grid);
+    ids.add(MainToolbarItemIds::library);
 	ids.add(flexibleSpacerId);
 	ids.add(MainToolbarItemIds::gain);
 	ids.add(MainToolbarItemIds::talkover);
@@ -60,7 +71,7 @@ void MainViewController::MainToolbarItemFactory::getDefaultItemSet(Array<int> &i
 
 ToolbarItemComponent *MainViewController::MainToolbarItemFactory::createItem(int itemId) {
     switch(itemId) {
-        case MainToolbarItemIds::showGrid: {
+	case MainToolbarItemIds::grid: {
             auto button = new ToolbarButton(itemId, "Banks",
                                             Drawable::createFromImageData(
                                                     BinaryData::ic_view_module_white_48px_svg,
@@ -71,14 +82,13 @@ ToolbarItemComponent *MainViewController::MainToolbarItemFactory::createItem(int
             };
 			return button;
         }
-        case MainToolbarItemIds::showLibrary: {
+        case MainToolbarItemIds::library: {
             auto button = new ToolbarButton(itemId, "Library",
                                             Drawable::createFromImageData(
                                                     BinaryData::ic_view_headline_white_48px_svg,
                                                     BinaryData::ic_view_headline_white_48px_svgSize),
                                             nullptr);
             button->onClick = [&] {
-
             };
 			return button;
         }

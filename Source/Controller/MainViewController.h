@@ -12,10 +12,11 @@
 
 #include "JuceHeader.h"
 #include "ViewController.h"
+#include "LibraryViewController.h"
 
 class MainViewController : public ViewController {
 public:
-    MainViewController(Library &core);
+	MainViewController(Library &core) : ViewController(core) {};
 
     void loadView() override;
 
@@ -23,10 +24,14 @@ public:
 
     void viewDidLoad() override;
 
+	void showLibrary();
+
 private:
+	std::unique_ptr<ViewController> contentController;
+
     enum MainToolbarItemIds {
-        showGrid = 1,
-        showLibrary = 2,
+        grid = 1,
+        library = 2,
 		talkover = 3,
 		addFile = 4,
 		settings = 5,
@@ -35,7 +40,7 @@ private:
     };
     class MainToolbarItemFactory : public ToolbarItemFactory {
     public:
-        explicit MainToolbarItemFactory() = default;
+		explicit MainToolbarItemFactory() = default;
 
         void getAllToolbarItemIds(Array<int> &ids) override;
 
