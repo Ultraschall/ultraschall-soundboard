@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{24B9FC22-48A8-BC89-EA5A-CC8532888F2E}</ProjectGuid>
+    <ProjectGuid>{48A4B945-AAA2-28F8-9782-232F715D112B}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -2583,8 +2583,15 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\ic_pause_circle_outline_black_48px.svg"/>
-    <None Include="..\..\Assets\ic_play_circle_outline_black_48px.svg"/>
+    <None Include="..\..\Assets\ic_mic_none_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_mic_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_pause_circle_outline_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_play_circle_outline_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_volume_up_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_view_headline_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_settings_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_view_module_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_folder_open_white_48px.svg"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>
     <None Include="..\..\Submodules\JUCE\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>

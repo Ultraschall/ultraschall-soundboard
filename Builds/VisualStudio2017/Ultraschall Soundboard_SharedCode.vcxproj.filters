@@ -4397,10 +4397,31 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\ic_pause_circle_outline_black_48px.svg">
+    <None Include="..\..\Assets\ic_mic_none_white_48px.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>
-    <None Include="..\..\Assets\ic_play_circle_outline_black_48px.svg">
+    <None Include="..\..\Assets\ic_mic_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_pause_circle_outline_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_play_circle_outline_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_volume_up_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_view_headline_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_settings_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_view_module_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_folder_open_white_48px.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>
     <None Include="..\..\Submodules\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt">

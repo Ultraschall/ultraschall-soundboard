@@ -22,7 +22,9 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
 
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+	setResizable(true, true);
+	setSize (400, 320);
+	setResizeLimits(320, 320, 1024, 1024);
 }
 
 UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorEditor()

@@ -39,37 +39,87 @@ void MainViewController::loadFile() {
 void MainViewController::MainToolbarItemFactory::getAllToolbarItemIds(Array<int> &ids) {
     ids.add(MainToolbarItemIds::showGrid);
     ids.add(MainToolbarItemIds::showLibrary);
+	ids.add(flexibleSpacerId);
+	ids.add(MainToolbarItemIds::gain);
+	ids.add(MainToolbarItemIds::talkover);
+	ids.add(flexibleSpacerId);
+	ids.add(MainToolbarItemIds::settings);
+	ids.add(MainToolbarItemIds::addFile);
 }
 
 void MainViewController::MainToolbarItemFactory::getDefaultItemSet(Array<int> &ids) {
     ids.add(MainToolbarItemIds::showGrid);
     ids.add(MainToolbarItemIds::showLibrary);
+	ids.add(flexibleSpacerId);
+	ids.add(MainToolbarItemIds::gain);
+	ids.add(MainToolbarItemIds::talkover);
+	ids.add(flexibleSpacerId);
+	ids.add(MainToolbarItemIds::addFile);
+	ids.add(MainToolbarItemIds::settings);
 }
 
 ToolbarItemComponent *MainViewController::MainToolbarItemFactory::createItem(int itemId) {
     switch(itemId) {
         case MainToolbarItemIds::showGrid: {
-            auto button = new ToolbarButton(itemId, "Show Banks",
+            auto button = new ToolbarButton(itemId, "Banks",
                                             Drawable::createFromImageData(
-                                                    BinaryData::ic_pause_circle_outline_black_48px_svg,
-                                                    BinaryData::ic_pause_circle_outline_black_48px_svgSize),
+                                                    BinaryData::ic_view_module_white_48px_svg,
+                                                    BinaryData::ic_view_module_white_48px_svgSize),
                                             nullptr);
             button->onClick = [&] {
 
             };
-            break;
+			return button;
         }
         case MainToolbarItemIds::showLibrary: {
-            auto button = new ToolbarButton(itemId, "Show Library",
+            auto button = new ToolbarButton(itemId, "Library",
                                             Drawable::createFromImageData(
-                                                    BinaryData::ic_pause_circle_outline_black_48px_svg,
-                                                    BinaryData::ic_pause_circle_outline_black_48px_svgSize),
+                                                    BinaryData::ic_view_headline_white_48px_svg,
+                                                    BinaryData::ic_view_headline_white_48px_svgSize),
                                             nullptr);
             button->onClick = [&] {
 
             };
-            break;
+			return button;
         }
+		case MainToolbarItemIds::talkover: {
+			auto button = new ToolbarButton(itemId, "Talkover",
+				Drawable::createFromImageData(
+					BinaryData::ic_mic_none_white_48px_svg,
+					BinaryData::ic_mic_none_white_48px_svgSize),
+				Drawable::createFromImageData(
+					BinaryData::ic_mic_white_48px_svg,
+					BinaryData::ic_mic_white_48px_svgSize));
+			button->onClick = [button] {
+				button->setToggleState(!button->getToggleState(), NotificationType::dontSendNotification);
+			};
+			return button;
+		}
+		case MainToolbarItemIds::addFile: {
+			auto button = new ToolbarButton(itemId, "Add Item",
+				Drawable::createFromImageData(
+					BinaryData::ic_folder_open_white_48px_svg,
+					BinaryData::ic_folder_open_white_48px_svgSize),
+				nullptr);
+			button->onClick = [&] {
+			};
+			return button;
+		}
+		case MainToolbarItemIds::gain: {
+			auto gain = new MainView::GainToolbarView(itemId);
+			return gain;
+		}
+		case MainToolbarItemIds::settings: {
+			auto button = new ToolbarButton(itemId, "Settings",
+				Drawable::createFromImageData(
+					BinaryData::ic_settings_white_48px_svg,
+					BinaryData::ic_settings_white_48px_svgSize),
+				nullptr);
+			button->onClick = [&] {
+
+			};
+			return button;
+		}
 
     }
     return nullptr;

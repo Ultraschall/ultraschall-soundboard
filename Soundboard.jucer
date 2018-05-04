@@ -10,10 +10,24 @@
               pluginName="Soundboard" cppLanguageStandard="17">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
-      <FILE id="XX9iBe" name="ic_pause_circle_outline_black_48px.svg" compile="0"
-            resource="1" file="Assets/ic_pause_circle_outline_black_48px.svg"/>
-      <FILE id="Qra8mZ" name="ic_play_circle_outline_black_48px.svg" compile="0"
-            resource="1" file="Assets/ic_play_circle_outline_black_48px.svg"/>
+      <FILE id="Rt9qVM" name="ic_mic_none_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_mic_none_white_48px.svg"/>
+      <FILE id="KCfCQJ" name="ic_mic_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_mic_white_48px.svg"/>
+      <FILE id="UiJEnW" name="ic_pause_circle_outline_white_48px.svg" compile="0"
+            resource="1" file="Assets/ic_pause_circle_outline_white_48px.svg"/>
+      <FILE id="pErGML" name="ic_play_circle_outline_white_48px.svg" compile="0"
+            resource="1" file="Assets/ic_play_circle_outline_white_48px.svg"/>
+      <FILE id="dRkFbx" name="ic_volume_up_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_volume_up_white_48px.svg"/>
+      <FILE id="aHdOtq" name="ic_view_headline_white_48px.svg" compile="0"
+            resource="1" file="Assets/ic_view_headline_white_48px.svg"/>
+      <FILE id="lhPtjq" name="ic_settings_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_settings_white_48px.svg"/>
+      <FILE id="FVFm1b" name="ic_view_module_white_48px.svg" compile="0"
+            resource="1" file="Assets/ic_view_module_white_48px.svg"/>
+      <FILE id="YSjMcV" name="ic_folder_open_white_48px.svg" compile="0"
+            resource="1" file="Assets/ic_folder_open_white_48px.svg"/>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
       <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">

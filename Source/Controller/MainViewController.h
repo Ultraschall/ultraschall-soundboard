@@ -26,7 +26,12 @@ public:
 private:
     enum MainToolbarItemIds {
         showGrid = 1,
-        showLibrary = 2
+        showLibrary = 2,
+		talkover = 3,
+		addFile = 4,
+		settings = 5,
+		gain = 6
+
     };
     class MainToolbarItemFactory : public ToolbarItemFactory {
     public:

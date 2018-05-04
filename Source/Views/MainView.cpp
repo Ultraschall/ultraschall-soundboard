@@ -14,12 +14,15 @@
 //==============================================================================
 MainView::MainView()
 {
-    toolbar.setStyle(Toolbar::ToolbarItemStyle::iconsOnly);
+    toolbar.setStyle(Toolbar::ToolbarItemStyle::iconsWithText);
     addAndMakeVisible(toolbar);
+	temp = std::make_unique<Component>();
+	setContentView(temp.get());
 }
 
 MainView::~MainView()
 {
+
 }
 
 void MainView::paint (Graphics& g)
@@ -44,14 +47,17 @@ void MainView::paint (Graphics& g)
 
 void MainView::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
     auto flexBox = FlexBox();
-    flexBox.items.add(FlexItem(toolbar).withMaxHeight(32).withFlex(1));
 
-    if (contentView != nullptr) {
-        flexBox.items.add(FlexItem(*contentView).withFlex(2));
-    }
+	flexBox.flexDirection = FlexBox::Direction::row;
+
+
+	if (contentView != nullptr) {
+		flexBox.items.add(FlexItem(*contentView).withFlex(2));
+	}
+
+
+	flexBox.items.add(FlexItem(toolbar).withMaxHeight(48).withWidth(getWidth()).withFlex(1));
 
     flexBox.performLayout(getLocalBounds());
 }
@@ -63,4 +69,27 @@ void MainView::setContentView(Component *view) {
         addAndMakeVisible(view);
         resized();
     }
+}
+
+bool MainView::GainToolbarView::getToolbarItemSizes(int toolbarThickness, bool isToolbarVertical, int & preferredSize, int & minSize, int & maxSize)
+{
+	if (isToolbarVertical)
+		return false;
+
+	preferredSize = 250;
+	minSize = 80;
+	maxSize = 300;
+	return true;
+}
+
+void MainView::GainToolbarView::paintButtonArea(Graphics & g, int width, int height, bool isMouseOver, bool isMouseDown)
+{
+}
+
+void MainView::GainToolbarView::contentAreaChanged(const Rectangle<int>& newBounds)
+{
+	slider.setSize(newBounds.getWidth() - 2,
+		jmin(newBounds.getHeight() - 2, 22));
+
+	slider.setCentrePosition(newBounds.getCentreX(), newBounds.getCentreY());
 }
