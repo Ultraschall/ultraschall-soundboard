@@ -9,7 +9,6 @@
 */
 
 #include "Library.h"
-#include "../Models/PlayerModel.h"
 
 Library::Library()
 	: audioThumbnailCache(21)
@@ -20,16 +19,10 @@ Library::Library()
 	state.setProperty(IDs::version, "4.0.0", nullptr);
 	state.setProperty(IDs::title, "Unamed", nullptr);
 
-    state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
+	auto players = ValueTree(IDs::PLAYERS);
+    state.addChild(players, -1, nullptr);
+    playersState = std::make_unique<PlayerList>(players);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
-
-    loadAudioFile(File("/Users/danlin/Documents/dnl/GS009_1.wav"));
-	loadAudioFile(File("/Users/danlin/Documents/dnl/GS009_1.wavd"));
-    loadAudioFile(File("/Users/danlin/Documents/dnl/GS009_3.wav"));
-    loadAudioFile(File("/Users/danlin/Documents/dnl/GS009_2.wav"));
-    loadAudioFile(File("/Users/danlin/Documents/dnl/GS009_1.wav"));
-
-	DebugState();
 }
 
 void Library::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
@@ -51,6 +44,9 @@ void Library::loadAudioFile(File file) {
 		players.remove(players.indexOf(player), true);
         return;
 	}
+
+
+
 	ValueTree playerState(IDs::PLAYER);
     PlayerModel model(playerState);
     model.uuid = uuid.toDashedString();
@@ -59,6 +55,8 @@ void Library::loadAudioFile(File file) {
 
     state.getChildWithName(IDs::PLAYERS).addChild(playerState, 0, &undoManager);
 	mixer.addInputSource(player, false);
+
+    DebugState();
 }
 
 void Library::DebugState() {

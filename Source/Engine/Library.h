@@ -12,10 +12,9 @@
 
 #include <vector>
 #include "JuceHeader.h"
-#include "Identifier.h"
 #include "Player.h"
-#include "../ValueTreeObjectList.h"
-
+#include "../Models/Identifier.h"
+#include "../Models/PlayerModel.h"
 
 class Library : public AudioSource {
 public:
@@ -40,13 +39,13 @@ public:
 	}
 
 	void DebugState();
+
+	AudioFormatManager audioFormatManager;
+	AudioThumbnailCache audioThumbnailCache;
+	UndoManager undoManager;
 private:
 	MixerAudioSource mixer;
 	OwnedArray<Player> players;
 	juce::ValueTree state;
-
-	UndoManager undoManager;
-
-	AudioFormatManager audioFormatManager;
-	AudioThumbnailCache audioThumbnailCache;
+	std::unique_ptr<PlayerList> playersState;
 };

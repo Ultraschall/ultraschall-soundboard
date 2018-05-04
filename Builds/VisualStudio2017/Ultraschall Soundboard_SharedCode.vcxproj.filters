@@ -8,11 +8,11 @@
     <Filter Include="Ultraschall Soundboard\Source\Models">
       <UniqueIdentifier>{93698764-4687-10EF-239F-8ECF8E51A065}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Ultraschall Soundboard\Source\Controller">
-      <UniqueIdentifier>{E1C16880-2904-E028-CEB5-2527DE3CC750}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Ultraschall Soundboard\Source\Views">
       <UniqueIdentifier>{C77ADC84-0277-B06D-5D0C-6A5106C7DEC4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ultraschall Soundboard\Source\Controller">
+      <UniqueIdentifier>{E1C16880-2904-E028-CEB5-2527DE3CC750}</UniqueIdentifier>
     </Filter>
     <Filter Include="Ultraschall Soundboard\Source\Engine">
       <UniqueIdentifier>{70F885E5-AA62-8676-0C2E-B56CE0E5D8A7}</UniqueIdentifier>
@@ -406,12 +406,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp">
-      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Controller\MainViewController.cpp">
-      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Views\BankView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
@@ -420,6 +414,21 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Views\DrawingTools.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Views\LibraryView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Views\MainView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Controller\LibraryViewController.cpp">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Controller\MainViewController.cpp">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Engine\ADSR.cpp">
       <Filter>Ultraschall Soundboard\Source\Engine</Filter>
@@ -2328,29 +2337,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\ValueTreeObjectList.h">
-      <Filter>Ultraschall Soundboard\Source</Filter>
+    <ClInclude Include="..\..\Source\Models\Identifier.h">
+      <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Utilities.h">
-      <Filter>Ultraschall Soundboard\Source</Filter>
+    <ClInclude Include="..\..\Source\Models\Utilities.h">
+      <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\Identifier.h">
-      <Filter>Ultraschall Soundboard\Source</Filter>
+    <ClInclude Include="..\..\Source\Models\ValueTreeObjectList.h">
+      <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Models\ClipModel.h">
       <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Models\PlayerModel.h">
       <Filter>Ultraschall Soundboard\Source\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Controller\ClipViewController.h">
-      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Controller\MainViewController.h">
-      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Controller\ViewController.h">
-      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\BankView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
@@ -2360,6 +2360,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\DrawingTools.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\LibraryView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\MainView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Controller\ClipViewController.h">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Controller\LibraryViewController.h">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Controller\MainViewController.h">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Controller\ViewController.h">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Engine\ADSR.h">
       <Filter>Ultraschall Soundboard\Source\Engine</Filter>

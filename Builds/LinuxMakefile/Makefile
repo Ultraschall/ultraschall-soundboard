@@ -81,11 +81,14 @@ OBJECTS_STANDALONE_PLUGIN := \
   $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o \
 
 OBJECTS_SHARED_CODE := \
-  $(JUCE_OBJDIR)/ClipViewController_45d60665.o \
-  $(JUCE_OBJDIR)/MainViewController_6128008e.o \
   $(JUCE_OBJDIR)/BankView_18f9282b.o \
   $(JUCE_OBJDIR)/ClipView_a665713f.o \
   $(JUCE_OBJDIR)/DrawingTools_8d5ce907.o \
+  $(JUCE_OBJDIR)/LibraryView_265b19a0.o \
+  $(JUCE_OBJDIR)/MainView_64f95aa8.o \
+  $(JUCE_OBJDIR)/ClipViewController_45d60665.o \
+  $(JUCE_OBJDIR)/LibraryViewController_d970f972.o \
+  $(JUCE_OBJDIR)/MainViewController_6128008e.o \
   $(JUCE_OBJDIR)/ADSR_50365050.o \
   $(JUCE_OBJDIR)/Library_64fe0657.o \
   $(JUCE_OBJDIR)/Player_b2d5b7cf.o \
@@ -134,16 +137,6 @@ $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o: ../../Juc
 	@echo "Compiling include_juce_audio_plugin_client_Standalone.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_STANDALONE_PLUGIN) $(JUCE_CFLAGS_STANDALONE_PLUGIN) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/ClipViewController_45d60665.o: ../../Source/Controller/ClipViewController.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling ClipViewController.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/MainViewController_6128008e.o: ../../Source/Controller/MainViewController.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling MainViewController.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
 $(JUCE_OBJDIR)/BankView_18f9282b.o: ../../Source/Views/BankView.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling BankView.cpp"
@@ -157,6 +150,31 @@ $(JUCE_OBJDIR)/ClipView_a665713f.o: ../../Source/Views/ClipView.cpp
 $(JUCE_OBJDIR)/DrawingTools_8d5ce907.o: ../../Source/Views/DrawingTools.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling DrawingTools.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/LibraryView_265b19a0.o: ../../Source/Views/LibraryView.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling LibraryView.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/MainView_64f95aa8.o: ../../Source/Views/MainView.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling MainView.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ClipViewController_45d60665.o: ../../Source/Controller/ClipViewController.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ClipViewController.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/LibraryViewController_d970f972.o: ../../Source/Controller/LibraryViewController.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling LibraryViewController.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/MainViewController_6128008e.o: ../../Source/Controller/MainViewController.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling MainViewController.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/ADSR_50365050.o: ../../Source/Engine/ADSR.cpp

@@ -11,8 +11,8 @@
 #pragma once
 
 #include "JuceHeader.h"
-#include "../Engine/Identifier.h"
-#include "../ValueTreeObjectList.h"
+#include "Identifier.h"
+#include "ValueTreeObjectList.h"
 
 struct PlayerModel {
 public:
@@ -36,6 +36,30 @@ public:
 
 class PlayerList : public drow::ValueTreeObjectList<PlayerModel> {
 public:
-    PlayerList(const ValueTree &parentTree) : ValueTreeObjectList(parentTree) {
+    explicit PlayerList(const ValueTree &parentTree) : ValueTreeObjectList(parentTree) {
+    }
+
+    bool isSuitableType(const juce::ValueTree &tree) const override {
+        return tree.hasType(IDs::PLAYER);
+    }
+
+    PlayerModel *createNewObject(const juce::ValueTree &tree) override {
+        return new PlayerModel(tree);
+    }
+
+    void deleteObject(PlayerModel *type) override {
+        delete type;
+    }
+
+    void newObjectAdded(PlayerModel *type) override {
+
+    }
+
+    void objectRemoved(PlayerModel *type) override {
+
+    }
+
+    void objectOrderChanged() override {
+
     }
 };

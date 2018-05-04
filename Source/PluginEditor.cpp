@@ -10,14 +10,13 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-
+#include <memory>
 
 //==============================================================================
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor (UltraschallSoundboardAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
-    auto player = p.library.playerAtIndex(1);
-    controller.reset(new ClipViewController(player->getIdentifier(), p.library));
+    controller = std::make_unique<MainViewController>(p.library);
     controller->init();
 	addAndMakeVisible(controller->getView());
 

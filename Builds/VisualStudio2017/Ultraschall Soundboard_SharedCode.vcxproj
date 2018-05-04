@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A105EAB1-C990-7F2B-038C-8FC6CDE55138}</ProjectGuid>
+    <ProjectGuid>{24B9FC22-48A8-BC89-EA5A-CC8532888F2E}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -148,11 +148,14 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp"/>
-    <ClCompile Include="..\..\Source\Controller\MainViewController.cpp"/>
     <ClCompile Include="..\..\Source\Views\BankView.cpp"/>
     <ClCompile Include="..\..\Source\Views\ClipView.cpp"/>
     <ClCompile Include="..\..\Source\Views\DrawingTools.cpp"/>
+    <ClCompile Include="..\..\Source\Views\LibraryView.cpp"/>
+    <ClCompile Include="..\..\Source\Views\MainView.cpp"/>
+    <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp"/>
+    <ClCompile Include="..\..\Source\Controller\LibraryViewController.cpp"/>
+    <ClCompile Include="..\..\Source\Controller\MainViewController.cpp"/>
     <ClCompile Include="..\..\Source\Engine\ADSR.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Library.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Player.cpp"/>
@@ -1892,17 +1895,20 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\ValueTreeObjectList.h"/>
-    <ClInclude Include="..\..\Source\Utilities.h"/>
-    <ClInclude Include="..\..\Source\Engine\Identifier.h"/>
+    <ClInclude Include="..\..\Source\Models\Identifier.h"/>
+    <ClInclude Include="..\..\Source\Models\Utilities.h"/>
+    <ClInclude Include="..\..\Source\Models\ValueTreeObjectList.h"/>
     <ClInclude Include="..\..\Source\Models\ClipModel.h"/>
     <ClInclude Include="..\..\Source\Models\PlayerModel.h"/>
-    <ClInclude Include="..\..\Source\Controller\ClipViewController.h"/>
-    <ClInclude Include="..\..\Source\Controller\MainViewController.h"/>
-    <ClInclude Include="..\..\Source\Controller\ViewController.h"/>
     <ClInclude Include="..\..\Source\Views\BankView.h"/>
     <ClInclude Include="..\..\Source\Views\ClipView.h"/>
     <ClInclude Include="..\..\Source\Views\DrawingTools.h"/>
+    <ClInclude Include="..\..\Source\Views\LibraryView.h"/>
+    <ClInclude Include="..\..\Source\Views\MainView.h"/>
+    <ClInclude Include="..\..\Source\Controller\ClipViewController.h"/>
+    <ClInclude Include="..\..\Source\Controller\LibraryViewController.h"/>
+    <ClInclude Include="..\..\Source\Controller\MainViewController.h"/>
+    <ClInclude Include="..\..\Source\Controller\ViewController.h"/>
     <ClInclude Include="..\..\Source\Engine\ADSR.h"/>
     <ClInclude Include="..\..\Source\Engine\Library.h"/>
     <ClInclude Include="..\..\Source\Engine\Player.h"/>

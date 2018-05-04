@@ -1,13 +1,12 @@
 /*
   ==============================================================================
 
-    ViewController.cpp
-    Created: 27 Apr 2018 4:35:55pm
+    LibraryViewController.cpp
+    Created: 4 May 2018 11:04:34am
     Author:  danlin
 
   ==============================================================================
 */
 
-#include "ViewController.h"
-
-
+#include "JuceHeader.h"
+#include "LibraryViewController.h"

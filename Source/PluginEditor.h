@@ -13,7 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 
-#include "Controller/ClipViewController.h"
+#include "Controller/MainViewController.h"
 
 //==============================================================================
 /**
@@ -33,7 +33,7 @@ private:
     // access the processor object that created it.
     UltraschallSoundboardAudioProcessor& processor;
 
-    std::unique_ptr<ClipViewController> controller;
+    std::unique_ptr<MainViewController> controller;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UltraschallSoundboardAudioProcessorEditor)
 };

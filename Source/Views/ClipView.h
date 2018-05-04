@@ -10,7 +10,6 @@
 #pragma once
 
 #include "JuceHeader.h"
-#include "../Engine/Identifier.h"
 #include "DrawingTools.h"
 
 class ClipView : public Component {

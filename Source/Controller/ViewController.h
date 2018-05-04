@@ -17,8 +17,8 @@
 
 class ViewController {
 public:
-	explicit ViewController(Library& core)
-		: engine(core) {
+	explicit ViewController(Library& engine)
+		: engine(engine) {
 
 	}
 
