@@ -43,9 +43,9 @@ public:
 	AudioFormatManager audioFormatManager;
 	AudioThumbnailCache audioThumbnailCache;
 	UndoManager undoManager;
-private:
+    juce::ValueTree state;
+
+	private:
 	MixerAudioSource mixer;
 	OwnedArray<Player> players;
-	juce::ValueTree state;
-	std::unique_ptr<PlayerList> playersState;
 };

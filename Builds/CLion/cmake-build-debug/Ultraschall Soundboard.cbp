@@ -280,10 +280,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_pause_circle_outline_black_48px.svg">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_folder_open_white_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_play_circle_outline_black_48px.svg">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_mic_none_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_mic_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_pause_circle_outline_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_play_circle_outline_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_settings_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_view_headline_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_view_module_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_volume_up_white_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h">

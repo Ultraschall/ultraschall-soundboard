@@ -7013,6 +7013,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  ../../../Submodules/JUCE/modules/juce_video/juce_video.h
  ../../../Submodules/JUCE/modules/juce_video/playback/juce_VideoComponent.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+ /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
@@ -8525,6 +8526,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+ /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.h
@@ -9033,6 +9035,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+ /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.h

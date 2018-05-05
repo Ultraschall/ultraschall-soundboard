@@ -7012,6 +7012,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: ../../../Submodules/JUCE/modules/juce_video/juce_video.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: ../../../Submodules/JUCE/modules/juce_video/playback/juce_VideoComponent.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
@@ -8524,6 +8525,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.h
@@ -9032,6 +9034,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.h

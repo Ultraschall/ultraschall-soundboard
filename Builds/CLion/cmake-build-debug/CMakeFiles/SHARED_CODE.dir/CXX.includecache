@@ -6995,6 +6995,10 @@ JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/JuceHeader.h
 ViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
+../Models/ValueTreeObjectList.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
+../Models/PlayerModel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
 MainViewController.h
@@ -7007,6 +7011,8 @@ JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/JuceHeader.h
 ViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
+LibraryViewController.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
 JuceHeader.h
@@ -7061,6 +7067,8 @@ ValueTreeObjectList.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
+utility
+-
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/JuceHeader.h
 

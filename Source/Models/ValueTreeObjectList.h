@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <utility>
 #include "JuceHeader.h"
 
 namespace drow
@@ -20,14 +21,13 @@ namespace drow
     class ValueTreeObjectList   : public juce::ValueTree::Listener
     {
     public:
-        ValueTreeObjectList (const juce::ValueTree& parentTree)
-                : parent (parentTree)
+        explicit ValueTreeObjectList (juce::ValueTree parentTree)
+                : parent (std::move(parentTree))
         {
             parent.addListener (this);
         }
 
-        virtual ~ValueTreeObjectList()
-        {
+        ~ValueTreeObjectList() override {
             jassert (objects.size() == 0); // must call freeObjects() in the subclass destructor!
         }
 

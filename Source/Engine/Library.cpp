@@ -19,9 +19,7 @@ Library::Library()
 	state.setProperty(IDs::version, "4.0.0", nullptr);
 	state.setProperty(IDs::title, "Unamed", nullptr);
 
-	auto players = ValueTree(IDs::PLAYERS);
-    state.addChild(players, -1, nullptr);
-    playersState = std::make_unique<PlayerList>(players);
+    state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
 }
 
@@ -44,8 +42,6 @@ void Library::loadAudioFile(File file) {
 		players.remove(players.indexOf(player), true);
         return;
 	}
-
-
 
 	ValueTree playerState(IDs::PLAYER);
     PlayerModel model(playerState);

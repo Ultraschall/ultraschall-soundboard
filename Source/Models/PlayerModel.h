@@ -39,6 +39,10 @@ public:
     explicit PlayerList(const ValueTree &parentTree) : ValueTreeObjectList(parentTree) {
     }
 
+    ~PlayerList() {
+        freeObjects();
+    }
+
     bool isSuitableType(const juce::ValueTree &tree) const override {
         return tree.hasType(IDs::PLAYER);
     }
