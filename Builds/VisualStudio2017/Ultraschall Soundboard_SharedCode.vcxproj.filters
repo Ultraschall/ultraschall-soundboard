@@ -433,7 +433,7 @@
     <ClCompile Include="..\..\Source\Engine\ADSR.cpp">
       <Filter>Ultraschall Soundboard\Source\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\Library.cpp">
+    <ClCompile Include="..\..\Source\Engine\Engine.cpp">
       <Filter>Ultraschall Soundboard\Source\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Engine\Player.cpp">
@@ -2382,7 +2382,7 @@
     <ClInclude Include="..\..\Source\Engine\ADSR.h">
       <Filter>Ultraschall Soundboard\Source\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\Library.h">
+    <ClInclude Include="..\..\Source\Engine\Engine.h">
       <Filter>Ultraschall Soundboard\Source\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Engine\Player.h">
@@ -4397,6 +4397,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\add.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_add_circle_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_add_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ultraschall.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
     <None Include="..\..\Assets\ic_mic_none_white_48px.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>

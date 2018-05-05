@@ -10,6 +10,12 @@
               pluginName="Soundboard" cppLanguageStandard="17">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
+      <FILE id="UHqrdB" name="add.svg" compile="0" resource="1" file="Assets/add.svg"/>
+      <FILE id="COvtlC" name="ic_add_circle_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_add_circle_white_48px.svg"/>
+      <FILE id="UROOCR" name="ic_add_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_add_white_48px.svg"/>
+      <FILE id="u4rQt0" name="ultraschall.svg" compile="0" resource="1" file="Assets/ultraschall.svg"/>
       <FILE id="Rt9qVM" name="ic_mic_none_white_48px.svg" compile="0" resource="1"
             file="Assets/ic_mic_none_white_48px.svg"/>
       <FILE id="KCfCQJ" name="ic_mic_white_48px.svg" compile="0" resource="1"
@@ -70,8 +76,8 @@
       <GROUP id="{81DCB5C5-3B4D-1BC4-788D-77AC4750CBCD}" name="Engine">
         <FILE id="ovDiTu" name="ADSR.cpp" compile="1" resource="0" file="Source/Engine/ADSR.cpp"/>
         <FILE id="L3lBjs" name="ADSR.h" compile="0" resource="0" file="Source/Engine/ADSR.h"/>
-        <FILE id="aBkk81" name="Library.cpp" compile="1" resource="0" file="Source/Engine/Library.cpp"/>
-        <FILE id="lAeKHM" name="Library.h" compile="0" resource="0" file="Source/Engine/Library.h"/>
+        <FILE id="NpYdqK" name="Engine.cpp" compile="1" resource="0" file="Source/Engine/Engine.cpp"/>
+        <FILE id="sJafFT" name="Engine.h" compile="0" resource="0" file="Source/Engine/Engine.h"/>
         <FILE id="Kgpqmb" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>
         <FILE id="pZopO0" name="Player.h" compile="0" resource="0" file="Source/Engine/Player.h"/>
       </GROUP>

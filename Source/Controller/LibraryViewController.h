@@ -18,7 +18,7 @@
 /*
 */
 class LibraryViewController
-		: public ViewController,
+		: public ViewController<Component>,
 		  public drow::ValueTreeObjectList<PlayerModel>
 {
 public:
@@ -39,8 +39,16 @@ public:
 
 	void objectRemoved(PlayerModel *type) override;
 
-	void objectOrderChanged() override;;
+	void objectOrderChanged() override;
+
+	void loadView() override;
+
+	void viewDidLoad() override;;
 
 private:
+    TableListBox* getTableListBox() {
+        return dynamic_cast<TableListBox*>(getView());
+    }
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryViewController)
 };

@@ -703,32 +703,32 @@ home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.s:
 	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.s
 
-home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.o: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o
+home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.o: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o
 
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.o
 
 # target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o
+home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o
 
-home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.i: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i
+home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.i: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i
 
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.i
 
 # target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i
+home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i
 
-home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.s: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s
+home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.s: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s
 
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.s
 
 # target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s
+home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s
 
 home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.o: home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o
 
@@ -1019,9 +1019,9 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.s"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.o"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.i"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.s"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.s"

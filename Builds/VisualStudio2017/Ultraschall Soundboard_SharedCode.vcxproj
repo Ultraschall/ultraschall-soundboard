@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7A3578A7-1454-5E09-1B3C-5415BFC1CCEA}</ProjectGuid>
+    <ProjectGuid>{8D4DFCF1-3C0C-4CDD-60AA-C8422D3B2AAD}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -157,7 +157,7 @@
     <ClCompile Include="..\..\Source\Controller\LibraryViewController.cpp"/>
     <ClCompile Include="..\..\Source\Controller\MainViewController.cpp"/>
     <ClCompile Include="..\..\Source\Engine\ADSR.cpp"/>
-    <ClCompile Include="..\..\Source\Engine\Library.cpp"/>
+    <ClCompile Include="..\..\Source\Engine\Engine.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Player.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
@@ -1910,7 +1910,7 @@
     <ClInclude Include="..\..\Source\Controller\MainViewController.h"/>
     <ClInclude Include="..\..\Source\Controller\ViewController.h"/>
     <ClInclude Include="..\..\Source\Engine\ADSR.h"/>
-    <ClInclude Include="..\..\Source\Engine\Library.h"/>
+    <ClInclude Include="..\..\Source\Engine\Engine.h"/>
     <ClInclude Include="..\..\Source\Engine\Player.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
@@ -2583,6 +2583,10 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\add.svg"/>
+    <None Include="..\..\Assets\ic_add_circle_white_48px.svg"/>
+    <None Include="..\..\Assets\ic_add_white_48px.svg"/>
+    <None Include="..\..\Assets\ultraschall.svg"/>
     <None Include="..\..\Assets\ic_mic_none_white_48px.svg"/>
     <None Include="..\..\Assets\ic_mic_white_48px.svg"/>
     <None Include="..\..\Assets\ic_pause_circle_outline_white_48px.svg"/>

@@ -15,7 +15,7 @@ void MainViewController::viewDidLoad() {
     auto myView = dynamic_cast<MainView*>(view.get());
     if (myView == nullptr) return;
 
-    myView->toolbar.addDefaultItems(mainToolbarItemFactory);
+    myView->toolbar.addDefaultItems(*this);
 }
 
 void MainViewController::showLibrary()
@@ -47,7 +47,7 @@ void MainViewController::loadFile() {
     }
 }
 
-void MainViewController::MainToolbarItemFactory::getAllToolbarItemIds(Array<int> &ids) {
+void MainViewController::getAllToolbarItemIds(Array<int> &ids) {
     ids.add(MainToolbarItemIds::grid);
     ids.add(MainToolbarItemIds::library);
 	ids.add(flexibleSpacerId);
@@ -58,7 +58,7 @@ void MainViewController::MainToolbarItemFactory::getAllToolbarItemIds(Array<int>
 	ids.add(MainToolbarItemIds::addFile);
 }
 
-void MainViewController::MainToolbarItemFactory::getDefaultItemSet(Array<int> &ids) {
+void MainViewController::getDefaultItemSet(Array<int> &ids) {
     ids.add(MainToolbarItemIds::grid);
     ids.add(MainToolbarItemIds::library);
 	ids.add(flexibleSpacerId);
@@ -69,7 +69,7 @@ void MainViewController::MainToolbarItemFactory::getDefaultItemSet(Array<int> &i
 	ids.add(MainToolbarItemIds::settings);
 }
 
-ToolbarItemComponent *MainViewController::MainToolbarItemFactory::createItem(int itemId) {
+ToolbarItemComponent* MainViewController::createItem(int itemId) {
     switch(itemId) {
 	case MainToolbarItemIds::grid: {
             auto button = new ToolbarButton(itemId, "Banks",
@@ -77,7 +77,7 @@ ToolbarItemComponent *MainViewController::MainToolbarItemFactory::createItem(int
                                                     BinaryData::ic_view_module_white_48px_svg,
                                                     BinaryData::ic_view_module_white_48px_svgSize),
                                             nullptr);
-            button->onClick = [&] {
+            button->onClick = [this] {
 
             };
 			return button;
@@ -88,7 +88,8 @@ ToolbarItemComponent *MainViewController::MainToolbarItemFactory::createItem(int
                                                     BinaryData::ic_view_headline_white_48px_svg,
                                                     BinaryData::ic_view_headline_white_48px_svgSize),
                                             nullptr);
-            button->onClick = [&] {
+            button->onClick = [this] {
+            	showLibrary();
             };
 			return button;
         }

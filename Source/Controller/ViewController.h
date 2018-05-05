@@ -14,7 +14,7 @@
 
 #include "../Engine/Engine.h"
 
-
+template  <typename ViewType>
 class ViewController {
 public:
 	explicit ViewController(Engine& engine)
@@ -31,7 +31,7 @@ public:
 		viewDidLoad();
 	}
 
-	Component* getView() const { return view.get(); }
+    ViewType* getView() const { return view.get(); }
 
 	virtual bool isViewLoaded() { return static_cast<bool>(view); }
 	virtual void loadView() {};
@@ -44,7 +44,7 @@ public:
 	virtual void viewDidUnload() { view = nullptr; }
 
 protected:
-	std::unique_ptr<Component> view;
+	std::unique_ptr<ViewType> view;
 	Engine& engine;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ViewController)

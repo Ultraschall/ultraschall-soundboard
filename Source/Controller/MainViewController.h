@@ -13,10 +13,11 @@
 #include "JuceHeader.h"
 #include "ViewController.h"
 #include "LibraryViewController.h"
+#include "../Views/MainView.h"
 
-class MainViewController : public ViewController {
+class MainViewController : public ViewController<MainView>, public ToolbarItemFactory {
 public:
-	MainViewController(Engine &core) : ViewController(core) {};
+	explicit MainViewController(Engine &engine) : ViewController(engine) {};
 
     void loadView() override;
 
@@ -26,8 +27,14 @@ public:
 
 	void showLibrary();
 
+	void getAllToolbarItemIds(Array<int> &ids) override;
+
+	void getDefaultItemSet(Array<int> &ids) override;
+
+	ToolbarItemComponent *createItem(int itemId) override;
+
 private:
-	std::unique_ptr<ViewController> contentController;
+	std::unique_ptr<ViewController<Component>> contentController;
 
     enum MainToolbarItemIds {
         grid = 1,
@@ -38,15 +45,4 @@ private:
 		gain = 6
 
     };
-    class MainToolbarItemFactory : public ToolbarItemFactory {
-    public:
-		explicit MainToolbarItemFactory() = default;
-
-        void getAllToolbarItemIds(Array<int> &ids) override;
-
-        void getDefaultItemSet(Array<int> &ids) override;
-
-        ToolbarItemComponent *createItem(int itemId) override;
-    };
-    MainToolbarItemFactory mainToolbarItemFactory;
 };

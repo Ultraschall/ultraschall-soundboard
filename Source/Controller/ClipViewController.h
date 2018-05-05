@@ -14,9 +14,9 @@
 #include "ViewController.h"
 #include "../Views/ClipView.h"
 
-class ClipViewController : public ViewController {
+class ClipViewController : public ViewController<ClipView> {
 public:
-    ClipViewController(Identifier playerId, Engine &core);
+    ClipViewController(Identifier playerId, Engine &engine);
 
     void loadView() override;
 

@@ -280,6 +280,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/add.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_add_circle_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_add_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_folder_open_white_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -305,6 +314,9 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_volume_up_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ultraschall.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h">
@@ -394,10 +406,10 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.h">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp">

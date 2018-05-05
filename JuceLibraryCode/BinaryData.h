@@ -8,6 +8,18 @@
 
 namespace BinaryData
 {
+    extern const char*   add_svg;
+    const int            add_svgSize = 12440;
+
+    extern const char*   ic_add_circle_white_48px_svg;
+    const int            ic_add_circle_white_48px_svgSize = 264;
+
+    extern const char*   ic_add_white_48px_svg;
+    const int            ic_add_white_48px_svgSize = 199;
+
+    extern const char*   ultraschall_svg;
+    const int            ultraschall_svgSize = 2876;
+
     extern const char*   ic_mic_none_white_48px_svg;
     const int            ic_mic_none_white_48px_svgSize = 466;
 
@@ -36,7 +48,7 @@ namespace BinaryData
     const int            ic_folder_open_white_48px_svgSize = 271;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 9;
+    const int namedResourceListSize = 13;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

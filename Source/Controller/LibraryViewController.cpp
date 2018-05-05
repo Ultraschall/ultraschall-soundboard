@@ -10,6 +10,7 @@
 
 #include "JuceHeader.h"
 #include "LibraryViewController.h"
+#include "../Views/LibraryView.h"
 
 bool LibraryViewController::isSuitableType(const juce::ValueTree &tree) const {
     return tree.hasType(IDs::PLAYER);;
@@ -33,4 +34,13 @@ void LibraryViewController::objectRemoved(PlayerModel *type) {
 
 void LibraryViewController::objectOrderChanged() {
 
+}
+
+void LibraryViewController::loadView() {
+    view = std::make_unique<LibraryView>();
+}
+
+void LibraryViewController::viewDidLoad() {
+    auto tableListBox = getTableListBox();
+    if (tableListBox == nullptr) return;
 }

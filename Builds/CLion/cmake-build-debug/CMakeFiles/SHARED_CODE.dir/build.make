@@ -273,28 +273,28 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o
 
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp > CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.i
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp > CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.s
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.s
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.requires:
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.requires:
 
-.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.requires
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.requires
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.provides: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.requires
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.provides.build
-.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.provides
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.provides: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.requires
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.provides.build
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.provides
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o
 
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
@@ -764,7 +764,7 @@ SHARED_CODE_OBJECTS = \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o" \
-"CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o" \
+"CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o" \
@@ -797,7 +797,7 @@ libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ul
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o
-libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o
+libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o
@@ -837,7 +837,7 @@ CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Proj
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o.requires
-CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Library.cpp.o.requires
+CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o.requires

@@ -90,7 +90,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/LibraryViewController_d970f972.o \
   $(JUCE_OBJDIR)/MainViewController_6128008e.o \
   $(JUCE_OBJDIR)/ADSR_50365050.o \
-  $(JUCE_OBJDIR)/Library_64fe0657.o \
+  $(JUCE_OBJDIR)/Engine_8bbe7eb0.o \
   $(JUCE_OBJDIR)/Player_b2d5b7cf.o \
   $(JUCE_OBJDIR)/PluginProcessor_a059e380.o \
   $(JUCE_OBJDIR)/PluginEditor_94d4fb09.o \
@@ -182,9 +182,9 @@ $(JUCE_OBJDIR)/ADSR_50365050.o: ../../Source/Engine/ADSR.cpp
 	@echo "Compiling ADSR.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/Library_64fe0657.o: ../../Source/Engine/Library.cpp
+$(JUCE_OBJDIR)/Engine_8bbe7eb0.o: ../../Source/Engine/Engine.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Library.cpp"
+	@echo "Compiling Engine.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Player_b2d5b7cf.o: ../../Source/Engine/Player.cpp

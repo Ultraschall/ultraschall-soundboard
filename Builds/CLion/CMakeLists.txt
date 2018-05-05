@@ -23,6 +23,10 @@ add_executable (STANDALONE_PLUGIN
 set_source_files_properties ("../../Submodules/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_library (SHARED_CODE STATIC
+    "../../Assets/add.svg"
+    "../../Assets/ic_add_circle_white_48px.svg"
+    "../../Assets/ic_add_white_48px.svg"
+    "../../Assets/ultraschall.svg"
     "../../Assets/ic_mic_none_white_48px.svg"
     "../../Assets/ic_mic_white_48px.svg"
     "../../Assets/ic_pause_circle_outline_white_48px.svg"
@@ -56,8 +60,8 @@ add_library (SHARED_CODE STATIC
     "../../Source/Controller/ViewController.h"
     "../../Source/Engine/ADSR.cpp"
     "../../Source/Engine/ADSR.h"
-    "../../Source/Engine/Library.cpp"
-    "../../Source/Engine/Library.h"
+    "../../Source/Engine/Engine.cpp"
+    "../../Source/Engine/Engine.h"
     "../../Source/Engine/Player.cpp"
     "../../Source/Engine/Player.h"
     "../../Source/PluginProcessor.cpp"
@@ -1368,6 +1372,10 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties ("../../Assets/add.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_add_circle_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_add_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ultraschall.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_pause_circle_outline_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1392,7 +1400,7 @@ set_source_files_properties ("../../Source/Controller/LibraryViewController.h" P
 set_source_files_properties ("../../Source/Controller/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/ViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/Library.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Engine/Engine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginProcessor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginEditor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2728,13 +2736,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -2869,13 +2877,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -2994,6 +3002,10 @@ add_executable (STANDALONE_PLUGIN
 set_source_files_properties ("../../Submodules/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_library (SHARED_CODE STATIC
+    "../../Assets/add.svg"
+    "../../Assets/ic_add_circle_white_48px.svg"
+    "../../Assets/ic_add_white_48px.svg"
+    "../../Assets/ultraschall.svg"
     "../../Assets/ic_mic_none_white_48px.svg"
     "../../Assets/ic_mic_white_48px.svg"
     "../../Assets/ic_pause_circle_outline_white_48px.svg"
@@ -3027,8 +3039,8 @@ add_library (SHARED_CODE STATIC
     "../../Source/Controller/ViewController.h"
     "../../Source/Engine/ADSR.cpp"
     "../../Source/Engine/ADSR.h"
-    "../../Source/Engine/Library.cpp"
-    "../../Source/Engine/Library.h"
+    "../../Source/Engine/Engine.cpp"
+    "../../Source/Engine/Engine.h"
     "../../Source/Engine/Player.cpp"
     "../../Source/Engine/Player.h"
     "../../Source/PluginProcessor.cpp"
@@ -4338,6 +4350,10 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties ("../../Assets/add.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_add_circle_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_add_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ultraschall.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_pause_circle_outline_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -4362,7 +4378,7 @@ set_source_files_properties ("../../Source/Controller/LibraryViewController.h" P
 set_source_files_properties ("../../Source/Controller/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/ViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/Library.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Engine/Engine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginProcessor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginEditor.h" PROPERTIES HEADER_FILE_ONLY TRUE)

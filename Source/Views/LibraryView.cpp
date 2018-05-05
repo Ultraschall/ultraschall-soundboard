@@ -9,3 +9,8 @@
 */
 
 #include "LibraryView.h"
+
+void LibraryView::resized() {
+    table.setBounds(getLocalBounds());
+    addButton.setBounds(getLocalBounds().getWidth() - 70, getLocalBounds().getHeight() - 70, 60, 60);
+}
