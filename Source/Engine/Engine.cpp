@@ -8,9 +8,9 @@
   ==============================================================================
 */
 
-#include "Library.h"
+#include "Engine.h"
 
-Library::Library()
+Engine::Engine()
 	: audioThumbnailCache(21)
 {
 	audioFormatManager.registerBasicFormats();
@@ -23,19 +23,19 @@ Library::Library()
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
 }
 
-void Library::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
+void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
 	mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 
-void Library::releaseResources() {
+void Engine::releaseResources() {
 	mixer.releaseResources();
 }
 
-void Library::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
+void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	mixer.getNextAudioBlock(bufferToFill);
 }
 
-void Library::loadAudioFile(File file) {
+void Engine::loadAudioFile(File file) {
     Uuid uuid;
 	auto player = players.add(new Player(uuid.toDashedString()));
 	if (!player->loadFileIntoTransport(file, &audioFormatManager)) {
@@ -55,11 +55,11 @@ void Library::loadAudioFile(File file) {
     DebugState();
 }
 
-void Library::DebugState() {
+void Engine::DebugState() {
     Logger::getCurrentLogger()->outputDebugString(state.toXmlString());
 }
 
-Player *Library::playerWithIdentifier(Identifier id) {
+Player *Engine::playerWithIdentifier(Identifier id) {
     for (auto& p : players) {
         if (p->getIdentifier() == id) {
             return p;

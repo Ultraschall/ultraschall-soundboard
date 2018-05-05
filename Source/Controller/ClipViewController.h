@@ -16,7 +16,7 @@
 
 class ClipViewController : public ViewController {
 public:
-    ClipViewController(Identifier playerId, Library &core);
+    ClipViewController(Identifier playerId, Engine &core);
 
     void loadView() override;
 

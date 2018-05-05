@@ -22,7 +22,7 @@ class LibraryViewController
 		  public drow::ValueTreeObjectList<PlayerModel>
 {
 public:
-	explicit LibraryViewController(Library &engine)
+	explicit LibraryViewController(Engine &engine)
 			: ViewController(engine),
 			  drow::ValueTreeObjectList<PlayerModel>(engine.state.getChildWithName(IDs::PLAYERS))
 	{

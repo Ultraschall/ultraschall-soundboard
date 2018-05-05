@@ -16,11 +16,11 @@
 #include "../Models/Identifier.h"
 #include "../Models/PlayerModel.h"
 
-class Library : public AudioSource {
+class Engine : public AudioSource {
 public:
-	Library();
+	Engine();
 
-	~Library() {
+	~Engine() {
 	    mixer.removeAllInputs();
 	    players.clear(true);
 	}

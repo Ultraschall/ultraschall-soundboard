@@ -16,7 +16,7 @@
 
 class MainViewController : public ViewController {
 public:
-	MainViewController(Library &core) : ViewController(core) {};
+	MainViewController(Engine &core) : ViewController(core) {};
 
     void loadView() override;
 

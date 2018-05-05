@@ -12,12 +12,12 @@
 
 #include "JuceHeader.h"
 
-#include "../Engine/Library.h"
+#include "../Engine/Engine.h"
 
 
 class ViewController {
 public:
-	explicit ViewController(Library& engine)
+	explicit ViewController(Engine& engine)
 		: engine(engine) {
 
 	}
@@ -45,7 +45,7 @@ public:
 
 protected:
 	std::unique_ptr<Component> view;
-	Library& engine;
+	Engine& engine;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ViewController)
 };
