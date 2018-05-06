@@ -55,6 +55,7 @@ public:
     BackgroundButton sideNavbarBackground;
 
     ToolbarView toolbar;
+	DrawableButton addButton{ "Add", DrawableButton::ImageFitted };
 
 private:
     bool sideBarVisible = false;
@@ -68,7 +69,6 @@ private:
     Component spacer;
 
     SvgIcon addIcon{BinaryData::add_svg, BinaryData::add_svgSize};
-    DrawableButton addButton{"Add", DrawableButton::ImageFitted};
 
 	float toolbarWidth{ Material::convertDpToPixel<float>(300) };
 

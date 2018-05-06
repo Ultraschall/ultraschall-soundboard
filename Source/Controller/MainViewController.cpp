@@ -25,6 +25,9 @@ void MainViewController::viewDidLoad() {
     view->sideNavbarBackground.onClick = [this] {
         view->hideSideNavBar();
     };
+	view->addButton.onClick = [this] {
+		showLibrary();
+	};
 }
 
 void MainViewController::showLibrary() {
