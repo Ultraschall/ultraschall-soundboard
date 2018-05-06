@@ -15,7 +15,7 @@
 #include "LibraryViewController.h"
 #include "../Views/MainView.h"
 
-class MainViewController : public ViewController<MainView>, public ToolbarItemFactory {
+class MainViewController : public ViewController<MainView>, public ChangeListener {
 public:
 	explicit MainViewController(Engine &engine) : ViewController(engine) {};
 
@@ -26,23 +26,11 @@ public:
     void viewDidLoad() override;
 
 	void showLibrary();
+	void showBanks();
 
-	void getAllToolbarItemIds(Array<int> &ids) override;
 
-	void getDefaultItemSet(Array<int> &ids) override;
-
-	ToolbarItemComponent *createItem(int itemId) override;
+	void changeListenerCallback(ChangeBroadcaster *source) override;
 
 private:
 	std::unique_ptr<ViewController<Component>> contentController;
-
-    enum MainToolbarItemIds {
-        grid = 1,
-        library = 2,
-		talkover = 3,
-		addFile = 4,
-		settings = 5,
-		gain = 6
-
-    };
 };

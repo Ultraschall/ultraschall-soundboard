@@ -15,7 +15,7 @@
 ToolbarView::ToolbarView()
 {
 	menuButton.setImages(menuIcon.getDrawable());
-	viewButton.setImages(viewIcon.getDrawable());
+	viewButton.setImages(libraryIcon.getDrawable(), nullptr, nullptr, nullptr, bankIcon.getDrawable());
 	addAndMakeVisible(menuButton);
 	addAndMakeVisible(viewButton);
 	addAndMakeVisible(spacer);

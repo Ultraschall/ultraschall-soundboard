@@ -16,6 +16,8 @@
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor (UltraschallSoundboardAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+    openGLContext.attachTo(*getTopLevelComponent());
+	setLookAndFeel(&lookAndFeel);
 	// TODO: implement a own standalone wrapper!
 	TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
 	w->setUsingNativeTitleBar(true);
@@ -32,6 +34,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
 
 UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorEditor()
 {
+	setLookAndFeel(nullptr);
 }
 
 //==============================================================================

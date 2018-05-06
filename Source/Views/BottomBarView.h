@@ -27,7 +27,7 @@ public:
 
 private:
 	Slider gainSlider;
-	float iconSize = { Material::convertDpToPixel(this, 48) };
+	float iconSize = { Material::convertDpToPixel<float>(this, 48) };
 	SvgIcon talkoverOffIcon = { BinaryData::ic_mic_none_black_48px_svg, BinaryData::ic_mic_none_black_48px_svgSize };
 	SvgIcon talkoverOnIcon = { BinaryData::ic_mic_black_48px_svg, BinaryData::ic_mic_black_48px_svgSize };
 	DrawableButton talkoverButton = { "Talkover", DrawableButton::ImageFitted };

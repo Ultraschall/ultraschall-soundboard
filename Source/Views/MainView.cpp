@@ -24,12 +24,9 @@ MainView::MainView()
 	addAndMakeVisible(addButton);
 	addButton.toFront(true);
 
-	addAndMakeVisible(sideNavbar);
-	sideNavbar.toFront(false);
-}
+    sideBarShadower.setOwner(&sideNavbar);
 
-MainView::~MainView() {
-
+    addButtonShadower.setOwner(&addButton);
 }
 
 void MainView::paint(Graphics &g) {
@@ -39,13 +36,13 @@ void MainView::paint(Graphics &g) {
 
 void MainView::resized() {
 
-	auto actionHeight = Material::convertDpToPixel(this, 56);
+	auto actionHeight = Material::convertDpToPixel<float>(this, 56);
 
 	auto flexBox = FlexBox();
 
 	flexBox.flexDirection = FlexBox::Direction::column;
 
-	flexBox.items.add(FlexItem(toolbar).withMaxHeight(Material::convertDpToPixel(this, 64)).withWidth(getWidth()).withFlex(1));
+	flexBox.items.add(FlexItem(toolbar).withMaxHeight(Material::convertDpToPixel<float>(this, 64)).withWidth(getWidth()).withFlex(1));
 
 	if (contentView != nullptr) {
 		flexBox.items.add(FlexItem(*contentView).withWidth(getWidth()).withFlex(2));
@@ -59,13 +56,16 @@ void MainView::resized() {
 	flexBox.performLayout(getLocalBounds());
 
 	addButton.setBounds(
-		getLocalBounds().getWidth() - (actionHeight * 1.5),
-		getLocalBounds().getHeight() - (actionHeight * 1.4),
-		actionHeight,
-		actionHeight
+		getLocalBounds().getWidth() - int(actionHeight * 1.5),
+		getLocalBounds().getHeight() - int(actionHeight * 1.4),
+		int(actionHeight),
+		int(actionHeight)
 	);
 
-	sideNavbar.setBounds(getLocalBounds().removeFromLeft(Material::convertDpToPixel(this, 300)));
+	if (sideBarVisible) {
+        sideNavbarBackground.setBounds(getLocalBounds());
+        sideNavbar.setBounds(getLocalBounds().removeFromLeft(Material::convertDpToPixel<int>(this, 300)));
+    }
 }
 
 void MainView::setContentView(Component *view) {
@@ -79,24 +79,48 @@ void MainView::setContentView(Component *view) {
 	repaint();
 }
 
-bool MainView::GainToolbarView::getToolbarItemSizes(int toolbarThickness, bool isToolbarVertical, int &preferredSize,
-	int &minSize, int &maxSize) {
-	if (isToolbarVertical)
-		return false;
+void MainView::showSideNavBar() {
+    sideNavbarBackground.setBounds(getLocalBounds());
+    addAndMakeVisible(sideNavbarBackground);
+    sideNavbar.toFront(false);
 
-	preferredSize = 250;
-	minSize = 80;
-	maxSize = 300;
-	return true;
+    auto endBounds = getLocalBounds().removeFromLeft(Material::convertDpToPixel<int>(this, 300));
+    auto startBounds = endBounds;
+    startBounds.setPosition(-300, startBounds.getY());
+
+    sideNavbar.setBounds(startBounds);
+    addAndMakeVisible(sideNavbar);
+    sideNavbar.toFront(false);
+
+    sideNavbarBackgroundAnimator.fadeIn(&sideNavbarBackground, 200);
+    sideNavbarAnimator.animateComponent(
+            &sideNavbar,
+            endBounds,
+            1.0f,
+            200,
+            false,
+            0.4f,
+            0.8f
+    );
+
+    sideBarVisible = true;
 }
 
-void
-MainView::GainToolbarView::paintButtonArea(Graphics &g, int width, int height, bool isMouseOver, bool isMouseDown) {
-}
+void MainView::hideSideNavBar() {
+    auto endBounds = sideNavbar.getLocalBounds();
+    endBounds.setPosition(-300, endBounds.getY());
 
-void MainView::GainToolbarView::contentAreaChanged(const Rectangle<int> &newBounds) {
-	slider.setSize(newBounds.getWidth() - 2,
-		jmin(newBounds.getHeight() - 2, 22));
+    sideNavbarBackgroundAnimator.fadeOut(&sideNavbarBackground, 200);
+    sideNavbarAnimator.animateComponent(
+            &sideNavbar,
+            endBounds,
+            1.0f,
+            200,
+            false,
+            0.8f,
+            0.4f
+    );
 
-	slider.setCentrePosition(newBounds.getCentreX(), newBounds.getCentreY());
+    removeChildComponent(&sideNavbarBackground);
+    sideBarVisible = false;
 }

@@ -29,10 +29,14 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o"
+  "/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o"
+  "/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o"
+  "/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o"
+  "/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

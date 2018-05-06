@@ -20,42 +20,57 @@
 //==============================================================================
 /*
 */
-class MainView : public Component
-{
+class BackgroundButton : public Button {
 public:
-	MainView();
-	~MainView();
+    BackgroundButton() : Button("Background") {}
 
-	void paint(Graphics&) override;
-	void resized() override;
+protected:
+    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
+        g.fillAll(Colours::black.withAlpha(0.25f));
+    }
+};
 
-	void setContentView(Component* view);
+class MainView : public Component {
+public:
+    MainView();
 
-	class GainToolbarView : public ToolbarItemComponent {
-	public:
-		GainToolbarView(const int toolbarItemId)
-			: ToolbarItemComponent(toolbarItemId, "Gain", false) {
-			addAndMakeVisible(slider);
-			slider.setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
-		}
-		virtual bool getToolbarItemSizes(int toolbarThickness, bool isToolbarVertical, int & preferredSize, int & minSize, int & maxSize) override;
-		virtual void paintButtonArea(Graphics & g, int width, int height, bool isMouseOver, bool isMouseDown) override;
-		virtual void contentAreaChanged(const Rectangle<int>& newBounds) override;
-	private:
-		Slider slider;
-	};
+    void paint(Graphics &) override;
+
+    void resized() override;
+
+    void setContentView(Component *view);
+
+    void showSideNavBar();
+
+    void hideSideNavBar();
+
+    bool isSideBarVisible() {
+        return sideBarVisible;
+    }
+
+    BottomBarView bottomBar;
+    SideNavbarView sideNavbar;
+    ComponentAnimator sideNavbarAnimator;
+    ComponentAnimator sideNavbarBackgroundAnimator;
+    BackgroundButton sideNavbarBackground;
+
+    ToolbarView toolbar;
+
 private:
-	ToolbarView toolbar;
-	Component *contentView = nullptr;
-	SvgIcon ultraschallIcon = { BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize };
-	DropShadower dropShadower = { DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.19f), 6, Point<int>(0, 6)) };
+    bool sideBarVisible = false;
 
-	Component spacer;
-	BottomBarView bottomBar;
-	SideNavbarView sideNavbar;
+    Component *contentView = nullptr;
+    SvgIcon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};
+    DropShadower dropShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.19f), 6, Point<int>(0, 6))};
 
-	SvgIcon addIcon{ BinaryData::add_svg, BinaryData::add_svgSize };
-	DrawableButton addButton{ "Add", DrawableButton::ImageFitted };
+    DropShadower sideBarShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.29f), 6, Point<int>(0, 6))};
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
+    DropShadower addButtonShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.29f), 6, Point<int>(0, 6))};
+
+    Component spacer;
+
+    SvgIcon addIcon{BinaryData::add_svg, BinaryData::add_svgSize};
+    DrawableButton addButton{"Add", DrawableButton::ImageFitted};
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
 };

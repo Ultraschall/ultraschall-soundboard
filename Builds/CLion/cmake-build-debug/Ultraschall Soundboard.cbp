@@ -280,6 +280,57 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Black.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-BlackItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Bold.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-BoldItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Italic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Light.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-LightItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Medium.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-MediumItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Regular.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-Thin.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/Roboto-ThinItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-Bold.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-BoldItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-Italic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-Light.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-LightItalic.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/add.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -290,6 +341,18 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_folder_open_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_menu_white_24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_menu_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_mic_black_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_mic_none_black_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_mic_none_white_48px.svg">
@@ -451,6 +514,12 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -473,6 +542,24 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Submodules/JUCE/modules/juce_audio_basics/audio_play_head/juce_AudioPlayHead.h">

@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Ultraschall Soundboard\Assets\Fonts">
+      <UniqueIdentifier>{29EA7C68-72B4-BB33-F051-6358D6A32C76}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Ultraschall Soundboard\Assets">
       <UniqueIdentifier>{35D72488-3415-F26B-D9C8-796AC4081657}</UniqueIdentifier>
     </Filter>
@@ -406,6 +409,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Views\MaterialLookAndFeel.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Views\SideNavbarView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
@@ -2360,6 +2366,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Models\PlayerModel.h">
       <Filter>Ultraschall Soundboard\Source\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\MaterialLookAndFeel.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\SideNavbarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
@@ -4415,6 +4424,57 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\Fonts\Roboto-Black.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-BlackItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-Bold.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-BoldItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-Italic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-Light.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-LightItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-Medium.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-MediumItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-Regular.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-Thin.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\Roboto-ThinItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Bold.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-BoldItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Italic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Light.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-LightItalic.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
     <None Include="..\..\Assets\ic_mic_black_48px.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>

@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{15D6C443-9E7C-8A57-FA5B-9D0AA0B88C01}</ProjectGuid>
+    <ProjectGuid>{67E67825-E52A-EB85-05C2-058C1421C71F}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -148,6 +148,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Views\MaterialLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\Views\SideNavbarView.cpp"/>
     <ClCompile Include="..\..\Source\Views\BankView.cpp"/>
     <ClCompile Include="..\..\Source\Views\BottomBarView.cpp"/>
@@ -1903,6 +1904,7 @@
     <ClInclude Include="..\..\Source\Models\ValueTreeObjectList.h"/>
     <ClInclude Include="..\..\Source\Models\ClipModel.h"/>
     <ClInclude Include="..\..\Source\Models\PlayerModel.h"/>
+    <ClInclude Include="..\..\Source\Views\MaterialLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\Views\SideNavbarView.h"/>
     <ClInclude Include="..\..\Source\Views\BankView.h"/>
     <ClInclude Include="..\..\Source\Views\BottomBarView.h"/>
@@ -2589,6 +2591,23 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\Fonts\Roboto-Black.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-BlackItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-Bold.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-BoldItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-Italic.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-Light.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-LightItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-Medium.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-MediumItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-Regular.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-Thin.ttf"/>
+    <None Include="..\..\Assets\Fonts\Roboto-ThinItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Bold.ttf"/>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-BoldItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Italic.ttf"/>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Light.ttf"/>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-LightItalic.ttf"/>
     <None Include="..\..\Assets\ic_mic_black_48px.svg"/>
     <None Include="..\..\Assets\ic_mic_none_black_48px.svg"/>
     <None Include="..\..\Assets\ic_menu_white_24px.svg"/>

@@ -23,6 +23,23 @@ add_executable (STANDALONE_PLUGIN
 set_source_files_properties ("../../Submodules/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_library (SHARED_CODE STATIC
+    "../../Assets/Fonts/Roboto-Black.ttf"
+    "../../Assets/Fonts/Roboto-BlackItalic.ttf"
+    "../../Assets/Fonts/Roboto-Bold.ttf"
+    "../../Assets/Fonts/Roboto-BoldItalic.ttf"
+    "../../Assets/Fonts/Roboto-Italic.ttf"
+    "../../Assets/Fonts/Roboto-Light.ttf"
+    "../../Assets/Fonts/Roboto-LightItalic.ttf"
+    "../../Assets/Fonts/Roboto-Medium.ttf"
+    "../../Assets/Fonts/Roboto-MediumItalic.ttf"
+    "../../Assets/Fonts/Roboto-Regular.ttf"
+    "../../Assets/Fonts/Roboto-Thin.ttf"
+    "../../Assets/Fonts/Roboto-ThinItalic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Bold.ttf"
+    "../../Assets/Fonts/RobotoCondensed-BoldItalic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Italic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Light.ttf"
+    "../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
     "../../Assets/ic_mic_black_48px.svg"
     "../../Assets/ic_mic_none_black_48px.svg"
     "../../Assets/ic_menu_white_24px.svg"
@@ -45,6 +62,8 @@ add_library (SHARED_CODE STATIC
     "../../Source/Models/ValueTreeObjectList.h"
     "../../Source/Models/ClipModel.h"
     "../../Source/Models/PlayerModel.h"
+    "../../Source/Views/MaterialLookAndFeel.cpp"
+    "../../Source/Views/MaterialLookAndFeel.h"
     "../../Source/Views/SideNavbarView.cpp"
     "../../Source/Views/SideNavbarView.h"
     "../../Source/Views/BankView.cpp"
@@ -1382,6 +1401,23 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties ("../../Assets/Fonts/Roboto-Black.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-BlackItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Bold.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-BoldItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Italic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Medium.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-MediumItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Thin.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-ThinItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Bold.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-BoldItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Italic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_menu_white_24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1404,6 +1440,7 @@ set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER
 set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2753,13 +2790,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -2894,13 +2931,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3019,6 +3056,23 @@ add_executable (STANDALONE_PLUGIN
 set_source_files_properties ("../../Submodules/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_library (SHARED_CODE STATIC
+    "../../Assets/Fonts/Roboto-Black.ttf"
+    "../../Assets/Fonts/Roboto-BlackItalic.ttf"
+    "../../Assets/Fonts/Roboto-Bold.ttf"
+    "../../Assets/Fonts/Roboto-BoldItalic.ttf"
+    "../../Assets/Fonts/Roboto-Italic.ttf"
+    "../../Assets/Fonts/Roboto-Light.ttf"
+    "../../Assets/Fonts/Roboto-LightItalic.ttf"
+    "../../Assets/Fonts/Roboto-Medium.ttf"
+    "../../Assets/Fonts/Roboto-MediumItalic.ttf"
+    "../../Assets/Fonts/Roboto-Regular.ttf"
+    "../../Assets/Fonts/Roboto-Thin.ttf"
+    "../../Assets/Fonts/Roboto-ThinItalic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Bold.ttf"
+    "../../Assets/Fonts/RobotoCondensed-BoldItalic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Italic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Light.ttf"
+    "../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
     "../../Assets/ic_mic_black_48px.svg"
     "../../Assets/ic_mic_none_black_48px.svg"
     "../../Assets/ic_menu_white_24px.svg"
@@ -3041,6 +3095,8 @@ add_library (SHARED_CODE STATIC
     "../../Source/Models/ValueTreeObjectList.h"
     "../../Source/Models/ClipModel.h"
     "../../Source/Models/PlayerModel.h"
+    "../../Source/Views/MaterialLookAndFeel.cpp"
+    "../../Source/Views/MaterialLookAndFeel.h"
     "../../Source/Views/SideNavbarView.cpp"
     "../../Source/Views/SideNavbarView.h"
     "../../Source/Views/BankView.cpp"
@@ -4377,6 +4433,23 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties ("../../Assets/Fonts/Roboto-Black.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-BlackItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Bold.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-BoldItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Italic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Medium.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-MediumItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-Thin.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/Roboto-ThinItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Bold.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-BoldItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Italic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_menu_white_24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -4399,6 +4472,7 @@ set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER
 set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)

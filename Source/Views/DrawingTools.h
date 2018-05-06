@@ -31,9 +31,10 @@ private:
 
 class Material {
 public:
-	static float convertDpToPixel(Component* c, float dp) {
+	template <typename T>
+	static T convertDpToPixel(Component* c, float dp) {
 		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(c->getScreenBounds().getCentre());
-		float px = (dp * 160) / display.dpi;
-		return px / display.scale;
+		double px = ((dp * 160) / display.dpi);// * display.scale;
+		return std::round(T(px));
 	}
 };

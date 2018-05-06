@@ -10,6 +10,40 @@
               pluginName="Soundboard" cppLanguageStandard="17">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
+      <GROUP id="{FDAE8121-CDC0-1E58-F066-388BAA1F88A8}" name="Fonts">
+        <FILE id="VRC9rh" name="Roboto-Black.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Black.ttf"/>
+        <FILE id="F0QBoW" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-BlackItalic.ttf"/>
+        <FILE id="oRDDsR" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Bold.ttf"/>
+        <FILE id="XT54qp" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-BoldItalic.ttf"/>
+        <FILE id="UB9qt6" name="Roboto-Italic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Italic.ttf"/>
+        <FILE id="MlM3Pk" name="Roboto-Light.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Light.ttf"/>
+        <FILE id="u4WCVU" name="Roboto-LightItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-LightItalic.ttf"/>
+        <FILE id="OZsY2o" name="Roboto-Medium.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Medium.ttf"/>
+        <FILE id="UIE1Yu" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-MediumItalic.ttf"/>
+        <FILE id="P9JhjS" name="Roboto-Regular.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Regular.ttf"/>
+        <FILE id="J6L86x" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Thin.ttf"/>
+        <FILE id="tgimeZ" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-ThinItalic.ttf"/>
+        <FILE id="B50QZe" name="RobotoCondensed-Bold.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Bold.ttf"/>
+        <FILE id="m1U8Qt" name="RobotoCondensed-BoldItalic.ttf" compile="0"
+              resource="1" file="Assets/Fonts/RobotoCondensed-BoldItalic.ttf"/>
+        <FILE id="B0wYZI" name="RobotoCondensed-Italic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Italic.ttf"/>
+        <FILE id="zfZS2h" name="RobotoCondensed-Light.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Light.ttf"/>
+        <FILE id="Wd2N9p" name="RobotoCondensed-LightItalic.ttf" compile="0"
+              resource="1" file="Assets/Fonts/RobotoCondensed-LightItalic.ttf"/>
+      </GROUP>
       <FILE id="st6OFy" name="ic_mic_black_48px.svg" compile="0" resource="1"
             file="Assets/ic_mic_black_48px.svg"/>
       <FILE id="MMJ2Ju" name="ic_mic_none_black_48px.svg" compile="0" resource="1"
@@ -53,6 +87,10 @@
         <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
       </GROUP>
       <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
+        <FILE id="fPsZEo" name="MaterialLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/Views/MaterialLookAndFeel.cpp"/>
+        <FILE id="fwAVBX" name="MaterialLookAndFeel.h" compile="0" resource="0"
+              file="Source/Views/MaterialLookAndFeel.h"/>
         <FILE id="d6ddnq" name="SideNavbarView.cpp" compile="1" resource="0"
               file="Source/Views/SideNavbarView.cpp"/>
         <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
