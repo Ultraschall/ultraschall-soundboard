@@ -25,8 +25,8 @@ public:
     BackgroundButton() : Button("Background") {}
 
 protected:
-    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
-        g.fillAll(Colours::black.withAlpha(0.25f));
+    void paintButton(Graphics &g, bool /*isMouseOverButton*/, bool /*isButtonDown*/) override {
+        g.fillAll(Colours::black.withAlpha(0.8f));
     }
 };
 
@@ -65,12 +65,14 @@ private:
 
     DropShadower sideBarShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.29f), 6, Point<int>(0, 6))};
 
-    DropShadower addButtonShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.29f), 6, Point<int>(0, 6))};
-
     Component spacer;
 
     SvgIcon addIcon{BinaryData::add_svg, BinaryData::add_svgSize};
     DrawableButton addButton{"Add", DrawableButton::ImageFitted};
+
+	float toolbarWidth{ Material::convertDpToPixel<float>(300) };
+
+	float actionButtonSize{ Material::convertDpToPixel<float>(80) };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
 };

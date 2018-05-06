@@ -55,11 +55,11 @@ public:
         delete type;
     }
 
-    void newObjectAdded(PlayerModel *type) override {
+    void newObjectAdded(PlayerModel* /*type*/) override {
 
     }
 
-    void objectRemoved(PlayerModel *type) override {
+    void objectRemoved(PlayerModel* /*type*/) override {
 
     }
 

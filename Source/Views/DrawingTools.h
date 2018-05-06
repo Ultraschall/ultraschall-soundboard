@@ -32,9 +32,10 @@ private:
 class Material {
 public:
 	template <typename T>
-	static T convertDpToPixel(Component* c, float dp) {
-		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(c->getScreenBounds().getCentre());
-		double px = ((dp * 160) / display.dpi);// * display.scale;
+	static T convertDpToPixel(float dp) {
+		TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
+		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(w->getScreenBounds().getCentre());
+		double px =  (dp * (120 / display.dpi)) / display.scale;
 		return std::round(T(px));
 	}
 };

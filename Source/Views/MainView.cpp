@@ -25,8 +25,6 @@ MainView::MainView()
 	addButton.toFront(true);
 
     sideBarShadower.setOwner(&sideNavbar);
-
-    addButtonShadower.setOwner(&addButton);
 }
 
 void MainView::paint(Graphics &g) {
@@ -36,13 +34,13 @@ void MainView::paint(Graphics &g) {
 
 void MainView::resized() {
 
-	auto actionHeight = Material::convertDpToPixel<float>(this, 56);
+	auto actionHeight = Material::convertDpToPixel<float>(56);
 
 	auto flexBox = FlexBox();
 
 	flexBox.flexDirection = FlexBox::Direction::column;
 
-	flexBox.items.add(FlexItem(toolbar).withMaxHeight(Material::convertDpToPixel<float>(this, 64)).withWidth(getWidth()).withFlex(1));
+	flexBox.items.add(FlexItem(toolbar).withMaxHeight(Material::convertDpToPixel<float>(64)).withWidth(getWidth()).withFlex(1));
 
 	if (contentView != nullptr) {
 		flexBox.items.add(FlexItem(*contentView).withWidth(getWidth()).withFlex(2));
@@ -56,15 +54,15 @@ void MainView::resized() {
 	flexBox.performLayout(getLocalBounds());
 
 	addButton.setBounds(
-		getLocalBounds().getWidth() - int(actionHeight * 1.5),
-		getLocalBounds().getHeight() - int(actionHeight * 1.4),
-		int(actionHeight),
-		int(actionHeight)
+		getLocalBounds().getWidth() - int(actionButtonSize * 1.2),
+		getLocalBounds().getHeight() - int(actionButtonSize * 1.2),
+		int(actionButtonSize),
+		int(actionButtonSize)
 	);
 
 	if (sideBarVisible) {
         sideNavbarBackground.setBounds(getLocalBounds());
-        sideNavbar.setBounds(getLocalBounds().removeFromLeft(Material::convertDpToPixel<int>(this, 300)));
+        sideNavbar.setBounds(getLocalBounds().removeFromLeft(toolbarWidth));
     }
 }
 
@@ -84,9 +82,9 @@ void MainView::showSideNavBar() {
     addAndMakeVisible(sideNavbarBackground);
     sideNavbar.toFront(false);
 
-    auto endBounds = getLocalBounds().removeFromLeft(Material::convertDpToPixel<int>(this, 300));
+    auto endBounds = getLocalBounds().removeFromLeft(toolbarWidth);
     auto startBounds = endBounds;
-    startBounds.setPosition(-300, startBounds.getY());
+    startBounds.setPosition(-toolbarWidth, 0);
 
     sideNavbar.setBounds(startBounds);
     addAndMakeVisible(sideNavbar);
@@ -108,7 +106,7 @@ void MainView::showSideNavBar() {
 
 void MainView::hideSideNavBar() {
     auto endBounds = sideNavbar.getLocalBounds();
-    endBounds.setPosition(-300, endBounds.getY());
+    endBounds.setPosition(-toolbarWidth, 0);
 
     sideNavbarBackgroundAnimator.fadeOut(&sideNavbarBackground, 200);
     sideNavbarAnimator.animateComponent(

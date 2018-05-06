@@ -28,18 +28,18 @@ void SideNavbarView::resized() {
 
     flexBox.flexDirection = FlexBox::Direction::column;
 
-    flexBox.items.add(FlexItem(settings).withMaxHeight(Material::convertDpToPixel<float>(this, 48)).withFlex(1));
+    flexBox.items.add(FlexItem(settings).withMaxHeight(Material::convertDpToPixel<float>(48)).withFlex(1));
 
-    flexBox.performLayout(getLocalBounds().withTrimmedTop(Material::convertDpToPixel<int>(this, 64)));
+    flexBox.performLayout(getLocalBounds().withTrimmedTop(Material::convertDpToPixel<int>(64)));
 }
 
 void SideNavbarView::SideNavbarItemView::paint(Graphics &g) {
-    icon->drawWithin(g, {Material::convertDpToPixel<float>(this, 16), 0, Material::convertDpToPixel<float>(this, 24),
+    icon->drawWithin(g, {Material::convertDpToPixel<float>(16), 0.0f, Material::convertDpToPixel<float>(24),
                          float(getHeight())}, RectanglePlacement::centred, 0.87);
     g.setColour(Colours::black.withAlpha(0.87f));
     g.drawFittedText(title,
                      getLocalBounds()
-                             .withTrimmedLeft(Material::convertDpToPixel<int>(this, 72))
-                             .withTrimmedRight(Material::convertDpToPixel<int>(this, 16)),
+                             .withTrimmedLeft(Material::convertDpToPixel<int>(72))
+                             .withTrimmedRight(Material::convertDpToPixel<int>(16)),
                      Justification::centredLeft, 1);
 }
