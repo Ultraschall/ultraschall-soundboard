@@ -10,6 +10,14 @@
               pluginName="Soundboard" cppLanguageStandard="17">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
+      <FILE id="st6OFy" name="ic_mic_black_48px.svg" compile="0" resource="1"
+            file="Assets/ic_mic_black_48px.svg"/>
+      <FILE id="MMJ2Ju" name="ic_mic_none_black_48px.svg" compile="0" resource="1"
+            file="Assets/ic_mic_none_black_48px.svg"/>
+      <FILE id="yG5moj" name="ic_menu_white_24px.svg" compile="0" resource="1"
+            file="Assets/ic_menu_white_24px.svg"/>
+      <FILE id="MoBq85" name="ic_menu_white_48px.svg" compile="0" resource="1"
+            file="Assets/ic_menu_white_48px.svg"/>
       <FILE id="UHqrdB" name="add.svg" compile="0" resource="1" file="Assets/add.svg"/>
       <FILE id="COvtlC" name="ic_add_circle_white_48px.svg" compile="0" resource="1"
             file="Assets/ic_add_circle_white_48px.svg"/>
@@ -45,8 +53,15 @@
         <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
       </GROUP>
       <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
+        <FILE id="d6ddnq" name="SideNavbarView.cpp" compile="1" resource="0"
+              file="Source/Views/SideNavbarView.cpp"/>
+        <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
+              file="Source/Views/SideNavbarView.h"/>
         <FILE id="uyqQzQ" name="BankView.cpp" compile="1" resource="0" file="Source/Views/BankView.cpp"/>
         <FILE id="oKitLd" name="BankView.h" compile="0" resource="0" file="Source/Views/BankView.h"/>
+        <FILE id="dOzsPk" name="BottomBarView.cpp" compile="1" resource="0"
+              file="Source/Views/BottomBarView.cpp"/>
+        <FILE id="pJbkd7" name="BottomBarView.h" compile="0" resource="0" file="Source/Views/BottomBarView.h"/>
         <FILE id="iT2jcw" name="ClipView.cpp" compile="1" resource="0" file="Source/Views/ClipView.cpp"/>
         <FILE id="HefmFf" name="ClipView.h" compile="0" resource="0" file="Source/Views/ClipView.h"/>
         <FILE id="rZLU41" name="DrawingTools.cpp" compile="1" resource="0"
@@ -56,6 +71,8 @@
         <FILE id="FA7Auh" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
         <FILE id="GLaASt" name="MainView.cpp" compile="1" resource="0" file="Source/Views/MainView.cpp"/>
         <FILE id="HymZsh" name="MainView.h" compile="0" resource="0" file="Source/Views/MainView.h"/>
+        <FILE id="zJG2lu" name="ToolbarView.cpp" compile="1" resource="0" file="Source/Views/ToolbarView.cpp"/>
+        <FILE id="B8oRv8" name="ToolbarView.h" compile="0" resource="0" file="Source/Views/ToolbarView.h"/>
       </GROUP>
       <GROUP id="{379205E3-6D4E-6F8F-C7F1-0CB61FA97117}" name="Controller">
         <FILE id="rLLaav" name="ClipViewController.cpp" compile="1" resource="0"

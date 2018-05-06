@@ -1,9 +1,9 @@
 /*
   ==============================================================================
 
-    MainView.h
-    Created: 4 May 2018 11:22:54am
-    Author:  danlin
+	MainView.h
+	Created: 4 May 2018 11:22:54am
+	Author:  danlin
 
   ==============================================================================
 */
@@ -13,31 +13,31 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "DrawingTools.h"
+#include "ToolbarView.h"
+#include "BottomBarView.h"
+#include "SideNavbarView.h"
 
 //==============================================================================
 /*
 */
-class MainView    : public Component
+class MainView : public Component
 {
 public:
-    MainView();
-    ~MainView();
+	MainView();
+	~MainView();
 
-    void paint (Graphics&) override;
-    void resized() override;
+	void paint(Graphics&) override;
+	void resized() override;
 
-    void setContentView(Component* view);
-
-    Toolbar toolbar;
+	void setContentView(Component* view);
 
 	class GainToolbarView : public ToolbarItemComponent {
 	public:
-		GainToolbarView(const int toolbarItemId) 
+		GainToolbarView(const int toolbarItemId)
 			: ToolbarItemComponent(toolbarItemId, "Gain", false) {
 			addAndMakeVisible(slider);
 			slider.setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
 		}
-		// Geerbt �ber ToolbarItemComponent
 		virtual bool getToolbarItemSizes(int toolbarThickness, bool isToolbarVertical, int & preferredSize, int & minSize, int & maxSize) override;
 		virtual void paintButtonArea(Graphics & g, int width, int height, bool isMouseOver, bool isMouseDown) override;
 		virtual void contentAreaChanged(const Rectangle<int>& newBounds) override;
@@ -45,11 +45,17 @@ public:
 		Slider slider;
 	};
 private:
-    Component *contentView = nullptr;
+	ToolbarView toolbar;
+	Component *contentView = nullptr;
+	SvgIcon ultraschallIcon = { BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize };
+	DropShadower dropShadower = { DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.19f), 6, Point<int>(0, 6)) };
 
-	std::unique_ptr<Component> temp;
+	Component spacer;
+	BottomBarView bottomBar;
+	SideNavbarView sideNavbar;
 
-	SvgIcon ultraschallIcon;
+	SvgIcon addIcon{ BinaryData::add_svg, BinaryData::add_svgSize };
+	DrawableButton addButton{ "Add", DrawableButton::ImageFitted };
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainView)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
 };

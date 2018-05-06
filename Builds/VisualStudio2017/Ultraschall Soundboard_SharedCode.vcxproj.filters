@@ -406,7 +406,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Views\SideNavbarView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Views\BankView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Views\BottomBarView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Views\ClipView.cpp">
@@ -419,6 +425,9 @@
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Views\MainView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Views\ToolbarView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp">
@@ -2352,7 +2361,13 @@
     <ClInclude Include="..\..\Source\Models\PlayerModel.h">
       <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Views\SideNavbarView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Views\BankView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\BottomBarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\ClipView.h">
@@ -2365,6 +2380,9 @@
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\MainView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\ToolbarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Controller\ClipViewController.h">
@@ -4397,6 +4415,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\ic_mic_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_mic_none_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_menu_white_24px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_menu_white_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
     <None Include="..\..\Assets\add.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>

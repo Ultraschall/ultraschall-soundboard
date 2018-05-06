@@ -14,8 +14,6 @@
 void MainViewController::viewDidLoad() {
     auto myView = dynamic_cast<MainView*>(view.get());
     if (myView == nullptr) return;
-
-    myView->toolbar.addDefaultItems(*this);
 }
 
 void MainViewController::showLibrary()

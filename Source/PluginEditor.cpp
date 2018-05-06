@@ -16,6 +16,9 @@
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor (UltraschallSoundboardAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+	// TODO: implement a own standalone wrapper!
+	TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
+	w->setUsingNativeTitleBar(true);
     controller = std::make_unique<MainViewController>(p.library);
     controller->init();
 	addAndMakeVisible(controller->getView());

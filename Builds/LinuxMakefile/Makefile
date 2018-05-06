@@ -81,11 +81,14 @@ OBJECTS_STANDALONE_PLUGIN := \
   $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o \
 
 OBJECTS_SHARED_CODE := \
+  $(JUCE_OBJDIR)/SideNavbarView_15c86376.o \
   $(JUCE_OBJDIR)/BankView_18f9282b.o \
+  $(JUCE_OBJDIR)/BottomBarView_35199f0d.o \
   $(JUCE_OBJDIR)/ClipView_a665713f.o \
   $(JUCE_OBJDIR)/DrawingTools_8d5ce907.o \
   $(JUCE_OBJDIR)/LibraryView_265b19a0.o \
   $(JUCE_OBJDIR)/MainView_64f95aa8.o \
+  $(JUCE_OBJDIR)/ToolbarView_7d0bc060.o \
   $(JUCE_OBJDIR)/ClipViewController_45d60665.o \
   $(JUCE_OBJDIR)/LibraryViewController_d970f972.o \
   $(JUCE_OBJDIR)/MainViewController_6128008e.o \
@@ -137,9 +140,19 @@ $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o: ../../Juc
 	@echo "Compiling include_juce_audio_plugin_client_Standalone.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_STANDALONE_PLUGIN) $(JUCE_CFLAGS_STANDALONE_PLUGIN) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/SideNavbarView_15c86376.o: ../../Source/Views/SideNavbarView.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling SideNavbarView.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/BankView_18f9282b.o: ../../Source/Views/BankView.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling BankView.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/BottomBarView_35199f0d.o: ../../Source/Views/BottomBarView.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling BottomBarView.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/ClipView_a665713f.o: ../../Source/Views/ClipView.cpp
@@ -160,6 +173,11 @@ $(JUCE_OBJDIR)/LibraryView_265b19a0.o: ../../Source/Views/LibraryView.cpp
 $(JUCE_OBJDIR)/MainView_64f95aa8.o: ../../Source/Views/MainView.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling MainView.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ToolbarView_7d0bc060.o: ../../Source/Views/ToolbarView.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ToolbarView.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/ClipViewController_45d60665.o: ../../Source/Controller/ClipViewController.cpp

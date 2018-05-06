@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8D4DFCF1-3C0C-4CDD-60AA-C8422D3B2AAD}</ProjectGuid>
+    <ProjectGuid>{15D6C443-9E7C-8A57-FA5B-9D0AA0B88C01}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -148,11 +148,14 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Views\SideNavbarView.cpp"/>
     <ClCompile Include="..\..\Source\Views\BankView.cpp"/>
+    <ClCompile Include="..\..\Source\Views\BottomBarView.cpp"/>
     <ClCompile Include="..\..\Source\Views\ClipView.cpp"/>
     <ClCompile Include="..\..\Source\Views\DrawingTools.cpp"/>
     <ClCompile Include="..\..\Source\Views\LibraryView.cpp"/>
     <ClCompile Include="..\..\Source\Views\MainView.cpp"/>
+    <ClCompile Include="..\..\Source\Views\ToolbarView.cpp"/>
     <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp"/>
     <ClCompile Include="..\..\Source\Controller\LibraryViewController.cpp"/>
     <ClCompile Include="..\..\Source\Controller\MainViewController.cpp"/>
@@ -1900,11 +1903,14 @@
     <ClInclude Include="..\..\Source\Models\ValueTreeObjectList.h"/>
     <ClInclude Include="..\..\Source\Models\ClipModel.h"/>
     <ClInclude Include="..\..\Source\Models\PlayerModel.h"/>
+    <ClInclude Include="..\..\Source\Views\SideNavbarView.h"/>
     <ClInclude Include="..\..\Source\Views\BankView.h"/>
+    <ClInclude Include="..\..\Source\Views\BottomBarView.h"/>
     <ClInclude Include="..\..\Source\Views\ClipView.h"/>
     <ClInclude Include="..\..\Source\Views\DrawingTools.h"/>
     <ClInclude Include="..\..\Source\Views\LibraryView.h"/>
     <ClInclude Include="..\..\Source\Views\MainView.h"/>
+    <ClInclude Include="..\..\Source\Views\ToolbarView.h"/>
     <ClInclude Include="..\..\Source\Controller\ClipViewController.h"/>
     <ClInclude Include="..\..\Source\Controller\LibraryViewController.h"/>
     <ClInclude Include="..\..\Source\Controller\MainViewController.h"/>
@@ -2583,6 +2589,10 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\ic_mic_black_48px.svg"/>
+    <None Include="..\..\Assets\ic_mic_none_black_48px.svg"/>
+    <None Include="..\..\Assets\ic_menu_white_24px.svg"/>
+    <None Include="..\..\Assets\ic_menu_white_48px.svg"/>
     <None Include="..\..\Assets\add.svg"/>
     <None Include="..\..\Assets\ic_add_circle_white_48px.svg"/>
     <None Include="..\..\Assets\ic_add_white_48px.svg"/>

@@ -28,3 +28,12 @@ private:
     std::unique_ptr<XmlElement> svg;
     std::unique_ptr<Drawable> drawable;
 };
+
+class Material {
+public:
+	static float convertDpToPixel(Component* c, float dp) {
+		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(c->getScreenBounds().getCentre());
+		float px = (dp * 160) / display.dpi;
+		return px / display.scale;
+	}
+};

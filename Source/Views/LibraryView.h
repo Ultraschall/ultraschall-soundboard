@@ -18,19 +18,11 @@ class LibraryView : public Component, public TableListBoxModel
 public:
     LibraryView() {
 
-        table.setHeaderHeight(21);
+        table.setHeaderHeight(0);
         table.setModel(this);
-        table.getHeader().addColumn(String::empty,
-                                    ComumnIdNumber,
-                                    32,
-                                    32,
-                                    32,
-                                    TableHeaderComponent::notSortable);
+		table.setColour(ListBox::backgroundColourId, Colour(225, 225, 225));
 
-        addButton.setImages(addIcon.getDrawable());
         addAndMakeVisible(table);
-        addAndMakeVisible(addButton);
-        addButton.toFront(false);
     };
 
     ~LibraryView() {}
@@ -41,7 +33,7 @@ public:
     }
 
     void paintRowBackground(Graphics &graphics, int rowNumber, int width, int height, bool rowIsSelected) override {
-        graphics.fillAll(Colours::darkgrey);
+        graphics.fillAll(Colours::white);
     }
 
     void paintCell(Graphics &graphics, int rowNumber, int columnId, int width, int height, bool rowIsSelected) override {
@@ -58,8 +50,6 @@ public:
 private:
     TableListBox table  { {}, this };
     int numberOfRows = 12;
-    SvgIcon addIcon {BinaryData::add_svg, BinaryData::add_svgSize};
-    DrawableButton addButton { "Add", DrawableButton::ImageFitted };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryView)
 };

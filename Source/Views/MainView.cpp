@@ -1,9 +1,9 @@
 /*
   ==============================================================================
 
-    MainView.cpp
-    Created: 4 May 2018 11:22:54am
-    Author:  danlin
+	MainView.cpp
+	Created: 4 May 2018 11:22:54am
+	Author:  danlin
 
   ==============================================================================
 */
@@ -13,10 +13,19 @@
 
 //==============================================================================
 MainView::MainView()
-        : ultraschallIcon(BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize),
-          contentView(nullptr) {
-    toolbar.setStyle(Toolbar::ToolbarItemStyle::iconsOnly);
-    addAndMakeVisible(toolbar);
+{
+	addAndMakeVisible(toolbar);
+	dropShadower.setOwner(&toolbar);
+	
+	addAndMakeVisible(spacer);
+	addAndMakeVisible(bottomBar);
+
+	addButton.setImages(addIcon.getDrawable());
+	addAndMakeVisible(addButton);
+	addButton.toFront(true);
+
+	addAndMakeVisible(sideNavbar);
+	sideNavbar.toFront(false);
 }
 
 MainView::~MainView() {
@@ -24,53 +33,61 @@ MainView::~MainView() {
 }
 
 void MainView::paint(Graphics &g) {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    if (contentView == nullptr) {
-        g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));   // clear the background
-
-        ultraschallIcon.getDrawable()->drawWithin(g, getLocalBounds().reduced(100).toFloat(),
-                                                  RectanglePlacement::centred, 1.0f);
-    }
+	g.fillAll(Colour(225, 225, 225));
+	ultraschallIcon.getDrawable()->drawWithin(g, getLocalBounds().reduced(100).toFloat(), RectanglePlacement::centred, 0.2f);
 }
 
 void MainView::resized() {
-    auto flexBox = FlexBox();
 
-    flexBox.flexDirection = FlexBox::Direction::column;
+	auto actionHeight = Material::convertDpToPixel(this, 56);
 
-    flexBox.items.add(FlexItem(toolbar).withMaxHeight(32).withWidth(getWidth()).withFlex(1));
+	auto flexBox = FlexBox();
 
-    if (contentView != nullptr) {
-        flexBox.items.add(FlexItem(*contentView).withWidth(getWidth()).withFlex(2));
-    }
+	flexBox.flexDirection = FlexBox::Direction::column;
 
-    flexBox.performLayout(getLocalBounds());
+	flexBox.items.add(FlexItem(toolbar).withMaxHeight(Material::convertDpToPixel(this, 64)).withWidth(getWidth()).withFlex(1));
+
+	if (contentView != nullptr) {
+		flexBox.items.add(FlexItem(*contentView).withWidth(getWidth()).withFlex(2));
+	}
+	else {
+		flexBox.items.add(FlexItem(spacer).withWidth(getWidth()).withFlex(2));
+	}
+
+	flexBox.items.add(FlexItem(bottomBar).withMaxHeight(actionHeight).withWidth(getWidth()).withFlex(1));
+
+	flexBox.performLayout(getLocalBounds());
+
+	addButton.setBounds(
+		getLocalBounds().getWidth() - (actionHeight * 1.5),
+		getLocalBounds().getHeight() - (actionHeight * 1.4),
+		actionHeight,
+		actionHeight
+	);
+
+	sideNavbar.setBounds(getLocalBounds().removeFromLeft(Material::convertDpToPixel(this, 300)));
 }
 
 void MainView::setContentView(Component *view) {
-    if (view == contentView) return;
+	if (view == contentView) return;
 
-    contentView = view;
-    addAndMakeVisible(contentView);
-    resized();
-    repaint();
+	contentView = view;
+	addAndMakeVisible(contentView);
+	contentView->toBack();
+	addButton.toFront(true);
+	resized();
+	repaint();
 }
 
 bool MainView::GainToolbarView::getToolbarItemSizes(int toolbarThickness, bool isToolbarVertical, int &preferredSize,
-                                                    int &minSize, int &maxSize) {
-    if (isToolbarVertical)
-        return false;
+	int &minSize, int &maxSize) {
+	if (isToolbarVertical)
+		return false;
 
-    preferredSize = 250;
-    minSize = 80;
-    maxSize = 300;
-    return true;
+	preferredSize = 250;
+	minSize = 80;
+	maxSize = 300;
+	return true;
 }
 
 void
@@ -78,8 +95,8 @@ MainView::GainToolbarView::paintButtonArea(Graphics &g, int width, int height, b
 }
 
 void MainView::GainToolbarView::contentAreaChanged(const Rectangle<int> &newBounds) {
-    slider.setSize(newBounds.getWidth() - 2,
-                   jmin(newBounds.getHeight() - 2, 22));
+	slider.setSize(newBounds.getWidth() - 2,
+		jmin(newBounds.getHeight() - 2, 22));
 
-    slider.setCentrePosition(newBounds.getCentreX(), newBounds.getCentreY());
+	slider.setCentrePosition(newBounds.getCentreX(), newBounds.getCentreY());
 }
