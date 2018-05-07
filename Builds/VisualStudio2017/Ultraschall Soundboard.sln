@@ -1,12 +1,12 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2017
 
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ultraschall Soundboard - Standalone Plugin", "Ultraschall Soundboard_StandalonePlugin.vcxproj", "{3C885533-7F2D-6A19-2298-B49C8F56687F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ultraschall Soundboard - Standalone Plugin", "Ultraschall Soundboard_StandalonePlugin.vcxproj", "{1AC68F36-B5C1-D8CA-CD96-E9BEF9066B7B}"
 	ProjectSection(ProjectDependencies) = postProject
-		{F2EFE10E-7745-3784-E700-1802B6730C90} = {F2EFE10E-7745-3784-E700-1802B6730C90}
+		{C8A2395A-6BED-9022-2424-E8955A068FE4} = {C8A2395A-6BED-9022-2424-E8955A068FE4}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ultraschall Soundboard - Shared Code", "Ultraschall Soundboard_SharedCode.vcxproj", "{F2EFE10E-7745-3784-E700-1802B6730C90}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ultraschall Soundboard - Shared Code", "Ultraschall Soundboard_SharedCode.vcxproj", "{C8A2395A-6BED-9022-2424-E8955A068FE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,14 +14,14 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3C885533-7F2D-6A19-2298-B49C8F56687F}.Debug|x64.ActiveCfg = Debug|x64
-		{3C885533-7F2D-6A19-2298-B49C8F56687F}.Debug|x64.Build.0 = Debug|x64
-		{3C885533-7F2D-6A19-2298-B49C8F56687F}.Release|x64.ActiveCfg = Release|x64
-		{3C885533-7F2D-6A19-2298-B49C8F56687F}.Release|x64.Build.0 = Release|x64
-		{F2EFE10E-7745-3784-E700-1802B6730C90}.Debug|x64.ActiveCfg = Debug|x64
-		{F2EFE10E-7745-3784-E700-1802B6730C90}.Debug|x64.Build.0 = Debug|x64
-		{F2EFE10E-7745-3784-E700-1802B6730C90}.Release|x64.ActiveCfg = Release|x64
-		{F2EFE10E-7745-3784-E700-1802B6730C90}.Release|x64.Build.0 = Release|x64
+		{1AC68F36-B5C1-D8CA-CD96-E9BEF9066B7B}.Debug|x64.ActiveCfg = Debug|x64
+		{1AC68F36-B5C1-D8CA-CD96-E9BEF9066B7B}.Debug|x64.Build.0 = Debug|x64
+		{1AC68F36-B5C1-D8CA-CD96-E9BEF9066B7B}.Release|x64.ActiveCfg = Release|x64
+		{1AC68F36-B5C1-D8CA-CD96-E9BEF9066B7B}.Release|x64.Build.0 = Release|x64
+		{C8A2395A-6BED-9022-2424-E8955A068FE4}.Debug|x64.ActiveCfg = Debug|x64
+		{C8A2395A-6BED-9022-2424-E8955A068FE4}.Debug|x64.Build.0 = Debug|x64
+		{C8A2395A-6BED-9022-2424-E8955A068FE4}.Release|x64.ActiveCfg = Release|x64
+		{C8A2395A-6BED-9022-2424-E8955A068FE4}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

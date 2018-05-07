@@ -10,7 +10,7 @@
 #pragma once
 
 #include "JuceHeader.h"
-#include "DrawingTools.h"
+#include "MaterialLookAndFeel.h"
 
 class ClipView : public Component {
 public:
@@ -22,14 +22,10 @@ public:
 
     void resized() override;
 
-    void setPlaying();
-
-    void setPaused();
-
-    std::unique_ptr<DrawableButton> playButton;
+	DrawableButton playButton{ "Play / Pause Button", DrawableButton::ButtonStyle::ImageFitted };
 private:
-    std::unique_ptr<SvgIcon> playIcon;
-    std::unique_ptr<SvgIcon> pauseIcon;
+	Material::Icon playIcon{ BinaryData::ic_play_circle_outline_white_48px_svg, BinaryData::ic_play_circle_outline_white_48px_svgSize };
+	Material::Icon pauseIcon{ BinaryData::ic_pause_circle_outline_white_48px_svg, BinaryData::ic_pause_circle_outline_white_48px_svgSize };
 
     enum ClipState {
         isIdle,

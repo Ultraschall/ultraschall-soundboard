@@ -59,17 +59,23 @@ namespace BinaryData
     extern const char*   RobotoCondensedLightItalic_ttf;
     const int            RobotoCondensedLightItalic_ttfSize = 134544;
 
+    extern const char*   RobotoCondensedRegular_ttf;
+    const int            RobotoCondensedRegular_ttfSize = 125332;
+
     extern const char*   ic_mic_black_48px_svg;
-    const int            ic_mic_black_48px_svgSize = 355;
+    const int            ic_mic_black_48px_svgSize = 358;
+
+    extern const char*   ic_keyboard_arrow_left_black_48px_svg;
+    const int            ic_keyboard_arrow_left_black_48px_svgSize = 215;
 
     extern const char*   ic_mic_none_black_48px_svg;
-    const int            ic_mic_none_black_48px_svgSize = 466;
+    const int            ic_mic_none_black_48px_svgSize = 469;
 
     extern const char*   ic_menu_white_24px_svg;
-    const int            ic_menu_white_24px_svgSize = 209;
+    const int            ic_menu_white_24px_svgSize = 212;
 
     extern const char*   ic_menu_white_48px_svg;
-    const int            ic_menu_white_48px_svgSize = 209;
+    const int            ic_menu_white_48px_svgSize = 212;
 
     extern const char*   add_svg;
     const int            add_svgSize = 3216;
@@ -84,34 +90,34 @@ namespace BinaryData
     const int            ultraschall_svgSize = 2877;
 
     extern const char*   ic_mic_none_white_48px_svg;
-    const int            ic_mic_none_white_48px_svgSize = 469;
+    const int            ic_mic_none_white_48px_svgSize = 466;
 
     extern const char*   ic_mic_white_48px_svg;
-    const int            ic_mic_white_48px_svgSize = 358;
+    const int            ic_mic_white_48px_svgSize = 355;
 
     extern const char*   ic_pause_circle_outline_white_48px_svg;
-    const int            ic_pause_circle_outline_white_48px_svgSize = 319;
+    const int            ic_pause_circle_outline_white_48px_svgSize = 316;
 
     extern const char*   ic_play_circle_outline_white_48px_svg;
-    const int            ic_play_circle_outline_white_48px_svgSize = 314;
+    const int            ic_play_circle_outline_white_48px_svgSize = 311;
 
     extern const char*   ic_volume_up_white_48px_svg;
-    const int            ic_volume_up_white_48px_svgSize = 354;
+    const int            ic_volume_up_white_48px_svgSize = 351;
 
     extern const char*   ic_view_headline_white_48px_svg;
-    const int            ic_view_headline_white_48px_svgSize = 228;
+    const int            ic_view_headline_white_48px_svgSize = 225;
 
     extern const char*   ic_settings_white_48px_svg;
-    const int            ic_settings_white_48px_svgSize = 839;
+    const int            ic_settings_white_48px_svgSize = 836;
 
     extern const char*   ic_view_module_white_48px_svg;
-    const int            ic_view_module_white_48px_svgSize = 254;
+    const int            ic_view_module_white_48px_svgSize = 251;
 
     extern const char*   ic_folder_open_white_48px_svg;
-    const int            ic_folder_open_white_48px_svgSize = 274;
+    const int            ic_folder_open_white_48px_svgSize = 271;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 34;
+    const int namedResourceListSize = 36;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

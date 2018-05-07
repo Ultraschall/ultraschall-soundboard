@@ -19,9 +19,14 @@ void ClipViewController::loadView() {
 }
 
 void ClipViewController::viewDidLoad() {
-    auto v = static_cast<ClipView*>(view.get());
-    v->playButton->onClick = [v, this] {
-        v->setPlaying();
-        this->player->play();
-    };
+	view->playButton.onClick = [this] {
+		auto toggleState = view->playButton.getToggleState();
+		if (toggleState == true) {
+			
+		}
+		else {
+			this->player->play();
+		}
+		view->playButton.setToggleState(!toggleState, NotificationType::dontSendNotification);
+	};
 }

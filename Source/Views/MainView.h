@@ -10,9 +10,9 @@
 
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
-#include "DrawingTools.h"
+#include "MaterialLookAndFeel.h"
 #include "ToolbarView.h"
 #include "BottomBarView.h"
 #include "SideNavbarView.h"
@@ -61,18 +61,14 @@ private:
     bool sideBarVisible = false;
 
     Component *contentView = nullptr;
-    SvgIcon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};
-    DropShadower dropShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.19f), 6, Point<int>(0, 6))};
-
-    DropShadower sideBarShadower{DropShadow(Colour(0.0f, 0.0f, 0.0f, 0.29f), 6, Point<int>(0, 6))};
+	Material::Icon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};
+    
+	Material::Shadow4dp toolbarShadow;
+	Material::Shadow16dp sideBarShadow;
 
     Component spacer;
 
-    SvgIcon addIcon{BinaryData::add_svg, BinaryData::add_svgSize};
+	Material::Icon addIcon{BinaryData::add_svg, BinaryData::add_svgSize};
 
-	float toolbarWidth{ Material::convertDpToPixel<float>(300) };
-
-	float actionButtonSize{ Material::convertDpToPixel<float>(80) };
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
 };

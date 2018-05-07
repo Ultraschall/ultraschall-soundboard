@@ -11,7 +11,7 @@
 #pragma once
 
 #include "JuceHeader.h"
-#include "DrawingTools.h"
+#include "MaterialLookAndFeel.h"
 
 class LibraryView : public Component, public TableListBoxModel
 {
@@ -49,7 +49,7 @@ public:
     };
 private:
     TableListBox table  { {}, this };
-    int numberOfRows = 12;
+    int numberOfRows = 2;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryView)
 };

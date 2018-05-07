@@ -8,23 +8,26 @@
   ==============================================================================
 */
 
-#include "../../JuceLibraryCode/JuceHeader.h"
 #include "MainView.h"
 
 //==============================================================================
 MainView::MainView()
 {
 	addAndMakeVisible(toolbar);
-	dropShadower.setOwner(&toolbar);
-	
+	toolbarShadow.setOwner(&toolbar);
+
 	addAndMakeVisible(spacer);
 	addAndMakeVisible(bottomBar);
+
+	addAndMakeVisible(sideNavbar);
+    sideBarShadow.setOwner(&sideNavbar);
+	sideNavbar.backButton.onClick = [this] {
+		hideSideNavBar();
+	};
 
 	addButton.setImages(addIcon.getDrawable());
 	addAndMakeVisible(addButton);
 	addButton.toFront(true);
-
-    sideBarShadower.setOwner(&sideNavbar);
 }
 
 void MainView::paint(Graphics &g) {
@@ -34,13 +37,11 @@ void MainView::paint(Graphics &g) {
 
 void MainView::resized() {
 
-	auto actionHeight = Material::convertDpToPixel<float>(56);
-
 	auto flexBox = FlexBox();
 
 	flexBox.flexDirection = FlexBox::Direction::column;
 
-	flexBox.items.add(FlexItem(toolbar).withMaxHeight(Material::convertDpToPixel<float>(64)).withWidth(getWidth()).withFlex(1));
+	flexBox.items.add(FlexItem(toolbar).withMaxHeight(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Toolbar)).withWidth(getWidth()).withFlex(1));
 
 	if (contentView != nullptr) {
 		flexBox.items.add(FlexItem(*contentView).withWidth(getWidth()).withFlex(2));
@@ -49,21 +50,25 @@ void MainView::resized() {
 		flexBox.items.add(FlexItem(spacer).withWidth(getWidth()).withFlex(2));
 	}
 
-	flexBox.items.add(FlexItem(bottomBar).withMaxHeight(actionHeight).withWidth(getWidth()).withFlex(1));
+	flexBox.items.add(FlexItem(bottomBar).withMaxHeight(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Toolbar)).withWidth(getWidth()).withFlex(1));
 
 	flexBox.performLayout(getLocalBounds());
 
 	addButton.setBounds(
-		getLocalBounds().getWidth() - int(actionButtonSize * 1.2),
-		getLocalBounds().getHeight() - int(actionButtonSize * 1.2),
-		int(actionButtonSize),
-		int(actionButtonSize)
+		getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+		getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+		int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
+		int(MaterialLookAndFeel::convertDpToPixel<float>(80))
 	);
 
 	if (sideBarVisible) {
+		sideNavbar.setVisible(true);
         sideNavbarBackground.setBounds(getLocalBounds());
-        sideNavbar.setBounds(getLocalBounds().removeFromLeft(toolbarWidth));
-    }
+        sideNavbar.setBounds(getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer)));
+	}
+	else {
+		sideNavbar.setVisible(false);
+	}
 }
 
 void MainView::setContentView(Component *view) {
@@ -78,17 +83,12 @@ void MainView::setContentView(Component *view) {
 }
 
 void MainView::showSideNavBar() {
-    sideNavbarBackground.setBounds(getLocalBounds());
-    addAndMakeVisible(sideNavbarBackground);
     sideNavbar.toFront(false);
 
-    auto endBounds = getLocalBounds().removeFromLeft(toolbarWidth);
+    auto endBounds = getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer));
     auto startBounds = endBounds;
-    startBounds.setPosition(-toolbarWidth, 0);
-
+    startBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
     sideNavbar.setBounds(startBounds);
-    addAndMakeVisible(sideNavbar);
-    sideNavbar.toFront(false);
 
     sideNavbarBackgroundAnimator.fadeIn(&sideNavbarBackground, 200);
     sideNavbarAnimator.animateComponent(
@@ -106,9 +106,8 @@ void MainView::showSideNavBar() {
 
 void MainView::hideSideNavBar() {
     auto endBounds = sideNavbar.getLocalBounds();
-    endBounds.setPosition(-toolbarWidth, 0);
+    endBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
 
-    sideNavbarBackgroundAnimator.fadeOut(&sideNavbarBackground, 200);
     sideNavbarAnimator.animateComponent(
             &sideNavbar,
             endBounds,
@@ -119,6 +118,5 @@ void MainView::hideSideNavBar() {
             0.4f
     );
 
-    removeChildComponent(&sideNavbarBackground);
     sideBarVisible = false;
 }

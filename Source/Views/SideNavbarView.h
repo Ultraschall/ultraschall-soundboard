@@ -10,8 +10,9 @@
 
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
-#include "DrawingTools.h"
+#include "JuceHeader.h"
+#include "MaterialLookAndFeel.h"
+
 //==============================================================================
 /*
 */
@@ -26,20 +27,22 @@ public:
     void resized() override;
 
 private:
-    class SideNavbarItemView : public Component {
+    class SideNavbarItemView : public Button {
     public:
-        SideNavbarItemView(String t, Drawable *i) : title(t), icon(i) {
-
-        }
-
-        void paint(Graphics &g) override;
+		SideNavbarItemView(String t, Drawable *i) : title(t), icon(i), Button(t) {};
 
         String title;
         Drawable *icon;
-    };
 
-    SvgIcon settingsIcon = {BinaryData::ic_mic_black_48px_svg, BinaryData::ic_volume_up_white_48px_svgSize};
-    SideNavbarItemView settings = {"Settings", settingsIcon.getDrawable()};
+		// Geerbt über Button
+		virtual void paintButton(Graphics & g, bool isMouseOverButton, bool isButtonDown) override;
+	};
 
-    //JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SideNavbarView)
+    Material::Icon settingsIcon = {BinaryData::ic_mic_black_48px_svg, BinaryData::ic_mic_black_48px_svgSize};
+	Material::Icon backIcon = { BinaryData::ic_keyboard_arrow_left_black_48px_svg, BinaryData::ic_keyboard_arrow_left_black_48px_svgSize };
+public:
+	SideNavbarItemView settings{ "Settings", settingsIcon.getDrawable() };
+	DrawableButton backButton{ "Back", DrawableButton::ButtonStyle::ImageFitted };
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SideNavbarView)
 };

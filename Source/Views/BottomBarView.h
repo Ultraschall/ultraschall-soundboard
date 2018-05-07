@@ -10,8 +10,8 @@
 
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
-#include "DrawingTools.h"
+#include "JuceHeader.h"
+#include "MaterialLookAndFeel.h"
 
 //==============================================================================
 /*
@@ -25,12 +25,11 @@ public:
     void paint (Graphics&) override;
     void resized() override;
 
-private:
 	Slider gainSlider;
-	float iconSize = { Material::convertDpToPixel<float>(48) };
-	SvgIcon talkoverOffIcon = { BinaryData::ic_mic_none_black_48px_svg, BinaryData::ic_mic_none_black_48px_svgSize };
-	SvgIcon talkoverOnIcon = { BinaryData::ic_mic_black_48px_svg, BinaryData::ic_mic_black_48px_svgSize };
 	DrawableButton talkoverButton = { "Talkover", DrawableButton::ImageFitted };
+private:
+	Material::Icon talkoverOffIcon = { BinaryData::ic_mic_none_black_48px_svg, BinaryData::ic_mic_none_black_48px_svgSize };
+	Material::Icon talkoverOnIcon = { BinaryData::ic_mic_black_48px_svg, BinaryData::ic_mic_black_48px_svgSize };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BottomBarView)
 };

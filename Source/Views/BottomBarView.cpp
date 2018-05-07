@@ -8,7 +8,6 @@
   ==============================================================================
 */
 
-#include "../../JuceLibraryCode/JuceHeader.h"
 #include "BottomBarView.h"
 
 //==============================================================================
@@ -46,7 +45,7 @@ void BottomBarView::resized()
 	FlexBox flexBox;
 
 	flexBox.items.add(FlexItem(gainSlider).withFlex(1));
-	flexBox.items.add(FlexItem(talkoverButton).withMaxWidth(iconSize).withFlex(2));
+	flexBox.items.add(FlexItem(talkoverButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel<float>(48)).withFlex(2));
 
 	flexBox.performLayout(getLocalBounds().withTrimmedRight(getWidth() * 0.5f));
 }

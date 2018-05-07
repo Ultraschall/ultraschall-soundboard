@@ -40,7 +40,9 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Fonts/RobotoCondensed-Italic.ttf"
     "../../Assets/Fonts/RobotoCondensed-Light.ttf"
     "../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Regular.ttf"
     "../../Assets/ic_mic_black_48px.svg"
+    "../../Assets/ic_keyboard_arrow_left_black_48px.svg"
     "../../Assets/ic_mic_none_black_48px.svg"
     "../../Assets/ic_menu_white_24px.svg"
     "../../Assets/ic_menu_white_48px.svg"
@@ -1418,7 +1420,9 @@ set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-BoldItalic.ttf"
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Italic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_keyboard_arrow_left_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_menu_white_24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_menu_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2790,13 +2794,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -2931,13 +2935,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "C:\Users\danie\Documents\GitHub\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3073,7 +3077,9 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Fonts/RobotoCondensed-Italic.ttf"
     "../../Assets/Fonts/RobotoCondensed-Light.ttf"
     "../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
+    "../../Assets/Fonts/RobotoCondensed-Regular.ttf"
     "../../Assets/ic_mic_black_48px.svg"
+    "../../Assets/ic_keyboard_arrow_left_black_48px.svg"
     "../../Assets/ic_mic_none_black_48px.svg"
     "../../Assets/ic_menu_white_24px.svg"
     "../../Assets/ic_menu_white_48px.svg"
@@ -4450,7 +4456,9 @@ set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-BoldItalic.ttf"
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Italic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_keyboard_arrow_left_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_menu_white_24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_menu_white_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)

@@ -8,7 +8,6 @@
   ==============================================================================
 */
 
-#include "../../JuceLibraryCode/JuceHeader.h"
 #include "ToolbarView.h"
 
 //==============================================================================
@@ -27,7 +26,7 @@ ToolbarView::~ToolbarView()
 
 void ToolbarView::paint (Graphics& g)
 {
-    g.fillAll (Colour(211, 47, 47));
+    g.fillAll (findColour(Material::primaryColorId));
 }
 
 void ToolbarView::resized()
@@ -36,9 +35,9 @@ void ToolbarView::resized()
 
 	flexBox.flexDirection = FlexBox::Direction::row;
 
-	flexBox.items.add(FlexItem(menuButton).withMaxWidth(iconSize).withFlex(2));
+	flexBox.items.add(FlexItem(menuButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Icon)).withFlex(2));
 	flexBox.items.add(FlexItem(spacer).withFlex(1));
-	flexBox.items.add(FlexItem(viewButton).withMaxWidth(iconSize).withFlex(2));
+	flexBox.items.add(FlexItem(viewButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Icon)).withFlex(2));
 
-	flexBox.performLayout(getLocalBounds().withTrimmedLeft(padding).withTrimmedRight(padding));
+	flexBox.performLayout(getLocalBounds().withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::SpaceBetweenContentAreas)).withTrimmedRight(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::SpaceBetweenContentAreas)));
 }

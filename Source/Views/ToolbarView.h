@@ -11,8 +11,7 @@
 #pragma once
 
 #include "JuceHeader.h"
-
-#include "DrawingTools.h"
+#include "MaterialLookAndFeel.h"
 
 //==============================================================================
 /*
@@ -29,12 +28,11 @@ public:
 
     DrawableButton menuButton = {"Menu", DrawableButton::ImageFitted};
     DrawableButton viewButton = {"View", DrawableButton::ImageFitted};
+
 private:
-    float padding = {Material::convertDpToPixel<float>(24)};
-    float iconSize = {Material::convertDpToPixel<float>(48)};
-    SvgIcon menuIcon = {BinaryData::ic_menu_white_48px_svg, BinaryData::ic_menu_white_48px_svgSize};
-    SvgIcon libraryIcon = {BinaryData::ic_view_module_white_48px_svg, BinaryData::ic_view_module_white_48px_svgSize};
-    SvgIcon bankIcon = {BinaryData::ic_view_headline_white_48px_svg, BinaryData::ic_view_headline_white_48px_svgSize};
+	Material::Icon menuIcon{BinaryData::ic_menu_white_48px_svg, BinaryData::ic_menu_white_48px_svgSize};
+	Material::Icon libraryIcon{BinaryData::ic_view_module_white_48px_svg, BinaryData::ic_view_module_white_48px_svgSize};
+	Material::Icon bankIcon{BinaryData::ic_view_headline_white_48px_svg, BinaryData::ic_view_headline_white_48px_svgSize};
 
     Component spacer;
 

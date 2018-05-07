@@ -14,7 +14,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F2EFE10E-7745-3784-E700-1802B6730C90}</ProjectGuid>
+    <ProjectGuid>{C8A2395A-6BED-9022-2424-E8955A068FE4}</ProjectGuid>
     <PlatformToolset>v141</PlatformToolset>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -2608,7 +2608,9 @@
     <None Include="..\..\Assets\Fonts\RobotoCondensed-Italic.ttf"/>
     <None Include="..\..\Assets\Fonts\RobotoCondensed-Light.ttf"/>
     <None Include="..\..\Assets\Fonts\RobotoCondensed-LightItalic.ttf"/>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Regular.ttf"/>
     <None Include="..\..\Assets\ic_mic_black_48px.svg"/>
+    <None Include="..\..\Assets\ic_keyboard_arrow_left_black_48px.svg"/>
     <None Include="..\..\Assets\ic_mic_none_black_48px.svg"/>
     <None Include="..\..\Assets\ic_menu_white_24px.svg"/>
     <None Include="..\..\Assets\ic_menu_white_48px.svg"/>

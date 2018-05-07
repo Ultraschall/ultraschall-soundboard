@@ -4475,7 +4475,13 @@
     <None Include="..\..\Assets\Fonts\RobotoCondensed-LightItalic.ttf">
       <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
     </None>
+    <None Include="..\..\Assets\Fonts\RobotoCondensed-Regular.ttf">
+      <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
     <None Include="..\..\Assets\ic_mic_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_keyboard_arrow_left_black_48px.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>
     <None Include="..\..\Assets\ic_mic_none_black_48px.svg">

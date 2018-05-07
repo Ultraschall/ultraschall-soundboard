@@ -43,9 +43,13 @@
               file="Assets/Fonts/RobotoCondensed-Light.ttf"/>
         <FILE id="Wd2N9p" name="RobotoCondensed-LightItalic.ttf" compile="0"
               resource="1" file="Assets/Fonts/RobotoCondensed-LightItalic.ttf"/>
+        <FILE id="XlT2so" name="RobotoCondensed-Regular.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Regular.ttf"/>
       </GROUP>
       <FILE id="st6OFy" name="ic_mic_black_48px.svg" compile="0" resource="1"
             file="Assets/ic_mic_black_48px.svg"/>
+      <FILE id="eBMr37" name="ic_keyboard_arrow_left_black_48px.svg" compile="0"
+            resource="1" file="Assets/ic_keyboard_arrow_left_black_48px.svg"/>
       <FILE id="MMJ2Ju" name="ic_mic_none_black_48px.svg" compile="0" resource="1"
             file="Assets/ic_mic_none_black_48px.svg"/>
       <FILE id="yG5moj" name="ic_menu_white_24px.svg" compile="0" resource="1"
