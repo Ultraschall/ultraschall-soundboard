@@ -12,9 +12,6 @@
 
 //==============================================================================
 SideNavbarView::SideNavbarView() {
-	backIcon.setColour(Colour(224, 224, 224));
-	backButton.setImages(backIcon.getDrawable());
-
 	addAndMakeVisible(backButton);
 	addAndMakeVisible(settings);
 }
@@ -23,12 +20,15 @@ SideNavbarView::~SideNavbarView() {
 }
 
 void SideNavbarView::paint(Graphics &g) {
-    g.fillAll(Colours::white);   // clear the background
-	g.setColour(Colour(224, 224, 224));
+	g.fillAll(findColour(Material::ColourIds::dialogColorId));   // clear the background
+	g.setColour(findColour(Material::ColourIds::dividerColorId));
 	g.drawLine(0.0f, MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Toolbar), getWidth(), MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Toolbar));
 }
 
 void SideNavbarView::resized() {
+	backIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
+	backButton.setImages(backIcon.getDrawable());
+
 	backButton.setBounds(getLocalBounds().removeFromTop(MaterialLookAndFeel::convertDpToPixel<int>(Material::Size::Toolbar)).removeFromRight(MaterialLookAndFeel::convertDpToPixel<int>(Material::Size::Icon)));
 
     FlexBox flexBox;
@@ -42,16 +42,14 @@ void SideNavbarView::resized() {
 
 void SideNavbarView::SideNavbarItemView::paintButton(Graphics & g, bool isMouseOverButton, bool isButtonDown)
 {
-	auto lookAndFeel = dynamic_cast<MaterialLookAndFeel*>(&getLookAndFeel());
-
 	if (isMouseOverButton) {
-		g.fillAll(Colour(250, 250, 250));
+		g.fillAll(findColour(Material::ColourIds::dividerColorId));
 	}
-	icon->drawWithin(g, { MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::ScreenEdge), 0.0f, MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Icon),
+	icon.setColour(findColour(Material::ColourIds::textPrimaryColorId));
+	icon.getDrawable()->drawWithin(g, { MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::ScreenEdge), 0.0f, MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Icon),
 		float(getHeight()) }, RectanglePlacement::centred, 0.60);
 
-	lookAndFeel->setFontRobotoMedium(g);
-	g.setColour(Colours::black.withAlpha(0.60f));
+	g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
 	g.drawFittedText(title,
 		getLocalBounds()
 		.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel<int>(Material::Size::ContentLeftMargin))

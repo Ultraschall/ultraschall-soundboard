@@ -19,12 +19,31 @@ public:
 		primaryColorId = 0x8000001,
 		primaryLightColorId = 0x8000002,
 		primaryDarkColorId = 0x8000003,
-		primaryTextColorId = 0x8000004,
 
-		secondaryColorId = 0x8000005,
-		secondaryLightColorId = 0x8000006,
-		secondaryDarkColorId = 0x8000007,
-		secondaryTextColorId = 0x8000008
+		primaryTextColorId = 0x8000004,
+		primaryLightTextColorId = 0x8000005,
+		primaryDarkTextColorId = 0x8000006,
+		
+
+		secondaryColorId = 0x8000007,
+		secondaryLightColorId = 0x8000008,
+		secondaryDarkColorId = 0x8000009,
+
+		secondaryTextColorId = 0x80000010,
+		secondaryLightTextColorId = 0x80000011,
+		secondaryDarkTextColorId = 0x80000012,
+
+		statusBarColorId = 0x80000013,
+		appBarColorId = 0x80000014,
+		backgroundColorId = 0x80000015,
+		dialogColorId = 0x80000016,
+		cardColorId = 0x80000017,
+
+		textPrimaryColorId = 0x80000018,
+		textSecondaryColorId = 0x80000019,
+		textHintColorId = 0x80000020,
+		textDisabledColorId = 0x80000021,
+		dividerColorId = 0x80000022
 	};
 
 	class Icon
@@ -40,12 +59,20 @@ public:
 			return drawable.get();
 		}
 
-		void setColour(Colour colour) {
-			svg->setAttribute(fillAttribute, "#" + colour.toDisplayString(false));
+		void setColour(Colour c) {
+			if (c == colour) return;
+
+			svg->setAttribute(fillAttribute, "#" + c.toDisplayString(false));
+			svg->setAttribute(fillOpacityAttribute, c.getFloatAlpha());
+			String myXmlDoc = svg->createDocument(String());
 			drawable = std::unique_ptr<Drawable>(Drawable::createFromSVG(*svg.get()));
+
+			colour = c;
 		}
 	private:
+		Colour colour;
 		Identifier fillAttribute{ "fill" };
+		Identifier fillOpacityAttribute{ "fill-opacity" };
 		std::unique_ptr<XmlElement> svg;
 		std::unique_ptr<Drawable> drawable;
 	};
@@ -211,18 +238,46 @@ class MaterialLookAndFeel : public LookAndFeel_V4
 {
 public:
     MaterialLookAndFeel() {
-        LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(roboto_Regular);
+        LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(robotoCondensed_Bold);
 
-		setColour(Material::primaryColorId, Colour::fromFloatRGBA( 0.22f, 0.29f, 0.67f, 1.0f));
-		setColour(Material::primaryLightColorId, Colour::fromFloatRGBA( 0.44f, 0.45f, 0.87f, 1.0f ));
-		setColour(Material::primaryDarkColorId, Colour::fromFloatRGBA( 0.00f, 0.13f, 0.48f, 1.0f ));
-		setColour(Material::primaryTextColorId, Colour::fromFloatRGBA( 1.0f, 1.0f, 1.0f, 1.0f ));
+		setColour(Material::primaryColorId, Colour::fromRGB(183, 28, 28));
+		setColour(Material::primaryLightColorId, Colour::fromRGB(240, 85, 69));
+		setColour(Material::primaryDarkColorId, Colour::fromRGB(127, 0, 0));
+		setColour(Material::primaryTextColorId, Colours::white);
+		setColour(Material::primaryLightTextColorId, Colours::black);
+		setColour(Material::primaryDarkTextColorId, Colours::white);
 
-		setColour(Material::secondaryColorId, Colour::fromFloatRGBA( 0.22f, 0.29f, 0.67f, 1.0f ));
-		setColour(Material::secondaryLightColorId, Colour::fromFloatRGBA( 0.44f, 0.45f, 0.87f, 1.0f ));
-		setColour(Material::secondaryDarkColorId, Colour::fromFloatRGBA( 0.00f, 0.13f, 0.48f, 1.0f ));
-		setColour(Material::secondaryTextColorId, Colour::fromFloatRGBA( 1.0f, 1.0f, 1.0f, 1.0f ));
-    }
+		setColour(Material::secondaryColorId, Colour::fromRGB(183, 28, 28));
+		setColour(Material::secondaryLightColorId, Colour::fromRGB(240, 85, 69));
+		setColour(Material::secondaryDarkColorId, Colour::fromRGB(127, 0, 0));
+		setColour(Material::secondaryTextColorId, Colours::white);
+		setColour(Material::secondaryLightTextColorId, Colours::black);
+		setColour(Material::secondaryDarkTextColorId, Colours::white);
+
+		//setColour(Material::statusBarColorId, Colour::fromRGB(224, 224, 224));
+		//setColour(Material::appBarColorId, Colour::fromRGB(245, 245, 245));
+		//setColour(Material::backgroundColorId, Colour::fromRGB(250, 250, 250));
+		//setColour(Material::cardColorId, Colour::fromRGB(255, 255, 255));
+		//setColour(Material::dialogColorId, Colour::fromRGB(255, 255, 255));
+
+		//setColour(Material::textPrimaryColorId, Colours::black.withAlpha(0.87f));
+		//setColour(Material::textSecondaryColorId, Colours::black.withAlpha(0.54f));
+		//setColour(Material::textDisabledColorId, Colours::black.withAlpha(0.54f));
+		//setColour(Material::textHintColorId, Colours::black.withAlpha(0.38f));
+		//setColour(Material::dividerColorId, Colours::black.withAlpha(0.12f));
+
+		setColour(Material::statusBarColorId, Colour::fromRGB(0, 0, 0));
+		setColour(Material::appBarColorId, Colour::fromRGB(33, 33, 33));
+		setColour(Material::backgroundColorId, Colour::fromRGB(48, 48, 48));
+		setColour(Material::cardColorId, Colour::fromRGB(66, 66, 66));
+		setColour(Material::dialogColorId, Colour::fromRGB(66, 66, 66));
+
+		setColour(Material::textPrimaryColorId, Colours::white);
+		setColour(Material::textSecondaryColorId, Colours::white.withAlpha(0.7f));
+		setColour(Material::textDisabledColorId, Colours::white.withAlpha(0.5f));
+		setColour(Material::textHintColorId, Colours::white.withAlpha(0.5f));
+		setColour(Material::dividerColorId, Colours::white.withAlpha(0.12f));
+	}
 
 	enum DensityQualifier {
 		ldpi = 120,
@@ -239,11 +294,7 @@ public:
 	static T convertDpToPixel(T dp) {
 		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
 		double px = (dp * (display.dpi / 120)) * 0.75;
-		return std::round(T(px));
-	}
-
-	void setFontRobotoMedium(Graphics &g) {
-		g.setFont(Font(roboto_Bold));
+		return T(std::round(px));
 	}
 
 private:
@@ -253,12 +304,12 @@ private:
 	juce::Typeface::Ptr roboto_Bold					= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBold_ttf, BinaryData::RobotoRegular_ttfSize);
 	juce::Typeface::Ptr roboto_BoldItalic			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
 
-	juce::Typeface::Ptr robotoCondensedBold			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBold_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensedBoldItalic	= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensedItalic		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensedLight		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLight_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensedLightItalic  = juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLightItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensed_Regular = juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedRegular_ttf, BinaryData::RobotoRegular_ttfSize);
+	juce::Typeface::Ptr robotoCondensed_Bold			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBold_ttf, BinaryData::RobotoRegular_ttfSize);
+	juce::Typeface::Ptr robotoCondensed_BoldItalic	= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	juce::Typeface::Ptr robotoCondensed_Italic		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	juce::Typeface::Ptr robotoCondensed_Light		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLight_ttf, BinaryData::RobotoRegular_ttfSize);
+	juce::Typeface::Ptr robotoCondensed_LightItalic  = juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLightItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	juce::Typeface::Ptr robotoCondensed_Regular		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedRegular_ttf, BinaryData::RobotoRegular_ttfSize);
 
 	juce::Typeface::Ptr roboto_Italic				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoItalic_ttf, BinaryData::RobotoRegular_ttfSize);
 	

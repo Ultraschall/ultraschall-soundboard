@@ -41,7 +41,7 @@ UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorE
 void UltraschallSoundboardAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.fillAll (findColour (Material::ColourIds::backgroundColorId));
 }
 
 void UltraschallSoundboardAudioProcessorEditor::resized()

@@ -31,7 +31,7 @@ MainView::MainView()
 }
 
 void MainView::paint(Graphics &g) {
-	g.fillAll(Colour(225, 225, 225));
+	g.fillAll(findColour(Material::ColourIds::backgroundColorId));
 	ultraschallIcon.getDrawable()->drawWithin(g, getLocalBounds().reduced(100).toFloat(), RectanglePlacement::centred, 0.2f);
 }
 

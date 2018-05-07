@@ -29,10 +29,10 @@ public:
 private:
     class SideNavbarItemView : public Button {
     public:
-		SideNavbarItemView(String t, Drawable *i) : title(t), icon(i), Button(t) {};
+		SideNavbarItemView(String t, Material::Icon &i) : title(t), icon(i), Button(t) {};
 
         String title;
-        Drawable *icon;
+		Material::Icon &icon;
 
 		// Geerbt über Button
 		virtual void paintButton(Graphics & g, bool isMouseOverButton, bool isButtonDown) override;
@@ -41,7 +41,7 @@ private:
     Material::Icon settingsIcon = {BinaryData::ic_mic_black_48px_svg, BinaryData::ic_mic_black_48px_svgSize};
 	Material::Icon backIcon = { BinaryData::ic_keyboard_arrow_left_black_48px_svg, BinaryData::ic_keyboard_arrow_left_black_48px_svgSize };
 public:
-	SideNavbarItemView settings{ "Settings", settingsIcon.getDrawable() };
+	SideNavbarItemView settings{ "Settings", settingsIcon };
 	DrawableButton backButton{ "Back", DrawableButton::ButtonStyle::ImageFitted };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SideNavbarView)

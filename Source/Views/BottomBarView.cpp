@@ -37,7 +37,7 @@ BottomBarView::~BottomBarView()
 
 void BottomBarView::paint (Graphics& g)
 {
-    g.fillAll (Colour(245, 245, 245));
+    g.fillAll (findColour(Material::ColourIds::appBarColorId));
 }
 
 void BottomBarView::resized()
