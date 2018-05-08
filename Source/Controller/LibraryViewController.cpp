@@ -37,15 +37,17 @@ void LibraryViewController::deleteObject(PlayerModel *type) {
 }
 
 void LibraryViewController::newObjectAdded(PlayerModel *type) {
-	//getLibraryView()->table.updateContent();
+	engine.playerWithIdentifier(Identifier(type->uuid))->thumbnail->addChangeListener(this);
+	getLibraryView()->table.updateContent();
 }
 
 void LibraryViewController::objectRemoved(PlayerModel *type) {
-	//getLibraryView()->table.updateContent();
+	engine.playerWithIdentifier(Identifier(type->uuid))->thumbnail->removeChangeListener(this);
+	getLibraryView()->table.updateContent();
 }
 
 void LibraryViewController::objectOrderChanged() {
-	//getLibraryView()->table.updateContent();
+	getLibraryView()->table.updateContent();
 }
 
 void LibraryViewController::loadView() {
@@ -58,7 +60,7 @@ void LibraryViewController::viewDidLoad() {
 
 int LibraryViewController::getNumRows()
 {
-	return 13;// objects.size();
+	return objects.size();
 }
 
 void LibraryViewController::paintListBoxItem(int rowNumber, Graphics & g, int width, int height, bool rowIsSelected)
@@ -67,10 +69,20 @@ void LibraryViewController::paintListBoxItem(int rowNumber, Graphics & g, int wi
 
 Component * LibraryViewController::refreshComponentForRow(int rowNumber, bool isRowSelected, Component * existingComponentToUpdate)
 {
+	if (rowNumber == getNumRows()) {
+		if (existingComponentToUpdate != nullptr) {
+			delete existingComponentToUpdate;
+		}
+		return new Component();
+	}
 	if (existingComponentToUpdate != nullptr) return existingComponentToUpdate;
 	return new LibraryRowView();
 }
 
 LibraryView * LibraryViewController::getLibraryView() {
 	return dynamic_cast<LibraryView*>(getView());
+}
+
+void LibraryViewController::changeListenerCallback(ChangeBroadcaster * source)
+{
 }

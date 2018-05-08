@@ -294,7 +294,7 @@ public:
 	template <typename T>
 	static T convertDpToPixel(T dp) {
 		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
-		double px = (dp * (display.dpi / 120)) * 0.4;
+		double px = (dp * (display.dpi / 120)) * 0.75;
 		return T(std::round(px));
 	}
     

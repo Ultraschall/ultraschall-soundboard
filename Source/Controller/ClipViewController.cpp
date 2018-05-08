@@ -10,7 +10,7 @@
 
 #include "ClipViewController.h"
 
-ClipViewController::ClipViewController(Identifier playerId, Engine &engine) : ViewController(engine) {
+ClipViewController::ClipViewController(String playerId, Engine &engine) : ViewController(engine) {
     player = engine.playerWithIdentifier(playerId);
 }
 

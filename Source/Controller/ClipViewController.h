@@ -16,7 +16,7 @@
 
 class ClipViewController : public ViewController<ClipView> {
 public:
-    ClipViewController(Identifier playerId, Engine &engine);
+    ClipViewController(String playerId, Engine &engine);
 
     void loadView() override;
 

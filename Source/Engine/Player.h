@@ -16,8 +16,9 @@
 
 class Player : public AudioSource {
 public:
-    explicit Player(Identifier identifier)
-            : timeSliceThread("Audio: " + identifier.toString())
+    explicit Player(Identifier id)
+            : timeSliceThread("Audio: " + id.toString()),
+			  identifier(id)
 
     {
         timeSliceThread.startThread();
@@ -44,7 +45,7 @@ public:
         audioTransportSource->start();
     }
 
-    Identifier getIdentifier() {
+	Identifier getIdentifier() {
         return identifier;
     }
 
@@ -63,7 +64,7 @@ private:
     PlayerState playerState;
     TimeSliceThread timeSliceThread;
 
-    Identifier identifier;
+	Identifier identifier;
 
     std::unique_ptr<AudioTransportSource> audioTransportSource;
     std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;

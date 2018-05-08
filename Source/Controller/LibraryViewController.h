@@ -22,7 +22,8 @@
 class LibraryViewController
 		: public drow::ValueTreeObjectList<PlayerModel>, 
 		  public ListBoxModel,
-		  public ViewController<Component>
+		  public ViewController<Component>,
+		  public ChangeListener
 {
 public:
 	explicit LibraryViewController(Engine &engine);
@@ -51,6 +52,7 @@ public:
 
 	virtual Component* refreshComponentForRow(int rowNumber, bool isRowSelected, Component* existingComponentToUpdate) override;
 
+	virtual void changeListenerCallback(ChangeBroadcaster * source) override;
 private:
 	LibraryView * getLibraryView();
 

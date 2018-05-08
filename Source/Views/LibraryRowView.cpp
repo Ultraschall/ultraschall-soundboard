@@ -14,10 +14,6 @@
 //==============================================================================
 LibraryRowView::LibraryRowView()
 {
-//	playButton.setColour(DrawableButton::backgroundColourId, Colours::magenta);
-//	settingsButton.setColour(DrawableButton::backgroundColourId, Colours::magenta);
-//	stopButton.setColour(DrawableButton::backgroundColourId, Colours::magenta);
-
 	playIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
 	stopIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
 	settingsIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
