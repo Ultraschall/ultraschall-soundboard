@@ -62,6 +62,18 @@ namespace BinaryData
     extern const char*   RobotoCondensedRegular_ttf;
     const int            RobotoCondensedRegular_ttfSize = 125332;
 
+    extern const char*   ic_loop_black_48px_svg;
+    const int            ic_loop_black_48px_svgSize = 387;
+
+    extern const char*   ic_pause_black_48px_svg;
+    const int            ic_pause_black_48px_svgSize = 195;
+
+    extern const char*   ic_play_arrow_black_48px_svg;
+    const int            ic_play_arrow_black_48px_svgSize = 177;
+
+    extern const char*   ic_stop_black_48px_svg;
+    const int            ic_stop_black_48px_svgSize = 177;
+
     extern const char*   ic_mic_black_48px_svg;
     const int            ic_mic_black_48px_svgSize = 358;
 
@@ -117,7 +129,7 @@ namespace BinaryData
     const int            ic_folder_open_white_48px_svgSize = 271;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 36;
+    const int namedResourceListSize = 40;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

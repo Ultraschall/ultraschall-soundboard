@@ -31,12 +31,9 @@ void BankView::paint (Graphics& g)
        drawing code..
     */
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll (getLookAndFeel().findColour (Material::ColourIds::backgroundColorId));   // clear the background
 
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::white);
+	g.setColour (getLookAndFeel().findColour(Material::ColourIds::textPrimaryColorId));
     g.setFont (14.0f);
     g.drawText ("BankView", getLocalBounds(),
                 Justification::centred, true);   // draw some placeholder text

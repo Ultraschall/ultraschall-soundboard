@@ -12,10 +12,8 @@
 
 #include "JuceHeader.h"
 #include "MaterialLookAndFeel.h"
+#include "SideNavbarItemView.h"
 
-//==============================================================================
-/*
-*/
 class SideNavbarView : public Component {
 public:
     SideNavbarView();
@@ -26,27 +24,14 @@ public:
 
     void resized() override;
 
+	SideNavbarItemView importButton{ "Import Folder", importIcon };
+	SideNavbarItemView settingsButton{ "Settings", settingsIcon };
+	DrawableButton backButton{ "Back", DrawableButton::ButtonStyle::ImageFitted };
 private:
-    class SideNavbarItemView : public Button {
-    public:
-		SideNavbarItemView(String t, Material::Icon &i) : Button(t), title(t), icon(i) {};
-
-        String title;
-		Material::Icon &icon;
-
-		// Geerbt über Button
-		virtual void paintButton(Graphics & g, bool isMouseOverButton, bool isButtonDown) override;
-	};
 
     Material::Icon settingsIcon = {BinaryData::ic_settings_white_48px_svg, BinaryData::ic_settings_white_48px_svgSize};
     Material::Icon importIcon = {BinaryData::ic_folder_open_white_48px_svg, BinaryData::ic_folder_open_white_48px_svgSize};
 	Material::Icon backIcon = { BinaryData::ic_keyboard_arrow_left_black_48px_svg, BinaryData::ic_keyboard_arrow_left_black_48px_svgSize };
-public:
-    SideNavbarItemView importButton{ "Import Folder", importIcon };
-
-	SideNavbarItemView settingsButton{ "Settings", settingsIcon };
-
-	DrawableButton backButton{ "Back", DrawableButton::ButtonStyle::ImageFitted };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SideNavbarView)
 };

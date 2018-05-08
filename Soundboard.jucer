@@ -46,6 +46,14 @@
         <FILE id="XlT2so" name="RobotoCondensed-Regular.ttf" compile="0" resource="1"
               file="Assets/Fonts/RobotoCondensed-Regular.ttf"/>
       </GROUP>
+      <FILE id="BKC8mT" name="ic_loop_black_48px.svg" compile="0" resource="1"
+            file="Assets/ic_loop_black_48px.svg"/>
+      <FILE id="tHT1Oq" name="ic_pause_black_48px.svg" compile="0" resource="1"
+            file="Assets/ic_pause_black_48px.svg"/>
+      <FILE id="kOPJYx" name="ic_play_arrow_black_48px.svg" compile="0" resource="1"
+            file="Assets/ic_play_arrow_black_48px.svg"/>
+      <FILE id="JV47mW" name="ic_stop_black_48px.svg" compile="0" resource="1"
+            file="Assets/ic_stop_black_48px.svg"/>
       <FILE id="st6OFy" name="ic_mic_black_48px.svg" compile="0" resource="1"
             file="Assets/ic_mic_black_48px.svg"/>
       <FILE id="eBMr37" name="ic_keyboard_arrow_left_black_48px.svg" compile="0"
@@ -91,14 +99,22 @@
         <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
       </GROUP>
       <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
+        <FILE id="xyZ9Ao" name="LibraryRowView.cpp" compile="1" resource="0"
+              file="Source/Views/LibraryRowView.cpp"/>
+        <FILE id="UXvZ8a" name="LibraryRowView.h" compile="0" resource="0"
+              file="Source/Views/LibraryRowView.h"/>
+        <FILE id="W5J22c" name="SideNavbarItemView.cpp" compile="1" resource="0"
+              file="Source/Views/SideNavbarItemView.cpp"/>
+        <FILE id="aucfGo" name="SideNavbarItemView.h" compile="0" resource="0"
+              file="Source/Views/SideNavbarItemView.h"/>
         <FILE id="fPsZEo" name="MaterialLookAndFeel.cpp" compile="1" resource="0"
               file="Source/Views/MaterialLookAndFeel.cpp"/>
+        <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
+              file="Source/Views/SideNavbarView.h"/>
         <FILE id="fwAVBX" name="MaterialLookAndFeel.h" compile="0" resource="0"
               file="Source/Views/MaterialLookAndFeel.h"/>
         <FILE id="d6ddnq" name="SideNavbarView.cpp" compile="1" resource="0"
               file="Source/Views/SideNavbarView.cpp"/>
-        <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
-              file="Source/Views/SideNavbarView.h"/>
         <FILE id="uyqQzQ" name="BankView.cpp" compile="1" resource="0" file="Source/Views/BankView.cpp"/>
         <FILE id="oKitLd" name="BankView.h" compile="0" resource="0" file="Source/Views/BankView.h"/>
         <FILE id="dOzsPk" name="BottomBarView.cpp" compile="1" resource="0"
@@ -106,9 +122,6 @@
         <FILE id="pJbkd7" name="BottomBarView.h" compile="0" resource="0" file="Source/Views/BottomBarView.h"/>
         <FILE id="iT2jcw" name="ClipView.cpp" compile="1" resource="0" file="Source/Views/ClipView.cpp"/>
         <FILE id="HefmFf" name="ClipView.h" compile="0" resource="0" file="Source/Views/ClipView.h"/>
-        <FILE id="rZLU41" name="DrawingTools.cpp" compile="1" resource="0"
-              file="Source/Views/DrawingTools.cpp"/>
-        <FILE id="Q6uDIp" name="DrawingTools.h" compile="0" resource="0" file="Source/Views/DrawingTools.h"/>
         <FILE id="KapGIW" name="LibraryView.cpp" compile="1" resource="0" file="Source/Views/LibraryView.cpp"/>
         <FILE id="FA7Auh" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
         <FILE id="GLaASt" name="MainView.cpp" compile="1" resource="0" file="Source/Views/MainView.cpp"/>
@@ -117,6 +130,10 @@
         <FILE id="B8oRv8" name="ToolbarView.h" compile="0" resource="0" file="Source/Views/ToolbarView.h"/>
       </GROUP>
       <GROUP id="{379205E3-6D4E-6F8F-C7F1-0CB61FA97117}" name="Controller">
+        <FILE id="qUvfAh" name="BankViewController.cpp" compile="1" resource="0"
+              file="Source/Controller/BankViewController.cpp"/>
+        <FILE id="xsLXUy" name="BankViewController.h" compile="0" resource="0"
+              file="Source/Controller/BankViewController.h"/>
         <FILE id="rLLaav" name="ClipViewController.cpp" compile="1" resource="0"
               file="Source/Controller/ClipViewController.cpp"/>
         <FILE id="zK99BP" name="ClipViewController.h" compile="0" resource="0"

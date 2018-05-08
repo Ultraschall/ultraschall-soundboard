@@ -14,20 +14,20 @@
 #include "ViewController.h"
 #include "../Models/ValueTreeObjectList.h"
 #include "../Models/PlayerModel.h"
+#include "../Views/LibraryView.h"
+
 //==============================================================================
 /*
 */
 class LibraryViewController
-		: public ViewController<Component>,
-		  public drow::ValueTreeObjectList<PlayerModel>
+		: public drow::ValueTreeObjectList<PlayerModel>, 
+		  public ListBoxModel,
+		  public ViewController<Component>
 {
 public:
-	explicit LibraryViewController(Engine &engine)
-			: ViewController(engine),
-			  drow::ValueTreeObjectList<PlayerModel>(engine.state.getChildWithName(IDs::PLAYERS))
-	{
+	explicit LibraryViewController(Engine &engine);
 
-	}
+	~LibraryViewController();
 
 	bool isSuitableType(const juce::ValueTree &tree) const override;
 
@@ -45,10 +45,14 @@ public:
 
 	void viewDidLoad() override;;
 
+	virtual int getNumRows() override;
+
+	virtual void paintListBoxItem(int rowNumber, Graphics & g, int width, int height, bool rowIsSelected) override;
+
+	virtual Component* refreshComponentForRow(int rowNumber, bool isRowSelected, Component* existingComponentToUpdate) override;
+
 private:
-    TableListBox* getTableListBox() {
-        return dynamic_cast<TableListBox*>(getView());
-    }
+	LibraryView * getLibraryView();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryViewController)
 };

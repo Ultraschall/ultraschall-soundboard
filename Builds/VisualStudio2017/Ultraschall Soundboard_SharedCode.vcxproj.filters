@@ -409,6 +409,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Views\LibraryRowView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Views\SideNavbarItemView.cpp">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Views\MaterialLookAndFeel.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
@@ -424,9 +430,6 @@
     <ClCompile Include="..\..\Source\Views\ClipView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Views\DrawingTools.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Views\LibraryView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClCompile>
@@ -435,6 +438,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\Views\ToolbarView.cpp">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Controller\BankViewController.cpp">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Controller\ClipViewController.cpp">
       <Filter>Ultraschall Soundboard\Source\Controller</Filter>
@@ -2367,10 +2373,16 @@
     <ClInclude Include="..\..\Source\Models\PlayerModel.h">
       <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\MaterialLookAndFeel.h">
+    <ClInclude Include="..\..\Source\Views\LibraryRowView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\SideNavbarItemView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\SideNavbarView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\MaterialLookAndFeel.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\BankView.h">
@@ -2382,9 +2394,6 @@
     <ClInclude Include="..\..\Source\Views\ClipView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\DrawingTools.h">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Views\LibraryView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
@@ -2393,6 +2402,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\ToolbarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Controller\BankViewController.h">
+      <Filter>Ultraschall Soundboard\Source\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Controller\ClipViewController.h">
       <Filter>Ultraschall Soundboard\Source\Controller</Filter>
@@ -4477,6 +4489,18 @@
     </None>
     <None Include="..\..\Assets\Fonts\RobotoCondensed-Regular.ttf">
       <Filter>Ultraschall Soundboard\Assets\Fonts</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_loop_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_pause_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_play_arrow_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\ic_stop_black_48px.svg">
+      <Filter>Ultraschall Soundboard\Assets</Filter>
     </None>
     <None Include="..\..\Assets\ic_mic_black_48px.svg">
       <Filter>Ultraschall Soundboard\Assets</Filter>

@@ -14,6 +14,7 @@
 MainView::MainView()
 {
     Desktop::getInstance().getAnimator().addChangeListener(this);
+
 	addAndMakeVisible(toolbar);
 	toolbarShadow.setOwner(&toolbar);
 
@@ -60,12 +61,14 @@ void MainView::resized() {
 
 	flexBox.performLayout(getLocalBounds());
 
-	addButton.setBounds(
-		getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-		getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-		int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
-		int(MaterialLookAndFeel::convertDpToPixel<float>(80))
-	);
+	if (actionButtonVisible) {
+		addButton.setBounds(
+			getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+			getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+			int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
+			int(MaterialLookAndFeel::convertDpToPixel<float>(80))
+		);
+	}
 
 	if (sideBarVisible) {
         sideNavbarBackground.setBounds(getLocalBounds());
@@ -76,6 +79,7 @@ void MainView::resized() {
 void MainView::setContentView(Component *view) {
 	if (view == contentView) return;
 
+	removeChildComponent(&spacer);
 	contentView = view;
 	addAndMakeVisible(contentView);
 	contentView->toBack();
@@ -89,6 +93,8 @@ void MainView::setContentView(Component *view) {
 }
 
 void MainView::showSideNavBar() {
+	if (sideBarVisible == true) return;
+
     auto endBounds = getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer));
     auto startBounds = endBounds;
     startBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
@@ -116,6 +122,8 @@ void MainView::showSideNavBar() {
 }
 
 void MainView::hideSideNavBar() {
+	if (sideBarVisible == false) return;
+
     auto endBounds = sideNavbar.getLocalBounds();
     endBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
 
@@ -131,4 +139,64 @@ void MainView::hideSideNavBar() {
     );
 
     sideBarVisible = false;
+}
+
+void MainView::changeListenerCallback(juce::ChangeBroadcaster *) {
+	if (sideBarVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&sideNavbar)) {
+		removeChildComponent(&sideNavbar);
+		removeChildComponent(&sideNavbarBackground);
+	} 
+	if (actionButtonVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&addButton)) {
+		removeChildComponent(&addButton);
+	}
+}
+
+void MainView::showActionButton()
+{
+	if (actionButtonVisible == true) return;
+
+	auto endBounds = Rectangle<int>(
+		getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+		getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+		int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
+		int(MaterialLookAndFeel::convertDpToPixel<float>(80))
+		);
+	addButton.setBounds(endBounds.reduced(int(MaterialLookAndFeel::convertDpToPixel<float>(40))));
+
+	Desktop::getInstance().getAnimator().animateComponent(
+		&addButton,
+		endBounds,
+		1.0f,
+		200,
+		false,
+		0.4f,
+		0.8f
+	);
+	addAndMakeVisible(addButton);
+	addButton.toFront(false);
+
+	actionButtonVisible = true;
+}
+
+void MainView::hideActionButton()
+{
+	if (actionButtonVisible == false) return;
+
+	auto endBounds = Rectangle<int>(
+		getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+		getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
+		int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
+		int(MaterialLookAndFeel::convertDpToPixel<float>(80)))
+		.reduced(int(MaterialLookAndFeel::convertDpToPixel<float>(40)));
+
+	Desktop::getInstance().getAnimator().animateComponent(
+		&addButton,
+		endBounds,
+		1.0f,
+		200,
+		false,
+		0.4f,
+		0.8f
+	);
+	actionButtonVisible = false;
 }

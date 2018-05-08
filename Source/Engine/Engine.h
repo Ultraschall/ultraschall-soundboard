@@ -23,6 +23,8 @@ public:
 	~Engine() {
 	    mixer.removeAllInputs();
 	    players.clear(true);
+		audioFormatManager.clearFormats();
+		audioThumbnailCache.clear();
 	}
 
 	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;

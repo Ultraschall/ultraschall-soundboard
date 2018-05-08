@@ -13,43 +13,21 @@
 #include "JuceHeader.h"
 #include "MaterialLookAndFeel.h"
 
-class LibraryView : public Component, public TableListBoxModel
+class LibraryView : public Component
 {
 public:
     LibraryView() {
-
-        table.setHeaderHeight(0);
-        table.setModel(this);
-		table.setColour(ListBox::backgroundColourId, Colour(225, 225, 225));
-
+		table.setColour(ListBox::backgroundColourId, findColour(Material::ColourIds::backgroundColorId));
+		table.setRowHeight(MaterialLookAndFeel::convertDpToPixel(64));
         addAndMakeVisible(table);
     };
 
     ~LibraryView() {}
 
-    int getNumRows() override
-    {
-        return numberOfRows;
-    }
-
-    void paintRowBackground(Graphics &graphics, int rowNumber, int width, int height, bool rowIsSelected) override {
-        graphics.fillAll(Colours::white);
-    }
-
-    void paintCell(Graphics &graphics, int rowNumber, int columnId, int width, int height, bool rowIsSelected) override {
-
-    }
-
     void resized() override;
 
-    enum ComumnIds {
-        ComumnIdNumber = 1,
-        ComumnIdPlaying = 2,
-        ComumnIdName = 3,
-    };
+	ListBox table;
 private:
-    TableListBox table  { {}, this };
-    int numberOfRows = 2;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryView)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryView)
 };

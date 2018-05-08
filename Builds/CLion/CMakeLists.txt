@@ -41,6 +41,10 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Fonts/RobotoCondensed-Light.ttf"
     "../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
     "../../Assets/Fonts/RobotoCondensed-Regular.ttf"
+    "../../Assets/ic_loop_black_48px.svg"
+    "../../Assets/ic_pause_black_48px.svg"
+    "../../Assets/ic_play_arrow_black_48px.svg"
+    "../../Assets/ic_stop_black_48px.svg"
     "../../Assets/ic_mic_black_48px.svg"
     "../../Assets/ic_keyboard_arrow_left_black_48px.svg"
     "../../Assets/ic_mic_none_black_48px.svg"
@@ -64,24 +68,28 @@ add_library (SHARED_CODE STATIC
     "../../Source/Models/ValueTreeObjectList.h"
     "../../Source/Models/ClipModel.h"
     "../../Source/Models/PlayerModel.h"
+    "../../Source/Views/LibraryRowView.cpp"
+    "../../Source/Views/LibraryRowView.h"
+    "../../Source/Views/SideNavbarItemView.cpp"
+    "../../Source/Views/SideNavbarItemView.h"
     "../../Source/Views/MaterialLookAndFeel.cpp"
+    "../../Source/Views/SideNavbarView.h"
     "../../Source/Views/MaterialLookAndFeel.h"
     "../../Source/Views/SideNavbarView.cpp"
-    "../../Source/Views/SideNavbarView.h"
     "../../Source/Views/BankView.cpp"
     "../../Source/Views/BankView.h"
     "../../Source/Views/BottomBarView.cpp"
     "../../Source/Views/BottomBarView.h"
     "../../Source/Views/ClipView.cpp"
     "../../Source/Views/ClipView.h"
-    "../../Source/Views/DrawingTools.cpp"
-    "../../Source/Views/DrawingTools.h"
     "../../Source/Views/LibraryView.cpp"
     "../../Source/Views/LibraryView.h"
     "../../Source/Views/MainView.cpp"
     "../../Source/Views/MainView.h"
     "../../Source/Views/ToolbarView.cpp"
     "../../Source/Views/ToolbarView.h"
+    "../../Source/Controller/BankViewController.cpp"
+    "../../Source/Controller/BankViewController.h"
     "../../Source/Controller/ClipViewController.cpp"
     "../../Source/Controller/ClipViewController.h"
     "../../Source/Controller/LibraryViewController.cpp"
@@ -1421,6 +1429,10 @@ set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Italic.ttf" PRO
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_loop_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_pause_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_play_arrow_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_stop_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_keyboard_arrow_left_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1444,15 +1456,17 @@ set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER
 set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/SideNavbarItemView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/DrawingTools.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Controller/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3078,6 +3092,10 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Fonts/RobotoCondensed-Light.ttf"
     "../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
     "../../Assets/Fonts/RobotoCondensed-Regular.ttf"
+    "../../Assets/ic_loop_black_48px.svg"
+    "../../Assets/ic_pause_black_48px.svg"
+    "../../Assets/ic_play_arrow_black_48px.svg"
+    "../../Assets/ic_stop_black_48px.svg"
     "../../Assets/ic_mic_black_48px.svg"
     "../../Assets/ic_keyboard_arrow_left_black_48px.svg"
     "../../Assets/ic_mic_none_black_48px.svg"
@@ -3101,24 +3119,28 @@ add_library (SHARED_CODE STATIC
     "../../Source/Models/ValueTreeObjectList.h"
     "../../Source/Models/ClipModel.h"
     "../../Source/Models/PlayerModel.h"
+    "../../Source/Views/LibraryRowView.cpp"
+    "../../Source/Views/LibraryRowView.h"
+    "../../Source/Views/SideNavbarItemView.cpp"
+    "../../Source/Views/SideNavbarItemView.h"
     "../../Source/Views/MaterialLookAndFeel.cpp"
+    "../../Source/Views/SideNavbarView.h"
     "../../Source/Views/MaterialLookAndFeel.h"
     "../../Source/Views/SideNavbarView.cpp"
-    "../../Source/Views/SideNavbarView.h"
     "../../Source/Views/BankView.cpp"
     "../../Source/Views/BankView.h"
     "../../Source/Views/BottomBarView.cpp"
     "../../Source/Views/BottomBarView.h"
     "../../Source/Views/ClipView.cpp"
     "../../Source/Views/ClipView.h"
-    "../../Source/Views/DrawingTools.cpp"
-    "../../Source/Views/DrawingTools.h"
     "../../Source/Views/LibraryView.cpp"
     "../../Source/Views/LibraryView.h"
     "../../Source/Views/MainView.cpp"
     "../../Source/Views/MainView.h"
     "../../Source/Views/ToolbarView.cpp"
     "../../Source/Views/ToolbarView.h"
+    "../../Source/Controller/BankViewController.cpp"
+    "../../Source/Controller/BankViewController.h"
     "../../Source/Controller/ClipViewController.cpp"
     "../../Source/Controller/ClipViewController.h"
     "../../Source/Controller/LibraryViewController.cpp"
@@ -4457,6 +4479,10 @@ set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Italic.ttf" PRO
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Fonts/RobotoCondensed-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_loop_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_pause_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_play_arrow_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Assets/ic_stop_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_keyboard_arrow_left_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/ic_mic_none_black_48px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -4480,15 +4506,17 @@ set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER
 set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/SideNavbarItemView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/DrawingTools.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Controller/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)

@@ -13,9 +13,10 @@
 #include "JuceHeader.h"
 #include "ViewController.h"
 #include "LibraryViewController.h"
+#include "BankViewController.h"
 #include "../Views/MainView.h"
 
-class MainViewController : public ViewController<MainView>, public ChangeListener {
+class MainViewController : public ViewController<MainView> {
 public:
 	explicit MainViewController(Engine &engine) : ViewController(engine) {};
 
@@ -27,9 +28,6 @@ public:
 
 	void showLibrary();
 	void showBanks();
-
-
-	void changeListenerCallback(ChangeBroadcaster *source) override;
 
 private:
 	std::unique_ptr<ViewController<Component>> contentController;

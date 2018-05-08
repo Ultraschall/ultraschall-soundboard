@@ -49,12 +49,7 @@ public:
         return sideBarVisible;
     }
     
-    void changeListenerCallback(juce::ChangeBroadcaster *source) override {
-        if (sideBarVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&sideNavbar)) {
-            removeChildComponent(&sideNavbar);
-            removeChildComponent(&sideNavbarBackground);
-        }
-    }
+	void changeListenerCallback(juce::ChangeBroadcaster* /*source*/) override;
 
     BottomBarView bottomBar;
     SideNavbarView sideNavbar;
@@ -63,8 +58,12 @@ public:
     ToolbarView toolbar;
 	DrawableButton addButton{ "Add", DrawableButton::ImageFitted };
 
+	void showActionButton();
+
+	void hideActionButton();
 private:
     bool sideBarVisible = false;
+	bool actionButtonVisible = true;
 
     Component *contentView = nullptr;
 	Material::Icon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};

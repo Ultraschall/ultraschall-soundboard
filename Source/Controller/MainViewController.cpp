@@ -27,6 +27,7 @@ void MainViewController::viewDidLoad() {
     };
 	view->addButton.onClick = [this] {
 		showLibrary();
+		loadFile();
 	};
 }
 
@@ -36,16 +37,21 @@ void MainViewController::showLibrary() {
             contentController = std::make_unique<LibraryViewController>(engine);
             contentController->init();
             view->setContentView(contentController->getView());
-            view->toolbar.viewButton.setToggleState(true, NotificationType::dontSendNotification);
+            view->toolbar.viewButton.setToggleState(false, NotificationType::dontSendNotification);
+			view->showActionButton();
         }
 }
 
 void MainViewController::showBanks()
 {
-
-    view->toolbar.viewButton.setToggleState(false, NotificationType::dontSendNotification);
-
-
+	auto current = dynamic_cast<BankViewController *>(contentController.get());
+	if (current == nullptr) {
+		contentController = std::make_unique<BankViewController>(engine);
+		contentController->init();
+		view->setContentView(contentController->getView());
+		view->toolbar.viewButton.setToggleState(true, NotificationType::dontSendNotification);
+		view->hideActionButton();
+	}
 }
 
 
@@ -64,6 +70,3 @@ void MainViewController::loadFile() {
     }
 }
 
-void MainViewController::changeListenerCallback(ChangeBroadcaster *source) {
-
-}

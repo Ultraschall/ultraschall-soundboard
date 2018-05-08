@@ -23,6 +23,14 @@ public:
         audioTransportSource.reset(new AudioTransportSource());
     }
 
+	~Player() {
+		audioTransportSource->stop();
+		audioTransportSource->setSource(nullptr);
+
+		audioFormatReaderSource.release();
+		audioTransportSource.release();
+	}
+
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 
     void releaseResources() override;
