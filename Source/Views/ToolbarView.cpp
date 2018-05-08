@@ -15,6 +15,8 @@ ToolbarView::ToolbarView()
 {
 	menuButton.setImages(menuIcon.getDrawable());
 	viewButton.setImages(libraryIcon.getDrawable(), nullptr, nullptr, nullptr, bankIcon.getDrawable());
+    viewButton.setColour(DrawableButton::ColourIds::backgroundOnColourId, Colours::transparentWhite);
+    
 	addAndMakeVisible(menuButton);
 	addAndMakeVisible(viewButton);
 	addAndMakeVisible(spacer);

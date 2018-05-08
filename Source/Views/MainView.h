@@ -26,13 +26,14 @@ public:
 
 protected:
     void paintButton(Graphics &g, bool /*isMouseOverButton*/, bool /*isButtonDown*/) override {
-        g.fillAll(Colours::black.withAlpha(0.8f));
+        g.fillAll(Colours::black.withAlpha(0.25f));
     }
 };
 
-class MainView : public Component {
+class MainView : public Component, public ChangeListener {
 public:
     MainView();
+    ~MainView();
 
     void paint(Graphics &) override;
 
@@ -47,11 +48,16 @@ public:
     bool isSideBarVisible() {
         return sideBarVisible;
     }
+    
+    void changeListenerCallback(juce::ChangeBroadcaster *source) override {
+        if (sideBarVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&sideNavbar)) {
+            removeChildComponent(&sideNavbar);
+            removeChildComponent(&sideNavbarBackground);
+        }
+    }
 
     BottomBarView bottomBar;
     SideNavbarView sideNavbar;
-    ComponentAnimator sideNavbarAnimator;
-    ComponentAnimator sideNavbarBackgroundAnimator;
     BackgroundButton sideNavbarBackground;
 
     ToolbarView toolbar;

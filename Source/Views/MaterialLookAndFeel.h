@@ -80,6 +80,7 @@ public:
 private:
 	class Shadow {
 	public:
+        virtual ~Shadow() {}
 		virtual void setOwner(Component *c) = 0;
 	};
 
@@ -238,7 +239,7 @@ class MaterialLookAndFeel : public LookAndFeel_V4
 {
 public:
     MaterialLookAndFeel() {
-        LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(robotoCondensed_Bold);
+        LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(roboto_Regular);
 
 		setColour(Material::primaryColorId, Colour::fromRGB(183, 28, 28));
 		setColour(Material::primaryLightColorId, Colour::fromRGB(240, 85, 69));
@@ -254,29 +255,29 @@ public:
 		setColour(Material::secondaryLightTextColorId, Colours::black);
 		setColour(Material::secondaryDarkTextColorId, Colours::white);
 
-		//setColour(Material::statusBarColorId, Colour::fromRGB(224, 224, 224));
-		//setColour(Material::appBarColorId, Colour::fromRGB(245, 245, 245));
-		//setColour(Material::backgroundColorId, Colour::fromRGB(250, 250, 250));
-		//setColour(Material::cardColorId, Colour::fromRGB(255, 255, 255));
-		//setColour(Material::dialogColorId, Colour::fromRGB(255, 255, 255));
+        setColour(Material::statusBarColorId, Colour::fromRGB(224, 224, 224));
+        setColour(Material::appBarColorId, Colour::fromRGB(245, 245, 245));
+        setColour(Material::backgroundColorId, Colour::fromRGB(250, 250, 250));
+        setColour(Material::cardColorId, Colour::fromRGB(255, 255, 255));
+        setColour(Material::dialogColorId, Colour::fromRGB(255, 255, 255));
 
-		//setColour(Material::textPrimaryColorId, Colours::black.withAlpha(0.87f));
-		//setColour(Material::textSecondaryColorId, Colours::black.withAlpha(0.54f));
-		//setColour(Material::textDisabledColorId, Colours::black.withAlpha(0.54f));
-		//setColour(Material::textHintColorId, Colours::black.withAlpha(0.38f));
-		//setColour(Material::dividerColorId, Colours::black.withAlpha(0.12f));
+        setColour(Material::textPrimaryColorId, Colours::black.withAlpha(0.87f));
+        setColour(Material::textSecondaryColorId, Colours::black.withAlpha(0.54f));
+        setColour(Material::textDisabledColorId, Colours::black.withAlpha(0.54f));
+        setColour(Material::textHintColorId, Colours::black.withAlpha(0.38f));
+        setColour(Material::dividerColorId, Colours::black.withAlpha(0.12f));
 
-		setColour(Material::statusBarColorId, Colour::fromRGB(0, 0, 0));
-		setColour(Material::appBarColorId, Colour::fromRGB(33, 33, 33));
-		setColour(Material::backgroundColorId, Colour::fromRGB(48, 48, 48));
-		setColour(Material::cardColorId, Colour::fromRGB(66, 66, 66));
-		setColour(Material::dialogColorId, Colour::fromRGB(66, 66, 66));
-
-		setColour(Material::textPrimaryColorId, Colours::white);
-		setColour(Material::textSecondaryColorId, Colours::white.withAlpha(0.7f));
-		setColour(Material::textDisabledColorId, Colours::white.withAlpha(0.5f));
-		setColour(Material::textHintColorId, Colours::white.withAlpha(0.5f));
-		setColour(Material::dividerColorId, Colours::white.withAlpha(0.12f));
+//        setColour(Material::statusBarColorId, Colour::fromRGB(0, 0, 0));
+//        setColour(Material::appBarColorId, Colour::fromRGB(33, 33, 33));
+//        setColour(Material::backgroundColorId, Colour::fromRGB(48, 48, 48));
+//        setColour(Material::cardColorId, Colour::fromRGB(66, 66, 66));
+//        setColour(Material::dialogColorId, Colour::fromRGB(66, 66, 66));
+//
+//        setColour(Material::textPrimaryColorId, Colours::white);
+//        setColour(Material::textSecondaryColorId, Colours::white.withAlpha(0.7f));
+//        setColour(Material::textDisabledColorId, Colours::white.withAlpha(0.5f));
+//        setColour(Material::textHintColorId, Colours::white.withAlpha(0.5f));
+//        setColour(Material::dividerColorId, Colours::white.withAlpha(0.12f));
 	}
 
 	enum DensityQualifier {
@@ -293,9 +294,13 @@ public:
 	template <typename T>
 	static T convertDpToPixel(T dp) {
 		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
-		double px = (dp * (display.dpi / 120)) * 0.75;
+		double px = (dp * (display.dpi / 120)) * 0.5;
 		return T(std::round(px));
 	}
+    
+    void setFontRobotoMedium(Graphics &g) {
+        g.setFont(Font(roboto_Medium));
+    }
 
 private:
 	juce::Typeface::Ptr roboto_Black				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize);

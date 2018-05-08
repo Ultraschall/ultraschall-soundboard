@@ -16,8 +16,11 @@
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor (UltraschallSoundboardAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+#ifndef JUCE_MAC
     openGLContext.attachTo(*getTopLevelComponent());
-	setLookAndFeel(&lookAndFeel);
+#endif
+    
+	LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
 	// TODO: implement a own standalone wrapper!
 	TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
 	w->setUsingNativeTitleBar(true);
@@ -34,7 +37,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
 
 UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorEditor()
 {
-	setLookAndFeel(nullptr);
+	LookAndFeel::setDefaultLookAndFeel(nullptr);
 }
 
 //==============================================================================

@@ -13,6 +13,7 @@
 //==============================================================================
 MainView::MainView()
 {
+    Desktop::getInstance().getAnimator().addChangeListener(this);
 	addAndMakeVisible(toolbar);
 	toolbarShadow.setOwner(&toolbar);
 
@@ -28,6 +29,11 @@ MainView::MainView()
 	addButton.setImages(addIcon.getDrawable());
 	addAndMakeVisible(addButton);
 	addButton.toFront(true);
+}
+
+MainView::~MainView()
+{
+    Desktop::getInstance().getAnimator().removeChangeListener(this);
 }
 
 void MainView::paint(Graphics &g) {
@@ -62,12 +68,8 @@ void MainView::resized() {
 	);
 
 	if (sideBarVisible) {
-		sideNavbar.setVisible(true);
         sideNavbarBackground.setBounds(getLocalBounds());
         sideNavbar.setBounds(getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer)));
-	}
-	else {
-		sideNavbar.setVisible(false);
 	}
 }
 
@@ -78,20 +80,29 @@ void MainView::setContentView(Component *view) {
 	addAndMakeVisible(contentView);
 	contentView->toBack();
 	addButton.toFront(true);
+    if (sideBarVisible) {
+        sideNavbarBackground.toFront(false);
+        sideNavbar.toFront(false);
+    }
 	resized();
 	repaint();
 }
 
 void MainView::showSideNavBar() {
-    sideNavbar.toFront(false);
-
     auto endBounds = getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer));
     auto startBounds = endBounds;
     startBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
     sideNavbar.setBounds(startBounds);
-
-    sideNavbarBackgroundAnimator.fadeIn(&sideNavbarBackground, 200);
-    sideNavbarAnimator.animateComponent(
+    sideNavbarBackground.setBounds(getLocalBounds());
+    
+    addAndMakeVisible(sideNavbarBackground);
+    addAndMakeVisible(sideNavbar);
+    
+    sideNavbarBackground.toFront(false);
+    sideNavbar.toFront(false);
+    
+    Desktop::getInstance().getAnimator().fadeIn(&sideNavbarBackground, 200);
+    Desktop::getInstance().getAnimator().animateComponent(
             &sideNavbar,
             endBounds,
             1.0f,
@@ -108,7 +119,8 @@ void MainView::hideSideNavBar() {
     auto endBounds = sideNavbar.getLocalBounds();
     endBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
 
-    sideNavbarAnimator.animateComponent(
+    Desktop::getInstance().getAnimator().fadeOut(&sideNavbarBackground, 200);
+    Desktop::getInstance().getAnimator().animateComponent(
             &sideNavbar,
             endBounds,
             1.0f,
