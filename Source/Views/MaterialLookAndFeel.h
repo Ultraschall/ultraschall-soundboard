@@ -231,7 +231,7 @@ public:
 
 		static const int IconTouch{ 48 };
 		static const int Icon{ 40 };
-		static const int IconSmall{ 8 };
+		static const int IconSmall{ 18 };
 	};
 };
 
@@ -294,7 +294,7 @@ public:
 	template <typename T>
 	static T convertDpToPixel(T dp) {
 		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
-		double px = (dp * (display.dpi / 120)) * 0.5;
+		double px = (dp * (display.dpi / 120)) * 0.4;
 		return T(std::round(px));
 	}
     

@@ -331,6 +331,9 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-LightItalic.ttf">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/Fonts/RobotoCondensed-Regular.ttf">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/add.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -341,6 +344,12 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_folder_open_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_keyboard_arrow_left_black_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_loop_black_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_menu_white_24px.svg">
@@ -361,13 +370,22 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_mic_white_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_pause_black_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_pause_circle_outline_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_play_arrow_black_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_play_circle_outline_white_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_settings_white_48px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_stop_black_48px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/ic_view_headline_white_48px.svg">
@@ -440,6 +458,12 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp">
@@ -526,10 +550,10 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp">
@@ -548,6 +572,12 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp">

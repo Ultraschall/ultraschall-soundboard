@@ -38,7 +38,7 @@ void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 void Engine::loadAudioFile(File file) {
     Uuid uuid;
 	auto player = players.add(new Player(uuid.toDashedString()));
-	if (!player->loadFileIntoTransport(file, &audioFormatManager)) {
+	if (!player->loadFileIntoTransport(file, &audioFormatManager, &audioThumbnailCache)) {
 		players.remove(players.indexOf(player), true);
         return;
 	}

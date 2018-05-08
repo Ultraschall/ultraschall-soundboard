@@ -6972,6 +6972,18 @@ AppConfig.h
 juce_video/juce_video.cpp
 -
 
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp
+BankViewController.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
+
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/JuceHeader.h
+ViewController.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
+../Views/BankView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h
+
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp
 ClipViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.h
@@ -6989,8 +7001,8 @@ JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/JuceHeader.h
 LibraryViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
-../Views/LibraryView.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
+../Views/LibraryRowView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
 JuceHeader.h
@@ -7001,6 +7013,8 @@ ViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
 ../Models/PlayerModel.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h
+../Views/LibraryView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
 MainViewController.h
@@ -7015,6 +7029,8 @@ ViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
 LibraryViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
+BankViewController.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
 ../Views/MainView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
 
@@ -7051,8 +7067,12 @@ Player.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp
 Player.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.h
+memory
+-
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.h
+memory
+-
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/JuceHeader.h
 ADSR.h
@@ -7107,26 +7127,24 @@ Engine/Engine.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
 BankView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
 BottomBarView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp
 ClipView.h
@@ -7135,16 +7153,20 @@ ClipView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.h
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp
+../../JuceLibraryCode/JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+LibraryRowView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
 
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
-JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
+../../JuceLibraryCode/JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp
 LibraryView.h
@@ -7153,20 +7175,18 @@ LibraryView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
 MainView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 ToolbarView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.h
 BottomBarView.h
@@ -7182,29 +7202,39 @@ MaterialLookAndFeel.h
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
 
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp
 ../../JuceLibraryCode/JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
+SideNavbarItemView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.h
+
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
+
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp
 SideNavbarView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.h
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
+SideNavbarItemView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp
-../../JuceLibraryCode/JuceHeader.h
-/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
 ToolbarView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.h
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/JuceHeader.h
-DrawingTools.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.h
+MaterialLookAndFeel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
 /usr/include/atk-1.0/atk/atk-enum-types.h
 atk/atkversion.h

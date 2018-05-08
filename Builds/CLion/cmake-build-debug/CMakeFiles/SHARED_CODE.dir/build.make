@@ -57,9 +57,57 @@ include CMakeFiles/SHARED_CODE.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/SHARED_CODE.dir/flags.make
 
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp > CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.requires:
+
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.requires
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.provides: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.requires
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.provides.build
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.provides
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
+
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp > CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.requires:
+
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.requires
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.provides: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.requires
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.provides.build
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.provides
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
+
+
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.i: cmake_force
@@ -83,7 +131,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.i: cmake_force
@@ -107,7 +155,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.i: cmake_force
@@ -131,7 +179,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.i: cmake_force
@@ -155,7 +203,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.i: cmake_force
@@ -177,33 +225,9 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o
 
 
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp
-
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp > CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i
-
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s
-
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.requires:
-
-.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.requires
-
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.provides: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.requires
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.provides.build
-.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.provides
-
-CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o
-
-
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.i: cmake_force
@@ -273,9 +297,33 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o
 
 
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp > CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.requires:
+
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.requires
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.provides: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.requires
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.provides.build
+.PHONY : CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.provides
+
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.provides.build: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o
+
+
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.i: cmake_force
@@ -299,7 +347,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.i: cmake_force
@@ -323,7 +371,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.i: cmake_force
@@ -347,7 +395,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.cpp.i: cmake_force
@@ -371,7 +419,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp.i: cmake_force
@@ -395,7 +443,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.cpp.i: cmake_force
@@ -419,7 +467,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.i: cmake_force
@@ -443,7 +491,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.i: cmake_force
@@ -467,7 +515,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.i: cmake_force
@@ -491,7 +539,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_basics.cpp.i: cmake_force
@@ -515,7 +563,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_devices.cpp.i: cmake_force
@@ -539,7 +587,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_formats.cpp.i: cmake_force
@@ -563,7 +611,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.i: cmake_force
@@ -587,7 +635,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_processors.cpp.i: cmake_force
@@ -611,7 +659,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_utils.cpp.i: cmake_force
@@ -635,7 +683,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_core.cpp.i: cmake_force
@@ -659,7 +707,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_cryptography.cpp.i: cmake_force
@@ -683,7 +731,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp.i: cmake_force
@@ -707,7 +755,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.i: cmake_force
@@ -731,7 +779,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_graphics.cpp.i: cmake_force
@@ -755,7 +803,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_basics.cpp.i: cmake_force
@@ -779,7 +827,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_gui_extra.cpp.i: cmake_force
@@ -803,7 +851,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.i: cmake_force
@@ -827,7 +875,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o: CMakeFiles/SHARED_CODE.dir/flags.make
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o -c /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp
 
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.i: cmake_force
@@ -851,15 +899,17 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
 
 # Object files for target SHARED_CODE
 SHARED_CODE_OBJECTS = \
+"CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o" \
+"CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o" \
-"CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o" \
+"CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o" \
 "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o" \
@@ -888,15 +938,17 @@ SHARED_CODE_OBJECTS = \
 # External object files for target SHARED_CODE
 SHARED_CODE_EXTERNAL_OBJECTS =
 
+libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
+libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o
-libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o
+libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o
@@ -923,7 +975,7 @@ libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ul
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/build.make
 libUltraschall\ Soundboard.a: CMakeFiles/SHARED_CODE.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX static library \"libUltraschall Soundboard.a\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking CXX static library \"libUltraschall Soundboard.a\""
 	$(CMAKE_COMMAND) -P CMakeFiles/SHARED_CODE.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SHARED_CODE.dir/link.txt --verbose=$(VERBOSE)
 
@@ -932,15 +984,17 @@ CMakeFiles/SHARED_CODE.dir/build: libUltraschall\ Soundboard.a
 
 .PHONY : CMakeFiles/SHARED_CODE.dir/build
 
+CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o.requires
+CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o.requires
-CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o.requires
+CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o.requires
 CMakeFiles/SHARED_CODE.dir/requires: CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o.requires

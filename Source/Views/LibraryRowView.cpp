@@ -14,25 +14,22 @@
 //==============================================================================
 LibraryRowView::LibraryRowView()
 {
-	setInterceptsMouseClicks(true, true);
+//	playButton.setColour(DrawableButton::backgroundColourId, Colours::magenta);
+//	settingsButton.setColour(DrawableButton::backgroundColourId, Colours::magenta);
+//	stopButton.setColour(DrawableButton::backgroundColourId, Colours::magenta);
 
-	playIcon.setColour(findColour(Material::ColourIds::textPrimaryColorId));
-	stopIcon.setColour(findColour(Material::ColourIds::textPrimaryColorId));
+	playIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
+	stopIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
+	settingsIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
+
 
 	playButton.setImages(playIcon.getDrawable(), nullptr, nullptr, nullptr, pauseIcon.getDrawable());
 	stopButton.setImages(stopIcon.getDrawable());
-
-	selectionButton.setColour(ToggleButton::ColourIds::tickColourId, findColour(Material::ColourIds::primaryColorId));
-	selectionButton.setColour(ToggleButton::ColourIds::tickDisabledColourId, findColour(Material::ColourIds::primaryColorId));
-	selectionButton.setButtonText("");
-	selectionButton.setEnabled(true);
-	addAndMakeVisible(selectionButton);
-	selectionButton.onClick = [this] {
-		selectionButton.setToggleState(!selectionButton.getToggleState(), NotificationType::dontSendNotification);
-	};
+	settingsButton.setImages(settingsIcon.getDrawable());
 
 	addAndMakeVisible(playButton);
 	addAndMakeVisible(stopButton);
+	addAndMakeVisible(settingsButton);
 
 }
 
@@ -46,8 +43,12 @@ void LibraryRowView::paint (Graphics& g)
 	g.setColour(findColour(Material::ColourIds::dividerColorId));
 	g.drawLine(0, getHeight(), getWidth(), getHeight());
 
+//    g.setColour(findColour(Material::ColourIds::primaryColorId));
+//	g.fillRect(getLocalBounds().withTrimmedBottom(iconBarSize));
+
 	g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
-	g.drawText(title, getLocalBounds().withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(66)).withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(24)).withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(16)), Justification::centredLeft);
+	g.setFont(14);
+	g.drawText(title, getLocalBounds().withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge)).withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge)), Justification::topLeft);
 
 	//g.setColour(findColour(Material::ColourIds::dividerColorId));
 	//g.fillRectList(getLocalBounds().withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(66)).removeFromBottom(MaterialLookAndFeel::convertDpToPixel(24)).withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(16)).withRight(MaterialLookAndFeel::convertDpToPixel(166)));
@@ -57,12 +58,18 @@ void LibraryRowView::paint (Graphics& g)
 
 void LibraryRowView::resized()
 {
+	auto iconSize = MaterialLookAndFeel::convertDpToPixel(30);
 	FlexBox flexBox;
 
-	flexBox.items.add(FlexItem(selectionButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::IconTouch)).withFlex(1));
+	flexBox.items.add(FlexItem(settingsButton).withMaxWidth(iconSize).withFlex(1));
 	flexBox.items.add(FlexItem(spacer).withFlex(2));
-	flexBox.items.add(FlexItem(stopButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::IconTouch)).withFlex(1));
-	flexBox.items.add(FlexItem(playButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::IconTouch)).withFlex(1));
+	flexBox.items.add(FlexItem(stopButton).withMaxWidth(iconSize).withFlex(1));
+	flexBox.items.add(FlexItem(playButton).withMaxWidth(iconSize).withFlex(1));
 
-	flexBox.performLayout(getLocalBounds().reduced(Material::Size::SpaceBetweenContentAreas));
+	flexBox.performLayout(
+			getLocalBounds()
+					.removeFromBottom(iconSize)
+					.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge))
+					.withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge))
+	);
 }

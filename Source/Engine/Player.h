@@ -10,17 +10,18 @@
 
 #pragma once
 
+#include <memory>
 #include "JuceHeader.h"
 #include "ADSR.h"
 
 class Player : public AudioSource {
 public:
-    Player(Identifier identifier)
+    explicit Player(Identifier identifier)
             : timeSliceThread("Audio: " + identifier.toString())
 
     {
         timeSliceThread.startThread();
-        audioTransportSource.reset(new AudioTransportSource());
+        audioTransportSource = std::make_unique<AudioTransportSource>();
     }
 
 	~Player() {
@@ -37,7 +38,7 @@ public:
 
     void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
 
-    bool loadFileIntoTransport(const File &audioFile, AudioFormatManager* audioFormatManager);
+    bool loadFileIntoTransport(const File &audioFile, AudioFormatManager* audioFormatManager, AudioThumbnailCache *audioThumbnailCache);
 
     void play() {
         audioTransportSource->start();
@@ -55,6 +56,9 @@ public:
         Paused = 3,
         Played = 4
     };
+
+    std::unique_ptr<AudioThumbnail> thumbnail;
+
 private:
     PlayerState playerState;
     TimeSliceThread timeSliceThread;

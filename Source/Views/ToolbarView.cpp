@@ -37,9 +37,9 @@ void ToolbarView::resized()
 
 	flexBox.flexDirection = FlexBox::Direction::row;
 
-	flexBox.items.add(FlexItem(menuButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Icon)).withFlex(2));
+	flexBox.items.add(FlexItem(menuButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon)).withFlex(2));
 	flexBox.items.add(FlexItem(spacer).withFlex(1));
-	flexBox.items.add(FlexItem(viewButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Icon)).withFlex(2));
+	flexBox.items.add(FlexItem(viewButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon)).withFlex(2));
 
-	flexBox.performLayout(getLocalBounds().withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::SpaceBetweenContentAreas)).withTrimmedRight(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::SpaceBetweenContentAreas)));
+	flexBox.performLayout(getLocalBounds().withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge)).withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge)));
 }

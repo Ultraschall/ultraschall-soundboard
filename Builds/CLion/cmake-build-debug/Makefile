@@ -595,6 +595,33 @@ home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.c
 	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.s
 
+home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.o: home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.o
+
+# target to build an object file
+home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o
+
+home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.i: home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.i
+
+# target to preprocess a source file
+home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.i
+
+home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.s: home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.s
+
+# target to generate assembly for a file
+home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.s
+
 home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.o: home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o
 
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.o
@@ -892,32 +919,32 @@ home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s:
 	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s
 
-home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o
+home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
 
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.o
 
 # target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.o
+home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
 
-home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i
+home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
 
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.i
 
 # target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.i
+home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
 
-home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s
+home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
 
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.s
 
 # target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.cpp.s
+home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
 
 home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o
 
@@ -999,6 +1026,33 @@ home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.s: 
 home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s:
 	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s
+
+home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.o
+
+# target to build an object file
+home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
+
+home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.i
+
+# target to preprocess a source file
+home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
+
+home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.s
+
+# target to generate assembly for a file
+home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
 
 home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o
 
@@ -1115,6 +1169,9 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.s"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.o"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.i"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.s"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.s"
@@ -1148,9 +1205,9 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/DrawingTools.s"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.o"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.i"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.s"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.s"
@@ -1160,6 +1217,9 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.s"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.o"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.i"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.s"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.s"

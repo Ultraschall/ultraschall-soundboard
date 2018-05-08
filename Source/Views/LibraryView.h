@@ -18,7 +18,7 @@ class LibraryView : public Component
 public:
     LibraryView() {
 		table.setColour(ListBox::backgroundColourId, findColour(Material::ColourIds::backgroundColorId));
-		table.setRowHeight(MaterialLookAndFeel::convertDpToPixel(64));
+		table.setRowHeight(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon + Material::Size::Toolbar));
         addAndMakeVisible(table);
     };
 
