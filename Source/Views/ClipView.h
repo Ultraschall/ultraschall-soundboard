@@ -24,8 +24,8 @@ public:
 
 	DrawableButton playButton{ "Play / Pause Button", DrawableButton::ButtonStyle::ImageFitted };
 private:
-	Material::Icon playIcon{ BinaryData::ic_play_circle_outline_white_48px_svg, BinaryData::ic_play_circle_outline_white_48px_svgSize };
-	Material::Icon pauseIcon{ BinaryData::ic_pause_circle_outline_white_48px_svg, BinaryData::ic_pause_circle_outline_white_48px_svgSize };
+	Material::Icon playIcon{ BinaryData::baselineplay_arrow24px_svg, BinaryData::baselineplay_arrow24px_svgSize };
+	Material::Icon pauseIcon{ BinaryData::baselinepause24px_svg, BinaryData::baselinepause24px_svgSize };
 
     enum ClipState {
         isIdle,

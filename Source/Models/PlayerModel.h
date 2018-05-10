@@ -16,7 +16,7 @@
 
 struct PlayerModel {
 public:
-    PlayerModel(ValueTree v)
+	explicit PlayerModel(const ValueTree& v)
             : state(v)
     {
         jassert(v.hasType(IDs::PLAYER));
@@ -32,38 +32,4 @@ public:
     CachedValue<String> title;
 
     Player *player;
-};
-
-class PlayerList : public drow::ValueTreeObjectList<PlayerModel> {
-public:
-    explicit PlayerList(const ValueTree &parentTree) : ValueTreeObjectList(parentTree) {
-    }
-
-    ~PlayerList() {
-        freeObjects();
-    }
-
-    bool isSuitableType(const juce::ValueTree &tree) const override {
-        return tree.hasType(IDs::PLAYER);
-    }
-
-    PlayerModel *createNewObject(const juce::ValueTree &tree) override {
-        return new PlayerModel(tree);
-    }
-
-    void deleteObject(PlayerModel *type) override {
-        delete type;
-    }
-
-    void newObjectAdded(PlayerModel* /*type*/) override {
-
-    }
-
-    void objectRemoved(PlayerModel* /*type*/) override {
-
-    }
-
-    void objectOrderChanged() override {
-
-    }
 };

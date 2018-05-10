@@ -22,17 +22,19 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
     
 	LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
 	// TODO: implement a own standalone wrapper!
-	TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
-	w->setUsingNativeTitleBar(true);
+	//TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
+	//w->setUsingNativeTitleBar(true);
     controller = std::make_unique<MainViewController>(p.library);
     controller->init();
 	addAndMakeVisible(controller->getView());
 
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
+	
+	
+	setResizeLimits(128, 128, 1024, 1024);
 	setResizable(true, true);
-	setSize (400, 320);
-	setResizeLimits(320, 320, 1024, 1024);
+	setSize(320, 320);
 }
 
 UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorEditor()

@@ -1,93 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT name="Ultraschall Soundboard" projectType="audioplug" buildStandalone="1"
-              jucerVersion="5.3.1" version="4.0.0" companyName="Ultraschall"
+              jucerVersion="5.3.2" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
-              pluginFormats="buildStandalone" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
+              pluginFormats="buildAUv3,buildStandalone,buildVST,buildVST3"
+              pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
-              pluginName="Soundboard" cppLanguageStandard="17">
+              pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
+              buildVST="1" buildVST3="1" buildAU="0" buildAUv3="1" buildRTAS="0"
+              buildAAX="0" enableIAA="0">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
       <GROUP id="{FDAE8121-CDC0-1E58-F066-388BAA1F88A8}" name="Fonts">
-        <FILE id="VRC9rh" name="Roboto-Black.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Black.ttf"/>
-        <FILE id="F0QBoW" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-BlackItalic.ttf"/>
-        <FILE id="oRDDsR" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Bold.ttf"/>
-        <FILE id="XT54qp" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-BoldItalic.ttf"/>
-        <FILE id="UB9qt6" name="Roboto-Italic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Italic.ttf"/>
-        <FILE id="MlM3Pk" name="Roboto-Light.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Light.ttf"/>
-        <FILE id="u4WCVU" name="Roboto-LightItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-LightItalic.ttf"/>
-        <FILE id="OZsY2o" name="Roboto-Medium.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Medium.ttf"/>
-        <FILE id="UIE1Yu" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-MediumItalic.ttf"/>
         <FILE id="P9JhjS" name="Roboto-Regular.ttf" compile="0" resource="1"
               file="Assets/Fonts/Roboto-Regular.ttf"/>
-        <FILE id="J6L86x" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Thin.ttf"/>
-        <FILE id="tgimeZ" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-ThinItalic.ttf"/>
-        <FILE id="B50QZe" name="RobotoCondensed-Bold.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Bold.ttf"/>
-        <FILE id="m1U8Qt" name="RobotoCondensed-BoldItalic.ttf" compile="0"
-              resource="1" file="Assets/Fonts/RobotoCondensed-BoldItalic.ttf"/>
-        <FILE id="B0wYZI" name="RobotoCondensed-Italic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Italic.ttf"/>
-        <FILE id="zfZS2h" name="RobotoCondensed-Light.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Light.ttf"/>
-        <FILE id="Wd2N9p" name="RobotoCondensed-LightItalic.ttf" compile="0"
-              resource="1" file="Assets/Fonts/RobotoCondensed-LightItalic.ttf"/>
-        <FILE id="XlT2so" name="RobotoCondensed-Regular.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Regular.ttf"/>
       </GROUP>
-      <FILE id="BKC8mT" name="ic_loop_black_48px.svg" compile="0" resource="1"
-            file="Assets/ic_loop_black_48px.svg"/>
-      <FILE id="tHT1Oq" name="ic_pause_black_48px.svg" compile="0" resource="1"
-            file="Assets/ic_pause_black_48px.svg"/>
-      <FILE id="kOPJYx" name="ic_play_arrow_black_48px.svg" compile="0" resource="1"
-            file="Assets/ic_play_arrow_black_48px.svg"/>
-      <FILE id="JV47mW" name="ic_stop_black_48px.svg" compile="0" resource="1"
-            file="Assets/ic_stop_black_48px.svg"/>
-      <FILE id="st6OFy" name="ic_mic_black_48px.svg" compile="0" resource="1"
-            file="Assets/ic_mic_black_48px.svg"/>
-      <FILE id="eBMr37" name="ic_keyboard_arrow_left_black_48px.svg" compile="0"
-            resource="1" file="Assets/ic_keyboard_arrow_left_black_48px.svg"/>
-      <FILE id="MMJ2Ju" name="ic_mic_none_black_48px.svg" compile="0" resource="1"
-            file="Assets/ic_mic_none_black_48px.svg"/>
-      <FILE id="yG5moj" name="ic_menu_white_24px.svg" compile="0" resource="1"
-            file="Assets/ic_menu_white_24px.svg"/>
-      <FILE id="MoBq85" name="ic_menu_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_menu_white_48px.svg"/>
+      <FILE id="XpDKRt" name="baseline-add-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-add-24px.svg"/>
+      <FILE id="HuI0Kk" name="baseline-sync_disabled-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-sync_disabled-24px.svg"/>
+      <FILE id="XDetB0" name="baseline-sync-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-sync-24px.svg"/>
+      <FILE id="KXxxLL" name="baseline-pause-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-pause-24px.svg"/>
+      <FILE id="o1LNnL" name="baseline-play_arrow-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-play_arrow-24px.svg"/>
+      <FILE id="VSNLU3" name="baseline-stop-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-stop-24px.svg"/>
       <FILE id="UHqrdB" name="add.svg" compile="0" resource="1" file="Assets/add.svg"/>
-      <FILE id="COvtlC" name="ic_add_circle_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_add_circle_white_48px.svg"/>
-      <FILE id="UROOCR" name="ic_add_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_add_white_48px.svg"/>
       <FILE id="u4rQt0" name="ultraschall.svg" compile="0" resource="1" file="Assets/ultraschall.svg"/>
-      <FILE id="Rt9qVM" name="ic_mic_none_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_mic_none_white_48px.svg"/>
-      <FILE id="KCfCQJ" name="ic_mic_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_mic_white_48px.svg"/>
-      <FILE id="UiJEnW" name="ic_pause_circle_outline_white_48px.svg" compile="0"
-            resource="1" file="Assets/ic_pause_circle_outline_white_48px.svg"/>
-      <FILE id="pErGML" name="ic_play_circle_outline_white_48px.svg" compile="0"
-            resource="1" file="Assets/ic_play_circle_outline_white_48px.svg"/>
-      <FILE id="dRkFbx" name="ic_volume_up_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_volume_up_white_48px.svg"/>
-      <FILE id="aHdOtq" name="ic_view_headline_white_48px.svg" compile="0"
-            resource="1" file="Assets/ic_view_headline_white_48px.svg"/>
-      <FILE id="lhPtjq" name="ic_settings_white_48px.svg" compile="0" resource="1"
-            file="Assets/ic_settings_white_48px.svg"/>
-      <FILE id="FVFm1b" name="ic_view_module_white_48px.svg" compile="0"
-            resource="1" file="Assets/ic_view_module_white_48px.svg"/>
-      <FILE id="YSjMcV" name="ic_folder_open_white_48px.svg" compile="0"
-            resource="1" file="Assets/ic_folder_open_white_48px.svg"/>
+      <FILE id="jjkrKB" name="baseline-mic_none-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-mic_none-24px.svg"/>
+      <FILE id="XPQZ50" name="baseline-mic-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-mic-24px.svg"/>
+      <FILE id="iDkuT4" name="baseline-navigate_before-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-navigate_before-24px.svg"/>
+      <FILE id="ECldPW" name="baseline-menu-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-menu-24px.svg"/>
+      <FILE id="g9JlEm" name="baseline-view_module-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-view_module-24px.svg"/>
+      <FILE id="pyTVHE" name="baseline-view_list-24px.svg" compile="0" resource="1"
+            file="Assets/baseline-view_list-24px.svg"/>
+      <FILE id="OgH5MY" name="baseline-trending_down-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-trending_down-24px.svg"/>
+      <FILE id="T6MMRn" name="baseline-trending_up-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-trending_up-24px.svg"/>
+      <FILE id="I1Aew9" name="baseline-settings-20px.svg" compile="0" resource="1"
+            file="Assets/baseline-settings-20px.svg"/>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
       <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">
@@ -260,22 +221,22 @@
     </CLION>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
-            useGlobalPath="0"/>
-    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
-    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>

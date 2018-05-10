@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-	Player.h
-	Created: 27 Apr 2018 4:22:21pm
-	Author:  danlin
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <memory>
@@ -16,21 +6,18 @@
 
 class Player : public AudioSource {
 public:
-    explicit Player(Identifier id)
-            : timeSliceThread("Audio: " + id.toString()),
-			  identifier(id)
+    explicit Player(const Identifier& id)
+		: playerState(Idle), timeSliceThread("Audio: " + id.toString()),
+		  identifier(id)
 
-    {
-        timeSliceThread.startThread();
-        audioTransportSource = std::make_unique<AudioTransportSource>();
-    }
+	{
+		timeSliceThread.startThread();
+		audioTransportSource = std::make_unique<AudioTransportSource>();
+	}
 
 	~Player() {
 		audioTransportSource->stop();
 		audioTransportSource->setSource(nullptr);
-
-		audioFormatReaderSource.release();
-		audioTransportSource.release();
 	}
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
@@ -41,11 +28,24 @@ public:
 
     bool loadFileIntoTransport(const File &audioFile, AudioFormatManager* audioFormatManager, AudioThumbnailCache *audioThumbnailCache);
 
-    void play() {
+    void play() const
+    {
         audioTransportSource->start();
     }
 
-	Identifier getIdentifier() {
+	void stop() const
+	{
+		audioTransportSource->stop();
+		audioTransportSource->setPosition(0);
+	}
+
+	void pause() const
+	{
+		audioTransportSource->stop();
+	}
+
+	Identifier getIdentifier() const
+	{
         return identifier;
     }
 
@@ -55,7 +55,8 @@ public:
         Stopped = 1,
         Playing = 2,
         Paused = 3,
-        Played = 4
+        Played = 4,
+		Idle = 128
     };
 
     std::unique_ptr<AudioThumbnail> thumbnail;

@@ -40,7 +40,7 @@ public:
 		return players[index];
 	}
 
-	void DebugState();
+	void DebugState() const;
 
 	AudioFormatManager audioFormatManager;
 	AudioThumbnailCache audioThumbnailCache;

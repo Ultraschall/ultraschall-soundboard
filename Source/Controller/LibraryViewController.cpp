@@ -1,22 +1,14 @@
-/*
-  ==============================================================================
-
-    LibraryViewController.cpp
-    Created: 4 May 2018 11:04:34am
-    Author:  danlin
-
-  ==============================================================================
-*/
-
 #include "JuceHeader.h"
+
 #include "LibraryViewController.h"
+
 #include "../Views/LibraryRowView.h"
 
 LibraryViewController::LibraryViewController(Engine & engine)
-	: drow::ValueTreeObjectList<PlayerModel>(engine.state.getChildWithName(IDs::PLAYERS)),
+	: ValueTreeObjectList<PlayerModel>(engine.state.getChildWithName(IDs::PLAYERS)),
 	ViewController(engine)
 {
-
+	rebuildObjects();
 }
 
 LibraryViewController::~LibraryViewController() {
@@ -37,12 +29,10 @@ void LibraryViewController::deleteObject(PlayerModel *type) {
 }
 
 void LibraryViewController::newObjectAdded(PlayerModel *type) {
-	engine.playerWithIdentifier(Identifier(type->uuid))->thumbnail->addChangeListener(this);
 	getLibraryView()->table.updateContent();
 }
 
 void LibraryViewController::objectRemoved(PlayerModel *type) {
-	engine.playerWithIdentifier(Identifier(type->uuid))->thumbnail->removeChangeListener(this);
 	getLibraryView()->table.updateContent();
 }
 
@@ -69,20 +59,49 @@ void LibraryViewController::paintListBoxItem(int rowNumber, Graphics & g, int wi
 
 Component * LibraryViewController::refreshComponentForRow(int rowNumber, bool isRowSelected, Component * existingComponentToUpdate)
 {
-	if (rowNumber == getNumRows()) {
-		if (existingComponentToUpdate != nullptr) {
-			delete existingComponentToUpdate;
-		}
-		return new Component();
+	const auto existingLibraryRowViewToUpdate = dynamic_cast<LibraryRowView*>(existingComponentToUpdate);
+	LibraryRowView* rowView = existingLibraryRowViewToUpdate != nullptr ? existingLibraryRowViewToUpdate : new LibraryRowView();
+
+	const auto playerModel = objects[rowNumber];
+	if (playerModel == nullptr)
+	{
+		return rowView;
 	}
-	if (existingComponentToUpdate != nullptr) return existingComponentToUpdate;
-	return new LibraryRowView();
+
+	rowView->title = playerModel->title;
+
+	const auto player = engine.playerWithIdentifier(Identifier(playerModel->uuid));
+	if (playerModel == nullptr)
+	{
+		return rowView;
+	}
+
+	rowView->SetAudioThumbnail(player->thumbnail.get());
+	rowView->playButton.onClick = [player, rowView] {
+		const auto playState = rowView->playButton.getToggleState();
+		if (playState)
+		{
+			player->pause();
+		} 
+		else
+		{
+			player->play();
+		}
+		rowView->playButton.setToggleState(!playState, NotificationType::dontSendNotification);
+	};
+	rowView->stopButton.onClick = [player, rowView] {
+		player->stop();
+		rowView->playButton.setToggleState(false, NotificationType::dontSendNotification);
+	};
+	rowView->loopButton.onClick = [rowView] {
+		const auto loopState = rowView->loopButton.getToggleState();
+		rowView->loopButton.setToggleState(!loopState, NotificationType::dontSendNotification);
+	};
+
+	return rowView;
 }
 
-LibraryView * LibraryViewController::getLibraryView() {
-	return dynamic_cast<LibraryView*>(getView());
-}
-
-void LibraryViewController::changeListenerCallback(ChangeBroadcaster * source)
+LibraryView * LibraryViewController::getLibraryView() const
 {
+	return dynamic_cast<LibraryView*>(getView());
 }

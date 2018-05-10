@@ -43,7 +43,7 @@ void Engine::loadAudioFile(File file) {
         return;
 	}
 
-	ValueTree playerState(IDs::PLAYER);
+	const ValueTree playerState(IDs::PLAYER);
     PlayerModel model(playerState);
     model.uuid = uuid.toDashedString();
     model.path = file.getFullPathName();
@@ -55,7 +55,8 @@ void Engine::loadAudioFile(File file) {
     DebugState();
 }
 
-void Engine::DebugState() {
+void Engine::DebugState() const
+{
     Logger::getCurrentLogger()->outputDebugString(state.toXmlString());
 }
 

@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    MaterialLookAndFeel.h
-    Created: 6 May 2018 10:29:06am
-    Author:  danlin
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "JuceHeader.h"
@@ -23,7 +13,7 @@ public:
 		primaryTextColorId = 0x8000004,
 		primaryLightTextColorId = 0x8000005,
 		primaryDarkTextColorId = 0x8000006,
-		
+
 
 		secondaryColorId = 0x8000007,
 		secondaryLightColorId = 0x8000008,
@@ -49,13 +39,20 @@ public:
 	class Icon
 	{
 	public:
-		Icon(const char* data, const size_t size)
+		Icon(const char* data, const size_t size, const Colour& c = Colours::black)
 			: svg(XmlDocument::parse(String(data, size)))
 		{
-			drawable = std::unique_ptr<Drawable>(Drawable::createFromSVG(*svg.get()));
+			if (c == Colours::black)
+			{
+				drawable = std::unique_ptr<Drawable>(Drawable::createFromSVG(*svg));
+				return;
+			}
+
+			setColour(c);
 		}
 
-		Drawable* getDrawable() {
+		Drawable* getDrawable() const
+		{
 			return drawable.get();
 		}
 
@@ -65,12 +62,12 @@ public:
 			svg->setAttribute(fillAttribute, "#" + c.toDisplayString(false));
 			svg->setAttribute(fillOpacityAttribute, c.getFloatAlpha());
 			String myXmlDoc = svg->createDocument(String());
-			drawable = std::unique_ptr<Drawable>(Drawable::createFromSVG(*svg.get()));
+			drawable = std::unique_ptr<Drawable>(Drawable::createFromSVG(*svg));
 
 			colour = c;
 		}
 	private:
-		Colour colour;
+		Colour colour{ Colours::black };
 		Identifier fillAttribute{ "fill" };
 		Identifier fillOpacityAttribute{ "fill-opacity" };
 		std::unique_ptr<XmlElement> svg;
@@ -80,7 +77,7 @@ public:
 private:
 	class Shadow {
 	public:
-        virtual ~Shadow() {}
+		virtual ~Shadow() {}
 		virtual void setOwner(Component *c) = 0;
 	};
 
@@ -238,8 +235,8 @@ public:
 class MaterialLookAndFeel : public LookAndFeel_V4
 {
 public:
-    MaterialLookAndFeel() {
-        LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(roboto_Regular);
+	MaterialLookAndFeel() {
+		getDefaultLookAndFeel().setDefaultSansSerifTypeface(roboto_Regular);
 
 		setColour(Material::primaryColorId, Colour::fromRGB(183, 28, 28));
 		setColour(Material::primaryLightColorId, Colour::fromRGB(240, 85, 69));
@@ -255,29 +252,36 @@ public:
 		setColour(Material::secondaryLightTextColorId, Colours::black);
 		setColour(Material::secondaryDarkTextColorId, Colours::white);
 
-        setColour(Material::statusBarColorId, Colour::fromRGB(224, 224, 224));
-        setColour(Material::appBarColorId, Colour::fromRGB(245, 245, 245));
-        setColour(Material::backgroundColorId, Colour::fromRGB(250, 250, 250));
-        setColour(Material::cardColorId, Colour::fromRGB(255, 255, 255));
-        setColour(Material::dialogColorId, Colour::fromRGB(255, 255, 255));
+		setColour(Material::statusBarColorId, Colour::fromRGB(224, 224, 224));
+		setColour(Material::appBarColorId, Colour::fromRGB(245, 245, 245));
+		setColour(Material::backgroundColorId, Colour::fromRGB(250, 250, 250));
+		setColour(Material::cardColorId, Colour::fromRGB(255, 255, 255));
+		setColour(Material::dialogColorId, Colour::fromRGB(255, 255, 255));
 
-        setColour(Material::textPrimaryColorId, Colours::black.withAlpha(0.87f));
-        setColour(Material::textSecondaryColorId, Colours::black.withAlpha(0.54f));
-        setColour(Material::textDisabledColorId, Colours::black.withAlpha(0.54f));
-        setColour(Material::textHintColorId, Colours::black.withAlpha(0.38f));
-        setColour(Material::dividerColorId, Colours::black.withAlpha(0.12f));
+		setColour(Material::textPrimaryColorId, Colours::black.withAlpha(0.87f));
+		setColour(Material::textSecondaryColorId, Colours::black.withAlpha(0.54f));
+		setColour(Material::textDisabledColorId, Colours::black.withAlpha(0.54f));
+		setColour(Material::textHintColorId, Colours::black.withAlpha(0.38f));
+		setColour(Material::dividerColorId, Colours::black.withAlpha(0.12f));
 
-//        setColour(Material::statusBarColorId, Colour::fromRGB(0, 0, 0));
-//        setColour(Material::appBarColorId, Colour::fromRGB(33, 33, 33));
-//        setColour(Material::backgroundColorId, Colour::fromRGB(48, 48, 48));
-//        setColour(Material::cardColorId, Colour::fromRGB(66, 66, 66));
-//        setColour(Material::dialogColorId, Colour::fromRGB(66, 66, 66));
-//
-//        setColour(Material::textPrimaryColorId, Colours::white);
-//        setColour(Material::textSecondaryColorId, Colours::white.withAlpha(0.7f));
-//        setColour(Material::textDisabledColorId, Colours::white.withAlpha(0.5f));
-//        setColour(Material::textHintColorId, Colours::white.withAlpha(0.5f));
-//        setColour(Material::dividerColorId, Colours::white.withAlpha(0.12f));
+		        //setColour(Material::statusBarColorId, Colour::fromRGB(0, 0, 0));
+		        //setColour(Material::appBarColorId, Colour::fromRGB(33, 33, 33));
+		        //setColour(Material::backgroundColorId, Colour::fromRGB(48, 48, 48));
+		        //setColour(Material::cardColorId, Colour::fromRGB(66, 66, 66));
+		        //setColour(Material::dialogColorId, Colour::fromRGB(66, 66, 66));
+		
+		        //setColour(Material::textPrimaryColorId, Colours::white);
+		        //setColour(Material::textSecondaryColorId, Colours::white.withAlpha(0.7f));
+		        //setColour(Material::textDisabledColorId, Colours::white.withAlpha(0.5f));
+		        //setColour(Material::textHintColorId, Colours::white.withAlpha(0.5f));
+		        //setColour(Material::dividerColorId, Colours::white.withAlpha(0.12f));
+
+
+		setColour(DrawableButton::ColourIds::backgroundOnColourId, Colours::transparentWhite);
+
+		setColour(Slider::trackColourId, findColour(Material::ColourIds::primaryColorId));
+		setColour(Slider::thumbColourId, findColour(Material::ColourIds::primaryColorId));
+		setColour(Slider::backgroundColourId, findColour(Material::ColourIds::dividerColorId));
 	}
 
 	enum DensityQualifier {
@@ -293,39 +297,67 @@ public:
 
 	template <typename T>
 	static T convertDpToPixel(T dp) {
-		auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
-		double px = (dp * (display.dpi / 120)) * 0.75;
+		
+		//const auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
+		const double px = dp * 0.5; // (dp * (display.dpi / 120)) * 0.5;
 		return T(std::round(px));
 	}
-    
-    void setFontRobotoMedium(Graphics &g) {
-        g.setFont(Font(roboto_Medium));
-    }
 
-private:
-	juce::Typeface::Ptr roboto_Black				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr roboto_BlackItalic			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBlackItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	void setFontRoboto(Graphics &g) const
+	{
+		auto font = Font(roboto_Regular);
+		font.setTypefaceName("Regular");
+		g.setFont(font);
+	}
 
-	juce::Typeface::Ptr roboto_Bold					= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBold_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr roboto_BoldItalic			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//void setFontRobotoBlack(Graphics &g) const
+	//{
+	//	g.setFont(Font(roboto_Black));
+	//}
 
-	juce::Typeface::Ptr robotoCondensed_Bold			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBold_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensed_BoldItalic	= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensed_Italic		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensed_Light		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLight_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensed_LightItalic  = juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLightItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr robotoCondensed_Regular		= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedRegular_ttf, BinaryData::RobotoRegular_ttfSize);
+	//void setFontRobotoBlackItalic(Graphics &g) const
+	//{
+	//	g.setFont(Font(roboto_BlackItalic));
+	//}
 
-	juce::Typeface::Ptr roboto_Italic				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	
-	juce::Typeface::Ptr roboto_Light				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoLight_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr roboto_LightItalic			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoLightItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//void setFontRobotoBold(Graphics &g) const
+	//{
+	//	g.setFont(Font(roboto_Bold));
+	//}
 
-	juce::Typeface::Ptr roboto_Medium				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr roboto_MediumItalic			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoMediumItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//void setFontRobotoBoldItalic(Graphics &g) const
+	//{
+	//	g.setFont(Font(roboto_BoldItalic));
+	//}
 
-	juce::Typeface::Ptr roboto_Regular				= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize);
+	//void setFontRobotoMedium(Graphics &g) const
+	//{
+	//	g.setFont(Font(roboto_Medium));
+	//}
 
-	juce::Typeface::Ptr roboto_Thin					= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoThin_ttf, BinaryData::RobotoRegular_ttfSize);
-	juce::Typeface::Ptr roboto_ThinItalic			= juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoThinItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr roboto_Black{ Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize) };
+	//Typeface::Ptr roboto_BlackItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoBlackItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	//Typeface::Ptr roboto_Bold = Typeface::createSystemTypefaceFor(BinaryData::RobotoBold_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr roboto_BoldItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	//Typeface::Ptr robotoCondensed_Bold = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBold_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr robotoCondensed_BoldItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr robotoCondensed_Italic = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr robotoCondensed_Light = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLight_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr robotoCondensed_LightItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLightItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr robotoCondensed_Regular = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedRegular_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	//Typeface::Ptr roboto_Italic = Typeface::createSystemTypefaceFor(BinaryData::RobotoItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	//Typeface::Ptr roboto_Light = Typeface::createSystemTypefaceFor(BinaryData::RobotoLight_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr roboto_LightItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoLightItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	//Typeface::Ptr roboto_Medium = Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr roboto_MediumItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoMediumItalic_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	Typeface::Ptr roboto_Regular = Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize);
+
+	//Typeface::Ptr roboto_Thin = Typeface::createSystemTypefaceFor(BinaryData::RobotoThin_ttf, BinaryData::RobotoRegular_ttfSize);
+	//Typeface::Ptr roboto_ThinItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoThinItalic_ttf, BinaryData::RobotoRegular_ttfSize);
 };

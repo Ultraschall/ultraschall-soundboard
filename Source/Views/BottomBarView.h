@@ -1,35 +1,22 @@
-/*
-  ==============================================================================
-
-    BottomBarView.h
-    Created: 6 May 2018 6:04:55am
-    Author:  danie
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "JuceHeader.h"
+
 #include "MaterialLookAndFeel.h"
 
-//==============================================================================
-/*
-*/
-class BottomBarView    : public Component
+class BottomBarView : public Component
 {
 public:
-    BottomBarView();
-    ~BottomBarView();
+	BottomBarView();
 
-    void paint (Graphics&) override;
-    void resized() override;
+	void paint(Graphics&) override;
+	void resized() override;
 
 	Slider gainSlider;
 	DrawableButton talkoverButton = { "Talkover", DrawableButton::ImageFitted };
 private:
-	Material::Icon talkoverOffIcon = { BinaryData::ic_mic_none_black_48px_svg, BinaryData::ic_mic_none_black_48px_svgSize };
-	Material::Icon talkoverOnIcon = { BinaryData::ic_mic_black_48px_svg, BinaryData::ic_mic_black_48px_svgSize };
+	Material::Icon talkoverOffIcon = { BinaryData::baselinemic_none24px_svg, BinaryData::baselinemic_none24px_svgSize };
+	Material::Icon talkoverOnIcon = { BinaryData::baselinemic24px_svg, BinaryData::baselinemic24px_svgSize };
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BottomBarView)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BottomBarView)
 };

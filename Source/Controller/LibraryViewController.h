@@ -1,29 +1,18 @@
-/*
-  ==============================================================================
-
-    LibraryViewController.h
-    Created: 4 May 2018 11:04:34am
-    Author:  danlin
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "JuceHeader.h"
+
 #include "ViewController.h"
+
 #include "../Models/ValueTreeObjectList.h"
 #include "../Models/PlayerModel.h"
+
 #include "../Views/LibraryView.h"
 
-//==============================================================================
-/*
-*/
 class LibraryViewController
-		: public drow::ValueTreeObjectList<PlayerModel>, 
-		  public ListBoxModel,
-		  public ViewController<Component>,
-		  public ChangeListener
+	: public drow::ValueTreeObjectList<PlayerModel>,
+	public ListBoxModel,
+	public ViewController<Component>
 {
 public:
 	explicit LibraryViewController(Engine &engine);
@@ -46,15 +35,13 @@ public:
 
 	void viewDidLoad() override;;
 
-	virtual int getNumRows() override;
+	int getNumRows() override;
 
-	virtual void paintListBoxItem(int rowNumber, Graphics & g, int width, int height, bool rowIsSelected) override;
+	void paintListBoxItem(int rowNumber, Graphics & g, int width, int height, bool rowIsSelected) override;
 
-	virtual Component* refreshComponentForRow(int rowNumber, bool isRowSelected, Component* existingComponentToUpdate) override;
-
-	virtual void changeListenerCallback(ChangeBroadcaster * source) override;
+	Component* refreshComponentForRow(int rowNumber, bool isRowSelected, Component* existingComponentToUpdate) override;
 private:
-	LibraryView * getLibraryView();
+	LibraryView * getLibraryView() const;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LibraryViewController)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LibraryViewController)
 };

@@ -16,7 +16,7 @@
 //==============================================================================
 /*
 */
-class LibraryRowView    : public Component
+class LibraryRowView    : public Component, public ChangeListener
 {
 public:
     LibraryRowView();
@@ -35,13 +35,40 @@ public:
 	DrawableButton playButton{ "Play", DrawableButton::ImageFitted };
 	DrawableButton stopButton{ "Stop", DrawableButton::ImageFitted };
 	DrawableButton settingsButton{ "Settings", DrawableButton::ImageFitted };
+	DrawableButton fadeButton{ "Fade In/Out", DrawableButton::ImageFitted };
+	DrawableButton loopButton{ "Loop", DrawableButton::ImageFitted };
+
+	void SetAudioThumbnail(AudioThumbnail* thumbnail) {
+		if (audioThumbnail != nullptr)
+		{
+			audioThumbnail->removeChangeListener(this);
+		}
+
+		audioThumbnail = thumbnail;
+
+		if (audioThumbnail != nullptr)
+		{
+			audioThumbnail->addChangeListener(this);
+		}
+	}
+
+	void changeListenerCallback(ChangeBroadcaster* source) override
+	{
+		repaint();
+	}
 
 private:
-	Material::Icon playIcon{ BinaryData::ic_play_arrow_black_48px_svg, BinaryData::ic_play_arrow_black_48px_svgSize };
-	Material::Icon pauseIcon{ BinaryData::ic_pause_black_48px_svg, BinaryData::ic_pause_black_48px_svgSize };
-	Material::Icon stopIcon{ BinaryData::ic_stop_black_48px_svg, BinaryData::ic_stop_black_48px_svgSize };
-	Material::Icon settingsIcon{ BinaryData::ic_settings_white_48px_svg, BinaryData::ic_settings_white_48px_svgSize };
+	Material::Icon playIcon{ BinaryData::baselineplay_arrow24px_svg, BinaryData::baselineplay_arrow24px_svgSize };
+	Material::Icon pauseIcon{ BinaryData::baselinepause24px_svg, BinaryData::baselinepause24px_svgSize };
+	Material::Icon stopIcon{ BinaryData::baselinestop24px_svg, BinaryData::baselinestop24px_svgSize };
+	Material::Icon settingsIcon{ BinaryData::baselinesettings20px_svg, BinaryData::baselinesettings20px_svgSize };
 
+	Material::Icon loopOnIcon{ BinaryData::baselinesync24px_svg, BinaryData::baselinesync24px_svgSize };
+	Material::Icon loopOffIcon{ BinaryData::baselinesync_disabled24px_svg, BinaryData::baselinesync_disabled24px_svgSize };
+	Material::Icon fadeInIcon{ BinaryData::baselinetrending_up24px_svg, BinaryData::baselinetrending_up24px_svgSize };
+	Material::Icon fadeOutIcon{ BinaryData::baselinetrending_down24px_svg, BinaryData::baselinetrending_down24px_svgSize };
+
+	AudioThumbnail* audioThumbnail{nullptr};
 
 	Component spacer;
 

@@ -16,7 +16,6 @@ SideNavbarView::SideNavbarView() {
     backButton.setImages(backIcon.getDrawable());
     
     addAndMakeVisible(backButton);
-    addAndMakeVisible(importButton);
 	addAndMakeVisible(settingsButton);
 }
 
@@ -36,7 +35,6 @@ void SideNavbarView::resized() {
 
     flexBox.flexDirection = FlexBox::Direction::column;
 
-    flexBox.items.add(FlexItem(importButton).withMaxHeight(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::MenuItem)).withFlex(1));
     flexBox.items.add(FlexItem(settingsButton).withMaxHeight(MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::MenuItem)).withFlex(1));
 
     flexBox.performLayout(getLocalBounds().withTrimmedTop(MaterialLookAndFeel::convertDpToPixel<int>(Material::Size::Toolbar)));

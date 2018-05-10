@@ -1,50 +1,36 @@
-/*
-  ==============================================================================
-
-	Player.cpp
-	Created: 27 Apr 2018 4:22:22pm
-	Author:  danlin
-
-  ==============================================================================
-*/
-
 #include "Player.h"
-#include <memory>
 
 void Player::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
-    audioTransportSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
+	audioTransportSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 
 void Player::releaseResources() {
-    audioTransportSource->releaseResources();
+	audioTransportSource->releaseResources();
 }
 
 void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
-    audioTransportSource->getNextAudioBlock(bufferToFill);
+	audioTransportSource->getNextAudioBlock(bufferToFill);
 }
 
 bool Player::loadFileIntoTransport(const File &audioFile, AudioFormatManager *audioFormatManager, AudioThumbnailCache *audioThumbnailCache) {
-    audioTransportSource->stop();
-    audioTransportSource->setSource(nullptr);
-    audioFormatReaderSource.reset(nullptr);
+	audioTransportSource->stop();
+	audioTransportSource->setSource(nullptr);
 
-    auto reader = audioFormatManager->createReaderFor(audioFile);
+	auto reader = audioFormatManager->createReaderFor(audioFile);
 
-    if (reader != nullptr)
-    {
-        audioFormatReaderSource = std::make_unique<AudioFormatReaderSource>(reader, true);
+	if (reader == nullptr)
+	{
+		playerState = Error;
+		return false;
+	}
 
-        audioTransportSource->setSource(audioFormatReaderSource.get(), 32768, &timeSliceThread, reader->sampleRate);
+	audioFormatReaderSource = std::make_unique<AudioFormatReaderSource>(reader, true);
 
-        thumbnail = std::make_unique<AudioThumbnail>(audioFormatReaderSource->getTotalLength() / 512, *audioFormatManager, *audioThumbnailCache);
-        thumbnail->setSource(new FileInputSource(audioFile));
+	audioTransportSource->setSource(audioFormatReaderSource.get(), 32768, &timeSliceThread, reader->sampleRate);
 
-        playerState = Stopped;
-        return true;
-    }
-    else
-    {
-        playerState = Error;
-        return false;
-    }
+	thumbnail = std::make_unique<AudioThumbnail>(4096, *audioFormatManager, *audioThumbnailCache);
+	thumbnail->setSource(new FileInputSource(audioFile));
+
+	playerState = Stopped;
+	return true;
 }
