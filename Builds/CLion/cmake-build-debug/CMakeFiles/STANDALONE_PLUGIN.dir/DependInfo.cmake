@@ -28,7 +28,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../../../JuceLibraryCode"
-  "../../../Submodules/JUCE/modules"
+  "/home/danlin/JUCE/modules"
   "/usr/include/alsa"
   "/usr/include/freetype2"
   "/usr/include/libpng16"

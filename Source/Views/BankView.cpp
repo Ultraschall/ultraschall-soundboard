@@ -1,47 +1,36 @@
-/*
-  ==============================================================================
-
-    BankView.cpp
-    Created: 1 May 2018 11:20:13am
-    Author:  Daniel Lindenfelser
-
-  ==============================================================================
-*/
-
 #include "BankView.h"
 
-//==============================================================================
 BankView::BankView()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
+    nextButton.setImages(nextIcon.getDrawable());
+    beforeButton.setImages(beforeIcon.getDrawable());
+    titleLabel.setText("Test", NotificationType::dontSendNotification);
 
+    addAndMakeVisible(nextButton);
+    addAndMakeVisible(beforeButton);
+    addAndMakeVisible(titleLabel);
 }
 
 BankView::~BankView()
 {
 }
 
-void BankView::paint (Graphics& g)
+void BankView::paint(Graphics &g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (Material::ColourIds::backgroundColorId));   // clear the background
-
-	g.setColour (getLookAndFeel().findColour(Material::ColourIds::textPrimaryColorId));
-    g.setFont (14.0f);
-    g.drawText ("BankView", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    g.fillAll(getLookAndFeel().findColour(Material::ColourIds::backgroundColorId));   // clear the background
 }
 
 void BankView::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    FlexBox flexBox;
 
+    flexBox.items.add(FlexItem(beforeButton)
+                              .withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon))
+                              .withFlex(1));
+    flexBox.items.add(FlexItem(titleLabel).withFlex(2));
+    flexBox.items.add(FlexItem(nextButton)
+                              .withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon))
+                              .withFlex(1));
+
+    flexBox.performLayout(getLocalBounds().withBottom(Material::Size::NavigationDrawer));
 }

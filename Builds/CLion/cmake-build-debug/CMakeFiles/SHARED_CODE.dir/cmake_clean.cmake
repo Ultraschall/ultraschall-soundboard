@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o"

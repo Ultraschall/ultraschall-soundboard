@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-	Library.h
-	Created: 27 Apr 2018 4:22:31pm
-	Author:  danlin
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <vector>
@@ -16,38 +6,46 @@
 #include "../Models/Identifier.h"
 #include "../Models/PlayerModel.h"
 
-class Engine : public AudioSource {
+class Engine : public AudioSource
+{
 public:
-	Engine();
+    Engine();
 
-	~Engine() {
-	    mixer.removeAllInputs();
-	    players.clear(true);
-		audioFormatManager.clearFormats();
-		audioThumbnailCache.clear();
-	}
+    ~Engine()
+    {
+        mixer.removeAllInputs();
+        players.clear(true);
+        audioFormatManager.clearFormats();
+        audioThumbnailCache.clear();
+    }
 
-	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 
-	void releaseResources() override;
+    void releaseResources() override;
 
-	void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
+    void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
 
-	void loadAudioFile(File file);
+    void loadAudioFile(File file);
 
-	Player* playerWithIdentifier(Identifier id);
-	Player* playerAtIndex(int index) {
-		return players[index];
-	}
+    void importDirectory(File directory);
 
-	void DebugState() const;
+    void newBank();
 
-	AudioFormatManager audioFormatManager;
-	AudioThumbnailCache audioThumbnailCache;
-	UndoManager undoManager;
+    Player *playerWithIdentifier(Identifier id);
+
+    Player *playerAtIndex(int index)
+    {
+        return players[index];
+    }
+
+    void DebugState() const;
+
+    AudioFormatManager audioFormatManager;
+    AudioThumbnailCache audioThumbnailCache;
+    UndoManager undoManager;
     juce::ValueTree state;
 
-	private:
-	MixerAudioSource mixer;
-	OwnedArray<Player> players;
+private:
+    MixerAudioSource mixer;
+    OwnedArray<Player> players;
 };

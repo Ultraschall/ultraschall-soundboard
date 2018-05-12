@@ -4,7 +4,7 @@
               jucerVersion="5.3.2" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
-              pluginFormats="buildAUv3,buildStandalone,buildVST,buildVST3"
+              pluginFormats="buildVST,buildVST3,buildAUv3,buildStandalone"
               pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
@@ -14,9 +14,43 @@
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
       <GROUP id="{FDAE8121-CDC0-1E58-F066-388BAA1F88A8}" name="Fonts">
+        <FILE id="zpvkLy" name="Roboto-Black.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Black.ttf"/>
+        <FILE id="Pdbf6j" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-BlackItalic.ttf"/>
+        <FILE id="FuqDvP" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Bold.ttf"/>
+        <FILE id="C540Fe" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-BoldItalic.ttf"/>
+        <FILE id="XBrZdf" name="Roboto-Italic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Italic.ttf"/>
+        <FILE id="nsrJG4" name="Roboto-Light.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Light.ttf"/>
+        <FILE id="AzGMHe" name="Roboto-LightItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-LightItalic.ttf"/>
+        <FILE id="kXgRss" name="Roboto-Medium.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Medium.ttf"/>
+        <FILE id="SGH7iG" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-MediumItalic.ttf"/>
         <FILE id="P9JhjS" name="Roboto-Regular.ttf" compile="0" resource="1"
               file="Assets/Fonts/Roboto-Regular.ttf"/>
+        <FILE id="GhtWNc" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Thin.ttf"/>
+        <FILE id="MtHuv8" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-ThinItalic.ttf"/>
+        <FILE id="z6e1rP" name="RobotoCondensed-Bold.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Bold.ttf"/>
+        <FILE id="QBgIGF" name="RobotoCondensed-BoldItalic.ttf" compile="0"
+              resource="1" file="Assets/Fonts/RobotoCondensed-BoldItalic.ttf"/>
+        <FILE id="lsQLks" name="RobotoCondensed-Italic.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Italic.ttf"/>
+        <FILE id="H28lyR" name="RobotoCondensed-Light.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Light.ttf"/>
+        <FILE id="NEr8Vu" name="RobotoCondensed-LightItalic.ttf" compile="0"
+              resource="1" file="Assets/Fonts/RobotoCondensed-LightItalic.ttf"/>
+        <FILE id="e3MWqg" name="RobotoCondensed-Regular.ttf" compile="0" resource="1"
+              file="Assets/Fonts/RobotoCondensed-Regular.ttf"/>
       </GROUP>
+      <FILE id="bmVNHA" name="baseline-folder_open-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-folder_open-24px.svg"/>
       <FILE id="XpDKRt" name="baseline-add-24px.svg" compile="0" resource="1"
             file="Assets/baseline-add-24px.svg"/>
       <FILE id="HuI0Kk" name="baseline-sync_disabled-24px.svg" compile="0"
@@ -35,6 +69,8 @@
             file="Assets/baseline-mic_none-24px.svg"/>
       <FILE id="XPQZ50" name="baseline-mic-24px.svg" compile="0" resource="1"
             file="Assets/baseline-mic-24px.svg"/>
+      <FILE id="j7b85v" name="baseline-navigate_next-24px.svg" compile="0"
+            resource="1" file="Assets/baseline-navigate_next-24px.svg"/>
       <FILE id="iDkuT4" name="baseline-navigate_before-24px.svg" compile="0"
             resource="1" file="Assets/baseline-navigate_before-24px.svg"/>
       <FILE id="ECldPW" name="baseline-menu-24px.svg" compile="0" resource="1"
@@ -60,6 +96,8 @@
         <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
       </GROUP>
       <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
+        <FILE id="lkNO6d" name="ClipRowView.cpp" compile="1" resource="0" file="Source/Views/ClipRowView.cpp"/>
+        <FILE id="polpbA" name="ClipRowView.h" compile="0" resource="0" file="Source/Views/ClipRowView.h"/>
         <FILE id="xyZ9Ao" name="LibraryRowView.cpp" compile="1" resource="0"
               file="Source/Views/LibraryRowView.cpp"/>
         <FILE id="UXvZ8a" name="LibraryRowView.h" compile="0" resource="0"
@@ -129,6 +167,7 @@
   </MAINGROUP>
   <LIVE_SETTINGS>
     <WINDOWS/>
+    <LINUX/>
   </LIVE_SETTINGS>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="">
@@ -219,6 +258,30 @@
         <MODULEPATH id="juce_audio_basics" path="../../juce"/>
       </MODULEPATHS>
     </CLION>
+    <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="" androidNDKPath=""
+                   androidMinimumSDK="27">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../../juce"/>
+        <MODULEPATH id="juce_opengl" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_cryptography" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </ANDROIDSTUDIO>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -238,5 +301,5 @@
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
-  <JUCEOPTIONS/>
+  <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1"/>
 </JUCERPROJECT>

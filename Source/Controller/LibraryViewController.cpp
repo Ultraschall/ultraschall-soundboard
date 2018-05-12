@@ -60,6 +60,10 @@ void LibraryViewController::paintListBoxItem(int rowNumber, Graphics & g, int wi
 Component * LibraryViewController::refreshComponentForRow(int rowNumber, bool isRowSelected, Component * existingComponentToUpdate)
 {
 	const auto existingLibraryRowViewToUpdate = dynamic_cast<LibraryRowView*>(existingComponentToUpdate);
+    if (existingComponentToUpdate != nullptr && existingLibraryRowViewToUpdate == nullptr)
+    {
+        delete existingComponentToUpdate;
+    }
 	LibraryRowView* rowView = existingLibraryRowViewToUpdate != nullptr ? existingLibraryRowViewToUpdate : new LibraryRowView();
 
 	const auto playerModel = objects[rowNumber];

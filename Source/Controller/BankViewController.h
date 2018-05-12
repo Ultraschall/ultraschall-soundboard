@@ -1,30 +1,39 @@
-/*
-  ==============================================================================
-
-    BankViewController.h
-    Created: 8 May 2018 3:11:08pm
-    Author:  danlin
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "JuceHeader.h"
 #include "ViewController.h"
+#include "../Models/ClipModel.h"
 #include "../Views/BankView.h"
 
-class BankViewController : public ViewController<Component>
+class BankViewController : public ViewController<Component>, public drow::ValueTreeObjectList<BankModel>
 {
 public:
-	explicit BankViewController(Engine &engine);
+    explicit BankViewController(Engine &engine);
 
-	~BankViewController();
+    ~BankViewController();
 
-	void loadView() override;
+    void loadView() override;
 
-	void viewDidLoad() override;
+    void viewDidLoad() override;
+
+    bool isSuitableType(const juce::ValueTree &tree) const override;
+
+    BankModel *createNewObject(const juce::ValueTree &tree) override;
+
+    void deleteObject(BankModel *type) override;
+
+    void newObjectAdded(BankModel *type) override;
+
+    void objectRemoved(BankModel *type) override;
+
+    void objectOrderChanged() override;
+
+    void newBank()
+    {
+        engine.newBank();
+    }
+
 private:
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BankViewController)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BankViewController)
 };

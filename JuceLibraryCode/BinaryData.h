@@ -8,8 +8,62 @@
 
 namespace BinaryData
 {
+    extern const char*   RobotoBlack_ttf;
+    const int            RobotoBlack_ttfSize = 127948;
+
+    extern const char*   RobotoBlackItalic_ttf;
+    const int            RobotoBlackItalic_ttfSize = 134716;
+
+    extern const char*   RobotoBold_ttf;
+    const int            RobotoBold_ttfSize = 127744;
+
+    extern const char*   RobotoBoldItalic_ttf;
+    const int            RobotoBoldItalic_ttfSize = 134556;
+
+    extern const char*   RobotoItalic_ttf;
+    const int            RobotoItalic_ttfSize = 132440;
+
+    extern const char*   RobotoLight_ttf;
+    const int            RobotoLight_ttfSize = 126792;
+
+    extern const char*   RobotoLightItalic_ttf;
+    const int            RobotoLightItalic_ttfSize = 133172;
+
+    extern const char*   RobotoMedium_ttf;
+    const int            RobotoMedium_ttfSize = 127488;
+
+    extern const char*   RobotoMediumItalic_ttf;
+    const int            RobotoMediumItalic_ttfSize = 134312;
+
     extern const char*   RobotoRegular_ttf;
     const int            RobotoRegular_ttfSize = 126072;
+
+    extern const char*   RobotoThin_ttf;
+    const int            RobotoThin_ttfSize = 127584;
+
+    extern const char*   RobotoThinItalic_ttf;
+    const int            RobotoThinItalic_ttfSize = 132860;
+
+    extern const char*   RobotoCondensedBold_ttf;
+    const int            RobotoCondensedBold_ttfSize = 127340;
+
+    extern const char*   RobotoCondensedBoldItalic_ttf;
+    const int            RobotoCondensedBoldItalic_ttfSize = 135504;
+
+    extern const char*   RobotoCondensedItalic_ttf;
+    const int            RobotoCondensedItalic_ttfSize = 133908;
+
+    extern const char*   RobotoCondensedLight_ttf;
+    const int            RobotoCondensedLight_ttfSize = 126168;
+
+    extern const char*   RobotoCondensedLightItalic_ttf;
+    const int            RobotoCondensedLightItalic_ttfSize = 134544;
+
+    extern const char*   RobotoCondensedRegular_ttf;
+    const int            RobotoCondensedRegular_ttfSize = 125332;
+
+    extern const char*   baselinefolder_open24px_svg;
+    const int            baselinefolder_open24px_svgSize = 257;
 
     extern const char*   baselineadd24px_svg;
     const int            baselineadd24px_svgSize = 185;
@@ -33,13 +87,16 @@ namespace BinaryData
     const int            add_svgSize = 3216;
 
     extern const char*   ultraschall_svg;
-    const int            ultraschall_svgSize = 2877;
+    const int            ultraschall_svgSize = 2876;
 
     extern const char*   baselinemic_none24px_svg;
     const int            baselinemic_none24px_svgSize = 452;
 
     extern const char*   baselinemic24px_svg;
     const int            baselinemic24px_svgSize = 341;
+
+    extern const char*   baselinenavigate_next24px_svg;
+    const int            baselinenavigate_next24px_svgSize = 196;
 
     extern const char*   baselinenavigate_before24px_svg;
     const int            baselinenavigate_before24px_svgSize = 195;
@@ -63,7 +120,7 @@ namespace BinaryData
     const int            baselinesettings20px_svgSize = 786;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 18;
+    const int namedResourceListSize = 37;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SHARED_CODE
+# Target rules for targets named VST
 
 # Build rule for target.
-SHARED_CODE: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SHARED_CODE
-.PHONY : SHARED_CODE
+VST: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 VST
+.PHONY : VST
 
 # fast build rule for target.
-SHARED_CODE/fast:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/build
-.PHONY : SHARED_CODE/fast
+VST/fast:
+	$(MAKE) -f CMakeFiles/VST.dir/build.make CMakeFiles/VST.dir/build
+.PHONY : VST/fast
 
 #=============================================================================
 # Target rules for targets named STANDALONE_PLUGIN
@@ -135,6 +135,19 @@ STANDALONE_PLUGIN: cmake_check_build_system
 STANDALONE_PLUGIN/fast:
 	$(MAKE) -f CMakeFiles/STANDALONE_PLUGIN.dir/build.make CMakeFiles/STANDALONE_PLUGIN.dir/build
 .PHONY : STANDALONE_PLUGIN/fast
+
+#=============================================================================
+# Target rules for targets named SHARED_CODE
+
+# Build rule for target.
+SHARED_CODE: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SHARED_CODE
+.PHONY : SHARED_CODE
+
+# fast build rule for target.
+SHARED_CODE/fast:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/build
+.PHONY : SHARED_CODE/fast
 
 home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.o: home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.cpp.o
 
@@ -270,6 +283,33 @@ home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_p
 home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp.s:
 	$(MAKE) -f CMakeFiles/STANDALONE_PLUGIN.dir/build.make CMakeFiles/STANDALONE_PLUGIN.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp.s
+
+home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.o: home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.o
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.o
+
+# target to build an object file
+home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.o:
+	$(MAKE) -f CMakeFiles/VST.dir/build.make CMakeFiles/VST.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.o
+
+home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.i: home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.i
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.i
+
+# target to preprocess a source file
+home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.i:
+	$(MAKE) -f CMakeFiles/VST.dir/build.make CMakeFiles/VST.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.i
+
+home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.s: home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.s
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.s
+
+# target to generate assembly for a file
+home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.s:
+	$(MAKE) -f CMakeFiles/VST.dir/build.make CMakeFiles/VST.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp.s
 
 home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.o: home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp.o
 
@@ -892,6 +932,33 @@ home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s:
 	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s
 
+home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.o
+
+# target to build an object file
+home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o
+
+home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.i
+
+# target to preprocess a source file
+home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i
+
+home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s
+
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.s
+
+# target to generate assembly for a file
+home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s:
+	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s
+.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s
+
 home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o
 
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o
@@ -1115,9 +1182,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... SHARED_CODE"
+	@echo "... VST"
 	@echo "... STANDALONE_PLUGIN"
+	@echo "... SHARED_CODE"
+	@echo "... edit_cache"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/BinaryData.s"
@@ -1133,6 +1201,9 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.s"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.o"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.i"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.s"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.s"
@@ -1202,6 +1273,9 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.s"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.o"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.i"
+	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.s"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.s"

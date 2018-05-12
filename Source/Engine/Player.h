@@ -4,21 +4,22 @@
 #include "JuceHeader.h"
 #include "ADSR.h"
 
-class Player : public AudioSource {
+class Player : public AudioSource
+{
 public:
-    explicit Player(const Identifier& id)
-		: playerState(Idle), timeSliceThread("Audio: " + id.toString()),
-		  identifier(id)
+    explicit Player(const Identifier &id)
+            : playerState(Idle), timeSliceThread("Audio: " + id.toString()),
+              identifier(id)
+    {
+        timeSliceThread.startThread();
+        audioTransportSource = std::make_unique<AudioTransportSource>();
+    }
 
-	{
-		timeSliceThread.startThread();
-		audioTransportSource = std::make_unique<AudioTransportSource>();
-	}
-
-	~Player() {
-		audioTransportSource->stop();
-		audioTransportSource->setSource(nullptr);
-	}
+    ~Player()
+    {
+        audioTransportSource->stop();
+        audioTransportSource->setSource(nullptr);
+    }
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 
@@ -26,37 +27,39 @@ public:
 
     void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
 
-    bool loadFileIntoTransport(const File &audioFile, AudioFormatManager* audioFormatManager, AudioThumbnailCache *audioThumbnailCache);
+    bool loadFileIntoTransport(const File &audioFile, AudioFormatManager *audioFormatManager,
+                               AudioThumbnailCache *audioThumbnailCache);
 
     void play() const
     {
         audioTransportSource->start();
     }
 
-	void stop() const
-	{
-		audioTransportSource->stop();
-		audioTransportSource->setPosition(0);
-	}
+    void stop() const
+    {
+        audioTransportSource->stop();
+        audioTransportSource->setPosition(0);
+    }
 
-	void pause() const
-	{
-		audioTransportSource->stop();
-	}
+    void pause() const
+    {
+        audioTransportSource->stop();
+    }
 
-	Identifier getIdentifier() const
-	{
+    Identifier getIdentifier() const
+    {
         return identifier;
     }
 
-    enum PlayerState {
+    enum PlayerState
+    {
         Error = -1,
         Ready = 0,
         Stopped = 1,
         Playing = 2,
         Paused = 3,
         Played = 4,
-		Idle = 128
+        Idle = 128
     };
 
     std::unique_ptr<AudioThumbnail> thumbnail;
@@ -65,7 +68,7 @@ private:
     PlayerState playerState;
     TimeSliceThread timeSliceThread;
 
-	Identifier identifier;
+    Identifier identifier;
 
     std::unique_ptr<AudioTransportSource> audioTransportSource;
     std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;

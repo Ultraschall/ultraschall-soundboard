@@ -1,20 +1,11 @@
-/*
-  ==============================================================================
-
-    Clip.h
-    Created: 2 May 2018 2:19:32pm
-    Author:  Daniel Lindenfelser
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "JuceHeader.h"
-#include "../Engine/Identifier.h"
+#include "Identifier.h"
 #include "../Engine/Player.h"
 
-struct BankModel {
+struct BankModel
+{
 public:
     BankModel(ValueTree v)
             : state(v)
@@ -32,7 +23,8 @@ public:
     CachedValue<String> title;
 };
 
-struct ClipModel {
+struct ClipModel
+{
 public:
     ClipModel(ValueTree v)
             : state(v)

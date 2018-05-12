@@ -20,23 +20,37 @@
 #define ADRS_h
 
 
-class ADSR {
+class ADSR
+{
 public:
-	ADSR(void);
-	~ADSR(void);
-	float process(void);
+    ADSR(void);
+
+    ~ADSR(void);
+
+    float process(void);
+
     float getOutput(void);
+
     int getState(void);
-	void gate(int on);
+
+    void gate(int on);
+
     void setAttackRate(float rate);
+
     void setDecayRate(float rate);
+
     void setReleaseRate(float rate);
-	void setSustainLevel(float level);
+
+    void setSustainLevel(float level);
+
     void setTargetRatioA(float targetRatio);
+
     void setTargetRatioDR(float targetRatio);
+
     void reset(void);
 
-    enum envState {
+    enum envState
+    {
         env_idle = 0,
         env_attack,
         env_decay,
@@ -45,38 +59,42 @@ public:
     };
 
 protected:
-	int state;
-	float output;
-	float attackRate;
-	float decayRate;
-	float releaseRate;
-	float attackCoef;
-	float decayCoef;
-	float releaseCoef;
-	float sustainLevel;
+    int state;
+    float output;
+    float attackRate;
+    float decayRate;
+    float releaseRate;
+    float attackCoef;
+    float decayCoef;
+    float releaseCoef;
+    float sustainLevel;
     float targetRatioA;
     float targetRatioDR;
     float attackBase;
     float decayBase;
     float releaseBase;
- 
+
     float calcCoef(float rate, float targetRatio);
 };
 
-inline float ADSR::process() {
-	switch (state) {
+inline float ADSR::process()
+{
+    switch (state)
+    {
         case env_idle:
             break;
         case env_attack:
             output = attackBase + output * attackCoef;
-            if (output >= 1.0) {
+            if (output >= 1.0)
+            {
                 output = 1.0;
                 state = env_decay;
             }
             break;
         case env_decay:
             output = decayBase + output * decayCoef;
-            if (output <= sustainLevel) {
+            if (output <= sustainLevel)
+            {
                 output = sustainLevel;
                 state = env_sustain;
             }
@@ -85,32 +103,37 @@ inline float ADSR::process() {
             break;
         case env_release:
             output = releaseBase + output * releaseCoef;
-            if (output <= 0.0) {
+            if (output <= 0.0)
+            {
                 output = 0.0;
                 state = env_idle;
             }
-	}
-	return output;
+    }
+    return output;
 }
 
-inline void ADSR::gate(int gate) {
-	if (gate)
-		state = env_attack;
-	else if (state != env_idle)
+inline void ADSR::gate(int gate)
+{
+    if (gate)
+        state = env_attack;
+    else if (state != env_idle)
         state = env_release;
 }
 
-inline int ADSR::getState() {
+inline int ADSR::getState()
+{
     return state;
 }
 
-inline void ADSR::reset() {
+inline void ADSR::reset()
+{
     state = env_idle;
     output = 0.0;
 }
 
-inline float ADSR::getOutput() {
-	return output;
+inline float ADSR::getOutput()
+{
+    return output;
 }
 
 #endif

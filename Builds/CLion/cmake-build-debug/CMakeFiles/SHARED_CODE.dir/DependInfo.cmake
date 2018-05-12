@@ -31,6 +31,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o"
+  "/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o"
   "/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp" "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o"
@@ -55,7 +56,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "JucePlugin_Build_RTAS=0"
   "JucePlugin_Build_Standalone=1"
   "JucePlugin_Build_VST3=0"
-  "JucePlugin_Build_VST=0"
+  "JucePlugin_Build_VST=1"
   "LINUX=1"
   "_DEBUG=1"
   )
@@ -63,7 +64,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../../../JuceLibraryCode"
-  "../../../Submodules/JUCE/modules"
+  "/home/danlin/JUCE/modules"
   "/usr/include/alsa"
   "/usr/include/freetype2"
   "/usr/include/libpng16"

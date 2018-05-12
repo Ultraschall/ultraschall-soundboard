@@ -1,26 +1,20 @@
-/*
-  ==============================================================================
-
-    ClipView.cpp
-    Created: 29 Apr 2018 12:22:06pm
-
-  ==============================================================================
-*/
-
 #include "ClipView.h"
 
-ClipView::ClipView() {
-	playButton.setImages(pauseIcon.getDrawable(), nullptr, nullptr, nullptr, playIcon.getDrawable());
+ClipView::ClipView()
+{
+    playButton.setImages(pauseIcon.getDrawable(), nullptr, nullptr, nullptr, playIcon.getDrawable());
     addAndMakeVisible(playButton);
 }
 
-ClipView::~ClipView() {
+ClipView::~ClipView()
+{
 
 }
 
-void ClipView::paint(Graphics &g) {
+void ClipView::paint(Graphics &g)
+{
     auto border = g.getClipBounds().reduced(1).toFloat();
-    auto cell   = border.reduced(2).toFloat();
+    auto cell = border.reduced(2).toFloat();
 
     g.setColour(Colours::black);
     g.fillAll();
@@ -29,7 +23,8 @@ void ClipView::paint(Graphics &g) {
     g.fillRect(border);
 }
 
-void ClipView::resized() {
+void ClipView::resized()
+{
     auto height = float(getHeight());
 
 

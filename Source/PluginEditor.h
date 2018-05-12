@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin editor.
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -16,23 +6,19 @@
 #include "Controller/MainViewController.h"
 #include "Views/MaterialLookAndFeel.h"
 
-//==============================================================================
-/**
-*/
-class UltraschallSoundboardAudioProcessorEditor  : public AudioProcessorEditor
+class UltraschallSoundboardAudioProcessorEditor : public AudioProcessorEditor
 {
 public:
-    UltraschallSoundboardAudioProcessorEditor (UltraschallSoundboardAudioProcessor&);
+    explicit UltraschallSoundboardAudioProcessorEditor(UltraschallSoundboardAudioProcessor &);
+
     ~UltraschallSoundboardAudioProcessorEditor();
 
-    //==============================================================================
-    void paint (Graphics&) override;
+    void paint(Graphics &) override;
+
     void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    UltraschallSoundboardAudioProcessor& processor;
+    UltraschallSoundboardAudioProcessor &processor;
 
     std::unique_ptr<MainViewController> controller;
     MaterialLookAndFeel lookAndFeel;
