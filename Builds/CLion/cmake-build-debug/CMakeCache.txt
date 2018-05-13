@@ -210,7 +210,7 @@ ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
 RT:FILEPATH=/usr/lib64/librt.so
 
 //Dependencies for the target
-SHARED_CODE_LIB_DEPENDS:STATIC=general;-march=native;general;/usr/lib64/libGL.so;general;/usr/lib64/libdl.so;general;/usr/lib64/libpthread.so;general;/usr/lib64/librt.so;general;asound;general;freetype;general;curl;general;X11;general;Xext;general;Xinerama;general;webkit2gtk-4.0;general;gtk-3;general;gdk-3;general;pangocairo-1.0;general;pango-1.0;general;fribidi;general;atk-1.0;general;cairo-gobject;general;cairo;general;gdk_pixbuf-2.0;general;soup-2.4;general;gio-2.0;general;gobject-2.0;general;javascriptcoregtk-4.0;general;glib-2.0;general;gtk-3;general;gdk-3;general;pangocairo-1.0;general;pango-1.0;general;fribidi;general;atk-1.0;general;cairo-gobject;general;cairo;general;gdk_pixbuf-2.0;general;gio-2.0;general;gobject-2.0;general;glib-2.0;
+SHARED_CODE_LIB_DEPENDS:STATIC=general;-march=native;general;/usr/lib64/libGL.so;general;/usr/lib64/libdl.so;general;/usr/lib64/libpthread.so;general;/usr/lib64/librt.so;general;asound;general;freetype;general;curl;general;X11;general;Xext;general;Xinerama;
 
 //Value Computed by CMake
 Ultraschall Soundboard_BINARY_DIR:STATIC=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug
@@ -219,7 +219,7 @@ Ultraschall Soundboard_BINARY_DIR:STATIC=/home/danlin/Projects/ultraschall-sound
 Ultraschall Soundboard_SOURCE_DIR:STATIC=/home/danlin/Projects/ultraschall-soundboard/Builds/CLion
 
 //Dependencies for the target
-VST_LIB_DEPENDS:STATIC=general;SHARED_CODE;general;-march=native;general;-shared;general;-Wl,--no-undefined;general;/usr/lib64/libGL.so;general;/usr/lib64/libdl.so;general;/usr/lib64/libpthread.so;general;/usr/lib64/librt.so;general;asound;general;freetype;general;curl;general;X11;general;Xext;general;Xinerama;general;webkit2gtk-4.0;general;gtk-3;general;gdk-3;general;pangocairo-1.0;general;pango-1.0;general;fribidi;general;atk-1.0;general;cairo-gobject;general;cairo;general;gdk_pixbuf-2.0;general;soup-2.4;general;gio-2.0;general;gobject-2.0;general;javascriptcoregtk-4.0;general;glib-2.0;general;gtk-3;general;gdk-3;general;pangocairo-1.0;general;pango-1.0;general;fribidi;general;atk-1.0;general;cairo-gobject;general;cairo;general;gdk_pixbuf-2.0;general;gio-2.0;general;gobject-2.0;general;glib-2.0;
+VST_LIB_DEPENDS:STATIC=general;SHARED_CODE;general;-march=native;general;-shared;general;-Wl,--no-undefined;general;/usr/lib64/libGL.so;general;/usr/lib64/libdl.so;general;/usr/lib64/libpthread.so;general;/usr/lib64/librt.so;general;asound;general;freetype;general;curl;general;X11;general;Xext;general;Xinerama;
 
 
 ########################

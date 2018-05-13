@@ -2799,6 +2799,7 @@ target_include_directories (VST PRIVATE
 target_compile_definitions (VST PRIVATE
     "_DEBUG=1"
     "DEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -2880,6 +2881,7 @@ target_include_directories (VST3 PRIVATE
 target_compile_definitions (VST3 PRIVATE
     "_DEBUG=1"
     "DEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -2961,6 +2963,7 @@ target_include_directories (STANDALONE_PLUGIN PRIVATE
 target_compile_definitions (STANDALONE_PLUGIN PRIVATE
     "_DEBUG=1"
     "DEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -3028,6 +3031,7 @@ target_include_directories (SHARED_CODE PRIVATE
 target_compile_definitions (SHARED_CODE PRIVATE
     "_DEBUG=1"
     "DEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -3104,6 +3108,7 @@ target_include_directories (VST PRIVATE
 target_compile_definitions (VST PRIVATE
     "_NDEBUG=1"
     "NDEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -3187,6 +3192,7 @@ target_include_directories (VST3 PRIVATE
 target_compile_definitions (VST3 PRIVATE
     "_NDEBUG=1"
     "NDEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -3270,6 +3276,7 @@ target_include_directories (STANDALONE_PLUGIN PRIVATE
 target_compile_definitions (STANDALONE_PLUGIN PRIVATE
     "_NDEBUG=1"
     "NDEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -3339,6 +3346,7 @@ target_include_directories (SHARED_CODE PRIVATE
 target_compile_definitions (SHARED_CODE PRIVATE
     "_NDEBUG=1"
     "NDEBUG=1"
+    "JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
     "JUCER_XCODE_MAC_F6D2F4CF=1"
     "JUCE_APP_VERSION=4.0.0"
     "JUCE_APP_VERSION_HEX=0x40000"
@@ -3416,8 +3424,6 @@ pkg_search_module (LIBCURL REQUIRED libcurl)
 pkg_search_module (X11 REQUIRED x11)
 pkg_search_module (XEXT REQUIRED xext)
 pkg_search_module (XINERAMA REQUIRED xinerama)
-pkg_search_module (WEBKIT2GTK-4.0 REQUIRED webkit2gtk-4.0)
-pkg_search_module (GTK+-X11-3.0 REQUIRED gtk+-x11-3.0)
 
 add_library (VST MODULE
     "../../../../JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp"
@@ -6197,8 +6203,6 @@ include_directories (
     ${X11_INCLUDE_DIRS}
     ${XEXT_INCLUDE_DIRS}
     ${XINERAMA_INCLUDE_DIRS}
-    ${WEBKIT2GTK-4.0_INCLUDE_DIRS}
-    ${GTK+-X11-3.0_INCLUDE_DIRS}
 )
 
 find_library (GL GL
@@ -6223,6 +6227,7 @@ target_compile_definitions (VST PRIVATE
     LINUX=1
     DEBUG=1
     _DEBUG=1
+    JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0
     JUCER_LINUX_MAKE_6D53C8B4=1
     JUCE_APP_VERSION=4.0.0
     JUCE_APP_VERSION_HEX=0x40000
@@ -6255,8 +6260,6 @@ target_link_libraries (VST PRIVATE
     ${X11_LIBRARIES}
     ${XEXT_LIBRARIES}
     ${XINERAMA_LIBRARIES}
-    ${WEBKIT2GTK-4.0_LIBRARIES}
-    ${GTK+-X11-3.0_LIBRARIES}
 )
 
 add_dependencies (VST SHARED_CODE)
@@ -6271,6 +6274,7 @@ target_compile_definitions (STANDALONE_PLUGIN PRIVATE
     LINUX=1
     DEBUG=1
     _DEBUG=1
+    JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0
     JUCER_LINUX_MAKE_6D53C8B4=1
     JUCE_APP_VERSION=4.0.0
     JUCE_APP_VERSION_HEX=0x40000
@@ -6296,8 +6300,6 @@ target_link_libraries (STANDALONE_PLUGIN PRIVATE
     ${X11_LIBRARIES}
     ${XEXT_LIBRARIES}
     ${XINERAMA_LIBRARIES}
-    ${WEBKIT2GTK-4.0_LIBRARIES}
-    ${GTK+-X11-3.0_LIBRARIES}
 )
 
 add_dependencies (STANDALONE_PLUGIN SHARED_CODE)
@@ -6312,6 +6314,7 @@ target_compile_definitions (SHARED_CODE PRIVATE
     LINUX=1
     DEBUG=1
     _DEBUG=1
+    JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0
     JUCER_LINUX_MAKE_6D53C8B4=1
     JUCE_APP_VERSION=4.0.0
     JUCE_APP_VERSION_HEX=0x40000
@@ -6337,8 +6340,6 @@ target_link_libraries (SHARED_CODE PRIVATE
     ${X11_LIBRARIES}
     ${XEXT_LIBRARIES}
     ${XINERAMA_LIBRARIES}
-    ${WEBKIT2GTK-4.0_LIBRARIES}
-    ${GTK+-X11-3.0_LIBRARIES}
 )
 
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native -pthread -fPIC -g -ggdb -O0")
@@ -6363,8 +6364,6 @@ include_directories (
     ${X11_INCLUDE_DIRS}
     ${XEXT_INCLUDE_DIRS}
     ${XINERAMA_INCLUDE_DIRS}
-    ${WEBKIT2GTK-4.0_INCLUDE_DIRS}
-    ${GTK+-X11-3.0_INCLUDE_DIRS}
 )
 
 find_library (GL GL
@@ -6388,6 +6387,7 @@ set_target_properties (VST PROPERTIES
 target_compile_definitions (VST PRIVATE
     LINUX=1
     NDEBUG=1
+    JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0
     JUCER_LINUX_MAKE_6D53C8B4=1
     JUCE_APP_VERSION=4.0.0
     JUCE_APP_VERSION_HEX=0x40000
@@ -6421,8 +6421,6 @@ target_link_libraries (VST PRIVATE
     ${X11_LIBRARIES}
     ${XEXT_LIBRARIES}
     ${XINERAMA_LIBRARIES}
-    ${WEBKIT2GTK-4.0_LIBRARIES}
-    ${GTK+-X11-3.0_LIBRARIES}
 )
 
 add_dependencies (VST SHARED_CODE)
@@ -6436,6 +6434,7 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
 target_compile_definitions (STANDALONE_PLUGIN PRIVATE
     LINUX=1
     NDEBUG=1
+    JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0
     JUCER_LINUX_MAKE_6D53C8B4=1
     JUCE_APP_VERSION=4.0.0
     JUCE_APP_VERSION_HEX=0x40000
@@ -6462,8 +6461,6 @@ target_link_libraries (STANDALONE_PLUGIN PRIVATE
     ${X11_LIBRARIES}
     ${XEXT_LIBRARIES}
     ${XINERAMA_LIBRARIES}
-    ${WEBKIT2GTK-4.0_LIBRARIES}
-    ${GTK+-X11-3.0_LIBRARIES}
 )
 
 add_dependencies (STANDALONE_PLUGIN SHARED_CODE)
@@ -6477,6 +6474,7 @@ set_target_properties (SHARED_CODE PROPERTIES
 target_compile_definitions (SHARED_CODE PRIVATE
     LINUX=1
     NDEBUG=1
+    JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0
     JUCER_LINUX_MAKE_6D53C8B4=1
     JUCE_APP_VERSION=4.0.0
     JUCE_APP_VERSION_HEX=0x40000
@@ -6503,8 +6501,6 @@ target_link_libraries (SHARED_CODE PRIVATE
     ${X11_LIBRARIES}
     ${XEXT_LIBRARIES}
     ${XINERAMA_LIBRARIES}
-    ${WEBKIT2GTK-4.0_LIBRARIES}
-    ${GTK+-X11-3.0_LIBRARIES}
 )
 
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native -pthread -fPIC -O3")

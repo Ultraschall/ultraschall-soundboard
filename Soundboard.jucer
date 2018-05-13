@@ -10,7 +10,7 @@
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
               pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
               buildVST="1" buildVST3="1" buildAU="0" buildAUv3="1" buildRTAS="0"
-              buildAAX="0" enableIAA="0">
+              buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
       <GROUP id="{FDAE8121-CDC0-1E58-F066-388BAA1F88A8}" name="Fonts">
@@ -301,5 +301,5 @@
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1"/>
+  <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1" JUCE_WEB_BROWSER="0" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="0"/>
 </JUCERPROJECT>
