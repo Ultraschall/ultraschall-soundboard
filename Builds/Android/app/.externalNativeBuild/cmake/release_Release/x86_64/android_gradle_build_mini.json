@@ -1,0 +1,22 @@
+{
+  "buildFiles": [
+    "/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/home/danlin/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target clean"
+  ],
+  "libraries": {
+    "cpufeatures-Release-x86_64": {
+      "artifactName": "cpufeatures",
+      "buildCommand": "/home/danlin/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target cpufeatures",
+      "abi": "x86_64",
+      "output": "/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/libcpufeatures.a"
+    },
+    "juce_jni-Release-x86_64": {
+      "artifactName": "juce_jni",
+      "buildCommand": "/home/danlin/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target juce_jni",
+      "abi": "x86_64",
+      "output": "/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/build/intermediates/cmake/release_/release/obj/x86_64/libjuce_jni.so"
+    }
+  }
+}

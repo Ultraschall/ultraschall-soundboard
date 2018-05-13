@@ -1,0 +1,4 @@
+/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir
+/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/cpufeatures.dir
