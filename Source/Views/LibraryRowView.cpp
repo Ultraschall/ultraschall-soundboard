@@ -48,8 +48,7 @@ void LibraryRowView::paint(Graphics &g)
         if (audioThumbnail->getTotalLength() > 0.0)
         {
             audioThumbnail->drawChannel(g,
-                                        getLocalBounds().reduced(MaterialLookAndFeel::convertDpToPixel(
-                                                Material::Size::ScreenEdge)),
+                                        getLocalBounds().reduced(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
                                         0, audioThumbnail->getTotalLength(), 1, 1.0f);
         }
     }
@@ -60,25 +59,28 @@ void LibraryRowView::paint(Graphics &g)
     g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
     material->setFontRoboto(g);
     g.setFont(14);
-    g.drawText(title, getLocalBounds().withTrimmedLeft(
-            MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 8)).withTrimmedTop(
-            MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge)), Justification::topLeft);
+    g.drawText(title, 
+		getLocalBounds()
+			.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
+			.withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
+		Justification::topLeft
+	);
 
-    g.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-    g.setFont(8);
-    g.drawText("00:00:00", getLocalBounds()
-                       .removeFromRight(MaterialLookAndFeel::convertDpToPixel(96))
-                       .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 26)),
-               Justification::topLeft);
+    //g.setColour(findColour(Material::ColourIds::textSecondaryColorId));
+    //g.setFont(8);
+    //g.drawText("00:00:00", getLocalBounds()
+    //                   .removeFromRight(MaterialLookAndFeel::convertDpToPixel(96))
+    //                   .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 26)),
+    //           Justification::topLeft);
 
-    auto p = 0.75;
-    g.fillRect(
-            getLocalBounds()
-                    .withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(108))
-                    .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 30))
-                    .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 8))
-                    .withHeight(MaterialLookAndFeel::convertDpToPixel(8))
-    );
+    //auto p = 0.75;
+    //g.fillRect(
+    //        getLocalBounds()
+    //                .withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(108))
+    //                .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 30))
+    //                .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge + 8))
+    //                .withHeight(MaterialLookAndFeel::convertDpToPixel(8))
+    //);
 //	g.fillRect(
 //			getLocalBounds()
 //					.withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(108))
@@ -94,7 +96,7 @@ void LibraryRowView::paint(Graphics &g)
 
 void LibraryRowView::resized()
 {
-    const auto iconSize = MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon);
+    const auto iconSize = MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Dimensions::IconSizeSmall);
     FlexBox flexBox;
 
     flexBox.items.add(FlexItem(settingsButton).withMaxWidth(iconSize).withFlex(1));
@@ -107,7 +109,7 @@ void LibraryRowView::resized()
     flexBox.performLayout(
             getLocalBounds()
                     .removeFromBottom(iconSize)
-                    .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge))
-                    .withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Size::ScreenEdge))
+                    .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Left))
+                    .withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Right))
     );
 }

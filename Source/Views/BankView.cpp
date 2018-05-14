@@ -22,15 +22,11 @@ void BankView::paint(Graphics &g)
 
 void BankView::resized()
 {
-    FlexBox flexBox;
+    //FlexBox flexBox;
 
-    flexBox.items.add(FlexItem(beforeButton)
-                              .withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon))
-                              .withFlex(1));
-    flexBox.items.add(FlexItem(titleLabel).withFlex(2));
-    flexBox.items.add(FlexItem(nextButton)
-                              .withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon))
-                              .withFlex(1));
+    //flexBox.items.add(FlexItem(beforeButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon)).withFlex(1));
+    //flexBox.items.add(FlexItem(titleLabel).withFlex(2));
+    //flexBox.items.add(FlexItem(nextButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon)).withFlex(1));
 
-    flexBox.performLayout(getLocalBounds().withBottom(Material::Size::NavigationDrawer));
+    //flexBox.performLayout(getLocalBounds().withBottom(Material::Size::NavigationDrawer));
 }

@@ -36,7 +36,7 @@ android {
              initWith debug
              debuggable    true
              jniDebuggable true
-             //signingConfig signingConfigs.juceSigning
+             signingConfig signingConfigs.juceSigning
          }
          release {
              initWith release
@@ -50,7 +50,7 @@ android {
     productFlavors {
         debug_ {
             ndk {
-                abiFilters "armeabi-v7a", "x86"
+                abiFilters "armeabi", "x86"
             }
             externalNativeBuild {
                 cmake {

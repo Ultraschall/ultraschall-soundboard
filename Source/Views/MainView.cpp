@@ -42,8 +42,10 @@ void MainView::resized()
 
     flexBox.flexDirection = FlexBox::Direction::column;
 
-    flexBox.items.add(FlexItem(toolbar).withMaxHeight(
-            MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Toolbar)).withWidth(getWidth()).withFlex(1));
+    flexBox.items.add(FlexItem(toolbar)
+		.withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::Height))
+		.withMinHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::Height))
+		.withWidth(getWidth()).withFlex(1));
 
     if (contentView != nullptr)
     {
@@ -53,8 +55,7 @@ void MainView::resized()
         flexBox.items.add(FlexItem(spacer).withWidth(getWidth()).withFlex(2));
     }
 
-    flexBox.items.add(FlexItem(bottomBar).withMaxHeight(
-            MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::Toolbar)).withWidth(getWidth()).withFlex(1));
+    flexBox.items.add(FlexItem(bottomBar).withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::Height)).withWidth(getWidth()).withFlex(1));
 
     flexBox.performLayout(getLocalBounds());
 
@@ -71,8 +72,7 @@ void MainView::resized()
     if (sideBarVisible)
     {
         sideNavbarBackground.setBounds(getLocalBounds());
-        sideNavbar.setBounds(getLocalBounds().removeFromLeft(
-                MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer)));
+        sideNavbar.setBounds(getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width)));
     }
 }
 
@@ -98,10 +98,9 @@ void MainView::showSideNavBar()
 {
     if (sideBarVisible == true) return;
 
-    auto endBounds = getLocalBounds().removeFromLeft(
-            MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer));
+    auto endBounds = getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width));
     auto startBounds = endBounds;
-    startBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
+    startBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width), 0);
     sideNavbar.setBounds(startBounds);
     sideNavbarBackground.setBounds(getLocalBounds());
 
@@ -130,7 +129,7 @@ void MainView::hideSideNavBar()
     if (sideBarVisible == false) return;
 
     auto endBounds = sideNavbar.getLocalBounds();
-    endBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel<float>(Material::Size::NavigationDrawer), 0);
+    endBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width), 0);
 
     Desktop::getInstance().getAnimator().fadeOut(&sideNavbarBackground, 200);
     Desktop::getInstance().getAnimator().animateComponent(

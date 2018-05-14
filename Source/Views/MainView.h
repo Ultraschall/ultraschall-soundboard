@@ -63,8 +63,8 @@ private:
     Component *contentView = nullptr;
     Material::Icon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};
 
-    Material::Shadow4dp toolbarShadow;
-    Material::Shadow16dp sideBarShadow;
+    Material::Shadows::_4dp toolbarShadow;
+    Material::Shadows::_16dp sideBarShadow;
 
     Component spacer;
 

@@ -3,7 +3,7 @@
 LibraryView::LibraryView()
 {
     table.setColour(ListBox::backgroundColourId, findColour(Material::ColourIds::backgroundColorId));
-    table.setRowHeight(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon + Material::Size::Toolbar));
+    table.setRowHeight(MaterialLookAndFeel::convertDpToPixel(64));
     addAndMakeVisible(table);
 }
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist>
+  <dict>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>CFBundleExecutable</key>
+    <string>${EXECUTABLE_NAME}</string>
+    <key>CFBundleIdentifier</key>
+    <string>fm.ultraschall.Soundboard.SoundboardAUv3</string>
+    <key>CFBundleName</key>
+    <string>Ultraschall Soundboard</string>
+    <key>CFBundleDisplayName</key>
+    <string>Ultraschall Soundboard</string>
+    <key>CFBundlePackageType</key>
+    <string>XPC!</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleShortVersionString</key>
+    <string>4.0.0</string>
+    <key>CFBundleVersion</key>
+    <string>4.0.0</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright (c) 2014-2018 Daniel Lindenfelser</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSExtension</key>
+    <dict>
+      <key>NSExtensionPrincipalClass</key>
+      <string>UltraschallSoundboardAUFactoryAUv3</string>
+      <key>NSExtensionPointIdentifier</key>
+      <string>com.apple.AudioUnit-UI</string>
+      <key>NSExtensionAttributes</key>
+      <dict>
+        <key>AudioComponents</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>Ultraschall: Soundboard</string>
+            <key>description</key>
+            <string>Ultraschall Soundboard</string>
+            <key>factoryFunction</key>
+            <string>UltraschallSoundboardAUFactoryAUv3</string>
+            <key>manufacturer</key>
+            <string>Ultr</string>
+            <key>type</key>
+            <string>aumu</string>
+            <key>subtype</key>
+            <string>Soub</string>
+            <key>version</key>
+            <integer>262144</integer>
+            <key>sandboxSafe</key>
+            <true/>
+            <key>tags</key>
+            <array>
+              <string>Synth</string>
+            </array>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </dict>
+</plist>
