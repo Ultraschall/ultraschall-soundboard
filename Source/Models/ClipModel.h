@@ -40,6 +40,4 @@ public:
     CachedValue<String> uuid;
     CachedValue<int> index;
     CachedValue<String> playerId;
-
-    Player *player;
 };

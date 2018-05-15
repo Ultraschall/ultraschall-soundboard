@@ -13,13 +13,6 @@
 //==============================================================================
 ToolbarView::ToolbarView()
 {
-	menuButton.setEdgeIndent(0);
-	menuButton.setImages(menuIcon.getDrawable());
-
-	viewButton.setEdgeIndent(0);
-	viewButton.setImages(libraryIcon.getDrawable(), nullptr, nullptr, nullptr, bankIcon.getDrawable());
-	viewButton.setColour(DrawableButton::ColourIds::backgroundOnColourId, Colours::transparentWhite);
-
 	addAndMakeVisible(menuButton);
 	addAndMakeVisible(viewButton);
 	addAndMakeVisible(spacer);

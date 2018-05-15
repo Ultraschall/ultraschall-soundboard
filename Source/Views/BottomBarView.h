@@ -4,20 +4,48 @@
 
 #include "MaterialLookAndFeel.h"
 
-class BottomBarView : public Component
+class BottomBarView : public Component, public ChangeListener
 {
 public:
-    BottomBarView();
+	BottomBarView();
 
-    void paint(Graphics &) override;
+	void paint(Graphics &) override;
 
-    void resized() override;
+	void resized() override;
 
-    Slider gainSlider;
-    DrawableButton talkoverButton = {"Talkover", DrawableButton::ImageFitted};
+	Slider gainSlider;
+	Material::IconToggleButton talkoverButton{ 
+		"Talkover", 
+		BinaryData::baselinemic_none24px_svg, 
+		BinaryData::baselinemic_none24px_svgSize, 
+		BinaryData::baselinemic24px_svg, 
+		BinaryData::baselinemic24px_svgSize, 
+		findColour(Material::ColourIds::primaryColorId), 
+		findColour(Material::ColourIds::primaryColorId) 
+	};
+
+	Material::IconButton nextButton{ 
+		"Next", 
+		BinaryData::baselinenavigate_next24px_svg, 
+		BinaryData::baselinenavigate_next24px_svgSize,
+		findColour(Material::ColourIds::textSecondaryColorId)
+	};
+	Material::IconButton beforeButton{ 
+		"Before", 
+		BinaryData::baselinenavigate_before24px_svg, 
+		BinaryData::baselinenavigate_before24px_svgSize,
+		findColour(Material::ColourIds::textSecondaryColorId)
+	};
+
+	void showNavigation();
+	void hideNavigation();
+
+	virtual void changeListenerCallback(ChangeBroadcaster * source) override;
 private:
-    Material::Icon talkoverOffIcon = {BinaryData::baselinemic_none24px_svg, BinaryData::baselinemic_none24px_svgSize};
-    Material::Icon talkoverOnIcon = {BinaryData::baselinemic24px_svg, BinaryData::baselinemic24px_svgSize};
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BottomBarView)
+	Component spacer;
+
+	bool navigationVisible{ false };
+
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BottomBarView)
 };

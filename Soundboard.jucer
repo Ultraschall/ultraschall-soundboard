@@ -4,7 +4,7 @@
               jucerVersion="5.3.2" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
-              pluginFormats="buildAUv3,buildStandalone,buildVST3" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
+              pluginFormats="buildVST3,buildAUv3,buildStandalone" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
               pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
@@ -12,6 +12,58 @@
               buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0">
   <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
+      <GROUP id="{65F28DA7-C906-BF71-5155-CBAF805D3565}" name="Icons">
+        <FILE id="dLasxQ" name="baseline-grid_on-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-grid_on-24px.svg"/>
+        <FILE id="e5r1Q5" name="baseline-library_music-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-library_music-24px.svg"/>
+        <FILE id="d8HZXh" name="baseline-settings_input_antenna-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-settings_input_antenna-24px.svg"/>
+        <FILE id="wIxtMT" name="baseline-settings_input_svideo-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-settings_input_svideo-24px.svg"/>
+        <FILE id="dZ4oCY" name="baseline-playlist_play-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-playlist_play-24px.svg"/>
+        <FILE id="PFy2UX" name="baseline-toggle_off-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-toggle_off-24px.svg"/>
+        <FILE id="d7NpjI" name="baseline-toggle_on-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-toggle_on-24px.svg"/>
+        <FILE id="bpPImX" name="baseline-archive-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-archive-24px.svg"/>
+        <FILE id="xb6ubB" name="baseline-unarchive-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-unarchive-24px.svg"/>
+        <FILE id="bmVNHA" name="baseline-folder_open-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-folder_open-24px.svg"/>
+        <FILE id="XpDKRt" name="baseline-add-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-add-24px.svg"/>
+        <FILE id="HuI0Kk" name="baseline-sync_disabled-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-sync_disabled-24px.svg"/>
+        <FILE id="XDetB0" name="baseline-sync-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-sync-24px.svg"/>
+        <FILE id="KXxxLL" name="baseline-pause-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-pause-24px.svg"/>
+        <FILE id="o1LNnL" name="baseline-play_arrow-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-play_arrow-24px.svg"/>
+        <FILE id="VSNLU3" name="baseline-stop-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-stop-24px.svg"/>
+        <FILE id="jjkrKB" name="baseline-mic_none-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-mic_none-24px.svg"/>
+        <FILE id="XPQZ50" name="baseline-mic-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-mic-24px.svg"/>
+        <FILE id="j7b85v" name="baseline-navigate_next-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-navigate_next-24px.svg"/>
+        <FILE id="iDkuT4" name="baseline-navigate_before-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-navigate_before-24px.svg"/>
+        <FILE id="ECldPW" name="baseline-menu-24px.svg" compile="0" resource="1"
+              file="Assets/baseline-menu-24px.svg"/>
+        <FILE id="g9JlEm" name="baseline-view_module-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-view_module-24px.svg"/>
+        <FILE id="OgH5MY" name="baseline-trending_down-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-trending_down-24px.svg"/>
+        <FILE id="T6MMRn" name="baseline-trending_up-24px.svg" compile="0"
+              resource="1" file="Assets/baseline-trending_up-24px.svg"/>
+        <FILE id="I1Aew9" name="baseline-settings-20px.svg" compile="0" resource="1"
+              file="Assets/baseline-settings-20px.svg"/>
+      </GROUP>
       <GROUP id="{FDAE8121-CDC0-1E58-F066-388BAA1F88A8}" name="Fonts">
         <FILE id="zpvkLy" name="Roboto-Black.ttf" compile="0" resource="1"
               file="Assets/Fonts/Roboto-Black.ttf"/>
@@ -48,42 +100,8 @@
         <FILE id="e3MWqg" name="RobotoCondensed-Regular.ttf" compile="0" resource="1"
               file="Assets/Fonts/RobotoCondensed-Regular.ttf"/>
       </GROUP>
-      <FILE id="bmVNHA" name="baseline-folder_open-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-folder_open-24px.svg"/>
-      <FILE id="XpDKRt" name="baseline-add-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-add-24px.svg"/>
-      <FILE id="HuI0Kk" name="baseline-sync_disabled-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-sync_disabled-24px.svg"/>
-      <FILE id="XDetB0" name="baseline-sync-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-sync-24px.svg"/>
-      <FILE id="KXxxLL" name="baseline-pause-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-pause-24px.svg"/>
-      <FILE id="o1LNnL" name="baseline-play_arrow-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-play_arrow-24px.svg"/>
-      <FILE id="VSNLU3" name="baseline-stop-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-stop-24px.svg"/>
       <FILE id="UHqrdB" name="add.svg" compile="0" resource="1" file="Assets/add.svg"/>
       <FILE id="u4rQt0" name="ultraschall.svg" compile="0" resource="1" file="Assets/ultraschall.svg"/>
-      <FILE id="jjkrKB" name="baseline-mic_none-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-mic_none-24px.svg"/>
-      <FILE id="XPQZ50" name="baseline-mic-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-mic-24px.svg"/>
-      <FILE id="j7b85v" name="baseline-navigate_next-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-navigate_next-24px.svg"/>
-      <FILE id="iDkuT4" name="baseline-navigate_before-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-navigate_before-24px.svg"/>
-      <FILE id="ECldPW" name="baseline-menu-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-menu-24px.svg"/>
-      <FILE id="g9JlEm" name="baseline-view_module-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-view_module-24px.svg"/>
-      <FILE id="pyTVHE" name="baseline-view_list-24px.svg" compile="0" resource="1"
-            file="Assets/baseline-view_list-24px.svg"/>
-      <FILE id="OgH5MY" name="baseline-trending_down-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-trending_down-24px.svg"/>
-      <FILE id="T6MMRn" name="baseline-trending_up-24px.svg" compile="0"
-            resource="1" file="Assets/baseline-trending_up-24px.svg"/>
-      <FILE id="I1Aew9" name="baseline-settings-20px.svg" compile="0" resource="1"
-            file="Assets/baseline-settings-20px.svg"/>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
       <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">

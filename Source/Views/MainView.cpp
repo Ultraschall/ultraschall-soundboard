@@ -13,11 +13,7 @@ MainView::MainView()
 
     addAndMakeVisible(sideNavbar);
     sideBarShadow.setOwner(&sideNavbar);
-    sideNavbar.backButton.onClick = [this]
-    {
-        hideSideNavBar();
-    };
-
+    
     addButton.setImages(addIcon.getDrawable());
     addAndMakeVisible(addButton);
     addButton.toFront(true);

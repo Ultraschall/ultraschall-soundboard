@@ -48,6 +48,8 @@ public:
     BottomBarView bottomBar;
     SideNavbarView sideNavbar;
     BackgroundButton sideNavbarBackground;
+	
+	BurgerMenuComponent test;
 
     ToolbarView toolbar;
     DrawableButton addButton{"Add", DrawableButton::ImageFitted};

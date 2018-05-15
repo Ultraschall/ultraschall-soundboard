@@ -42,7 +42,7 @@ public:
         }
     }
 
-    void changeListenerCallback(ChangeBroadcaster *source) override
+    void changeListenerCallback(ChangeBroadcaster* /*source*/) override
     {
         repaint();
     }

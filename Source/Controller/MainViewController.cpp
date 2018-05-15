@@ -44,6 +44,7 @@ void MainViewController::showLibrary()
         view->setContentView(contentController->getView());
         view->toolbar.viewButton.setToggleState(false, NotificationType::dontSendNotification);
         view->showActionButton();
+		view->bottomBar.hideNavigation();
     }
 }
 
@@ -57,6 +58,7 @@ void MainViewController::showBanks()
         view->setContentView(contentController->getView());
         view->toolbar.viewButton.setToggleState(true, NotificationType::dontSendNotification);
         view->hideActionButton();
+		view->bottomBar.showNavigation();
     }
 }
 

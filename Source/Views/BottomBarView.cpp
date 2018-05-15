@@ -2,19 +2,11 @@
 
 BottomBarView::BottomBarView()
 {
+	addAndMakeVisible(spacer);
+
     gainSlider.setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
 
-    talkoverOnIcon.setColour(findColour(Material::ColourIds::primaryColorId));
-    talkoverOffIcon.setColour(findColour(Material::ColourIds::primaryColorId));
-
-    talkoverButton.setImages(
-            talkoverOffIcon.getDrawable(),
-            nullptr, nullptr, nullptr,
-            talkoverOnIcon.getDrawable()
-    );
-    talkoverButton.setColour(DrawableButton::backgroundOnColourId, Colours::transparentWhite);
-
-    addAndMakeVisible(gainSlider);
+	addAndMakeVisible(gainSlider);
     addAndMakeVisible(talkoverButton);
 
     talkoverButton.onClick = [this]
@@ -34,10 +26,69 @@ void BottomBarView::resized()
 {
     FlexBox flexBox;
 
-    flexBox.items.add(FlexItem(gainSlider).withFlex(1));
-    flexBox.items.add(FlexItem(talkoverButton)
-                              .withMaxWidth(MaterialLookAndFeel::convertDpToPixel<float>(48))
-                              .withFlex(2));
+	flexBox.flexDirection = FlexBox::Direction::row;
+	flexBox.alignContent = FlexBox::AlignContent::center;
 
-    flexBox.performLayout(getLocalBounds().withTrimmedRight(getWidth() * 0.5f));
+    flexBox.items.add(FlexItem(gainSlider)
+							.withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width))
+							.withHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+							.withFlex(1));
+    flexBox.items.add(FlexItem(talkoverButton)
+							.withHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+							.withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+                            .withFlex(2));
+	flexBox.items.add(FlexItem(spacer).withFlex(1));
+	if (navigationVisible)
+	{
+		flexBox.items.add(FlexItem(beforeButton)
+			.withHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+			.withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+			.withFlex(2));
+		flexBox.items.add(FlexItem(nextButton)
+			.withHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+			.withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+			.withFlex(2));
+	}
+
+    flexBox.performLayout(getLocalBounds()
+		.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Left))
+		.withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Right))
+	);
+}
+
+void BottomBarView::showNavigation()
+{
+	if (navigationVisible == true) return;
+	
+	addAndMakeVisible(nextButton);
+	addAndMakeVisible(beforeButton);
+
+	Desktop::getInstance().getAnimator().fadeIn(&nextButton, 200);
+	Desktop::getInstance().getAnimator().fadeIn(&beforeButton, 200);
+
+	navigationVisible = true;
+
+	resized();
+}
+
+void BottomBarView::hideNavigation()
+{
+	if (navigationVisible == false) return;
+
+	Desktop::getInstance().getAnimator().fadeOut(&nextButton, 200);
+	Desktop::getInstance().getAnimator().fadeOut(&beforeButton, 200);
+
+	navigationVisible = false;
+}
+
+void BottomBarView::changeListenerCallback(ChangeBroadcaster * source)
+{
+	if (navigationVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&nextButton))
+	{
+		removeChildComponent(&nextButton);
+	}
+	if (navigationVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&beforeButton))
+	{
+		removeChildComponent(&beforeButton);
+	}
 }

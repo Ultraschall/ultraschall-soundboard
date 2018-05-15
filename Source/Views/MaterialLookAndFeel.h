@@ -328,6 +328,7 @@ namespace Material
 				namespace Padding
 				{
 					static const int Left = 16;
+					static const int TextLeft = 72;
 				}
 
 				namespace TextBaseline
@@ -384,6 +385,36 @@ namespace Material
 			}
 		}
 	}
+
+	class IconButton : public DrawableButton
+	{
+	public:
+		IconButton(const String& buttonName, const char *data, const size_t size, const Colour &colour = Colours::black)
+			: DrawableButton(buttonName, DrawableButton::ButtonStyle::ImageFitted),
+			icon(data, size, colour)
+		{
+			setEdgeIndent(0);
+			setImages(icon.getDrawable());
+		}
+	private:
+		Icon icon;
+	};
+
+	class IconToggleButton : public DrawableButton
+	{
+	public:
+		IconToggleButton(const String& buttonName, const char *onData, const size_t onSize, const char *offData, const size_t offSize, const Colour &onColour = Colours::black, const Colour &offColour = Colours::black)
+			: DrawableButton(buttonName, DrawableButton::ButtonStyle::ImageFitted),
+			on(onData, onSize, onColour), off(offData, offSize, offColour)
+		{
+			setEdgeIndent(0);
+			setImages(on.getDrawable(), nullptr, nullptr, nullptr, off.getDrawable());
+			setColour(DrawableButton::backgroundOnColourId, Colours::transparentWhite);
+		}
+	private:
+		Icon on;
+		Icon off;
+	};
 }
 
 class MaterialLookAndFeel : public LookAndFeel_V4
@@ -492,21 +523,28 @@ public:
 	}
 
 	Typeface::Ptr roboto_Black{
-			Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize) };
-	Typeface::Ptr roboto_BlackItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoBlackItalic_ttf,
-		BinaryData::RobotoRegular_ttfSize);
+			Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize) 
+	};
+	Typeface::Ptr roboto_BlackItalic{
+		Typeface::createSystemTypefaceFor(BinaryData::RobotoBlackItalic_ttf, BinaryData::RobotoRegular_ttfSize)
+	};
 
-	Typeface::Ptr roboto_Bold = Typeface::createSystemTypefaceFor(BinaryData::RobotoBold_ttf,
-		BinaryData::RobotoRegular_ttfSize);
-	Typeface::Ptr roboto_BoldItalic = Typeface::createSystemTypefaceFor(BinaryData::RobotoBoldItalic_ttf,
-		BinaryData::RobotoRegular_ttfSize);
+	Typeface::Ptr roboto_Bold{
+		Typeface::createSystemTypefaceFor(BinaryData::RobotoBold_ttf,BinaryData::RobotoRegular_ttfSize)
+	};
+	Typeface::Ptr roboto_BoldItalic{
+		Typeface::createSystemTypefaceFor(BinaryData::RobotoBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize)
+	};
 
-	Typeface::Ptr robotoCondensed_Bold = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBold_ttf,
-		BinaryData::RobotoRegular_ttfSize);
-	Typeface::Ptr robotoCondensed_BoldItalic = Typeface::createSystemTypefaceFor(
-		BinaryData::RobotoCondensedBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize);
-	Typeface::Ptr robotoCondensed_Italic = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedItalic_ttf,
-		BinaryData::RobotoRegular_ttfSize);
+	Typeface::Ptr robotoCondensed_Bold{
+		Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBold_ttf, BinaryData::RobotoRegular_ttfSize)
+	};
+	Typeface::Ptr robotoCondensed_BoldItalic{
+		Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedBoldItalic_ttf, BinaryData::RobotoRegular_ttfSize)
+	};
+	Typeface::Ptr robotoCondensed_Italic{
+			Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedItalic_ttf, BinaryData::RobotoRegular_ttfSize)
+	};
 	Typeface::Ptr robotoCondensed_Light = Typeface::createSystemTypefaceFor(BinaryData::RobotoCondensedLight_ttf,
 		BinaryData::RobotoRegular_ttfSize);
 	Typeface::Ptr robotoCondensed_LightItalic = Typeface::createSystemTypefaceFor(

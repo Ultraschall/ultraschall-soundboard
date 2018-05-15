@@ -30,6 +30,31 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../Assets/baseline-grid_on-24px.svg"
+    "../../../Assets/baseline-library_music-24px.svg"
+    "../../../Assets/baseline-settings_input_antenna-24px.svg"
+    "../../../Assets/baseline-settings_input_svideo-24px.svg"
+    "../../../Assets/baseline-playlist_play-24px.svg"
+    "../../../Assets/baseline-toggle_off-24px.svg"
+    "../../../Assets/baseline-toggle_on-24px.svg"
+    "../../../Assets/baseline-archive-24px.svg"
+    "../../../Assets/baseline-unarchive-24px.svg"
+    "../../../Assets/baseline-folder_open-24px.svg"
+    "../../../Assets/baseline-add-24px.svg"
+    "../../../Assets/baseline-sync_disabled-24px.svg"
+    "../../../Assets/baseline-sync-24px.svg"
+    "../../../Assets/baseline-pause-24px.svg"
+    "../../../Assets/baseline-play_arrow-24px.svg"
+    "../../../Assets/baseline-stop-24px.svg"
+    "../../../Assets/baseline-mic_none-24px.svg"
+    "../../../Assets/baseline-mic-24px.svg"
+    "../../../Assets/baseline-navigate_next-24px.svg"
+    "../../../Assets/baseline-navigate_before-24px.svg"
+    "../../../Assets/baseline-menu-24px.svg"
+    "../../../Assets/baseline-view_module-24px.svg"
+    "../../../Assets/baseline-trending_down-24px.svg"
+    "../../../Assets/baseline-trending_up-24px.svg"
+    "../../../Assets/baseline-settings-20px.svg"
     "../../../Assets/Fonts/Roboto-Black.ttf"
     "../../../Assets/Fonts/Roboto-BlackItalic.ttf"
     "../../../Assets/Fonts/Roboto-Bold.ttf"
@@ -48,25 +73,8 @@ add_library( ${BINARY_NAME}
     "../../../Assets/Fonts/RobotoCondensed-Light.ttf"
     "../../../Assets/Fonts/RobotoCondensed-LightItalic.ttf"
     "../../../Assets/Fonts/RobotoCondensed-Regular.ttf"
-    "../../../Assets/baseline-folder_open-24px.svg"
-    "../../../Assets/baseline-add-24px.svg"
-    "../../../Assets/baseline-sync_disabled-24px.svg"
-    "../../../Assets/baseline-sync-24px.svg"
-    "../../../Assets/baseline-pause-24px.svg"
-    "../../../Assets/baseline-play_arrow-24px.svg"
-    "../../../Assets/baseline-stop-24px.svg"
     "../../../Assets/add.svg"
     "../../../Assets/ultraschall.svg"
-    "../../../Assets/baseline-mic_none-24px.svg"
-    "../../../Assets/baseline-mic-24px.svg"
-    "../../../Assets/baseline-navigate_next-24px.svg"
-    "../../../Assets/baseline-navigate_before-24px.svg"
-    "../../../Assets/baseline-menu-24px.svg"
-    "../../../Assets/baseline-view_module-24px.svg"
-    "../../../Assets/baseline-view_list-24px.svg"
-    "../../../Assets/baseline-trending_down-24px.svg"
-    "../../../Assets/baseline-trending_up-24px.svg"
-    "../../../Assets/baseline-settings-20px.svg"
     "../../../Source/Models/Identifier.h"
     "../../../Source/Models/Utilities.h"
     "../../../Source/Models/ValueTreeObjectList.h"
@@ -1446,6 +1454,31 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties("../../../Assets/baseline-grid_on-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-library_music-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-settings_input_antenna-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-settings_input_svideo-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-playlist_play-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-toggle_off-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-toggle_on-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-archive-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-unarchive-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-folder_open-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-add-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-sync_disabled-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-sync-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-pause-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-play_arrow-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-stop-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-mic_none-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-mic-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-navigate_next-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-navigate_before-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-menu-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-view_module-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-trending_down-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-trending_up-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Assets/baseline-settings-20px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/Fonts/Roboto-Black.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/Fonts/Roboto-BlackItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/Fonts/Roboto-Bold.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1464,25 +1497,8 @@ set_source_files_properties("../../../Assets/Fonts/RobotoCondensed-Italic.ttf" P
 set_source_files_properties("../../../Assets/Fonts/RobotoCondensed-Light.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/Fonts/RobotoCondensed-LightItalic.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/Fonts/RobotoCondensed-Regular.ttf" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-folder_open-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-add-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-sync_disabled-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-sync-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-pause-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-play_arrow-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-stop-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/add.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Assets/ultraschall.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-mic_none-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-mic-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-navigate_next-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-navigate_before-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-menu-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-view_module-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-view_list-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-trending_down-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-trending_up-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Assets/baseline-settings-20px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Models/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Models/Utilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
