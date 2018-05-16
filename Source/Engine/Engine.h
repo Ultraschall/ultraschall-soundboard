@@ -11,7 +11,7 @@ class Engine : public AudioSource
 public:
     Engine();
 
-    ~Engine()
+    ~Engine() override
     {
         mixer.removeAllInputs();
         players.clear(true);

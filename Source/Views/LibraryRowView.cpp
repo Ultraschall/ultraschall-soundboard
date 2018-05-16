@@ -43,12 +43,14 @@ void LibraryRowView::paint(Graphics &g)
     g.setColour(findColour(Material::ColourIds::dividerColorId));
     g.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
 
+    g.setColour(findColour(Material::ColourIds::dialogColorId).contrasting(0.05));
     if (audioThumbnail != nullptr)
     {
         if (audioThumbnail->getTotalLength() > 0.0)
         {
-            audioThumbnail->drawChannel(g,
-                                        getLocalBounds().reduced(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
+            audioThumbnail->drawChannel(g, getLocalBounds()
+                                                .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
+                                                .withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
                                         0, audioThumbnail->getTotalLength(), 1, 1.0f);
         }
     }
@@ -59,12 +61,12 @@ void LibraryRowView::paint(Graphics &g)
     g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
     material->setFontRoboto(g);
     g.setFont(14);
-    g.drawText(title, 
-		getLocalBounds()
-			.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
-			.withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
-		Justification::topLeft
-	);
+    g.drawText(title,
+               getLocalBounds()
+                       .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
+                       .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
+               Justification::topLeft
+    );
 
     //g.setColour(findColour(Material::ColourIds::textSecondaryColorId));
     //g.setFont(8);

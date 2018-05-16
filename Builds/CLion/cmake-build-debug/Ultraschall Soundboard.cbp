@@ -27,51 +27,21 @@
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="VST">
-				<Option output="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Ultraschall Soundboard.so" prefix_auto="0" extension_auto="0"/>
+			<Target title="edit_cache">
 				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="3"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DLINUX=1"/>
-					<Add option="-DDEBUG=1"/>
-					<Add option="-D_DEBUG=1"/>
-					<Add option="-DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"/>
-					<Add option="-DJUCER_LINUX_MAKE_6D53C8B4=1"/>
-					<Add option="-DJUCE_APP_VERSION=4.0.0"/>
-					<Add option="-DJUCE_APP_VERSION_HEX=0x40000"/>
-					<Add option="-DJucePlugin_Build_VST=1"/>
-					<Add option="-DJucePlugin_Build_VST3=0"/>
-					<Add option="-DJucePlugin_Build_AU=0"/>
-					<Add option="-DJucePlugin_Build_AUv3=0"/>
-					<Add option="-DJucePlugin_Build_RTAS=0"/>
-					<Add option="-DJucePlugin_Build_AAX=0"/>
-					<Add option="-DJucePlugin_Build_Standalone=0"/>
-					<Add directory="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/../../JuceLibraryCode"/>
-					<Add directory="/home/danlin/JUCE/modules"/>
-					<Add directory="/usr/include/alsa"/>
-					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
+				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 VST"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
 					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="VST/fast">
-				<Option output="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Ultraschall Soundboard.so" prefix_auto="0" extension_auto="0"/>
+			<Target title="SHARED_CODE">
+				<Option output="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/libUltraschall Soundboard.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="3"/>
+				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DLINUX=1"/>
@@ -81,13 +51,14 @@
 					<Add option="-DJUCER_LINUX_MAKE_6D53C8B4=1"/>
 					<Add option="-DJUCE_APP_VERSION=4.0.0"/>
 					<Add option="-DJUCE_APP_VERSION_HEX=0x40000"/>
-					<Add option="-DJucePlugin_Build_VST=1"/>
+					<Add option="-DJucePlugin_Build_VST=0"/>
 					<Add option="-DJucePlugin_Build_VST3=0"/>
 					<Add option="-DJucePlugin_Build_AU=0"/>
 					<Add option="-DJucePlugin_Build_AUv3=0"/>
 					<Add option="-DJucePlugin_Build_RTAS=0"/>
 					<Add option="-DJucePlugin_Build_AAX=0"/>
-					<Add option="-DJucePlugin_Build_Standalone=0"/>
+					<Add option="-DJucePlugin_Build_Standalone=1"/>
+					<Add option="-DJUCE_SHARED_CODE=1"/>
 					<Add directory="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/../../JuceLibraryCode"/>
 					<Add directory="/home/danlin/JUCE/modules"/>
 					<Add directory="/usr/include/alsa"/>
@@ -101,7 +72,48 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 VST/fast"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SHARED_CODE/fast">
+				<Option output="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/libUltraschall Soundboard.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DLINUX=1"/>
+					<Add option="-DDEBUG=1"/>
+					<Add option="-D_DEBUG=1"/>
+					<Add option="-DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"/>
+					<Add option="-DJUCER_LINUX_MAKE_6D53C8B4=1"/>
+					<Add option="-DJUCE_APP_VERSION=4.0.0"/>
+					<Add option="-DJUCE_APP_VERSION_HEX=0x40000"/>
+					<Add option="-DJucePlugin_Build_VST=0"/>
+					<Add option="-DJucePlugin_Build_VST3=0"/>
+					<Add option="-DJucePlugin_Build_AU=0"/>
+					<Add option="-DJucePlugin_Build_AUv3=0"/>
+					<Add option="-DJucePlugin_Build_RTAS=0"/>
+					<Add option="-DJucePlugin_Build_AAX=0"/>
+					<Add option="-DJucePlugin_Build_Standalone=1"/>
+					<Add option="-DJUCE_SHARED_CODE=1"/>
+					<Add directory="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/../../JuceLibraryCode"/>
+					<Add directory="/home/danlin/JUCE/modules"/>
+					<Add directory="/usr/include/alsa"/>
+					<Add directory="/usr/include/freetype2"/>
+					<Add directory="/usr/include/libpng16"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE/fast"/>
 					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -182,98 +194,6 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 STANDALONE_PLUGIN/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="SHARED_CODE">
-				<Option output="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/libUltraschall Soundboard.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DLINUX=1"/>
-					<Add option="-DDEBUG=1"/>
-					<Add option="-D_DEBUG=1"/>
-					<Add option="-DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"/>
-					<Add option="-DJUCER_LINUX_MAKE_6D53C8B4=1"/>
-					<Add option="-DJUCE_APP_VERSION=4.0.0"/>
-					<Add option="-DJUCE_APP_VERSION_HEX=0x40000"/>
-					<Add option="-DJucePlugin_Build_VST=1"/>
-					<Add option="-DJucePlugin_Build_VST3=0"/>
-					<Add option="-DJucePlugin_Build_AU=0"/>
-					<Add option="-DJucePlugin_Build_AUv3=0"/>
-					<Add option="-DJucePlugin_Build_RTAS=0"/>
-					<Add option="-DJucePlugin_Build_AAX=0"/>
-					<Add option="-DJucePlugin_Build_Standalone=1"/>
-					<Add option="-DJUCE_SHARED_CODE=1"/>
-					<Add directory="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/../../JuceLibraryCode"/>
-					<Add directory="/home/danlin/JUCE/modules"/>
-					<Add directory="/usr/include/alsa"/>
-					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="SHARED_CODE/fast">
-				<Option output="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/libUltraschall Soundboard.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DLINUX=1"/>
-					<Add option="-DDEBUG=1"/>
-					<Add option="-D_DEBUG=1"/>
-					<Add option="-DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"/>
-					<Add option="-DJUCER_LINUX_MAKE_6D53C8B4=1"/>
-					<Add option="-DJUCE_APP_VERSION=4.0.0"/>
-					<Add option="-DJUCE_APP_VERSION_HEX=0x40000"/>
-					<Add option="-DJucePlugin_Build_VST=1"/>
-					<Add option="-DJucePlugin_Build_VST3=0"/>
-					<Add option="-DJucePlugin_Build_AU=0"/>
-					<Add option="-DJucePlugin_Build_AUv3=0"/>
-					<Add option="-DJucePlugin_Build_RTAS=0"/>
-					<Add option="-DJucePlugin_Build_AAX=0"/>
-					<Add option="-DJucePlugin_Build_Standalone=1"/>
-					<Add option="-DJUCE_SHARED_CODE=1"/>
-					<Add directory="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/../../JuceLibraryCode"/>
-					<Add directory="/home/danlin/JUCE/modules"/>
-					<Add directory="/usr/include/alsa"/>
-					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
 					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -1260,9 +1180,6 @@
 		</Unit>
 		<Unit filename="/home/danlin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp">
 			<Option target="STANDALONE_PLUGIN"/>
-		</Unit>
-		<Unit filename="/home/danlin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp">
-			<Option target="VST"/>
 		</Unit>
 		<Unit filename="/home/danlin/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST_utils.mm">
 			<Option target="SHARED_CODE"/>
@@ -2345,6 +2262,165 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_test.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT_test.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/juce_dsp.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/juce_dsp.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/juce_dsp.mm">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix_test.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter_test.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.cpp">
@@ -4099,6 +4175,60 @@
 		<Unit filename="/home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/juce_osc.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/juce_osc.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -4198,7 +4328,16 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-add-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-archive-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-folder_open-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-grid_on-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-library_music-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-menu-24px.svg">
@@ -4222,7 +4361,16 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-play_arrow-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-playlist_play-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-settings-20px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-settings_input_antenna-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-settings_input_svideo-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-stop-24px.svg">
@@ -4234,13 +4382,19 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-sync_disabled-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-toggle_off-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-toggle_on-24px.svg">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-trending_down-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-trending_up-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-view_list-24px.svg">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-unarchive-24px.svg">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Assets/baseline-view_module-24px.svg">
@@ -4273,9 +4427,6 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp">
 			<Option target="STANDALONE_PLUGIN"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp">
-			<Option target="VST"/>
-		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -4294,6 +4445,9 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_dsp.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
@@ -4307,6 +4461,9 @@
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_osc.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp">

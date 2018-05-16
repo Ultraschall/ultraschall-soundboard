@@ -48,7 +48,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/VST.dir/DependInfo.cmake"
-  "CMakeFiles/STANDALONE_PLUGIN.dir/DependInfo.cmake"
   "CMakeFiles/SHARED_CODE.dir/DependInfo.cmake"
+  "CMakeFiles/STANDALONE_PLUGIN.dir/DependInfo.cmake"
   )

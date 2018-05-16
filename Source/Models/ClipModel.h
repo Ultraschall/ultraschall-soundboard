@@ -10,7 +10,7 @@ public:
     BankModel(ValueTree v)
             : state(v)
     {
-        jassert(v.hasType(IDs::CLIP));
+        jassert(v.hasType(IDs::BANK));
 
         uuid.referTo(state, IDs::uuid, nullptr);
         title.referTo(state, IDs::title, nullptr);
@@ -33,11 +33,11 @@ public:
 
         uuid.referTo(state, IDs::uuid, nullptr);
         index.referTo(state, IDs::index, nullptr);
-        playerId.referTo(state, IDs::playerId, nullptr);
+        playerUuid.referTo(state, IDs::player_uuid, nullptr);
     }
 
     ValueTree state;
     CachedValue<String> uuid;
     CachedValue<int> index;
-    CachedValue<String> playerId;
+    CachedValue<String> playerUuid;
 };

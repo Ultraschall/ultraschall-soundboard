@@ -2,6 +2,7 @@
 
 void Player::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
+    mySampleRate = sampleRate;
     audioTransportSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 
@@ -13,6 +14,16 @@ void Player::releaseResources()
 void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
 {
     audioTransportSource->getNextAudioBlock(bufferToFill);
+
+    auto* leftBuffer  = bufferToFill.buffer->getWritePointer (0, bufferToFill.startSample);
+    auto* rightBuffer = bufferToFill.buffer->getWritePointer (1, bufferToFill.startSample);
+
+    for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
+    {
+        auto level = adsr.process();
+        leftBuffer[sample]  = leftBuffer[sample] * level;
+        rightBuffer[sample] = rightBuffer[sample] * level;
+    }
 }
 
 bool Player::loadFileIntoTransport(const File &audioFile, AudioFormatManager *audioFormatManager,

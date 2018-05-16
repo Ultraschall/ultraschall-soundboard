@@ -208,6 +208,8 @@
         <MODULEPATH id="juce_audio_processors" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_utils" path="./Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="">
@@ -231,6 +233,8 @@
         <MODULEPATH id="juce_audio_processors" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_utils" path="./Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </VS2017>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
@@ -254,6 +258,8 @@
         <MODULEPATH id="juce_audio_processors" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_utils" path="./Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
     <CLION targetFolder="Builds/CLion" clionXcodeEnabled="1" clionMakefileEnabled="1">
@@ -273,13 +279,15 @@
         <MODULEPATH id="juce_audio_formats" path="../../juce"/>
         <MODULEPATH id="juce_audio_devices" path="../../juce"/>
         <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </CLION>
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="" androidNDKPath=""
-                   androidMinimumSDK="27">
+                   androidMinimumSDK="27" androidTheme="@android:style/Theme.Material">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
+        <CONFIGURATION isDebug="1" name="Debug" androidArchitectures="armeabi-v7a x86 x86_64"/>
+        <CONFIGURATION isDebug="0" name="Release" androidArchitectures="armeabi-v7a x86 x86_64"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../juce"/>
@@ -297,6 +305,8 @@
         <MODULEPATH id="juce_audio_formats" path="../../juce"/>
         <MODULEPATH id="juce_audio_devices" path="../../juce"/>
         <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </ANDROIDSTUDIO>
     <XCODE_IPHONE targetFolder="Builds/iOS">
@@ -320,6 +330,8 @@
         <MODULEPATH id="juce_audio_formats" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="./Submodules/JUCE/modules"/>
         <MODULEPATH id="juce_audio_basics" path="./Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
   </EXPORTFORMATS>
@@ -334,12 +346,15 @@
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1" JUCE_WEB_BROWSER="0" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="0"/>
+  <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1" JUCE_WEB_BROWSER="0" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="0"
+               JUCE_STANDALONE_FILTER_WINDOW_USE_KIOSK_MODE="0"/>
 </JUCERPROJECT>

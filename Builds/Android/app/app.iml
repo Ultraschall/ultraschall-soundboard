@@ -229,6 +229,27 @@
     <content url="file://$USER_HOME$/JUCE/modules/juce_data_structures/values">
       <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_data_structures/values" isTestSource="false" />
     </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp/containers">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp/containers" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp/filter_design">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp/filter_design" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp/frequency">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp/frequency" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp/maths">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp/maths" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp/native">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp/native" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_dsp/processors">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_dsp/processors" isTestSource="false" />
+    </content>
     <content url="file://$USER_HOME$/JUCE/modules/juce_events">
       <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_events" isTestSource="false" />
     </content>
@@ -360,6 +381,12 @@
     </content>
     <content url="file://$USER_HOME$/JUCE/modules/juce_opengl/utils">
       <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_opengl/utils" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_osc">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_osc" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/JUCE/modules/juce_osc/osc">
+      <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_osc/osc" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/JUCE/modules/juce_video">
       <sourceFolder url="file://$USER_HOME$/JUCE/modules/juce_video" isTestSource="false" />
@@ -497,7 +524,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-main-apk-res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifest-checker" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />

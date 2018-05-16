@@ -2640,6 +2640,237 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
  /home/danlin/JUCE/modules/juce_events/timers/juce_Timer.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_data_structures.cpp
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_dsp.cpp.o
+ /home/danlin/JUCE/modules/juce_audio_basics/audio_play_head/juce_AudioPlayHead.h
+ /home/danlin/JUCE/modules/juce_audio_basics/buffers/juce_AudioChannelSet.h
+ /home/danlin/JUCE/modules/juce_audio_basics/buffers/juce_AudioDataConverters.h
+ /home/danlin/JUCE/modules/juce_audio_basics/buffers/juce_AudioSampleBuffer.h
+ /home/danlin/JUCE/modules/juce_audio_basics/buffers/juce_FloatVectorOperations.h
+ /home/danlin/JUCE/modules/juce_audio_basics/effects/juce_CatmullRomInterpolator.h
+ /home/danlin/JUCE/modules/juce_audio_basics/effects/juce_Decibels.h
+ /home/danlin/JUCE/modules/juce_audio_basics/effects/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_audio_basics/effects/juce_LagrangeInterpolator.h
+ /home/danlin/JUCE/modules/juce_audio_basics/effects/juce_LinearSmoothedValue.h
+ /home/danlin/JUCE/modules/juce_audio_basics/effects/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_audio_basics/juce_audio_basics.h
+ /home/danlin/JUCE/modules/juce_audio_basics/midi/juce_MidiBuffer.h
+ /home/danlin/JUCE/modules/juce_audio_basics/midi/juce_MidiFile.h
+ /home/danlin/JUCE/modules/juce_audio_basics/midi/juce_MidiKeyboardState.h
+ /home/danlin/JUCE/modules/juce_audio_basics/midi/juce_MidiMessage.h
+ /home/danlin/JUCE/modules/juce_audio_basics/midi/juce_MidiMessageSequence.h
+ /home/danlin/JUCE/modules/juce_audio_basics/midi/juce_MidiRPN.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPEInstrument.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPEMessages.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPENote.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPESynthesiser.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPESynthesiserBase.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPESynthesiserVoice.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPEUtils.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPEValue.h
+ /home/danlin/JUCE/modules/juce_audio_basics/mpe/juce_MPEZoneLayout.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_AudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_BufferingAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_ChannelRemappingAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_IIRFilterAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_MemoryAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_MixerAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_PositionableAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_ResamplingAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_ReverbAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/sources/juce_ToneGeneratorAudioSource.h
+ /home/danlin/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_AiffAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_CoreAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_FlacAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_LAMEEncoderAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_MP3AudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_OggVorbisAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_WavAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_AudioFormat.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_AudioFormatManager.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_AudioFormatReader.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_AudioFormatReaderSource.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_AudioFormatWriter.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_AudioSubsectionReader.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_BufferingAudioFormatReader.h
+ /home/danlin/JUCE/modules/juce_audio_formats/format/juce_MemoryMappedAudioFormatReader.h
+ /home/danlin/JUCE/modules/juce_audio_formats/juce_audio_formats.h
+ /home/danlin/JUCE/modules/juce_audio_formats/sampler/juce_Sampler.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_AbstractFifo.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_Array.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ArrayAllocationBase.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_DynamicObject.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ElementComparator.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_HashMap.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_LinkedListPointer.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ListenerList.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_NamedValueSet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_OwnedArray.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_PropertySet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ReferenceCountedArray.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ScopedValueSetter.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_SortedSet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_SparseSet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_Variant.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_DirectoryIterator.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_File.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileFilter.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileInputStream.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileOutputStream.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileSearchPath.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_MemoryMappedFile.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_TemporaryFile.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_WildcardFileFilter.h
+ /home/danlin/JUCE/modules/juce_core/javascript/juce_JSON.h
+ /home/danlin/JUCE/modules/juce_core/javascript/juce_Javascript.h
+ /home/danlin/JUCE/modules/juce_core/juce_core.h
+ /home/danlin/JUCE/modules/juce_core/logging/juce_FileLogger.h
+ /home/danlin/JUCE/modules/juce_core/logging/juce_Logger.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_BigInteger.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_Expression.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_MathsFunctions.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_NormalisableRange.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_Random.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_Range.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_StatisticsAccumulator.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_Atomic.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ByteOrder.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ContainerDeletePolicy.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_HeapBlock.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_LeakedObjectDetector.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_Memory.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_MemoryBlock.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_OptionalScopedPointer.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ReferenceCountedObject.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ScopedPointer.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_SharedResourcePointer.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_Singleton.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_WeakReference.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_Result.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_RuntimePermissions.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_StdFunctionCompat.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_Uuid.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_WindowsRegistry.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_BasicNativeHeaders.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_android_JNIHelpers.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_mac_ClangBugWorkaround.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_osx_ObjCHelpers.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_win32_ComSmartPtr.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_IPAddress.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_MACAddress.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_NamedPipe.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_Socket.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_URL.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_WebInputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_BufferedInputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_FileInputSource.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_InputSource.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_InputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_MemoryInputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_MemoryOutputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_OutputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_SubregionStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_URLInputSource.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_CompilerSupport.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_PlatformDefs.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_StandardHeader.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_SystemStats.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_TargetPlatform.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_Base64.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_ASCII.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_UTF16.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_UTF32.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_UTF8.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharacterFunctions.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_Identifier.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_LocalisedStrings.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_NewLine.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_String.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringArray.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringPairArray.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringPool.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringRef.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_TextDiff.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ChildProcess.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_CriticalSection.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_DynamicLibrary.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_HighResolutionTimer.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_InterProcessLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_Process.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ReadWriteLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ScopedLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ScopedReadLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ScopedWriteLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_SpinLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_Thread.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ThreadLocalValue.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ThreadPool.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_TimeSliceThread.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_WaitableEvent.h
+ /home/danlin/JUCE/modules/juce_core/time/juce_PerformanceCounter.h
+ /home/danlin/JUCE/modules/juce_core/time/juce_RelativeTime.h
+ /home/danlin/JUCE/modules/juce_core/time/juce_Time.h
+ /home/danlin/JUCE/modules/juce_core/unit_tests/juce_UnitTest.h
+ /home/danlin/JUCE/modules/juce_core/xml/juce_XmlDocument.h
+ /home/danlin/JUCE/modules/juce_core/xml/juce_XmlElement.h
+ /home/danlin/JUCE/modules/juce_core/zip/juce_GZIPCompressorOutputStream.h
+ /home/danlin/JUCE/modules/juce_core/zip/juce_GZIPDecompressorInputStream.h
+ /home/danlin/JUCE/modules/juce_core/zip/juce_ZipFile.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_test.cpp
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.cpp
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.cpp
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.cpp
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT_test.cpp
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.cpp
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.cpp
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.cpp
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.cpp
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix_test.cpp
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.cpp
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.cpp
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.cpp
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.cpp
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.cpp
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter_test.cpp
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.cpp
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.cpp
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.cpp
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
+ /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
+ /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_dsp.cpp
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_events.cpp.o
  /home/danlin/JUCE/modules/juce_core/containers/juce_AbstractFifo.h
  /home/danlin/JUCE/modules/juce_core/containers/juce_Array.h
@@ -4380,6 +4611,170 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibra
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
  /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_osc.cpp.o
+ /home/danlin/JUCE/modules/juce_core/containers/juce_AbstractFifo.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_Array.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ArrayAllocationBase.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_DynamicObject.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ElementComparator.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_HashMap.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_LinkedListPointer.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ListenerList.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_NamedValueSet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_OwnedArray.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_PropertySet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ReferenceCountedArray.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_ScopedValueSetter.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_SortedSet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_SparseSet.h
+ /home/danlin/JUCE/modules/juce_core/containers/juce_Variant.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_DirectoryIterator.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_File.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileFilter.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileInputStream.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileOutputStream.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_FileSearchPath.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_MemoryMappedFile.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_TemporaryFile.h
+ /home/danlin/JUCE/modules/juce_core/files/juce_WildcardFileFilter.h
+ /home/danlin/JUCE/modules/juce_core/javascript/juce_JSON.h
+ /home/danlin/JUCE/modules/juce_core/javascript/juce_Javascript.h
+ /home/danlin/JUCE/modules/juce_core/juce_core.h
+ /home/danlin/JUCE/modules/juce_core/logging/juce_FileLogger.h
+ /home/danlin/JUCE/modules/juce_core/logging/juce_Logger.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_BigInteger.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_Expression.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_MathsFunctions.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_NormalisableRange.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_Random.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_Range.h
+ /home/danlin/JUCE/modules/juce_core/maths/juce_StatisticsAccumulator.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_Atomic.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ByteOrder.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ContainerDeletePolicy.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_HeapBlock.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_LeakedObjectDetector.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_Memory.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_MemoryBlock.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_OptionalScopedPointer.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ReferenceCountedObject.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_ScopedPointer.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_SharedResourcePointer.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_Singleton.h
+ /home/danlin/JUCE/modules/juce_core/memory/juce_WeakReference.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_Result.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_RuntimePermissions.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_StdFunctionCompat.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_Uuid.h
+ /home/danlin/JUCE/modules/juce_core/misc/juce_WindowsRegistry.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_BasicNativeHeaders.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_android_JNIHelpers.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_mac_ClangBugWorkaround.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_osx_ObjCHelpers.h
+ /home/danlin/JUCE/modules/juce_core/native/juce_win32_ComSmartPtr.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_IPAddress.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_MACAddress.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_NamedPipe.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_Socket.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_URL.h
+ /home/danlin/JUCE/modules/juce_core/network/juce_WebInputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_BufferedInputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_FileInputSource.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_InputSource.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_InputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_MemoryInputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_MemoryOutputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_OutputStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_SubregionStream.h
+ /home/danlin/JUCE/modules/juce_core/streams/juce_URLInputSource.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_CompilerSupport.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_PlatformDefs.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_StandardHeader.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_SystemStats.h
+ /home/danlin/JUCE/modules/juce_core/system/juce_TargetPlatform.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_Base64.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_ASCII.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_UTF16.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_UTF32.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharPointer_UTF8.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_CharacterFunctions.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_Identifier.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_LocalisedStrings.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_NewLine.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_String.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringArray.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringPairArray.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringPool.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_StringRef.h
+ /home/danlin/JUCE/modules/juce_core/text/juce_TextDiff.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ChildProcess.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_CriticalSection.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_DynamicLibrary.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_HighResolutionTimer.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_InterProcessLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_Process.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ReadWriteLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ScopedLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ScopedReadLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ScopedWriteLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_SpinLock.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_Thread.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ThreadLocalValue.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_ThreadPool.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_TimeSliceThread.h
+ /home/danlin/JUCE/modules/juce_core/threads/juce_WaitableEvent.h
+ /home/danlin/JUCE/modules/juce_core/time/juce_PerformanceCounter.h
+ /home/danlin/JUCE/modules/juce_core/time/juce_RelativeTime.h
+ /home/danlin/JUCE/modules/juce_core/time/juce_Time.h
+ /home/danlin/JUCE/modules/juce_core/unit_tests/juce_UnitTest.h
+ /home/danlin/JUCE/modules/juce_core/xml/juce_XmlDocument.h
+ /home/danlin/JUCE/modules/juce_core/xml/juce_XmlElement.h
+ /home/danlin/JUCE/modules/juce_core/zip/juce_GZIPCompressorOutputStream.h
+ /home/danlin/JUCE/modules/juce_core/zip/juce_GZIPDecompressorInputStream.h
+ /home/danlin/JUCE/modules/juce_core/zip/juce_ZipFile.h
+ /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
+ /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
+ /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
+ /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ChangeBroadcaster.h
+ /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ChangeListener.h
+ /home/danlin/JUCE/modules/juce_events/interprocess/juce_ConnectedChildProcess.h
+ /home/danlin/JUCE/modules/juce_events/interprocess/juce_InterprocessConnection.h
+ /home/danlin/JUCE/modules/juce_events/interprocess/juce_InterprocessConnectionServer.h
+ /home/danlin/JUCE/modules/juce_events/juce_events.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_ApplicationBase.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_CallbackMessage.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_DeletedAtShutdown.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_Initialisation.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_Message.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_MessageListener.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_MessageManager.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_MountedVolumeListChangeDetector.h
+ /home/danlin/JUCE/modules/juce_events/messages/juce_NotificationType.h
+ /home/danlin/JUCE/modules/juce_events/native/juce_linux_EventLoop.h
+ /home/danlin/JUCE/modules/juce_events/native/juce_win32_HiddenMessageWindow.h
+ /home/danlin/JUCE/modules/juce_events/native/juce_win32_WinRTWrapper.h
+ /home/danlin/JUCE/modules/juce_events/timers/juce_MultiTimer.h
+ /home/danlin/JUCE/modules/juce_events/timers/juce_Timer.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.cpp
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.cpp
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
+ /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/AppConfig.h
+ /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_osc.cpp
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o
  /home/danlin/JUCE/modules/juce_core/containers/juce_AbstractFifo.h
  /home/danlin/JUCE/modules/juce_core/containers/juce_Array.h
@@ -5001,6 +5396,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -5245,6 +5673,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -5510,6 +5947,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -5754,6 +6224,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -6017,6 +6496,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -6261,6 +6773,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -6526,6 +7047,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -6770,6 +7324,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -7046,6 +7609,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -7290,6 +7886,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -7550,6 +8155,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -7794,6 +8432,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/En
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -8047,6 +8694,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -8291,6 +8971,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -8567,6 +9256,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -8811,6 +9533,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -9089,6 +9820,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -9333,6 +10097,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -9589,6 +10362,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -9833,6 +10639,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -10085,6 +10900,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -10329,6 +11177,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -10586,6 +11443,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -10830,6 +11720,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -11083,6 +11982,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -11327,6 +12259,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -11585,6 +12526,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -11829,6 +12803,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -12084,6 +13067,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -12328,6 +13344,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -12587,6 +13612,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -12831,6 +13889,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -13083,6 +14150,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -13327,6 +14427,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -13585,6 +14694,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -13829,6 +14971,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
@@ -14085,6 +15236,39 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTree.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueTreeSynchroniser.h
  /home/danlin/JUCE/modules/juce_data_structures/values/juce_ValueWithDefault.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h
+ /home/danlin/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Convolution.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_FFT.h
+ /home/danlin/JUCE/modules/juce_dsp/frequency/juce_Windowing.h
+ /home/danlin/JUCE/modules/juce_dsp/juce_dsp.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_LookupTable.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Matrix.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Phase.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_Polynomial.h
+ /home/danlin/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_avx_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_fallback_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Bias.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Gain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oscillator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Oversampling.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_Reverb.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h
+ /home/danlin/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionBroadcaster.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_ActionListener.h
  /home/danlin/JUCE/modules/juce_events/broadcasters/juce_AsyncUpdater.h
@@ -14329,6 +15513,15 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Vi
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h
  /home/danlin/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h
  /home/danlin/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h
+ /home/danlin/JUCE/modules/juce_osc/juce_osc.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCAddress.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCArgument.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCBundle.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCMessage.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCReceiver.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCSender.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTimeTag.h
+ /home/danlin/JUCE/modules/juce_osc/osc/juce_OSCTypes.h
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h

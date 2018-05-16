@@ -6,7 +6,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
         UltraschallSoundboardAudioProcessor &p)
         : AudioProcessorEditor(&p), processor(p)
 {
-#if JUCE_LINUX || JUCE_WINDOWS
+#if JUCE_LINUX || JUCE_WINDOWS || JUCE_ANDROID
     openGLContext.attachTo(*getTopLevelComponent());
 #endif
 
@@ -18,8 +18,10 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
     controller->init();
     addAndMakeVisible(controller->getView());
 
+#if JUCE_LINUX || JUCE_WINDOWS
     setResizable(true, true);
     setSize(320, 320);
+#endif
 }
 
 UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorEditor()

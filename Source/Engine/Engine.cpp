@@ -19,6 +19,7 @@ Engine::Engine()
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
+    newBank();
 }
 
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -51,6 +52,13 @@ void Engine::loadAudioFile(File file)
     model.uuid = uuid.toDashedString();
     model.path = file.getFullPathName();
     model.title = file.getFileName();
+    model.gain = 1.0f;
+    model.startSample = 0;
+    model.endSample = player->getTotalLength();
+    model.fadeinSamples = 1;
+    model.fadeoutSamples = 1;
+    model.loop = false;
+
 
     state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
     mixer.addInputSource(player, false);
@@ -88,10 +96,24 @@ void Engine::importDirectory(File directory)
 void Engine::newBank()
 {
     Uuid uuid;
-    const ValueTree bankState(IDs::BANK);
+    ValueTree bankState(IDs::BANK);
     BankModel model(bankState);
     model.uuid = uuid.toDashedString();
-    model.title = "Bank " + state.getChildWithName(IDs::BANKS).getNumChildren() + 1;
+    model.title = "Bank " + String(state.getChildWithName(IDs::BANKS).getNumChildren() + 1);
+
+    ValueTree clipsSate(IDs::CLIPS);
+    bankState.addChild(clipsSate, -1, nullptr);
+
+    for(auto index = 0; index <= 21; index++) {
+        const ValueTree clipState(IDs::CLIP);
+        ClipModel clipModel(clipState);
+        Uuid clipUuid;
+        clipModel.uuid = clipUuid.toDashedString();
+        clipModel.index = index;
+        clipModel.playerUuid = String::empty;
+        clipsSate.addChild(clipState, -1, nullptr);
+    }
+
     state.getChildWithName(IDs::BANKS).addChild(bankState, -1, &undoManager);
 
     DebugState();

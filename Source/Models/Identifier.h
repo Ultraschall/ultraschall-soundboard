@@ -18,6 +18,11 @@ namespace IDs
     // title
     DECLARE_ID(path)
     DECLARE_ID(gain)
+    DECLARE_ID(start_sample)
+    DECLARE_ID(end_sample)
+    DECLARE_ID(fadein_samples)
+    DECLARE_ID(fadeout_sanples)
+    DECLARE_ID(loop)
 
     DECLARE_ID(BANK)
     // uuid
@@ -27,7 +32,7 @@ namespace IDs
     DECLARE_ID(CLIP)
     // uuid
     DECLARE_ID(index)
-    DECLARE_ID(playerId)
+    DECLARE_ID(player_uuid)
 
 
 #undef DECLARE_ID

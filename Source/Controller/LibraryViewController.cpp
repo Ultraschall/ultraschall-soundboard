@@ -75,7 +75,7 @@ Component * LibraryViewController::refreshComponentForRow(int rowNumber, bool is
 	rowView->title = playerModel->title;
 
 	const auto player = engine.playerWithIdentifier(Identifier(playerModel->uuid));
-	if (playerModel == nullptr)
+	if (player == nullptr)
 	{
 		return rowView;
 	}
@@ -92,15 +92,29 @@ Component * LibraryViewController::refreshComponentForRow(int rowNumber, bool is
 			player->play();
 		}
 		rowView->playButton.setToggleState(!playState, NotificationType::dontSendNotification);
-	};
+        rowView->fadeButton.setToggleState(!playState, NotificationType::dontSendNotification);
+    };
 	rowView->stopButton.onClick = [player, rowView] {
 		player->stop();
 		rowView->playButton.setToggleState(false, NotificationType::dontSendNotification);
-	};
+        rowView->playButton.setToggleState(false, NotificationType::dontSendNotification);
+
+    };
 	rowView->loopButton.onClick = [rowView] {
 		const auto loopState = rowView->loopButton.getToggleState();
 		rowView->loopButton.setToggleState(!loopState, NotificationType::dontSendNotification);
 	};
+	rowView->fadeButton.onClick = [player, rowView] {
+        const auto fadeState = rowView->fadeButton.getToggleState();
+        if (fadeState)
+        {
+            player->fadeOut();
+        } else
+        {
+            player->fadeIn();
+        }
+        rowView->playButton.setToggleState(!fadeState, NotificationType::dontSendNotification);
+    };
 
 	return rowView;
 }

@@ -1,4 +1,5 @@
 #include "ClipViewController.h"
+#include <memory>
 
 ClipViewController::ClipViewController(String playerId, Engine &engine) : ViewController(engine)
 {
@@ -7,7 +8,7 @@ ClipViewController::ClipViewController(String playerId, Engine &engine) : ViewCo
 
 void ClipViewController::loadView()
 {
-    view.reset(new ClipView());
+    view = std::make_unique<ClipView>();
 }
 
 void ClipViewController::viewDidLoad()
@@ -15,7 +16,7 @@ void ClipViewController::viewDidLoad()
     view->playButton.onClick = [this]
     {
         auto toggleState = view->playButton.getToggleState();
-        if (toggleState == true)
+        if (toggleState)
         {
 
         } else

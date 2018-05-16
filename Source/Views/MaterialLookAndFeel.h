@@ -489,7 +489,11 @@ public:
 		//auto screenDensity = display.totalArea.getWidth() / display.totalArea.getHeight();
 		//const double px = (dp * (display.dpi / ldpi));
 		//return T(std::round(px));
+#if JUCE_LINUX || JUCE_WINDOWS
+		return T(std::round(dp * 0.5));
+#else
 		return T(std::round(dp));
+#endif
 	}
 
 	void setFontRoboto(Graphics &g) const

@@ -13,9 +13,14 @@ public:
     {
         timeSliceThread.startThread();
         audioTransportSource = std::make_unique<AudioTransportSource>();
+        adsr.setAttackRate(1.0f);
+        adsr.setDecayRate(0.0f);
+        adsr.setSustainLevel(1.0f);
+        adsr.setReleaseRate(1.0f);
+        adsr.reset();
     }
 
-    ~Player()
+    ~Player() override
     {
         audioTransportSource->stop();
         audioTransportSource->setSource(nullptr);
@@ -30,20 +35,35 @@ public:
     bool loadFileIntoTransport(const File &audioFile, AudioFormatManager *audioFormatManager,
                                AudioThumbnailCache *audioThumbnailCache);
 
-    void play() const
+    void play()
     {
+        adsr.setAttackRate(1);
+        adsr.gate(1);
         audioTransportSource->start();
     }
 
-    void stop() const
+    void stop()
     {
         audioTransportSource->stop();
         audioTransportSource->setPosition(0);
+        adsr.gate(0);
+        adsr.reset();
     }
 
     void pause() const
     {
         audioTransportSource->stop();
+    }
+
+    void fadeIn() {
+        adsr.setAttackRate(mySampleRate * attackMs);
+        adsr.gate(1);
+        audioTransportSource->start();
+    }
+
+    void fadeOut() {
+        adsr.setReleaseRate(mySampleRate * releaseMs);
+        adsr.gate(0);
     }
 
     Identifier getIdentifier() const
@@ -64,7 +84,20 @@ public:
 
     std::unique_ptr<AudioThumbnail> thumbnail;
 
+    int64 getTotalLength()
+    {
+        if (audioFormatReaderSource == nullptr)
+        {
+            return 0;
+        }
+        return audioFormatReaderSource->getTotalLength();
+    }
 private:
+    float gain{1.0f};
+    double mySampleRate{0.0};
+    int attackMs{10};
+    int releaseMs{10};
+
     PlayerState playerState;
     TimeSliceThread timeSliceThread;
 
@@ -72,6 +105,8 @@ private:
 
     std::unique_ptr<AudioTransportSource> audioTransportSource;
     std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;
+
+    ADSR adsr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
