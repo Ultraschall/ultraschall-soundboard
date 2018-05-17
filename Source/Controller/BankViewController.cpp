@@ -1,4 +1,5 @@
 #include "BankViewController.h"
+#include "../Views/BankView.h"
 
 BankViewController::BankViewController(Engine &engine)
         : ViewController(engine),

@@ -22,7 +22,7 @@ void SideNavbarItemView::paintButton(Graphics &g, bool isMouseOverButton, bool /
 
     g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
 	g.setFont(Font(material->robotoCondensed_Regular));
-	g.setFont(14);
+	g.setFont(MaterialLookAndFeel::convertDpToPixel(14));
     g.drawText(title,
                getLocalBounds()
                        .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Padding::TextLeft)),

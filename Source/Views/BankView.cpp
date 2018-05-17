@@ -17,7 +17,7 @@ BankView::~BankView()
 
 void BankView::paint(Graphics &g)
 {
-    g.fillAll(getLookAndFeel().findColour(Material::ColourIds::backgroundColorId));   // clear the background
+    g.fillAll(getLookAndFeel().findColour(Material::ColourIds::backgroundColorId));
 }
 
 void BankView::resized()

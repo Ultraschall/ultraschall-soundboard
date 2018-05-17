@@ -29,7 +29,7 @@ public:
 	void paint(Graphics &g) override
 	{
 		g.setFont(font);
-		g.setFont(20);
+		g.setFont(MaterialLookAndFeel::convertDpToPixel(20));
 		g.drawText(text, getLocalBounds()
 			.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Padding::Left))
 			.withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Bottom)), Justification::bottomLeft);

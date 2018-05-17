@@ -56,7 +56,7 @@ void ADSR::setReleaseRate(float rate)
     releaseBase = -targetRatioDR * (1.0f - releaseCoef);
 }
 
-float ADSR::calcCoef(float rate, float targetRatio)
+float ADSR::calcCoef(float rate, float targetRatio) const
 {
     return (rate <= 0) ? 0.0f : float(exp(-log((1.0 + targetRatio) / targetRatio) / rate));
 }

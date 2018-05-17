@@ -105,6 +105,9 @@
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
       <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">
+        <FILE id="ct2NrZ" name="LibraryModel.h" compile="0" resource="0" file="Source/Models/LibraryModel.h"/>
+        <FILE id="IcKeNg" name="BankModel.h" compile="0" resource="0" file="Source/Models/BankModel.h"/>
+        <FILE id="Xim1qA" name="PlaylistModel.h" compile="0" resource="0" file="Source/Models/PlaylistModel.h"/>
         <FILE id="Rn75dI" name="Identifier.h" compile="0" resource="0" file="Source/Models/Identifier.h"/>
         <FILE id="mfcv7q" name="Utilities.h" compile="0" resource="0" file="Source/Models/Utilities.h"/>
         <FILE id="iAiL9t" name="ValueTreeObjectList.h" compile="0" resource="0"

@@ -1,7 +1,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include <memory>
 
+// TODO: implement a own standalone wrapper!
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor(
         UltraschallSoundboardAudioProcessor &p)
         : AudioProcessorEditor(&p), processor(p)
@@ -11,8 +11,6 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
 #endif
 
     LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
-
-    // TODO: implement a own standalone wrapper!
 
     controller = std::make_unique<MainViewController>(p.library);
     controller->init();
@@ -29,16 +27,12 @@ UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorE
     LookAndFeel::setDefaultLookAndFeel(nullptr);
 }
 
-//==============================================================================
 void UltraschallSoundboardAudioProcessorEditor::paint(Graphics &g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll(findColour(Material::ColourIds::backgroundColorId));
 }
 
 void UltraschallSoundboardAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
     controller->getView()->setBounds(getLocalBounds());
 }

@@ -9,34 +9,34 @@
 namespace BinaryData
 {
     extern const char*   baselinegrid_on24px_svg;
-    const int            baselinegrid_on24px_svgSize = 358;
+    const int            baselinegrid_on24px_svgSize = 362;
 
     extern const char*   baselinelibrary_music24px_svg;
-    const int            baselinelibrary_music24px_svgSize = 358;
+    const int            baselinelibrary_music24px_svgSize = 362;
 
     extern const char*   baselinesettings_input_antenna24px_svg;
-    const int            baselinesettings_input_antenna24px_svgSize = 454;
+    const int            baselinesettings_input_antenna24px_svgSize = 458;
 
     extern const char*   baselinesettings_input_svideo24px_svg;
-    const int            baselinesettings_input_svideo24px_svgSize = 667;
+    const int            baselinesettings_input_svideo24px_svgSize = 671;
 
     extern const char*   baselineplaylist_play24px_svg;
-    const int            baselineplaylist_play24px_svgSize = 200;
+    const int            baselineplaylist_play24px_svgSize = 204;
 
     extern const char*   baselinetoggle_off24px_svg;
-    const int            baselinetoggle_off24px_svgSize = 279;
+    const int            baselinetoggle_off24px_svgSize = 283;
 
     extern const char*   baselinetoggle_on24px_svg;
-    const int            baselinetoggle_on24px_svgSize = 278;
+    const int            baselinetoggle_on24px_svgSize = 282;
 
     extern const char*   baselinearchive24px_svg;
-    const int            baselinearchive24px_svgSize = 382;
+    const int            baselinearchive24px_svgSize = 386;
 
     extern const char*   baselineunarchive24px_svg;
-    const int            baselineunarchive24px_svgSize = 558;
+    const int            baselineunarchive24px_svgSize = 567;
 
     extern const char*   baselinefolder_open24px_svg;
-    const int            baselinefolder_open24px_svgSize = 257;
+    const int            baselinefolder_open24px_svgSize = 261;
 
     extern const char*   baselineadd24px_svg;
     const int            baselineadd24px_svgSize = 185;
@@ -63,7 +63,7 @@ namespace BinaryData
     const int            baselinemic24px_svgSize = 341;
 
     extern const char*   baselinenavigate_next24px_svg;
-    const int            baselinenavigate_next24px_svgSize = 196;
+    const int            baselinenavigate_next24px_svgSize = 200;
 
     extern const char*   baselinenavigate_before24px_svg;
     const int            baselinenavigate_before24px_svgSize = 195;
@@ -141,7 +141,7 @@ namespace BinaryData
     const int            add_svgSize = 3216;
 
     extern const char*   ultraschall_svg;
-    const int            ultraschall_svgSize = 2876;
+    const int            ultraschall_svgSize = 2877;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 45;

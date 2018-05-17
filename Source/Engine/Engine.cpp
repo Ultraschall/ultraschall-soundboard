@@ -1,5 +1,7 @@
 #include "Engine.h"
-#include "../Models/ClipModel.h"
+#include "../Models/PlayerModel.h"
+#include "../Models/PlaylistModel.h"
+#include "../Models/BankModel.h"
 
 Engine::Engine()
         : audioThumbnailCache(21)
@@ -19,12 +21,20 @@ Engine::Engine()
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
+	state.addChild(ValueTree(IDs::PLAYLISTS), -1, nullptr);
+	
+	talkOver.gate(talkOverState);
     newBank();
+	newPlaylist();
+
+	undoManager.clearUndoHistory();
 }
 
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
     mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
+	currentSampleRate = sampleRate;
+	previousGain = currentGain;
 }
 
 void Engine::releaseResources()
@@ -35,9 +45,32 @@ void Engine::releaseResources()
 void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
 {
     mixer.getNextAudioBlock(bufferToFill);
+
+	auto* leftBuffer = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
+	auto* rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
+
+	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
+	{
+		const auto level = talkOverRange.convertFrom0to1(talkOver.process());
+
+		if (talkOver.getState() == ADSR::env_sustain) continue;
+
+		leftBuffer[sample] = leftBuffer[sample] * level;
+		rightBuffer[sample] = rightBuffer[sample] * level;
+	}
+
+	if (currentGain == previousGain)
+	{
+		bufferToFill.buffer->applyGain(currentGain);
+	}
+	else
+	{
+		bufferToFill.buffer->applyGainRamp(0, bufferToFill.buffer->getNumSamples(), previousGain, currentGain);
+		previousGain = currentGain;
+	}
 }
 
-void Engine::loadAudioFile(File file)
+void Engine::loadAudioFile(const File& file)
 {
     Uuid uuid;
     auto player = players.add(new Player(uuid.toDashedString()));
@@ -62,8 +95,6 @@ void Engine::loadAudioFile(File file)
 
     state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
     mixer.addInputSource(player, false);
-
-    DebugState();
 }
 
 void Engine::DebugState() const
@@ -71,7 +102,7 @@ void Engine::DebugState() const
     Logger::getCurrentLogger()->outputDebugString(state.toXmlString());
 }
 
-Player *Engine::playerWithIdentifier(Identifier id)
+Player *Engine::playerWithIdentifier(const Identifier id)
 {
     for (auto &p : players)
     {
@@ -83,10 +114,9 @@ Player *Engine::playerWithIdentifier(Identifier id)
     return nullptr;
 }
 
-void Engine::importDirectory(File directory)
+void Engine::importDirectory(const File& directory)
 {
-    Array<File> files;
-    directory.findChildFiles(files, File::findFiles, true);
+    auto files = directory.findChildFiles(File::findFiles, true);
     for (auto &f : files)
     {
         loadAudioFile(f);
@@ -96,25 +126,25 @@ void Engine::importDirectory(File directory)
 void Engine::newBank()
 {
     Uuid uuid;
-    ValueTree bankState(IDs::BANK);
+	ValueTree bankState(IDs::BANK);
     BankModel model(bankState);
     model.uuid = uuid.toDashedString();
     model.title = "Bank " + String(state.getChildWithName(IDs::BANKS).getNumChildren() + 1);
 
-    ValueTree clipsSate(IDs::CLIPS);
-    bankState.addChild(clipsSate, -1, nullptr);
-
-    for(auto index = 0; index <= 21; index++) {
-        const ValueTree clipState(IDs::CLIP);
-        ClipModel clipModel(clipState);
-        Uuid clipUuid;
-        clipModel.uuid = clipUuid.toDashedString();
-        clipModel.index = index;
-        clipModel.playerUuid = String::empty;
-        clipsSate.addChild(clipState, -1, nullptr);
-    }
+	bankState.addChild(ValueTree(IDs::CLIPS), -1, &undoManager);
 
     state.getChildWithName(IDs::BANKS).addChild(bankState, -1, &undoManager);
+}
 
-    DebugState();
+void Engine::newPlaylist()
+{
+	Uuid uuid;
+	ValueTree playlistState(IDs::PLAYLIST);
+	PlaylistModel model(playlistState);
+	model.uuid = uuid.toDashedString();
+	model.title = "Playlist " + String(state.getChildWithName(IDs::PLAYLISTS).getNumChildren() + 1);
+
+	playlistState.addChild(ValueTree(IDs::ITEMS), -1, &undoManager);
+
+	state.getChildWithName(IDs::PLAYLISTS).addChild(playlistState, -1, &undoManager);
 }

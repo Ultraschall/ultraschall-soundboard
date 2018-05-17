@@ -29,9 +29,9 @@ public:
 
     float process(void);
 
-    float getOutput(void);
+    float getOutput(void) const;
 
-    int getState(void);
+    int getState(void) const;
 
     void gate(int on);
 
@@ -74,7 +74,7 @@ protected:
     float decayBase;
     float releaseBase;
 
-    float calcCoef(float rate, float targetRatio);
+    float calcCoef(float rate, float targetRatio) const;
 };
 
 inline float ADSR::process()
@@ -120,7 +120,7 @@ inline void ADSR::gate(int gate)
         state = env_release;
 }
 
-inline int ADSR::getState()
+inline int ADSR::getState() const
 {
     return state;
 }
@@ -131,7 +131,7 @@ inline void ADSR::reset()
     output = 0.0;
 }
 
-inline float ADSR::getOutput()
+inline float ADSR::getOutput() const
 {
     return output;
 }

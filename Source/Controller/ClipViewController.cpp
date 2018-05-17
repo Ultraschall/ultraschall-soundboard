@@ -1,5 +1,4 @@
 #include "ClipViewController.h"
-#include <memory>
 
 ClipViewController::ClipViewController(String playerId, Engine &engine) : ViewController(engine)
 {
@@ -15,7 +14,7 @@ void ClipViewController::viewDidLoad()
 {
     view->playButton.onClick = [this]
     {
-        auto toggleState = view->playButton.getToggleState();
+	    const auto toggleState = view->playButton.getToggleState();
         if (toggleState)
         {
 

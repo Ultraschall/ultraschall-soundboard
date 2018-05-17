@@ -4,15 +4,11 @@ BottomBarView::BottomBarView()
 {
 	addAndMakeVisible(spacer);
 
+	gainSlider.setNormalisableRange(NormalisableRange<double>(0.0, 1.0));
     gainSlider.setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
 
 	addAndMakeVisible(gainSlider);
     addAndMakeVisible(talkoverButton);
-
-    talkoverButton.onClick = [this]
-    {
-        talkoverButton.setToggleState(!talkoverButton.getToggleState(), NotificationType::dontSendNotification);
-    };
 }
 
 void BottomBarView::paint(Graphics &g)

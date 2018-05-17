@@ -2,8 +2,8 @@
 
 #include "JuceHeader.h"
 #include "ViewController.h"
-#include "../Models/ClipModel.h"
-#include "../Views/BankView.h"
+#include "../Models/ValueTreeObjectList.h"
+#include "../Models/BankModel.h"
 
 class BankViewController : public ViewController<Component>, public drow::ValueTreeObjectList<BankModel>
 {

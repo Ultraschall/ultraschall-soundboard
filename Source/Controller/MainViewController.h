@@ -10,12 +10,16 @@ class MainViewController : public ViewController<MainView>
 {
 public:
     explicit MainViewController(Engine &engine) : ViewController(engine)
-    {
-    };
+	{
+	}
 
-    void loadView() override;
+	void loadView() override;
 
     void loadFile();
+
+	void importFile();
+
+	void exportFile();
 
     void importDirectory();
 

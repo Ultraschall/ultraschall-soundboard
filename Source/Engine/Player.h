@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include "JuceHeader.h"
 #include "ADSR.h"
 
@@ -13,11 +12,6 @@ public:
     {
         timeSliceThread.startThread();
         audioTransportSource = std::make_unique<AudioTransportSource>();
-        adsr.setAttackRate(1.0f);
-        adsr.setDecayRate(0.0f);
-        adsr.setSustainLevel(1.0f);
-        adsr.setReleaseRate(1.0f);
-        adsr.reset();
     }
 
     ~Player() override
@@ -32,12 +26,13 @@ public:
 
     void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
 
-    bool loadFileIntoTransport(const File &audioFile, AudioFormatManager *audioFormatManager,
-                               AudioThumbnailCache *audioThumbnailCache);
+    bool loadFileIntoTransport(const File &audioFile, 
+							   AudioFormatManager *audioFormatManager,
+							   AudioThumbnailCache *audioThumbnailCache);
 
     void play()
     {
-        adsr.setAttackRate(1);
+        adsr.setAttackRate(0);
         adsr.gate(1);
         audioTransportSource->start();
     }
@@ -79,12 +74,12 @@ public:
         Playing = 2,
         Paused = 3,
         Played = 4,
-        Idle = 128
+		Idle = 255
     };
 
     std::unique_ptr<AudioThumbnail> thumbnail;
 
-    int64 getTotalLength()
+    int64 getTotalLength() const
     {
         if (audioFormatReaderSource == nullptr)
         {
@@ -92,8 +87,16 @@ public:
         }
         return audioFormatReaderSource->getTotalLength();
     }
+
+	void setGain(float value)
+    {
+		currentGain = value;
+    }
+
 private:
-    float gain{1.0f};
+	float currentGain{ 1.0f };
+	float previousGain{ 1.0f };
+
     double mySampleRate{0.0};
     int attackMs{10};
     int releaseMs{10};

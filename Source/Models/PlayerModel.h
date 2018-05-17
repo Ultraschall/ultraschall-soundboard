@@ -2,12 +2,10 @@
 
 #include "JuceHeader.h"
 #include "Identifier.h"
-#include "ValueTreeObjectList.h"
 
 struct PlayerModel
 {
-public:
-    explicit PlayerModel(const ValueTree &v)
+	explicit PlayerModel(const ValueTree &v)
             : state(v)
     {
         jassert(v.hasType(IDs::PLAYER));
@@ -33,5 +31,4 @@ public:
     CachedValue<int64> fadeinSamples;
     CachedValue<int64> fadeoutSamples;
     CachedValue<bool> loop;
-
 };

@@ -15,15 +15,12 @@ public:
 
 	void resized() override;
 
-
-
 	SideNavbarTitleItemView libraryTitle{ "Library", "Library" };
 	SideNavbarItemView importFolderButton{ "Import Folder", importFolderIcon };
 	SideNavbarItemView saveFolderButton{ "Save", saveIcon };
 	SideNavbarItemView openFolderButton{ "Open", openIcon };
 
 	SideNavbarTitleItemView bankTitle{ "Bank", "Bank" };
-
 
 	SideNavbarItemView midiButton{ "MIDI Learn", midiIcon };
 	SideNavbarItemView oscButton{ "OSC", oscIcon };
