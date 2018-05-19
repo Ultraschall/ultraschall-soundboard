@@ -15,4 +15,6 @@ public:
 
 private:
     Player *player;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ClipViewController)
 };
