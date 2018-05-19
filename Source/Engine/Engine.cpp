@@ -17,7 +17,7 @@ Engine::Engine()
 
     state = ValueTree(IDs::LIBRARY);
     state.setProperty(IDs::version, "4.0.0", nullptr);
-    state.setProperty(IDs::title, "Unamed", nullptr);
+    state.setProperty(IDs::title, "Soundboard", nullptr);
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
@@ -73,10 +73,9 @@ void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
 void Engine::loadAudioFile(const File& file)
 {
     Uuid uuid;
-    auto player = players.add(new Player(uuid.toDashedString()));
+    auto player = std::make_unique<Player>(uuid.toDashedString());
     if (!player->loadFileIntoTransport(file, &audioFormatManager, &audioThumbnailCache))
     {
-        players.remove(players.indexOf(player), true);
         return;
     }
 
@@ -92,23 +91,24 @@ void Engine::loadAudioFile(const File& file)
     model.fadeoutSamples = 1;
     model.loop = false;
 
+    mixer.addInputSource(player.get(), false);
+    players.push_back(std::move(player));
 
     state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
-    mixer.addInputSource(player, false);
 }
 
 void Engine::DebugState() const
 {
-    Logger::getCurrentLogger()->outputDebugString(state.toXmlString());
+    Logger::outputDebugString(state.toXmlString());
 }
 
 Player *Engine::playerWithIdentifier(const Identifier id)
 {
     for (auto &p : players)
     {
-        if (p->getIdentifier() == id)
+        if (p->identifier == id)
         {
-            return p;
+            return p.get();
         }
     }
     return nullptr;
@@ -147,4 +147,57 @@ void Engine::newPlaylist()
 	playlistState.addChild(ValueTree(IDs::ITEMS), -1, &undoManager);
 
 	state.getChildWithName(IDs::PLAYLISTS).addChild(playlistState, -1, &undoManager);
+}
+
+Engine::~Engine() {
+    mixer.removeAllInputs();
+    players.clear();
+    audioFormatManager.clearFormats();
+    audioThumbnailCache.clear();
+}
+
+void Engine::setGain(float value) {
+    currentGain = gainRange.convertFrom0to1(value);
+}
+
+float Engine::getGain() const {
+    return gainRange.convertTo0to1(currentGain);
+}
+
+void Engine::toggleTalkOver() {
+    talkOver.setAttackRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
+    talkOver.setReleaseRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
+    talkOverState = !talkOverState;
+    talkOver.gate(talkOverState);
+}
+
+void Engine::openFile(const File &file) {
+    XmlDocument xmlDocument(file);
+    const std::unique_ptr<XmlElement> xml(xmlDocument.getDocumentElement());
+    undoManager.clearUndoHistory();
+    mixer.removeAllInputs();
+    players.clear();
+    audioThumbnailCache.clear();
+    state = ValueTree::fromXml(*xml);
+    auto playersState = state.getChildWithName(IDs::PLAYERS);
+    if (playersState.isValid())
+    {
+        for (const auto &playerState: playersState)
+        {
+            PlayerModel playerModel(playerState);
+            auto player = std::make_unique<Player>(playerModel.uuid.get());
+            if (!player->loadFileIntoTransport(File(playerModel.path), &audioFormatManager, &audioThumbnailCache))
+            {
+                playerModel.missing = true;
+                continue;
+            }
+            players.push_back(std::move(player));
+            playerModel.missing = false;
+        }
+    }
+}
+
+void Engine::saveFile(const File &file) const {
+    const std::unique_ptr<XmlElement> xml(state.createXml());
+    xml->writeToFile(file, String{});
 }

@@ -23,17 +23,17 @@
 class ADSR
 {
 public:
-    ADSR(void);
+    ADSR();
 
-    ~ADSR(void);
+    ~ADSR();
 
-    float process(void);
+    float process();
 
-    float getOutput(void) const;
+    float getOutput() const;
 
-    int getState(void) const;
+    int getState() const;
 
-    void gate(int on);
+    void gate(int gate);
 
     void setAttackRate(float rate);
 
@@ -47,7 +47,7 @@ public:
 
     void setTargetRatioDR(float targetRatio);
 
-    void reset(void);
+    void reset();
 
     enum envState
     {
@@ -108,6 +108,8 @@ inline float ADSR::process()
                 output = 0.0;
                 state = env_idle;
             }
+        default:
+            break;
     }
     return output;
 }

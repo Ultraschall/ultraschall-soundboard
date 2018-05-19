@@ -2,19 +2,15 @@
 
 #include "JuceHeader.h"
 #include "Player.h"
+#include "../Models/Identifier.h"
+#include "../Models/PlayerModel.h"
 
 class Engine : public AudioSource
 {
 public:
     Engine();
 
-    ~Engine() override
-    {
-        mixer.removeAllInputs();
-        players.clear(true);
-        audioFormatManager.clearFormats();
-        audioThumbnailCache.clear();
-    }
+    ~Engine() override;
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 
@@ -32,53 +28,22 @@ public:
 
     Player *playerWithIdentifier(Identifier id);
 
-    Player *playerAtIndex(int index) const
-    {
-        return players[index];
-    }
-
     void DebugState() const;
+
+	void setGain(float value);
+
+	float getGain() const;
+
+	void toggleTalkOver();
+
+	void openFile(const File& file);
+
+	void saveFile(const File& file) const;
 
     AudioFormatManager audioFormatManager;
     AudioThumbnailCache audioThumbnailCache;
     UndoManager undoManager;
     ValueTree state;
-
-	void setGain(float value)
-	{
-		currentGain = gainRange.convertFrom0to1(value);
-	}
-
-	float getGain() const
-	{
-		return gainRange.convertTo0to1(currentGain);
-	}
-
-	void toggleTalkOver()
-	{
-		talkOver.setAttackRate((currentSampleRate / 1000) * talkOverFadeMs);
-		talkOver.setReleaseRate((currentSampleRate / 1000) * talkOverFadeMs);
-		talkOverState = !talkOverState;
-		talkOver.gate(talkOverState);
-	}
-
-	void openFile(const File& file)
-	{
-		XmlDocument xmlDocument(file);
-		const std::unique_ptr<XmlElement> xml(xmlDocument.getDocumentElement());
-		undoManager.clearUndoHistory();
-		mixer.removeAllInputs();
-		players.clear(true);
-		audioThumbnailCache.clear();
-		state = ValueTree::fromXml(*xml);
-	}
-
-	void saveFile(const File& file) const
-	{
-		const std::unique_ptr<XmlElement> xml(state.createXml());
-		xml->writeToFile(file, String{});
-	}
-
 private:
 	double currentSampleRate{0};
 	float currentGain{ 1.0f };
@@ -87,9 +52,9 @@ private:
 
 	ADSR talkOver;
 	bool talkOverState{ true };
-	int talkOverFadeMs{ 250 };
+	int talkOverFadeMs{ 500 };
 	NormalisableRange<float> talkOverRange{ Decibels::decibelsToGain<float>(-30), 1.0f};
 
     MixerAudioSource mixer;
-    OwnedArray<Player> players;
+    std::vector<std::unique_ptr<Player>> players;
 };

@@ -254,6 +254,7 @@ namespace Material
 			namespace Dimensions
 			{
 				static const int IconSizeSmall = 24;
+				static const int TouchArea = 40;
 			}
 
 			namespace Padding

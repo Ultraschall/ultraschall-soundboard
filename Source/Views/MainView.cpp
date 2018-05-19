@@ -26,6 +26,10 @@ MainView::~MainView()
 
 void MainView::paint(Graphics &g)
 {
+    if (getLocalBounds().getWidth() < 250 || getLocalBounds().getHeight() < 250)
+    {
+        return;
+    }
     g.fillAll(findColour(Material::ColourIds::backgroundColorId));
     ultraschallIcon.getDrawable()->drawWithin(g, getLocalBounds().reduced(100).toFloat(), RectanglePlacement::centred,
                                               0.2f);

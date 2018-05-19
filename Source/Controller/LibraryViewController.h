@@ -17,7 +17,7 @@ class LibraryViewController
 public:
 	explicit LibraryViewController(Engine &engine);
 
-	~LibraryViewController();
+	~LibraryViewController() override;
 
 	bool isSuitableType(const juce::ValueTree &tree) const override;
 

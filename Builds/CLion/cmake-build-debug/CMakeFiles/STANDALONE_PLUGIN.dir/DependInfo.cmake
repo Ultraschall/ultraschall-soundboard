@@ -32,7 +32,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/danlin/JUCE/modules"
   "/usr/include/alsa"
   "/usr/include/freetype2"
-  "/usr/include/libpng16"
   )
 
 # Targets to which this target links.

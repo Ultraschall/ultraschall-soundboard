@@ -3,6 +3,8 @@
 
 void MainViewController::viewDidLoad()
 {
+	view->bottomBar.gainSlider.setValue(engine.getGain(), dontSendNotification);
+
 	view->toolbar.menuButton.onClick = [this]
 	{
 		view->showSideNavBar();
@@ -44,7 +46,7 @@ void MainViewController::viewDidLoad()
 
 	view->bottomBar.gainSlider.onValueChange = [this]
 	{
-		engine.setGain(view->bottomBar.gainSlider.getValue());
+		engine.setGain(static_cast<float>(view->bottomBar.gainSlider.getValue()));
 	};
 
 	view->sideNavbar.settingsButton.onClick = [this]
@@ -101,9 +103,9 @@ void MainViewController::loadFile()
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
-	fileChooser.reset(new FileChooser("Please select the audio file you want to load...",
+	fileChooser = std::make_unique<FileChooser>("Please select the audio file you want to load...",
 		File::getSpecialLocation(File::userHomeDirectory),
-		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion));
+		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 
 	fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode |
 		FileBrowserComponent::canSelectFiles,
@@ -124,9 +126,9 @@ void MainViewController::importFile()
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
-	fileChooser.reset(new FileChooser("Please select the soundboard file you want to load...",
+	fileChooser = std::make_unique<FileChooser>("Please select the soundboard file you want to load...",
 		File::getSpecialLocation(File::userHomeDirectory),
-		"*.usdb", useNativeVersion));
+		"*.usdb", useNativeVersion);
 
 	fileChooser->launchAsync(FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
 		[this](const FileChooser &chooser)
@@ -148,9 +150,9 @@ void MainViewController::exportFile()
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
-	fileChooser.reset(new FileChooser("Please select the soundboard file you want to save...",
+	fileChooser = std::make_unique<FileChooser>("Please select the soundboard file you want to save...",
 		File::getSpecialLocation(File::userHomeDirectory),
-		"*.usdb", useNativeVersion));
+		"*.usdb", useNativeVersion);
 
 	fileChooser->launchAsync(FileBrowserComponent::saveMode | FileBrowserComponent::canSelectFiles,
 		[this](const FileChooser &chooser)
@@ -171,11 +173,11 @@ void MainViewController::importDirectory()
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
-	Logger::getCurrentLogger()->outputDebugString(engine.audioFormatManager.getWildcardForAllFormats());
+	Logger::outputDebugString(engine.audioFormatManager.getWildcardForAllFormats());
 
-	fileChooser.reset(new FileChooser("Please select the directory you want to import...",
+	fileChooser = std::make_unique<FileChooser>("Please select the directory you want to import...",
 		File::getSpecialLocation(File::userHomeDirectory),
-		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion));
+		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 
 	fileChooser->launchAsync(FileBrowserComponent::openMode | FileBrowserComponent::canSelectDirectories,
 		[this](const FileChooser &chooser)

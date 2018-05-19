@@ -3,108 +3,78 @@
 #include "JuceHeader.h"
 #include "ADSR.h"
 
-class Player : public AudioSource
-{
+class Player : public AudioSource, public ChangeBroadcaster {
 public:
-    explicit Player(const Identifier &id)
-            : playerState(Idle), timeSliceThread("Audio: " + id.toString()),
-              identifier(id)
-    {
-        timeSliceThread.startThread();
-        audioTransportSource = std::make_unique<AudioTransportSource>();
-    }
+    explicit Player(const Identifier &id);
 
-    ~Player() override
-    {
-        audioTransportSource->stop();
-        audioTransportSource->setSource(nullptr);
-    }
+    ~Player() override;
 
+    // AudioSource
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 
     void releaseResources() override;
 
     void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
 
-    bool loadFileIntoTransport(const File &audioFile, 
-							   AudioFormatManager *audioFormatManager,
-							   AudioThumbnailCache *audioThumbnailCache);
+    // File
+    bool loadFileIntoTransport(const File &audioFile,
+                               AudioFormatManager *audioFormatManager,
+                               AudioThumbnailCache *audioThumbnailCache);
 
-    void play()
-    {
-        adsr.setAttackRate(0);
-        adsr.gate(1);
-        audioTransportSource->start();
-    }
+    // Player Transport Functions
+    void play();
 
-    void stop()
-    {
-        audioTransportSource->stop();
-        audioTransportSource->setPosition(0);
-        adsr.gate(0);
-        adsr.reset();
-    }
+    void stop();
 
-    void pause() const
-    {
-        audioTransportSource->stop();
-    }
+    void pause();
 
-    void fadeIn() {
-        adsr.setAttackRate(mySampleRate * attackMs);
-        adsr.gate(1);
-        audioTransportSource->start();
-    }
+    void fadeIn();
 
-    void fadeOut() {
-        adsr.setReleaseRate(mySampleRate * releaseMs);
-        adsr.gate(0);
-    }
+    void fadeOut();
 
-    Identifier getIdentifier() const
-    {
-        return identifier;
-    }
+    void setGain(float value);
 
-    enum PlayerState
-    {
-        Error = -1,
-        Ready = 0,
-        Stopped = 1,
-        Playing = 2,
-        Paused = 3,
-        Played = 4,
-		Idle = 255
+    float getGain();
+
+    int64 getTotalLength() const;
+
+    Identifier identifier;
+
+    enum PlayerState {
+        player_error = -1,
+        player_ready = 0,
+        player_stopped = 1,
+        player_playing = 2,
+        player_paused = 3,
+        player_played = 4,
+        player_idle = 255
     };
+    PlayerState playerState;
+    double progress{0};
+    enum FadeState {
+        fade_in = 1,
+        fade_out = 2,
+        fade_idle = 255
+    };
+    FadeState fadeState;
 
-    std::unique_ptr<AudioThumbnail> thumbnail;
-
-    int64 getTotalLength() const
-    {
-        if (audioFormatReaderSource == nullptr)
-        {
-            return 0;
-        }
-        return audioFormatReaderSource->getTotalLength();
-    }
-
-	void setGain(float value)
-    {
-		currentGain = value;
-    }
+    std::shared_ptr<AudioThumbnail> thumbnail;
 
 private:
-	float currentGain{ 1.0f };
-	float previousGain{ 1.0f };
+    float currentGain{1.0f};
+    float previousGain{1.0f};
+    NormalisableRange<float> gainRange{
+            Decibels::decibelsToGain<float>(-180),
+            Decibels::decibelsToGain<float>(0),
+            0,
+            Decibels::decibelsToGain<float>(-12)
+    };
 
     double mySampleRate{0.0};
     int attackMs{10};
     int releaseMs{10};
 
-    PlayerState playerState;
     TimeSliceThread timeSliceThread;
-
-    Identifier identifier;
 
     std::unique_ptr<AudioTransportSource> audioTransportSource;
     std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;

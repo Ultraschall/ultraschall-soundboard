@@ -27,18 +27,18 @@ public:
     DrawableButton fadeButton{"Fade In/Out", DrawableButton::ImageFitted};
     DrawableButton loopButton{"Loop", DrawableButton::ImageFitted};
 
-    void SetAudioThumbnail(AudioThumbnail *thumbnail)
+    void SetAudioThumbnail(std::shared_ptr<AudioThumbnail> &thumbnail)
     {
-        if (audioThumbnail != nullptr)
+        if (!audioThumbnail.expired())
         {
-            audioThumbnail->removeChangeListener(this);
+            audioThumbnail.lock()->removeChangeListener(this);
         }
 
         audioThumbnail = thumbnail;
 
-        if (audioThumbnail != nullptr)
+        if (!audioThumbnail.expired())
         {
-            audioThumbnail->addChangeListener(this);
+            audioThumbnail.lock()->addChangeListener(this);
         }
     }
 
@@ -65,7 +65,7 @@ private:
     Material::Icon fadeOutIcon{BinaryData::baselinetrending_down24px_svg,
                                BinaryData::baselinetrending_down24px_svgSize};
 
-    AudioThumbnail *audioThumbnail{nullptr};
+    std::weak_ptr<AudioThumbnail> audioThumbnail;
 
     Component spacer;
 

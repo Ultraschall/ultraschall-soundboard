@@ -80,7 +80,7 @@ Component * LibraryViewController::refreshComponentForRow(int rowNumber, bool is
 		return rowView;
 	}
 
-	rowView->SetAudioThumbnail(player->thumbnail.get());
+	rowView->SetAudioThumbnail(player->thumbnail);
 	rowView->playButton.onClick = [player, rowView] {
 		const auto playState = rowView->playButton.getToggleState();
 		if (playState)

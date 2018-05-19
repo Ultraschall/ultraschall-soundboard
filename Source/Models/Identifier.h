@@ -24,8 +24,9 @@ namespace IDs
     DECLARE_ID(start_sample)
     DECLARE_ID(end_sample)
     DECLARE_ID(fadein_samples)
-    DECLARE_ID(fadeout_sanples)
+    DECLARE_ID(fadeout_samples)
     DECLARE_ID(loop)
+    DECLARE_ID(missing)
 
 	// #Banks []
 	DECLARE_ID(BANKS)

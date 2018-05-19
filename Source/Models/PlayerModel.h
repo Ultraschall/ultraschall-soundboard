@@ -17,8 +17,9 @@ struct PlayerModel
 		startSample.referTo(state, IDs::start_sample, nullptr);
 		endSample.referTo(state, IDs::end_sample, nullptr);
         fadeinSamples.referTo(state, IDs::fadein_samples, nullptr);
-        fadeoutSamples.referTo(state, IDs::fadeout_sanples, nullptr);
+        fadeoutSamples.referTo(state, IDs::fadeout_samples, nullptr);
         loop.referTo(state, IDs::loop, nullptr);
+        missing.referTo(state, IDs::missing, nullptr);
     }
 
     ValueTree state;
@@ -31,4 +32,5 @@ struct PlayerModel
     CachedValue<int64> fadeinSamples;
     CachedValue<int64> fadeoutSamples;
     CachedValue<bool> loop;
+    CachedValue<bool> missing;
 };

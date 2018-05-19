@@ -11,30 +11,30 @@
 				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SHARED_CODE">
@@ -63,19 +63,20 @@
 					<Add directory="/home/danlin/JUCE/modules"/>
 					<Add directory="/usr/include/alsa"/>
 					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SHARED_CODE/fast">
@@ -104,19 +105,20 @@
 					<Add directory="/home/danlin/JUCE/modules"/>
 					<Add directory="/usr/include/alsa"/>
 					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SHARED_CODE/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="STANDALONE_PLUGIN">
@@ -144,19 +146,20 @@
 					<Add directory="/home/danlin/JUCE/modules"/>
 					<Add directory="/usr/include/alsa"/>
 					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 STANDALONE_PLUGIN"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 STANDALONE_PLUGIN"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="STANDALONE_PLUGIN/fast">
@@ -184,19 +187,20 @@
 					<Add directory="/home/danlin/JUCE/modules"/>
 					<Add directory="/usr/include/alsa"/>
 					<Add directory="/usr/include/freetype2"/>
-					<Add directory="/usr/include/libpng16"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 STANDALONE_PLUGIN/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 STANDALONE_PLUGIN/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -4514,13 +4518,22 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/BankModel.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/ClipModel.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/Identifier.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/LibraryModel.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h">
+			<Option target="SHARED_CODE"/>
+		</Unit>
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/PlaylistModel.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Models/Utilities.h">

@@ -7303,22 +7303,22 @@ juce_video/juce_video.cpp
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp
 BankViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
+../Views/BankView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/JuceHeader.h
 ViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ViewController.h
-../Models/ClipModel.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Models/ClipModel.h
-../Views/BankView.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h
+../Models/ValueTreeObjectList.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
+../Models/BankModel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/BankModel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp
 ClipViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.h
-memory
--
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.h
 JuceHeader.h
@@ -7383,12 +7383,14 @@ cmath
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.cpp
 Engine.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.h
-../Models/ClipModel.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Models/ClipModel.h
+../Models/PlayerModel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h
+../Models/PlaylistModel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/PlaylistModel.h
+../Models/BankModel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/BankModel.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Engine.h
-vector
--
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/JuceHeader.h
 Player.h
@@ -7403,20 +7405,16 @@ Player.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.h
-memory
--
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/JuceHeader.h
 ADSR.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Engine/ADSR.h
 
-/home/danlin/Projects/ultraschall-soundboard/Source/Models/ClipModel.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/BankModel.h
 JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/JuceHeader.h
 Identifier.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/Identifier.h
-../Engine/Player.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Engine/Player.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/Identifier.h
 JuceHeader.h
@@ -7427,8 +7425,12 @@ JuceHeader.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/JuceHeader.h
 Identifier.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/Identifier.h
-ValueTreeObjectList.h
-/home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
+
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/PlaylistModel.h
+JuceHeader.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/JuceHeader.h
+Identifier.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Models/Identifier.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
 utility
@@ -7441,8 +7443,6 @@ PluginProcessor.h
 /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.h
 PluginEditor.h
 /home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.h
-memory
--
 
 /home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.h
 ../JuceLibraryCode/JuceHeader.h
@@ -7589,28 +7589,66 @@ MaterialLookAndFeel.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
 
 /usr/include/freetype2/freetype/config/ftheader.h
+x86_64-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+x86_64-linux-gnux32/freetype2/freetype/config/ftheader.h
+-
+i386-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+aarch64-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+alpha-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+arm-linux-gnueabihf/freetype2/freetype/config/ftheader.h
+-
+arm-linux-gnueabi/freetype2/freetype/config/ftheader.h
+-
+hppa-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+ia64-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+m68k-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+mipsel-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+mips64el-linux-gnuabin32/freetype2/freetype/config/ftheader.h
+-
+mips64el-linux-gnuabi64/freetype2/freetype/config/ftheader.h
+-
+mips-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+mips64-linux-gnuabin32/freetype2/freetype/config/ftheader.h
+-
+mips64-linux-gnuabi64/freetype2/freetype/config/ftheader.h
+-
+or1k-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+powerpc-linux-gnuspe/freetype2/freetype/config/ftheader.h
+-
+powerpc64le-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+powerpc64-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+powerpc-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+s390x-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+s390-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+sh4-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+sparc64-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+sparc-linux-gnu/freetype2/freetype/config/ftheader.h
+-
+x86_64-kfreebsd-gnu/freetype2/freetype/config/ftheader.h
+-
+i386-kfreebsd-gnu/freetype2/freetype/config/ftheader.h
+-
+i386-gnu/freetype2/freetype/config/ftheader.h
+-
 
 /usr/include/freetype2/ft2build.h
 freetype/config/ftheader.h
 -
-
-/usr/include/libpng16/png.h
-pnglibconf.h
-/usr/include/libpng16/pnglibconf.h
-pngconf.h
-/usr/include/libpng16/pngconf.h
-
-/usr/include/libpng16/pngconf.h
-limits.h
--
-stddef.h
--
-stdio.h
--
-setjmp.h
--
-time.h
--
-
-/usr/include/libpng16/pnglibconf.h
 

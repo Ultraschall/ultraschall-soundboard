@@ -29,9 +29,9 @@ LibraryRowView::LibraryRowView()
 
 LibraryRowView::~LibraryRowView()
 {
-    if (audioThumbnail != nullptr)
+    if (!audioThumbnail.expired())
     {
-        audioThumbnail->removeChangeListener(this);
+        audioThumbnail.lock()->removeChangeListener(this);
     }
 }
 
@@ -44,14 +44,15 @@ void LibraryRowView::paint(Graphics &g)
     g.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
 
     g.setColour(findColour(Material::ColourIds::dialogColorId).contrasting(0.05));
-    if (audioThumbnail != nullptr)
+    if (!audioThumbnail.expired())
     {
-        if (audioThumbnail->getTotalLength() > 0.0)
+        auto thumbnail = audioThumbnail.lock();
+        if (thumbnail->getTotalLength() > 0.0)
         {
-            audioThumbnail->drawChannel(g, getLocalBounds()
+            thumbnail->drawChannel(g, getLocalBounds()
                                                 .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
                                                 .withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
-                                        0, audioThumbnail->getTotalLength(), 1, 1.0f);
+                                        0, thumbnail->getTotalLength(), 1, 1.0f);
         }
     }
 
