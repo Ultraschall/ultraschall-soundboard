@@ -3,23 +3,6 @@
 
 LibraryRowView::LibraryRowView()
 {
-    playIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-    pauseIcon.setColour(findColour(Material::ColourIds::primaryColorId));
-    stopIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-    settingsIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-
-    loopOffIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-    loopOnIcon.setColour(findColour(Material::ColourIds::primaryColorId));
-
-    fadeInIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-    fadeOutIcon.setColour(findColour(Material::ColourIds::textSecondaryColorId));
-
-    playButton.setImages(playIcon.getDrawable(), nullptr, nullptr, nullptr, pauseIcon.getDrawable());
-    stopButton.setImages(stopIcon.getDrawable());
-    settingsButton.setImages(settingsIcon.getDrawable());
-    loopButton.setImages(loopOffIcon.getDrawable(), nullptr, nullptr, nullptr, loopOnIcon.getDrawable());
-    fadeButton.setImages(fadeInIcon.getDrawable(), nullptr, nullptr, nullptr, fadeOutIcon.getDrawable());
-
     addAndMakeVisible(playButton);
     addAndMakeVisible(stopButton);
     addAndMakeVisible(settingsButton);
@@ -59,15 +42,15 @@ void LibraryRowView::paint(Graphics &g)
     //    g.setColour(findColour(Material::ColourIds::primaryColorId));
     //	g.fillRect(getLocalBounds().withTrimmedBottom(iconBarSize));
 
-    g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
-    material->setFontRoboto(g);
-    g.setFont(14);
-    g.drawText(title,
-               getLocalBounds()
-                       .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
-                       .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
-               Justification::topLeft
-    );
+//    g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
+//    material->setFontRoboto(g);
+//    g.setFont(14);
+//    g.drawText(title,
+//               getLocalBounds()
+//                       .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base))
+//                       .withTrimmedTop(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Base)),
+//               Justification::topLeft
+//    );
 
     //g.setColour(findColour(Material::ColourIds::textSecondaryColorId));
     //g.setFont(8);
@@ -99,7 +82,7 @@ void LibraryRowView::paint(Graphics &g)
 
 void LibraryRowView::resized()
 {
-    const auto iconSize = MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Dimensions::IconSizeSmall);
+    const auto iconSize = MaterialLookAndFeel::convertDpToPixel(40);
     FlexBox flexBox;
 
     flexBox.items.add(FlexItem(settingsButton).withMaxWidth(iconSize).withFlex(1));
@@ -111,7 +94,6 @@ void LibraryRowView::resized()
 
     flexBox.performLayout(
             getLocalBounds()
-                    .removeFromBottom(iconSize)
                     .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Left))
                     .withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Right))
     );

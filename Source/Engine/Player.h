@@ -49,14 +49,18 @@ public:
         player_played = 4,
         player_idle = 255
     };
-    PlayerState playerState;
+    PlayerState playerState{player_idle};
     double progress{0};
     enum FadeState {
         fade_in = 1,
         fade_out = 2,
         fade_idle = 255
     };
-    FadeState fadeState;
+    FadeState fadeState{fade_idle};
+
+    bool isLooping();
+
+    void setLooping(bool looping);
 
     std::shared_ptr<AudioThumbnail> thumbnail;
 
@@ -71,8 +75,8 @@ private:
     };
 
     double mySampleRate{0.0};
-    int attackMs{10};
-    int releaseMs{10};
+    int attackMs{3000};
+    int releaseMs{3000};
 
     TimeSliceThread timeSliceThread;
 

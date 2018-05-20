@@ -397,6 +397,11 @@ namespace Material
 			setEdgeIndent(0);
 			setImages(icon.getDrawable());
 		}
+
+		void setColour(const Colour &colour)
+        {
+		    icon.setColour(colour);
+        }
 	private:
 		Icon icon;
 	};
@@ -412,6 +417,16 @@ namespace Material
 			setImages(on.getDrawable(), nullptr, nullptr, nullptr, off.getDrawable());
 			setColour(DrawableButton::backgroundOnColourId, Colours::transparentWhite);
 		}
+
+        void setOnColour(const Colour &colour)
+        {
+            on.setColour(colour);
+        }
+
+        void setOffColour(const Colour &colour)
+        {
+            off.setColour(colour);
+        }
 	private:
 		Icon on;
 		Icon off;

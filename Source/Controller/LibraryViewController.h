@@ -8,40 +8,46 @@
 #include "../Models/PlayerModel.h"
 
 #include "../Views/LibraryView.h"
+#include "../Views/LibraryRowView.h"
 
 class LibraryViewController
-	: public drow::ValueTreeObjectList<PlayerModel>,
-	public ListBoxModel,
-	public ViewController<Component>
-{
+        : public drow::ValueTreeObjectList<PlayerModel>,
+          public ListBoxModel,
+          public ViewController<Component>,
+          public ChangeListener {
 public:
-	explicit LibraryViewController(Engine &engine);
+    explicit LibraryViewController(Engine &engine);
 
-	~LibraryViewController() override;
+    ~LibraryViewController() override;
 
-	bool isSuitableType(const juce::ValueTree &tree) const override;
+    bool isSuitableType(const juce::ValueTree &tree) const override;
 
-	PlayerModel *createNewObject(const juce::ValueTree &tree) override;
+    PlayerModel *createNewObject(const juce::ValueTree &tree) override;
 
-	void deleteObject(PlayerModel *type) override;
+    void deleteObject(PlayerModel *type) override;
 
-	void newObjectAdded(PlayerModel *type) override;
+    void newObjectAdded(PlayerModel *type) override;
 
-	void objectRemoved(PlayerModel *type) override;
+    void objectRemoved(PlayerModel *type) override;
 
-	void objectOrderChanged() override;
+    void objectOrderChanged() override;
 
-	void loadView() override;
+    void loadView() override;
 
-	void viewDidLoad() override;;
+    void viewDidLoad() override;;
 
-	int getNumRows() override;
+    int getNumRows() override;
 
-	void paintListBoxItem(int rowNumber, Graphics & g, int width, int height, bool rowIsSelected) override;
+    void paintListBoxItem(int rowNumber, Graphics &g, int width, int height, bool rowIsSelected) override;
 
-	Component* refreshComponentForRow(int rowNumber, bool isRowSelected, Component* existingComponentToUpdate) override;
+    Component *refreshComponentForRow(int rowNumber, bool isRowSelected, Component *existingComponentToUpdate) override;
+
+    void refreshLibraryRow(LibraryRowView *libraryRowView, Player *player);
+    void intLibraryRow(LibraryRowView *libraryRowView, Player *player);
+
+    void changeListenerCallback(ChangeBroadcaster* changeBroadcaster) override;
 private:
-	LibraryView * getLibraryView() const;
+    LibraryView *getLibraryView() const;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LibraryViewController)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LibraryViewController)
 };

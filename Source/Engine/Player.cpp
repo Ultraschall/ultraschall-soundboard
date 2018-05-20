@@ -51,15 +51,28 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
             sendChangeMessage();
         }
 
-        if (adsr.getState() == ADSR::envState::env_attack && fadeState != fade_in) {
-            fadeState = fade_in;
-            sendChangeMessage();
-        } else if (adsr.getState() == ADSR::envState::env_release && fadeState != fade_out) {
-            fadeState = fade_out;
-            sendChangeMessage();
-        } else if (fadeState != fade_idle) {
-            fadeState = fade_idle;
-            sendChangeMessage();
+        switch (adsr.getState()) {
+            case ADSR::envState::env_attack:
+                if (fadeState != fade_in) {
+                    fadeState = fade_in;
+                    sendChangeMessage();
+                }
+                break;
+            case ADSR::envState::env_release:
+                if (fadeState != fade_out) {
+                    fadeState = fade_out;
+                    sendChangeMessage();
+                }
+                break;
+            case ADSR::envState::env_decay:
+            case ADSR::envState::env_sustain:
+            case ADSR::envState::env_idle:
+            default:
+                if (fadeState != fade_idle) {
+                    fadeState = fade_idle;
+                    sendChangeMessage();
+                }
+                break;
         }
     }
 }
@@ -105,14 +118,15 @@ float Player::getGain() {
 }
 
 void Player::fadeIn() {
-    adsr.setAttackRate(static_cast<float>(mySampleRate * attackMs));
+    adsr.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
     adsr.gate(1);
     audioTransportSource->start();
+    playerState = player_playing;
     sendChangeMessage();
 }
 
 void Player::fadeOut() {
-    adsr.setReleaseRate(static_cast<float>(mySampleRate * releaseMs));
+    adsr.setReleaseRate(static_cast<float>((mySampleRate / 1000) * releaseMs));
     adsr.gate(0);
     sendChangeMessage();
 }
@@ -138,6 +152,15 @@ void Player::stop() {
     adsr.reset();
     playerState = player_stopped;
     sendChangeMessage();
+}
+
+void Player::setLooping(bool looping) {
+    audioFormatReaderSource->setLooping(looping);
+    sendChangeMessage();
+}
+
+bool Player::isLooping() {
+    return audioFormatReaderSource->isLooping();
 }
 
 
