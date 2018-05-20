@@ -7,10 +7,6 @@ ToolbarView::ToolbarView()
 	addAndMakeVisible(spacer);
 }
 
-ToolbarView::~ToolbarView()
-{
-}
-
 void ToolbarView::paint(Graphics &g)
 {
 	g.fillAll(findColour(Material::primaryColorId));

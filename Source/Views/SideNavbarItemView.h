@@ -3,40 +3,43 @@
 #include "JuceHeader.h"
 #include "MaterialLookAndFeel.h"
 
-class SideNavbarItemView : public Button
+class SideNavbarItem : public Button
 {
 public:
-    SideNavbarItemView(const String title, Material::Icon &icon) : Button(title), title(title), icon(icon)
+    SideNavbarItem(const String &title, const char *data, const size_t size, const Colour &colour = Colours::black)
+        : Button(title), text(title), icon(data, size, colour)
     {
-    };
+    }
 
-    String title;
-    Material::Icon &icon;
-
-    virtual void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override;
+    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override;
 
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarItemView)
+    String text;
+    Material::Icon icon;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarItem)
 };
 
-class SideNavbarTitleItemView : public Component {
+class SideNavbarTitle : public Component {
 public:
-	SideNavbarTitleItemView(const String name, const String text) : Component(name), text(text) {
-		const auto material = dynamic_cast<MaterialLookAndFeel *>(&getLookAndFeel());
-		font = Font(material->roboto_Medium);
+    explicit SideNavbarTitle(const String &title) : Component(title), text(title) {
 	}
 
-	void paint(Graphics &g) override
-	{
-		g.setFont(font);
-		g.setFont(MaterialLookAndFeel::convertDpToPixel(20));
-		g.drawText(text, getLocalBounds()
-			.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Padding::Left))
-			.withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Bottom)), Justification::bottomLeft);
-	}
+	void paint(Graphics &g) override;
+
 private:
-	String text;
-	Font font;
+    String text;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarTitleItemView)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarTitle)
+};
+
+class SideNavbarSeperator : public Component {
+public:
+	SideNavbarSeperator() = default;
+
+    void paint(Graphics &g) override;
+
+private:
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarSeperator)
 };

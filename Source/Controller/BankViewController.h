@@ -10,7 +10,7 @@ class BankViewController : public ViewController<Component>, public drow::ValueT
 public:
     explicit BankViewController(Engine &engine);
 
-    ~BankViewController();
+    ~BankViewController() override;
 
     void loadView() override;
 

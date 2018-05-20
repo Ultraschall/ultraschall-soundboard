@@ -9,7 +9,7 @@ class ToolbarView : public Component
 public:
     ToolbarView();
 
-    ~ToolbarView();
+    ~ToolbarView() override = default;
 
     void paint(Graphics &) override;
 

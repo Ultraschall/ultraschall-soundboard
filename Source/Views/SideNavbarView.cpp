@@ -8,19 +8,17 @@ SideNavbarView::SideNavbarView()
 	viewPort.getViewedComponent()->addAndMakeVisible(openFolderButton);
 	viewPort.getViewedComponent()->addAndMakeVisible(saveFolderButton);
 
+	viewPort.getViewedComponent()->addAndMakeVisible(seperator[0]);
 	viewPort.getViewedComponent()->addAndMakeVisible(bankTitle);
 
 	viewPort.getViewedComponent()->addAndMakeVisible(spacer);
 	viewPort.getViewedComponent()->addAndMakeVisible(midiButton);
 	viewPort.getViewedComponent()->addAndMakeVisible(oscButton);
+	viewPort.getViewedComponent()->addAndMakeVisible(seperator[1]);
 	viewPort.getViewedComponent()->addAndMakeVisible(settingsButton);
 
 	viewPort.setScrollBarsShown(false, false, true, false);
 	addAndMakeVisible(viewPort);
-}
-
-SideNavbarView::~SideNavbarView()
-{
 }
 
 void SideNavbarView::paint(Graphics &g)
@@ -34,11 +32,11 @@ void SideNavbarView::resized()
     FlexBox flexBox;
 
     flexBox.flexDirection = FlexBox::Direction::column;
-	
+
 	flexBox.items.add(FlexItem(libraryTitle)
-		.withMaxHeight(Material::Specs::NavigationDrawer::Standard::Dimensions::TitleHeight)
-		.withMinHeight(Material::Specs::NavigationDrawer::Standard::Dimensions::TitleHeight)
-		.withFlex(2)
+		.withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
+		.withMinHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
+		.withFlex(1)
 	);
     flexBox.items.add(FlexItem(importFolderButton)
 		.withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
@@ -56,13 +54,18 @@ void SideNavbarView::resized()
 		.withFlex(1)
 	);
 
+	flexBox.items.add(FlexItem(seperator[0])
+							  .withMaxHeight(MaterialLookAndFeel::convertDpToPixel(8))
+							  .withMinHeight(MaterialLookAndFeel::convertDpToPixel(8))
+							  .withFlex(1)
+	);
 	flexBox.items.add(FlexItem(bankTitle)
-		.withMaxHeight(Material::Specs::NavigationDrawer::Standard::Dimensions::TitleHeight)
-		.withMinHeight(Material::Specs::NavigationDrawer::Standard::Dimensions::TitleHeight)
-		.withFlex(2)
+	    .withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
+	    .withMinHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
+		.withFlex(1)
 	);
 
-	flexBox.items.add(FlexItem(spacer).withFlex(3));
+	flexBox.items.add(FlexItem(spacer).withFlex(2));
 
 	flexBox.items.add(FlexItem(midiButton)
 		.withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
@@ -73,6 +76,11 @@ void SideNavbarView::resized()
 		.withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
 		.withMinHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))
 		.withFlex(1)
+	);
+	flexBox.items.add(FlexItem(seperator[1])
+							  .withMaxHeight(MaterialLookAndFeel::convertDpToPixel(8))
+							  .withMinHeight(MaterialLookAndFeel::convertDpToPixel(8))
+							  .withFlex(1)
 	);
     flexBox.items.add(FlexItem(settingsButton)
 		.withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Dimensions::ItemHeight))

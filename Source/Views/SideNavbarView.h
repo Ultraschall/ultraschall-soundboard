@@ -4,61 +4,49 @@
 #include "MaterialLookAndFeel.h"
 #include "SideNavbarItemView.h"
 
-class SideNavbarView : public Component
-{
+class SideNavbarView : public Component {
 public:
-	SideNavbarView();
+    SideNavbarView();
 
-	~SideNavbarView();
+    ~SideNavbarView() override = default;
 
-	void paint(Graphics &) override;
+    void paint(Graphics &) override;
 
-	void resized() override;
+    void resized() override;
 
-	SideNavbarTitleItemView libraryTitle{ "Library", "Library" };
-	SideNavbarItemView importFolderButton{ "Import Folder", importFolderIcon };
-	SideNavbarItemView saveFolderButton{ "Save", saveIcon };
-	SideNavbarItemView openFolderButton{ "Open", openIcon };
+    SideNavbarTitle libraryTitle{"Library"};
+    SideNavbarItem importFolderButton{"Import Folder",
+                                      BinaryData::baselinefolder_open24px_svg,
+                                      BinaryData::baselinefolder_open24px_svgSize,
+                                      findColour(Material::ColourIds::textPrimaryColorId)};
+    SideNavbarItem saveFolderButton{"Save",
+                                    BinaryData::baselinearchive24px_svg,
+                                    BinaryData::baselinearchive24px_svgSize,
+                                    findColour(Material::ColourIds::textPrimaryColorId)};
+    SideNavbarItem openFolderButton{"Open",
+                                    BinaryData::baselineunarchive24px_svg,
+                                    BinaryData::baselineunarchive24px_svgSize,
+                                    findColour(Material::ColourIds::textPrimaryColorId)};
 
-	SideNavbarTitleItemView bankTitle{ "Bank", "Bank" };
+    SideNavbarTitle bankTitle{"Bank"};
 
-	SideNavbarItemView midiButton{ "MIDI Learn", midiIcon };
-	SideNavbarItemView oscButton{ "OSC", oscIcon };
-	SideNavbarItemView settingsButton{ "Settings", settingsIcon };
+    SideNavbarItem midiButton{"MIDI Learn",
+                              BinaryData::baselinesettings_input_svideo24px_svg,
+                              BinaryData::baselinesettings_input_svideo24px_svgSize,
+                              findColour(Material::ColourIds::textPrimaryColorId)};
+    SideNavbarItem oscButton{"OSC",
+                             BinaryData::baselinesettings_input_antenna24px_svg,
+                             BinaryData::baselinesettings_input_antenna24px_svgSize,
+                             findColour(Material::ColourIds::textPrimaryColorId)};
+    SideNavbarItem settingsButton{"Settings",
+                                  BinaryData::baselinesettings20px_svg,
+                                  BinaryData::baselinesettings20px_svgSize,
+                                  findColour(Material::ColourIds::textPrimaryColorId)};
 
 private:
-	Viewport viewPort;
+    Viewport viewPort;
+    Component spacer;
+    SideNavbarSeperator seperator[2];
 
-	Material::Icon settingsIcon = { BinaryData::baselinesettings20px_svg,
-								   BinaryData::baselinesettings20px_svgSize,
-								   findColour(Material::ColourIds::textSecondaryColorId) };
-
-	Material::Icon backIcon = { BinaryData::baselinenavigate_before24px_svg,
-							   BinaryData::baselinenavigate_before24px_svgSize,
-							   findColour(Material::ColourIds::textSecondaryColorId) };
-
-	Material::Icon importFolderIcon{ BinaryData::baselinefolder_open24px_svg,
-									BinaryData::baselinefolder_open24px_svgSize,
-									findColour(Material::ColourIds::textSecondaryColorId) };
-
-	Material::Icon saveIcon{ BinaryData::baselinearchive24px_svg,
-							BinaryData::baselinearchive24px_svgSize,
-							findColour(Material::ColourIds::textSecondaryColorId) };
-
-	Material::Icon openIcon{ BinaryData::baselineunarchive24px_svg,
-							BinaryData::baselineunarchive24px_svgSize,
-							findColour(Material::ColourIds::textSecondaryColorId) };
-
-	Material::Icon oscIcon{ BinaryData::baselinesettings_input_antenna24px_svg,
-							BinaryData::baselinesettings_input_antenna24px_svgSize,
-							findColour(Material::ColourIds::textSecondaryColorId) };
-
-	Material::Icon midiIcon{ BinaryData::baselinesettings_input_svideo24px_svg,
-							 BinaryData::baselinesettings_input_svideo24px_svgSize,
-							 findColour(Material::ColourIds::textSecondaryColorId) };
-
-
-	Component spacer;
-
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarView)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SideNavbarView)
 };

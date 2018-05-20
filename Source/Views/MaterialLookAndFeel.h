@@ -492,7 +492,7 @@ public:
 		//return T(std::round(px));
 #if JUCE_LINUX || JUCE_WINDOWS
 		//const auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
- 		return T(std::round(dp));
+ 		return T(std::round(dp) * 0.75);
 #else
 		return T(std::round(dp));
 #endif
