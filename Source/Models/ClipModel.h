@@ -10,8 +10,8 @@ struct ClipModel
     {
         jassert(v.hasType(IDs::CLIP));
 
-        uuid.referTo(state, IDs::uuid, nullptr);
-        index.referTo(state, IDs::index, nullptr);
+        uuid.referTo(state, IDs::clip_uuid, nullptr);
+        index.referTo(state, IDs::clip_index, nullptr);
         playerUuid.referTo(state, IDs::player_uuid, nullptr);
     }
 

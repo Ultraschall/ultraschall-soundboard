@@ -5,21 +5,24 @@
 
 struct PlayerModel
 {
-	explicit PlayerModel(const ValueTree &v)
+    PlayerModel(const ValueTree &v)
             : state(v)
     {
         jassert(v.hasType(IDs::PLAYER));
 
-        uuid.referTo(state, IDs::uuid, nullptr);
-        path.referTo(state, IDs::path, nullptr);
-        title.referTo(state, IDs::title, nullptr);
-		gain.referTo(state, IDs::gain, nullptr);
-		startSample.referTo(state, IDs::start_sample, nullptr);
-		endSample.referTo(state, IDs::end_sample, nullptr);
-        fadeinSamples.referTo(state, IDs::fadein_samples, nullptr);
-        fadeoutSamples.referTo(state, IDs::fadeout_samples, nullptr);
-        loop.referTo(state, IDs::loop, nullptr);
-        missing.referTo(state, IDs::missing, nullptr);
+        uuid.referTo(state, IDs::player_uuid, nullptr);
+        path.referTo(state, IDs::player_path, nullptr);
+        title.referTo(state, IDs::player_title, nullptr);
+		gain.referTo(state, IDs::player_gain, nullptr);
+		startSample.referTo(state, IDs::player_start_sample, nullptr);
+		endSample.referTo(state, IDs::player_end_sample, nullptr);
+        fadeinSamples.referTo(state, IDs::player_fadein_samples, nullptr);
+        fadeoutSamples.referTo(state, IDs::player_fadeout_samples, nullptr);
+        loop.referTo(state, IDs::player_loop, nullptr);
+
+        playerState.referTo(state, IDs::player_state, nullptr);
+        fadeState.referTo(state, IDs::player_state_fade, nullptr);
+        missing.referTo(state, IDs::player_state_missing, nullptr);
     }
 
     ValueTree state;
@@ -32,5 +35,8 @@ struct PlayerModel
     CachedValue<int64> fadeinSamples;
     CachedValue<int64> fadeoutSamples;
     CachedValue<bool> loop;
+
+    CachedValue<int> playerState;
+    CachedValue<int> fadeState;
     CachedValue<bool> missing;
 };

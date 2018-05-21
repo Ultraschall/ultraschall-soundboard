@@ -11,8 +11,8 @@ public:
 	{
 		jassert(v.hasType(IDs::BANK));
 
-		uuid.referTo(state, IDs::uuid, nullptr);
-		title.referTo(state, IDs::title, nullptr);
+		uuid.referTo(state, IDs::bank_uuid, nullptr);
+		title.referTo(state, IDs::bank_title, nullptr);
 	}
 
 	ValueTree state;

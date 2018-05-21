@@ -11,8 +11,8 @@ public:
 	{
 		jassert(v.hasType(IDs::PLAYLIST));
 
-		uuid.referTo(state, IDs::uuid, nullptr);
-		title.referTo(state, IDs::title, nullptr);
+		uuid.referTo(state, IDs::playlist_uuid, nullptr);
+		title.referTo(state, IDs::playlist_title, nullptr);
 	}
 
 	ValueTree state;

@@ -5,7 +5,7 @@
 #include "../Models/Identifier.h"
 #include "../Models/PlayerModel.h"
 
-class Engine : public AudioSource
+class Engine : public AudioSource, public ChangeListener, public Timer
 {
 public:
     Engine();
@@ -26,7 +26,9 @@ public:
 
 	void newPlaylist();
 
-    Player *playerWithIdentifier(Identifier id);
+    Player *playerWithIdentifier(const Identifier &id);
+
+    ValueTree playerStateWithIdentifier(const Identifier &id);
 
     void DebugState() const;
 
@@ -40,11 +42,48 @@ public:
 
 	void saveFile(const File& file) const;
 
+	void playerLooping(const Identifier &uuid, bool looping)
+	{
+		playerWithIdentifier(uuid)->setLooping(looping);
+	}
+
+	void playerFadeOut(const Identifier &uuid)
+	{
+		playerWithIdentifier(uuid)->fadeOut();
+	}
+
+	void playerFadeIn(const Identifier &uuid)
+	{
+		playerWithIdentifier(uuid)->fadeIn();
+	}
+
+	void playerPlay(const Identifier &uuid)
+	{
+		playerWithIdentifier(uuid)->play();
+	}
+
+	void playerPause(const Identifier &uuid)
+	{
+		playerWithIdentifier(uuid)->pause();
+	}
+
+	void playerStop(const Identifier &uuid)
+	{
+		playerWithIdentifier(uuid)->stop();
+	}
+
+    void changeListenerCallback (ChangeBroadcaster* source) override;
+	void syncState(ValueTree state, Player* player);
+
+    void timerCallback() override;
+
     AudioFormatManager audioFormatManager;
     AudioThumbnailCache audioThumbnailCache;
     UndoManager undoManager;
     ValueTree state;
 private:
+    Array<Identifier> playersToUpdate;
+
 	double currentSampleRate{0};
 	float currentGain{ 1.0f };
 	float previousGain{ 1.0f };

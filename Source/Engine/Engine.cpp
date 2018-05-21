@@ -16,8 +16,8 @@ Engine::Engine()
     }
 
     state = ValueTree(IDs::LIBRARY);
-    state.setProperty(IDs::version, "4.0.0", nullptr);
-    state.setProperty(IDs::title, "Soundboard", nullptr);
+    state.setProperty(IDs::library_version, "4.0.0", nullptr);
+    state.setProperty(IDs::library_title, "Soundboard", nullptr);
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
@@ -28,6 +28,8 @@ Engine::Engine()
 	newPlaylist();
 
 	undoManager.clearUndoHistory();
+
+	startTimer(100);
 }
 
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -78,6 +80,7 @@ void Engine::loadAudioFile(const File& file)
     {
         return;
     }
+    player->addChangeListener(this);
 
     const ValueTree playerState(IDs::PLAYER);
     PlayerModel model(playerState);
@@ -91,6 +94,10 @@ void Engine::loadAudioFile(const File& file)
     model.fadeoutSamples = 1;
     model.loop = false;
 
+    model.playerState = player->playerState;
+    model.fadeState = player->fadeState;
+    model.missing = player->playerState == Player::player_error;
+
     mixer.addInputSource(player.get(), false);
     players.push_back(std::move(player));
 
@@ -102,7 +109,7 @@ void Engine::DebugState() const
     Logger::outputDebugString(state.toXmlString());
 }
 
-Player *Engine::playerWithIdentifier(const Identifier id)
+Player *Engine::playerWithIdentifier(const Identifier &id)
 {
     for (auto &p : players)
     {
@@ -150,6 +157,7 @@ void Engine::newPlaylist()
 }
 
 Engine::~Engine() {
+    stopTimer();
     mixer.removeAllInputs();
     players.clear();
     audioFormatManager.clearFormats();
@@ -200,4 +208,50 @@ void Engine::openFile(const File &file) {
 void Engine::saveFile(const File &file) const {
     const std::unique_ptr<XmlElement> xml(state.createXml());
     xml->writeToFile(file, String{});
+}
+
+void Engine::changeListenerCallback(ChangeBroadcaster *source) {
+    auto player = dynamic_cast<Player*>(source);
+    if (player == nullptr)
+    {
+        return;
+    }
+
+    playersToUpdate.addIfNotAlreadyThere(player->identifier);
+}
+
+void Engine::timerCallback() {
+    playersToUpdate.getLock().enter();
+    for (const auto &p: playersToUpdate) {
+        auto player = playerWithIdentifier(p);
+        auto playerState = playerStateWithIdentifier(p);
+
+        syncState(playerState, player);
+    }
+    playersToUpdate.clear();
+    playersToUpdate.getLock().exit();
+}
+
+ValueTree Engine::playerStateWithIdentifier(const Identifier &id) {
+    auto players = state.getChildWithName(IDs::PLAYERS);
+    return players.getChildWithProperty(IDs::player_uuid, id.toString());
+}
+
+void Engine::syncState(ValueTree state, Player *player) {
+    PlayerModel model(state);
+
+    if (player->playerState != model.playerState) {
+        model.playerState = player->playerState;
+    }
+
+    if (player->fadeState != model.fadeState) {
+        model.fadeState = player->fadeState;
+    }
+
+    if (player->isLooping() != model.loop) {
+        model.loop = player->isLooping();
+    }
+
+    Logger::outputDebugString("sync state of " + model.uuid);
+
 }

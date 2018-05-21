@@ -7347,6 +7347,8 @@ ViewController.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h
 ../Views/LibraryView.h
 /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
+../Views/LibraryRowView.h
+/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
 
 /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
 MainViewController.h

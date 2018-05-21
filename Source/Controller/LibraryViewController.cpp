@@ -21,12 +21,10 @@ bool LibraryViewController::isSuitableType(const juce::ValueTree &tree) const {
 
 PlayerModel *LibraryViewController::createNewObject(const juce::ValueTree &tree) {
     auto model = new PlayerModel(tree);
-    engine.playerWithIdentifier(Identifier(model->uuid))->addChangeListener(this);
     return model;
 }
 
 void LibraryViewController::deleteObject(PlayerModel *type) {
-    engine.playerWithIdentifier(Identifier(type->uuid))->removeChangeListener(this);
     delete type;
 }
 
@@ -69,10 +67,7 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
 
     if (rowNumber >= objects.size())
     {
-        if (nullptr != existingComponentToUpdate) {
-            delete existingComponentToUpdate;
-        }
-
+        delete existingComponentToUpdate;
         return nullptr;
     }
 
@@ -98,13 +93,8 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
     libraryRowView->reset();
     libraryRowView->title = playerModel->title;
 
-    const auto player = engine.playerWithIdentifier(Identifier(playerModel->uuid));
-    if (player == nullptr) {
-        return libraryRowView;
-    }
-
-    intLibraryRow(libraryRowView, player);
-    refreshLibraryRow(libraryRowView, player);
+    intLibraryRow(libraryRowView, *playerModel);
+    refreshLibraryRow(libraryRowView, *playerModel);
 
     return libraryRowView;
 }
@@ -113,76 +103,53 @@ LibraryView *LibraryViewController::getLibraryView() const {
     return dynamic_cast<LibraryView *>(getView());
 }
 
-void LibraryViewController::changeListenerCallback(ChangeBroadcaster *changeBroadcaster) {
-    auto player = dynamic_cast<Player*>(changeBroadcaster);
-
-    if (player == nullptr)
-    {
-        return;
-    }
-
-    for (auto &p: objects)
-    {
-        if (p->uuid == player->identifier.toString())
-        {
-            auto index = objects.indexOf(p);
-            auto libraryRowView = dynamic_cast<LibraryRowView*>(getLibraryView()->table.getComponentForRowNumber(index));
-            if (libraryRowView != nullptr)
-            {
-                refreshLibraryRow(libraryRowView, player);
-            }
-            return;
-        }
-    }
-}
-
-void LibraryViewController::intLibraryRow(LibraryRowView *libraryRowView, Player *player) {
-    libraryRowView->SetAudioThumbnail(player->thumbnail);
-
+void LibraryViewController::intLibraryRow(LibraryRowView *libraryRowView, PlayerModel &playerModel) {
+    auto uuid = Identifier(playerModel.uuid);
     libraryRowView->settingsButton.onClick = [] {
 
     };
 
-    libraryRowView->loopButton.onClick = [player, libraryRowView] {
-        player->setLooping(!libraryRowView->loopButton.getToggleState());
+    libraryRowView->loopButton.onClick = [this, uuid, libraryRowView] {
+        engine.playerLooping(uuid, !libraryRowView->loopButton.getToggleState());
     };
 
-    libraryRowView->fadeButton.onClick = [player, libraryRowView] {
+    libraryRowView->fadeButton.onClick = [this, uuid, libraryRowView] {
         const auto fadeState = libraryRowView->fadeButton.getToggleState();
         if (fadeState) {
-            player->fadeOut();
+            engine.playerFadeOut(uuid);
         } else {
-            player->fadeIn();
+            engine.playerFadeIn(uuid);
         }
     };
 
-    libraryRowView->playButton.onClick = [player, libraryRowView] {
+    libraryRowView->playButton.onClick = [this, uuid, libraryRowView] {
         const auto playState = libraryRowView->playButton.getToggleState();
         if (playState) {
-            player->pause();
+            engine.playerPause(uuid);
         } else {
-            player->play();
+            engine.playerPlay(uuid);
         }
     };
 
-    libraryRowView->stopButton.onClick = [player, libraryRowView] {
-        player->stop();
+    libraryRowView->stopButton.onClick = [this, uuid, libraryRowView] {
+        engine.playerStop(uuid);
     };
 }
 
-void LibraryViewController::refreshLibraryRow(LibraryRowView *libraryRowView, Player *player) {
-    switch (player->fadeState) {
+void LibraryViewController::refreshLibraryRow(LibraryRowView *libraryRowView, PlayerModel &playerModel) {
+    switch (playerModel.fadeState) {
         case Player::fade_out:
             libraryRowView->fadeButton.setToggleState(false, dontSendNotification);
             break;
 
+        default:
         case Player::fade_in:
         case Player::fade_idle:
             libraryRowView->fadeButton.setToggleState(true, dontSendNotification);
             break;
     }
 
-    switch (player->playerState) {
+    switch (playerModel.playerState) {
         case Player::player_error:
             libraryRowView->setHasError();
         case Player::player_stopped:
@@ -197,11 +164,23 @@ void LibraryViewController::refreshLibraryRow(LibraryRowView *libraryRowView, Pl
         case Player::player_playing:
             libraryRowView->setIsPlaying();
             break;
+        default:
         case Player::player_ready:
         case Player::player_idle:
             libraryRowView->setIsReady();
             break;
     }
 
-    libraryRowView->loopButton.setToggleState(player->isLooping(), dontSendNotification);
+    libraryRowView->loopButton.setToggleState(playerModel.loop, dontSendNotification);
+}
+
+void LibraryViewController::valueTreePropertyChanged(ValueTree &state, const Identifier &identifier) {
+
+    if (state.hasType(IDs::PLAYER))
+    {
+        auto index = indexOf(state);
+        auto playerModel = objects[index];
+        auto libraryRowView = dynamic_cast<LibraryRowView*>(getLibraryView()->table.getComponentForRowNumber(indexOf(state)));
+        refreshLibraryRow(libraryRowView, *playerModel);
+    }
 }

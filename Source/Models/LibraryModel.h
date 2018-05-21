@@ -10,9 +10,9 @@ struct LibraryModel
 	{
 		jassert(v.hasType(IDs::LIBRARY));
 
-		version.referTo(state, IDs::version, nullptr);
-		uuid.referTo(state, IDs::uuid, nullptr);
-		title.referTo(state, IDs::title, nullptr);
+		version.referTo(state, IDs::library_version, nullptr);
+		uuid.referTo(state, IDs::library_uuid, nullptr);
+		title.referTo(state, IDs::library_title, nullptr);
 	}
 
 	ValueTree state;

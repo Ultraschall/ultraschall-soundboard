@@ -7331,6 +7331,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/JUCE/modules/juce_video/juce_video.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
@@ -7344,6 +7345,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
@@ -8994,6 +8996,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
@@ -9554,6 +9557,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
+CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
 CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.o: /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h

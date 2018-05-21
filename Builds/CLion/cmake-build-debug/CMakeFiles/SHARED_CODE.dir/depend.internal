@@ -7332,6 +7332,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/JUCE/modules/juce_video/capture/juce_CameraDevice.h
  /home/danlin/JUCE/modules/juce_video/juce_video.h
  /home/danlin/JUCE/modules/juce_video/playback/juce_VideoComponent.h
+ /home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/JuceHeader.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Controller/MainViewController.cpp
@@ -7345,6 +7346,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Co
  /home/danlin/Projects/ultraschall-soundboard/Source/Models/PlayerModel.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Models/ValueTreeObjectList.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
+ /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
@@ -8995,6 +8997,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/Projects/ultraschall-soundboard/Source/PluginEditor.h
  /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
+ /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
@@ -9555,6 +9558,7 @@ CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Pl
  /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp
  /home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h
+ /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h
  /home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h
