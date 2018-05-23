@@ -1,10 +1,10 @@
 #include "Player.h"
 
 Player::Player(const Identifier &id)
-        : playerState(player_idle),
-          timeSliceThread("Player: " + id.toString()),
-          identifier(id),
-          fadeState(fade_idle) {
+        : identifier(id),
+          playerState(player_idle),
+          fadeState(fade_idle),
+          timeSliceThread("Player: " + id.toString()) {
     timeSliceThread.startThread();
     audioTransportSource = std::make_unique<AudioTransportSource>();
 }

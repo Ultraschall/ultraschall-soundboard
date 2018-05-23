@@ -4,7 +4,27 @@
 
 namespace Material
 {
-	enum ColourIds
+    namespace Theme::Colour {
+        namespace Pallete {
+            juce::Colour const Primary{0xFF6200EE};
+            juce::Colour const PrimaryVariant{0xFF3700B3};
+            juce::Colour const PrimaryVariant2{0xFFBB86FC};
+            juce::Colour const Secondary{0xFF03DAC6};
+            juce::Colour const SecondaryVariant{0xFF018786};
+
+            juce::Colour const Background{0xFFFFFFFF};
+            juce::Colour const Surface{0xFFFFFFFF};
+            juce::Colour const Error{0xFFB00020};
+            
+            juce::Colour const OnPrimary{0xFFFFFFFF};
+            juce::Colour const OnSecondary{0xFF000000};
+            juce::Colour const OnBackground{0xFF000000};
+            juce::Colour const OnSurface{0xFF000000};
+            juce::Colour const OnError{0xFFFFFFFF};
+        }
+    }
+	
+    enum ColourIds
 	{
 		primaryColorId = 0x8000001,
 		primaryLightColorId = 0x8000002,
@@ -505,7 +525,7 @@ public:
 		//auto screenDensity = display.totalArea.getWidth() / display.totalArea.getHeight();
 		//const double px = (dp * (display.dpi / ldpi));
 		//return T(std::round(px));
-#if JUCE_LINUX || JUCE_WINDOWS
+#if JUCE_LINUX || JUCE_WINDOWS || JUCE_MAC
 		//const auto display = Desktop::getInstance().getDisplays().getDisplayContaining(TopLevelWindow::getTopLevelWindow(0)->getScreenBounds().getCentre());
  		return T(std::round(dp) * 0.75);
 #else

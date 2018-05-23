@@ -439,39 +439,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Views\ClipRowView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\LibraryRowView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\SideNavbarItemView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\MaterialLookAndFeel.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\SideNavbarView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\BankView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\BottomBarView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\ClipView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\LibraryView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\MainView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Views\ToolbarView.cpp">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Controller\BankViewController.cpp">
       <Filter>Ultraschall Soundboard\Source\Controller</Filter>
     </ClCompile>
@@ -2511,10 +2478,19 @@
     <ClInclude Include="..\..\Source\Models\PlayerModel.h">
       <Filter>Ultraschall Soundboard\Source\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\ClipRowView.h">
+    <ClInclude Include="..\..\Source\Views\FloatingActionButton.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\LibraryRowView.h">
+    <ClInclude Include="..\..\Source\Views\MaterialLookAndFeel.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\ToolbarView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\MainView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\BottomBarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\SideNavbarItemView.h">
@@ -2523,25 +2499,19 @@
     <ClInclude Include="..\..\Source\Views\SideNavbarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\MaterialLookAndFeel.h">
+    <ClInclude Include="..\..\Source\Views\LibraryView.h">
+      <Filter>Ultraschall Soundboard\Source\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Views\LibraryRowView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\BankView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\BottomBarView.h">
+    <ClInclude Include="..\..\Source\Views\ClipRowView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Views\ClipView.h">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Views\LibraryView.h">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Views\MainView.h">
-      <Filter>Ultraschall Soundboard\Source\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Views\ToolbarView.h">
       <Filter>Ultraschall Soundboard\Source\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Controller\BankViewController.h">

@@ -11,7 +11,29 @@ public:
     {
     }
 
-    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override;
+    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
+        const auto material = dynamic_cast<MaterialLookAndFeel *>(&getLookAndFeel());
+        if (isMouseOverButton)
+        {
+            g.setColour(findColour(Material::ColourIds::dividerColorId));
+            g.fillRoundedRectangle(getLocalBounds().reduced(MaterialLookAndFeel::convertDpToPixel(8)).toFloat(), MaterialLookAndFeel::convertDpToPixel(4.0f));
+        }
+        
+        icon.getDrawable()->drawWithin(g, {
+            MaterialLookAndFeel::convertDpToPixel<float>(Material::Specs::NavigationDrawer::Modal::Padding::Left),
+            0.0f,
+            MaterialLookAndFeel::convertDpToPixel<float>(Material::Specs::NavigationDrawer::Modal::Dimensions::Icon),
+            float(getHeight())
+        }, RectanglePlacement::onlyReduceInSize, 1);
+        
+        g.setColour(findColour(Material::ColourIds::textPrimaryColorId));
+        g.setFont(Font(material->robotoCondensed_Bold));
+        g.setFont(MaterialLookAndFeel::convertDpToPixel(14));
+        g.drawText(text,
+                   getLocalBounds()
+                   .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Padding::TextLeft)),
+                   Justification::centredLeft);
+    }
 
 private:
     String text;
@@ -25,7 +47,17 @@ public:
     explicit SideNavbarTitle(const String &title) : Component(title), text(title) {
 	}
 
-	void paint(Graphics &g) override;
+    void paint(Graphics &g) override {
+        const auto material = dynamic_cast<MaterialLookAndFeel *>(&getLookAndFeel());
+        auto font = Font(material->robotoCondensed_Regular);
+        
+        g.setColour(findColour(Material::textSecondaryColorId));
+        g.setFont(font);
+        g.setFont(MaterialLookAndFeel::convertDpToPixel(14));
+        g.drawText(text, getLocalBounds()
+                   .withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Modal::Padding::Left))
+                   .withTrimmedBottom(MaterialLookAndFeel::convertDpToPixel(Material::Specs::Global::Padding::Bottom)), Justification::bottomLeft);
+    }
 
 private:
     String text;
@@ -37,7 +69,11 @@ class SideNavbarSeperator : public Component {
 public:
 	SideNavbarSeperator() = default;
 
-    void paint(Graphics &g) override;
+    void paint(Graphics &g) override {
+        g.setColour(findColour(Material::ColourIds::dividerColorId));
+        auto y = getHeight() * 0.5f;
+        g.drawLine(0, y, getWidth(), y);
+    }
 
 private:
 

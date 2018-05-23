@@ -85,28 +85,18 @@ add_library (SHARED_CODE STATIC
     "../../Source/Models/ValueTreeObjectList.h"
     "../../Source/Models/ClipModel.h"
     "../../Source/Models/PlayerModel.h"
-    "../../Source/Views/ClipRowView.cpp"
-    "../../Source/Views/ClipRowView.h"
-    "../../Source/Views/LibraryRowView.cpp"
-    "../../Source/Views/LibraryRowView.h"
-    "../../Source/Views/SideNavbarItemView.cpp"
-    "../../Source/Views/SideNavbarItemView.h"
-    "../../Source/Views/MaterialLookAndFeel.cpp"
-    "../../Source/Views/SideNavbarView.h"
+    "../../Source/Views/FloatingActionButton.h"
     "../../Source/Views/MaterialLookAndFeel.h"
-    "../../Source/Views/SideNavbarView.cpp"
-    "../../Source/Views/BankView.cpp"
-    "../../Source/Views/BankView.h"
-    "../../Source/Views/BottomBarView.cpp"
-    "../../Source/Views/BottomBarView.h"
-    "../../Source/Views/ClipView.cpp"
-    "../../Source/Views/ClipView.h"
-    "../../Source/Views/LibraryView.cpp"
-    "../../Source/Views/LibraryView.h"
-    "../../Source/Views/MainView.cpp"
-    "../../Source/Views/MainView.h"
-    "../../Source/Views/ToolbarView.cpp"
     "../../Source/Views/ToolbarView.h"
+    "../../Source/Views/MainView.h"
+    "../../Source/Views/BottomBarView.h"
+    "../../Source/Views/SideNavbarItemView.h"
+    "../../Source/Views/SideNavbarView.h"
+    "../../Source/Views/LibraryView.h"
+    "../../Source/Views/LibraryRowView.h"
+    "../../Source/Views/BankView.h"
+    "../../Source/Views/ClipRowView.h"
+    "../../Source/Views/ClipView.h"
     "../../Source/Controller/BankViewController.cpp"
     "../../Source/Controller/BankViewController.h"
     "../../Source/Controller/ClipViewController.cpp"
@@ -1558,17 +1548,18 @@ set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER
 set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/ClipRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarItemView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/ClipRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2990,7 +2981,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -2999,7 +2990,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
@@ -3069,13 +3060,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3219,7 +3210,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -3228,7 +3219,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
@@ -3300,13 +3291,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3479,28 +3470,18 @@ add_library (SHARED_CODE STATIC
     "../../Source/Models/ValueTreeObjectList.h"
     "../../Source/Models/ClipModel.h"
     "../../Source/Models/PlayerModel.h"
-    "../../Source/Views/ClipRowView.cpp"
-    "../../Source/Views/ClipRowView.h"
-    "../../Source/Views/LibraryRowView.cpp"
-    "../../Source/Views/LibraryRowView.h"
-    "../../Source/Views/SideNavbarItemView.cpp"
-    "../../Source/Views/SideNavbarItemView.h"
-    "../../Source/Views/MaterialLookAndFeel.cpp"
-    "../../Source/Views/SideNavbarView.h"
+    "../../Source/Views/FloatingActionButton.h"
     "../../Source/Views/MaterialLookAndFeel.h"
-    "../../Source/Views/SideNavbarView.cpp"
-    "../../Source/Views/BankView.cpp"
-    "../../Source/Views/BankView.h"
-    "../../Source/Views/BottomBarView.cpp"
-    "../../Source/Views/BottomBarView.h"
-    "../../Source/Views/ClipView.cpp"
-    "../../Source/Views/ClipView.h"
-    "../../Source/Views/LibraryView.cpp"
-    "../../Source/Views/LibraryView.h"
-    "../../Source/Views/MainView.cpp"
-    "../../Source/Views/MainView.h"
-    "../../Source/Views/ToolbarView.cpp"
     "../../Source/Views/ToolbarView.h"
+    "../../Source/Views/MainView.h"
+    "../../Source/Views/BottomBarView.h"
+    "../../Source/Views/SideNavbarItemView.h"
+    "../../Source/Views/SideNavbarView.h"
+    "../../Source/Views/LibraryView.h"
+    "../../Source/Views/LibraryRowView.h"
+    "../../Source/Views/BankView.h"
+    "../../Source/Views/ClipRowView.h"
+    "../../Source/Views/ClipView.h"
     "../../Source/Controller/BankViewController.cpp"
     "../../Source/Controller/BankViewController.h"
     "../../Source/Controller/ClipViewController.cpp"
@@ -4951,17 +4932,18 @@ set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER
 set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/ClipRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarItemView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/ClipRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Controller/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)

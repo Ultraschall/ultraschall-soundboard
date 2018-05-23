@@ -1,25 +1,54 @@
 #pragma once
 
 #include "JuceHeader.h"
-
 #include "MaterialLookAndFeel.h"
 
 class ToolbarView : public Component
 {
 public:
-    ToolbarView();
+    ToolbarView() {
+        #if LIVE_MOCK
+        setLookAndFeel(new MaterialLookAndFeel());
+        #endif
+        addAndMakeVisible(menuButton);
+	    addAndMakeVisible(viewButton);
+	    addAndMakeVisible(spacer);
+	    
+    };
 
     ~ToolbarView() override = default;
 
-    void paint(Graphics &) override;
+    void paint(Graphics &g) override {
+        g.fillAll(Material::Theme::Colour::Pallete::Primary);
+    };
 
-    void resized() override;
+    void resized() override {
+        FlexBox flexBox;
+
+	    flexBox.flexDirection = FlexBox::Direction::row;
+	    flexBox.alignContent = FlexBox::AlignContent::center;
+
+	    flexBox.items.add(FlexItem(menuButton)
+		.withHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+		.withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+		.withFlex(2));
+	    flexBox.items.add(FlexItem(spacer).withFlex(1));
+	    flexBox.items.add(FlexItem(viewButton)
+		.withHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+		.withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::IconSize))
+		.withFlex(2));
+
+	    flexBox.performLayout(
+		getLocalBounds()
+		.withTrimmedLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Padding::Left))
+                              .withTrimmedRight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Padding::Right)));
+    };
 
     Material::IconButton menuButton{
 		"Menu",
 		BinaryData::baselinemenu24px_svg,
 		BinaryData::baselinemenu24px_svgSize,
-		findColour(Material::ColourIds::primaryTextColorId)
+		Material::Theme::Colour::Pallete::OnPrimary
 	};
 
 	Material::IconToggleButton viewButton{
@@ -28,8 +57,8 @@ public:
 		BinaryData::baselinegrid_on24px_svgSize,
 		BinaryData::baselinelibrary_music24px_svg,
 		BinaryData::baselinelibrary_music24px_svgSize,
-		findColour(Material::ColourIds::primaryTextColorId),
-		findColour(Material::ColourIds::primaryTextColorId)
+        Material::Theme::Colour::Pallete::OnPrimary,
+		Material::Theme::Colour::Pallete::OnPrimary
 	};
 
 private:

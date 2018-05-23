@@ -116,37 +116,23 @@
         <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
       </GROUP>
       <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
-        <FILE id="lkNO6d" name="ClipRowView.cpp" compile="1" resource="0" file="Source/Views/ClipRowView.cpp"/>
-        <FILE id="polpbA" name="ClipRowView.h" compile="0" resource="0" file="Source/Views/ClipRowView.h"/>
-        <FILE id="xyZ9Ao" name="LibraryRowView.cpp" compile="1" resource="0"
-              file="Source/Views/LibraryRowView.cpp"/>
-        <FILE id="UXvZ8a" name="LibraryRowView.h" compile="0" resource="0"
-              file="Source/Views/LibraryRowView.h"/>
-        <FILE id="W5J22c" name="SideNavbarItemView.cpp" compile="1" resource="0"
-              file="Source/Views/SideNavbarItemView.cpp"/>
-        <FILE id="aucfGo" name="SideNavbarItemView.h" compile="0" resource="0"
-              file="Source/Views/SideNavbarItemView.h"/>
-        <FILE id="fPsZEo" name="MaterialLookAndFeel.cpp" compile="1" resource="0"
-              file="Source/Views/MaterialLookAndFeel.cpp"/>
-        <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
-              file="Source/Views/SideNavbarView.h"/>
+        <FILE id="L0uwCb" name="FloatingActionButton.h" compile="0" resource="0"
+              file="Source/Views/FloatingActionButton.h"/>
         <FILE id="fwAVBX" name="MaterialLookAndFeel.h" compile="0" resource="0"
               file="Source/Views/MaterialLookAndFeel.h"/>
-        <FILE id="d6ddnq" name="SideNavbarView.cpp" compile="1" resource="0"
-              file="Source/Views/SideNavbarView.cpp"/>
-        <FILE id="uyqQzQ" name="BankView.cpp" compile="1" resource="0" file="Source/Views/BankView.cpp"/>
-        <FILE id="oKitLd" name="BankView.h" compile="0" resource="0" file="Source/Views/BankView.h"/>
-        <FILE id="dOzsPk" name="BottomBarView.cpp" compile="1" resource="0"
-              file="Source/Views/BottomBarView.cpp"/>
-        <FILE id="pJbkd7" name="BottomBarView.h" compile="0" resource="0" file="Source/Views/BottomBarView.h"/>
-        <FILE id="iT2jcw" name="ClipView.cpp" compile="1" resource="0" file="Source/Views/ClipView.cpp"/>
-        <FILE id="HefmFf" name="ClipView.h" compile="0" resource="0" file="Source/Views/ClipView.h"/>
-        <FILE id="KapGIW" name="LibraryView.cpp" compile="1" resource="0" file="Source/Views/LibraryView.cpp"/>
-        <FILE id="FA7Auh" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
-        <FILE id="GLaASt" name="MainView.cpp" compile="1" resource="0" file="Source/Views/MainView.cpp"/>
-        <FILE id="HymZsh" name="MainView.h" compile="0" resource="0" file="Source/Views/MainView.h"/>
-        <FILE id="zJG2lu" name="ToolbarView.cpp" compile="1" resource="0" file="Source/Views/ToolbarView.cpp"/>
         <FILE id="B8oRv8" name="ToolbarView.h" compile="0" resource="0" file="Source/Views/ToolbarView.h"/>
+        <FILE id="HymZsh" name="MainView.h" compile="0" resource="0" file="Source/Views/MainView.h"/>
+        <FILE id="pJbkd7" name="BottomBarView.h" compile="0" resource="0" file="Source/Views/BottomBarView.h"/>
+        <FILE id="aucfGo" name="SideNavbarItemView.h" compile="0" resource="0"
+              file="Source/Views/SideNavbarItemView.h"/>
+        <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
+              file="Source/Views/SideNavbarView.h"/>
+        <FILE id="FA7Auh" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
+        <FILE id="UXvZ8a" name="LibraryRowView.h" compile="0" resource="0"
+              file="Source/Views/LibraryRowView.h"/>
+        <FILE id="oKitLd" name="BankView.h" compile="0" resource="0" file="Source/Views/BankView.h"/>
+        <FILE id="polpbA" name="ClipRowView.h" compile="0" resource="0" file="Source/Views/ClipRowView.h"/>
+        <FILE id="HefmFf" name="ClipView.h" compile="0" resource="0" file="Source/Views/ClipView.h"/>
       </GROUP>
       <GROUP id="{379205E3-6D4E-6F8F-C7F1-0CB61FA97117}" name="Controller">
         <FILE id="qUvfAh" name="BankViewController.cpp" compile="1" resource="0"
@@ -188,6 +174,7 @@
   <LIVE_SETTINGS>
     <WINDOWS/>
     <LINUX/>
+    <OSX buildEnabled="1" defines="LIVE_MOCK=1"/>
   </LIVE_SETTINGS>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="">

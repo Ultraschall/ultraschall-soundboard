@@ -7,13 +7,31 @@
 class BankView : public Component
 {
 public:
-    BankView();
+    BankView() {
+        nextButton.setImages(nextIcon.getDrawable());
+        beforeButton.setImages(beforeIcon.getDrawable());
+        titleLabel.setText("Test", NotificationType::dontSendNotification);
 
-    ~BankView();
+        addAndMakeVisible(nextButton);
+        addAndMakeVisible(beforeButton);
+        addAndMakeVisible(titleLabel);
+    }
 
-    void paint(Graphics &) override;
+    ~BankView() = default;
 
-    void resized() override;
+    void paint(Graphics &g) override {
+        g.fillAll(getLookAndFeel().findColour(Material::ColourIds::backgroundColorId));
+    }
+
+    void resized() override {
+        //FlexBox flexBox;
+
+        //flexBox.items.add(FlexItem(beforeButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon)).withFlex(1));
+        //flexBox.items.add(FlexItem(titleLabel).withFlex(2));
+        //flexBox.items.add(FlexItem(nextButton).withMaxWidth(MaterialLookAndFeel::convertDpToPixel(Material::Size::Icon)).withFlex(1));
+
+        //flexBox.performLayout(getLocalBounds().withBottom(Material::Size::NavigationDrawer));
+    }
 
     DrawableButton nextButton{"Next", DrawableButton::ImageFitted};
     DrawableButton beforeButton{"Previous", DrawableButton::ImageFitted};

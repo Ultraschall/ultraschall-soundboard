@@ -6,13 +6,17 @@
 class LibraryView : public Component
 {
 public:
-    LibraryView();;
-
-    ~LibraryView()
-    {
+    LibraryView() {
+        table.setColour(ListBox::backgroundColourId, findColour(Material::ColourIds::backgroundColorId));
+        table.setRowHeight(MaterialLookAndFeel::convertDpToPixel(64));
+        addAndMakeVisible(table);
     }
 
-    void resized() override;
+    ~LibraryView() = default;
+
+    void resized() override {
+        table.setBounds(getLocalBounds());
+    }
 
     ListBox table;
 private:

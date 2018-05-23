@@ -16,7 +16,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
     controller->init();
     addAndMakeVisible(controller->getView());
 
-#if JUCE_LINUX || JUCE_WINDOWS
+#if JUCE_LINUX || JUCE_WINDOWS || JUCE_MAC
     setResizable(true, true);
     setSize(320, 320);
 #endif

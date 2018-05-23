@@ -5,13 +5,15 @@
 class ClipRowView : public Component
 {
 public:
-    ClipRowView();
+    ClipRowView() {}
 
-    ~ClipRowView();
+    ~ClipRowView() {}
 
-    void paint(Graphics &) override;
+    void paint(Graphics &) override {
+        g.fillAll(getLookAndFeel().findColour(ResizableWindow::backgroundColourId));   // clear the background
+    }
 
-    void resized() override;
+    void resized() override {}
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ClipRowView)

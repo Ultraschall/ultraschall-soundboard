@@ -83,28 +83,18 @@ add_library( ${BINARY_NAME}
     "../../../Source/Models/ValueTreeObjectList.h"
     "../../../Source/Models/ClipModel.h"
     "../../../Source/Models/PlayerModel.h"
-    "../../../Source/Views/ClipRowView.cpp"
-    "../../../Source/Views/ClipRowView.h"
-    "../../../Source/Views/LibraryRowView.cpp"
-    "../../../Source/Views/LibraryRowView.h"
-    "../../../Source/Views/SideNavbarItemView.cpp"
-    "../../../Source/Views/SideNavbarItemView.h"
-    "../../../Source/Views/MaterialLookAndFeel.cpp"
-    "../../../Source/Views/SideNavbarView.h"
+    "../../../Source/Views/FloatingActionButton.h"
     "../../../Source/Views/MaterialLookAndFeel.h"
-    "../../../Source/Views/SideNavbarView.cpp"
-    "../../../Source/Views/BankView.cpp"
-    "../../../Source/Views/BankView.h"
-    "../../../Source/Views/BottomBarView.cpp"
-    "../../../Source/Views/BottomBarView.h"
-    "../../../Source/Views/ClipView.cpp"
-    "../../../Source/Views/ClipView.h"
-    "../../../Source/Views/LibraryView.cpp"
-    "../../../Source/Views/LibraryView.h"
-    "../../../Source/Views/MainView.cpp"
-    "../../../Source/Views/MainView.h"
-    "../../../Source/Views/ToolbarView.cpp"
     "../../../Source/Views/ToolbarView.h"
+    "../../../Source/Views/MainView.h"
+    "../../../Source/Views/BottomBarView.h"
+    "../../../Source/Views/SideNavbarItemView.h"
+    "../../../Source/Views/SideNavbarView.h"
+    "../../../Source/Views/LibraryView.h"
+    "../../../Source/Views/LibraryRowView.h"
+    "../../../Source/Views/BankView.h"
+    "../../../Source/Views/ClipRowView.h"
+    "../../../Source/Views/ClipView.h"
     "../../../Source/Controller/BankViewController.cpp"
     "../../../Source/Controller/BankViewController.h"
     "../../../Source/Controller/ClipViewController.cpp"
@@ -1583,17 +1573,18 @@ set_source_files_properties("../../../Source/Models/Utilities.h" PROPERTIES HEAD
 set_source_files_properties("../../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/ClipRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Views/SideNavbarItemView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Views/SideNavbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/BottomBarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../Source/Views/ToolbarView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/LibraryRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/BankView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/ClipRowView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/Views/ClipView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Controller/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Controller/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/Controller/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
