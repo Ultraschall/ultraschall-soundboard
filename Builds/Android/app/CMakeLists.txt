@@ -8,7 +8,7 @@ SET(BINARY_NAME "juce_jni")
 add_library("cpufeatures" STATIC "${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c")
 set_source_files_properties("${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c" PROPERTIES COMPILE_FLAGS "-Wno-sign-conversion -Wno-gnu-statement-expression")
 
-add_definitions("-DJUCE_ANDROID=1" "-DJUCE_ANDROID_API_VERSION=27" "-DJUCE_ANDROID_ACTIVITY_CLASSNAME=fm_ultraschall_soundboard_UltraschallSoundboard" "-DJUCE_ANDROID_ACTIVITY_CLASSPATH=\"fm/ultraschall/soundboard/UltraschallSoundboard\"" "-DJUCE_ANDROID_SHARING_CONTENT_PROVIDER_CLASSNAME=fm_ultraschall_soundboard_SharingContentProvider" "-DJUCE_ANDROID_SHARING_CONTENT_PROVIDER_CLASSPATH=\"fm/ultraschall/soundboard/SharingContentProvider\"" "-DJUCE_PUSH_NOTIFICATIONS=1" "-DJUCE_ANDROID_GL_ES_VERSION_3_0=1" "-DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0" "-DJUCER_ANDROIDSTUDIO_7F0E4A25=1" "-DJUCE_APP_VERSION=4.0.0" "-DJUCE_APP_VERSION_HEX=0x40000")
+add_definitions("-DJUCE_ANDROID=1" "-DJUCE_ANDROID_API_VERSION=27" "-DJUCE_ANDROID_ACTIVITY_CLASSNAME=fm_ultraschall_soundboard_Soundboard" "-DJUCE_ANDROID_ACTIVITY_CLASSPATH=\"fm/ultraschall/soundboard/Soundboard\"" "-DJUCE_ANDROID_SHARING_CONTENT_PROVIDER_CLASSNAME=fm_ultraschall_soundboard_SharingContentProvider" "-DJUCE_ANDROID_SHARING_CONTENT_PROVIDER_CLASSPATH=\"fm/ultraschall/soundboard/SharingContentProvider\"" "-DJUCE_PUSH_NOTIFICATIONS=1" "-DJUCE_ANDROID_GL_ES_VERSION_3_0=1" "-DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0" "-DJUCER_ANDROIDSTUDIO_7F0E4A25=1" "-DJUCE_APP_VERSION=4.0.0" "-DJUCE_APP_VERSION_HEX=0x40000")
 
 include_directories( AFTER
     "../../../JuceLibraryCode"

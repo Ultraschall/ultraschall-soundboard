@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/danlin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.2371.31/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/danlin/Downloads/clion-182.2574.4/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/danlin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.2371.31/bin/cmake/bin/cmake -E remove -f
+RM = /home/danlin/Downloads/clion-182.2574.4/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/danlin/Projects/ultraschall-soundboard/Builds/CLion/cma
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/danlin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.2371.31/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/danlin/Downloads/clion-182.2574.4/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/danlin/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.2371.31/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/danlin/Downloads/clion-182.2574.4/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -892,303 +892,6 @@ home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.s:
 	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.s
 .PHONY : home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.cpp.s
 
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.s
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.o: home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.o
-
-# target to build an object file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.i: home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.i
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.i
-
-# target to preprocess a source file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.i:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.i
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.i
-
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.s: home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.s
-
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.s
-
-# target to generate assembly for a file
-home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.s:
-	$(MAKE) -f CMakeFiles/SHARED_CODE.dir/build.make CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.s
-.PHONY : home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1283,39 +986,6 @@ help:
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.o"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.i"
 	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.s"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.o"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.i"
-	@echo "... home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.s"
 .PHONY : help
 
 

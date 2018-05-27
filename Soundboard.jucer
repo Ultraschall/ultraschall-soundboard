@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT name="Ultraschall Soundboard" projectType="audioplug" buildStandalone="1"
+<JUCERPROJECT name="Soundboard" projectType="audioplug" buildStandalone="1"
               jucerVersion="5.3.2" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
@@ -10,7 +10,7 @@
               pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
               buildVST="0" buildVST3="1" buildAU="0" buildAUv3="1" buildRTAS="0"
               buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0">
-  <MAINGROUP id="bqAFM9" name="Ultraschall Soundboard">
+  <MAINGROUP id="bqAFM9" name="Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
       <GROUP id="{65F28DA7-C906-BF71-5155-CBAF805D3565}" name="Icons">
         <FILE id="dLasxQ" name="baseline-grid_on-24px.svg" compile="0" resource="1"

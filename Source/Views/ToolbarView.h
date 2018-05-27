@@ -13,13 +13,13 @@ public:
         addAndMakeVisible(menuButton);
 	    addAndMakeVisible(viewButton);
 	    addAndMakeVisible(spacer);
-	    
+	    toolbarShadow.setOwner(this);
     };
 
     ~ToolbarView() override = default;
 
     void paint(Graphics &g) override {
-        g.fillAll(Material::Theme::Colour::Pallete::Primary);
+        g.fillAll(Material::Theme::Pallete::Primary);
     };
 
     void resized() override {
@@ -48,7 +48,7 @@ public:
 		"Menu",
 		BinaryData::baselinemenu24px_svg,
 		BinaryData::baselinemenu24px_svgSize,
-		Material::Theme::Colour::Pallete::OnPrimary
+		Material::Theme::Pallete::OnPrimary
 	};
 
 	Material::IconToggleButton viewButton{
@@ -57,12 +57,13 @@ public:
 		BinaryData::baselinegrid_on24px_svgSize,
 		BinaryData::baselinelibrary_music24px_svg,
 		BinaryData::baselinelibrary_music24px_svgSize,
-        Material::Theme::Colour::Pallete::OnPrimary,
-		Material::Theme::Colour::Pallete::OnPrimary
+        Material::Theme::Pallete::OnPrimary,
+		Material::Theme::Pallete::OnPrimary
 	};
 
 private:
     Component spacer;
+    Material::Shadows::_4dp toolbarShadow;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ToolbarView)
 };

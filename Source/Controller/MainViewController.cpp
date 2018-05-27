@@ -5,11 +5,6 @@ void MainViewController::viewDidLoad()
 {
 	view->bottomBar.gainSlider.setValue(engine.getGain(), dontSendNotification);
 
-	view->toolbar.menuButton.onClick = [this]
-	{
-		view->showSideNavBar();
-	};
-
 	view->toolbar.viewButton.onClick = [this]
 	{
 		if (view->toolbar.viewButton.getToggleState())
@@ -22,10 +17,6 @@ void MainViewController::viewDidLoad()
 		}
 	};
 
-	view->sideNavbarBackground.onClick = [this]
-	{
-		view->hideSideNavBar();
-	};
 	view->addButton.onClick = [this]
 	{
 		loadFile();
@@ -35,7 +26,7 @@ void MainViewController::viewDidLoad()
 	{
 		importDirectory();
 		showLibrary();
-		view->hideSideNavBar();
+		view->sideNavbar.hideSideBar();
 	};
 
 	view->bottomBar.talkoverButton.onClick = [this]
@@ -140,7 +131,7 @@ void MainViewController::importFile()
 			{
 				engine.openFile(result.getLocalFile());
 				showLibrary();
-				view->hideSideNavBar();
+				view->sideNavbar.hideSideBar();
 			}
 		}
 	});
@@ -163,7 +154,7 @@ void MainViewController::exportFile()
 			if (result.isLocalFile())
 			{
 				engine.saveFile(result.getLocalFile());
-				view->hideSideNavBar();
+				view->sideNavbar.hideSideBar();
 			}
 		}
 	});

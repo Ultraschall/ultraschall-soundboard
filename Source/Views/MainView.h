@@ -8,20 +8,6 @@
 #include "SideNavbarView.h"
 #include "FloatingActionButton.h"
 
-class BackgroundButton : public Button
-{
-public:
-    BackgroundButton() : Button("Background")
-    {
-    }
-
-protected:
-    void paintButton(Graphics &g, bool /*isMouseOverButton*/, bool /*isButtonDown*/) override
-    {
-        g.fillAll(Colours::black.withAlpha(0.25f));
-    }
-};
-
 class MainView : public Component, public ChangeListener
 {
 public:
@@ -29,19 +15,21 @@ public:
         Desktop::getInstance().getAnimator().addChangeListener(this);
         
         addAndMakeVisible(toolbar);
-        toolbarShadow.setOwner(&toolbar);
-        
+
         addAndMakeVisible(spacer);
         addAndMakeVisible(bottomBar);
         
         addAndMakeVisible(sideNavbar);
-        sideBarShadow.setOwner(&sideNavbar);
+        toolbar.menuButton.onClick = [this]
+        {
+            sideNavbar.showSideBar();
+        };
         
         addAndMakeVisible(addButton);
         addButton.toFront(true);
     };
 
-    ~MainView() {
+    ~MainView() override {
         Desktop::getInstance().getAnimator().removeChangeListener(this);
     }
 
@@ -50,7 +38,7 @@ public:
         {
             return;
         }
-        g.fillAll(Material::Theme::Colour::Pallete::Background);
+        g.fillAll(Material::Theme::Pallete::Background);
         ultraschallIcon.getDrawable()->drawWithin(g, getLocalBounds().reduced(100).toFloat(), RectanglePlacement::centred,
                                                   0.2f);
     }
@@ -87,9 +75,8 @@ public:
                                 );
         }
         
-        if (sideBarVisible)
+        if (sideNavbar.isSideBarVisible())
         {
-            sideNavbarBackground.setBounds(getLocalBounds());
             sideNavbar.setBounds(getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width)));
         }
     };
@@ -102,145 +89,52 @@ public:
         addAndMakeVisible(contentView);
         contentView->toBack();
         addButton.toFront(true);
-        if (sideBarVisible)
+        if (sideNavbar.isSideBarVisible())
         {
-            sideNavbarBackground.toFront(false);
-            sideNavbar.toFront(false);
+            sideNavbar.hideSideBar();
         }
         resized();
         repaint();
     };
 
-    void showSideNavBar() {
-        if (sideBarVisible == true) return;
-        
-        auto endBounds = getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width));
-        auto startBounds = endBounds;
-        startBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width), 0);
-        sideNavbar.setBounds(startBounds);
-        sideNavbarBackground.setBounds(getLocalBounds());
-        
-        addAndMakeVisible(sideNavbarBackground);
-        addAndMakeVisible(sideNavbar);
-        
-        sideNavbarBackground.toFront(false);
-        sideNavbar.toFront(false);
-        
-        Desktop::getInstance().getAnimator().fadeIn(&sideNavbarBackground, 200);
-        Desktop::getInstance().getAnimator().animateComponent(
-                                                              &sideNavbar,
-                                                              endBounds,
-                                                              1.0f,
-                                                              200,
-                                                              false,
-                                                              0.4f,
-                                                              0.8f
-                                                              );
-        
-        sideBarVisible = true;
-    }
-
-    void hideSideNavBar() {
-        if (sideBarVisible == false) return;
-        
-        auto endBounds = sideNavbar.getLocalBounds();
-        endBounds.setPosition(-MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width), 0);
-        
-        Desktop::getInstance().getAnimator().fadeOut(&sideNavbarBackground, 200);
-        Desktop::getInstance().getAnimator().animateComponent(
-                                                              &sideNavbar,
-                                                              endBounds,
-                                                              1.0f,
-                                                              200,
-                                                              false,
-                                                              0.8f,
-                                                              0.4f
-                                                              );
-        
-        sideBarVisible = false;
-    }
-
-    bool isSideBarVisible()
-    {
-        return sideBarVisible;
-    }
-
     void changeListenerCallback(juce::ChangeBroadcaster * /*source*/) override {
-        if (sideBarVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&sideNavbar))
-        {
-            removeChildComponent(&sideNavbar);
-            removeChildComponent(&sideNavbarBackground);
-        }
-        if (actionButtonVisible == false && !Desktop::getInstance().getAnimator().isAnimating(&addButton))
-        {
-            removeChildComponent(&addButton);
+        if (!Desktop::getInstance().getAnimator().isAnimating(&addButton)) {
+            if (!actionButtonVisible) {
+                removeChildComponent(&addButton);
+            } else {
+                repaint();
+            }
         }
     }
 
     BottomBarView bottomBar;
     SideNavbarView sideNavbar;
-    BackgroundButton sideNavbarBackground;
-	
+
     ToolbarView toolbar;
     FloatingActionButton addButton;
 
     void showActionButton() {
-        if (actionButtonVisible == true) return;
-        
-        auto endBounds = Rectangle<int>(
-                                        getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-                                        getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-                                        int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
-                                        int(MaterialLookAndFeel::convertDpToPixel<float>(80))
-                                        );
-        addButton.setBounds(endBounds.reduced(int(MaterialLookAndFeel::convertDpToPixel<float>(40))));
-        
-        Desktop::getInstance().getAnimator().animateComponent(
-                                                              &addButton,
-                                                              endBounds,
-                                                              1.0f,
-                                                              200,
-                                                              false,
-                                                              0.4f,
-                                                              0.8f
-                                                              );
+        if (actionButtonVisible) return;
+
+        Desktop::getInstance().getAnimator().fadeIn(&addButton, 200);
         addAndMakeVisible(addButton);
         addButton.toFront(false);
-        
+
         actionButtonVisible = true;
     }
 
     void hideActionButton() {
-        if (actionButtonVisible == false) return;
-        
-        auto endBounds = Rectangle<int>(
-                                        getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-                                        getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-                                        int(MaterialLookAndFeel::convertDpToPixel<float>(80)),
-                                        int(MaterialLookAndFeel::convertDpToPixel<float>(80)))
-        .reduced(int(MaterialLookAndFeel::convertDpToPixel<float>(40)));
-        
-        Desktop::getInstance().getAnimator().animateComponent(
-                                                              &addButton,
-                                                              endBounds,
-                                                              1.0f,
-                                                              200,
-                                                              false,
-                                                              0.4f,
-                                                              0.8f
-                                                              );
+        if (!actionButtonVisible) return;
+
+        Desktop::getInstance().getAnimator().fadeOut(&addButton, 200);
         actionButtonVisible = false;
     }
 
 private:
-    bool sideBarVisible = false;
     bool actionButtonVisible = true;
 
     Component *contentView = nullptr;
     Material::Icon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};
-
-    Material::Shadows::_4dp toolbarShadow;
-    Material::Shadows::_16dp sideBarShadow;
 
     Component spacer;
 

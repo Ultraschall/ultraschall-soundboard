@@ -4554,67 +4554,37 @@
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/PluginProcessor.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp">
-			<Option target="SHARED_CODE"/>
-		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.h">
-			<Option target="SHARED_CODE"/>
-		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp">
-			<Option target="SHARED_CODE"/>
-		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.h">
-			<Option target="SHARED_CODE"/>
-		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp">
+		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/FloatingActionButton.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp">
-			<Option target="SHARED_CODE"/>
-		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.h">
-			<Option target="SHARED_CODE"/>
-		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp">
-			<Option target="SHARED_CODE"/>
-		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.h">
-			<Option target="SHARED_CODE"/>
-		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.h">
 			<Option target="SHARED_CODE"/>
 		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp">
-			<Option target="SHARED_CODE"/>
-		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.h">
-			<Option target="SHARED_CODE"/>
-		</Unit>
-		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp">
 			<Option target="SHARED_CODE"/>
 		</Unit>
 		<Unit filename="/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.h">

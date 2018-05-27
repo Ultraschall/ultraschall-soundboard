@@ -13,7 +13,7 @@ endif (NOT CMAKE_BUILD_TYPE)
 
 if (APPLE)
 
-project ("Ultraschall Soundboard" C CXX)
+project ("Soundboard" C CXX)
 
 add_library (VST3 MODULE
     "../../../../JUCE/modules/juce_audio_plugin_client/VST3/juce_VST3_Wrapper.cpp"
@@ -2969,7 +2969,7 @@ target_compile_options (VST3 PRIVATE
 )
 
 set_target_properties (VST3 PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
     XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
@@ -2981,7 +2981,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -2990,8 +2990,8 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
-    XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
     XCODE_ATTRIBUTE_MACH_O_TYPE "mh_bundle"
@@ -3016,9 +3016,9 @@ target_link_libraries (VST3 PRIVATE
 )
 
 add_custom_command (TARGET VST3 POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E remove_directory "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Ultraschall Soundboard.vst3"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/Ultraschall Soundboard.vst3" "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Ultraschall Soundboard.vst3"
-    COMMENT "Copying \"Ultraschall Soundboard.vst3\" to \"$ENV{HOME}/Library/Audio/Plug-Ins/VST3/\""
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Soundboard.vst3"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/Soundboard.vst3" "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Soundboard.vst3"
+    COMMENT "Copying \"Soundboard.vst3\" to \"$ENV{HOME}/Library/Audio/Plug-Ins/VST3/\""
 )
 
 target_include_directories (STANDALONE_PLUGIN PRIVATE
@@ -3051,7 +3051,7 @@ target_compile_options (STANDALONE_PLUGIN PRIVATE
 )
 
 set_target_properties (STANDALONE_PLUGIN PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
     XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
@@ -3060,14 +3060,14 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
-    XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
 
@@ -3120,7 +3120,7 @@ target_compile_options (SHARED_CODE PRIVATE
 )
 
 set_target_properties (SHARED_CODE PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
     XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
@@ -3197,7 +3197,7 @@ target_compile_options (VST3 PRIVATE
 )
 
 set_target_properties (VST3 PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
     XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
@@ -3210,7 +3210,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -3219,8 +3219,8 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
-    XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
+    XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
     XCODE_ATTRIBUTE_MACH_O_TYPE "mh_bundle"
@@ -3245,9 +3245,9 @@ target_link_libraries (VST3 PRIVATE
 )
 
 add_custom_command (TARGET VST3 POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E remove_directory "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Ultraschall Soundboard.vst3"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/Ultraschall Soundboard.vst3" "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Ultraschall Soundboard.vst3"
-    COMMENT "Copying \"Ultraschall Soundboard.vst3\" to \"$ENV{HOME}/Library/Audio/Plug-Ins/VST3/\""
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Soundboard.vst3"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_BINARY_DIR}/Soundboard.vst3" "$ENV{HOME}/Library/Audio/Plug-Ins/VST3/Soundboard.vst3"
+    COMMENT "Copying \"Soundboard.vst3\" to \"$ENV{HOME}/Library/Audio/Plug-Ins/VST3/\""
 )
 
 target_include_directories (STANDALONE_PLUGIN PRIVATE
@@ -3281,7 +3281,7 @@ target_compile_options (STANDALONE_PLUGIN PRIVATE
 )
 
 set_target_properties (STANDALONE_PLUGIN PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
     XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
@@ -3291,14 +3291,14 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/Users/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
-    XCODE_ATTRIBUTE_PRODUCT_NAME "Ultraschall Soundboard"
+    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
 
@@ -3352,7 +3352,7 @@ target_compile_options (SHARED_CODE PRIVATE
 )
 
 set_target_properties (SHARED_CODE PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
     XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
@@ -3399,7 +3399,7 @@ endif()
 
 if (UNIX AND NOT APPLE)
 
-project ("Ultraschall Soundboard" C CXX)
+project ("Soundboard" C CXX)
 
 find_package (PkgConfig REQUIRED)
 pkg_search_module (ALSA REQUIRED alsa)
@@ -6349,7 +6349,7 @@ find_library (RT rt
 )
 
 set_target_properties (STANDALONE_PLUGIN PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
 )
@@ -6389,7 +6389,7 @@ target_link_libraries (STANDALONE_PLUGIN PRIVATE
 add_dependencies (STANDALONE_PLUGIN SHARED_CODE)
 
 set_target_properties (SHARED_CODE PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
 )
@@ -6463,7 +6463,7 @@ find_library (RT rt
 )
 
 set_target_properties (STANDALONE_PLUGIN PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
 )
@@ -6503,7 +6503,7 @@ target_link_libraries (STANDALONE_PLUGIN PRIVATE
 add_dependencies (STANDALONE_PLUGIN SHARED_CODE)
 
 set_target_properties (SHARED_CODE PROPERTIES
-    OUTPUT_NAME "Ultraschall Soundboard"
+    OUTPUT_NAME "Soundboard"
     CXX_STANDARD 17
     CXX_EXTENSIONS OFF
 )

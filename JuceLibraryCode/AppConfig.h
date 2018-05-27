@@ -347,7 +347,7 @@
  #define JucePlugin_Name                   "Soundboard"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "Ultraschall Soundboard"
+ #define JucePlugin_Desc                   "Soundboard"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "Ultraschall"
@@ -404,10 +404,10 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         UltraschallSoundboardAU
+ #define JucePlugin_AUExportPrefix         SoundboardAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "UltraschallSoundboardAU"
+ #define JucePlugin_AUExportPrefixQuoted   "SoundboardAU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
@@ -431,7 +431,7 @@
  #define JucePlugin_RTASDisableMultiMono   0
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.yourcompany.UltraschallSoundboard
+ #define JucePlugin_AAXIdentifier          com.yourcompany.Soundboard
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode

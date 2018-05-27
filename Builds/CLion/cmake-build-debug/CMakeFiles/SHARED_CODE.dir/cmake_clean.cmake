@@ -1,15 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipRowView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryRowView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarItemView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MaterialLookAndFeel.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/SideNavbarView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BankView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/BottomBarView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ClipView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/LibraryView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/MainView.cpp.o"
-  "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Views/ToolbarView.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/BankViewController.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/ClipViewController.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/Source/Controller/LibraryViewController.cpp.o"
@@ -37,8 +26,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_opengl.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_osc.cpp.o"
   "CMakeFiles/SHARED_CODE.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_video.cpp.o"
-  "libUltraschall Soundboard.pdb"
-  "libUltraschall Soundboard.a"
+  "libSoundboard.pdb"
+  "libSoundboard.a"
 )
 
 # Per-language clean rules from dependency scanning.

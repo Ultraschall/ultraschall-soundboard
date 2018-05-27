@@ -4,15 +4,15 @@
 <plist>
   <dict>
     <key>CFBundleExecutable</key>
-    <string>Ultraschall Soundboard</string>
+    <string>Soundboard</string>
     <key>CFBundleIconFile</key>
     <string/>
     <key>CFBundleIdentifier</key>
     <string>fm.ultraschall.Soundboard</string>
     <key>CFBundleName</key>
-    <string>Ultraschall Soundboard</string>
+    <string>Soundboard</string>
     <key>CFBundleDisplayName</key>
-    <string>Ultraschall Soundboard</string>
+    <string>Soundboard</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleSignature</key>

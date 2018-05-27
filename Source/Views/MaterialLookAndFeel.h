@@ -4,7 +4,7 @@
 
 namespace Material
 {
-    namespace Theme::Colour {
+    namespace Theme {
         namespace Pallete {
             juce::Colour const Primary{0xFF6200EE};
             juce::Colour const PrimaryVariant{0xFF3700B3};

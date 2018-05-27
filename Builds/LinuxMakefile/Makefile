@@ -38,10 +38,10 @@ ifeq ($(CONFIG),Debug)
   JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0 -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=4.0.0 -DJUCE_APP_VERSION_HEX=0x40000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I$(HOME)/JUCE/modules $(CPPFLAGS)
 
   JUCE_CPPFLAGS_STANDALONE_PLUGIN := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=1
-  JUCE_TARGET_STANDALONE_PLUGIN := Ultraschall\ Soundboard
+  JUCE_TARGET_STANDALONE_PLUGIN := Soundboard
 
   JUCE_CPPFLAGS_SHARED_CODE := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=1 -DJUCE_SHARED_CODE=1
-  JUCE_TARGET_SHARED_CODE := Ultraschall\ Soundboard.a
+  JUCE_TARGET_SHARED_CODE := Soundboard.a
 
   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0 $(CFLAGS)
   JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
@@ -63,10 +63,10 @@ ifeq ($(CONFIG),Release)
   JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0 -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=4.0.0 -DJUCE_APP_VERSION_HEX=0x40000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I$(HOME)/JUCE/modules $(CPPFLAGS)
 
   JUCE_CPPFLAGS_STANDALONE_PLUGIN := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=1
-  JUCE_TARGET_STANDALONE_PLUGIN := Ultraschall\ Soundboard
+  JUCE_TARGET_STANDALONE_PLUGIN := Soundboard
 
   JUCE_CPPFLAGS_SHARED_CODE := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=1 -DJUCE_SHARED_CODE=1
-  JUCE_TARGET_SHARED_CODE := Ultraschall\ Soundboard.a
+  JUCE_TARGET_SHARED_CODE := Soundboard.a
 
   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -O3 $(CFLAGS)
   JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
@@ -117,14 +117,14 @@ Standalone : $(JUCE_OUTDIR)/$(JUCE_TARGET_STANDALONE_PLUGIN)
 
 
 $(JUCE_OUTDIR)/$(JUCE_TARGET_STANDALONE_PLUGIN) : check-pkg-config $(OBJECTS_STANDALONE_PLUGIN) $(RESOURCES) $(JUCE_OUTDIR)/$(JUCE_TARGET_SHARED_CODE)
-	@echo Linking "Ultraschall Soundboard - Standalone Plugin"
+	@echo Linking "Soundboard - Standalone Plugin"
 	-$(V_AT)mkdir -p $(JUCE_BINDIR)
 	-$(V_AT)mkdir -p $(JUCE_LIBDIR)
 	-$(V_AT)mkdir -p $(JUCE_OUTDIR)
 	$(V_AT)$(CXX) -o $(JUCE_OUTDIR)/$(JUCE_TARGET_STANDALONE_PLUGIN) $(OBJECTS_STANDALONE_PLUGIN) $(JUCE_OUTDIR)/$(JUCE_TARGET_SHARED_CODE) $(JUCE_LDFLAGS) $(JUCE_LDFLAGS_STANDALONE_PLUGIN) $(RESOURCES) $(TARGET_ARCH)
 
 $(JUCE_OUTDIR)/$(JUCE_TARGET_SHARED_CODE) : check-pkg-config $(OBJECTS_SHARED_CODE) $(RESOURCES)
-	@echo Linking "Ultraschall Soundboard - Shared Code"
+	@echo Linking "Soundboard - Shared Code"
 	-$(V_AT)mkdir -p $(JUCE_BINDIR)
 	-$(V_AT)mkdir -p $(JUCE_LIBDIR)
 	-$(V_AT)mkdir -p $(JUCE_OUTDIR)
@@ -275,11 +275,11 @@ check-pkg-config:
 	@pkg-config --print-errors alsa freetype2 libcurl x11 xext xinerama
 
 clean:
-	@echo Cleaning Ultraschall Soundboard
+	@echo Cleaning Soundboard
 	$(V_AT)$(CLEANCMD)
 
 strip:
-	@echo Stripping Ultraschall Soundboard
+	@echo Stripping Soundboard
 	-$(V_AT)$(STRIP) --strip-unneeded $(JUCE_OUTDIR)/$(TARGET)
 
 -include $(OBJECTS_STANDALONE_PLUGIN:%.o=%.d)
