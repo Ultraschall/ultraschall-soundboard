@@ -1,10 +1,11 @@
 #pragma once
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "PluginProcessor.h"
 
-#include "Controller/MainViewController.h"
-#include "Views/MaterialLookAndFeel.h"
+#include "Material/LookAndFeel.h"
+#include "Controllers/MainViewController.h"
+
 
 class UltraschallSoundboardAudioProcessorEditor : public AudioProcessorEditor
 {

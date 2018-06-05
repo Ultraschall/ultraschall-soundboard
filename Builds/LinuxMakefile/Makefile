@@ -35,7 +35,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0 -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=4.0.0 -DJUCE_APP_VERSION_HEX=0x40000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I$(HOME)/JUCE/modules $(CPPFLAGS)
+  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0 -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=4.0.0 -DJUCE_APP_VERSION_HEX=0x40000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../JuceLibraryCode/modules $(CPPFLAGS)
 
   JUCE_CPPFLAGS_STANDALONE_PLUGIN := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=1
   JUCE_TARGET_STANDALONE_PLUGIN := Soundboard
@@ -60,7 +60,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0 -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=4.0.0 -DJUCE_APP_VERSION_HEX=0x40000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I$(HOME)/JUCE/modules $(CPPFLAGS)
+  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0 -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=4.0.0 -DJUCE_APP_VERSION_HEX=0x40000 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../JuceLibraryCode/modules $(CPPFLAGS)
 
   JUCE_CPPFLAGS_STANDALONE_PLUGIN := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=1
   JUCE_TARGET_STANDALONE_PLUGIN := Soundboard
@@ -81,10 +81,11 @@ OBJECTS_STANDALONE_PLUGIN := \
   $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o \
 
 OBJECTS_SHARED_CODE := \
-  $(JUCE_OBJDIR)/BankViewController_b6930651.o \
-  $(JUCE_OBJDIR)/ClipViewController_45d60665.o \
-  $(JUCE_OBJDIR)/LibraryViewController_d970f972.o \
-  $(JUCE_OBJDIR)/MainViewController_6128008e.o \
+  $(JUCE_OBJDIR)/BankViewController_5406935e.o \
+  $(JUCE_OBJDIR)/LibraryViewController_a33c3545.o \
+  $(JUCE_OBJDIR)/MainViewController_fe9b8d9b.o \
+  $(JUCE_OBJDIR)/PlaylistViewController_87b8df74.o \
+  $(JUCE_OBJDIR)/Fonts_c7b62c85.o \
   $(JUCE_OBJDIR)/ADSR_50365050.o \
   $(JUCE_OBJDIR)/Engine_8bbe7eb0.o \
   $(JUCE_OBJDIR)/Player_b2d5b7cf.o \
@@ -135,24 +136,29 @@ $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o: ../../Juc
 	@echo "Compiling include_juce_audio_plugin_client_Standalone.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_STANDALONE_PLUGIN) $(JUCE_CFLAGS_STANDALONE_PLUGIN) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/BankViewController_b6930651.o: ../../Source/Controller/BankViewController.cpp
+$(JUCE_OBJDIR)/BankViewController_5406935e.o: ../../Source/Controllers/BankViewController.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling BankViewController.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/ClipViewController_45d60665.o: ../../Source/Controller/ClipViewController.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling ClipViewController.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/LibraryViewController_d970f972.o: ../../Source/Controller/LibraryViewController.cpp
+$(JUCE_OBJDIR)/LibraryViewController_a33c3545.o: ../../Source/Controllers/LibraryViewController.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling LibraryViewController.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/MainViewController_6128008e.o: ../../Source/Controller/MainViewController.cpp
+$(JUCE_OBJDIR)/MainViewController_fe9b8d9b.o: ../../Source/Controllers/MainViewController.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling MainViewController.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/PlaylistViewController_87b8df74.o: ../../Source/Controllers/PlaylistViewController.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling PlaylistViewController.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Fonts_c7b62c85.o: ../../Source/Material/Fonts.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Fonts.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/ADSR_50365050.o: ../../Source/Engine/ADSR.cpp

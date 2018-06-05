@@ -9,99 +9,174 @@
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
               pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
               buildVST="0" buildVST3="1" buildAU="0" buildAUv3="1" buildRTAS="0"
-              buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0">
+              buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
+              maxBinaryFileSize="20971520">
   <MAINGROUP id="bqAFM9" name="Soundboard">
     <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
-      <GROUP id="{65F28DA7-C906-BF71-5155-CBAF805D3565}" name="Icons">
-        <FILE id="dLasxQ" name="baseline-grid_on-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-grid_on-24px.svg"/>
-        <FILE id="e5r1Q5" name="baseline-library_music-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-library_music-24px.svg"/>
-        <FILE id="d8HZXh" name="baseline-settings_input_antenna-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-settings_input_antenna-24px.svg"/>
-        <FILE id="wIxtMT" name="baseline-settings_input_svideo-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-settings_input_svideo-24px.svg"/>
-        <FILE id="dZ4oCY" name="baseline-playlist_play-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-playlist_play-24px.svg"/>
-        <FILE id="PFy2UX" name="baseline-toggle_off-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-toggle_off-24px.svg"/>
-        <FILE id="d7NpjI" name="baseline-toggle_on-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-toggle_on-24px.svg"/>
-        <FILE id="bpPImX" name="baseline-archive-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-archive-24px.svg"/>
-        <FILE id="xb6ubB" name="baseline-unarchive-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-unarchive-24px.svg"/>
-        <FILE id="bmVNHA" name="baseline-folder_open-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-folder_open-24px.svg"/>
-        <FILE id="XpDKRt" name="baseline-add-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-add-24px.svg"/>
-        <FILE id="HuI0Kk" name="baseline-sync_disabled-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-sync_disabled-24px.svg"/>
-        <FILE id="XDetB0" name="baseline-sync-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-sync-24px.svg"/>
-        <FILE id="KXxxLL" name="baseline-pause-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-pause-24px.svg"/>
-        <FILE id="o1LNnL" name="baseline-play_arrow-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-play_arrow-24px.svg"/>
-        <FILE id="VSNLU3" name="baseline-stop-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-stop-24px.svg"/>
-        <FILE id="jjkrKB" name="baseline-mic_none-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-mic_none-24px.svg"/>
-        <FILE id="XPQZ50" name="baseline-mic-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-mic-24px.svg"/>
-        <FILE id="j7b85v" name="baseline-navigate_next-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-navigate_next-24px.svg"/>
-        <FILE id="iDkuT4" name="baseline-navigate_before-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-navigate_before-24px.svg"/>
-        <FILE id="ECldPW" name="baseline-menu-24px.svg" compile="0" resource="1"
-              file="Assets/baseline-menu-24px.svg"/>
-        <FILE id="g9JlEm" name="baseline-view_module-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-view_module-24px.svg"/>
-        <FILE id="OgH5MY" name="baseline-trending_down-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-trending_down-24px.svg"/>
-        <FILE id="T6MMRn" name="baseline-trending_up-24px.svg" compile="0"
-              resource="1" file="Assets/baseline-trending_up-24px.svg"/>
-        <FILE id="I1Aew9" name="baseline-settings-20px.svg" compile="0" resource="1"
-              file="Assets/baseline-settings-20px.svg"/>
+      <GROUP id="{0E6D1E99-7A76-0F3F-7FAD-D7A1B1C21011}" name="AppIcons">
+        <GROUP id="{1B226ED6-2051-617A-38D3-B0CD8DEFF374}" name="Android">
+          <GROUP id="{2F224C15-6E1E-14AA-0FDE-260736DA47E7}" name="Adaptive App Icon">
+            <FILE id="xBPcUx" name="App Icon Back.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Adaptive App Icon/App Icon Back.png"/>
+            <FILE id="IoMuVH" name="App Icon Front.svg" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Adaptive App Icon/App Icon Front.svg"/>
+          </GROUP>
+          <GROUP id="{28CBDF5B-15C6-2BA1-22B8-7092ECA90E35}" name="App Icon">
+            <FILE id="LOUuSc" name="GooglePlay.png" compile="0" resource="1" file="Assets/AppIcons/Android/App Icon/GooglePlay.png"/>
+            <FILE id="lQCW1M" name="ic_launcher_HDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/App Icon/ic_launcher_HDPI.png"/>
+            <FILE id="aIyi4d" name="ic_launcher_MDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/App Icon/ic_launcher_MDPI.png"/>
+            <FILE id="ekQMaf" name="ic_launcher_XHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/App Icon/ic_launcher_XHDPI.png"/>
+            <FILE id="aujI24" name="ic_launcher_XXHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/App Icon/ic_launcher_XXHDPI.png"/>
+            <FILE id="ujdvdN" name="ic_launcher_XXXHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/App Icon/ic_launcher_XXXHDPI.png"/>
+          </GROUP>
+          <GROUP id="{E4E06E82-1CD2-491D-3410-128376A2FEFA}" name="Notification Icon">
+            <FILE id="Hddlhg" name="ic_notification_HDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Notification Icon/ic_notification_HDPI.png"/>
+            <FILE id="BqYYbP" name="ic_notification_MDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Notification Icon/ic_notification_MDPI.png"/>
+            <FILE id="m0XX8d" name="ic_notification_XHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Notification Icon/ic_notification_XHDPI.png"/>
+            <FILE id="KooW5g" name="ic_notification_XXHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Notification Icon/ic_notification_XXHDPI.png"/>
+            <FILE id="kzATrA" name="ic_notification_XXXHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Notification Icon/ic_notification_XXXHDPI.png"/>
+          </GROUP>
+          <GROUP id="{6FED887C-43AE-9BFE-7FF5-360FDDF353A9}" name="Status Bar Icon">
+            <FILE id="qIHqxt" name="ic_status_bar_HDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_HDPI.png"/>
+            <FILE id="RfwWKY" name="ic_status_bar_MDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_MDPI.png"/>
+            <FILE id="O5iQkz" name="ic_status_bar_XHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_XHDPI.png"/>
+            <FILE id="CMFs4B" name="ic_status_bar_XXHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_XXHDPI.png"/>
+            <FILE id="b9GgpM" name="ic_status_bar_XXXHDPI.png" compile="0" resource="1"
+                  file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_XXXHDPI.png"/>
+          </GROUP>
+        </GROUP>
+        <GROUP id="{E2EEC2E0-7BBD-592A-204F-289EAFF2E985}" name="iOS">
+          <FILE id="R6b0Pt" name="Icon-20@1x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@1x.png"/>
+          <FILE id="N4X8vV" name="Icon-20@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@2x.png"/>
+          <FILE id="H0zgo8" name="Icon-20@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@3x.png"/>
+          <FILE id="Dx8Pqw" name="Icon-29.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29.png"/>
+          <FILE id="eUv4x4" name="Icon-29@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29@2x.png"/>
+          <FILE id="aiAHXP" name="Icon-29@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29@3x.png"/>
+          <FILE id="scMIr1" name="Icon-40.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40.png"/>
+          <FILE id="Cr7xxc" name="Icon-40@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40@2x.png"/>
+          <FILE id="AwGC3L" name="Icon-40@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40@3x.png"/>
+          <FILE id="DMOI3M" name="Icon-60@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-60@2x.png"/>
+          <FILE id="cRyj8e" name="Icon-60@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-60@3x.png"/>
+          <FILE id="DHTiN0" name="Icon-76.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-76.png"/>
+          <FILE id="zN5cIS" name="Icon-76@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-76@2x.png"/>
+          <FILE id="zesVvd" name="Icon-83.5@2x.png" compile="0" resource="1"
+                file="Assets/AppIcons/iOS/Icon-83.5@2x.png"/>
+          <FILE id="qUA8yj" name="iTunesArtwork@2x.png" compile="0" resource="1"
+                file="Assets/AppIcons/iOS/iTunesArtwork@2x.png"/>
+        </GROUP>
       </GROUP>
-      <GROUP id="{FDAE8121-CDC0-1E58-F066-388BAA1F88A8}" name="Fonts">
-        <FILE id="zpvkLy" name="Roboto-Black.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Black.ttf"/>
-        <FILE id="Pdbf6j" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-BlackItalic.ttf"/>
-        <FILE id="FuqDvP" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Bold.ttf"/>
-        <FILE id="C540Fe" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-BoldItalic.ttf"/>
-        <FILE id="XBrZdf" name="Roboto-Italic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Italic.ttf"/>
-        <FILE id="nsrJG4" name="Roboto-Light.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Light.ttf"/>
-        <FILE id="AzGMHe" name="Roboto-LightItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-LightItalic.ttf"/>
-        <FILE id="kXgRss" name="Roboto-Medium.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Medium.ttf"/>
-        <FILE id="SGH7iG" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-MediumItalic.ttf"/>
-        <FILE id="P9JhjS" name="Roboto-Regular.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-Regular.ttf"/>
-        <FILE id="GhtWNc" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto-Thin.ttf"/>
-        <FILE id="MtHuv8" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/Roboto-ThinItalic.ttf"/>
-        <FILE id="z6e1rP" name="RobotoCondensed-Bold.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Bold.ttf"/>
-        <FILE id="QBgIGF" name="RobotoCondensed-BoldItalic.ttf" compile="0"
-              resource="1" file="Assets/Fonts/RobotoCondensed-BoldItalic.ttf"/>
-        <FILE id="lsQLks" name="RobotoCondensed-Italic.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Italic.ttf"/>
-        <FILE id="H28lyR" name="RobotoCondensed-Light.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Light.ttf"/>
-        <FILE id="NEr8Vu" name="RobotoCondensed-LightItalic.ttf" compile="0"
-              resource="1" file="Assets/Fonts/RobotoCondensed-LightItalic.ttf"/>
-        <FILE id="e3MWqg" name="RobotoCondensed-Regular.ttf" compile="0" resource="1"
-              file="Assets/Fonts/RobotoCondensed-Regular.ttf"/>
+      <GROUP id="{413CCDF6-4FD1-2EA0-0551-6392BCBD66D3}" name="Fonts">
+        <GROUP id="{86130594-DEED-CE69-A7B5-DF0A45CDC3BD}" name="Roboto">
+          <FILE id="bkQGrF" name="LICENSE.txt" compile="0" resource="1" file="Assets/Fonts/Roboto/LICENSE.txt"/>
+          <FILE id="NO9MJS" name="Roboto-Black.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-Black.ttf"/>
+          <FILE id="PHQNHM" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-BlackItalic.ttf"/>
+          <FILE id="tiS9R2" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto/Roboto-Bold.ttf"/>
+          <FILE id="G3TpWE" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-BoldItalic.ttf"/>
+          <FILE id="m3J6rF" name="Roboto-Italic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-Italic.ttf"/>
+          <FILE id="xHV0rL" name="Roboto-Light.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-Light.ttf"/>
+          <FILE id="NwuoMI" name="Roboto-LightItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-LightItalic.ttf"/>
+          <FILE id="MKNSHk" name="Roboto-Medium.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-Medium.ttf"/>
+          <FILE id="PVRCpN" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-MediumItalic.ttf"/>
+          <FILE id="ipblDF" name="Roboto-Regular.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-Regular.ttf"/>
+          <FILE id="IQU38M" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto/Roboto-Thin.ttf"/>
+          <FILE id="gbFGPf" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto/Roboto-ThinItalic.ttf"/>
+        </GROUP>
+        <GROUP id="{1D742975-CB38-7F64-5BBC-0B90B21E9FCC}" name="Roboto_Mono">
+          <FILE id="ygP5oH" name="LICENSE.txt" compile="0" resource="1" file="Assets/Fonts/Roboto_Mono/LICENSE.txt"/>
+          <FILE id="sxfzXZ" name="RobotoMono-Bold.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-Bold.ttf"/>
+          <FILE id="w7ZVdZ" name="RobotoMono-BoldItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-BoldItalic.ttf"/>
+          <FILE id="AMU7VV" name="RobotoMono-Italic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-Italic.ttf"/>
+          <FILE id="TzHYyr" name="RobotoMono-Light.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-Light.ttf"/>
+          <FILE id="R46ygd" name="RobotoMono-LightItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-LightItalic.ttf"/>
+          <FILE id="FBukYt" name="RobotoMono-Medium.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-Medium.ttf"/>
+          <FILE id="VYoyng" name="RobotoMono-MediumItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-MediumItalic.ttf"/>
+          <FILE id="AwemRT" name="RobotoMono-Regular.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-Regular.ttf"/>
+          <FILE id="PHtYQq" name="RobotoMono-Thin.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-Thin.ttf"/>
+          <FILE id="ekOJdK" name="RobotoMono-ThinItalic.ttf" compile="0" resource="1"
+                file="Assets/Fonts/Roboto_Mono/RobotoMono-ThinItalic.ttf"/>
+        </GROUP>
       </GROUP>
-      <FILE id="UHqrdB" name="add.svg" compile="0" resource="1" file="Assets/add.svg"/>
-      <FILE id="u4rQt0" name="ultraschall.svg" compile="0" resource="1" file="Assets/ultraschall.svg"/>
+      <GROUP id="{7C96950A-8426-5007-70A2-3F5CDFD9426C}" name="Icons">
+        <FILE id="LZHe7J" name="sharp-add-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-add-24px.svg"/>
+        <FILE id="srTs07" name="sharp-call_made-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-call_made-24px.svg"/>
+        <FILE id="dk91un" name="sharp-create_new_folder-24px.svg" compile="0"
+              resource="1" file="Assets/Icons/sharp-create_new_folder-24px.svg"/>
+        <FILE id="TYiBvF" name="sharp-file_copy-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-file_copy-24px.svg"/>
+        <FILE id="AKUBiL" name="sharp-format_list_numbered-24px.svg" compile="0"
+              resource="1" file="Assets/Icons/sharp-format_list_numbered-24px.svg"/>
+        <FILE id="SbrANF" name="sharp-lock-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-lock-24px.svg"/>
+        <FILE id="t0FEvZ" name="sharp-lock_open-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-lock_open-24px.svg"/>
+        <FILE id="oiromM" name="sharp-loop-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-loop-24px.svg"/>
+        <FILE id="lF4DS0" name="sharp-menu-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-menu-24px.svg"/>
+        <FILE id="byB2ql" name="sharp-mic-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-mic-24px.svg"/>
+        <FILE id="q5zsr1" name="sharp-mic_none-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-mic_none-24px.svg"/>
+        <FILE id="AGFuam" name="sharp-pause-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-pause-24px.svg"/>
+        <FILE id="iGQQ91" name="sharp-play_arrow-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-play_arrow-24px.svg"/>
+        <FILE id="wkDklh" name="sharp-settings-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-settings-24px.svg"/>
+        <FILE id="v2IJGW" name="sharp-settings_input_antenna-24px.svg" compile="0"
+              resource="1" file="Assets/Icons/sharp-settings_input_antenna-24px.svg"/>
+        <FILE id="Ofs7eX" name="sharp-settings_input_svideo-24px.svg" compile="0"
+              resource="1" file="Assets/Icons/sharp-settings_input_svideo-24px.svg"/>
+        <FILE id="EP7eLQ" name="sharp-stop-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-stop-24px.svg"/>
+        <FILE id="loTVSy" name="sharp-subscriptions-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-subscriptions-24px.svg"/>
+        <FILE id="LXxqZp" name="sharp-unarchive-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-unarchive-24px.svg"/>
+        <FILE id="NUbfn5" name="sharp-view_comfy-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-view_comfy-24px.svg"/>
+        <FILE id="yo54pn" name="sharp-volume_mute-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-volume_mute-24px.svg"/>
+        <FILE id="DZ6cmd" name="sharp-volume_off-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-volume_off-24px.svg"/>
+        <FILE id="i05UGZ" name="sharp-volume_up-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/sharp-volume_up-24px.svg"/>
+      </GROUP>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
       <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">
@@ -115,44 +190,61 @@
         <FILE id="QDAq2C" name="ClipModel.h" compile="0" resource="0" file="Source/Models/ClipModel.h"/>
         <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
       </GROUP>
-      <GROUP id="{02E15CB1-3C21-26F3-3DA0-8361156A9CB1}" name="Views">
-        <FILE id="L0uwCb" name="FloatingActionButton.h" compile="0" resource="0"
-              file="Source/Views/FloatingActionButton.h"/>
-        <FILE id="fwAVBX" name="MaterialLookAndFeel.h" compile="0" resource="0"
-              file="Source/Views/MaterialLookAndFeel.h"/>
-        <FILE id="B8oRv8" name="ToolbarView.h" compile="0" resource="0" file="Source/Views/ToolbarView.h"/>
-        <FILE id="HymZsh" name="MainView.h" compile="0" resource="0" file="Source/Views/MainView.h"/>
-        <FILE id="pJbkd7" name="BottomBarView.h" compile="0" resource="0" file="Source/Views/BottomBarView.h"/>
-        <FILE id="aucfGo" name="SideNavbarItemView.h" compile="0" resource="0"
-              file="Source/Views/SideNavbarItemView.h"/>
-        <FILE id="WWdcdJ" name="SideNavbarView.h" compile="0" resource="0"
-              file="Source/Views/SideNavbarView.h"/>
-        <FILE id="FA7Auh" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
-        <FILE id="UXvZ8a" name="LibraryRowView.h" compile="0" resource="0"
-              file="Source/Views/LibraryRowView.h"/>
-        <FILE id="oKitLd" name="BankView.h" compile="0" resource="0" file="Source/Views/BankView.h"/>
-        <FILE id="polpbA" name="ClipRowView.h" compile="0" resource="0" file="Source/Views/ClipRowView.h"/>
-        <FILE id="HefmFf" name="ClipView.h" compile="0" resource="0" file="Source/Views/ClipView.h"/>
+      <GROUP id="{72DAEDF2-D9D8-4053-A5D2-27459049A683}" name="Views">
+        <FILE id="ay8cx7" name="StartupView.h" compile="0" resource="0" file="Source/Views/StartupView.h"/>
+        <FILE id="ywe7ut" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
+        <FILE id="EFs7i4" name="LibraryItem.h" compile="0" resource="0" file="Source/Views/LibraryItem.h"/>
+        <FILE id="aWyLcg" name="PlayerSelection.h" compile="0" resource="0"
+              file="Source/Views/PlayerSelection.h"/>
+        <FILE id="sUrtwA" name="PlaylistItem.h" compile="0" resource="0" file="Source/Views/PlaylistItem.h"/>
+        <FILE id="mtBOLh" name="PlaylistActionEnd.h" compile="0" resource="0"
+              file="Source/Views/PlaylistActionEnd.h"/>
+        <FILE id="ZXzphj" name="PlaylistActionStart.h" compile="0" resource="0"
+              file="Source/Views/PlaylistActionStart.h"/>
+        <FILE id="oM7v0N" name="NavigationDrawerHeaderItem.h" compile="0" resource="0"
+              file="Source/Views/NavigationDrawerHeaderItem.h"/>
+        <FILE id="hr3F4F" name="NavigationDrawerItem.h" compile="0" resource="0"
+              file="Source/Views/NavigationDrawerItem.h"/>
+        <FILE id="IDLl72" name="NavigationDrawerDevider.h" compile="0" resource="0"
+              file="Source/Views/NavigationDrawerDevider.h"/>
+        <FILE id="iKNHBM" name="NavigationDrawer.h" compile="0" resource="0"
+              file="Source/Views/NavigationDrawer.h"/>
+        <FILE id="Iobgn5" name="AppBar.h" compile="0" resource="0" file="Source/Views/AppBar.h"/>
+        <FILE id="SlS3oH" name="MainView.h" compile="0" resource="0" file="Source/Views/MainView.h"/>
+        <FILE id="RMdQtl" name="BottomBar.h" compile="0" resource="0" file="Source/Views/BottomBar.h"/>
       </GROUP>
-      <GROUP id="{379205E3-6D4E-6F8F-C7F1-0CB61FA97117}" name="Controller">
-        <FILE id="qUvfAh" name="BankViewController.cpp" compile="1" resource="0"
-              file="Source/Controller/BankViewController.cpp"/>
-        <FILE id="xsLXUy" name="BankViewController.h" compile="0" resource="0"
-              file="Source/Controller/BankViewController.h"/>
-        <FILE id="rLLaav" name="ClipViewController.cpp" compile="1" resource="0"
-              file="Source/Controller/ClipViewController.cpp"/>
-        <FILE id="zK99BP" name="ClipViewController.h" compile="0" resource="0"
-              file="Source/Controller/ClipViewController.h"/>
-        <FILE id="cJ23Gu" name="LibraryViewController.cpp" compile="1" resource="0"
-              file="Source/Controller/LibraryViewController.cpp"/>
-        <FILE id="PnIToA" name="LibraryViewController.h" compile="0" resource="0"
-              file="Source/Controller/LibraryViewController.h"/>
-        <FILE id="lxptz6" name="MainViewController.cpp" compile="1" resource="0"
-              file="Source/Controller/MainViewController.cpp"/>
-        <FILE id="p55rxH" name="MainViewController.h" compile="0" resource="0"
-              file="Source/Controller/MainViewController.h"/>
-        <FILE id="zOJrhT" name="ViewController.h" compile="0" resource="0"
-              file="Source/Controller/ViewController.h"/>
+      <GROUP id="{51A3B505-65B0-817C-7690-B6B401DFC391}" name="Controllers">
+        <FILE id="dE2PYk" name="BankViewController.cpp" compile="1" resource="0"
+              file="Source/Controllers/BankViewController.cpp"/>
+        <FILE id="WcWpPT" name="BankViewController.h" compile="0" resource="0"
+              file="Source/Controllers/BankViewController.h"/>
+        <FILE id="CvLEhP" name="LibraryViewController.cpp" compile="1" resource="0"
+              file="Source/Controllers/LibraryViewController.cpp"/>
+        <FILE id="CBadp5" name="LibraryViewController.h" compile="0" resource="0"
+              file="Source/Controllers/LibraryViewController.h"/>
+        <FILE id="Hf3WPC" name="MainViewController.cpp" compile="1" resource="0"
+              file="Source/Controllers/MainViewController.cpp"/>
+        <FILE id="FsYldl" name="MainViewController.h" compile="0" resource="0"
+              file="Source/Controllers/MainViewController.h"/>
+        <FILE id="J9pdaM" name="PlaylistViewController.cpp" compile="1" resource="0"
+              file="Source/Controllers/PlaylistViewController.cpp"/>
+        <FILE id="AQfIef" name="PlaylistViewController.h" compile="0" resource="0"
+              file="Source/Controllers/PlaylistViewController.h"/>
+        <FILE id="aZKupB" name="ViewController.h" compile="0" resource="0"
+              file="Source/Controllers/ViewController.h"/>
+      </GROUP>
+      <GROUP id="{40FA44C2-2AF6-A01C-6BF7-2978D831A983}" name="Material">
+        <FILE id="mz3ylY" name="Material.h" compile="0" resource="0" file="Source/Material/Material.h"/>
+        <FILE id="vQO7Zw" name="Common.h" compile="0" resource="0" file="Source/Material/Common.h"/>
+        <FILE id="MicTE4" name="Shadows.h" compile="0" resource="0" file="Source/Material/Shadows.h"/>
+        <FILE id="EcybPU" name="Colors.h" compile="0" resource="0" file="Source/Material/Colors.h"/>
+        <FILE id="qw5rEm" name="Fonts.h" compile="0" resource="0" file="Source/Material/Fonts.h"/>
+        <FILE id="xEXNv4" name="Fonts.cpp" compile="1" resource="0" file="Source/Material/Fonts.cpp"/>
+        <FILE id="IDeJcv" name="Icons.h" compile="0" resource="0" file="Source/Material/Icons.h"/>
+        <FILE id="cFRQba" name="IconButton.h" compile="0" resource="0" file="Source/Material/IconButton.h"/>
+        <FILE id="Uu7JMW" name="FloatingActionButton.h" compile="0" resource="0"
+              file="Source/Material/FloatingActionButton.h"/>
+        <FILE id="UdAK0A" name="LookAndFeel.h" compile="0" resource="0" file="Source/Material/LookAndFeel.h"/>
       </GROUP>
       <GROUP id="{81DCB5C5-3B4D-1BC4-788D-77AC4750CBCD}" name="Engine">
         <FILE id="ovDiTu" name="ADSR.cpp" compile="1" resource="0" file="Source/Engine/ADSR.cpp"/>
@@ -174,10 +266,11 @@
   <LIVE_SETTINGS>
     <WINDOWS/>
     <LINUX/>
-    <OSX buildEnabled="1" defines="LIVE_MOCK=1"/>
+    <OSX buildEnabled="0" defines="LIVE_MOCK=1"/>
   </LIVE_SETTINGS>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="">
+    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="" smallIcon="N4X8vV"
+               bigIcon="qUA8yj">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>
@@ -202,7 +295,8 @@
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="">
+    <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="" smallIcon="N4X8vV"
+            bigIcon="qUA8yj">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>
@@ -227,7 +321,7 @@
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </VS2017>
-    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" smallIcon="qIHqxt" bigIcon="LOUuSc">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>
@@ -274,7 +368,8 @@
       </MODULEPATHS>
     </CLION>
     <ANDROIDSTUDIO targetFolder="Builds/Android" androidSDKPath="" androidNDKPath=""
-                   androidMinimumSDK="27" androidTheme="@android:style/Theme.Material">
+                   androidMinimumSDK="27" androidTheme="@android:style/Theme.Material"
+                   smallIcon="qIHqxt" bigIcon="LOUuSc">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" androidArchitectures="armeabi-v7a x86 x86_64"/>
         <CONFIGURATION isDebug="0" name="Release" androidArchitectures="armeabi-v7a x86 x86_64"/>
@@ -299,7 +394,7 @@
         <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </ANDROIDSTUDIO>
-    <XCODE_IPHONE targetFolder="Builds/iOS">
+    <XCODE_IPHONE targetFolder="Builds/iOS" smallIcon="N4X8vV" bigIcon="qUA8yj">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>
@@ -326,24 +421,24 @@
     </XCODE_IPHONE>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="1"
             useGlobalPath="1"/>
-    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1" JUCE_WEB_BROWSER="0" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="0"
                JUCE_STANDALONE_FILTER_WINDOW_USE_KIOSK_MODE="0"/>

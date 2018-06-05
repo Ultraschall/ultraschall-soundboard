@@ -1,4 +1,0 @@
-/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/CMakeFiles/edit_cache.dir
-/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/CMakeFiles/rebuild_cache.dir
-/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/CMakeFiles/juce_jni.dir
-/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/CMakeFiles/cpufeatures.dir

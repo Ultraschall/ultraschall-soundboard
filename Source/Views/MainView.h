@@ -2,143 +2,168 @@
 
 #include "JuceHeader.h"
 
-#include "MaterialLookAndFeel.h"
-#include "ToolbarView.h"
-#include "BottomBarView.h"
-#include "SideNavbarView.h"
-#include "FloatingActionButton.h"
+#include "AppBar.h"
+#include "BottomBar.h"
+#include "../Material/FloatingActionButton.h"
+#include "NavigationDrawer.h"
+#include "StartupView.h"
 
-class MainView : public Component, public ChangeListener
+class MainView : public Component
 {
 public:
-    MainView() {
-        Desktop::getInstance().getAnimator().addChangeListener(this);
-        
-        addAndMakeVisible(toolbar);
-
-        addAndMakeVisible(spacer);
+    MainView()
+    {
+        addAndMakeVisible(appBar);
         addAndMakeVisible(bottomBar);
+        addAndMakeVisible(floatingActionButton);
+        addAndMakeVisible(startup);
         
-        addAndMakeVisible(sideNavbar);
-        toolbar.menuButton.onClick = [this]
-        {
-            sideNavbar.showSideBar();
+        addFileButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
+        addDirectoryButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
+        loadProjectFileButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
+        addFileButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
+        addDirectoryButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
+        loadProjectFileButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
+        
+        addAndMakeVisible(addFileButton);
+        addAndMakeVisible(addDirectoryButton);
+        addAndMakeVisible(loadProjectFileButton);
+        
+        addFileButton.setAlpha(0.0f);
+        addDirectoryButton.setAlpha(0.0f);
+        loadProjectFileButton.setAlpha(0.0f);
+        addFileButton.setVisible(false);
+        addDirectoryButton.setVisible(false);
+        loadProjectFileButton.setVisible(false);
+        
+        floatingActionButton.onClick = [this] {
+            if (!floatingActionButton.getToggleState()) {
+                showExtendedFloatingActionButtons();
+            } else {
+                hideExtendedFloatingActionButtons();
+            }
         };
         
-        addAndMakeVisible(addButton);
-        addButton.toFront(true);
-    };
+        navigationDrawer.setOwner(this);
 
-    ~MainView() override {
-        Desktop::getInstance().getAnimator().removeChangeListener(this);
-    }
+        appBar.menuButton.onClick = [this] {
+            navigationDrawer.open();
+        };
 
-    void paint(Graphics &g) override {
-        if (getLocalBounds().getWidth() < 250 || getLocalBounds().getHeight() < 250)
-        {
-            return;
-        }
-        g.fillAll(Material::Theme::Pallete::Background);
-        ultraschallIcon.getDrawable()->drawWithin(g, getLocalBounds().reduced(100).toFloat(), RectanglePlacement::centred,
-                                                  0.2f);
-    }
-
-    void resized() override {
-        auto flexBox = FlexBox();
+        setSize(1024, 640);
         
+        setContentView(&startup);
+    }
+
+    ~MainView()
+    {
+    }
+
+    void paint (Graphics& g) override
+    {
+        g.fillAll(Material::Color::Surface::Light);
+    }
+
+    void resized() override
+    {
+        FlexBox flexBox;
         flexBox.flexDirection = FlexBox::Direction::column;
+        flexBox.alignContent = FlexBox::AlignContent::center;
         
-        flexBox.items.add(FlexItem(toolbar)
-                          .withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::Height))
-                          .withMinHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::Height))
-                          .withWidth(getWidth()).withFlex(1));
-        
-        if (contentView != nullptr)
-        {
-            flexBox.items.add(FlexItem(*contentView).withWidth(getWidth()).withFlex(2));
-        } else
-        {
-            flexBox.items.add(FlexItem(spacer).withWidth(getWidth()).withFlex(2));
+        flexBox.items.add(FlexItem(getWidth(), px(AppBar::height), appBar));
+        if (contentView != nullptr) {
+            flexBox.items.add(FlexItem(*contentView).withFlex(2));
         }
-        
-        flexBox.items.add(FlexItem(bottomBar).withMaxHeight(MaterialLookAndFeel::convertDpToPixel(Material::Specs::TopAppBar::Regular::Dimensions::Height)).withWidth(getWidth()).withFlex(1));
-        
+        flexBox.items.add(FlexItem(getWidth(), px(BottomBar::height), bottomBar));
+                
         flexBox.performLayout(getLocalBounds());
-        
-        if (actionButtonVisible)
-        {
-            addButton.setBounds(
-                                getLocalBounds().getWidth() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-                                getLocalBounds().getHeight() - int(MaterialLookAndFeel::convertDpToPixel<float>(80) * 1.2),
-                                int(MaterialLookAndFeel::convertDpToPixel<float>(Material::Specs::FloatingActionButton::Regular::Dimensions::Size)),
-                                int(MaterialLookAndFeel::convertDpToPixel<float>(Material::Specs::FloatingActionButton::Regular::Dimensions::Size))
-                                );
-        }
-        
-        if (sideNavbar.isSideBarVisible())
-        {
-            sideNavbar.setBounds(getLocalBounds().removeFromLeft(MaterialLookAndFeel::convertDpToPixel(Material::Specs::NavigationDrawer::Standard::Dimensions::Width)));
-        }
-    };
 
-    void setContentView(Component *view) {
+        auto fabBottom = static_cast<int>(BottomBar::height + (Material::FloatingActionButton::size * 0.5));
+        floatingActionButton.setBounds(getLocalBounds()
+                                       .removeFromBottom(px(fabBottom))
+                                       .removeFromRight(px(Material::FloatingActionButton::size + 16))
+                                       .withWidth(px(Material::FloatingActionButton::size))
+                                       .withHeight(px(Material::FloatingActionButton::size))
+                                       );
+        fabBottom += static_cast<int>(16 + Material::FloatingActionButton::miniSize);
+        auto fabRight = static_cast<int>((Material::FloatingActionButton::size + 16) - ((Material::FloatingActionButton::size - Material::FloatingActionButton::miniSize) * 0.5));
+        addFileButton.setBounds(getLocalBounds()
+                                .removeFromBottom(px(fabBottom))
+                                .removeFromRight(px(fabRight))
+                                .withWidth(px(Material::FloatingActionButton::miniSize))
+                                .withHeight(px(Material::FloatingActionButton::miniSize))
+                                );
+        fabBottom += static_cast<int>(16 + Material::FloatingActionButton::miniSize);
+        addDirectoryButton.setBounds(getLocalBounds()
+                                .removeFromBottom(px(fabBottom))
+                                  .removeFromRight(px(fabRight))
+                                .withWidth(px(Material::FloatingActionButton::miniSize))
+                                .withHeight(px(Material::FloatingActionButton::miniSize))
+                                );
+        fabBottom += static_cast<int>(16 + Material::FloatingActionButton::miniSize);
+        loadProjectFileButton.setBounds(getLocalBounds()
+                                  .removeFromBottom(px(fabBottom))
+                                 .removeFromRight(px(fabRight))
+                                  .withWidth(px(Material::FloatingActionButton::miniSize))
+                                  .withHeight(px(Material::FloatingActionButton::miniSize))
+                                  );
+    }
+    
+    void showExtendedFloatingActionButtons() {
+        floatingActionButton.setToggleState(true, dontSendNotification);
+
+        floatingActionButton.setRotation(0.785398f);
+        
+        addFileButton.setAlpha(1.0f);
+        addDirectoryButton.setAlpha(1.0f);
+        loadProjectFileButton.setAlpha(1.0f);
+        addFileButton.setVisible(true);
+        addDirectoryButton.setVisible(true);
+        loadProjectFileButton.setVisible(true);
+    }
+    
+    void hideExtendedFloatingActionButtons() {
+        floatingActionButton.setToggleState(false, dontSendNotification);
+        
+        floatingActionButton.setRotation(0);
+        
+        addFileButton.setAlpha(0.0f);
+        addDirectoryButton.setAlpha(0.0f);
+        loadProjectFileButton.setAlpha(0.0f);
+        addFileButton.setVisible(false);
+        addDirectoryButton.setVisible(false);
+        loadProjectFileButton.setVisible(false);
+    }
+    
+    void setContentView(Component* view) {
         if (view == contentView) return;
         
-        removeChildComponent(&spacer);
+        if (contentView != nullptr) {
+            removeChildComponent(contentView);
+        }
         contentView = view;
         addAndMakeVisible(contentView);
         contentView->toBack();
-        addButton.toFront(true);
-        if (sideNavbar.isSideBarVisible())
+        if (navigationDrawer.isVisible())
         {
-            sideNavbar.hideSideBar();
+            navigationDrawer.close();
         }
         resized();
         repaint();
-    };
-
-    void changeListenerCallback(juce::ChangeBroadcaster * /*source*/) override {
-        if (!Desktop::getInstance().getAnimator().isAnimating(&addButton)) {
-            if (!actionButtonVisible) {
-                removeChildComponent(&addButton);
-            } else {
-                repaint();
-            }
-        }
     }
+    
+    AppBar appBar;
+    BottomBar bottomBar;
+    Material::FloatingActionButton floatingActionButton { Material::Icons::add };
 
-    BottomBarView bottomBar;
-    SideNavbarView sideNavbar;
+    Material::FloatingActionButton addFileButton { Material::Icons::file_copy };
+    Material::FloatingActionButton addDirectoryButton { Material::Icons::create_new_folder };
+    Material::FloatingActionButton loadProjectFileButton { Material::Icons::unarchive };
 
-    ToolbarView toolbar;
-    FloatingActionButton addButton;
-
-    void showActionButton() {
-        if (actionButtonVisible) return;
-
-        Desktop::getInstance().getAnimator().fadeIn(&addButton, 200);
-        addAndMakeVisible(addButton);
-        addButton.toFront(false);
-
-        actionButtonVisible = true;
-    }
-
-    void hideActionButton() {
-        if (!actionButtonVisible) return;
-
-        Desktop::getInstance().getAnimator().fadeOut(&addButton, 200);
-        actionButtonVisible = false;
-    }
-
+    NavigationDrawer navigationDrawer;
 private:
-    bool actionButtonVisible = true;
+    StartupView startup;
+    Component *contentView{nullptr};
 
-    Component *contentView = nullptr;
-    Material::Icon ultraschallIcon{BinaryData::ultraschall_svg, BinaryData::ultraschall_svgSize};
-
-    Component spacer;
-
-    Material::Icon addIcon{BinaryData::add_svg, BinaryData::add_svgSize};
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainView)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainView)
 };

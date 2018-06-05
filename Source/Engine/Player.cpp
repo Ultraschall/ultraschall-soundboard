@@ -150,7 +150,12 @@ void Player::stop() {
     audioTransportSource->setPosition(0);
     adsr.gate(0);
     adsr.reset();
-    playerState = player_stopped;
+    if (playerState != player_played) {
+        playerState = player_stopped;
+    } else {
+        playerState = player_ready;
+        progress = 0;
+    }
     sendChangeMessage();
 }
 

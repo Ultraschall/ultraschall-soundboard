@@ -25,7 +25,7 @@ rule CUSTOM_COMMAND
 rule C_COMPILER__juce_jni
   depfile = $DEP_FILE
   deps = gcc
-  command = /home/danlin/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang  --target=x86_64-none-linux-android --gcc-toolchain=/home/danlin/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/danlin/Android/Sdk/ndk-bundle/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $IN_ABS
+  command = /Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang  --target=x86_64-none-linux-android --gcc-toolchain=/Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/danlin/Library/Android/sdk/ndk-bundle/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $IN_ABS
   description = Building C object $out
 
 
@@ -35,7 +35,7 @@ rule C_COMPILER__juce_jni
 rule CXX_COMPILER__juce_jni
   depfile = $DEP_FILE
   deps = gcc
-  command = /home/danlin/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++  --target=x86_64-none-linux-android --gcc-toolchain=/home/danlin/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/danlin/Android/Sdk/ndk-bundle/sysroot  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $IN_ABS
+  command = /Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++  --target=x86_64-none-linux-android --gcc-toolchain=/Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/danlin/Library/Android/sdk/ndk-bundle/sysroot  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $IN_ABS
   description = Building CXX object $out
 
 
@@ -43,7 +43,7 @@ rule CXX_COMPILER__juce_jni
 # Rule for linking CXX shared library.
 
 rule CXX_SHARED_LIBRARY_LINKER__juce_jni
-  command = $PRE_LINK && /home/danlin/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++  --target=x86_64-none-linux-android --gcc-toolchain=/home/danlin/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/danlin/Android/Sdk/ndk-bundle/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  command = $PRE_LINK && /Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++  --target=x86_64-none-linux-android --gcc-toolchain=/Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/danlin/Library/Android/sdk/ndk-bundle/sysroot -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX shared library $TARGET_FILE
   restat = $RESTAT
 
@@ -54,7 +54,7 @@ rule CXX_SHARED_LIBRARY_LINKER__juce_jni
 rule C_COMPILER__cpufeatures
   depfile = $DEP_FILE
   deps = gcc
-  command = /home/danlin/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang  --target=x86_64-none-linux-android --gcc-toolchain=/home/danlin/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/danlin/Android/Sdk/ndk-bundle/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $IN_ABS
+  command = /Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang  --target=x86_64-none-linux-android --gcc-toolchain=/Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/danlin/Library/Android/sdk/ndk-bundle/sysroot $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $IN_ABS
   description = Building C object $out
 
 
@@ -62,7 +62,7 @@ rule C_COMPILER__cpufeatures
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__cpufeatures
-  command = $PRE_LINK && /home/danlin/Android/Sdk/cmake/3.6.4111459/bin/cmake -E remove $TARGET_FILE && /home/danlin/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/x86_64-linux-android-ar qc $TARGET_FILE $LINK_FLAGS $in && /home/danlin/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64/bin/x86_64-linux-android-ranlib $TARGET_FILE && $POST_BUILD
+  command = $PRE_LINK && /Users/danlin/Library/Android/sdk/cmake/3.6.4111459/bin/cmake -E remove $TARGET_FILE && /Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/bin/x86_64-linux-android-ar qc $TARGET_FILE $LINK_FLAGS $in && /Users/danlin/Library/Android/sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/bin/x86_64-linux-android-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -71,7 +71,7 @@ rule C_STATIC_LIBRARY_LINKER__cpufeatures
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/danlin/Android/Sdk/cmake/3.6.4111459/bin/cmake -H/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app -B/home/danlin/Projects/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/x86_64
+  command = /Users/danlin/Library/Android/sdk/cmake/3.6.4111459/bin/cmake -H/Users/danlin/Projekte/ultraschall-soundboard/Builds/Android/app -B/Users/danlin/Projekte/ultraschall-soundboard/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/x86_64
   description = Re-running CMake...
   generator = 1
 
@@ -80,7 +80,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = /home/danlin/Android/Sdk/cmake/3.6.4111459/bin/ninja -t clean
+  command = /Users/danlin/Library/Android/sdk/cmake/3.6.4111459/bin/ninja -t clean
   description = Cleaning all built files...
 
 
@@ -88,6 +88,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = /home/danlin/Android/Sdk/cmake/3.6.4111459/bin/ninja -t targets
+  command = /Users/danlin/Library/Android/sdk/cmake/3.6.4111459/bin/ninja -t targets
   description = All primary targets available:
 

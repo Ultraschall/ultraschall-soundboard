@@ -17,19 +17,22 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
     addAndMakeVisible(controller->getView());
 
 #if JUCE_LINUX || JUCE_WINDOWS || JUCE_MAC
+    setResizeLimits(static_cast<int>(Material::IconButton::minButtonSize * 4), AppBar::height + BottomBar::height, 0x3fffffff, 0x3fffffff);
     setResizable(true, true);
-    setSize(320, 320);
 #endif
+    setSize(1024, 640);
 }
 
 UltraschallSoundboardAudioProcessorEditor::~UltraschallSoundboardAudioProcessorEditor()
 {
     LookAndFeel::setDefaultLookAndFeel(nullptr);
+    Material::Fonts::deleteInstance();
+    Material::Typefaces::deleteInstance();
 }
 
 void UltraschallSoundboardAudioProcessorEditor::paint(Graphics &g)
 {
-    g.fillAll(findColour(Material::ColourIds::backgroundColorId));
+    g.fillAll(Material::Color::Surface::Main);
 }
 
 void UltraschallSoundboardAudioProcessorEditor::resized()

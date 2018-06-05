@@ -1,9 +1,9 @@
-set(CMAKE_HOST_SYSTEM "Linux-4.16.8-300.fc28.x86_64")
-set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "4.16.8-300.fc28.x86_64")
+set(CMAKE_HOST_SYSTEM "Darwin-17.5.0")
+set(CMAKE_HOST_SYSTEM_NAME "Darwin")
+set(CMAKE_HOST_SYSTEM_VERSION "17.5.0")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
-include("/home/danlin/Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake")
+include("/Users/danlin/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake")
 
 set(CMAKE_SYSTEM "Android-1")
 set(CMAKE_SYSTEM_NAME "Android")
