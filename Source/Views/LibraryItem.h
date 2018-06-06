@@ -9,6 +9,7 @@ public:
     constexpr const static int height = 62;
     
     LibraryItem() : Component("LibraryItem") {
+		setOpaque(true);
         settingsButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Active);
         progressBar.setPercentageDisplay(false);
         

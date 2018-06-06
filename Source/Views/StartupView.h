@@ -8,6 +8,7 @@ class StartupView : public Component
 {
 public:
     StartupView() {
+		setOpaque(true);
     }
     
     ~StartupView() = default;

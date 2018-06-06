@@ -13,6 +13,7 @@ class MainView : public Component
 public:
     MainView()
     {
+		setOpaque(true);
         addAndMakeVisible(appBar);
         addAndMakeVisible(bottomBar);
         addAndMakeVisible(floatingActionButton);
