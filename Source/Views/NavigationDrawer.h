@@ -91,13 +91,13 @@ public:
             close();
         };
 
-        Desktop::getInstance().getAnimator().fadeIn(&scrim, 200);
+        //Desktop::getInstance().getAnimator().fadeIn(&scrim, 200);
         Desktop::getInstance().getAnimator().animateComponent(
                 this,
                 endBounds,
                 1.0f,
                 246,
-                false,
+                true,
                 0.4f,
                 0.8f
         );
@@ -112,13 +112,15 @@ public:
         auto endBounds = getLocalBounds();
         endBounds.setPosition(-px(width), 0);
 
-        Desktop::getInstance().getAnimator().fadeOut(&scrim, 200);
+        //Desktop::getInstance().getAnimator().fadeOut(&scrim, 200);
+		owner->removeChildComponent(&scrim);
+
         Desktop::getInstance().getAnimator().animateComponent(
                 this,
                 endBounds,
                 1.0f,
                 246,
-                false,
+                true,
                 0.8f,
                 0.4f
         );
