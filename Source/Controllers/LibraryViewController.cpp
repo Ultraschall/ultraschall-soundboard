@@ -131,6 +131,7 @@ void LibraryViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerMo
     libraryItem->reset();
     libraryItem->title.setText(playerModel.title, dontSendNotification);
     libraryItem->time.setText("00:00:00", dontSendNotification);
+	libraryItem->progress = playerModel.progress;
 
     switch (playerModel.fadeState) {
         case Player::fade_out:

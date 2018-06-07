@@ -30,6 +30,8 @@ Engine::Engine()
 	undoManager.clearUndoHistory();
 
 	startTimer(100);
+
+	debugState();
 }
 
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
@@ -104,7 +106,7 @@ void Engine::loadAudioFile(const File& file)
     state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
 }
 
-void Engine::DebugState() const
+void Engine::debugState() const
 {
     Logger::outputDebugString(state.toXmlString());
 }
@@ -210,6 +212,36 @@ void Engine::saveFile(const File &file) const {
     xml->writeToFile(file, String{});
 }
 
+void Engine::playerLooping(const Identifier & uuid, bool looping)
+{
+	playerWithIdentifier(uuid)->setLooping(looping);
+}
+
+void Engine::playerFadeOut(const Identifier & uuid)
+{
+	playerWithIdentifier(uuid)->fadeOut();
+}
+
+void Engine::playerFadeIn(const Identifier & uuid)
+{
+	playerWithIdentifier(uuid)->fadeIn();
+}
+
+void Engine::playerPlay(const Identifier & uuid)
+{
+	playerWithIdentifier(uuid)->play();
+}
+
+void Engine::playerPause(const Identifier & uuid)
+{
+	playerWithIdentifier(uuid)->pause();
+}
+
+void Engine::playerStop(const Identifier & uuid)
+{
+	playerWithIdentifier(uuid)->stop();
+}
+
 void Engine::changeListenerCallback(ChangeBroadcaster *source) {
     auto player = dynamic_cast<Player*>(source);
     if (player == nullptr)
@@ -252,6 +284,9 @@ void Engine::syncState(ValueTree state, Player *player) {
         model.loop = player->isLooping();
     }
 
-    Logger::outputDebugString("sync state of " + model.uuid);
+	if (player->progress != model.progress) {
+		model.progress = player->progress;
+	}
 
+    //Logger::outputDebugString(state.toXmlString());
 }

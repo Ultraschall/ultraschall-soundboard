@@ -44,24 +44,29 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     }
 
     if (progress != 1) {
+		auto needUpdate = false;
+		if (playerState == player_playing) {
+			needUpdate = true;
+		}
+
         progress = audioTransportSource->getCurrentPosition() / audioTransportSource->getLengthInSeconds();
         if (progress >= 1) {
             progress = 1;
             playerState = player_played;
-            sendChangeMessage();
-        }
+			needUpdate = true;
+		}
 
         switch (adsr.getState()) {
             case ADSR::envState::env_attack:
                 if (fadeState != fade_in) {
                     fadeState = fade_in;
-                    sendChangeMessage();
+					needUpdate = true;
                 }
                 break;
             case ADSR::envState::env_release:
                 if (fadeState != fade_out) {
                     fadeState = fade_out;
-                    sendChangeMessage();
+					needUpdate = true;
                 }
                 break;
             case ADSR::envState::env_decay:
@@ -70,10 +75,13 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
             default:
                 if (fadeState != fade_idle) {
                     fadeState = fade_idle;
-                    sendChangeMessage();
+					needUpdate = true;
                 }
                 break;
         }
+		if (needUpdate) {
+			sendChangeMessage();
+		}
     }
 }
 

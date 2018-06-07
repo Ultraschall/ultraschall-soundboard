@@ -29,6 +29,7 @@ namespace IDs {
     DECLARE_ID(player_state, state)
     DECLARE_ID(player_state_fade, fade)
     DECLARE_ID(player_state_missing, missing)
+	DECLARE_ID(player_state_progress, progress)
 
 
     // #Banks []
@@ -55,6 +56,7 @@ namespace IDs {
     DECLARE_ID(PLAYLIST, PLAYLIST)
     DECLARE_ID(playlist_uuid, uuid)
     DECLARE_ID(playlist_title, title)
+	DECLARE_ID(playlist_action, action)
 
     // #Playlist Items
     DECLARE_ID(ITEMS, ITEMS)
@@ -62,7 +64,7 @@ namespace IDs {
     // #Playlist Item
     DECLARE_ID(ITEM, ITEM)
     //DECLARE_ID(player_uuid, uuid);
-    DECLARE_ID(item_action, action)
+    
 
 #undef DECLARE_ID
 }

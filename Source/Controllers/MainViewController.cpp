@@ -38,6 +38,10 @@ void MainViewController::viewDidLoad() {
         view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
     };
 
+	view->navigationDrawer.settings.onClick = [this] {
+		engine.debugState();
+	};
+
     view->addFileButton.onClick = [this] {
         view->hideExtendedFloatingActionButtons();
         addFile();

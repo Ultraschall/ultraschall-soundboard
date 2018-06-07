@@ -23,6 +23,7 @@ struct PlayerModel
         playerState.referTo(state, IDs::player_state, nullptr);
         fadeState.referTo(state, IDs::player_state_fade, nullptr);
         missing.referTo(state, IDs::player_state_missing, nullptr);
+		progress.referTo(state, IDs::player_state_progress, nullptr);
     }
 
     ValueTree state;
@@ -39,4 +40,5 @@ struct PlayerModel
     CachedValue<int> playerState;
     CachedValue<int> fadeState;
     CachedValue<bool> missing;
+	CachedValue<double> progress;
 };

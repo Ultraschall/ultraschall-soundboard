@@ -30,7 +30,7 @@ public:
 
     ValueTree playerStateWithIdentifier(const Identifier &id);
 
-    void DebugState() const;
+    void debugState() const;
 
 	void setGain(float value);
 
@@ -42,35 +42,17 @@ public:
 
 	void saveFile(const File& file) const;
 
-	void playerLooping(const Identifier &uuid, bool looping)
-	{
-		playerWithIdentifier(uuid)->setLooping(looping);
-	}
+	void playerLooping(const Identifier &uuid, bool looping);
 
-	void playerFadeOut(const Identifier &uuid)
-	{
-		playerWithIdentifier(uuid)->fadeOut();
-	}
+	void playerFadeOut(const Identifier &uuid);
 
-	void playerFadeIn(const Identifier &uuid)
-	{
-		playerWithIdentifier(uuid)->fadeIn();
-	}
+	void playerFadeIn(const Identifier &uuid);
 
-	void playerPlay(const Identifier &uuid)
-	{
-		playerWithIdentifier(uuid)->play();
-	}
+	void playerPlay(const Identifier &uuid);
 
-	void playerPause(const Identifier &uuid)
-	{
-		playerWithIdentifier(uuid)->pause();
-	}
+	void playerPause(const Identifier &uuid);
 
-	void playerStop(const Identifier &uuid)
-	{
-		playerWithIdentifier(uuid)->stop();
-	}
+	void playerStop(const Identifier &uuid);
 
     void changeListenerCallback (ChangeBroadcaster* source) override;
 	void syncState(ValueTree state, Player* player);
