@@ -64,7 +64,6 @@
 #define JUCE_MODULE_AVAILABLE_juce_gui_extra                1
 #define JUCE_MODULE_AVAILABLE_juce_opengl                   1
 #define JUCE_MODULE_AVAILABLE_juce_osc                      1
-#define JUCE_MODULE_AVAILABLE_juce_video                    1
 
 #define JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED 1
 
@@ -211,7 +210,7 @@
 #endif
 
 #ifndef    JUCE_USE_CURL
- //#define JUCE_USE_CURL 0
+ #define   JUCE_USE_CURL 1
 #endif
 
 #ifndef    JUCE_CATCH_UNHANDLED_EXCEPTIONS
@@ -299,13 +298,6 @@
 
 #ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
  #define   JUCE_ENABLE_LIVE_CONSTANT_EDITOR 0
-#endif
-
-//==============================================================================
-// juce_video flags:
-
-#ifndef    JUCE_USE_CAMERA
- //#define JUCE_USE_CAMERA 0
 #endif
 //==============================================================================
 #ifndef    JUCE_STANDALONE_APPLICATION
