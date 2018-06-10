@@ -1,0 +1,1 @@
+/usr/bin/c++    -march=native -pthread -g -ggdb -O0  -g   CMakeFiles/STANDALONE_PLUGIN.dir/home/danlin/Projects/ultraschall-soundboard/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp.o  -o Soundboard libSoundboard.a -march=native /usr/lib/libGL.so /usr/lib/libdl.so -lpthread /usr/lib/librt.so -lasound -lfreetype -lcurl -lX11 -lXext -lXinerama 

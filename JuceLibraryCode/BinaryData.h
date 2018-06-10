@@ -108,7 +108,7 @@ namespace BinaryData
     const int            iTunesArtwork2x_pngSize = 385993;
 
     extern const char*   LICENSE_txt;
-    const int            LICENSE_txtSize = 11560;
+    const int            LICENSE_txtSize = 11358;
 
     extern const char*   RobotoBlack_ttf;
     const int            RobotoBlack_ttfSize = 171480;
@@ -147,7 +147,7 @@ namespace BinaryData
     const int            RobotoThinItalic_ttfSize = 176300;
 
     extern const char*   LICENSE_txt2;
-    const int            LICENSE_txt2Size = 11560;
+    const int            LICENSE_txt2Size = 11358;
 
     extern const char*   RobotoMonoBold_ttf;
     const int            RobotoMonoBold_ttfSize = 114752;
