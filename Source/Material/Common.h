@@ -10,14 +10,13 @@
 
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
-template<typename T>
-inline T px(T dp) {
-    return T(std::round(dp));
+template <typename T>
+inline T px(T dp) P
+{
+  return T(std::round(dp));
 }
-
-
 
 //enum DensityQualifier {
 //    ldpi = 120,

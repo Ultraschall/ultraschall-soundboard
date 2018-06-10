@@ -70,7 +70,7 @@ void ADSR::setSustainLevel(float level)
 void ADSR::setTargetRatioA(float targetRatio)
 {
     if (targetRatio < 0.000000001f)
-        targetRatio = 0.000000001f;  // -180 dB
+        targetRatio = 0.000000001f; // -180 dB
     targetRatioA = targetRatio;
     attackCoef = calcCoef(attackRate, targetRatioA);
     attackBase = (1.0f + targetRatioA) * (1.0f - attackCoef);
@@ -79,7 +79,7 @@ void ADSR::setTargetRatioA(float targetRatio)
 void ADSR::setTargetRatioDR(float targetRatio)
 {
     if (targetRatio < 0.000000001f)
-        targetRatio = 0.000000001f;  // -180 dB
+        targetRatio = 0.000000001f; // -180 dB
     targetRatioDR = targetRatio;
     decayCoef = calcCoef(decayRate, targetRatioDR);
     releaseCoef = calcCoef(releaseRate, targetRatioDR);

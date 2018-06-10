@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Material/Material.h"
 
 #include "NavigationDrawerHeaderItem.h"
@@ -208,7 +208,7 @@ private:
         }
     };
 
-    Material::Shadows::DropShadower16dp shadow;
+    //Material::Shadows::DropShadower16dp shadow;
     WeakReference<Component> owner{nullptr};
     Scrim scrim;
     Component spacer;

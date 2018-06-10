@@ -1,10 +1,10 @@
 #include "Engine.h"
+#include "../Models/BankModel.h"
 #include "../Models/PlayerModel.h"
 #include "../Models/PlaylistModel.h"
-#include "../Models/BankModel.h"
 
 Engine::Engine()
-        : audioThumbnailCache(21)
+    : audioThumbnailCache(21)
 {
     Logger::outputDebugString("Boot Engine");
 
@@ -21,24 +21,24 @@ Engine::Engine()
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
-	state.addChild(ValueTree(IDs::PLAYLISTS), -1, nullptr);
-	
-	talkOver.gate(talkOverState);
+    state.addChild(ValueTree(IDs::PLAYLISTS), -1, nullptr);
+
+    talkOver.gate(talkOverState);
     newBank();
-	newPlaylist();
+    newPlaylist();
 
-	undoManager.clearUndoHistory();
+    undoManager.clearUndoHistory();
 
-	startTimer(100);
+    startTimer(100);
 
-	debugState();
+    debugState();
 }
 
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
     mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
-	currentSampleRate = sampleRate;
-	previousGain = currentGain;
+    currentSampleRate = sampleRate;
+    previousGain = currentGain;
 }
 
 void Engine::releaseResources()
@@ -50,31 +50,32 @@ void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
 {
     mixer.getNextAudioBlock(bufferToFill);
 
-	auto* leftBuffer = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
-	auto* rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
+    auto *leftBuffer = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
+    auto *rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
 
-	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
-	{
-		const auto level = talkOverRange.convertFrom0to1(talkOver.process());
+    for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
+    {
+        const auto level = talkOverRange.convertFrom0to1(talkOver.process());
 
-		if (talkOver.getState() == ADSR::env_sustain) continue;
+        if (talkOver.getState() == ADSR::env_sustain)
+            continue;
 
-		leftBuffer[sample] = leftBuffer[sample] * level;
-		rightBuffer[sample] = rightBuffer[sample] * level;
-	}
+        leftBuffer[sample] = leftBuffer[sample] * level;
+        rightBuffer[sample] = rightBuffer[sample] * level;
+    }
 
-	if (currentGain == previousGain)
-	{
-		bufferToFill.buffer->applyGain(currentGain);
-	}
-	else
-	{
-		bufferToFill.buffer->applyGainRamp(0, bufferToFill.buffer->getNumSamples(), previousGain, currentGain);
-		previousGain = currentGain;
-	}
+    if (currentGain == previousGain)
+    {
+        bufferToFill.buffer->applyGain(currentGain);
+    }
+    else
+    {
+        bufferToFill.buffer->applyGainRamp(0, bufferToFill.buffer->getNumSamples(), previousGain, currentGain);
+        previousGain = currentGain;
+    }
 }
 
-void Engine::loadAudioFile(const File& file)
+void Engine::loadAudioFile(const File &file)
 {
     Uuid uuid;
     auto player = std::make_unique<Player>(uuid.toDashedString());
@@ -123,7 +124,7 @@ Player *Engine::playerWithIdentifier(const Identifier &id)
     return nullptr;
 }
 
-void Engine::importDirectory(const File& directory)
+void Engine::importDirectory(const File &directory)
 {
     auto files = directory.findChildFiles(File::findFiles, true);
     for (auto &f : files)
@@ -135,30 +136,31 @@ void Engine::importDirectory(const File& directory)
 void Engine::newBank()
 {
     Uuid uuid;
-	ValueTree bankState(IDs::BANK);
+    ValueTree bankState(IDs::BANK);
     BankModel model(bankState);
     model.uuid = uuid.toDashedString();
     model.title = "Bank " + String(state.getChildWithName(IDs::BANKS).getNumChildren() + 1);
 
-	bankState.addChild(ValueTree(IDs::CLIPS), -1, &undoManager);
+    bankState.addChild(ValueTree(IDs::CLIPS), -1, &undoManager);
 
     state.getChildWithName(IDs::BANKS).addChild(bankState, -1, &undoManager);
 }
 
 void Engine::newPlaylist()
 {
-	Uuid uuid;
-	ValueTree playlistState(IDs::PLAYLIST);
-	PlaylistModel model(playlistState);
-	model.uuid = uuid.toDashedString();
-	model.title = "Playlist " + String(state.getChildWithName(IDs::PLAYLISTS).getNumChildren() + 1);
+    Uuid uuid;
+    ValueTree playlistState(IDs::PLAYLIST);
+    PlaylistModel model(playlistState);
+    model.uuid = uuid.toDashedString();
+    model.title = "Playlist " + String(state.getChildWithName(IDs::PLAYLISTS).getNumChildren() + 1);
 
-	playlistState.addChild(ValueTree(IDs::ITEMS), -1, &undoManager);
+    playlistState.addChild(ValueTree(IDs::ITEMS), -1, &undoManager);
 
-	state.getChildWithName(IDs::PLAYLISTS).addChild(playlistState, -1, &undoManager);
+    state.getChildWithName(IDs::PLAYLISTS).addChild(playlistState, -1, &undoManager);
 }
 
-Engine::~Engine() {
+Engine::~Engine()
+{
     stopTimer();
     mixer.removeAllInputs();
     players.clear();
@@ -166,22 +168,26 @@ Engine::~Engine() {
     audioThumbnailCache.clear();
 }
 
-void Engine::setGain(float value) {
+void Engine::setGain(float value)
+{
     currentGain = gainRange.convertFrom0to1(value);
 }
 
-float Engine::getGain() const {
+float Engine::getGain() const
+{
     return gainRange.convertTo0to1(currentGain);
 }
 
-void Engine::toggleTalkOver() {
+void Engine::toggleTalkOver()
+{
     talkOver.setAttackRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
     talkOver.setReleaseRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
     talkOverState = !talkOverState;
     talkOver.gate(talkOverState);
 }
 
-void Engine::openFile(const File &file) {
+void Engine::openFile(const File &file)
+{
     XmlDocument xmlDocument(file);
     const std::unique_ptr<XmlElement> xml(xmlDocument.getDocumentElement());
     undoManager.clearUndoHistory();
@@ -192,7 +198,7 @@ void Engine::openFile(const File &file) {
     auto playersState = state.getChildWithName(IDs::PLAYERS);
     if (playersState.isValid())
     {
-        for (const auto &playerState: playersState)
+        for (const auto &playerState : playersState)
         {
             PlayerModel playerModel(playerState);
             auto player = std::make_unique<Player>(playerModel.uuid.get());
@@ -207,43 +213,45 @@ void Engine::openFile(const File &file) {
     }
 }
 
-void Engine::saveFile(const File &file) const {
+void Engine::saveFile(const File &file) const
+{
     const std::unique_ptr<XmlElement> xml(state.createXml());
     xml->writeToFile(file, String{});
 }
 
-void Engine::playerLooping(const Identifier & uuid, bool looping)
+void Engine::playerLooping(const Identifier &uuid, bool looping)
 {
-	playerWithIdentifier(uuid)->setLooping(looping);
+    playerWithIdentifier(uuid)->setLooping(looping);
 }
 
-void Engine::playerFadeOut(const Identifier & uuid)
+void Engine::playerFadeOut(const Identifier &uuid)
 {
-	playerWithIdentifier(uuid)->fadeOut();
+    playerWithIdentifier(uuid)->fadeOut();
 }
 
-void Engine::playerFadeIn(const Identifier & uuid)
+void Engine::playerFadeIn(const Identifier &uuid)
 {
-	playerWithIdentifier(uuid)->fadeIn();
+    playerWithIdentifier(uuid)->fadeIn();
 }
 
-void Engine::playerPlay(const Identifier & uuid)
+void Engine::playerPlay(const Identifier &uuid)
 {
-	playerWithIdentifier(uuid)->play();
+    playerWithIdentifier(uuid)->play();
 }
 
-void Engine::playerPause(const Identifier & uuid)
+void Engine::playerPause(const Identifier &uuid)
 {
-	playerWithIdentifier(uuid)->pause();
+    playerWithIdentifier(uuid)->pause();
 }
 
-void Engine::playerStop(const Identifier & uuid)
+void Engine::playerStop(const Identifier &uuid)
 {
-	playerWithIdentifier(uuid)->stop();
+    playerWithIdentifier(uuid)->stop();
 }
 
-void Engine::changeListenerCallback(ChangeBroadcaster *source) {
-    auto player = dynamic_cast<Player*>(source);
+void Engine::changeListenerCallback(ChangeBroadcaster *source)
+{
+    auto player = dynamic_cast<Player *>(source);
     if (player == nullptr)
     {
         return;
@@ -252,9 +260,11 @@ void Engine::changeListenerCallback(ChangeBroadcaster *source) {
     playersToUpdate.addIfNotAlreadyThere(player->identifier);
 }
 
-void Engine::timerCallback() {
+void Engine::timerCallback()
+{
     playersToUpdate.getLock().enter();
-    for (const auto &p: playersToUpdate) {
+    for (const auto &p : playersToUpdate)
+    {
         auto player = playerWithIdentifier(p);
         auto playerState = playerStateWithIdentifier(p);
 
@@ -264,29 +274,35 @@ void Engine::timerCallback() {
     playersToUpdate.getLock().exit();
 }
 
-ValueTree Engine::playerStateWithIdentifier(const Identifier &id) {
+ValueTree Engine::playerStateWithIdentifier(const Identifier &id)
+{
     auto players = state.getChildWithName(IDs::PLAYERS);
     return players.getChildWithProperty(IDs::player_uuid, id.toString());
 }
 
-void Engine::syncState(ValueTree state, Player *player) {
+void Engine::syncState(ValueTree state, Player *player)
+{
     PlayerModel model(state);
 
-    if (player->playerState != model.playerState) {
+    if (player->playerState != model.playerState)
+    {
         model.playerState = player->playerState;
     }
 
-    if (player->fadeState != model.fadeState) {
+    if (player->fadeState != model.fadeState)
+    {
         model.fadeState = player->fadeState;
     }
 
-    if (player->isLooping() != model.loop) {
+    if (player->isLooping() != model.loop)
+    {
         model.loop = player->isLooping();
     }
 
-	if (player->progress != model.progress) {
-		model.progress = player->progress;
-	}
+    if (player->progress != model.progress)
+    {
+        model.progress = player->progress;
+    }
 
     //Logger::outputDebugString(state.toXmlString());
 }

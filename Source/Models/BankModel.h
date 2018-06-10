@@ -1,11 +1,11 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "Identifier.h"
 
 struct BankModel
 {
-public:
+  public:
 	BankModel(ValueTree v)
 		: state(v)
 	{

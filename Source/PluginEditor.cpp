@@ -7,7 +7,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
         : AudioProcessorEditor(&p), processor(p)
 {
 #if JUCE_LINUX || JUCE_WINDOWS || JUCE_ANDROID
-    openGLContext.attachTo(*getTopLevelComponent());
+    openGLContext.attachTo(*this); // (*getTopLevelComponent());
 #endif
 
     LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);

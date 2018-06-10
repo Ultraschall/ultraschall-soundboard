@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Material/Material.h"
 
 class NavigationDrawerItem : public Button {
@@ -37,8 +37,7 @@ public:
     }
 #endif
 
-    ~NavigationDrawerItem() override {
-    }
+    ~NavigationDrawerItem() override = default;
 
     void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
         g.fillAll(Material::Color::Surface::Main);

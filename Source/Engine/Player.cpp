@@ -1,99 +1,118 @@
 #include "Player.h"
 
 Player::Player(const Identifier &id)
-        : identifier(id),
-          playerState(player_idle),
-          fadeState(fade_idle),
-          timeSliceThread("Player: " + id.toString()) {
+    : identifier(id),
+      playerState(player_idle),
+      fadeState(fade_idle),
+      timeSliceThread("Player: " + id.toString())
+{
     timeSliceThread.startThread();
     audioTransportSource = std::make_unique<AudioTransportSource>();
 }
 
-Player::~Player() {
+Player::~Player()
+{
     audioTransportSource->stop();
     audioTransportSource->setSource(nullptr);
 }
 
-void Player::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
+void Player::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
     mySampleRate = sampleRate;
     audioTransportSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
     previousGain = currentGain;
 }
 
-void Player::releaseResources() {
+void Player::releaseResources()
+{
     audioTransportSource->releaseResources();
 }
 
-void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
+void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
+{
     audioTransportSource->getNextAudioBlock(bufferToFill);
 
     auto *leftBuffer = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
     auto *rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
 
-    for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
+    for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
+    {
         const auto level = adsr.process();
         leftBuffer[sample] = leftBuffer[sample] * level;
         rightBuffer[sample] = rightBuffer[sample] * level;
     }
 
-    if (currentGain == previousGain) {
+    if (currentGain == previousGain)
+    {
         bufferToFill.buffer->applyGain(currentGain);
-    } else {
+    }
+    else
+    {
         bufferToFill.buffer->applyGainRamp(0, bufferToFill.buffer->getNumSamples(), previousGain, currentGain);
         previousGain = currentGain;
     }
 
-    if (progress != 1) {
-		auto needUpdate = false;
-		if (playerState == player_playing) {
-			needUpdate = true;
-		}
+    if (progress != 1)
+    {
+        auto needUpdate = false;
+        if (playerState == player_playing)
+        {
+            needUpdate = true;
+        }
 
         progress = audioTransportSource->getCurrentPosition() / audioTransportSource->getLengthInSeconds();
-        if (progress >= 1) {
+        if (progress >= 1)
+        {
             progress = 1;
             playerState = player_played;
-			needUpdate = true;
-		}
-
-        switch (adsr.getState()) {
-            case ADSR::envState::env_attack:
-                if (fadeState != fade_in) {
-                    fadeState = fade_in;
-					needUpdate = true;
-                }
-                break;
-            case ADSR::envState::env_release:
-                if (fadeState != fade_out) {
-                    fadeState = fade_out;
-					needUpdate = true;
-                }
-                break;
-            case ADSR::envState::env_decay:
-            case ADSR::envState::env_sustain:
-            case ADSR::envState::env_idle:
-            default:
-                if (fadeState != fade_idle) {
-                    fadeState = fade_idle;
-					needUpdate = true;
-                }
-                break;
+            needUpdate = true;
         }
-		if (needUpdate) {
-			sendChangeMessage();
-		}
+
+        switch (adsr.getState())
+        {
+        case ADSR::envState::env_attack:
+            if (fadeState != fade_in)
+            {
+                fadeState = fade_in;
+                needUpdate = true;
+            }
+            break;
+        case ADSR::envState::env_release:
+            if (fadeState != fade_out)
+            {
+                fadeState = fade_out;
+                needUpdate = true;
+            }
+            break;
+        case ADSR::envState::env_decay:
+        case ADSR::envState::env_sustain:
+        case ADSR::envState::env_idle:
+        default:
+            if (fadeState != fade_idle)
+            {
+                fadeState = fade_idle;
+                needUpdate = true;
+            }
+            break;
+        }
+        if (needUpdate)
+        {
+            sendChangeMessage();
+        }
     }
 }
 
 bool Player::loadFileIntoTransport(const File &audioFile,
                                    AudioFormatManager *audioFormatManager,
-                                   AudioThumbnailCache *audioThumbnailCache) {
+                                   AudioThumbnailCache *audioThumbnailCache)
+{
     audioTransportSource->stop();
     audioTransportSource->setSource(nullptr);
 
     auto reader = audioFormatManager->createReaderFor(audioFile);
 
-    if (reader == nullptr) {
+    if (reader == nullptr)
+    {
         playerState = player_error;
         return false;
     }
@@ -110,22 +129,27 @@ bool Player::loadFileIntoTransport(const File &audioFile,
     return true;
 }
 
-int64 Player::getTotalLength() const {
-    if (audioFormatReaderSource == nullptr) {
+int64 Player::getTotalLength() const
+{
+    if (audioFormatReaderSource == nullptr)
+    {
         return 0;
     }
     return audioFormatReaderSource->getTotalLength();
 }
 
-void Player::setGain(float value) {
+void Player::setGain(float value)
+{
     currentGain = gainRange.convertFrom0to1(value);
 }
 
-float Player::getGain() {
+float Player::getGain()
+{
     return gainRange.convertTo0to1(currentGain);
 }
 
-void Player::fadeIn() {
+void Player::fadeIn()
+{
     adsr.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
     adsr.gate(1);
     audioTransportSource->start();
@@ -133,19 +157,22 @@ void Player::fadeIn() {
     sendChangeMessage();
 }
 
-void Player::fadeOut() {
+void Player::fadeOut()
+{
     adsr.setReleaseRate(static_cast<float>((mySampleRate / 1000) * releaseMs));
     adsr.gate(0);
     sendChangeMessage();
 }
 
-void Player::pause() {
+void Player::pause()
+{
     audioTransportSource->stop();
     playerState = player_paused;
     sendChangeMessage();
 }
 
-void Player::play() {
+void Player::play()
+{
     adsr.setAttackRate(0);
     adsr.gate(1);
     audioTransportSource->start();
@@ -153,27 +180,31 @@ void Player::play() {
     sendChangeMessage();
 }
 
-void Player::stop() {
+void Player::stop()
+{
     audioTransportSource->stop();
     audioTransportSource->setPosition(0);
     adsr.gate(0);
     adsr.reset();
-    if (playerState != player_played) {
+    if (playerState != player_played)
+    {
         playerState = player_stopped;
-    } else {
+    }
+    else
+    {
         playerState = player_ready;
         progress = 0;
     }
     sendChangeMessage();
 }
 
-void Player::setLooping(bool looping) {
+void Player::setLooping(bool looping)
+{
     audioFormatReaderSource->setLooping(looping);
     sendChangeMessage();
 }
 
-bool Player::isLooping() {
+bool Player::isLooping()
+{
     return audioFormatReaderSource->isLooping();
 }
-
-

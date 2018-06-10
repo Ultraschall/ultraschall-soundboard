@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Material/Material.h"
 
 class StartupView : public Component
@@ -11,7 +11,7 @@ public:
 		setOpaque(true);
     }
     
-    ~StartupView() = default;
+    ~StartupView() override = default;
     
     void paint(Graphics& g) override {
         g.fillAll(Material::Color::Surface::Light);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 namespace IDs {
 #define DECLARE_ID(name, id) const juce::Identifier name (#id);

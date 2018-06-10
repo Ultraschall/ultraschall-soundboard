@@ -1,17 +1,16 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "../Engine/Engine.h"
 
-template<typename ViewType>
+template <typename ViewType>
 class ViewController
 {
-public:
+  public:
     explicit ViewController(Engine &engine)
-            : engine(engine)
+        : engine(engine)
     {
-
     }
 
     virtual ~ViewController()
@@ -35,13 +34,9 @@ public:
         return static_cast<bool>(view);
     }
 
-    virtual void loadView()
-    {
-    };
+    virtual void loadView(){};
 
-    virtual void viewDidLoad()
-    {
-    };
+    virtual void viewDidLoad(){};
 
     void loadViewIfNeeded()
     {
@@ -56,7 +51,7 @@ public:
         view = nullptr;
     }
 
-protected:
+  protected:
     std::unique_ptr<ViewType> view;
     Engine &engine;
 

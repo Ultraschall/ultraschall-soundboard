@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "AppBar.h"
 #include "BottomBar.h"
@@ -56,9 +56,7 @@ public:
         setContentView(&startup);
     }
 
-    ~MainView()
-    {
-    }
+    ~MainView() override = default;
 
     void paint (Graphics& g) override
     {
@@ -86,7 +84,7 @@ public:
                                        .withWidth(px(Material::FloatingActionButton::size))
                                        .withHeight(px(Material::FloatingActionButton::size))
                                        );
-        fabBottom += static_cast<int>(16 + Material::FloatingActionButton::miniSize);
+        fabBottom += 16 + Material::FloatingActionButton::miniSize;
         auto fabRight = static_cast<int>((Material::FloatingActionButton::size + 16) - ((Material::FloatingActionButton::size - Material::FloatingActionButton::miniSize) * 0.5));
         addFileButton.setBounds(getLocalBounds()
                                 .removeFromBottom(px(fabBottom))
@@ -94,14 +92,14 @@ public:
                                 .withWidth(px(Material::FloatingActionButton::miniSize))
                                 .withHeight(px(Material::FloatingActionButton::miniSize))
                                 );
-        fabBottom += static_cast<int>(16 + Material::FloatingActionButton::miniSize);
+        fabBottom += 16 + Material::FloatingActionButton::miniSize;
         addDirectoryButton.setBounds(getLocalBounds()
                                 .removeFromBottom(px(fabBottom))
                                   .removeFromRight(px(fabRight))
                                 .withWidth(px(Material::FloatingActionButton::miniSize))
                                 .withHeight(px(Material::FloatingActionButton::miniSize))
                                 );
-        fabBottom += static_cast<int>(16 + Material::FloatingActionButton::miniSize);
+        fabBottom += 16 + Material::FloatingActionButton::miniSize;
         loadProjectFileButton.setBounds(getLocalBounds()
                                   .removeFromBottom(px(fabBottom))
                                  .removeFromRight(px(fabRight))

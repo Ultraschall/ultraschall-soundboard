@@ -1,29 +1,30 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
-#include "ViewController.h"
 #include "../Views/MainView.h"
+#include "ViewController.h"
 
 #include "LibraryViewController.h"
 
-
-class MainViewController : public ViewController<MainView> {
-public:
+class MainViewController : public ViewController<MainView>
+{
+  public:
     explicit MainViewController(Engine &engine);
-    
+
     void loadView() override;
 
     void viewDidLoad() override;
-    
+
     void showLibrary();
-    
+
     void addDirectory();
-    
+
     void addFile();
-    
+
     void loadProjectFile();
-private:
+
+  private:
     std::unique_ptr<FileChooser> fileChooser;
     std::unique_ptr<ViewController<Component>> contentController;
 

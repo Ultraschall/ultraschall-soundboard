@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Material/Material.h"
 
 #include "LibraryItem.h"
@@ -17,7 +17,7 @@ public:
     ~LibraryView() = default;
     
     void resized() override {
-        table.setBounds(getLocalBounds());
+        table.setBounds(getLocalBounds());<
     }
     
     ListBox table;

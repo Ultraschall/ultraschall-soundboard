@@ -1,66 +1,86 @@
 #include "LibraryViewController.h"
 
 LibraryViewController::LibraryViewController(Engine &engine)
-        : ValueTreeObjectList<PlayerModel>(engine.state.getChildWithName(IDs::PLAYERS)), ViewController(engine) {
+    : ValueTreeObjectList<PlayerModel>(engine.state.getChildWithName(IDs::PLAYERS)), ViewController(engine)
+{
     rebuildObjects();
 }
 
-LibraryViewController::~LibraryViewController() {
+LibraryViewController::~LibraryViewController()
+{
     freeObjects();
 }
 
-void LibraryViewController::loadView() {
+void LibraryViewController::loadView()
+{
     view = std::make_unique<LibraryView>();
 }
 
-void LibraryViewController::viewDidLoad() {
+void LibraryViewController::viewDidLoad()
+{
     getLibraryView()->table.setModel(this);
 }
 
-bool LibraryViewController::isSuitableType(const juce::ValueTree &tree) const {
-    return tree.hasType(IDs::PLAYER);;
+bool LibraryViewController::isSuitableType(const juce::ValueTree &tree) const
+{
+    return tree.hasType(IDs::PLAYER);
+    ;
 }
 
-PlayerModel *LibraryViewController::createNewObject(const juce::ValueTree &tree) {
+PlayerModel *LibraryViewController::createNewObject(const juce::ValueTree &tree)
+{
     return new PlayerModel(tree);
 }
 
-void LibraryViewController::deleteObject(PlayerModel *type) {
+void LibraryViewController::deleteObject(PlayerModel *type)
+{
     delete type;
 }
 
-void LibraryViewController::newObjectAdded(PlayerModel *type) {
+void LibraryViewController::newObjectAdded(PlayerModel *type)
+{
     updateContent();
 }
 
-void LibraryViewController::objectRemoved(PlayerModel *type) {
+void LibraryViewController::objectRemoved(PlayerModel *type)
+{
     updateContent();
 }
 
-void LibraryViewController::objectOrderChanged() {
+void LibraryViewController::objectOrderChanged()
+{
     updateContent();
 }
 
-void LibraryViewController::valueTreePropertyChanged(ValueTree &state, const Identifier &identifier) {
+void LibraryViewController::valueTreePropertyChanged(ValueTree &state, const Identifier &identifier)
+{
 
     if (state.hasType(IDs::PLAYER))
     {
+        auto libraryItem = dynamic_cast<class LibraryItem *>(getLibraryView()->table.getComponentForRowNumber(indexOf(state)));
+        if (libraryItem == nullptr)
+        {
+            return;
+        }
+
         auto index = indexOf(state);
         auto playerModel = objects[index];
-        auto libraryItem = dynamic_cast<class LibraryItem*>(getLibraryView()->table.getComponentForRowNumber(indexOf(state)));
         refreshLibraryRow(libraryItem, *playerModel);
     }
 }
 
-LibraryView *LibraryViewController::getLibraryView() const {
+LibraryView *LibraryViewController::getLibraryView() const
+{
     return dynamic_cast<LibraryView *>(getView());
 }
 
-int LibraryViewController::getNumRows() {
+int LibraryViewController::getNumRows()
+{
     return objects.size() + 1;
 }
 
-Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isRowSelected, Component *existingComponentToUpdate) {
+Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isRowSelected, Component *existingComponentToUpdate)
+{
     ignoreUnused(isRowSelected);
 
     if (rowNumber >= objects.size())
@@ -71,20 +91,26 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
 
     LibraryItem *libraryItem = nullptr;
 
-    auto existinglibraryItem = dynamic_cast<LibraryItem*>(existingComponentToUpdate);
+    auto existinglibraryItem = dynamic_cast<LibraryItem *>(existingComponentToUpdate);
     if (nullptr != existingComponentToUpdate)
     {
-        if (nullptr == existinglibraryItem) {
+        if (nullptr == existinglibraryItem)
+        {
             delete existingComponentToUpdate;
             libraryItem = new LibraryItem();
-        } else {
+        }
+        else
+        {
             libraryItem = existinglibraryItem;
         }
-    } else {
+    }
+    else
+    {
         libraryItem = new LibraryItem();
     }
     const auto playerModel = objects[rowNumber];
-    if (playerModel == nullptr) {
+    if (playerModel == nullptr)
+    {
         return libraryItem;
     }
 
@@ -94,7 +120,8 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
     return libraryItem;
 }
 
-void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel) {
+void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel)
+{
     auto uuid = Identifier(playerModel.uuid);
     libraryItem->settingsButton.onClick = [] {
 
@@ -106,18 +133,24 @@ void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel 
 
     libraryItem->fadeButton.onClick = [this, uuid, libraryItem] {
         const auto fadeState = libraryItem->fadeButton.getToggleState();
-        if (fadeState) {
+        if (fadeState)
+        {
             engine.playerFadeOut(uuid);
-        } else {
+        }
+        else
+        {
             engine.playerFadeIn(uuid);
         }
     };
 
     libraryItem->playButton.onClick = [this, uuid, libraryItem] {
         const auto playState = libraryItem->playButton.getToggleState();
-        if (playState) {
+        if (playState)
+        {
             engine.playerPause(uuid);
-        } else {
+        }
+        else
+        {
             engine.playerPlay(uuid);
         }
     };
@@ -127,52 +160,57 @@ void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel 
     };
 }
 
-void LibraryViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel) {
+void LibraryViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel)
+{
     libraryItem->reset();
     libraryItem->title.setText(playerModel.title, dontSendNotification);
     libraryItem->time.setText("00:00:00", dontSendNotification);
-	libraryItem->progress = playerModel.progress;
+    libraryItem->progress = playerModel.progress;
 
-    switch (playerModel.fadeState) {
-        case Player::fade_out:
-            libraryItem->fadeButton.setToggleState(false, dontSendNotification);
-            break;
+    switch (playerModel.fadeState)
+    {
+    case Player::fade_out:
+        libraryItem->fadeButton.setToggleState(false, dontSendNotification);
+        break;
 
-        default:
-        case Player::fade_in:
-        case Player::fade_idle:
-            libraryItem->fadeButton.setToggleState(true, dontSendNotification);
-            break;
+    default:
+    case Player::fade_in:
+    case Player::fade_idle:
+        libraryItem->fadeButton.setToggleState(true, dontSendNotification);
+        break;
     }
 
-    switch (playerModel.playerState) {
-        case Player::player_error:
-            libraryItem->setError();
-        case Player::player_stopped:
-            libraryItem->setIsStopped();
-            break;
-        case Player::player_paused:
-            libraryItem->setIsPaused();
-            break;
-        case Player::player_played:
-            libraryItem->setIsPlayed();
-            break;
-        case Player::player_playing:
-            libraryItem->setIsPlaying();
-            break;
-        default:
-        case Player::player_ready:
-        case Player::player_idle:
-            libraryItem->setIsReady();
-            break;
+    switch (playerModel.playerState)
+    {
+    case Player::player_error:
+        libraryItem->setError();
+    case Player::player_stopped:
+        libraryItem->setIsStopped();
+        break;
+    case Player::player_paused:
+        libraryItem->setIsPaused();
+        break;
+    case Player::player_played:
+        libraryItem->setIsPlayed();
+        break;
+    case Player::player_playing:
+        libraryItem->setIsPlaying();
+        break;
+    default:
+    case Player::player_ready:
+    case Player::player_idle:
+        libraryItem->setIsReady();
+        break;
     }
 
     libraryItem->loopButton.setToggleState(playerModel.loop, dontSendNotification);
 }
 
-void LibraryViewController::updateContent() const {
+void LibraryViewController::updateContent() const
+{
     auto view = getLibraryView();
-    if (view != nullptr) {
+    if (view != nullptr)
+    {
         view->table.updateContent();
     }
 }

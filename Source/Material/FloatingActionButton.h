@@ -1,54 +1,63 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "Material.h"
 
-namespace Material {
-    class FloatingActionButton : public Button {
-    public:
-        constexpr const static int iconSize = 24;
-        constexpr const static int miniSize = 40;
-        constexpr const static int extendedSize = 48;
-        constexpr const static int size = 56;
+namespace Material
+{
+class FloatingActionButton : public Button
+{
+  public:
+    constexpr const static int iconSize = 24;
+    constexpr const static int miniSize = 40;
+    constexpr const static int extendedSize = 48;
+    constexpr const static int size = 56;
 
-        enum ColourIds {
-            containerColourId = 0x8000000,
-            iconColourId = 0x8000001
-        };
-
-        FloatingActionButton(Material::Icon &icon) : Button("FloatingActionButton"), icon(icon) {
-            setColour(ColourIds::iconColourId, Material::Color::Icons::Selected::OnPrimary::Active);
-            setColour(ColourIds::containerColourId, Material::Color::Primary::Main);
-
-            setPaintingIsUnclipped(true);
-            setSize(miniSize, miniSize);
-        }
-
-        ~FloatingActionButton() override {
-        }
-
-        void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
-            Path p;
-
-            p.addEllipse(0, 0, getWidth(), getHeight());
-            //shadow.drawForPath(g, p);
-            g.setColour(findColour(ColourIds::containerColourId));
-            g.fillPath(p);
-
-            drawable->drawWithin(g, getLocalBounds().toFloat().withSizeKeepingCentre(iconSize, iconSize), RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
-        }
-
-        void colourChanged() override {
-            drawable.reset(icon.getDrawable(findColour(ColourIds::iconColourId)));
-        }
-
-        void setRotation(float angle) {
-            drawable->setTransform(AffineTransform().rotated(angle, drawable->getWidth() * 0.5, drawable->getHeight() * 0.5));
-            repaint();
-        }
-    private:
-        Material::Icon &icon;
-        std::unique_ptr<Drawable> drawable;
-        Material::Shadows::DropShadower6dp shadow;
+    enum ColourIds
+    {
+        containerColourId = 0x8000000,
+        iconColourId = 0x8000001
     };
-}
+
+    FloatingActionButton(Material::Icon &icon) : Button("FloatingActionButton"), icon(icon)
+    {
+        setColour(ColourIds::iconColourId, Material::Color::Icons::Selected::OnPrimary::Active);
+        setColour(ColourIds::containerColourId, Material::Color::Primary::Main);
+
+        setPaintingIsUnclipped(true);
+        setSize(miniSize, miniSize);
+    }
+
+    ~FloatingActionButton() override
+    {
+    }
+
+    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override
+    {
+        Path p;
+
+        p.addEllipse(0, 0, getWidth(), getHeight());
+        //shadow.drawForPath(g, p);
+        g.setColour(findColour(ColourIds::containerColourId));
+        g.fillPath(p);
+
+        drawable->drawWithin(g, getLocalBounds().toFloat().withSizeKeepingCentre(iconSize, iconSize), RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
+    }
+
+    void colourChanged() override
+    {
+        drawable.reset(icon.getDrawable(findColour(ColourIds::iconColourId)));
+    }
+
+    void setRotation(float angle)
+    {
+        drawable->setTransform(AffineTransform().rotated(angle, drawable->getWidth() * 0.5, drawable->getHeight() * 0.5));
+        repaint();
+    }
+
+  private:
+    Material::Icon &icon;
+    std::unique_ptr<Drawable> drawable;
+    Material::Shadows::DropShadower6dp shadow;
+};
+} // namespace Material

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 class BottomBar : public Component {
 public:
@@ -22,8 +22,7 @@ public:
         setSize(320, height);
     }
 
-    ~BottomBar() {
-    }
+    ~BottomBar() override = default;
 
     void paint(Graphics &g) override {
         g.fillAll(Material::Color::Surface::Dark);
@@ -40,14 +39,14 @@ public:
         flexBox.items.add(FlexItem(volumeSlider).withFlex(2));
         flexBox.items.add(FlexItem(px(Material::IconButton::minButtonSize), px(Material::IconButton::minButtonSize), muteButton));
 
-        flexBox.performLayout(getLocalBounds().withTrimmedRight(static_cast<int>(getWidth() * 0.5) - px((int) Material::IconButton::minButtonSize)));
+        flexBox.performLayout(getLocalBounds().withTrimmedRight(static_cast<int>(getWidth() * 0.5) - px(Material::IconButton::minButtonSize)));
     }
 
     Material::IconButton talkoverButton{Material::Icons::mic_none};
     Slider volumeSlider{Slider::SliderStyle::LinearHorizontal, Slider::TextEntryBoxPosition::NoTextBox};
     Material::IconButton muteButton{Material::Icons::volume_up};
 private:
-    Material::Shadows::DropShadower4dp shadow;
+    //Material::Shadows::DropShadower4dp shadow;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BottomBar)
 };

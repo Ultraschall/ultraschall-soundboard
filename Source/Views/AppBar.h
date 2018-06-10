@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "../Material/Material.h"
 #include "../Material/IconButton.h"
@@ -26,9 +26,7 @@ public:
         setSize(320, height);
     }
 
-    ~AppBar()
-    {
-    }
+    ~AppBar() override = default;
 
     void paint (Graphics& g) override
     {
@@ -50,7 +48,7 @@ public:
     Material::IconButton menuButton{ Material::Icons::menu };
     Label title;
 private:
-    Material::Shadows::DropShadower4dp shadow;
+    //Material::Shadows::DropShadower4dp shadow;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AppBar)
 };

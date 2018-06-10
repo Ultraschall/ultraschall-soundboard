@@ -1,10 +1,11 @@
 #pragma once
 
-#include "JuceHeader.h"
+#include "../../JuceLibraryCode/JuceHeader.h"
 #include "ADSR.h"
 
-class Player : public AudioSource, public ChangeBroadcaster {
-public:
+class Player : public AudioSource, public ChangeBroadcaster
+{
+  public:
     explicit Player(const Identifier &id);
 
     ~Player() override;
@@ -40,7 +41,8 @@ public:
 
     Identifier identifier;
 
-    enum PlayerState {
+    enum PlayerState
+    {
         player_error = -1,
         player_ready = 0,
         player_stopped = 1,
@@ -51,7 +53,8 @@ public:
     };
     PlayerState playerState{player_idle};
     double progress{0};
-    enum FadeState {
+    enum FadeState
+    {
         fade_in = 1,
         fade_out = 2,
         fade_idle = 255
@@ -64,15 +67,14 @@ public:
 
     std::shared_ptr<AudioThumbnail> thumbnail;
 
-private:
+  private:
     float currentGain{1.0f};
     float previousGain{1.0f};
     NormalisableRange<float> gainRange{
-            Decibels::decibelsToGain<float>(-180),
-            Decibels::decibelsToGain<float>(0),
-            0,
-            Decibels::decibelsToGain<float>(-12)
-    };
+        Decibels::decibelsToGain<float>(-180),
+        Decibels::decibelsToGain<float>(0),
+        0,
+        Decibels::decibelsToGain<float>(-12)};
 
     double mySampleRate{0.0};
     int attackMs{3000};

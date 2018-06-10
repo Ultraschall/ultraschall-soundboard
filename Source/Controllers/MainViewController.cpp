@@ -2,14 +2,15 @@
 
 MainViewController::MainViewController(Engine &engine) : ViewController(engine)
 {
-
 }
 
-void MainViewController::loadView() {
+void MainViewController::loadView()
+{
     view = std::make_unique<MainView>();
 }
 
-void MainViewController::viewDidLoad() {
+void MainViewController::viewDidLoad()
+{
     view->navigationDrawer.viewList.onClick = [this] {
         view->navigationDrawer.viewList.setToggleState(true, dontSendNotification);
         view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
@@ -38,9 +39,9 @@ void MainViewController::viewDidLoad() {
         view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
     };
 
-	view->navigationDrawer.settings.onClick = [this] {
-		engine.debugState();
-	};
+    view->navigationDrawer.settings.onClick = [this] {
+        engine.debugState();
+    };
 
     view->addFileButton.onClick = [this] {
         view->hideExtendedFloatingActionButtons();
@@ -58,7 +59,8 @@ void MainViewController::viewDidLoad() {
     };
 }
 
-void MainViewController::showLibrary() {
+void MainViewController::showLibrary()
+{
     const auto current = dynamic_cast<LibraryViewController *>(contentController.get());
     if (current == nullptr)
     {
@@ -68,71 +70,70 @@ void MainViewController::showLibrary() {
     }
 }
 
-void MainViewController::addDirectory() {
+void MainViewController::addDirectory()
+{
     const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
     Logger::outputDebugString(engine.audioFormatManager.getWildcardForAllFormats());
 
     fileChooser = std::make_unique<FileChooser>("Please select the directory you want to import...",
-            File::getSpecialLocation(File::userHomeDirectory),
-            engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
+                                                File::getSpecialLocation(File::userHomeDirectory),
+                                                engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 
     fileChooser->launchAsync(FileBrowserComponent::openMode | FileBrowserComponent::canSelectDirectories,
-            [this](const FileChooser &chooser)
-            {
-                auto results = chooser.getURLResults();
-                for (const auto& result : results)
-                {
-                    if (result.isLocalFile())
-                    {
-                        engine.importDirectory(result.getLocalFile());
-                        showLibrary();
-                    }
-                }
-            });
+                             [this](const FileChooser &chooser) {
+                                 auto results = chooser.getURLResults();
+                                 for (const auto &result : results)
+                                 {
+                                     if (result.isLocalFile())
+                                     {
+                                         engine.importDirectory(result.getLocalFile());
+                                         showLibrary();
+                                     }
+                                 }
+                             });
 }
 
-void MainViewController::addFile() {
+void MainViewController::addFile()
+{
     const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
     fileChooser = std::make_unique<FileChooser>("Please select the audio file you want to load...",
-            File::getSpecialLocation(File::userHomeDirectory),
-            engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
+                                                File::getSpecialLocation(File::userHomeDirectory),
+                                                engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 
-    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode |
-                    FileBrowserComponent::canSelectFiles,
-            [this](const FileChooser &chooser)
-            {
-                auto results = chooser.getURLResults();
-                for (const auto& result : results)
-                {
-                    if (result.isLocalFile())
-                    {
-                        engine.loadAudioFile(result.getLocalFile());
-                        showLibrary();
-                    }
-                }
-            });
+    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
+                             [this](const FileChooser &chooser) {
+                                 auto results = chooser.getURLResults();
+                                 for (const auto &result : results)
+                                 {
+                                     if (result.isLocalFile())
+                                     {
+                                         engine.loadAudioFile(result.getLocalFile());
+                                         showLibrary();
+                                     }
+                                 }
+                             });
 }
 
-void MainViewController::loadProjectFile() {
+void MainViewController::loadProjectFile()
+{
     const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
     fileChooser = std::make_unique<FileChooser>("Please select the Soundboard Project file you want to load...",
-            File::getSpecialLocation(File::userHomeDirectory),
-            "*.usdb", useNativeVersion);
+                                                File::getSpecialLocation(File::userHomeDirectory),
+                                                "*.usdb", useNativeVersion);
 
     fileChooser->launchAsync(FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
-            [this](const FileChooser &chooser)
-            {
-                auto results = chooser.getURLResults();
-                for (const auto& result : results)
-                {
-                    if (result.isLocalFile())
-                    {
-                        engine.openFile(result.getLocalFile());
-                        showLibrary();
-                    }
-                }
-            });
+                             [this](const FileChooser &chooser) {
+                                 auto results = chooser.getURLResults();
+                                 for (const auto &result : results)
+                                 {
+                                     if (result.isLocalFile())
+                                     {
+                                         engine.openFile(result.getLocalFile());
+                                         showLibrary();
+                                     }
+                                 }
+                             });
 }
