@@ -13,7 +13,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 template <typename T>
-inline T px(T dp) P
+inline T px(T dp)
 {
   return T(std::round(dp));
 }

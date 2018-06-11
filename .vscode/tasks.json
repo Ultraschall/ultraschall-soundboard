@@ -5,8 +5,26 @@
     "tasks": [
         {
             "label": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "type": "shell",
-            "command": "make"
+            "command": "cd ${workspaceFolder}/Builds/LinuxMakefile; make",
+            "problemMatcher": [
+                {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${workspaceFolder}/Builds/LinuxMakefile"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+                }
+            ]
         }
     ]
 }

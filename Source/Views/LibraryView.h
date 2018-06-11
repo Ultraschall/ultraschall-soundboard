@@ -17,7 +17,7 @@ public:
     ~LibraryView() = default;
     
     void resized() override {
-        table.setBounds(getLocalBounds());<
+        table.setBounds(getLocalBounds());
     }
     
     ListBox table;
