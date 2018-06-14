@@ -18,7 +18,7 @@
                     "value": ":1" 
                 }
             ],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "lldb",
             "setupCommands": [
                 {

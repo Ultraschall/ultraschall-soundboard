@@ -37,7 +37,7 @@ public:
     }
 #endif
 
-    ~NavigationDrawerItem() override = default;
+    ~NavigationDrawerItem() noexcept override = default;
 
     void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
         g.fillAll(Material::Color::Surface::Main);

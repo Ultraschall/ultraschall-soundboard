@@ -30,7 +30,7 @@ public:
         setOpaque(true);
     }
     
-    ~LibraryItem() override = default;
+    ~LibraryItem() noexcept override = default;
 
     void paint(Graphics &g) override {
         g.fillAll(Material::Color::Surface::Base);

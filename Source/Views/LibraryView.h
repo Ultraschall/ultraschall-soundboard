@@ -14,7 +14,7 @@ public:
         addAndMakeVisible(table);
     }
     
-    ~LibraryView() = default;
+    ~LibraryView() noexcept override = default;
     
     void resized() override {
         table.setBounds(getLocalBounds());

@@ -34,7 +34,7 @@ public:
         addMouseListener(this, true);
     }
 
-    ~NavigationDrawer() {
+    ~NavigationDrawer() noexcept override {
         Desktop::getInstance().getAnimator().removeChangeListener(this);
     }
 

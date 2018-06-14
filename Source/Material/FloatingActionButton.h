@@ -28,9 +28,7 @@ class FloatingActionButton : public Button
         setSize(miniSize, miniSize);
     }
 
-    ~FloatingActionButton() override
-    {
-    }
+    ~FloatingActionButton() noexcept override = default;
 
     void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override
     {

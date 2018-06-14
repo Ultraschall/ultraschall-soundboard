@@ -22,7 +22,7 @@ public:
         setSize(320, height);
     }
 
-    ~BottomBar() override = default;
+    ~BottomBar() noexcept override = default;
 
     void paint(Graphics &g) override {
         g.fillAll(Material::Color::Surface::Dark);

@@ -11,7 +11,7 @@ public:
 		setOpaque(true);
     }
     
-    ~StartupView() override = default;
+    ~StartupView() noexcept override = default;
     
     void paint(Graphics& g) override {
         g.fillAll(Material::Color::Surface::Light);

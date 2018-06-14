@@ -26,7 +26,7 @@ public:
         setSize(320, height);
     }
 
-    ~AppBar() override = default;
+    ~AppBar() noexcept override = default;
 
     void paint (Graphics& g) override
     {

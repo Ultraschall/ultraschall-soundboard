@@ -11,6 +11,7 @@ public:
         setOpaque(true);
         setSize(304, px(height));
     }
+    
     ~NavigationDrawerDevider() override = default;
 
     void paint(Graphics &g) override {

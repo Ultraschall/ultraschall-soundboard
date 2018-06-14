@@ -56,7 +56,7 @@ public:
         setContentView(&startup);
     }
 
-    ~MainView() override = default;
+    ~MainView() noexcept override = default;
 
     void paint (Graphics& g) override
     {
