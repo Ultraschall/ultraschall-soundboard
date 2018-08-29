@@ -61,21 +61,32 @@ public:
     void paint (Graphics& g) override
     {
         g.fillAll(Material::Color::Surface::Light);
+		if (showKeyboardFocus) {
+			g.setColour(Material::Color::Primary::Main);
+			g.drawRect(getLocalBounds(), 2.0f);
+		}
     }
 
     void resized() override
     {
+		int reduced = 0;
+		if (showKeyboardFocus) {
+			if (hasKeyboardFocus(true)) {
+				reduced = 2;
+			}
+		}
+
         FlexBox flexBox;
         flexBox.flexDirection = FlexBox::Direction::column;
         flexBox.alignContent = FlexBox::AlignContent::center;
         
-        flexBox.items.add(FlexItem(getWidth(), px(AppBar::height), appBar));
+        flexBox.items.add(FlexItem(getWidth() - (reduced * 2), px(AppBar::height), appBar));
         if (contentView != nullptr) {
             flexBox.items.add(FlexItem(*contentView).withFlex(2));
         }
-        flexBox.items.add(FlexItem(getWidth(), px(BottomBar::height), bottomBar));
+        flexBox.items.add(FlexItem(getWidth() - (reduced * 2), px(BottomBar::height), bottomBar));
                 
-        flexBox.performLayout(getLocalBounds());
+        flexBox.performLayout(getLocalBounds().reduced(reduced));
 
         auto fabBottom = static_cast<int>(BottomBar::height + (Material::FloatingActionButton::size * 0.5));
         floatingActionButton.setBounds(getLocalBounds()
@@ -150,6 +161,31 @@ public:
         resized();
         repaint();
     }
+
+	void updateFocusIndicator() {
+		if (hasKeyboardFocus(true) == haveFocus) {
+			return;
+		}
+		haveFocus = hasKeyboardFocus(true);
+		resized();
+	}
+
+	void focusGained(FocusChangeType /*cause*/) override {
+		updateFocusIndicator();
+	}
+
+	void focusOfChildComponentChanged(FocusChangeType /*cause*/) override {
+		updateFocusIndicator();
+	}
+
+	void focusLost(FocusChangeType cause) override {
+		updateFocusIndicator();
+	}
+
+	void setShowKeyboardFocus(bool value) {
+		showKeyboardFocus = value;
+		resized();
+	}
     
     AppBar appBar;
     BottomBar bottomBar;
@@ -163,6 +199,8 @@ public:
 private:
     StartupView startup;
     Component *contentView{nullptr};
+	bool showKeyboardFocus{ true };
+	bool haveFocus{ false };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainView)
 };
