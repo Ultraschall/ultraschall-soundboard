@@ -1,6 +1,6 @@
 #include "MainViewController.h"
 
-MainViewController::MainViewController(Engine &engine) : ViewController(engine)
+MainViewController::MainViewController(Engine &engine) : ViewController(engine), library(engine.state)
 {
 }
 
@@ -57,6 +57,16 @@ void MainViewController::viewDidLoad()
         view->hideExtendedFloatingActionButtons();
         loadProjectFile();
     };
+
+    view->bottomBar.volumeSlider.onValueChange = [this] {
+        engine.setGain(static_cast<float>(view->bottomBar.volumeSlider.getValue()));
+    };
+
+    view->bottomBar.volumeSlider.setValue(library.master_gain);
+}
+
+void MainViewController::viewDidUnload() {
+    engine.state.removeListener(this);
 }
 
 void MainViewController::showLibrary()
@@ -137,3 +147,10 @@ void MainViewController::loadProjectFile()
                                  }
                              });
 }
+
+void MainViewController::valueTreePropertyChanged(ValueTree &treeWhosePropertyHasChanged, const Identifier &property) {
+    if (property == IDs::library_master_gain) {
+        view->bottomBar.volumeSlider.setValue(library.master_gain);
+    }
+}
+

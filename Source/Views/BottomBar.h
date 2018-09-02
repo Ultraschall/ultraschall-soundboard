@@ -13,6 +13,7 @@ public:
         setOpaque(true);
         talkoverButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         muteButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
+        volumeSlider.setRange (0, 1);
 
         addAndMakeVisible(talkoverButton);
         addAndMakeVisible(volumeSlider);

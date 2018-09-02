@@ -18,6 +18,7 @@ Engine::Engine()
     state = ValueTree(IDs::LIBRARY);
     state.setProperty(IDs::library_version, "4.0.0", nullptr);
     state.setProperty(IDs::library_title, "Soundboard", nullptr);
+    state.setProperty(IDs::library_master_gain, 1.0f, nullptr);
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
@@ -28,6 +29,8 @@ Engine::Engine()
     newPlaylist();
 
     undoManager.clearUndoHistory();
+
+    setGain(1.0f);
 
     startTimer(100);
 
@@ -171,6 +174,7 @@ Engine::~Engine()
 void Engine::setGain(float value)
 {
     currentGain = gainRange.convertFrom0to1(value);
+    state.setProperty(IDs::library_master_gain, currentGain, nullptr);
 }
 
 float Engine::getGain() const

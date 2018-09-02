@@ -15,7 +15,7 @@
 template <typename T>
 inline T px(T dp)
 {
-  return T(std::round(dp));
+  return T(std::round(dp * 1.0));
 }
 
 //enum DensityQualifier {

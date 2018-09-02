@@ -10,7 +10,7 @@
                 "isDefault": true
             },
             "type": "shell",
-            "command": "cd ${workspaceFolder}/Builds/LinuxMakefile; make",
+            "command": "cd ${workspaceFolder}/Builds/CLion; cmake CMakeList.txt; make",
             "problemMatcher": [
                 {
                 "owner": "cpp",

@@ -10,6 +10,7 @@ namespace IDs {
     DECLARE_ID(library_version, version)
     DECLARE_ID(library_uuid, uuid)
     DECLARE_ID(library_title, title)
+    DECLARE_ID(library_master_gain, master_gain)
 
     // #Players []
     DECLARE_ID(PLAYERS, PLAYERS)

@@ -7,7 +7,10 @@
 
 #include "LibraryViewController.h"
 
-class MainViewController : public ViewController<MainView>
+#include "../Models/LibraryModel.h"
+#include "../Models/Utilities.h"
+
+class MainViewController : public ViewController<MainView>, public ValueTreePropertyChangeListener
 {
   public:
     explicit MainViewController(Engine &engine);
@@ -15,6 +18,8 @@ class MainViewController : public ViewController<MainView>
     void loadView() override;
 
     void viewDidLoad() override;
+
+    void viewDidUnload() override;
 
     void showLibrary();
 
@@ -24,9 +29,13 @@ class MainViewController : public ViewController<MainView>
 
     void loadProjectFile();
 
-  private:
+    void valueTreePropertyChanged(ValueTree &treeWhosePropertyHasChanged, const Identifier &property) override;
+
+private:
     std::unique_ptr<FileChooser> fileChooser;
     std::unique_ptr<ViewController<Component>> contentController;
+
+    LibraryModel library;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainViewController)
 };

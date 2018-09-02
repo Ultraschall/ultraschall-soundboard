@@ -5,7 +5,7 @@
 
 struct LibraryModel
 {
-	LibraryModel(ValueTree v)
+    explicit LibraryModel(ValueTree v)
 		: state(v)
 	{
 		jassert(v.hasType(IDs::LIBRARY));
@@ -13,10 +13,13 @@ struct LibraryModel
 		version.referTo(state, IDs::library_version, nullptr);
 		uuid.referTo(state, IDs::library_uuid, nullptr);
 		title.referTo(state, IDs::library_title, nullptr);
+        master_gain.referTo(state, IDs::library_master_gain, nullptr);
 	}
 
 	ValueTree state;
 	CachedValue<String> version;
 	CachedValue<String> uuid;
 	CachedValue<String> title;
+
+	CachedValue<float> master_gain;
 };

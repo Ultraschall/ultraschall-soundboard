@@ -7,8 +7,8 @@ namespace Material
 class Icon
 {
   public:
-    Icon(const char *data, const int size)
-        : svg(XmlDocument::parse(String(CharPointer_UTF8(data), size)))
+    explicit Icon(const char *data, const int size)
+        : svg(XmlDocument::parse(String(CharPointer_UTF8(data), (size_t) size)))
     {
     }
 

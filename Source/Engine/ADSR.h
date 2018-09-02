@@ -16,8 +16,7 @@
 //  You may modify and use this source code to create binary code for your own purposes, free or commercial.
 //
 
-#ifndef ADRS_h
-#define ADRS_h
+#pragma once
 
 class ADSR
 {
@@ -136,5 +135,3 @@ inline float ADSR::getOutput() const
 {
     return output;
 }
-
-#endif

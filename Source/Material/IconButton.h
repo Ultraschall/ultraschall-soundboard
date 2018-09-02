@@ -29,7 +29,7 @@ class IconButton : public Button
         if (drawable != nullptr)
         {
             drawable->drawWithin(g,
-                                 getLocalBounds().toFloat().withSizeKeepingCentre(iconSize, iconSize),
+                                 getLocalBounds().toFloat().withSizeKeepingCentre(px(iconSize), px(iconSize)),
                                  RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
         }
     }
