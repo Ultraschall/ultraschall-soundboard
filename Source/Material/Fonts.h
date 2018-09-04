@@ -7,9 +7,7 @@ namespace Material
 class Typefaces
 {
   public:
-    Typefaces()
-    {
-    }
+    Typefaces() = default;
 
     ~Typefaces()
     {
@@ -38,9 +36,7 @@ class Typefaces
 class Fonts
 {
   public:
-    Fonts()
-    {
-    }
+    Fonts() = default;
 
     ~Fonts()
     {

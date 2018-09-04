@@ -19,7 +19,7 @@ class FloatingActionButton : public Button
         iconColourId = 0x8000001
     };
 
-    FloatingActionButton(Material::Icon &icon) : Button("FloatingActionButton"), icon(icon)
+    explicit FloatingActionButton(Material::Icon &icon) : Button("FloatingActionButton"), icon(icon)
     {
         setColour(ColourIds::iconColourId, Material::Color::Icons::Selected::OnPrimary::Active);
         setColour(ColourIds::containerColourId, Material::Color::Primary::Main);
@@ -49,7 +49,7 @@ class FloatingActionButton : public Button
 
     void setRotation(float angle)
     {
-        drawable->setTransform(AffineTransform().rotated(angle, drawable->getWidth() * 0.5, drawable->getHeight() * 0.5));
+        drawable->setTransform(AffineTransform().rotated(angle, drawable->getWidth() * 0.5f, drawable->getHeight() * 0.5f));
         repaint();
     }
 

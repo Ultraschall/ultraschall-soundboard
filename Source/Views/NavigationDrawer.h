@@ -14,7 +14,7 @@ public:
     constexpr const static int minFlingVelocity = 365;
     constexpr const static int baseSettleDuration = 246;
 
-    NavigationDrawer() {
+    NavigationDrawer() noexcept : Component("NavigationDrawer") {
         setOpaque(true);
         setAlwaysOnTop(true);
         //shadow.setOwner(this);

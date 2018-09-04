@@ -2,7 +2,6 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../Material/Material.h"
-#include "../Material/IconButton.h"
 
 class LibraryItem : public Component {
 public:

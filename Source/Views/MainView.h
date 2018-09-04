@@ -11,7 +11,7 @@
 class MainView : public Component
 {
 public:
-    MainView()
+    MainView() noexcept : Component("MainView")
     {
 		setOpaque(true);
         addAndMakeVisible(appBar);

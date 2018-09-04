@@ -1,12 +1,13 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "../Material/Material.h"
 
 class BottomBar : public Component {
 public:
     constexpr const static int height = 56;
 
-    BottomBar() : Component("BottomBar") {
+    BottomBar() noexcept : Component("BottomBar") {
 #if LIVE_MOCK
         setLookAndFeel(new MaterialLookAndFeel());
 #endif

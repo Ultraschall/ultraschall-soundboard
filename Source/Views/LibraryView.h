@@ -8,7 +8,7 @@
 class LibraryView : public Component
 {
 public:
-    LibraryView() {
+    LibraryView() noexcept : Component("LibraryView") {
         table.setColour(ListBox::backgroundColourId, Material::Color::Surface::Light);
         table.setRowHeight(px(LibraryItem::height));
         addAndMakeVisible(table);

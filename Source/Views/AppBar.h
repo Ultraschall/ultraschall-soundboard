@@ -10,7 +10,7 @@ class AppBar : public Component
 public:
     constexpr const static int height = 56;
 
-    AppBar()
+    AppBar() noexcept : Component("AppBar")
     {
         setOpaque(true);
         

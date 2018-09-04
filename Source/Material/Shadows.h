@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "Common.h"
 
 namespace Material
 {
@@ -9,14 +10,12 @@ namespace Shadows
 class DropShadowerBase
 {
   public:
-    DropShadowerBase(DropShadow umbraShadow, DropShadow penumbraShadow, DropShadow ambientShadow)
+    DropShadowerBase(const DropShadow &umbraShadow, const DropShadow &penumbraShadow, const DropShadow &ambientShadow)
         : umbraShadow(umbraShadow), penumbraShadow(penumbraShadow), ambientShadow(ambientShadow),
           umbraShadower(umbraShadow), penumbraShadower(penumbraShadow), ambientShadower(ambientShadow)
     {
     }
-    virtual ~DropShadowerBase()
-    {
-    }
+    virtual ~DropShadowerBase() = default;
 
     /** Attaches the DropShadower to the component you want to shadow. */
     void setOwner(Component *componentToFollow)
