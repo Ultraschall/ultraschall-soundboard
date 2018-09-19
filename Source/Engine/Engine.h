@@ -36,14 +36,9 @@ class Engine : public AudioSource, public ChangeListener, public Timer
 
 	float getGain() const;
 
-	void toggleMuteState() {
-	    muteState = !muteState;
-        state.setProperty(IDs::library_state_mute, isTalkOver(), nullptr);
-	}
+	void toggleMuteState();
 
-	bool isMuted() {
-        return muteState;
-	}
+	bool isMuted();
 
 	void toggleTalkOver();
 

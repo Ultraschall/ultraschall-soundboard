@@ -12,6 +12,7 @@ public:
         setLookAndFeel(new MaterialLookAndFeel());
 #endif
         setOpaque(true);
+
         talkoverButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         talkoverButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
 
