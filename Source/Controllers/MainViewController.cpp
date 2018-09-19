@@ -124,7 +124,7 @@ void MainViewController::addFile()
                                                 File::getSpecialLocation(File::userHomeDirectory),
                                                 engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 
-    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipbleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
+    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
                              [this](const FileChooser &chooser) {
                                  auto results = chooser.getURLResults();
                                  for (const auto &result : results)
