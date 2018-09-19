@@ -11,8 +11,11 @@ namespace IDs {
     DECLARE_ID(library_uuid, uuid)
     DECLARE_ID(library_title, title)
     DECLARE_ID(library_master_gain, master_gain)
+	DECLARE_ID(library_state_talkover, state_talkover)
+    DECLARE_ID(library_state_mute, state_mute)
 
-    // #Players []
+
+	// #Players []
     DECLARE_ID(PLAYERS, PLAYERS)
 
     // #Player

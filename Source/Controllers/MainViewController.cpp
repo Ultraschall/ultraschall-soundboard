@@ -11,6 +11,8 @@ void MainViewController::loadView()
 
 void MainViewController::viewDidLoad()
 {
+    engine.state.addListener(this);
+
     view->navigationDrawer.viewList.onClick = [this] {
         view->navigationDrawer.viewList.setToggleState(true, dontSendNotification);
         view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
@@ -62,7 +64,17 @@ void MainViewController::viewDidLoad()
         engine.setGain(static_cast<float>(view->bottomBar.volumeSlider.getValue()));
     };
 
-    view->bottomBar.volumeSlider.setValue(library.master_gain);
+    view->bottomBar.talkoverButton.onClick = [this] {
+        engine.toggleTalkOver();
+    };
+
+    view->bottomBar.muteButton.onClick = [this] {
+        engine.toggleMuteState();
+    };
+
+    view->bottomBar.volumeSlider.setValue(library.master_gain, dontSendNotification);
+    view->bottomBar.talkoverButton.setToggleState(library.state_talkover, dontSendNotification);
+    view->bottomBar.muteButton.setToggleState(library.state_mute, dontSendNotification);
 }
 
 void MainViewController::viewDidUnload() {
@@ -112,7 +124,7 @@ void MainViewController::addFile()
                                                 File::getSpecialLocation(File::userHomeDirectory),
                                                 engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 
-    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
+    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipbleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
                              [this](const FileChooser &chooser) {
                                  auto results = chooser.getURLResults();
                                  for (const auto &result : results)
@@ -150,7 +162,11 @@ void MainViewController::loadProjectFile()
 
 void MainViewController::valueTreePropertyChanged(ValueTree &treeWhosePropertyHasChanged, const Identifier &property) {
     if (property == IDs::library_master_gain) {
-        view->bottomBar.volumeSlider.setValue(library.master_gain);
+        view->bottomBar.volumeSlider.setValue(library.master_gain, dontSendNotification);
+    } else if (property == IDs::library_state_talkover) {
+        view->bottomBar.talkoverButton.setToggleState(library.state_talkover, dontSendNotification);
+    } else if (property == IDs::library_state_mute) {
+        view->bottomBar.muteButton.setToggleState(library.state_mute, dontSendNotification);
     }
 }
 

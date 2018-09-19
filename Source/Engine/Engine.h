@@ -36,7 +36,18 @@ class Engine : public AudioSource, public ChangeListener, public Timer
 
 	float getGain() const;
 
+	void toggleMuteState() {
+	    muteState = !muteState;
+        state.setProperty(IDs::library_state_mute, isTalkOver(), nullptr);
+	}
+
+	bool isMuted() {
+        return muteState;
+	}
+
 	void toggleTalkOver();
+
+	bool isTalkOver() const;
 
 	void openFile(const File &file);
 
@@ -76,6 +87,8 @@ class Engine : public AudioSource, public ChangeListener, public Timer
 	bool talkOverState{true};
 	int talkOverFadeMs{500};
 	NormalisableRange<float> talkOverRange{Decibels::decibelsToGain<float>(-30), 1.0f};
+
+	bool muteState{false};
 
 	MixerAudioSource mixer;
 	std::vector<std::unique_ptr<Player>> players;

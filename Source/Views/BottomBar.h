@@ -12,8 +12,12 @@ public:
         setLookAndFeel(new MaterialLookAndFeel());
 #endif
         setOpaque(true);
-        talkoverButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
-        muteButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
+        talkoverButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
+        talkoverButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+
+        muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+        muteButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
+
         volumeSlider.setRange (0, 1);
 
         addAndMakeVisible(talkoverButton);
@@ -44,9 +48,15 @@ public:
         flexBox.performLayout(getLocalBounds().withTrimmedRight(static_cast<int>(getWidth() * 0.5) - px(Material::IconButton::minButtonSize)));
     }
 
-    Material::IconButton talkoverButton{Material::Icons::mic_none};
+    Material::IconToggleButton talkoverButton{
+        Material::Icons::mic,
+        Material::Icons::mic_none
+    };
     Slider volumeSlider{Slider::SliderStyle::LinearHorizontal, Slider::TextEntryBoxPosition::NoTextBox};
-    Material::IconButton muteButton{Material::Icons::volume_up};
+    Material::IconToggleButton muteButton{
+            Material::Icons::volume_up,
+            Material::Icons::volume_off
+    };
 private:
     //Material::Shadows::DropShadower4dp shadow;
 

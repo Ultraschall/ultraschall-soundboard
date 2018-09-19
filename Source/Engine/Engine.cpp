@@ -19,6 +19,7 @@ Engine::Engine()
     state.setProperty(IDs::library_version, "4.0.0", nullptr);
     state.setProperty(IDs::library_title, "Soundboard", nullptr);
     state.setProperty(IDs::library_master_gain, 1.0f, nullptr);
+    state.setProperty(IDs::library_state_talkover, isTalkOver(), nullptr);
 
     state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
     state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
@@ -174,12 +175,7 @@ Engine::~Engine()
 void Engine::setGain(float value)
 {
     currentGain = gainRange.convertFrom0to1(value);
-    state.setProperty(IDs::library_master_gain, currentGain, nullptr);
-}
-
-float Engine::getGain() const
-{
-    return gainRange.convertTo0to1(currentGain);
+    state.setProperty(IDs::library_master_gain, gainRange.convertTo0to1(currentGain), nullptr);
 }
 
 void Engine::toggleTalkOver()
@@ -188,6 +184,7 @@ void Engine::toggleTalkOver()
     talkOver.setReleaseRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
     talkOverState = !talkOverState;
     talkOver.gate(talkOverState);
+    state.setProperty(IDs::library_state_talkover, isTalkOver(), nullptr);
 }
 
 void Engine::openFile(const File &file)
@@ -309,4 +306,8 @@ void Engine::syncState(ValueTree state, Player *player)
     }
 
     //Logger::outputDebugString(state.toXmlString());
+}
+
+bool Engine::isTalkOver() const {
+    return talkOverState;
 }
