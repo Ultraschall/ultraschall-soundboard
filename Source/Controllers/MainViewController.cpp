@@ -11,8 +11,6 @@ void MainViewController::loadView()
 
 void MainViewController::viewDidLoad()
 {
-    engine.state.addListener(this);
-
     view->navigationDrawer.viewList.onClick = [this] {
         view->navigationDrawer.viewList.setToggleState(true, dontSendNotification);
         view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
@@ -65,16 +63,20 @@ void MainViewController::viewDidLoad()
     };
 
     view->bottomBar.talkoverButton.onClick = [this] {
+        engine.debugState();
         engine.toggleTalkOver();
     };
 
     view->bottomBar.muteButton.onClick = [this] {
+        engine.debugState();
         engine.toggleMuteState();
     };
 
     view->bottomBar.volumeSlider.setValue(library.master_gain, dontSendNotification);
     view->bottomBar.talkoverButton.setToggleState(library.state_talkover, dontSendNotification);
     view->bottomBar.muteButton.setToggleState(library.state_mute, dontSendNotification);
+
+    engine.state.addListener(this);
 }
 
 void MainViewController::viewDidUnload() {

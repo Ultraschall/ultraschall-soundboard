@@ -267,7 +267,7 @@ void Engine::syncState(ValueTree state, Player *player) {
 }
 
 bool Engine::isTalkOver() const {
-    return talkOverState;
+    return !talkOverState;
 }
 
 float Engine::getGain() const {

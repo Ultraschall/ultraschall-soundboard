@@ -13,8 +13,8 @@ public:
 #endif
         setOpaque(true);
 
-        talkoverButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
-        talkoverButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+        talkoverButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+        talkoverButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
 
         muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
         muteButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
@@ -50,8 +50,8 @@ public:
     }
 
     Material::IconToggleButton talkoverButton{
-        Material::Icons::mic,
-        Material::Icons::mic_none
+        Material::Icons::mic_none,
+        Material::Icons::mic
     };
     Slider volumeSlider{Slider::SliderStyle::LinearHorizontal, Slider::TextEntryBoxPosition::NoTextBox};
     Material::IconToggleButton muteButton{
