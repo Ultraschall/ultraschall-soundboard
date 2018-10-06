@@ -97,14 +97,14 @@ void UltraschallSoundboardAudioProcessor::prepareToPlay (double sampleRate, int 
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    library.prepareToPlay(samplesPerBlock, sampleRate);
+    engine.prepareToPlay(samplesPerBlock, sampleRate);
 }
 
 void UltraschallSoundboardAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
-    library.releaseResources();
+    engine.releaseResources();
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -159,7 +159,8 @@ void UltraschallSoundboardAudioProcessor::processBlock (AudioBuffer<float>& buff
 //        // ..do something to the data...
 //    }
     AudioSourceChannelInfo info(&buffer, 0, buffer.getNumSamples());
-    library.getNextAudioBlock(info);
+	midi.handleMidiMessages(midiMessages);
+    engine.getNextAudioBlock(info);
 }
 
 //==============================================================================

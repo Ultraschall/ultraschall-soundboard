@@ -157,6 +157,10 @@ add_library (SHARED_CODE STATIC
     "../../Source/Engine/ADSR.h"
     "../../Source/Engine/Engine.cpp"
     "../../Source/Engine/Engine.h"
+    "../../Source/Engine/MidiEngine.cpp"
+    "../../Source/Engine/MidiEngine.h"
+    "../../Source/Engine/OscEngine.cpp"
+    "../../Source/Engine/OscEngine.h"
     "../../Source/Engine/Player.cpp"
     "../../Source/Engine/Player.h"
     "../../Source/PluginProcessor.cpp"
@@ -1662,6 +1666,8 @@ set_source_files_properties ("../../Source/Material/FloatingActionButton.h" PROP
 set_source_files_properties ("../../Source/Material/LookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Engine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Engine/MidiEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Engine/OscEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginProcessor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginEditor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3079,7 +3085,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -3088,7 +3094,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
@@ -3155,13 +3161,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3299,7 +3305,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -3308,7 +3314,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-VST3.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
@@ -3377,13 +3383,13 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_MACOSX_DEPLOYMENT_TARGET_ppc 10.4
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_SDKROOT_ppc macosx10.5
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Source/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\ultraschall-soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3622,6 +3628,10 @@ add_library (SHARED_CODE STATIC
     "../../Source/Engine/ADSR.h"
     "../../Source/Engine/Engine.cpp"
     "../../Source/Engine/Engine.h"
+    "../../Source/Engine/MidiEngine.cpp"
+    "../../Source/Engine/MidiEngine.h"
+    "../../Source/Engine/OscEngine.cpp"
+    "../../Source/Engine/OscEngine.h"
     "../../Source/Engine/Player.cpp"
     "../../Source/Engine/Player.h"
     "../../Source/PluginProcessor.cpp"
@@ -5126,6 +5136,8 @@ set_source_files_properties ("../../Source/Material/FloatingActionButton.h" PROP
 set_source_files_properties ("../../Source/Material/LookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Engine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Engine/MidiEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Engine/OscEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginProcessor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginEditor.h" PROPERTIES HEADER_FILE_ONLY TRUE)

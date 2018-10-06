@@ -68,10 +68,11 @@ struct AudioProcessorValueTreeState::Parameter   : public AudioProcessorParamete
                                                                    : text.getFloatValue());
     }
 
-    String getText (float v, int length) const override
+    String getText (float normalisedValue, int /*length*/) const override
     {
-        return valueToTextFunction != nullptr ? valueToTextFunction (range.convertFrom0to1 (v))
-                                              : AudioProcessorParameter::getText (v, length);
+        auto v = range.convertFrom0to1 (normalisedValue);
+        return valueToTextFunction != nullptr ? valueToTextFunction (v)
+                                              : String (v, 2);
     }
 
     int getNumSteps() const override
@@ -453,7 +454,7 @@ struct AudioProcessorValueTreeState::SliderAttachment::Pimpl  : private Attached
     {
         NormalisableRange<float> range (state.getParameterRange (paramID));
 
-        if (range.interval != 0 || range.skew != 0)
+        if (range.interval != 0.0f || range.skew != 1.0f)
         {
             slider.setRange (range.start, range.end, range.interval);
             slider.setSkewFactor (range.skew, range.symmetricSkew);

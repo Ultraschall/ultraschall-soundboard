@@ -33,6 +33,8 @@
 		4930309B8CB56790A40D1335 = {isa = PBXBuildFile; fileRef = 62771B0AD9FEE660C6D4FE80; };
 		D8BE1B9ACEEAB11DDCAC54DD = {isa = PBXBuildFile; fileRef = 21CBAABE93C0ADFF9B4A48E9; };
 		29A09A1092963F5068DC9813 = {isa = PBXBuildFile; fileRef = 272F6E4A76A96DE741F92B57; };
+		B857B59DCA2D917EF1818E11 = {isa = PBXBuildFile; fileRef = 90DF8D17F43D37D111BFF415; };
+		5B5E4A38059E22441D66D6D1 = {isa = PBXBuildFile; fileRef = 4310D57E6CFD70FAF528052B; };
 		FB9DF2BD97395659CA276AEB = {isa = PBXBuildFile; fileRef = 0B48A35374A5D87994F6711A; };
 		DF076A7E6C46D049348B9C92 = {isa = PBXBuildFile; fileRef = 3C165829B324B98FB564CB8C; };
 		8569FDA14AD7F6E808C0E145 = {isa = PBXBuildFile; fileRef = 1CD3DBCCADE242AD185DBCEC; };
@@ -73,6 +75,7 @@
 		0F54F80549ADE070DF8F1385 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_data_structures.mm"; path = "../../JuceLibraryCode/include_juce_data_structures.mm"; sourceTree = "SOURCE_ROOT"; };
 		11FB9655B594DEA25C463431 = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "../../Assets/AppIcons/iOS/Icon-60@3x.png"; sourceTree = "SOURCE_ROOT"; };
 		120A6A533A37B8EEBE5EC0BB = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = "SOURCE_ROOT"; };
+		1520687060DBB93BFF2D4DAB = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OscEngine.h; path = ../../Source/Engine/OscEngine.h; sourceTree = "SOURCE_ROOT"; };
 		18667D42665AEF24EBF1D080 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Fonts.h; path = ../../Source/Material/Fonts.h; sourceTree = "SOURCE_ROOT"; };
 		18B5E0490095F6D32320864E = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = ../../Source/Models/Utilities.h; sourceTree = "SOURCE_ROOT"; };
 		18F2487380D64F6B96F282E2 = {isa = PBXFileReference; lastKnownFileType = file.ttf; name = "Roboto-MediumItalic.ttf"; path = "../../Assets/Fonts/Roboto/Roboto-MediumItalic.ttf"; sourceTree = "SOURCE_ROOT"; };
@@ -109,6 +112,7 @@
 		3F364717B101D2901531EECA = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Colors.h; path = ../../Source/Material/Colors.h; sourceTree = "SOURCE_ROOT"; };
 		40A80AA6711D6007E0DA6B4D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "include_juce_audio_plugin_client_utils.cpp"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp"; sourceTree = "SOURCE_ROOT"; };
 		428A3B1FA7C05B403A2268CB = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginEditor.h; path = ../../Source/PluginEditor.h; sourceTree = "SOURCE_ROOT"; };
+		4310D57E6CFD70FAF528052B = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OscEngine.cpp; path = ../../Source/Engine/OscEngine.cpp; sourceTree = "SOURCE_ROOT"; };
 		43A4FFDF8A3E0BC05CF83355 = {isa = PBXFileReference; lastKnownFileType = file.svg; name = "sharp-format_list_numbered-24px.svg"; path = "../../Assets/Icons/sharp-format_list_numbered-24px.svg"; sourceTree = "SOURCE_ROOT"; };
 		43D62F8A709F62B835529D13 = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "../../Assets/AppIcons/iOS/Icon-60@2x.png"; sourceTree = "SOURCE_ROOT"; };
 		44AB60D8953F0B0F4345991F = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "../../Assets/AppIcons/iOS/Icon-40@2x.png"; sourceTree = "SOURCE_ROOT"; };
@@ -160,6 +164,7 @@
 		8D93A6661C742297EE0678A4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaylistItem.h; path = ../../Source/Views/PlaylistItem.h; sourceTree = "SOURCE_ROOT"; };
 		8DD114F2BDC7087E2C8B5877 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NavigationDrawerDevider.h; path = ../../Source/Views/NavigationDrawerDevider.h; sourceTree = "SOURCE_ROOT"; };
 		8EA791FDC402C737605DA1E4 = {isa = PBXFileReference; lastKnownFileType = file.ttf; name = "RobotoMono-Italic.ttf"; path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-Italic.ttf"; sourceTree = "SOURCE_ROOT"; };
+		90DF8D17F43D37D111BFF415 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiEngine.cpp; path = ../../Source/Engine/MidiEngine.cpp; sourceTree = "SOURCE_ROOT"; };
 		92B7EF85E4E72DD36707D4D7 = {isa = PBXFileReference; lastKnownFileType = file.svg; name = "sharp-settings_input_svideo-24px.svg"; path = "../../Assets/Icons/sharp-settings_input_svideo-24px.svg"; sourceTree = "SOURCE_ROOT"; };
 		92E9C126010A374B5ABC01C9 = {isa = PBXFileReference; lastKnownFileType = file.ttf; name = "RobotoMono-BoldItalic.ttf"; path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-BoldItalic.ttf"; sourceTree = "SOURCE_ROOT"; };
 		92F5D65C8C0DFD3AAFF8A0BC = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_core.mm"; path = "../../JuceLibraryCode/include_juce_core.mm"; sourceTree = "SOURCE_ROOT"; };
@@ -206,6 +211,7 @@
 		CD0D17821C02DCE18B5675D0 = {isa = PBXFileReference; lastKnownFileType = file.ttf; name = "RobotoMono-Thin.ttf"; path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-Thin.ttf"; sourceTree = "SOURCE_ROOT"; };
 		CD8CA175F9D8AE9C7E994EAB = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		CE0B346A7889B476FA114218 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerModel.h; path = ../../Source/Models/PlayerModel.h; sourceTree = "SOURCE_ROOT"; };
+		CE129FD71EEB64EDDD5C9A67 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiEngine.h; path = ../../Source/Engine/MidiEngine.h; sourceTree = "SOURCE_ROOT"; };
 		CEB3B59300320B9E44B551FB = {isa = PBXFileReference; lastKnownFileType = file.svg; name = "sharp-create_new_folder-24px.svg"; path = "../../Assets/Icons/sharp-create_new_folder-24px.svg"; sourceTree = "SOURCE_ROOT"; };
 		D80B511CB82F3B625F0A54B6 = {isa = PBXFileReference; lastKnownFileType = file.ttf; name = "RobotoMono-ThinItalic.ttf"; path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-ThinItalic.ttf"; sourceTree = "SOURCE_ROOT"; };
 		DB6CCC6380E96A5BA2DD21C1 = {isa = PBXFileReference; lastKnownFileType = file.svg; name = "sharp-subscriptions-24px.svg"; path = "../../Assets/Icons/sharp-subscriptions-24px.svg"; sourceTree = "SOURCE_ROOT"; };
@@ -405,6 +411,10 @@
 					7764BE2141A3C4D749D58C24,
 					272F6E4A76A96DE741F92B57,
 					F4D00A9918FC7D075BEF66B4,
+					90DF8D17F43D37D111BFF415,
+					CE129FD71EEB64EDDD5C9A67,
+					4310D57E6CFD70FAF528052B,
+					1520687060DBB93BFF2D4DAB,
 					0B48A35374A5D87994F6711A,
 					02068BF71F326F58D2111D6B, ); name = Engine; sourceTree = "<group>"; };
 		CF1AA77E699C9F52920DAD9D = {isa = PBXGroup; children = (
@@ -968,6 +978,8 @@
 					4930309B8CB56790A40D1335,
 					D8BE1B9ACEEAB11DDCAC54DD,
 					29A09A1092963F5068DC9813,
+					B857B59DCA2D917EF1818E11,
+					5B5E4A38059E22441D66D6D1,
 					FB9DF2BD97395659CA276AEB,
 					DF076A7E6C46D049348B9C92,
 					8569FDA14AD7F6E808C0E145,

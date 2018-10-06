@@ -12,7 +12,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
 
     LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
 
-    controller = std::make_unique<MainViewController>(p.library);
+    controller = std::make_unique<MainViewController>(p.engine);
     controller->init();
     addAndMakeVisible(controller->getView());
 

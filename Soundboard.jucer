@@ -251,6 +251,10 @@
         <FILE id="L3lBjs" name="ADSR.h" compile="0" resource="0" file="Source/Engine/ADSR.h"/>
         <FILE id="NpYdqK" name="Engine.cpp" compile="1" resource="0" file="Source/Engine/Engine.cpp"/>
         <FILE id="sJafFT" name="Engine.h" compile="0" resource="0" file="Source/Engine/Engine.h"/>
+        <FILE id="b8UP42" name="MidiEngine.cpp" compile="1" resource="0" file="Source/Engine/MidiEngine.cpp"/>
+        <FILE id="XjjwAN" name="MidiEngine.h" compile="0" resource="0" file="Source/Engine/MidiEngine.h"/>
+        <FILE id="UQDwHy" name="OscEngine.cpp" compile="1" resource="0" file="Source/Engine/OscEngine.cpp"/>
+        <FILE id="luRtjz" name="OscEngine.h" compile="0" resource="0" file="Source/Engine/OscEngine.h"/>
         <FILE id="Kgpqmb" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>
         <FILE id="pZopO0" name="Player.h" compile="0" resource="0" file="Source/Engine/Player.h"/>
       </GROUP>

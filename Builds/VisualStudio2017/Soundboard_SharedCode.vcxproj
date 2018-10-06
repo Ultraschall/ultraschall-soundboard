@@ -153,6 +153,8 @@
     <ClCompile Include="..\..\Source\Material\Fonts.cpp"/>
     <ClCompile Include="..\..\Source\Engine\ADSR.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Engine.cpp"/>
+    <ClCompile Include="..\..\Source\Engine\MidiEngine.cpp"/>
+    <ClCompile Include="..\..\Source\Engine\OscEngine.cpp"/>
     <ClCompile Include="..\..\Source\Engine\Player.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
@@ -2007,6 +2009,8 @@
     <ClInclude Include="..\..\Source\Material\LookAndFeel.h"/>
     <ClInclude Include="..\..\Source\Engine\ADSR.h"/>
     <ClInclude Include="..\..\Source\Engine\Engine.h"/>
+    <ClInclude Include="..\..\Source\Engine\MidiEngine.h"/>
+    <ClInclude Include="..\..\Source\Engine\OscEngine.h"/>
     <ClInclude Include="..\..\Source\Engine\Player.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>

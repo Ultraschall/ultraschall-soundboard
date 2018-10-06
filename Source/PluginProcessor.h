@@ -12,6 +12,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Engine/Engine.h"
+#include "Engine/OscEngine.h"
+#include "Engine/MidiEngine.h"
 
 //==============================================================================
 /**
@@ -56,7 +58,9 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    Engine library;
+    Engine engine;
+	OSCEngine osc{ engine };
+	MidiEngine midi{ engine };
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UltraschallSoundboardAudioProcessor)

@@ -478,6 +478,12 @@
     <ClCompile Include="..\..\Source\Engine\Engine.cpp">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Engine\MidiEngine.cpp">
+      <Filter>Soundboard\Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Engine\OscEngine.cpp">
+      <Filter>Soundboard\Source\Engine</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Engine\Player.cpp">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClCompile>
@@ -2572,6 +2578,12 @@
       <Filter>Soundboard\Source\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Engine\Engine.h">
+      <Filter>Soundboard\Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Engine\MidiEngine.h">
+      <Filter>Soundboard\Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Engine\OscEngine.h">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Engine\Player.h">
