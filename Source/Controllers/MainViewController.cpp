@@ -72,10 +72,6 @@ void MainViewController::viewDidLoad()
         engine.toggleMuteState();
     };
 
-    view->bottomBar.volumeSlider.setValue(library.master_gain, dontSendNotification);
-    view->bottomBar.talkoverButton.setToggleState(library.state_talkover, dontSendNotification);
-    view->bottomBar.muteButton.setToggleState(library.state_mute, dontSendNotification);
-
     engine.state.addListener(this);
 }
 
@@ -163,12 +159,12 @@ void MainViewController::loadProjectFile()
 }
 
 void MainViewController::valueTreePropertyChanged(ValueTree &treeWhosePropertyHasChanged, const Identifier &property) {
-    if (property == IDs::library_master_gain) {
-        view->bottomBar.volumeSlider.setValue(library.master_gain, dontSendNotification);
-    } else if (property == IDs::library_state_talkover) {
-        view->bottomBar.talkoverButton.setToggleState(library.state_talkover, dontSendNotification);
-    } else if (property == IDs::library_state_mute) {
-        view->bottomBar.muteButton.setToggleState(library.state_mute, dontSendNotification);
-    }
+//    if (property == IDs::library_master_gain) {
+//        view->bottomBar.volumeSlider.setValue(library.master_gain, dontSendNotification);
+//    } else if (property == IDs::library_state_talkover) {
+//        view->bottomBar.talkoverButton.setToggleState(library.state_talkover, dontSendNotification);
+//    } else if (property == IDs::library_state_mute) {
+//        view->bottomBar.muteButton.setToggleState(library.state_mute, dontSendNotification);
+//    }
 }
 

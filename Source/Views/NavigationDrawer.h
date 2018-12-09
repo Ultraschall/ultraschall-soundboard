@@ -169,7 +169,7 @@ public:
             close();
         } else {
             auto endBounds = owner->getLocalBounds().removeFromLeft(px(width));
-            auto startBounds = getLocalBounds();
+            //auto startBounds = getLocalBounds();
             Desktop::getInstance().getAnimator().animateComponent(
                     this,
                     endBounds,

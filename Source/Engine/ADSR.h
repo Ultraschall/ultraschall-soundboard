@@ -18,9 +18,8 @@
 
 #pragma once
 
-class ADSR
-{
-  public:
+class ADSR {
+public:
     ADSR();
 
     ~ADSR();
@@ -47,8 +46,7 @@ class ADSR
 
     void reset();
 
-    enum envState
-    {
+    enum envState {
         env_idle = 0,
         env_attack,
         env_decay,
@@ -56,7 +54,7 @@ class ADSR
         env_release
     };
 
-  protected:
+protected:
     int state;
     float output;
     float attackRate;
@@ -75,63 +73,54 @@ class ADSR
     float calcCoef(float rate, float targetRatio) const;
 };
 
-inline float ADSR::process()
-{
-    switch (state)
-    {
-    case env_idle:
-        break;
-    case env_attack:
-        output = attackBase + output * attackCoef;
-        if (output >= 1.0)
-        {
-            output = 1.0;
-            state = env_decay;
-        }
-        break;
-    case env_decay:
-        output = decayBase + output * decayCoef;
-        if (output <= sustainLevel)
-        {
-            output = sustainLevel;
-            state = env_sustain;
-        }
-        break;
-    case env_sustain:
-        break;
-    case env_release:
-        output = releaseBase + output * releaseCoef;
-        if (output <= 0.0)
-        {
-            output = 0.0;
-            state = env_idle;
-        }
-    default:
-        break;
+inline float ADSR::process() {
+    switch (state) {
+        case env_idle:
+            break;
+        case env_attack:
+            output = attackBase + output * attackCoef;
+            if (output >= 1.0) {
+                output = 1.0;
+                state = env_decay;
+            }
+            break;
+        case env_decay:
+            output = decayBase + output * decayCoef;
+            if (output <= sustainLevel) {
+                output = sustainLevel;
+                state = env_sustain;
+            }
+            break;
+        case env_sustain:
+            break;
+        case env_release:
+            output = releaseBase + output * releaseCoef;
+            if (output <= 0.0) {
+                output = 0.0;
+                state = env_idle;
+            }
+        default:
+            break;
     }
     return output;
 }
 
-inline void ADSR::gate(int gate)
-{
+inline void ADSR::gate(int gate) {
     if (gate)
         state = env_attack;
     else if (state != env_idle)
         state = env_release;
 }
 
-inline int ADSR::getState() const
-{
+inline int ADSR::getState() const {
     return state;
 }
 
-inline void ADSR::reset()
-{
+inline void ADSR::reset() {
     state = env_idle;
     output = 0.0;
 }
 
-inline float ADSR::getOutput() const
-{
+inline float ADSR::getOutput() const {
     return output;
 }

@@ -3,9 +3,8 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "ADSR.h"
 
-class Player : public AudioSource, public ChangeBroadcaster
-{
-  public:
+class Player : public AudioSource, public ChangeBroadcaster {
+public:
     explicit Player(const Identifier &id);
 
     ~Player() override;
@@ -19,8 +18,8 @@ class Player : public AudioSource, public ChangeBroadcaster
 
     // File
     bool loadFileIntoTransport(const File &audioFile,
-                               AudioFormatManager *audioFormatManager,
-                               AudioThumbnailCache *audioThumbnailCache);
+        AudioFormatManager *audioFormatManager,
+        AudioThumbnailCache *audioThumbnailCache);
 
     // Player Transport Functions
     void play();
@@ -41,8 +40,7 @@ class Player : public AudioSource, public ChangeBroadcaster
 
     Identifier identifier;
 
-    enum PlayerState
-    {
+    enum PlayerState {
         player_error = -1,
         player_ready = 0,
         player_stopped = 1,
@@ -53,8 +51,7 @@ class Player : public AudioSource, public ChangeBroadcaster
     };
     PlayerState playerState{player_idle};
     double progress{0};
-    enum FadeState
-    {
+    enum FadeState {
         fade_in = 1,
         fade_out = 2,
         fade_idle = 255
@@ -67,7 +64,7 @@ class Player : public AudioSource, public ChangeBroadcaster
 
     std::shared_ptr<AudioThumbnail> thumbnail;
 
-  private:
+private:
     float currentGain{1.0f};
     float previousGain{1.0f};
     NormalisableRange<float> gainRange{

@@ -14,127 +14,114 @@
 //==============================================================================
 UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", AudioChannelSet::stereo(), true)
-                     #endif
-                       )
+    : AudioProcessor(BusesProperties()
+#if !JucePlugin_IsMidiEffect
+#if !JucePlugin_IsSynth
+        .withInput  ("Input",  AudioChannelSet::stereo(), true)
+#endif
+        .withOutput("Output", AudioChannelSet::stereo(), true)
+#endif
+)
 #endif
 {
 }
 
-UltraschallSoundboardAudioProcessor::~UltraschallSoundboardAudioProcessor()
-{
+UltraschallSoundboardAudioProcessor::~UltraschallSoundboardAudioProcessor() {
 }
 
 //==============================================================================
-const String UltraschallSoundboardAudioProcessor::getName() const
-{
+const String UltraschallSoundboardAudioProcessor::getName() const {
     return JucePlugin_Name;
 }
 
-bool UltraschallSoundboardAudioProcessor::acceptsMidi() const
-{
-   #if JucePlugin_WantsMidiInput
+bool UltraschallSoundboardAudioProcessor::acceptsMidi() const {
+#if JucePlugin_WantsMidiInput
     return true;
-   #else
+#else
     return false;
-   #endif
+#endif
 }
 
-bool UltraschallSoundboardAudioProcessor::producesMidi() const
-{
-   #if JucePlugin_ProducesMidiOutput
+bool UltraschallSoundboardAudioProcessor::producesMidi() const {
+#if JucePlugin_ProducesMidiOutput
     return true;
-   #else
+#else
     return false;
-   #endif
+#endif
 }
 
-bool UltraschallSoundboardAudioProcessor::isMidiEffect() const
-{
-   #if JucePlugin_IsMidiEffect
+bool UltraschallSoundboardAudioProcessor::isMidiEffect() const {
+#if JucePlugin_IsMidiEffect
     return true;
-   #else
+#else
     return false;
-   #endif
+#endif
 }
 
-double UltraschallSoundboardAudioProcessor::getTailLengthSeconds() const
-{
+double UltraschallSoundboardAudioProcessor::getTailLengthSeconds() const {
     return 0.0;
 }
 
-int UltraschallSoundboardAudioProcessor::getNumPrograms()
-{
+int UltraschallSoundboardAudioProcessor::getNumPrograms() {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
-                // so this should be at least 1, even if you're not really implementing programs.
+    // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int UltraschallSoundboardAudioProcessor::getCurrentProgram()
-{
+int UltraschallSoundboardAudioProcessor::getCurrentProgram() {
     return 0;
 }
 
-void UltraschallSoundboardAudioProcessor::setCurrentProgram (int index)
-{
+void UltraschallSoundboardAudioProcessor::setCurrentProgram(int index) {
 }
 
-const String UltraschallSoundboardAudioProcessor::getProgramName (int index)
-{
+const String UltraschallSoundboardAudioProcessor::getProgramName(int index) {
     return {};
 }
 
-void UltraschallSoundboardAudioProcessor::changeProgramName (int index, const String& newName)
-{
+void UltraschallSoundboardAudioProcessor::changeProgramName(int index, const String &newName) {
 }
 
 //==============================================================================
-void UltraschallSoundboardAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
-{
+void UltraschallSoundboardAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock) {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     engine.prepareToPlay(samplesPerBlock, sampleRate);
 }
 
-void UltraschallSoundboardAudioProcessor::releaseResources()
-{
+void UltraschallSoundboardAudioProcessor::releaseResources() {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
     engine.releaseResources();
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool UltraschallSoundboardAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
-{
-  #if JucePlugin_IsMidiEffect
+
+bool UltraschallSoundboardAudioProcessor::isBusesLayoutSupported(const BusesLayout &layouts) const {
+#if JucePlugin_IsMidiEffect
     ignoreUnused (layouts);
     return true;
-  #else
+#else
     // This is the place where you check if the layout is supported.
     // In this template code we only support mono or stereo.
     if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+        && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
         return false;
 
     // This checks if the input layout matches the output layout
-   #if ! JucePlugin_IsSynth
+#if !JucePlugin_IsSynth
     if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
         return false;
-   #endif
-
-    return true;
-  #endif
-}
 #endif
 
-void UltraschallSoundboardAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
-{
+    return true;
+#endif
+}
+
+#endif
+
+void UltraschallSoundboardAudioProcessor::processBlock(AudioBuffer<float> &buffer, MidiBuffer &midiMessages) {
     ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
+    auto totalNumInputChannels = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
     // In case we have more outputs than inputs, this code clears any output
@@ -144,7 +131,7 @@ void UltraschallSoundboardAudioProcessor::processBlock (AudioBuffer<float>& buff
     // when they first compile a plugin, but obviously you don't need to keep
     // this code if your algorithm always overwrites all the output channels.
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+        buffer.clear(i, 0, buffer.getNumSamples());
 
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...
@@ -159,24 +146,20 @@ void UltraschallSoundboardAudioProcessor::processBlock (AudioBuffer<float>& buff
 //        // ..do something to the data...
 //    }
     AudioSourceChannelInfo info(&buffer, 0, buffer.getNumSamples());
-	midi.handleMidiMessages(midiMessages);
+    midi.handleMidiMessages(midiMessages);
     engine.getNextAudioBlock(info);
 }
 
 //==============================================================================
-bool UltraschallSoundboardAudioProcessor::hasEditor() const
-{
+bool UltraschallSoundboardAudioProcessor::hasEditor() const {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* UltraschallSoundboardAudioProcessor::createEditor()
-{
-    auto editor =  new UltraschallSoundboardAudioProcessorEditor (*this);
-    if(wrapperType == wrapperType_Standalone)
-    {
-        if(TopLevelWindow::getNumTopLevelWindows() == 1)
-        {
-            TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
+AudioProcessorEditor *UltraschallSoundboardAudioProcessor::createEditor() {
+    auto editor = new UltraschallSoundboardAudioProcessorEditor(*this);
+    if (wrapperType == wrapperType_Standalone) {
+        if (TopLevelWindow::getNumTopLevelWindows() == 1) {
+            TopLevelWindow *w = TopLevelWindow::getTopLevelWindow(0);
             w->setUsingNativeTitleBar(true);
         }
     }
@@ -184,22 +167,19 @@ AudioProcessorEditor* UltraschallSoundboardAudioProcessor::createEditor()
 }
 
 //==============================================================================
-void UltraschallSoundboardAudioProcessor::getStateInformation (MemoryBlock& destData)
-{
+void UltraschallSoundboardAudioProcessor::getStateInformation(MemoryBlock &destData) {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void UltraschallSoundboardAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
-{
+void UltraschallSoundboardAudioProcessor::setStateInformation(const void *data, int sizeInBytes) {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
 
 //==============================================================================
 // This creates new instances of the plugin..
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
-{
+AudioProcessor *JUCE_CALLTYPE createPluginFilter() {
     return new UltraschallSoundboardAudioProcessor();
 }

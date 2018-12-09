@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT name="Soundboard" projectType="audioplug" buildStandalone="1"
-              jucerVersion="5.3.2" version="4.0.0" companyName="Ultraschall"
+              jucerVersion="5.4.1" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
-              pluginFormats="buildVST3,buildAUv3,buildStandalone" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
+              pluginFormats="buildStandalone" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
               pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
               pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
-              buildVST="0" buildVST3="1" buildAU="0" buildAUv3="1" buildRTAS="0"
+              buildVST="0" buildVST3="0" buildAU="0" buildAUv3="0" buildRTAS="0"
               buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
               maxBinaryFileSize="20971520">
   <MAINGROUP id="bqAFM9" name="Soundboard">
@@ -179,6 +179,41 @@
       </GROUP>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
+      <GROUP id="{EEC9B041-2E98-D3E8-6D5A-5F19D8718546}" name="Middleware">
+        <FILE id="d6asIp" name="LoggerMiddleware.h" compile="0" resource="0"
+              file="Source/Middleware/LoggerMiddleware.h"/>
+        <FILE id="mSZljC" name="Middleware.h" compile="0" resource="0" file="Source/Middleware/Middleware.h"/>
+        <FILE id="jEef0P" name="MidiMiddleware.cpp" compile="1" resource="0"
+              file="Source/Middleware/MidiMiddleware.cpp"/>
+        <FILE id="KUq9cW" name="MidiMiddleware.h" compile="0" resource="0"
+              file="Source/Middleware/MidiMiddleware.h"/>
+        <FILE id="yPsLZr" name="OscMiddleware.cpp" compile="1" resource="0"
+              file="Source/Middleware/OscMiddleware.cpp"/>
+        <FILE id="JBzHSu" name="OscMiddleware.h" compile="0" resource="0" file="Source/Middleware/OscMiddleware.h"/>
+      </GROUP>
+      <GROUP id="{07819E51-0FC4-DBEF-8671-D5E70BB9AB9B}" name="Reducers">
+        <FILE id="iAlL69" name="Reducers.h" compile="0" resource="0" file="Source/Reducers/Reducers.h"/>
+        <FILE id="IJaIM8" name="ApplicationReducer.h" compile="0" resource="0"
+              file="Source/Reducers/ApplicationReducer.h"/>
+        <FILE id="HpE7xa" name="BankReducer.h" compile="0" resource="0" file="Source/Reducers/BankReducer.h"/>
+        <FILE id="Kz5Bz7" name="LibraryReducer.h" compile="0" resource="0"
+              file="Source/Reducers/LibraryReducer.h"/>
+        <FILE id="by0Lnk" name="PlayerReducer.h" compile="0" resource="0" file="Source/Reducers/PlayerReducer.h"/>
+        <FILE id="Hf8XC5" name="PlaylistReducer.h" compile="0" resource="0"
+              file="Source/Reducers/PlaylistReducer.h"/>
+      </GROUP>
+      <GROUP id="{DC1582F3-4F43-69D4-BDB0-4A3E1257576D}" name="Actions">
+        <FILE id="frvsV7" name="Actions.h" compile="0" resource="0" file="Source/Actions/Actions.h"/>
+        <FILE id="jYN0fw" name="ActionObject.h" compile="0" resource="0" file="Source/Actions/ActionObject.h"/>
+        <FILE id="RYvCU4" name="ApplicationActions.h" compile="0" resource="0"
+              file="Source/Actions/ApplicationActions.h"/>
+        <FILE id="nNEicZ" name="BankActions.h" compile="0" resource="0" file="Source/Actions/BankActions.h"/>
+        <FILE id="wzW0tB" name="LibraryActions.h" compile="0" resource="0"
+              file="Source/Actions/LibraryActions.h"/>
+        <FILE id="n9Hnd8" name="PlayerActions.h" compile="0" resource="0" file="Source/Actions/PlayerActions.h"/>
+        <FILE id="vNi1KK" name="PlaylistActions.h" compile="0" resource="0"
+              file="Source/Actions/PlaylistActions.h"/>
+      </GROUP>
       <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">
         <FILE id="ct2NrZ" name="LibraryModel.h" compile="0" resource="0" file="Source/Models/LibraryModel.h"/>
         <FILE id="IcKeNg" name="BankModel.h" compile="0" resource="0" file="Source/Models/BankModel.h"/>
@@ -257,6 +292,8 @@
         <FILE id="luRtjz" name="OscEngine.h" compile="0" resource="0" file="Source/Engine/OscEngine.h"/>
         <FILE id="Kgpqmb" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>
         <FILE id="pZopO0" name="Player.h" compile="0" resource="0" file="Source/Engine/Player.h"/>
+        <FILE id="HgMHkY" name="Store.cpp" compile="1" resource="0" file="Source/Engine/Store.cpp"/>
+        <FILE id="nPkGDI" name="Store.h" compile="0" resource="0" file="Source/Engine/Store.h"/>
       </GROUP>
       <FILE id="Gh99YH" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -273,8 +310,7 @@
     <OSX buildEnabled="0" defines="LIVE_MOCK=1"/>
   </LIVE_SETTINGS>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="" smallIcon="N4X8vV"
-               bigIcon="qUA8yj">
+    <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="N4X8vV" bigIcon="qUA8yj">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>
@@ -298,8 +334,7 @@
         <MODULEPATH id="juce_dsp" path=""/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2017 targetFolder="Builds/VisualStudio2017" vst3Folder="" smallIcon="N4X8vV"
-            bigIcon="qUA8yj">
+    <VS2017 targetFolder="Builds/VisualStudio2017" smallIcon="N4X8vV" bigIcon="qUA8yj">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>

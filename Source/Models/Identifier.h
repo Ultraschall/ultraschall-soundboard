@@ -4,15 +4,21 @@
 
 namespace IDs {
 #define DECLARE_ID(name, id) const juce::Identifier name (#id);
+	// #State
+	DECLARE_ID(STATE, STATE)
+
+
+	// #Application
+	DECLARE_ID(APPLICATION, APPLICATION)
+	DECLARE_ID(application_version, version)
+	DECLARE_ID(application_master_gain, master_gain)
+	DECLARE_ID(application_talkover, state_talkover)
+	DECLARE_ID(application_mute, state_mute)
 
     // #Library
     DECLARE_ID(LIBRARY, LIBRARY)
-    DECLARE_ID(library_version, version)
     DECLARE_ID(library_uuid, uuid)
     DECLARE_ID(library_title, title)
-    DECLARE_ID(library_master_gain, master_gain)
-	DECLARE_ID(library_state_talkover, state_talkover)
-    DECLARE_ID(library_state_mute, state_mute)
 
 
 	// #Players []
@@ -51,7 +57,11 @@ namespace IDs {
     DECLARE_ID(CLIP, CLIP)
     DECLARE_ID(clip_uuid, uuid)
     DECLARE_ID(clip_index, index)
-    //DECLARE_ID(player_uuid, uuid)
+    DECLARE_ID(clip_player_uuid, player_uuid)
+	DECLARE_ID(clip_bank_uuid, bank_uuid)
+
+
+	// -----------------------------
 
     // #Playlists []
     DECLARE_ID(PLAYLISTS, PLAYLISTS)
@@ -63,7 +73,7 @@ namespace IDs {
 	DECLARE_ID(playlist_action, action)
 
     // #Playlist Items
-    DECLARE_ID(ITEMS, ITEMS)
+    DECLARE_ID(PLAYLISTITEMS, ITEMS)
 
     // #Playlist Item
     DECLARE_ID(ITEM, ITEM)

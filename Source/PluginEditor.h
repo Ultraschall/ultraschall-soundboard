@@ -7,8 +7,7 @@
 #include "Controllers/MainViewController.h"
 
 
-class UltraschallSoundboardAudioProcessorEditor : public AudioProcessorEditor
-{
+class UltraschallSoundboardAudioProcessorEditor : public AudioProcessorEditor {
 public:
     explicit UltraschallSoundboardAudioProcessorEditor(UltraschallSoundboardAudioProcessor &);
 

@@ -1,90 +1,92 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "Store.h"
 #include "../Models/Identifier.h"
 #include "../Models/PlayerModel.h"
 #include "Player.h"
 
-class Engine : public AudioSource, public ChangeListener, public Timer
-{
-  public:
-	Engine();
+class Engine : public AudioSource, public ChangeListener, public Timer {
+public:
+    Engine();
 
-	~Engine() override;
+    ~Engine() override;
 
-	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 
-	void releaseResources() override;
+    void releaseResources() override;
 
-	void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
+    void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
 
-	void loadAudioFile(const File &file);
+    void loadAudioFile(const File &file);
 
-	void importDirectory(const File &directory);
+    void importDirectory(const File &directory);
 
-	void newBank();
+    void newBank();
 
-	void newPlaylist();
+    void newPlaylist();
 
-	Player *playerWithIdentifier(const Identifier &id);
+    Player *playerWithIdentifier(const Identifier &id);
 
-	ValueTree playerStateWithIdentifier(const Identifier &id);
+    ValueTree playerStateWithIdentifier(const Identifier &id);
 
-	void debugState() const;
+    void debugState() const;
 
-	void setGain(float value);
+    void setGain(float value);
 
-	float getGain() const;
+    float getGain() const;
 
-	void toggleMuteState();
+    void toggleMuteState();
 
-	bool isMuted();
+    bool isMuted();
 
-	void toggleTalkOver();
+    void toggleTalkOver();
 
-	bool isTalkOver() const;
+    bool isTalkOver() const;
 
-	void openFile(const File &file);
+    void openFile(const File &file);
 
-	void saveFile(const File &file) const;
+    void saveFile(const File &file) const;
 
-	void playerLooping(const Identifier &uuid, bool looping);
+    void playerLooping(const Identifier &uuid, bool looping);
 
-	void playerFadeOut(const Identifier &uuid);
+    void playerFadeOut(const Identifier &uuid);
 
-	void playerFadeIn(const Identifier &uuid);
+    void playerFadeIn(const Identifier &uuid);
 
-	void playerPlay(const Identifier &uuid);
+    void playerPlay(const Identifier &uuid);
 
-	void playerPause(const Identifier &uuid);
+    void playerPause(const Identifier &uuid);
 
-	void playerStop(const Identifier &uuid);
+    void playerStop(const Identifier &uuid);
 
-	void changeListenerCallback(ChangeBroadcaster *source) override;
-	void syncState(ValueTree state, Player *player);
+    void changeListenerCallback(ChangeBroadcaster *source) override;
 
-	void timerCallback() override;
+    void syncState(ValueTree state, Player *player);
 
-	AudioFormatManager audioFormatManager;
-	AudioThumbnailCache audioThumbnailCache;
-	UndoManager undoManager;
-	ValueTree state;
+    void timerCallback() override;
 
-  private:
-	Array<Identifier> playersToUpdate;
+    AudioFormatManager audioFormatManager;
+    AudioThumbnailCache audioThumbnailCache;
+    UndoManager undoManager;
+    ValueTree state;
 
-	double currentSampleRate{0};
-	float currentGain{1.0f};
-	float previousGain{1.0f};
-	NormalisableRange<float> gainRange{Decibels::decibelsToGain<float>(-180), Decibels::decibelsToGain<float>(0), 0, Decibels::decibelsToGain<float>(-12)};
+private:
+    Array<Identifier> playersToUpdate;
 
-	ADSR talkOver;
-	bool talkOverState{true};
-	int talkOverFadeMs{500};
-	NormalisableRange<float> talkOverRange{Decibels::decibelsToGain<float>(-30), 1.0f};
+    double currentSampleRate{0};
+    float currentGain{1.0f};
+    float previousGain{1.0f};
+    NormalisableRange<float> gainRange{Decibels::decibelsToGain<float>(-180), Decibels::decibelsToGain<float>(0), 0, Decibels::decibelsToGain<float>(-12)};
 
-	bool muteState{false};
+    ADSR talkOver;
+    bool talkOverState{true};
+    int talkOverFadeMs{500};
+    NormalisableRange<float> talkOverRange{Decibels::decibelsToGain<float>(-30), 1.0f};
 
-	MixerAudioSource mixer;
-	std::vector<std::unique_ptr<Player>> players;
+    bool muteState{false};
+
+    MixerAudioSource mixer;
+    std::vector<std::unique_ptr<Player>> players;
+    std::shared_ptr<Store> store;
 };
