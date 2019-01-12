@@ -1,59 +1,17 @@
 #include "Engine.h"
-#include "../Models/BankModel.h"
-#include "../Models/PlayerModel.h"
-#include "../Models/PlaylistModel.h"
+//#include "../Models/BankModel.h"
+//#include "../Models/PlayerModel.h"
+//#include "../Models/PlaylistModel.h"
 
-#include "Store.h"
-#include "../Middleware/Middleware.h"
-#include "../Middleware/LoggerMiddleware.h"
-#include "../Middleware/OscMiddleware.h"
-#include "../Actions/Actions.h"
-#include "../Reducers/Reducers.h"
+#include "../Redux/Identifier.h"
 
 Engine::Engine() : audioThumbnailCache(21) {
-	Logger::outputDebugString("Boot Engine....");
-
-	auto builder = MiddlewareEnhancerBuilder::New(Store::combineReducers({
-			{IDs::APPLICATION, application},
-			{IDs::LIBRARY, library},
-			{IDs::PLAYERS, player},
-			{IDs::BANKS, bank},
-			{IDs::PLAYLISTS, playlist}
-		}));
-	builder.SetPreloadedStore(ValueTree(IDs::STATE));
-	builder.Use<LoggerMiddleware>();
-	builder.Use<OscMiddleware>();
-	store = builder.Build();
-
-	//store.subscribe([&store] { Logger::outputDebugString("subscribed -> " + store.getState().toXmlString()); });
-	store->dispatch(SetGainAction(0.6f));
-	store->dispatch(ToggleMuteAction());
-	store->dispatch(ToggleMuteAction());
-
+	Logger::outputDebugString("[ENGINE] Boot...");
+    Logger::outputDebugString("[ENGINE] Register Formats:");
 	audioFormatManager.registerBasicFormats();
-	Logger::outputDebugString("Support:");
 	for (auto f : audioFormatManager) {
-		Logger::outputDebugString(f->getFormatName());
+		Logger::outputDebugString("[ENGINE] Format " + f->getFormatName() + " enabled.");
 	}
-
-	state = ValueTree(IDs::LIBRARY);
-	state.setProperty(IDs::library_title, "Soundboard", nullptr);
-
-	state.addChild(ValueTree(IDs::PLAYERS), -1, nullptr);
-	state.addChild(ValueTree(IDs::BANKS), -1, nullptr);
-	state.addChild(ValueTree(IDs::PLAYLISTS), -1, nullptr);
-
-	talkOver.gate(talkOverState);
-	newBank();
-	newPlaylist();
-
-	undoManager.clearUndoHistory();
-
-	setGain(1.0f);
-
-	startTimer(100);
-
-	debugState();
 }
 
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
@@ -98,40 +56,32 @@ void Engine::loadAudioFile(const File &file) {
 		return;
 	}
 	player->addChangeListener(this);
-
-	const ValueTree playerState(IDs::PLAYER);
-	PlayerModel model(playerState);
-	model.uuid = uuid.toDashedString();
-	model.path = file.getFullPathName();
-	model.title = file.getFileName();
-	model.gain = 1.0f;
-	model.startSample = 0;
-	model.endSample = player->getTotalLength();
-	model.fadeinSamples = 1;
-	model.fadeoutSamples = 1;
-	model.loop = false;
-
-	model.playerState = player->playerState;
-	model.fadeState = player->fadeState;
-	model.missing = player->playerState == Player::player_error;
-
+//
+//	const ValueTree playerState(IDs::PLAYER);
+//	PlayerModel model(playerState);
+//	model.uuid = uuid.toDashedString();
+//	model.path = file.getFullPathName();
+//	model.title = file.getFileName();
+//	model.gain = 1.0f;
+//	model.startSample = 0;
+//	model.endSample = player->getTotalLength();
+//	model.fadeinSamples = 1;
+//	model.fadeoutSamples = 1;
+//	model.loop = false;
+//
+//	model.playerState = player->playerState;
+//	model.fadeState = player->fadeState;
+//	model.missing = player->playerState == Player::player_error;
+//
 	mixer.addInputSource(player.get(), false);
-	players.push_back(std::move(player));
-
-	state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
-}
-
-void Engine::debugState() const {
-	Logger::outputDebugString(state.toXmlString());
+	players[Identifier(uuid.toDashedString())] = (std::move(player));
+//
+////	state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
 }
 
 Player *Engine::playerWithIdentifier(const Identifier &id) {
-	for (auto &p : players) {
-		if (p->identifier == id) {
-			return p.get();
-		}
-	}
-	return nullptr;
+    auto search = players.find(id);
+    return search == players.end() ? nullptr : search->second.get();
 }
 
 void Engine::importDirectory(const File &directory) {
@@ -141,32 +91,7 @@ void Engine::importDirectory(const File &directory) {
 	}
 }
 
-void Engine::newBank() {
-	Uuid uuid;
-	ValueTree bankState(IDs::BANK);
-	BankModel model(bankState);
-	model.uuid = uuid.toDashedString();
-	model.title = "Bank " + String(state.getChildWithName(IDs::BANKS).getNumChildren() + 1);
-
-	bankState.addChild(ValueTree(IDs::CLIPS), -1, &undoManager);
-
-	state.getChildWithName(IDs::BANKS).addChild(bankState, -1, &undoManager);
-}
-
-void Engine::newPlaylist() {
-	Uuid uuid;
-	ValueTree playlistState(IDs::PLAYLIST);
-	PlaylistModel model(playlistState);
-	model.uuid = uuid.toDashedString();
-	model.title = "Playlist " + String(state.getChildWithName(IDs::PLAYLISTS).getNumChildren() + 1);
-
-	playlistState.addChild(ValueTree(IDs::PLAYLISTITEMS), -1, &undoManager);
-
-	state.getChildWithName(IDs::PLAYLISTS).addChild(playlistState, -1, &undoManager);
-}
-
 Engine::~Engine() {
-	stopTimer();
 	mixer.removeAllInputs();
 	players.clear();
 	audioFormatManager.clearFormats();
@@ -175,7 +100,6 @@ Engine::~Engine() {
 
 void Engine::setGain(float value) {
 	currentGain = gainRange.convertFrom0to1(value);
-//	state.setProperty(IDs::library_master_gain, getGain(), nullptr);
 }
 
 void Engine::toggleTalkOver() {
@@ -183,35 +107,34 @@ void Engine::toggleTalkOver() {
 	talkOver.setReleaseRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
 	talkOverState = !talkOverState;
 	talkOver.gate(talkOverState);
-//	state.setProperty(IDs::library_state_talkover, isTalkOver(), nullptr);
 }
 
 void Engine::openFile(const File &file) {
-	XmlDocument xmlDocument(file);
-	const std::unique_ptr<XmlElement> xml(xmlDocument.getDocumentElement());
-	undoManager.clearUndoHistory();
-	mixer.removeAllInputs();
-	players.clear();
-	audioThumbnailCache.clear();
-	state = ValueTree::fromXml(*xml);
-	auto playersState = state.getChildWithName(IDs::PLAYERS);
-	if (playersState.isValid()) {
-		for (const auto &playerState : playersState) {
-			PlayerModel playerModel(playerState);
-			auto player = std::make_unique<Player>(playerModel.uuid.get());
-			if (!player->loadFileIntoTransport(File(playerModel.path), &audioFormatManager, &audioThumbnailCache)) {
-				playerModel.missing = true;
-				continue;
-			}
-			players.push_back(std::move(player));
-			playerModel.missing = false;
-		}
-	}
+//	XmlDocument xmlDocument(file);
+//	const std::unique_ptr<XmlElement> xml(xmlDocument.getDocumentElement());
+////	undoManager.clearUndoHistory();
+//	mixer.removeAllInputs();
+//	players.clear();
+//	audioThumbnailCache.clear();
+//	state = ValueTree::fromXml(*xml);
+//	auto playersState = state.getChildWithName(IDs::PLAYERS);
+//	if (playersState.isValid()) {
+//		for (const auto &playerState : playersState) {
+//			PlayerModel playerModel(playerState);
+//			auto player = std::make_unique<Player>(playerModel.uuid.get());
+//			if (!player->loadFileIntoTransport(File(playerModel.path), &audioFormatManager, &audioThumbnailCache)) {
+//				playerModel.missing = true;
+//				continue;
+//			}
+//			players.push_back(std::move(player));
+//			playerModel.missing = false;
+//		}
+//	}
 }
 
 void Engine::saveFile(const File &file) const {
-	const std::unique_ptr<XmlElement> xml(state.createXml());
-	xml->writeToFile(file, String{});
+//	const std::unique_ptr<XmlElement> xml(state.createXml());
+//	xml->writeToFile(file, String{});
 }
 
 void Engine::playerLooping(const Identifier &uuid, bool looping) {
@@ -247,58 +170,21 @@ void Engine::changeListenerCallback(ChangeBroadcaster *source) {
 	playersToUpdate.addIfNotAlreadyThere(player->identifier);
 }
 
-void Engine::timerCallback() {
+bool Engine::dispatch(const ActionObject &action, Store &store)
+{
+	return false;
+}
+
+void Engine::sync(Store &store) {
 	playersToUpdate.getLock().enter();
 	for (const auto &p : playersToUpdate) {
 		auto player = playerWithIdentifier(p);
-		auto playerState = playerStateWithIdentifier(p);
-
-		syncState(playerState, player);
+		
 	}
 	playersToUpdate.clear();
 	playersToUpdate.getLock().exit();
 }
 
-ValueTree Engine::playerStateWithIdentifier(const Identifier &id) {
-	auto players = state.getChildWithName(IDs::PLAYERS);
-	return players.getChildWithProperty(IDs::player_uuid, id.toString());
-}
-
-void Engine::syncState(ValueTree state, Player *player) {
-	PlayerModel model(state);
-
-	if (player->playerState != model.playerState) {
-		model.playerState = player->playerState;
-	}
-
-	if (player->fadeState != model.fadeState) {
-		model.fadeState = player->fadeState;
-	}
-
-	if (player->isLooping() != model.loop) {
-		model.loop = player->isLooping();
-	}
-
-	if (player->progress != model.progress) {
-		model.progress = player->progress;
-	}
-
-	//Logger::outputDebugString(state.toXmlString());
-}
-
-bool Engine::isTalkOver() const {
-	return !talkOverState;
-}
-
-float Engine::getGain() const {
-	return gainRange.convertTo0to1(currentGain);
-}
-
 void Engine::toggleMuteState() {
 	muteState = !muteState;
-//	state.setProperty(IDs::library_state_mute, isMuted(), nullptr);
-}
-
-bool Engine::isMuted() {
-	return muteState;
 }

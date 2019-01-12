@@ -38,26 +38,32 @@
     <Filter Include="Soundboard\Assets">
       <UniqueIdentifier>{368D41E1-1783-DFCE-E88B-8445006780D5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Middleware">
-      <UniqueIdentifier>{A228B6A2-3130-1ED5-B8B8-2DE2E74F1F98}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\LookAndFeel">
+      <UniqueIdentifier>{F057FB48-F864-8645-B1C8-D9F5214CDC91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Reducers">
-      <UniqueIdentifier>{96A74AFE-4364-4C92-9C34-166FE35CD6E2}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\Redux\Actions">
+      <UniqueIdentifier>{9E9AFF2D-4648-301E-DC55-728B5A42009C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Actions">
-      <UniqueIdentifier>{AE7634AB-65D8-7EFD-ACC7-768127E81D35}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\Redux\Middleware">
+      <UniqueIdentifier>{000CDFEC-E3FD-E5F7-3F85-BA860344A8C3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Models">
-      <UniqueIdentifier>{672C130F-256B-A3BF-BF9A-E24C2D024C4F}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\Redux\Reducers">
+      <UniqueIdentifier>{0BA8B656-62D4-82C2-C776-A732C314B830}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Views">
-      <UniqueIdentifier>{21C3E764-3B57-3EA9-6515-F51FFDD2A64F}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\Redux">
+      <UniqueIdentifier>{64EAF1BF-6694-2E69-3A74-A4ED7F91843A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Controllers">
-      <UniqueIdentifier>{2D06140F-375E-F6C2-CFE7-897F1F573883}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\UserInterface\Controllers">
+      <UniqueIdentifier>{5CF4E748-407B-CAD2-8960-AF20216A57C6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Soundboard\Source\Material">
-      <UniqueIdentifier>{C1A4AA51-3B89-3875-971A-4453AF53B96F}</UniqueIdentifier>
+    <Filter Include="Soundboard\Source\UserInterface\Models">
+      <UniqueIdentifier>{B0ADFABE-E557-586C-3FEC-2A615DC5348D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Soundboard\Source\UserInterface\Views">
+      <UniqueIdentifier>{35E33773-402E-9C1E-207F-965DD33DB534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Soundboard\Source\UserInterface">
+      <UniqueIdentifier>{A9EFA64C-D475-AA50-994A-C1A974A81452}</UniqueIdentifier>
     </Filter>
     <Filter Include="Soundboard\Source\Engine">
       <UniqueIdentifier>{E1BAAF94-487A-CD0E-6163-2CBD0E031E2E}</UniqueIdentifier>
@@ -517,26 +523,32 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Middleware\MidiMiddleware.cpp">
-      <Filter>Soundboard\Source\Middleware</Filter>
+    <ClCompile Include="..\..\Source\LookAndFeel\Fonts.cpp">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Middleware\OscMiddleware.cpp">
-      <Filter>Soundboard\Source\Middleware</Filter>
+    <ClCompile Include="..\..\Source\Redux\Middleware\EngineMiddleware.cpp">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Controllers\BankViewController.cpp">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClCompile Include="..\..\Source\Redux\Middleware\MidiMiddleware.cpp">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Controllers\LibraryViewController.cpp">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClCompile Include="..\..\Source\Redux\Middleware\OscMiddleware.cpp">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Controllers\MainViewController.cpp">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClCompile Include="..\..\Source\Redux\Store.cpp">
+      <Filter>Soundboard\Source\Redux</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Controllers\PlaylistViewController.cpp">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClCompile Include="..\..\Source\UserInterface\Controllers\BankViewController.cpp">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Material\Fonts.cpp">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClCompile Include="..\..\Source\UserInterface\Controllers\LibraryViewController.cpp">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UserInterface\Controllers\MainViewController.cpp">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UserInterface\Controllers\PlaylistViewController.cpp">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Engine\ADSR.cpp">
       <Filter>Soundboard\Source\Engine</Filter>
@@ -544,16 +556,7 @@
     <ClCompile Include="..\..\Source\Engine\Engine.cpp">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\MidiEngine.cpp">
-      <Filter>Soundboard\Source\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\OscEngine.cpp">
-      <Filter>Soundboard\Source\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Engine\Player.cpp">
-      <Filter>Soundboard\Source\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\Store.cpp">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
@@ -2625,164 +2628,185 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Middleware\LoggerMiddleware.h">
-      <Filter>Soundboard\Source\Middleware</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\Colors.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Middleware\Middleware.h">
-      <Filter>Soundboard\Source\Middleware</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\Common.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Middleware\MidiMiddleware.h">
-      <Filter>Soundboard\Source\Middleware</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\FloatingActionButton.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Middleware\OscMiddleware.h">
-      <Filter>Soundboard\Source\Middleware</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\Fonts.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Reducers\Reducers.h">
-      <Filter>Soundboard\Source\Reducers</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\IconButton.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Reducers\ApplicationReducer.h">
-      <Filter>Soundboard\Source\Reducers</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\Icons.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Reducers\BankReducer.h">
-      <Filter>Soundboard\Source\Reducers</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\LookAndFeel.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Reducers\LibraryReducer.h">
-      <Filter>Soundboard\Source\Reducers</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\Material.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Reducers\PlayerReducer.h">
-      <Filter>Soundboard\Source\Reducers</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\MaterialLookAndFeel.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Reducers\PlaylistReducer.h">
-      <Filter>Soundboard\Source\Reducers</Filter>
+    <ClInclude Include="..\..\Source\LookAndFeel\Shadows.h">
+      <Filter>Soundboard\Source\LookAndFeel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\Actions.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\Actions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\ActionObject.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\ApplicationActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\ApplicationActions.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\BankActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\BankActions.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\LibraryActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\LibraryActions.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\MidiActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\PlayerActions.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\OscActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Actions\PlaylistActions.h">
-      <Filter>Soundboard\Source\Actions</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\PlayerActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\LibraryModel.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Actions\PlaylistActions.h">
+      <Filter>Soundboard\Source\Redux\Actions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\BankModel.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Middleware\EngineMiddleware.h">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\PlaylistModel.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Middleware\LoggerMiddleware.h">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\Identifier.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Middleware\MidiMiddleware.h">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\Utilities.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Middleware\OscMiddleware.h">
+      <Filter>Soundboard\Source\Redux\Middleware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\ValueTreeObjectList.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Reducers\ApplicationReducer.h">
+      <Filter>Soundboard\Source\Redux\Reducers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\ClipModel.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Reducers\BankReducer.h">
+      <Filter>Soundboard\Source\Redux\Reducers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Models\PlayerModel.h">
-      <Filter>Soundboard\Source\Models</Filter>
+    <ClInclude Include="..\..\Source\Redux\Reducers\LibraryReducer.h">
+      <Filter>Soundboard\Source\Redux\Reducers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\StartupView.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Reducers\PlayerReducer.h">
+      <Filter>Soundboard\Source\Redux\Reducers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\LibraryView.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Reducers\PlaylistReducer.h">
+      <Filter>Soundboard\Source\Redux\Reducers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\LibraryItem.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Reducers\Reducers.h">
+      <Filter>Soundboard\Source\Redux\Reducers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\PlayerSelection.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\ActionObject.h">
+      <Filter>Soundboard\Source\Redux</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\PlaylistItem.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Identifier.h">
+      <Filter>Soundboard\Source\Redux</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\PlaylistActionEnd.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Middleware.h">
+      <Filter>Soundboard\Source\Redux</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\PlaylistActionStart.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Redux.h">
+      <Filter>Soundboard\Source\Redux</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\NavigationDrawerHeaderItem.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\Redux\Store.h">
+      <Filter>Soundboard\Source\Redux</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\NavigationDrawerItem.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Controllers\BankViewController.h">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\NavigationDrawerDevider.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Controllers\LibraryViewController.h">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\NavigationDrawer.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Controllers\MainViewController.h">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\AppBar.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Controllers\PlaylistViewController.h">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\MainView.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Controllers\ViewController.h">
+      <Filter>Soundboard\Source\UserInterface\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Views\BottomBar.h">
-      <Filter>Soundboard\Source\Views</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\ApplicationModel.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Controllers\BankViewController.h">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\BankModel.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Controllers\LibraryViewController.h">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\ClipModel.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Controllers\MainViewController.h">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\LibraryModel.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Controllers\PlaylistViewController.h">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\PlayerModel.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Controllers\ViewController.h">
-      <Filter>Soundboard\Source\Controllers</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\PlaylistModel.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\Material.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\Utilities.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\Common.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Models\ValueTreeObjectList.h">
+      <Filter>Soundboard\Source\UserInterface\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\Shadows.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\AppBar.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\Colors.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\BottomBar.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\Fonts.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\LibraryItem.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\Icons.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\LibraryView.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\IconButton.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\MainView.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\FloatingActionButton.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\NavigationDrawer.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Material\LookAndFeel.h">
-      <Filter>Soundboard\Source\Material</Filter>
+    <ClInclude Include="..\..\Source\UserInterface\Views\NavigationDrawerDevider.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\NavigationDrawerHeaderItem.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\NavigationDrawerItem.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\PlayerSelection.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\PlaylistActionEnd.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\PlaylistActionStart.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\PlaylistItem.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UserInterface\Views\StartupView.h">
+      <Filter>Soundboard\Source\UserInterface\Views</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Engine\ADSR.h">
       <Filter>Soundboard\Source\Engine</Filter>
@@ -2790,16 +2814,7 @@
     <ClInclude Include="..\..\Source\Engine\Engine.h">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\MidiEngine.h">
-      <Filter>Soundboard\Source\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\OscEngine.h">
-      <Filter>Soundboard\Source\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Engine\Player.h">
-      <Filter>Soundboard\Source\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\Store.h">
       <Filter>Soundboard\Source\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">

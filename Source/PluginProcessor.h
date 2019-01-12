@@ -11,9 +11,10 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+
+#include "Redux/Store.h"
 #include "Engine/Engine.h"
-#include "Engine/OscEngine.h"
-#include "Engine/MidiEngine.h"
+#include "Redux/Middleware/MidiMiddleware.h"
 
 //==============================================================================
 /**
@@ -70,10 +71,12 @@ public:
 
     void setStateInformation(const void *data, int sizeInBytes) override;
 
-    Engine engine;
-    OSCEngine osc{engine};
-    MidiEngine midi{engine};
+    std::shared_ptr<Store> getStore();
 private:
+    std::shared_ptr<Store> store;
+	Engine engine;
+	std::shared_ptr<MidiMiddleware> midiMiddleware;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UltraschallSoundboardAudioProcessor)
 };

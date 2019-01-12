@@ -103,78 +103,81 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Icons/sharp-volume_mute-24px.svg"
     "../../Assets/Icons/sharp-volume_off-24px.svg"
     "../../Assets/Icons/sharp-volume_up-24px.svg"
-    "../../Source/Middleware/LoggerMiddleware.h"
-    "../../Source/Middleware/Middleware.h"
-    "../../Source/Middleware/MidiMiddleware.cpp"
-    "../../Source/Middleware/MidiMiddleware.h"
-    "../../Source/Middleware/OscMiddleware.cpp"
-    "../../Source/Middleware/OscMiddleware.h"
-    "../../Source/Reducers/Reducers.h"
-    "../../Source/Reducers/ApplicationReducer.h"
-    "../../Source/Reducers/BankReducer.h"
-    "../../Source/Reducers/LibraryReducer.h"
-    "../../Source/Reducers/PlayerReducer.h"
-    "../../Source/Reducers/PlaylistReducer.h"
-    "../../Source/Actions/Actions.h"
-    "../../Source/Actions/ActionObject.h"
-    "../../Source/Actions/ApplicationActions.h"
-    "../../Source/Actions/BankActions.h"
-    "../../Source/Actions/LibraryActions.h"
-    "../../Source/Actions/PlayerActions.h"
-    "../../Source/Actions/PlaylistActions.h"
-    "../../Source/Models/LibraryModel.h"
-    "../../Source/Models/BankModel.h"
-    "../../Source/Models/PlaylistModel.h"
-    "../../Source/Models/Identifier.h"
-    "../../Source/Models/Utilities.h"
-    "../../Source/Models/ValueTreeObjectList.h"
-    "../../Source/Models/ClipModel.h"
-    "../../Source/Models/PlayerModel.h"
-    "../../Source/Views/StartupView.h"
-    "../../Source/Views/LibraryView.h"
-    "../../Source/Views/LibraryItem.h"
-    "../../Source/Views/PlayerSelection.h"
-    "../../Source/Views/PlaylistItem.h"
-    "../../Source/Views/PlaylistActionEnd.h"
-    "../../Source/Views/PlaylistActionStart.h"
-    "../../Source/Views/NavigationDrawerHeaderItem.h"
-    "../../Source/Views/NavigationDrawerItem.h"
-    "../../Source/Views/NavigationDrawerDevider.h"
-    "../../Source/Views/NavigationDrawer.h"
-    "../../Source/Views/AppBar.h"
-    "../../Source/Views/MainView.h"
-    "../../Source/Views/BottomBar.h"
-    "../../Source/Controllers/BankViewController.cpp"
-    "../../Source/Controllers/BankViewController.h"
-    "../../Source/Controllers/LibraryViewController.cpp"
-    "../../Source/Controllers/LibraryViewController.h"
-    "../../Source/Controllers/MainViewController.cpp"
-    "../../Source/Controllers/MainViewController.h"
-    "../../Source/Controllers/PlaylistViewController.cpp"
-    "../../Source/Controllers/PlaylistViewController.h"
-    "../../Source/Controllers/ViewController.h"
-    "../../Source/Material/Material.h"
-    "../../Source/Material/Common.h"
-    "../../Source/Material/Shadows.h"
-    "../../Source/Material/Colors.h"
-    "../../Source/Material/Fonts.h"
-    "../../Source/Material/Fonts.cpp"
-    "../../Source/Material/Icons.h"
-    "../../Source/Material/IconButton.h"
-    "../../Source/Material/FloatingActionButton.h"
-    "../../Source/Material/LookAndFeel.h"
+    "../../Source/LookAndFeel/Colors.h"
+    "../../Source/LookAndFeel/Common.h"
+    "../../Source/LookAndFeel/FloatingActionButton.h"
+    "../../Source/LookAndFeel/Fonts.cpp"
+    "../../Source/LookAndFeel/Fonts.h"
+    "../../Source/LookAndFeel/IconButton.h"
+    "../../Source/LookAndFeel/Icons.h"
+    "../../Source/LookAndFeel/LookAndFeel.h"
+    "../../Source/LookAndFeel/Material.h"
+    "../../Source/LookAndFeel/MaterialLookAndFeel.h"
+    "../../Source/LookAndFeel/Shadows.h"
+    "../../Source/Redux/Actions/Actions.h"
+    "../../Source/Redux/Actions/ApplicationActions.h"
+    "../../Source/Redux/Actions/BankActions.h"
+    "../../Source/Redux/Actions/LibraryActions.h"
+    "../../Source/Redux/Actions/MidiActions.h"
+    "../../Source/Redux/Actions/OscActions.h"
+    "../../Source/Redux/Actions/PlayerActions.h"
+    "../../Source/Redux/Actions/PlaylistActions.h"
+    "../../Source/Redux/Middleware/EngineMiddleware.cpp"
+    "../../Source/Redux/Middleware/EngineMiddleware.h"
+    "../../Source/Redux/Middleware/LoggerMiddleware.h"
+    "../../Source/Redux/Middleware/MidiMiddleware.cpp"
+    "../../Source/Redux/Middleware/MidiMiddleware.h"
+    "../../Source/Redux/Middleware/OscMiddleware.cpp"
+    "../../Source/Redux/Middleware/OscMiddleware.h"
+    "../../Source/Redux/Reducers/ApplicationReducer.h"
+    "../../Source/Redux/Reducers/BankReducer.h"
+    "../../Source/Redux/Reducers/LibraryReducer.h"
+    "../../Source/Redux/Reducers/PlayerReducer.h"
+    "../../Source/Redux/Reducers/PlaylistReducer.h"
+    "../../Source/Redux/Reducers/Reducers.h"
+    "../../Source/Redux/ActionObject.h"
+    "../../Source/Redux/Identifier.h"
+    "../../Source/Redux/Middleware.h"
+    "../../Source/Redux/Redux.h"
+    "../../Source/Redux/Store.cpp"
+    "../../Source/Redux/Store.h"
+    "../../Source/UserInterface/Controllers/BankViewController.cpp"
+    "../../Source/UserInterface/Controllers/BankViewController.h"
+    "../../Source/UserInterface/Controllers/LibraryViewController.cpp"
+    "../../Source/UserInterface/Controllers/LibraryViewController.h"
+    "../../Source/UserInterface/Controllers/MainViewController.cpp"
+    "../../Source/UserInterface/Controllers/MainViewController.h"
+    "../../Source/UserInterface/Controllers/PlaylistViewController.cpp"
+    "../../Source/UserInterface/Controllers/PlaylistViewController.h"
+    "../../Source/UserInterface/Controllers/ViewController.h"
+    "../../Source/UserInterface/Models/ApplicationModel.h"
+    "../../Source/UserInterface/Models/BankModel.h"
+    "../../Source/UserInterface/Models/ClipModel.h"
+    "../../Source/UserInterface/Models/LibraryModel.h"
+    "../../Source/UserInterface/Models/PlayerModel.h"
+    "../../Source/UserInterface/Models/PlaylistModel.h"
+    "../../Source/UserInterface/Models/Utilities.h"
+    "../../Source/UserInterface/Models/ValueTreeObjectList.h"
+    "../../Source/UserInterface/Views/AppBar.h"
+    "../../Source/UserInterface/Views/BottomBar.h"
+    "../../Source/UserInterface/Views/LibraryItem.h"
+    "../../Source/UserInterface/Views/LibraryView.h"
+    "../../Source/UserInterface/Views/MainView.h"
+    "../../Source/UserInterface/Views/NavigationDrawer.h"
+    "../../Source/UserInterface/Views/NavigationDrawerDevider.h"
+    "../../Source/UserInterface/Views/NavigationDrawerHeaderItem.h"
+    "../../Source/UserInterface/Views/NavigationDrawerItem.h"
+    "../../Source/UserInterface/Views/PlayerSelection.h"
+    "../../Source/UserInterface/Views/PlaylistActionEnd.h"
+    "../../Source/UserInterface/Views/PlaylistActionStart.h"
+    "../../Source/UserInterface/Views/PlaylistItem.h"
+    "../../Source/UserInterface/Views/StartupView.h"
     "../../Source/Engine/ADSR.cpp"
     "../../Source/Engine/ADSR.h"
     "../../Source/Engine/Engine.cpp"
     "../../Source/Engine/Engine.h"
-    "../../Source/Engine/MidiEngine.cpp"
-    "../../Source/Engine/MidiEngine.h"
-    "../../Source/Engine/OscEngine.cpp"
-    "../../Source/Engine/OscEngine.h"
     "../../Source/Engine/Player.cpp"
     "../../Source/Engine/Player.h"
-    "../../Source/Engine/Store.cpp"
-    "../../Source/Engine/Store.h"
     "../../Source/PluginProcessor.cpp"
     "../../Source/PluginProcessor.h"
     "../../Source/PluginEditor.cpp"
@@ -1743,65 +1746,69 @@ set_source_files_properties ("../../Assets/Icons/sharp-view_comfy-24px.svg" PROP
 set_source_files_properties ("../../Assets/Icons/sharp-volume_mute-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_off-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_up-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/LibraryModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/BankModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/PlaylistModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/StartupView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/LibraryItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlayerSelection.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlaylistItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlaylistActionEnd.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlaylistActionStart.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawerHeaderItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawerItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawerDevider.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/AppBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/BottomBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/PlaylistViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/ViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Material.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Shadows.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Colors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Fonts.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Icons.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/IconButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/LookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Colors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Fonts.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/IconButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Icons.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/LookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Material.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Shadows.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/MidiActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/OscActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/EngineMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Redux.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/PlaylistViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/ViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/ApplicationModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/BankModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/LibraryModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/PlaylistModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/Utilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/AppBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/BottomBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/LibraryItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawerDevider.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawerHeaderItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawerItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlayerSelection.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlaylistActionEnd.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlaylistActionStart.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlaylistItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/StartupView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Engine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/MidiEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/OscEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginProcessor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginEditor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/audio_play_head/juce_AudioPlayHead.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3318,12 +3325,12 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\Soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\Soundboard\Builds\CLion\Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3458,12 +3465,12 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "C:\src\Soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/ultraschall-soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "C:\src\Soundboard\Builds\CLion\Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3657,78 +3664,81 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Icons/sharp-volume_mute-24px.svg"
     "../../Assets/Icons/sharp-volume_off-24px.svg"
     "../../Assets/Icons/sharp-volume_up-24px.svg"
-    "../../Source/Middleware/LoggerMiddleware.h"
-    "../../Source/Middleware/Middleware.h"
-    "../../Source/Middleware/MidiMiddleware.cpp"
-    "../../Source/Middleware/MidiMiddleware.h"
-    "../../Source/Middleware/OscMiddleware.cpp"
-    "../../Source/Middleware/OscMiddleware.h"
-    "../../Source/Reducers/Reducers.h"
-    "../../Source/Reducers/ApplicationReducer.h"
-    "../../Source/Reducers/BankReducer.h"
-    "../../Source/Reducers/LibraryReducer.h"
-    "../../Source/Reducers/PlayerReducer.h"
-    "../../Source/Reducers/PlaylistReducer.h"
-    "../../Source/Actions/Actions.h"
-    "../../Source/Actions/ActionObject.h"
-    "../../Source/Actions/ApplicationActions.h"
-    "../../Source/Actions/BankActions.h"
-    "../../Source/Actions/LibraryActions.h"
-    "../../Source/Actions/PlayerActions.h"
-    "../../Source/Actions/PlaylistActions.h"
-    "../../Source/Models/LibraryModel.h"
-    "../../Source/Models/BankModel.h"
-    "../../Source/Models/PlaylistModel.h"
-    "../../Source/Models/Identifier.h"
-    "../../Source/Models/Utilities.h"
-    "../../Source/Models/ValueTreeObjectList.h"
-    "../../Source/Models/ClipModel.h"
-    "../../Source/Models/PlayerModel.h"
-    "../../Source/Views/StartupView.h"
-    "../../Source/Views/LibraryView.h"
-    "../../Source/Views/LibraryItem.h"
-    "../../Source/Views/PlayerSelection.h"
-    "../../Source/Views/PlaylistItem.h"
-    "../../Source/Views/PlaylistActionEnd.h"
-    "../../Source/Views/PlaylistActionStart.h"
-    "../../Source/Views/NavigationDrawerHeaderItem.h"
-    "../../Source/Views/NavigationDrawerItem.h"
-    "../../Source/Views/NavigationDrawerDevider.h"
-    "../../Source/Views/NavigationDrawer.h"
-    "../../Source/Views/AppBar.h"
-    "../../Source/Views/MainView.h"
-    "../../Source/Views/BottomBar.h"
-    "../../Source/Controllers/BankViewController.cpp"
-    "../../Source/Controllers/BankViewController.h"
-    "../../Source/Controllers/LibraryViewController.cpp"
-    "../../Source/Controllers/LibraryViewController.h"
-    "../../Source/Controllers/MainViewController.cpp"
-    "../../Source/Controllers/MainViewController.h"
-    "../../Source/Controllers/PlaylistViewController.cpp"
-    "../../Source/Controllers/PlaylistViewController.h"
-    "../../Source/Controllers/ViewController.h"
-    "../../Source/Material/Material.h"
-    "../../Source/Material/Common.h"
-    "../../Source/Material/Shadows.h"
-    "../../Source/Material/Colors.h"
-    "../../Source/Material/Fonts.h"
-    "../../Source/Material/Fonts.cpp"
-    "../../Source/Material/Icons.h"
-    "../../Source/Material/IconButton.h"
-    "../../Source/Material/FloatingActionButton.h"
-    "../../Source/Material/LookAndFeel.h"
+    "../../Source/LookAndFeel/Colors.h"
+    "../../Source/LookAndFeel/Common.h"
+    "../../Source/LookAndFeel/FloatingActionButton.h"
+    "../../Source/LookAndFeel/Fonts.cpp"
+    "../../Source/LookAndFeel/Fonts.h"
+    "../../Source/LookAndFeel/IconButton.h"
+    "../../Source/LookAndFeel/Icons.h"
+    "../../Source/LookAndFeel/LookAndFeel.h"
+    "../../Source/LookAndFeel/Material.h"
+    "../../Source/LookAndFeel/MaterialLookAndFeel.h"
+    "../../Source/LookAndFeel/Shadows.h"
+    "../../Source/Redux/Actions/Actions.h"
+    "../../Source/Redux/Actions/ApplicationActions.h"
+    "../../Source/Redux/Actions/BankActions.h"
+    "../../Source/Redux/Actions/LibraryActions.h"
+    "../../Source/Redux/Actions/MidiActions.h"
+    "../../Source/Redux/Actions/OscActions.h"
+    "../../Source/Redux/Actions/PlayerActions.h"
+    "../../Source/Redux/Actions/PlaylistActions.h"
+    "../../Source/Redux/Middleware/EngineMiddleware.cpp"
+    "../../Source/Redux/Middleware/EngineMiddleware.h"
+    "../../Source/Redux/Middleware/LoggerMiddleware.h"
+    "../../Source/Redux/Middleware/MidiMiddleware.cpp"
+    "../../Source/Redux/Middleware/MidiMiddleware.h"
+    "../../Source/Redux/Middleware/OscMiddleware.cpp"
+    "../../Source/Redux/Middleware/OscMiddleware.h"
+    "../../Source/Redux/Reducers/ApplicationReducer.h"
+    "../../Source/Redux/Reducers/BankReducer.h"
+    "../../Source/Redux/Reducers/LibraryReducer.h"
+    "../../Source/Redux/Reducers/PlayerReducer.h"
+    "../../Source/Redux/Reducers/PlaylistReducer.h"
+    "../../Source/Redux/Reducers/Reducers.h"
+    "../../Source/Redux/ActionObject.h"
+    "../../Source/Redux/Identifier.h"
+    "../../Source/Redux/Middleware.h"
+    "../../Source/Redux/Redux.h"
+    "../../Source/Redux/Store.cpp"
+    "../../Source/Redux/Store.h"
+    "../../Source/UserInterface/Controllers/BankViewController.cpp"
+    "../../Source/UserInterface/Controllers/BankViewController.h"
+    "../../Source/UserInterface/Controllers/LibraryViewController.cpp"
+    "../../Source/UserInterface/Controllers/LibraryViewController.h"
+    "../../Source/UserInterface/Controllers/MainViewController.cpp"
+    "../../Source/UserInterface/Controllers/MainViewController.h"
+    "../../Source/UserInterface/Controllers/PlaylistViewController.cpp"
+    "../../Source/UserInterface/Controllers/PlaylistViewController.h"
+    "../../Source/UserInterface/Controllers/ViewController.h"
+    "../../Source/UserInterface/Models/ApplicationModel.h"
+    "../../Source/UserInterface/Models/BankModel.h"
+    "../../Source/UserInterface/Models/ClipModel.h"
+    "../../Source/UserInterface/Models/LibraryModel.h"
+    "../../Source/UserInterface/Models/PlayerModel.h"
+    "../../Source/UserInterface/Models/PlaylistModel.h"
+    "../../Source/UserInterface/Models/Utilities.h"
+    "../../Source/UserInterface/Models/ValueTreeObjectList.h"
+    "../../Source/UserInterface/Views/AppBar.h"
+    "../../Source/UserInterface/Views/BottomBar.h"
+    "../../Source/UserInterface/Views/LibraryItem.h"
+    "../../Source/UserInterface/Views/LibraryView.h"
+    "../../Source/UserInterface/Views/MainView.h"
+    "../../Source/UserInterface/Views/NavigationDrawer.h"
+    "../../Source/UserInterface/Views/NavigationDrawerDevider.h"
+    "../../Source/UserInterface/Views/NavigationDrawerHeaderItem.h"
+    "../../Source/UserInterface/Views/NavigationDrawerItem.h"
+    "../../Source/UserInterface/Views/PlayerSelection.h"
+    "../../Source/UserInterface/Views/PlaylistActionEnd.h"
+    "../../Source/UserInterface/Views/PlaylistActionStart.h"
+    "../../Source/UserInterface/Views/PlaylistItem.h"
+    "../../Source/UserInterface/Views/StartupView.h"
     "../../Source/Engine/ADSR.cpp"
     "../../Source/Engine/ADSR.h"
     "../../Source/Engine/Engine.cpp"
     "../../Source/Engine/Engine.h"
-    "../../Source/Engine/MidiEngine.cpp"
-    "../../Source/Engine/MidiEngine.h"
-    "../../Source/Engine/OscEngine.cpp"
-    "../../Source/Engine/OscEngine.h"
     "../../Source/Engine/Player.cpp"
     "../../Source/Engine/Player.h"
-    "../../Source/Engine/Store.cpp"
-    "../../Source/Engine/Store.h"
     "../../Source/PluginProcessor.cpp"
     "../../Source/PluginProcessor.h"
     "../../Source/PluginEditor.cpp"
@@ -5296,65 +5306,69 @@ set_source_files_properties ("../../Assets/Icons/sharp-view_comfy-24px.svg" PROP
 set_source_files_properties ("../../Assets/Icons/sharp-volume_mute-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_off-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_up-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/LibraryModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/BankModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/PlaylistModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/Utilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/StartupView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/LibraryItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlayerSelection.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlaylistItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlaylistActionEnd.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/PlaylistActionStart.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawerHeaderItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawerItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawerDevider.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/NavigationDrawer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/AppBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Views/BottomBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/PlaylistViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Controllers/ViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Material.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Shadows.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Colors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Fonts.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/Icons.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/IconButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Material/LookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Colors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Fonts.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/IconButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Icons.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/LookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Material.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/LookAndFeel/Shadows.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/MidiActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/OscActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/EngineMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Redux.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Redux/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/MainViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/PlaylistViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Controllers/ViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/ApplicationModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/BankModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/ClipModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/LibraryModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/PlayerModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/PlaylistModel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/Utilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Models/ValueTreeObjectList.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/AppBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/BottomBar.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/LibraryItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/LibraryView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/MainView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawerDevider.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawerHeaderItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/NavigationDrawerItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlayerSelection.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlaylistActionEnd.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlaylistActionStart.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/PlaylistItem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/UserInterface/Views/StartupView.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Engine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/MidiEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/OscEngine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/Engine/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Engine/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginProcessor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/PluginEditor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/audio_play_head/juce_AudioPlayHead.h" PROPERTIES HEADER_FILE_ONLY TRUE)

@@ -1,11 +1,10 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "LookAndFeel/LookAndFeel.h"
+
 #include "PluginProcessor.h"
-
-#include "Material/LookAndFeel.h"
-#include "Controllers/MainViewController.h"
-
+#include "UserInterface/Controllers/MainViewController.h"
 
 class UltraschallSoundboardAudioProcessorEditor : public AudioProcessorEditor {
 public:
@@ -22,7 +21,7 @@ private:
 
     std::unique_ptr<MainViewController> controller;
     MaterialLookAndFeel lookAndFeel;
-    OpenGLContext openGLContext;
+//    OpenGLContext openGLContext;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UltraschallSoundboardAudioProcessorEditor)
 };

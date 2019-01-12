@@ -179,121 +179,132 @@
       </GROUP>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
-      <GROUP id="{EEC9B041-2E98-D3E8-6D5A-5F19D8718546}" name="Middleware">
-        <FILE id="d6asIp" name="LoggerMiddleware.h" compile="0" resource="0"
-              file="Source/Middleware/LoggerMiddleware.h"/>
-        <FILE id="mSZljC" name="Middleware.h" compile="0" resource="0" file="Source/Middleware/Middleware.h"/>
-        <FILE id="jEef0P" name="MidiMiddleware.cpp" compile="1" resource="0"
-              file="Source/Middleware/MidiMiddleware.cpp"/>
-        <FILE id="KUq9cW" name="MidiMiddleware.h" compile="0" resource="0"
-              file="Source/Middleware/MidiMiddleware.h"/>
-        <FILE id="yPsLZr" name="OscMiddleware.cpp" compile="1" resource="0"
-              file="Source/Middleware/OscMiddleware.cpp"/>
-        <FILE id="JBzHSu" name="OscMiddleware.h" compile="0" resource="0" file="Source/Middleware/OscMiddleware.h"/>
+      <GROUP id="{699A0378-0DCB-B890-FB53-4FD418588E35}" name="LookAndFeel">
+        <FILE id="CTa8Pi" name="Colors.h" compile="0" resource="0" file="Source/LookAndFeel/Colors.h"/>
+        <FILE id="hUi9XO" name="Common.h" compile="0" resource="0" file="Source/LookAndFeel/Common.h"/>
+        <FILE id="tt2BX5" name="FloatingActionButton.h" compile="0" resource="0"
+              file="Source/LookAndFeel/FloatingActionButton.h"/>
+        <FILE id="oQGkn2" name="Fonts.cpp" compile="1" resource="0" file="Source/LookAndFeel/Fonts.cpp"/>
+        <FILE id="Pl43QV" name="Fonts.h" compile="0" resource="0" file="Source/LookAndFeel/Fonts.h"/>
+        <FILE id="m7eoYv" name="IconButton.h" compile="0" resource="0" file="Source/LookAndFeel/IconButton.h"/>
+        <FILE id="V0gJuR" name="Icons.h" compile="0" resource="0" file="Source/LookAndFeel/Icons.h"/>
+        <FILE id="CL9WQ9" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel/LookAndFeel.h"/>
+        <FILE id="krSFjp" name="Material.h" compile="0" resource="0" file="Source/LookAndFeel/Material.h"/>
+        <FILE id="ehmw9m" name="MaterialLookAndFeel.h" compile="0" resource="0"
+              file="Source/LookAndFeel/MaterialLookAndFeel.h"/>
+        <FILE id="oZDfre" name="Shadows.h" compile="0" resource="0" file="Source/LookAndFeel/Shadows.h"/>
       </GROUP>
-      <GROUP id="{07819E51-0FC4-DBEF-8671-D5E70BB9AB9B}" name="Reducers">
-        <FILE id="iAlL69" name="Reducers.h" compile="0" resource="0" file="Source/Reducers/Reducers.h"/>
-        <FILE id="IJaIM8" name="ApplicationReducer.h" compile="0" resource="0"
-              file="Source/Reducers/ApplicationReducer.h"/>
-        <FILE id="HpE7xa" name="BankReducer.h" compile="0" resource="0" file="Source/Reducers/BankReducer.h"/>
-        <FILE id="Kz5Bz7" name="LibraryReducer.h" compile="0" resource="0"
-              file="Source/Reducers/LibraryReducer.h"/>
-        <FILE id="by0Lnk" name="PlayerReducer.h" compile="0" resource="0" file="Source/Reducers/PlayerReducer.h"/>
-        <FILE id="Hf8XC5" name="PlaylistReducer.h" compile="0" resource="0"
-              file="Source/Reducers/PlaylistReducer.h"/>
+      <GROUP id="{58E6F70A-2769-DDB3-96DC-D047B02C8AF5}" name="Redux">
+        <GROUP id="{07F82974-3348-1075-C3FF-1C3FFFB2B95E}" name="Actions">
+          <FILE id="ADFT8M" name="Actions.h" compile="0" resource="0" file="Source/Redux/Actions/Actions.h"/>
+          <FILE id="jbFeVQ" name="ApplicationActions.h" compile="0" resource="0"
+                file="Source/Redux/Actions/ApplicationActions.h"/>
+          <FILE id="saKBWw" name="BankActions.h" compile="0" resource="0" file="Source/Redux/Actions/BankActions.h"/>
+          <FILE id="rcvFCz" name="LibraryActions.h" compile="0" resource="0"
+                file="Source/Redux/Actions/LibraryActions.h"/>
+          <FILE id="YOZjt9" name="MidiActions.h" compile="0" resource="0" file="Source/Redux/Actions/MidiActions.h"/>
+          <FILE id="vGewbT" name="OscActions.h" compile="0" resource="0" file="Source/Redux/Actions/OscActions.h"/>
+          <FILE id="B1qatH" name="PlayerActions.h" compile="0" resource="0" file="Source/Redux/Actions/PlayerActions.h"/>
+          <FILE id="Ks6bin" name="PlaylistActions.h" compile="0" resource="0"
+                file="Source/Redux/Actions/PlaylistActions.h"/>
+        </GROUP>
+        <GROUP id="{10522132-FE58-9925-2815-7132CE8918B1}" name="Middleware">
+          <FILE id="bfXAoA" name="EngineMiddleware.cpp" compile="1" resource="0"
+                file="Source/Redux/Middleware/EngineMiddleware.cpp"/>
+          <FILE id="g0KKko" name="EngineMiddleware.h" compile="0" resource="0"
+                file="Source/Redux/Middleware/EngineMiddleware.h"/>
+          <FILE id="Hz6v25" name="LoggerMiddleware.h" compile="0" resource="0"
+                file="Source/Redux/Middleware/LoggerMiddleware.h"/>
+          <FILE id="yJSi7d" name="MidiMiddleware.cpp" compile="1" resource="0"
+                file="Source/Redux/Middleware/MidiMiddleware.cpp"/>
+          <FILE id="Na0pEK" name="MidiMiddleware.h" compile="0" resource="0"
+                file="Source/Redux/Middleware/MidiMiddleware.h"/>
+          <FILE id="hRI43V" name="OscMiddleware.cpp" compile="1" resource="0"
+                file="Source/Redux/Middleware/OscMiddleware.cpp"/>
+          <FILE id="nyy2cx" name="OscMiddleware.h" compile="0" resource="0" file="Source/Redux/Middleware/OscMiddleware.h"/>
+        </GROUP>
+        <GROUP id="{AF29A0CD-5CFE-1C5A-A343-0BD8A7AFDEA1}" name="Reducers">
+          <FILE id="yu4v6q" name="ApplicationReducer.h" compile="0" resource="0"
+                file="Source/Redux/Reducers/ApplicationReducer.h"/>
+          <FILE id="I8nvcj" name="BankReducer.h" compile="0" resource="0" file="Source/Redux/Reducers/BankReducer.h"/>
+          <FILE id="IXkHda" name="LibraryReducer.h" compile="0" resource="0"
+                file="Source/Redux/Reducers/LibraryReducer.h"/>
+          <FILE id="CBQWhU" name="PlayerReducer.h" compile="0" resource="0" file="Source/Redux/Reducers/PlayerReducer.h"/>
+          <FILE id="k10INK" name="PlaylistReducer.h" compile="0" resource="0"
+                file="Source/Redux/Reducers/PlaylistReducer.h"/>
+          <FILE id="SqVIRx" name="Reducers.h" compile="0" resource="0" file="Source/Redux/Reducers/Reducers.h"/>
+        </GROUP>
+        <FILE id="xPGGnq" name="ActionObject.h" compile="0" resource="0" file="Source/Redux/ActionObject.h"/>
+        <FILE id="rk4cBh" name="Identifier.h" compile="0" resource="0" file="Source/Redux/Identifier.h"/>
+        <FILE id="srNFJT" name="Middleware.h" compile="0" resource="0" file="Source/Redux/Middleware.h"/>
+        <FILE id="EH4saV" name="Redux.h" compile="0" resource="0" file="Source/Redux/Redux.h"/>
+        <FILE id="bsme8J" name="Store.cpp" compile="1" resource="0" file="Source/Redux/Store.cpp"/>
+        <FILE id="JULhuW" name="Store.h" compile="0" resource="0" file="Source/Redux/Store.h"/>
       </GROUP>
-      <GROUP id="{DC1582F3-4F43-69D4-BDB0-4A3E1257576D}" name="Actions">
-        <FILE id="frvsV7" name="Actions.h" compile="0" resource="0" file="Source/Actions/Actions.h"/>
-        <FILE id="jYN0fw" name="ActionObject.h" compile="0" resource="0" file="Source/Actions/ActionObject.h"/>
-        <FILE id="RYvCU4" name="ApplicationActions.h" compile="0" resource="0"
-              file="Source/Actions/ApplicationActions.h"/>
-        <FILE id="nNEicZ" name="BankActions.h" compile="0" resource="0" file="Source/Actions/BankActions.h"/>
-        <FILE id="wzW0tB" name="LibraryActions.h" compile="0" resource="0"
-              file="Source/Actions/LibraryActions.h"/>
-        <FILE id="n9Hnd8" name="PlayerActions.h" compile="0" resource="0" file="Source/Actions/PlayerActions.h"/>
-        <FILE id="vNi1KK" name="PlaylistActions.h" compile="0" resource="0"
-              file="Source/Actions/PlaylistActions.h"/>
+      <GROUP id="{BB08034A-C4E8-DEFE-CB27-F65519A694EA}" name="UserInterface">
+        <GROUP id="{67F9D19F-CD29-8EBF-CDD9-A197C3ACA3DD}" name="Controllers">
+          <FILE id="g2dtGj" name="BankViewController.cpp" compile="1" resource="0"
+                file="Source/UserInterface/Controllers/BankViewController.cpp"/>
+          <FILE id="Nv4TQm" name="BankViewController.h" compile="0" resource="0"
+                file="Source/UserInterface/Controllers/BankViewController.h"/>
+          <FILE id="LJAFA3" name="LibraryViewController.cpp" compile="1" resource="0"
+                file="Source/UserInterface/Controllers/LibraryViewController.cpp"/>
+          <FILE id="iL39iD" name="LibraryViewController.h" compile="0" resource="0"
+                file="Source/UserInterface/Controllers/LibraryViewController.h"/>
+          <FILE id="uPkzYT" name="MainViewController.cpp" compile="1" resource="0"
+                file="Source/UserInterface/Controllers/MainViewController.cpp"/>
+          <FILE id="UgFfwY" name="MainViewController.h" compile="0" resource="0"
+                file="Source/UserInterface/Controllers/MainViewController.h"/>
+          <FILE id="W5EvHZ" name="PlaylistViewController.cpp" compile="1" resource="0"
+                file="Source/UserInterface/Controllers/PlaylistViewController.cpp"/>
+          <FILE id="Nf8eUg" name="PlaylistViewController.h" compile="0" resource="0"
+                file="Source/UserInterface/Controllers/PlaylistViewController.h"/>
+          <FILE id="KH6d1l" name="ViewController.h" compile="0" resource="0"
+                file="Source/UserInterface/Controllers/ViewController.h"/>
+        </GROUP>
+        <GROUP id="{1264CFE8-27BE-203A-DEAD-7B4F8BD14A7B}" name="Models">
+          <FILE id="cjrjaa" name="ApplicationModel.h" compile="0" resource="0"
+                file="Source/UserInterface/Models/ApplicationModel.h"/>
+          <FILE id="Kc1WZY" name="BankModel.h" compile="0" resource="0" file="Source/UserInterface/Models/BankModel.h"/>
+          <FILE id="ec1IPb" name="ClipModel.h" compile="0" resource="0" file="Source/UserInterface/Models/ClipModel.h"/>
+          <FILE id="i2Mb6p" name="LibraryModel.h" compile="0" resource="0" file="Source/UserInterface/Models/LibraryModel.h"/>
+          <FILE id="LBTKgE" name="PlayerModel.h" compile="0" resource="0" file="Source/UserInterface/Models/PlayerModel.h"/>
+          <FILE id="lFE66W" name="PlaylistModel.h" compile="0" resource="0" file="Source/UserInterface/Models/PlaylistModel.h"/>
+          <FILE id="sQPuaD" name="Utilities.h" compile="0" resource="0" file="Source/UserInterface/Models/Utilities.h"/>
+          <FILE id="pj5TGs" name="ValueTreeObjectList.h" compile="0" resource="0"
+                file="Source/UserInterface/Models/ValueTreeObjectList.h"/>
+        </GROUP>
+        <GROUP id="{F28E88A0-88EA-04F9-13A7-53C1FED7E12D}" name="Views">
+          <FILE id="l50LtF" name="AppBar.h" compile="0" resource="0" file="Source/UserInterface/Views/AppBar.h"/>
+          <FILE id="XNxHVF" name="BottomBar.h" compile="0" resource="0" file="Source/UserInterface/Views/BottomBar.h"/>
+          <FILE id="rBiNgr" name="LibraryItem.h" compile="0" resource="0" file="Source/UserInterface/Views/LibraryItem.h"/>
+          <FILE id="Mk9buD" name="LibraryView.h" compile="0" resource="0" file="Source/UserInterface/Views/LibraryView.h"/>
+          <FILE id="NAXb3Y" name="MainView.h" compile="0" resource="0" file="Source/UserInterface/Views/MainView.h"/>
+          <FILE id="qpyNbc" name="NavigationDrawer.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/NavigationDrawer.h"/>
+          <FILE id="qwtCog" name="NavigationDrawerDevider.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/NavigationDrawerDevider.h"/>
+          <FILE id="kkKZNl" name="NavigationDrawerHeaderItem.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/NavigationDrawerHeaderItem.h"/>
+          <FILE id="sIeyph" name="NavigationDrawerItem.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/NavigationDrawerItem.h"/>
+          <FILE id="c8cQtS" name="PlayerSelection.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/PlayerSelection.h"/>
+          <FILE id="nMEuC9" name="PlaylistActionEnd.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/PlaylistActionEnd.h"/>
+          <FILE id="VExmWC" name="PlaylistActionStart.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/PlaylistActionStart.h"/>
+          <FILE id="HNCIgt" name="PlaylistItem.h" compile="0" resource="0" file="Source/UserInterface/Views/PlaylistItem.h"/>
+          <FILE id="OmYq1W" name="StartupView.h" compile="0" resource="0" file="Source/UserInterface/Views/StartupView.h"/>
+        </GROUP>
       </GROUP>
-      <GROUP id="{794D7A08-B072-72AA-00E0-1649A4F95440}" name="Models">
-        <FILE id="ct2NrZ" name="LibraryModel.h" compile="0" resource="0" file="Source/Models/LibraryModel.h"/>
-        <FILE id="IcKeNg" name="BankModel.h" compile="0" resource="0" file="Source/Models/BankModel.h"/>
-        <FILE id="Xim1qA" name="PlaylistModel.h" compile="0" resource="0" file="Source/Models/PlaylistModel.h"/>
-        <FILE id="Rn75dI" name="Identifier.h" compile="0" resource="0" file="Source/Models/Identifier.h"/>
-        <FILE id="mfcv7q" name="Utilities.h" compile="0" resource="0" file="Source/Models/Utilities.h"/>
-        <FILE id="iAiL9t" name="ValueTreeObjectList.h" compile="0" resource="0"
-              file="Source/Models/ValueTreeObjectList.h"/>
-        <FILE id="QDAq2C" name="ClipModel.h" compile="0" resource="0" file="Source/Models/ClipModel.h"/>
-        <FILE id="LewyLy" name="PlayerModel.h" compile="0" resource="0" file="Source/Models/PlayerModel.h"/>
-      </GROUP>
-      <GROUP id="{72DAEDF2-D9D8-4053-A5D2-27459049A683}" name="Views">
-        <FILE id="ay8cx7" name="StartupView.h" compile="0" resource="0" file="Source/Views/StartupView.h"/>
-        <FILE id="ywe7ut" name="LibraryView.h" compile="0" resource="0" file="Source/Views/LibraryView.h"/>
-        <FILE id="EFs7i4" name="LibraryItem.h" compile="0" resource="0" file="Source/Views/LibraryItem.h"/>
-        <FILE id="aWyLcg" name="PlayerSelection.h" compile="0" resource="0"
-              file="Source/Views/PlayerSelection.h"/>
-        <FILE id="sUrtwA" name="PlaylistItem.h" compile="0" resource="0" file="Source/Views/PlaylistItem.h"/>
-        <FILE id="mtBOLh" name="PlaylistActionEnd.h" compile="0" resource="0"
-              file="Source/Views/PlaylistActionEnd.h"/>
-        <FILE id="ZXzphj" name="PlaylistActionStart.h" compile="0" resource="0"
-              file="Source/Views/PlaylistActionStart.h"/>
-        <FILE id="oM7v0N" name="NavigationDrawerHeaderItem.h" compile="0" resource="0"
-              file="Source/Views/NavigationDrawerHeaderItem.h"/>
-        <FILE id="hr3F4F" name="NavigationDrawerItem.h" compile="0" resource="0"
-              file="Source/Views/NavigationDrawerItem.h"/>
-        <FILE id="IDLl72" name="NavigationDrawerDevider.h" compile="0" resource="0"
-              file="Source/Views/NavigationDrawerDevider.h"/>
-        <FILE id="iKNHBM" name="NavigationDrawer.h" compile="0" resource="0"
-              file="Source/Views/NavigationDrawer.h"/>
-        <FILE id="Iobgn5" name="AppBar.h" compile="0" resource="0" file="Source/Views/AppBar.h"/>
-        <FILE id="SlS3oH" name="MainView.h" compile="0" resource="0" file="Source/Views/MainView.h"/>
-        <FILE id="RMdQtl" name="BottomBar.h" compile="0" resource="0" file="Source/Views/BottomBar.h"/>
-      </GROUP>
-      <GROUP id="{51A3B505-65B0-817C-7690-B6B401DFC391}" name="Controllers">
-        <FILE id="dE2PYk" name="BankViewController.cpp" compile="1" resource="0"
-              file="Source/Controllers/BankViewController.cpp"/>
-        <FILE id="WcWpPT" name="BankViewController.h" compile="0" resource="0"
-              file="Source/Controllers/BankViewController.h"/>
-        <FILE id="CvLEhP" name="LibraryViewController.cpp" compile="1" resource="0"
-              file="Source/Controllers/LibraryViewController.cpp"/>
-        <FILE id="CBadp5" name="LibraryViewController.h" compile="0" resource="0"
-              file="Source/Controllers/LibraryViewController.h"/>
-        <FILE id="Hf3WPC" name="MainViewController.cpp" compile="1" resource="0"
-              file="Source/Controllers/MainViewController.cpp"/>
-        <FILE id="FsYldl" name="MainViewController.h" compile="0" resource="0"
-              file="Source/Controllers/MainViewController.h"/>
-        <FILE id="J9pdaM" name="PlaylistViewController.cpp" compile="1" resource="0"
-              file="Source/Controllers/PlaylistViewController.cpp"/>
-        <FILE id="AQfIef" name="PlaylistViewController.h" compile="0" resource="0"
-              file="Source/Controllers/PlaylistViewController.h"/>
-        <FILE id="aZKupB" name="ViewController.h" compile="0" resource="0"
-              file="Source/Controllers/ViewController.h"/>
-      </GROUP>
-      <GROUP id="{40FA44C2-2AF6-A01C-6BF7-2978D831A983}" name="Material">
-        <FILE id="mz3ylY" name="Material.h" compile="0" resource="0" file="Source/Material/Material.h"/>
-        <FILE id="vQO7Zw" name="Common.h" compile="0" resource="0" file="Source/Material/Common.h"/>
-        <FILE id="MicTE4" name="Shadows.h" compile="0" resource="0" file="Source/Material/Shadows.h"/>
-        <FILE id="EcybPU" name="Colors.h" compile="0" resource="0" file="Source/Material/Colors.h"/>
-        <FILE id="qw5rEm" name="Fonts.h" compile="0" resource="0" file="Source/Material/Fonts.h"/>
-        <FILE id="xEXNv4" name="Fonts.cpp" compile="1" resource="0" file="Source/Material/Fonts.cpp"/>
-        <FILE id="IDeJcv" name="Icons.h" compile="0" resource="0" file="Source/Material/Icons.h"/>
-        <FILE id="cFRQba" name="IconButton.h" compile="0" resource="0" file="Source/Material/IconButton.h"/>
-        <FILE id="Uu7JMW" name="FloatingActionButton.h" compile="0" resource="0"
-              file="Source/Material/FloatingActionButton.h"/>
-        <FILE id="UdAK0A" name="LookAndFeel.h" compile="0" resource="0" file="Source/Material/LookAndFeel.h"/>
-      </GROUP>
-      <GROUP id="{81DCB5C5-3B4D-1BC4-788D-77AC4750CBCD}" name="Engine">
-        <FILE id="ovDiTu" name="ADSR.cpp" compile="1" resource="0" file="Source/Engine/ADSR.cpp"/>
-        <FILE id="L3lBjs" name="ADSR.h" compile="0" resource="0" file="Source/Engine/ADSR.h"/>
-        <FILE id="NpYdqK" name="Engine.cpp" compile="1" resource="0" file="Source/Engine/Engine.cpp"/>
-        <FILE id="sJafFT" name="Engine.h" compile="0" resource="0" file="Source/Engine/Engine.h"/>
-        <FILE id="b8UP42" name="MidiEngine.cpp" compile="1" resource="0" file="Source/Engine/MidiEngine.cpp"/>
-        <FILE id="XjjwAN" name="MidiEngine.h" compile="0" resource="0" file="Source/Engine/MidiEngine.h"/>
-        <FILE id="UQDwHy" name="OscEngine.cpp" compile="1" resource="0" file="Source/Engine/OscEngine.cpp"/>
-        <FILE id="luRtjz" name="OscEngine.h" compile="0" resource="0" file="Source/Engine/OscEngine.h"/>
-        <FILE id="Kgpqmb" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>
-        <FILE id="pZopO0" name="Player.h" compile="0" resource="0" file="Source/Engine/Player.h"/>
-        <FILE id="HgMHkY" name="Store.cpp" compile="1" resource="0" file="Source/Engine/Store.cpp"/>
-        <FILE id="nPkGDI" name="Store.h" compile="0" resource="0" file="Source/Engine/Store.h"/>
+      <GROUP id="{E42B0E20-4BD1-8A1D-B5DD-808ECB7151EB}" name="Engine">
+        <FILE id="SyXLxu" name="ADSR.cpp" compile="1" resource="0" file="Source/Engine/ADSR.cpp"/>
+        <FILE id="R9uNNj" name="ADSR.h" compile="0" resource="0" file="Source/Engine/ADSR.h"/>
+        <FILE id="n4BoGf" name="Engine.cpp" compile="1" resource="0" file="Source/Engine/Engine.cpp"/>
+        <FILE id="PJiu9r" name="Engine.h" compile="0" resource="0" file="Source/Engine/Engine.h"/>
+        <FILE id="vWGrDR" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>
+        <FILE id="LRQoRN" name="Player.h" compile="0" resource="0" file="Source/Engine/Player.h"/>
       </GROUP>
       <FILE id="Gh99YH" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>

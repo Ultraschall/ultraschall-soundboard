@@ -11,6 +11,12 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include "Redux/Redux.h"
+
+#include "Redux/Middleware/LoggerMiddleware.h"
+#include "Redux/Middleware/EngineMiddleware.h"
+#include "Redux/Middleware/OscMiddleware.h"
+
 //==============================================================================
 UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -24,6 +30,20 @@ UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
 )
 #endif
 {
+	midiMiddleware = std::make_shared<MidiMiddleware>();
+    auto builder = MiddlewareEnhancerBuilder::New(Store::combineReducers({
+        {IDs::APPLICATION, application},
+        {IDs::LIBRARY, library},
+        {IDs::PLAYERS, player},
+        {IDs::BANKS, bank},
+        {IDs::PLAYLISTS, playlist}
+    }));
+    store = builder.SetPreloadedStore(ValueTree(IDs::STATE))
+    .Use<LoggerMiddleware>()
+	.Use<EngineMiddleware>(engine)
+    .Use<OscMiddleware>()
+	.Use<MidiMiddleware>(midiMiddleware).Build();
+	store->dispatch(EnableEngineSyncAction());
 }
 
 UltraschallSoundboardAudioProcessor::~UltraschallSoundboardAudioProcessor() {
@@ -71,14 +91,14 @@ int UltraschallSoundboardAudioProcessor::getCurrentProgram() {
     return 0;
 }
 
-void UltraschallSoundboardAudioProcessor::setCurrentProgram(int index) {
+void UltraschallSoundboardAudioProcessor::setCurrentProgram(int /*index*/) {
 }
 
-const String UltraschallSoundboardAudioProcessor::getProgramName(int index) {
+const String UltraschallSoundboardAudioProcessor::getProgramName(int /*index*/) {
     return {};
 }
 
-void UltraschallSoundboardAudioProcessor::changeProgramName(int index, const String &newName) {
+void UltraschallSoundboardAudioProcessor::changeProgramName(int /*index*/, const String &/*newName*/) {
 }
 
 //==============================================================================
@@ -146,7 +166,7 @@ void UltraschallSoundboardAudioProcessor::processBlock(AudioBuffer<float> &buffe
 //        // ..do something to the data...
 //    }
     AudioSourceChannelInfo info(&buffer, 0, buffer.getNumSamples());
-    midi.handleMidiMessages(midiMessages);
+	midiMiddleware->handleMidiMessages(midiMessages);
     engine.getNextAudioBlock(info);
 }
 
@@ -167,15 +187,19 @@ AudioProcessorEditor *UltraschallSoundboardAudioProcessor::createEditor() {
 }
 
 //==============================================================================
-void UltraschallSoundboardAudioProcessor::getStateInformation(MemoryBlock &destData) {
+void UltraschallSoundboardAudioProcessor::getStateInformation(MemoryBlock &/*destData*/) {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void UltraschallSoundboardAudioProcessor::setStateInformation(const void *data, int sizeInBytes) {
+void UltraschallSoundboardAudioProcessor::setStateInformation(const void */*data*/, int /*sizeInBytes*/) {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+std::shared_ptr<Store> UltraschallSoundboardAudioProcessor::getStore() {
+    return store;
 }
 
 //==============================================================================

@@ -1,5 +1,5 @@
-#include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "PluginProcessor.h"
 
 // TODO: implement a own standalone wrapper!
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor(
@@ -12,7 +12,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
 
     LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
 
-    controller = std::make_unique<MainViewController>(p.engine);
+    controller = std::make_unique<MainViewController>(processor.getStore());
     controller->init();
     addAndMakeVisible(controller->getView());
 
