@@ -8,7 +8,7 @@ EngineMiddleware::EngineMiddleware(Engine & engine) : engine(engine) {
 
 ActionObject EngineMiddleware::dispatch(const ActionObject &action, Store &store) {
 	if (action.type == AddDirectory) {
-		AsyncAddDirectory(store);
+		AsyncAddDirectory(store, engine);
 		return action;
 	}
 	else if (action.type == EnableEngineSync) {
@@ -29,7 +29,7 @@ void EngineMiddleware::EnableSync(Store &store, Engine &engine)
 {
 	jassert(engineSync == nullptr);
 	engineSync = std::make_unique<EngineSync>(store, engine);
-	engineSync->startTimer(17);
+	engineSync->startTimer(100);
 }
 
 void EngineMiddleware::DisableSync(Store &store)
@@ -38,7 +38,7 @@ void EngineMiddleware::DisableSync(Store &store)
 	engineSync = nullptr;
 }
 
-void EngineMiddleware::AsyncAddDirectory(Store &store)
+void EngineMiddleware::AsyncAddDirectory(Store &store, Engine &engine)
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
@@ -59,11 +59,9 @@ void EngineMiddleware::AsyncAddDirectory(Store &store)
 										 for (auto &f : files) {
 											 Uuid uuid;
 											 auto id = Identifier(uuid.toDashedString());
-											 store.dispatch(FileReadyAction(uuid.toDashedString(), f.getFileName(), f.getFullPathName()));
-
-											 //	model.uuid = uuid.toDashedString();
-//	model.path = file.getFullPathName();
-//	model.title = file.getFileName();
+											 if (engine.loadAudioFile(id, f)) {
+												 store.dispatch(FileReadyAction(uuid.toDashedString(), f.getFileName(), f.getFullPathName()));
+											 }
 										 }
                                      }
                                  }

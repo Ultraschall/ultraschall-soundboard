@@ -102,8 +102,8 @@ bool Player::loadFileIntoTransport(const File &audioFile,
 
     audioTransportSource->setSource(audioFormatReaderSource.get(), 32768, &timeSliceThread, reader->sampleRate);
 
-    thumbnail = std::make_unique<AudioThumbnail>(4096, *audioFormatManager, *audioThumbnailCache);
-    thumbnail->setSource(new FileInputSource(audioFile));
+    //thumbnail = std::make_unique<AudioThumbnail>(4096, *audioFormatManager, *audioThumbnailCache);
+    //thumbnail->setSource(new FileInputSource(audioFile));
 
     playerState = player_ready;
     sendChangeMessage();

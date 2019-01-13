@@ -43,6 +43,7 @@ UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
 	.Use<EngineMiddleware>(engine)
     .Use<OscMiddleware>()
 	.Use<MidiMiddleware>(midiMiddleware).Build();
+
 	store->dispatch(EnableEngineSyncAction());
 }
 

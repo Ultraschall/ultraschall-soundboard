@@ -15,7 +15,7 @@ private:
 
 	void EnableSync(Store &store, Engine &engine);
 	void DisableSync(Store &store);
-	void AsyncAddDirectory(Store &store);
+	void AsyncAddDirectory(Store &store, Engine &engine);
 
 	class EngineSync : public Timer {
 	public:

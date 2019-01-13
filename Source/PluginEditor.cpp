@@ -6,11 +6,7 @@ UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEd
     UltraschallSoundboardAudioProcessor &p)
     : AudioProcessorEditor(&p), processor(p) {
 
-// #if JUCE_LINUX || JUCE_WINDOWS || JUCE_ANDROID
-//     openGLContext.attachTo(*this); // (*getTopLevelComponent());
-// #endif
-
-    LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
+	LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
 
     controller = std::make_unique<MainViewController>(processor.getStore());
     controller->init();

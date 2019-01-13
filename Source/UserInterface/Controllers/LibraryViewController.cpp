@@ -1,4 +1,6 @@
 #include "LibraryViewController.h"
+#include "../../Redux/Actions/Actions.h"
+#include "../../Engine/Player.h"
 
 LibraryViewController::LibraryViewController(std::shared_ptr<Store> store)
     : ValueTreeObjectList<PlayerModel>(store->getState().getChildWithName(IDs::LIBRARY)), ViewController(store)
@@ -128,18 +130,18 @@ void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel 
     };
 
     libraryItem->loopButton.onClick = [this, uuid, libraryItem] {
-//        engine.playerLooping(uuid, !libraryItem->loopButton.getToggleState());
+		store->dispatch(PlayerToggleLoopingAction(uuid.toString()));
     };
 
     libraryItem->fadeButton.onClick = [this, uuid, libraryItem] {
         const auto fadeState = libraryItem->fadeButton.getToggleState();
         if (fadeState)
         {
-//            engine.playerFadeOut(uuid);
+			store->dispatch(PlayerFadeOutAction(uuid.toString()));
         }
         else
         {
-//            engine.playerFadeIn(uuid);
+			store->dispatch(PlayerFadeInAction(uuid.toString()));
         }
     };
 
@@ -147,16 +149,16 @@ void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel 
         const auto playState = libraryItem->playButton.getToggleState();
         if (playState)
         {
-//            engine.playerPause(uuid);
+			store->dispatch(PlayerPauseAction(uuid.toString()));
         }
         else
         {
-//            engine.playerPlay(uuid);
+			store->dispatch(PlayerPlayAction(uuid.toString()));
         }
     };
 
     libraryItem->stopButton.onClick = [this, uuid, libraryItem] {
-//        engine.playerStop(uuid);
+		store->dispatch(PlayerStopAction(uuid.toString()));
     };
 }
 
@@ -167,41 +169,41 @@ void LibraryViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerMo
     libraryItem->time.setText("00:00:00", dontSendNotification);
     libraryItem->progress = playerModel.progress;
 
-//    switch (playerModel.fadeState)
-//    {
-//    case Player::fade_out:
-//        libraryItem->fadeButton.setToggleState(false, dontSendNotification);
-//        break;
-//
-//    default:
-//    case Player::fade_in:
-//    case Player::fade_idle:
-//        libraryItem->fadeButton.setToggleState(true, dontSendNotification);
-//        break;
-//    }
-//
-//    switch (playerModel.playerState)
-//    {
-//    case Player::player_error:
-//        libraryItem->setError();
-//    case Player::player_stopped:
-//        libraryItem->setIsStopped();
-//        break;
-//    case Player::player_paused:
-//        libraryItem->setIsPaused();
-//        break;
-//    case Player::player_played:
-//        libraryItem->setIsPlayed();
-//        break;
-//    case Player::player_playing:
-//        libraryItem->setIsPlaying();
-//        break;
-//    default:
-//    case Player::player_ready:
-//    case Player::player_idle:
-//        libraryItem->setIsReady();
-//        break;
-//    }
+    switch (playerModel.fadeState)
+    {
+    case Player::fade_out:
+        libraryItem->fadeButton.setToggleState(false, dontSendNotification);
+        break;
+
+    default:
+    case Player::fade_in:
+    case Player::fade_idle:
+        libraryItem->fadeButton.setToggleState(true, dontSendNotification);
+        break;
+    }
+
+    switch (playerModel.playerState)
+    {
+    case Player::player_error:
+        libraryItem->setError();
+    case Player::player_stopped:
+        libraryItem->setIsStopped();
+        break;
+    case Player::player_paused:
+        libraryItem->setIsPaused();
+        break;
+    case Player::player_played:
+        libraryItem->setIsPlayed();
+        break;
+    case Player::player_playing:
+        libraryItem->setIsPlaying();
+        break;
+    default:
+    case Player::player_ready:
+    case Player::player_idle:
+        libraryItem->setIsReady();
+        break;
+    }
 
     libraryItem->loopButton.setToggleState(playerModel.loop, dontSendNotification);
 }

@@ -1,9 +1,7 @@
 #include "Engine.h"
-//#include "../Models/BankModel.h"
-//#include "../Models/PlayerModel.h"
-//#include "../Models/PlaylistModel.h"
-
+#include "../UserInterface/Models/PlayerModel.h"
 #include "../Redux/Identifier.h"
+#include "../Redux/Actions/Actions.h"
 
 Engine::Engine() : audioThumbnailCache(21) {
 	Logger::outputDebugString("[ENGINE] Boot...");
@@ -57,6 +55,7 @@ bool Engine::loadAudioFile(Identifier id, const File &file) {
 	player->addChangeListener(this);
 	mixer.addInputSource(player.get(), false);
 	players[id] = std::move(player);
+	playersToUpdate.addIfNotAlreadyThere(id);
 	return true;
 }
 
@@ -146,6 +145,23 @@ void Engine::changeListenerCallback(ChangeBroadcaster *source) {
 
 bool Engine::dispatch(const ActionObject &action, Store &store)
 {
+	auto uuid = action.args.getProperty(IDs::player_id);
+	if (action.type == PlayerPlay) {
+		playerPlay(Identifier(uuid));
+	}
+	if (action.type == PlayerStop) {
+		playerStop(Identifier(uuid));
+	}
+	if (action.type == PlayerPause) {
+		playerPause(Identifier(uuid));
+	}
+	if (action.type == PlayerFadeIn) {
+		playerFadeIn(Identifier(uuid));
+	}
+	if (action.type == PlayerFadeOut) {
+		playerFadeOut(Identifier(uuid));
+	}
+
 	return false;
 }
 
@@ -153,22 +169,23 @@ void Engine::sync(Store &store) {
 	playersToUpdate.getLock().enter();
 	for (const auto &p : playersToUpdate) {
 		auto player = playerWithIdentifier(p);
+		auto library = store.getState().getChildWithName(IDs::LIBRARY);
+		jassert(library.isValid());
+		auto playerState = library.getChildWithProperty(IDs::player_id, p.toString());
+		jassert(playerState.isValid());
+		
+		PlayerModel model(playerState);
+		model.gain = player->getGain();
+		model.startSample = 0;
+		model.endSample = player->getTotalLength();
+		model.fadeinSamples = 1;
+		model.fadeoutSamples = 1;
+		model.loop = player->isLooping();
 
-//	const ValueTree playerState(IDs::PLAYER);
-//	PlayerModel model(playerState);
-//	model.uuid = uuid.toDashedString();
-//	model.path = file.getFullPathName();
-//	model.title = file.getFileName();
-//	model.gain = 1.0f;
-//	model.startSample = 0;
-//	model.endSample = player->getTotalLength();
-//	model.fadeinSamples = 1;
-//	model.fadeoutSamples = 1;
-//	model.loop = false;
-//
-//	model.playerState = player->playerState;
-//	model.fadeState = player->fadeState;
-//	model.missing = player->playerState == Player::player_error;
+		model.playerState = player->playerState;
+		model.fadeState = player->fadeState;
+		model.missing = player->playerState == Player::player_error;
+		model.progress = player->progress;
 	}
 	playersToUpdate.clear();
 	playersToUpdate.getLock().exit();
