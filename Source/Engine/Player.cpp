@@ -106,6 +106,7 @@ bool Player::loadFileIntoTransport(const File &audioFile,
     //thumbnail->setSource(new FileInputSource(audioFile));
 
     playerState = player_ready;
+	setGain(1.0f);
     sendChangeMessage();
     return true;
 }

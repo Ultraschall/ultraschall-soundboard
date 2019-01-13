@@ -9,13 +9,13 @@ public:
 	EngineMiddleware(Engine &engine);
 
 	ActionObject dispatch(const ActionObject &action, Store &store) override;
+	void playerDispatch(const ActionObject & action);
 private:
 	Engine &engine;
 	std::unique_ptr<FileChooser> fileChooser;
 
-	void EnableSync(Store &store, Engine &engine);
-	void DisableSync(Store &store);
 	void AsyncAddDirectory(Store &store, Engine &engine);
+	void AsyncAddFile(Store &store, Engine &engine);
 
 	class EngineSync : public Timer {
 	public:

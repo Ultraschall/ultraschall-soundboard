@@ -114,6 +114,12 @@ void Engine::playerLooping(const Identifier &uuid, bool looping) {
 	playerWithIdentifier(uuid)->setLooping(looping);
 }
 
+void Engine::playerToggleLooping(const Identifier & uuid)
+{
+	auto player = playerWithIdentifier(uuid);
+	player->setLooping(!player->isLooping());
+}
+
 void Engine::playerFadeOut(const Identifier &uuid) {
 	playerWithIdentifier(uuid)->fadeOut();
 }
@@ -143,31 +149,14 @@ void Engine::changeListenerCallback(ChangeBroadcaster *source) {
 	playersToUpdate.addIfNotAlreadyThere(player->identifier);
 }
 
-bool Engine::dispatch(const ActionObject &action, Store &store)
-{
-	auto uuid = action.args.getProperty(IDs::player_id);
-	if (action.type == PlayerPlay) {
-		playerPlay(Identifier(uuid));
-	}
-	if (action.type == PlayerStop) {
-		playerStop(Identifier(uuid));
-	}
-	if (action.type == PlayerPause) {
-		playerPause(Identifier(uuid));
-	}
-	if (action.type == PlayerFadeIn) {
-		playerFadeIn(Identifier(uuid));
-	}
-	if (action.type == PlayerFadeOut) {
-		playerFadeOut(Identifier(uuid));
-	}
-
-	return false;
-}
-
 void Engine::sync(Store &store) {
+	
 	playersToUpdate.getLock().enter();
-	for (const auto &p : playersToUpdate) {
+	Array snapshot = playersToUpdate;
+	playersToUpdate.clear();
+	playersToUpdate.getLock().exit();
+
+	for (const auto &p : snapshot) {
 		auto player = playerWithIdentifier(p);
 		auto library = store.getState().getChildWithName(IDs::LIBRARY);
 		jassert(library.isValid());
@@ -187,8 +176,6 @@ void Engine::sync(Store &store) {
 		model.missing = player->playerState == Player::player_error;
 		model.progress = player->progress;
 	}
-	playersToUpdate.clear();
-	playersToUpdate.getLock().exit();
 }
 
 void Engine::toggleMuteState() {

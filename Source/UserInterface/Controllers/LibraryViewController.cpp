@@ -137,11 +137,11 @@ void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel 
         const auto fadeState = libraryItem->fadeButton.getToggleState();
         if (fadeState)
         {
-			store->dispatch(PlayerFadeOutAction(uuid.toString()));
+			store->dispatch(PlayerFadeInAction(uuid.toString()));
         }
         else
         {
-			store->dispatch(PlayerFadeInAction(uuid.toString()));
+			store->dispatch(PlayerFadeOutAction(uuid.toString()));
         }
     };
 

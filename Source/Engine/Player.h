@@ -62,7 +62,7 @@ public:
 
     void setLooping(bool looping);
 
-    std::shared_ptr<AudioThumbnail> thumbnail;
+    //std::shared_ptr<AudioThumbnail> thumbnail;
 
 private:
     float currentGain{1.0f};

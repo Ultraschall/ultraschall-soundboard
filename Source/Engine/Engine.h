@@ -25,6 +25,7 @@ public:
 	void toggleTalkOver();
 
 	void playerLooping(const Identifier &uuid, bool looping);
+	void playerToggleLooping(const Identifier &uuid);
 	void playerFadeOut(const Identifier &uuid);
 	void playerFadeIn(const Identifier &uuid);
 	void playerPlay(const Identifier &uuid);
@@ -32,7 +33,6 @@ public:
 	void playerStop(const Identifier &uuid);
 
 	void changeListenerCallback(ChangeBroadcaster *source) override;
-	bool dispatch(const ActionObject &action, Store &store);
 	void sync(Store &store);
 
 	AudioFormatManager audioFormatManager;
