@@ -15,9 +15,8 @@ public:
 	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 	void releaseResources() override;
 	void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) override;
-
-	void loadAudioFile(const File &file);
-	void importDirectory(const File &directory);
+	
+	bool loadAudioFile(Identifier id, const File &file);
 	void openFile(const File &file);
 	void saveFile(const File &file) const;
 

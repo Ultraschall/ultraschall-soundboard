@@ -10,7 +10,7 @@ struct PlayerModel
     {
         jassert(v.hasType(IDs::PLAYER));
 
-        uuid.referTo(state, IDs::player_uuid, nullptr);
+        id.referTo(state, IDs::player_id, nullptr);
         path.referTo(state, IDs::player_path, nullptr);
         title.referTo(state, IDs::player_title, nullptr);
 		gain.referTo(state, IDs::player_gain, nullptr);
@@ -27,7 +27,7 @@ struct PlayerModel
     }
 
     ValueTree state;
-    CachedValue<String> uuid;
+    CachedValue<String> id;
     CachedValue<String> path;
     CachedValue<String> title;
 	CachedValue<float> gain;

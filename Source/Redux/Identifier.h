@@ -18,7 +18,7 @@ namespace IDs {
 
     // #Library
     DECLARE_ID(LIBRARY, LIBRARY)
-    DECLARE_ID(library_uuid, uuid)
+    DECLARE_ID(library_id, id)
     DECLARE_ID(library_title, title)
 
 
@@ -27,7 +27,7 @@ namespace IDs {
 
     // #Player
     DECLARE_ID(PLAYER, PLAYER)
-    DECLARE_ID(player_uuid, uuid)
+    DECLARE_ID(player_id, id)
     DECLARE_ID(player_title, title)
     DECLARE_ID(player_path, path)
     DECLARE_ID(player_gain, gain)
@@ -48,7 +48,7 @@ namespace IDs {
 
     // #Bank
     DECLARE_ID(BANK, BANK)
-    DECLARE_ID(bank_uuid, uuid)
+    DECLARE_ID(bank_id, id)
     DECLARE_ID(bank_title, title)
 
     // #Bank Clips []
@@ -56,7 +56,7 @@ namespace IDs {
 
     // #Bank Clip
     DECLARE_ID(CLIP, CLIP)
-    DECLARE_ID(clip_uuid, uuid)
+    DECLARE_ID(clip_id, id)
     DECLARE_ID(clip_index, index)
     DECLARE_ID(clip_player_uuid, player_uuid)
 	DECLARE_ID(clip_bank_uuid, bank_uuid)
@@ -69,7 +69,7 @@ namespace IDs {
 
     // #Playlist
     DECLARE_ID(PLAYLIST, PLAYLIST)
-    DECLARE_ID(playlist_uuid, uuid)
+    DECLARE_ID(playlist_id, id)
     DECLARE_ID(playlist_title, title)
 	DECLARE_ID(playlist_action, action)
 

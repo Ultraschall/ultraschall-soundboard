@@ -1,5 +1,6 @@
 #include "EngineMiddleware.h"
 #include "../Actions/ApplicationActions.h"
+#include "../Actions/LibraryActions.h"
 
 EngineMiddleware::EngineMiddleware(Engine & engine) : engine(engine) {
 	
@@ -54,10 +55,19 @@ void EngineMiddleware::AsyncAddDirectory(Store &store)
                                  {
                                      if (result.isLocalFile())
                                      {
-                                         engine.importDirectory(result.getLocalFile());
-										 store.dispatch(ShowViewAction("library"));
+										 auto files = result.getLocalFile().findChildFiles(File::findFiles, true);
+										 for (auto &f : files) {
+											 Uuid uuid;
+											 auto id = Identifier(uuid.toDashedString());
+											 store.dispatch(FileReadyAction(uuid.toDashedString(), f.getFileName(), f.getFullPathName()));
+
+											 //	model.uuid = uuid.toDashedString();
+//	model.path = file.getFullPathName();
+//	model.title = file.getFileName();
+										 }
                                      }
                                  }
+								 store.dispatch(ShowViewAction("library"));
                              });
 }
 

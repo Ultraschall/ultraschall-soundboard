@@ -19,6 +19,8 @@ const Identifier AddDirectory("ADD_DIRECTORY");
 const Identifier OpenProject("OPEN_PROJECT");
 const Identifier ShowView("SHOW_VIEW");
 
+
+
 class QuitAction : public ActionObject {
 public:
     QuitAction() : ActionObject(ApplicationQuit) {};
@@ -79,3 +81,4 @@ class ShowViewAction : public  ActionObject {
 public:
 	ShowViewAction(String view) : ActionObject(ShowView, ValueTree{ Args, {{ IDs::application_view, view }} }) {};
 };
+

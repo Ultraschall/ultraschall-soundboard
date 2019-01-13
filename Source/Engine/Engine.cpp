@@ -49,46 +49,20 @@ void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	}
 }
 
-void Engine::loadAudioFile(const File &file) {
-	Uuid uuid;
-	auto player = std::make_unique<Player>(uuid.toDashedString());
+bool Engine::loadAudioFile(Identifier id, const File &file) {
+	auto player = std::make_unique<Player>(id);
 	if (!player->loadFileIntoTransport(file, &audioFormatManager, &audioThumbnailCache)) {
-		return;
+		return false;
 	}
 	player->addChangeListener(this);
-//
-//	const ValueTree playerState(IDs::PLAYER);
-//	PlayerModel model(playerState);
-//	model.uuid = uuid.toDashedString();
-//	model.path = file.getFullPathName();
-//	model.title = file.getFileName();
-//	model.gain = 1.0f;
-//	model.startSample = 0;
-//	model.endSample = player->getTotalLength();
-//	model.fadeinSamples = 1;
-//	model.fadeoutSamples = 1;
-//	model.loop = false;
-//
-//	model.playerState = player->playerState;
-//	model.fadeState = player->fadeState;
-//	model.missing = player->playerState == Player::player_error;
-//
 	mixer.addInputSource(player.get(), false);
-	players[Identifier(uuid.toDashedString())] = (std::move(player));
-//
-////	state.getChildWithName(IDs::PLAYERS).addChild(playerState, -1, &undoManager);
+	players[id] = std::move(player);
+	return true;
 }
 
 Player *Engine::playerWithIdentifier(const Identifier &id) {
     auto search = players.find(id);
     return search == players.end() ? nullptr : search->second.get();
-}
-
-void Engine::importDirectory(const File &directory) {
-	auto files = directory.findChildFiles(File::findFiles, true);
-	for (auto &f : files) {
-		loadAudioFile(f);
-	}
 }
 
 Engine::~Engine() {
@@ -179,7 +153,22 @@ void Engine::sync(Store &store) {
 	playersToUpdate.getLock().enter();
 	for (const auto &p : playersToUpdate) {
 		auto player = playerWithIdentifier(p);
-		
+
+//	const ValueTree playerState(IDs::PLAYER);
+//	PlayerModel model(playerState);
+//	model.uuid = uuid.toDashedString();
+//	model.path = file.getFullPathName();
+//	model.title = file.getFileName();
+//	model.gain = 1.0f;
+//	model.startSample = 0;
+//	model.endSample = player->getTotalLength();
+//	model.fadeinSamples = 1;
+//	model.fadeoutSamples = 1;
+//	model.loop = false;
+//
+//	model.playerState = player->playerState;
+//	model.fadeState = player->fadeState;
+//	model.missing = player->playerState == Player::player_error;
 	}
 	playersToUpdate.clear();
 	playersToUpdate.getLock().exit();

@@ -1,7 +1,7 @@
 #include "LibraryViewController.h"
 
 LibraryViewController::LibraryViewController(std::shared_ptr<Store> store)
-    : ValueTreeObjectList<PlayerModel>(store->getState().getChildWithName(IDs::PLAYERS)), ViewController(store)
+    : ValueTreeObjectList<PlayerModel>(store->getState().getChildWithName(IDs::LIBRARY)), ViewController(store)
 {
     rebuildObjects();
 }
@@ -122,7 +122,7 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
 
 void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel)
 {
-    auto uuid = Identifier(playerModel.uuid);
+    auto uuid = Identifier(playerModel.id);
     libraryItem->settingsButton.onClick = [] {
 
     };
