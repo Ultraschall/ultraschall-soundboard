@@ -32,7 +32,8 @@ public:
     ~LibraryItem() noexcept override = default;
 
     void paint(Graphics &g) override {
-        g.fillAll(Material::Color::Surface::Base);
+		auto colour = error ? Material::Color::Surface::Base : Material::Color::Primary::Main;
+		g.fillAll(colour);
         g.setColour(Material::Color::Icons::Selected::OnSurface::Active.withAlpha(0.12f));
         g.drawLine(0, getHeight() - 1.0f, getWidth(), getHeight() - 1.0f);
     }
@@ -84,7 +85,14 @@ public:
     }
     
     void setError() {
-        
+		settingsButton.setEnabled(false);
+		loopButton.setEnabled(false);
+		muteButton.setEnabled(false);
+		fadeButton.setEnabled(false);
+		stopButton.setEnabled(false);
+		playButton.setEnabled(false);
+		error = true;
+		repaint();
     }
     
     void setIsStopped() {
@@ -128,6 +136,7 @@ public:
     double progress{0.5};
 private:
     ProgressBar progressBar{progress};
+	bool error{false};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LibraryItem)
 };
