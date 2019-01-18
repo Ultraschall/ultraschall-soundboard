@@ -4,81 +4,81 @@
 
 namespace Material
 {
-namespace Color
-{
-namespace Surface
-{
-const Colour PrimaryOrSecondary{uint8(139), uint8(195), uint8(74), 1.0f};
-const Colour Main{uint8(60), uint8(60), uint8(60), 1.0f};
-const Colour Light{uint8(129), uint8(129), uint8(129), 1.0f};
-const Colour Dark{uint8(0), uint8(0), uint8(0), 1.0f};
-const Colour Base{uint8(60), uint8(60), uint8(60), 1.0f};
-} // namespace Surface
-namespace Secondary
-{
-const Colour Main{uint8(104), uint8(159), uint8(56), 1.0f};
-const Colour _900{uint8(51), uint8(105), uint8(30), 1.0f};
-const Colour _800{uint8(85), uint8(139), uint8(47), 1.0f};
-const Colour _700{uint8(104), uint8(159), uint8(56), 1.0f};
-const Colour _600{uint8(124), uint8(179), uint8(66), 1.0f};
-const Colour _500{uint8(139), uint8(195), uint8(74), 1.0f};
-const Colour _400{uint8(156), uint8(204), uint8(101), 1.0f};
-const Colour _300{uint8(174), uint8(213), uint8(129), 1.0f};
-const Colour _200{uint8(197), uint8(225), uint8(165), 1.0f};
-const Colour _100{uint8(220), uint8(237), uint8(200), 1.0f};
-const Colour _050{uint8(241), uint8(248), uint8(233), 1.0f};
-} // namespace Secondary
-namespace Primary
-{
-const Colour Main{uint8(139), uint8(195), uint8(74), 1.0f};
-const Colour _900{uint8(51), uint8(105), uint8(30), 1.0f};
-const Colour _800{uint8(85), uint8(139), uint8(47), 1.0f};
-const Colour _700{uint8(104), uint8(159), uint8(56), 1.0f};
-const Colour _600{uint8(124), uint8(179), uint8(66), 1.0f};
-const Colour _500{uint8(139), uint8(195), uint8(74), 1.0f};
-const Colour _400{uint8(156), uint8(204), uint8(101), 1.0f};
-const Colour _300{uint8(174), uint8(213), uint8(129), 1.0f};
-const Colour _200{uint8(197), uint8(225), uint8(165), 1.0f};
-const Colour _100{uint8(220), uint8(237), uint8(200), 1.0f};
-const Colour _050{uint8(241), uint8(248), uint8(233), 1.0f};
-} // namespace Primary
-namespace Icons
-{
-namespace Black
-{
-const Colour Inactive{uint8(0), uint8(0), uint8(0), 0.54f};
-const Colour Disabled{uint8(0), uint8(0), uint8(0), 0.38f};
-const Colour Active{uint8(0), uint8(0), uint8(0), 0.87f};
-} // namespace Black
-namespace White
-{
-const Colour Inactive{uint8(255), uint8(255), uint8(255), 0.54f};
-const Colour Disabled{uint8(255), uint8(255), uint8(255), 0.38f};
-const Colour Active{uint8(255), uint8(255), uint8(255), 1.0f};
-} // namespace White
-namespace Selected
-{
-namespace OnSurface
-{
-const Colour Inactive{uint8(255), uint8(255), uint8(255), 0.54f};
-const Colour Disabled{uint8(255), uint8(255), uint8(255), 0.38f};
-const Colour Active{uint8(255), uint8(255), uint8(255), 1.0f};
-} // namespace OnSurface
-namespace OnSecondary
-{
-const Colour Inactive{uint8(0), uint8(0), uint8(0), 0.54f};
-const Colour Disabled{uint8(0), uint8(0), uint8(0), 0.38f};
-const Colour Active{uint8(0), uint8(0), uint8(0), 0.87f};
-} // namespace OnSecondary
-namespace OnPrimary
-{
-const Colour Inactive{uint8(0), uint8(0), uint8(0), 0.54f};
-const Colour Disabled{uint8(0), uint8(0), uint8(0), 0.38f};
-const Colour Active{uint8(0), uint8(0), uint8(0), 0.87f};
-} // namespace OnPrimary
-} // namespace Selected
-const Colour Error{uint8(176), uint8(0), uint8(32), 1.0f};
-const Colour PrimaryOrSecondary{uint8(139), uint8(195), uint8(74), 1.0f};
-} // namespace Icons
-} // namespace Color
+	namespace Color
+	{
+		namespace Surface
+		{
+			extern const Colour PrimaryOrSecondary;
+			extern const Colour Main;
+			extern const Colour Light;
+			extern const Colour Dark;
+			extern const Colour Base;
+		} // namespace Surface
+		namespace Secondary
+		{
+			extern const Colour Main;
+			extern const Colour _900;
+			extern const Colour _800;
+			extern const Colour _700;
+			extern const Colour _600;
+			extern const Colour _500;
+			extern const Colour _400;
+			extern const Colour _300;
+			extern const Colour _200;
+			extern const Colour _100;
+			extern const Colour _050;
+		} // namespace Secondary
+		namespace Primary
+		{
+			extern const Colour Main;
+			extern const Colour _900;
+			extern const Colour _800;
+			extern const Colour _700;
+			extern const Colour _600;
+			extern const Colour _500;
+			extern const Colour _400;
+			extern const Colour _300;
+			extern const Colour _200;
+			extern const Colour _100;
+			extern const Colour _050;
+		} // namespace Primary
+		namespace Icons
+		{
+			namespace Black
+			{
+				extern const Colour Inactive;
+				extern const Colour Disabled;
+				extern const Colour Active;
+			} // namespace Black
+			namespace White
+			{
+				extern const Colour Inactive;
+				extern const Colour Disabled;
+				extern const Colour Active;
+			} // namespace White
+			namespace Selected
+			{
+				namespace OnSurface
+				{
+					extern const Colour Inactive;
+					extern const Colour Disabled;
+					extern const Colour Active;
+				} // namespace OnSurface
+				namespace OnSecondary
+				{
+					extern const Colour Inactive;
+					extern const Colour Disabled;
+					extern const Colour Active;
+				} // namespace OnSecondary
+				namespace OnPrimary
+				{
+					extern const Colour Inactive;
+					extern const Colour Disabled;
+					extern const Colour Active;
+				} // namespace OnPrimary
+			} // namespace Selected
+			extern const Colour Error;
+			extern const Colour PrimaryOrSecondary;
+		} // namespace Icons
+	} // namespace Color
 } // namespace Material

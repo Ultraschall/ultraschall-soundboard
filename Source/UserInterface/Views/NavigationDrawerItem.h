@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../LookAndFeel/Material.h"
 
 class NavigationDrawerItem : public Button {
@@ -17,14 +17,9 @@ public:
         setOpaque(true);
         setColour(ColourIds::iconOffColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         setColour(ColourIds::iconOnColourId, Material::Color::Primary::_700);
-        onStateChange = [this] {
-            if (getToggleState()) {
-                drawable.reset(this->icon.getDrawable(findColour(ColourIds::iconOnColourId)));
-            } else {
-                drawable.reset(this->icon.getDrawable(findColour(ColourIds::iconOffColourId)));
-            }
-            repaint();
-        };
+		drawableOn.reset(this->icon.getDrawable(findColour(ColourIds::iconOnColourId)));
+		drawableOff.reset(this->icon.getDrawable(findColour(ColourIds::iconOffColourId)));
+
         setSize(304, height);
     }
 
@@ -39,22 +34,24 @@ public:
 
     ~NavigationDrawerItem() noexcept override = default;
 
-    void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
+    void paintButton(Graphics &g, bool isMouseOverButton, bool /*isButtonDown*/) override {
         g.fillAll(Material::Color::Surface::Main);
 
         auto rect = getLocalBounds().withTrimmedTop(px(4)).withTrimmedBottom(px(4)).withTrimmedLeft(px(8)).withTrimmedRight(px(8)).toFloat();
 
-        if (drawable != nullptr) {
-            drawable->drawWithin(g, rect.withTrimmedLeft(px(8)).withWidth(px(iconSize)).withSizeKeepingCentre(px(iconSize), px(iconSize)), RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
-        }
-
         if (getToggleState()) {
+			if (drawableOn != nullptr) {
+				drawableOn->drawWithin(g, rect.withTrimmedLeft(px(8.0f)).withWidth(px<float>(iconSize)).withSizeKeepingCentre(px<float>(iconSize), px<float>(iconSize)), RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
+			}
             g.setColour(Material::Color::Primary::_700.withAlpha(0.12f));
             g.fillRoundedRectangle(rect, 4);
             g.setColour(Material::Color::Primary::Main);
             g.setFont(Material::Fonts::getInstance()->Body2());
             g.drawText(title, getLocalBounds().withTrimmedBottom(px(16)).withTrimmedTop(px(16)).withTrimmedLeft(px(32 + iconSize)).withTrimmedRight(px(16)), Justification::centredLeft, false);
         } else {
+			if (drawableOff != nullptr) {
+				drawableOff->drawWithin(g, rect.withTrimmedLeft(px(8.0f)).withWidth(px<float>(iconSize)).withSizeKeepingCentre(px<float>(iconSize), px<float>(iconSize)), RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
+			}
             g.setColour(Material::Color::Icons::Selected::OnSurface::Inactive);
             g.setFont(Material::Fonts::getInstance()->Body2());
             g.drawText(title, getLocalBounds().withTrimmedBottom(px(16)).withTrimmedTop(px(16)).withTrimmedLeft(px(32 + iconSize)).withTrimmedRight(px(16)), Justification::centredLeft, false);
@@ -67,17 +64,10 @@ public:
         }
     }
 
-    void colourChanged() override {
-        if (getToggleState()) {
-            drawable.reset(icon.getDrawable(findColour(ColourIds::iconOnColourId)));
-        } else {
-            drawable.reset(icon.getDrawable(findColour(ColourIds::iconOffColourId)));
-        }
-    }
-
 private:
     Material::Icon &icon;
     String title;
-    std::unique_ptr<Drawable> drawable;
+    std::unique_ptr<Drawable> drawableOn;
+	std::unique_ptr<Drawable> drawableOff;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NavigationDrawerItem)
 };

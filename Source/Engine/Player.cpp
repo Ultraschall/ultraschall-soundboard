@@ -87,7 +87,7 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 
 bool Player::loadFileIntoTransport(const File &audioFile,
     AudioFormatManager *audioFormatManager,
-    AudioThumbnailCache *audioThumbnailCache) {
+    AudioThumbnailCache * /*audioThumbnailCache*/) {
     audioTransportSource->stop();
     audioTransportSource->setSource(nullptr);
 

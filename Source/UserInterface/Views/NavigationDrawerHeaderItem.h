@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../LookAndFeel/Material.h"
 
 class NavigationDrawerHeaderItem : public Component {
@@ -19,7 +19,7 @@ public:
     {
         g.fillAll(Material::Color::Surface::Main);
         g.setColour(Material::Color::Icons::Selected::OnSurface::Active.withAlpha(0.12f));
-        g.drawLine(0, getHeight() - 1, getWidth(), getHeight() - 1);
+        g.drawLine(0.0f, getHeight() - 1.0f, static_cast<float>(getWidth()), getHeight() - 1.0f);
     }
 
     void resized() override {
@@ -27,7 +27,7 @@ public:
         flexBox.alignContent = FlexBox::AlignContent::center;
         flexBox.alignItems = FlexBox::AlignItems::flexStart;
 
-        flexBox.items.add(FlexItem(title).withHeight(px(24)).withFlex(2));
+        flexBox.items.add(FlexItem(title).withHeight(px(24.0f)).withFlex(2));
 
         flexBox.performLayout(getLocalBounds().withTrimmedLeft(px(16)).withTrimmedRight(px(16)));
     }

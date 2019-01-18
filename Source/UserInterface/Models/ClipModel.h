@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
-#include "Identifier.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../../Redux/Identifier.h"
 
 struct ClipModel
 {

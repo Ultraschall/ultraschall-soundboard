@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Actions/Actions.h"
 
 ValueTree application(ValueTree state, ActionObject action) {

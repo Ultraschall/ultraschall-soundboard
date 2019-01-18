@@ -4,182 +4,183 @@
               jucerVersion="5.4.1" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
-              pluginFormats="buildStandalone" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
+              pluginFormats="buildStandalone,buildVST,buildVST3" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
-              pluginCode="Soub" companyCopyright="Copyright (c) 2014-2018 Daniel Lindenfelser"
+              pluginCode="Soub" companyCopyright="Copyright (c) 2014-2019 Daniel Lindenfelser"
               pluginName="Soundboard" cppLanguageStandard="17" id="V57v4d"
-              buildVST="0" buildVST3="0" buildAU="0" buildAUv3="0" buildRTAS="0"
-              buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0"
-              maxBinaryFileSize="20971520">
+              buildVST="1" buildVST3="1" buildAU="0" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" enableIAA="0" defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0&#10;"
+              maxBinaryFileSize="20971520" pluginChannelConfigs="{1, 1},{2, 2}">
   <MAINGROUP id="bqAFM9" name="Soundboard">
-    <GROUP id="{5C4EA20F-BB17-62B9-B723-276FC93EA78E}" name="Assets">
-      <GROUP id="{0E6D1E99-7A76-0F3F-7FAD-D7A1B1C21011}" name="AppIcons">
-        <GROUP id="{1B226ED6-2051-617A-38D3-B0CD8DEFF374}" name="Android">
-          <GROUP id="{2F224C15-6E1E-14AA-0FDE-260736DA47E7}" name="Adaptive App Icon">
-            <FILE id="xBPcUx" name="App Icon Back.png" compile="0" resource="1"
+    <GROUP id="{B6877D97-5B69-78EC-D7F6-0EBE4E7F2665}" name="Assets">
+      <GROUP id="{A8E97A0B-ACB4-4A34-A43E-BB4D900CCC5C}" name="AppIcons">
+        <GROUP id="{BF54F2FD-CFF1-4D05-4DF1-F47EE9012DC6}" name="Android">
+          <GROUP id="{080EDA84-83A6-04A6-E9DC-8273C65DE37F}" name="Adaptive App Icon">
+            <FILE id="cmfLQE" name="App Icon Back.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Adaptive App Icon/App Icon Back.png"/>
-            <FILE id="IoMuVH" name="App Icon Front.svg" compile="0" resource="1"
+            <FILE id="NABXaJ" name="App Icon Front.svg" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Adaptive App Icon/App Icon Front.svg"/>
           </GROUP>
-          <GROUP id="{28CBDF5B-15C6-2BA1-22B8-7092ECA90E35}" name="App Icon">
-            <FILE id="LOUuSc" name="GooglePlay.png" compile="0" resource="1" file="Assets/AppIcons/Android/App Icon/GooglePlay.png"/>
-            <FILE id="lQCW1M" name="ic_launcher_HDPI.png" compile="0" resource="1"
+          <GROUP id="{34F4A1A7-EF43-62E4-CAB7-41AB70E99DB8}" name="App Icon">
+            <FILE id="pZSLr1" name="GooglePlay.png" compile="0" resource="1" file="Assets/AppIcons/Android/App Icon/GooglePlay.png"/>
+            <FILE id="duBhS6" name="ic_launcher_HDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/App Icon/ic_launcher_HDPI.png"/>
-            <FILE id="aIyi4d" name="ic_launcher_MDPI.png" compile="0" resource="1"
+            <FILE id="QVfmJC" name="ic_launcher_MDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/App Icon/ic_launcher_MDPI.png"/>
-            <FILE id="ekQMaf" name="ic_launcher_XHDPI.png" compile="0" resource="1"
+            <FILE id="JxHKwr" name="ic_launcher_XHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/App Icon/ic_launcher_XHDPI.png"/>
-            <FILE id="aujI24" name="ic_launcher_XXHDPI.png" compile="0" resource="1"
+            <FILE id="LIEcN3" name="ic_launcher_XXHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/App Icon/ic_launcher_XXHDPI.png"/>
-            <FILE id="ujdvdN" name="ic_launcher_XXXHDPI.png" compile="0" resource="1"
+            <FILE id="R4If52" name="ic_launcher_XXXHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/App Icon/ic_launcher_XXXHDPI.png"/>
           </GROUP>
-          <GROUP id="{E4E06E82-1CD2-491D-3410-128376A2FEFA}" name="Notification Icon">
-            <FILE id="Hddlhg" name="ic_notification_HDPI.png" compile="0" resource="1"
+          <GROUP id="{36EF7521-041E-5F04-C321-BC5972B92713}" name="Notification Icon">
+            <FILE id="FSxDtB" name="ic_notification_HDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Notification Icon/ic_notification_HDPI.png"/>
-            <FILE id="BqYYbP" name="ic_notification_MDPI.png" compile="0" resource="1"
+            <FILE id="EcRTDs" name="ic_notification_MDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Notification Icon/ic_notification_MDPI.png"/>
-            <FILE id="m0XX8d" name="ic_notification_XHDPI.png" compile="0" resource="1"
+            <FILE id="B3fgJl" name="ic_notification_XHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Notification Icon/ic_notification_XHDPI.png"/>
-            <FILE id="KooW5g" name="ic_notification_XXHDPI.png" compile="0" resource="1"
+            <FILE id="m4gfxb" name="ic_notification_XXHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Notification Icon/ic_notification_XXHDPI.png"/>
-            <FILE id="kzATrA" name="ic_notification_XXXHDPI.png" compile="0" resource="1"
+            <FILE id="OYRLBO" name="ic_notification_XXXHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Notification Icon/ic_notification_XXXHDPI.png"/>
           </GROUP>
-          <GROUP id="{6FED887C-43AE-9BFE-7FF5-360FDDF353A9}" name="Status Bar Icon">
-            <FILE id="qIHqxt" name="ic_status_bar_HDPI.png" compile="0" resource="1"
+          <GROUP id="{8E35BE2C-E9CA-11B8-A53C-C2FD0BFF9644}" name="Status Bar Icon">
+            <FILE id="McBhxb" name="ic_status_bar_HDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_HDPI.png"/>
-            <FILE id="RfwWKY" name="ic_status_bar_MDPI.png" compile="0" resource="1"
+            <FILE id="C23z5C" name="ic_status_bar_MDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_MDPI.png"/>
-            <FILE id="O5iQkz" name="ic_status_bar_XHDPI.png" compile="0" resource="1"
+            <FILE id="xmvyIB" name="ic_status_bar_XHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_XHDPI.png"/>
-            <FILE id="CMFs4B" name="ic_status_bar_XXHDPI.png" compile="0" resource="1"
+            <FILE id="AUiLsY" name="ic_status_bar_XXHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_XXHDPI.png"/>
-            <FILE id="b9GgpM" name="ic_status_bar_XXXHDPI.png" compile="0" resource="1"
+            <FILE id="hVliFa" name="ic_status_bar_XXXHDPI.png" compile="0" resource="1"
                   file="Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_XXXHDPI.png"/>
           </GROUP>
         </GROUP>
-        <GROUP id="{E2EEC2E0-7BBD-592A-204F-289EAFF2E985}" name="iOS">
-          <FILE id="R6b0Pt" name="Icon-20@1x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@1x.png"/>
-          <FILE id="N4X8vV" name="Icon-20@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@2x.png"/>
-          <FILE id="H0zgo8" name="Icon-20@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@3x.png"/>
-          <FILE id="Dx8Pqw" name="Icon-29.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29.png"/>
-          <FILE id="eUv4x4" name="Icon-29@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29@2x.png"/>
-          <FILE id="aiAHXP" name="Icon-29@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29@3x.png"/>
-          <FILE id="scMIr1" name="Icon-40.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40.png"/>
-          <FILE id="Cr7xxc" name="Icon-40@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40@2x.png"/>
-          <FILE id="AwGC3L" name="Icon-40@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40@3x.png"/>
-          <FILE id="DMOI3M" name="Icon-60@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-60@2x.png"/>
-          <FILE id="cRyj8e" name="Icon-60@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-60@3x.png"/>
-          <FILE id="DHTiN0" name="Icon-76.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-76.png"/>
-          <FILE id="zN5cIS" name="Icon-76@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-76@2x.png"/>
-          <FILE id="zesVvd" name="Icon-83.5@2x.png" compile="0" resource="1"
+        <GROUP id="{806951FD-38EF-D38E-9270-04C6393D9126}" name="iOS">
+          <FILE id="CmECOb" name="Icon-20@1x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@1x.png"/>
+          <FILE id="PeTWCq" name="Icon-20@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@2x.png"/>
+          <FILE id="Odqbjh" name="Icon-20@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-20@3x.png"/>
+          <FILE id="lO3bMv" name="Icon-29.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29.png"/>
+          <FILE id="HGpqky" name="Icon-29@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29@2x.png"/>
+          <FILE id="WMcGtQ" name="Icon-29@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-29@3x.png"/>
+          <FILE id="sksS3V" name="Icon-40.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40.png"/>
+          <FILE id="D1sDU8" name="Icon-40@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40@2x.png"/>
+          <FILE id="xYhzvU" name="Icon-40@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-40@3x.png"/>
+          <FILE id="SVAIpA" name="Icon-60@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-60@2x.png"/>
+          <FILE id="NG2bW8" name="Icon-60@3x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-60@3x.png"/>
+          <FILE id="GQL2nq" name="Icon-76.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-76.png"/>
+          <FILE id="HmDOGu" name="Icon-76@2x.png" compile="0" resource="1" file="Assets/AppIcons/iOS/Icon-76@2x.png"/>
+          <FILE id="fAUYmj" name="Icon-83.5@2x.png" compile="0" resource="1"
                 file="Assets/AppIcons/iOS/Icon-83.5@2x.png"/>
-          <FILE id="qUA8yj" name="iTunesArtwork@2x.png" compile="0" resource="1"
+          <FILE id="GGxI9v" name="iTunesArtwork@2x.png" compile="0" resource="1"
                 file="Assets/AppIcons/iOS/iTunesArtwork@2x.png"/>
         </GROUP>
       </GROUP>
-      <GROUP id="{413CCDF6-4FD1-2EA0-0551-6392BCBD66D3}" name="Fonts">
-        <GROUP id="{86130594-DEED-CE69-A7B5-DF0A45CDC3BD}" name="Roboto">
-          <FILE id="bkQGrF" name="LICENSE.txt" compile="0" resource="1" file="Assets/Fonts/Roboto/LICENSE.txt"/>
-          <FILE id="NO9MJS" name="Roboto-Black.ttf" compile="0" resource="1"
+      <GROUP id="{3B3266CC-8B89-0F5D-230F-6B5DE93EF9EB}" name="Fonts">
+        <GROUP id="{5F2C327E-6216-25F4-06B2-30E382D5E114}" name="Roboto">
+          <FILE id="tiDgBN" name="LICENSE.txt" compile="0" resource="1" file="Assets/Fonts/Roboto/LICENSE.txt"/>
+          <FILE id="WpgGkH" name="Roboto-Black.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-Black.ttf"/>
-          <FILE id="PHQNHM" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
+          <FILE id="Ijbsjq" name="Roboto-BlackItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-BlackItalic.ttf"/>
-          <FILE id="tiS9R2" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto/Roboto-Bold.ttf"/>
-          <FILE id="G3TpWE" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
+          <FILE id="RVZnT2" name="Roboto-Bold.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto/Roboto-Bold.ttf"/>
+          <FILE id="xo616H" name="Roboto-BoldItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-BoldItalic.ttf"/>
-          <FILE id="m3J6rF" name="Roboto-Italic.ttf" compile="0" resource="1"
+          <FILE id="MHvY4M" name="Roboto-Italic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-Italic.ttf"/>
-          <FILE id="xHV0rL" name="Roboto-Light.ttf" compile="0" resource="1"
+          <FILE id="hmaxKd" name="Roboto-Light.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-Light.ttf"/>
-          <FILE id="NwuoMI" name="Roboto-LightItalic.ttf" compile="0" resource="1"
+          <FILE id="UCsdmv" name="Roboto-LightItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-LightItalic.ttf"/>
-          <FILE id="MKNSHk" name="Roboto-Medium.ttf" compile="0" resource="1"
+          <FILE id="eYapNu" name="Roboto-Medium.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-Medium.ttf"/>
-          <FILE id="PVRCpN" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
+          <FILE id="r864P4" name="Roboto-MediumItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-MediumItalic.ttf"/>
-          <FILE id="ipblDF" name="Roboto-Regular.ttf" compile="0" resource="1"
+          <FILE id="RLLZpj" name="Roboto-Regular.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-Regular.ttf"/>
-          <FILE id="IQU38M" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto/Roboto-Thin.ttf"/>
-          <FILE id="gbFGPf" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
+          <FILE id="pTNmCW" name="Roboto-Thin.ttf" compile="0" resource="1" file="Assets/Fonts/Roboto/Roboto-Thin.ttf"/>
+          <FILE id="Lkwns4" name="Roboto-ThinItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto/Roboto-ThinItalic.ttf"/>
         </GROUP>
-        <GROUP id="{1D742975-CB38-7F64-5BBC-0B90B21E9FCC}" name="Roboto_Mono">
-          <FILE id="ygP5oH" name="LICENSE.txt" compile="0" resource="1" file="Assets/Fonts/Roboto_Mono/LICENSE.txt"/>
-          <FILE id="sxfzXZ" name="RobotoMono-Bold.ttf" compile="0" resource="1"
+        <GROUP id="{DDE47AE8-8E65-0B78-E032-2E7BB53ECD5E}" name="Roboto_Mono">
+          <FILE id="nwCdiT" name="LICENSE.txt" compile="0" resource="1" file="Assets/Fonts/Roboto_Mono/LICENSE.txt"/>
+          <FILE id="nxaVSM" name="RobotoMono-Bold.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-Bold.ttf"/>
-          <FILE id="w7ZVdZ" name="RobotoMono-BoldItalic.ttf" compile="0" resource="1"
+          <FILE id="G9FBFY" name="RobotoMono-BoldItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-BoldItalic.ttf"/>
-          <FILE id="AMU7VV" name="RobotoMono-Italic.ttf" compile="0" resource="1"
+          <FILE id="gf8tIZ" name="RobotoMono-Italic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-Italic.ttf"/>
-          <FILE id="TzHYyr" name="RobotoMono-Light.ttf" compile="0" resource="1"
+          <FILE id="VRkZgB" name="RobotoMono-Light.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-Light.ttf"/>
-          <FILE id="R46ygd" name="RobotoMono-LightItalic.ttf" compile="0" resource="1"
+          <FILE id="MJ5VD2" name="RobotoMono-LightItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-LightItalic.ttf"/>
-          <FILE id="FBukYt" name="RobotoMono-Medium.ttf" compile="0" resource="1"
+          <FILE id="nrrFwC" name="RobotoMono-Medium.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-Medium.ttf"/>
-          <FILE id="VYoyng" name="RobotoMono-MediumItalic.ttf" compile="0" resource="1"
+          <FILE id="w0gkn4" name="RobotoMono-MediumItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-MediumItalic.ttf"/>
-          <FILE id="AwemRT" name="RobotoMono-Regular.ttf" compile="0" resource="1"
+          <FILE id="VkHxiF" name="RobotoMono-Regular.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-Regular.ttf"/>
-          <FILE id="PHtYQq" name="RobotoMono-Thin.ttf" compile="0" resource="1"
+          <FILE id="guvyS4" name="RobotoMono-Thin.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-Thin.ttf"/>
-          <FILE id="ekOJdK" name="RobotoMono-ThinItalic.ttf" compile="0" resource="1"
+          <FILE id="HQ3gke" name="RobotoMono-ThinItalic.ttf" compile="0" resource="1"
                 file="Assets/Fonts/Roboto_Mono/RobotoMono-ThinItalic.ttf"/>
         </GROUP>
       </GROUP>
-      <GROUP id="{7C96950A-8426-5007-70A2-3F5CDFD9426C}" name="Icons">
-        <FILE id="LZHe7J" name="sharp-add-24px.svg" compile="0" resource="1"
+      <GROUP id="{9BA4A403-CD3D-8A2D-D5F2-AFA9F75B829B}" name="Icons">
+        <FILE id="jsmoiB" name="sharp-add-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-add-24px.svg"/>
-        <FILE id="srTs07" name="sharp-call_made-24px.svg" compile="0" resource="1"
+        <FILE id="LCHEvh" name="sharp-call_made-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-call_made-24px.svg"/>
-        <FILE id="dk91un" name="sharp-create_new_folder-24px.svg" compile="0"
+        <FILE id="yQecll" name="sharp-create_new_folder-24px.svg" compile="0"
               resource="1" file="Assets/Icons/sharp-create_new_folder-24px.svg"/>
-        <FILE id="TYiBvF" name="sharp-file_copy-24px.svg" compile="0" resource="1"
+        <FILE id="H5LGCg" name="sharp-file_copy-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-file_copy-24px.svg"/>
-        <FILE id="AKUBiL" name="sharp-format_list_numbered-24px.svg" compile="0"
+        <FILE id="MCUt4B" name="sharp-format_list_numbered-24px.svg" compile="0"
               resource="1" file="Assets/Icons/sharp-format_list_numbered-24px.svg"/>
-        <FILE id="SbrANF" name="sharp-lock-24px.svg" compile="0" resource="1"
+        <FILE id="fZa9uw" name="sharp-lock-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-lock-24px.svg"/>
-        <FILE id="t0FEvZ" name="sharp-lock_open-24px.svg" compile="0" resource="1"
+        <FILE id="g8Zn8m" name="sharp-lock_open-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-lock_open-24px.svg"/>
-        <FILE id="oiromM" name="sharp-loop-24px.svg" compile="0" resource="1"
+        <FILE id="R07dEp" name="sharp-loop-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-loop-24px.svg"/>
-        <FILE id="lF4DS0" name="sharp-menu-24px.svg" compile="0" resource="1"
+        <FILE id="Ci1Jid" name="sharp-menu-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-menu-24px.svg"/>
-        <FILE id="byB2ql" name="sharp-mic-24px.svg" compile="0" resource="1"
+        <FILE id="RxCyok" name="sharp-mic-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-mic-24px.svg"/>
-        <FILE id="q5zsr1" name="sharp-mic_none-24px.svg" compile="0" resource="1"
+        <FILE id="DRmjEk" name="sharp-mic_none-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-mic_none-24px.svg"/>
-        <FILE id="AGFuam" name="sharp-pause-24px.svg" compile="0" resource="1"
+        <FILE id="U0ogyN" name="sharp-pause-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-pause-24px.svg"/>
-        <FILE id="iGQQ91" name="sharp-play_arrow-24px.svg" compile="0" resource="1"
+        <FILE id="NW1Rj7" name="sharp-play_arrow-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-play_arrow-24px.svg"/>
-        <FILE id="wkDklh" name="sharp-settings-24px.svg" compile="0" resource="1"
+        <FILE id="AmZdl1" name="sharp-settings-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-settings-24px.svg"/>
-        <FILE id="v2IJGW" name="sharp-settings_input_antenna-24px.svg" compile="0"
+        <FILE id="RITmPo" name="sharp-settings_input_antenna-24px.svg" compile="0"
               resource="1" file="Assets/Icons/sharp-settings_input_antenna-24px.svg"/>
-        <FILE id="Ofs7eX" name="sharp-settings_input_svideo-24px.svg" compile="0"
+        <FILE id="eXxUDz" name="sharp-settings_input_svideo-24px.svg" compile="0"
               resource="1" file="Assets/Icons/sharp-settings_input_svideo-24px.svg"/>
-        <FILE id="EP7eLQ" name="sharp-stop-24px.svg" compile="0" resource="1"
+        <FILE id="bU1lY3" name="sharp-stop-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-stop-24px.svg"/>
-        <FILE id="loTVSy" name="sharp-subscriptions-24px.svg" compile="0" resource="1"
+        <FILE id="EYZnmq" name="sharp-subscriptions-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-subscriptions-24px.svg"/>
-        <FILE id="LXxqZp" name="sharp-unarchive-24px.svg" compile="0" resource="1"
+        <FILE id="EVhAG8" name="sharp-unarchive-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-unarchive-24px.svg"/>
-        <FILE id="NUbfn5" name="sharp-view_comfy-24px.svg" compile="0" resource="1"
+        <FILE id="Vb7C0d" name="sharp-view_comfy-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-view_comfy-24px.svg"/>
-        <FILE id="yo54pn" name="sharp-volume_mute-24px.svg" compile="0" resource="1"
+        <FILE id="xuOCQF" name="sharp-volume_mute-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-volume_mute-24px.svg"/>
-        <FILE id="DZ6cmd" name="sharp-volume_off-24px.svg" compile="0" resource="1"
+        <FILE id="ptgz7f" name="sharp-volume_off-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-volume_off-24px.svg"/>
-        <FILE id="i05UGZ" name="sharp-volume_up-24px.svg" compile="0" resource="1"
+        <FILE id="QLiF5C" name="sharp-volume_up-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-volume_up-24px.svg"/>
       </GROUP>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
       <GROUP id="{699A0378-0DCB-B890-FB53-4FD418588E35}" name="LookAndFeel">
+        <FILE id="XEYNtw" name="Colors.cpp" compile="1" resource="0" file="Source/LookAndFeel/Colors.cpp"/>
         <FILE id="CTa8Pi" name="Colors.h" compile="0" resource="0" file="Source/LookAndFeel/Colors.h"/>
         <FILE id="hUi9XO" name="Common.h" compile="0" resource="0" file="Source/LookAndFeel/Common.h"/>
         <FILE id="tt2BX5" name="FloatingActionButton.h" compile="0" resource="0"
@@ -187,8 +188,8 @@
         <FILE id="oQGkn2" name="Fonts.cpp" compile="1" resource="0" file="Source/LookAndFeel/Fonts.cpp"/>
         <FILE id="Pl43QV" name="Fonts.h" compile="0" resource="0" file="Source/LookAndFeel/Fonts.h"/>
         <FILE id="m7eoYv" name="IconButton.h" compile="0" resource="0" file="Source/LookAndFeel/IconButton.h"/>
+        <FILE id="zQEgWo" name="Icons.cpp" compile="1" resource="0" file="Source/LookAndFeel/Icons.cpp"/>
         <FILE id="V0gJuR" name="Icons.h" compile="0" resource="0" file="Source/LookAndFeel/Icons.h"/>
-        <FILE id="CL9WQ9" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel/LookAndFeel.h"/>
         <FILE id="krSFjp" name="Material.h" compile="0" resource="0" file="Source/LookAndFeel/Material.h"/>
         <FILE id="ehmw9m" name="MaterialLookAndFeel.h" compile="0" resource="0"
               file="Source/LookAndFeel/MaterialLookAndFeel.h"/>
@@ -280,6 +281,8 @@
           <FILE id="rBiNgr" name="LibraryItem.h" compile="0" resource="0" file="Source/UserInterface/Views/LibraryItem.h"/>
           <FILE id="Mk9buD" name="LibraryView.h" compile="0" resource="0" file="Source/UserInterface/Views/LibraryView.h"/>
           <FILE id="NAXb3Y" name="MainView.h" compile="0" resource="0" file="Source/UserInterface/Views/MainView.h"/>
+          <FILE id="soE9w9" name="Mocks.cpp" compile="1" resource="0" file="Source/UserInterface/Views/Mocks.cpp"/>
+          <FILE id="fkUZbN" name="Mocks.h" compile="0" resource="0" file="Source/UserInterface/Views/Mocks.h"/>
           <FILE id="qpyNbc" name="NavigationDrawer.h" compile="0" resource="0"
                 file="Source/UserInterface/Views/NavigationDrawer.h"/>
           <FILE id="qwtCog" name="NavigationDrawerDevider.h" compile="0" resource="0"
@@ -316,7 +319,8 @@
     </GROUP>
   </MAINGROUP>
   <LIVE_SETTINGS>
-    <WINDOWS/>
+    <WINDOWS buildEnabled="0" windowsTargetPlatformVersion="10.0.17763.0"
+             continuousRebuildEnabled="0" defines="LIVE_MOCK=1"/>
     <LINUX/>
     <OSX buildEnabled="0" defines="LIVE_MOCK=1"/>
   </LIVE_SETTINGS>
@@ -434,5 +438,6 @@
     <MODULE id="juce_osc" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_USE_MP3AUDIOFORMAT="1" JUCE_WEB_BROWSER="0" JUCE_ENABLE_LIVE_CONSTANT_EDITOR="0"
-               JUCE_STANDALONE_FILTER_WINDOW_USE_KIOSK_MODE="0" JUCE_USE_CURL="1"/>
+               JUCE_STANDALONE_FILTER_WINDOW_USE_KIOSK_MODE="0" JUCE_USE_CURL="1"
+               JUCE_VST3_CAN_REPLACE_VST2="0"/>
 </JUCERPROJECT>

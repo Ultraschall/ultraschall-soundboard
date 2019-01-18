@@ -14,6 +14,6 @@ ActionObject OscMiddleware::dispatch(const ActionObject &action, Store &store) {
 	  return result;
   }
 
-  void OscMiddleware::oscMessageReceived(const OSCMessage & message)
+  void OscMiddleware::oscMessageReceived(const OSCMessage & /*message*/)
   {
   }

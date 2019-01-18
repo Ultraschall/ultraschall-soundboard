@@ -16,12 +16,6 @@ namespace IDs {
 	DECLARE_ID(application_mute, state_mute)
 	DECLARE_ID(application_view, view)
 
-    // #Library
-    DECLARE_ID(LIBRARY, LIBRARY)
-    DECLARE_ID(library_id, id)
-    DECLARE_ID(library_title, title)
-
-
 	// #Players []
     DECLARE_ID(PLAYERS, PLAYERS)
 
@@ -42,6 +36,7 @@ namespace IDs {
     DECLARE_ID(player_state_missing, missing)
 	DECLARE_ID(player_state_progress, progress)
 
+	// -----------------------------
 
     // #Banks []
     DECLARE_ID(BANKS, BANKS)
@@ -58,8 +53,8 @@ namespace IDs {
     DECLARE_ID(CLIP, CLIP)
     DECLARE_ID(clip_id, id)
     DECLARE_ID(clip_index, index)
-    DECLARE_ID(clip_player_uuid, player_uuid)
-	DECLARE_ID(clip_bank_uuid, bank_uuid)
+    DECLARE_ID(clip_player_id, player_id)
+	DECLARE_ID(clip_bank_id, bank_id)
 
 
 	// -----------------------------

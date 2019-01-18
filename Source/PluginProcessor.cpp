@@ -33,8 +33,7 @@ UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
 	midiMiddleware = std::make_shared<MidiMiddleware>();
     auto builder = MiddlewareEnhancerBuilder::New(Store::combineReducers({
         {IDs::APPLICATION, application},
-        {IDs::LIBRARY, library},
-        {IDs::PLAYERS, player},
+        {IDs::PLAYERS, players},
         {IDs::BANKS, bank},
         {IDs::PLAYLISTS, playlist}
     }));
@@ -188,15 +187,20 @@ AudioProcessorEditor *UltraschallSoundboardAudioProcessor::createEditor() {
 }
 
 //==============================================================================
-void UltraschallSoundboardAudioProcessor::getStateInformation(MemoryBlock &/*destData*/) {
+void UltraschallSoundboardAudioProcessor::getStateInformation(MemoryBlock &destData) {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+	auto state = store->getState().createCopy();
+	auto xml = std::unique_ptr<XmlElement>(state.createXml());
+	copyXmlToBinary(*xml, destData);
 }
 
-void UltraschallSoundboardAudioProcessor::setStateInformation(const void */*data*/, int /*sizeInBytes*/) {
+void UltraschallSoundboardAudioProcessor::setStateInformation(const void *data, int sizeInBytes) {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+	auto xmlState = std::unique_ptr<XmlElement>(getXmlFromBinary(data, sizeInBytes));
+	if (xmlState.get() == nullptr) { return;  }
 }
 
 std::shared_ptr<Store> UltraschallSoundboardAudioProcessor::getStore() {

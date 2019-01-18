@@ -82,7 +82,7 @@ void Engine::toggleTalkOver() {
 	talkOver.gate(talkOverState);
 }
 
-void Engine::openFile(const File &file) {
+void Engine::openFile(const File & /*file*/) {
 //	XmlDocument xmlDocument(file);
 //	const std::unique_ptr<XmlElement> xml(xmlDocument.getDocumentElement());
 ////	undoManager.clearUndoHistory();
@@ -105,7 +105,7 @@ void Engine::openFile(const File &file) {
 //	}
 }
 
-void Engine::saveFile(const File &file) const {
+void Engine::saveFile(const File & /*file*/) const {
 //	const std::unique_ptr<XmlElement> xml(state.createXml());
 //	xml->writeToFile(file, String{});
 }
@@ -158,9 +158,9 @@ void Engine::sync(Store &store) {
 
 	for (const auto &p : snapshot) {
 		auto player = playerWithIdentifier(p);
-		auto library = store.getState().getChildWithName(IDs::LIBRARY);
-		jassert(library.isValid());
-		auto playerState = library.getChildWithProperty(IDs::player_id, p.toString());
+		auto playersState = store.getState().getChildWithName(IDs::PLAYERS);
+		jassert(playersState.isValid());
+		auto playerState = playersState.getChildWithProperty(IDs::player_id, p.toString());
 		jassert(playerState.isValid());
 		
 		PlayerModel model(playerState);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../LookAndFeel/Material.h"
 
 #include "NavigationDrawerHeaderItem.h"
@@ -23,7 +23,6 @@ public:
         addAndMakeVisible(viewList);
         addAndMakeVisible(viewGrid);
         addAndMakeVisible(viewPlaylist);
-        addAndMakeVisible(lockEngine);
         addAndMakeVisible(midiSettings);
         addAndMakeVisible(oscSettings);
         addAndMakeVisible(settings);
@@ -46,24 +45,23 @@ public:
         FlexBox flexBox;
         flexBox.flexDirection = FlexBox::Direction::column;
 
-        flexBox.items.add(FlexItem(header).withHeight(px(NavigationDrawerHeaderItem::height)));
-        flexBox.items.add(FlexItem(viewList).withHeight(px(NavigationDrawerItem::height)).withMargin(FlexItem::Margin(px(16), 0, 0, 0)));
-        flexBox.items.add(FlexItem(viewGrid).withHeight(px(NavigationDrawerItem::height)));
-        flexBox.items.add(FlexItem(viewPlaylist).withHeight(px(NavigationDrawerItem::height)));
-        flexBox.items.add(FlexItem(devider[0]).withHeight(px(NavigationDrawerDevider::height)));
-        flexBox.items.add(FlexItem(lockEngine).withHeight(px(NavigationDrawerItem::height)));
+        flexBox.items.add(FlexItem(header).withHeight(px<float>(NavigationDrawerHeaderItem::height)));
+        flexBox.items.add(FlexItem(viewList).withHeight(px<float>(NavigationDrawerItem::height)).withMargin(FlexItem::Margin(px(16.0f), 0.0f, 0.0f, 0.0f)));
+        flexBox.items.add(FlexItem(viewGrid).withHeight(px<float>(NavigationDrawerItem::height)));
+        flexBox.items.add(FlexItem(viewPlaylist).withHeight(px<float>(NavigationDrawerItem::height)));
+        flexBox.items.add(FlexItem(devider[0]).withHeight(px<float>(NavigationDrawerDevider::height)));
 
         flexBox.items.add(FlexItem(spacer).withFlex(2));
 
-        flexBox.items.add(FlexItem(devider[1]).withHeight(px(NavigationDrawerDevider::height)));
-        flexBox.items.add(FlexItem(midiSettings).withHeight(px(NavigationDrawerItem::height)));
-        flexBox.items.add(FlexItem(oscSettings).withHeight(px(NavigationDrawerItem::height)));
-        flexBox.items.add(FlexItem(settings).withHeight(px(NavigationDrawerItem::height)));
+        flexBox.items.add(FlexItem(devider[1]).withHeight(px<float>(NavigationDrawerDevider::height)));
+        flexBox.items.add(FlexItem(midiSettings).withHeight(px<float>(NavigationDrawerItem::height)));
+        flexBox.items.add(FlexItem(oscSettings).withHeight(px<float>(NavigationDrawerItem::height)));
+        flexBox.items.add(FlexItem(settings).withHeight(px<float>(NavigationDrawerItem::height)));
 
         flexBox.performLayout(getLocalBounds());
     }
 
-    void changeListenerCallback(ChangeBroadcaster *source) override {
+    void changeListenerCallback(ChangeBroadcaster * /*source*/) override {
         if (!visible && !Desktop::getInstance().getAnimator().isAnimating(this)) {
             owner->removeChildComponent(this);
         }
@@ -159,8 +157,8 @@ public:
     }
 
     void mouseDrag(const MouseEvent &event) override {
-        if (event.getDistanceFromDragStartX() < 0 && event.getDistanceFromDragStartX() > -(width)) {
-            this->setBounds(getLocalBounds().withRightX(width + event.getDistanceFromDragStartX()));
+        if (event.getDistanceFromDragStartX() < 0 && event.getDistanceFromDragStartX() > -px(width)) {
+            this->setBounds(getLocalBounds().withRightX(px(width) + event.getDistanceFromDragStartX()));
         }
     }
 
@@ -186,7 +184,6 @@ public:
     NavigationDrawerItem viewList{Material::Icons::format_list_numbered, "Files"};
     NavigationDrawerItem viewGrid{Material::Icons::view_comfy, "Banks"};
     NavigationDrawerItem viewPlaylist{Material::Icons::subscriptions, "Playlists"};
-    NavigationDrawerItem lockEngine{Material::Icons::lock_open, "Lock"};
 
     NavigationDrawerItem midiSettings{Material::Icons::settings_input_svideo, "MIDI"};
     NavigationDrawerItem oscSettings{Material::Icons::settings_input_antenna, "OSC"};
@@ -203,7 +200,7 @@ private:
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Scrim)
 
     protected:
-        void paintButton(Graphics &g, bool isMouseOverButton, bool isButtonDown) override {
+        void paintButton(Graphics &g, bool /*isMouseOverButton*/, bool /*isButtonDown*/) override {
             g.fillAll(Colours::black.withAlpha(0.32f));
         }
     };
@@ -220,7 +217,7 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NavigationDrawer)
 
-    void componentMovedOrResized(Component &component, bool wasMoved, bool wasResized) override {
+    void componentMovedOrResized(Component &/*component*/, bool /*wasMoved*/, bool /*wasResized*/) override {
         if (getParentComponent() != nullptr) {
             scrim.setBounds(getParentComponent()->getLocalBounds());
             this->setBounds(getParentComponent()->getLocalBounds().removeFromLeft(px(width)));

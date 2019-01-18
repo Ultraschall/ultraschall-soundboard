@@ -1,11 +1,10 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Actions/Actions.h"
 
-ValueTree library(ValueTree state, ActionObject action) {
+ValueTree players(ValueTree state, ActionObject action) {
     if (state.getNumProperties() == 0) {
-		state.setProperty(IDs::library_title, "Soundboard", nullptr);
     }
 	if (action.type == FileReady) {
 		String id = action.args.getProperty(IDs::player_id);

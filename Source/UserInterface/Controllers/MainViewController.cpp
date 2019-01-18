@@ -21,6 +21,8 @@ void MainViewController::viewDidLoad()
         view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.close();
+		store->dispatch(ShowViewAction("library"));
     };
     view->navigationDrawer.viewGrid.onClick = [this] {
         view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
@@ -30,6 +32,8 @@ void MainViewController::viewDidLoad()
         view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.close();
+		store->dispatch(ShowViewAction("grid"));
     };
     view->navigationDrawer.viewPlaylist.onClick = [this] {
         view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
@@ -39,9 +43,43 @@ void MainViewController::viewDidLoad()
         view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.close();
+		store->dispatch(ShowViewAction("playlist"));
     };
 
+	view->navigationDrawer.midiSettings.onClick = [this] {
+		view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
+
+		view->navigationDrawer.midiSettings.setToggleState(true, dontSendNotification);
+		view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.close();
+		store->dispatch(ShowViewAction("settings_midi"));
+	};
+	view->navigationDrawer.oscSettings.onClick = [this] {
+		view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
+
+		view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.oscSettings.setToggleState(true, dontSendNotification);
+		view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.close();
+		store->dispatch(ShowViewAction("settings_osc"));
+	};
     view->navigationDrawer.settings.onClick = [this] {
+		view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
+
+		view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
+		view->navigationDrawer.settings.setToggleState(true, dontSendNotification);
+		view->navigationDrawer.close();
+		store->dispatch(ShowViewAction("settings"));
+
     };
 
     view->addFileButton.onClick = [this] {
@@ -93,51 +131,6 @@ void MainViewController::showLibrary()
     }
 }
 
-void MainViewController::addDirectory()
-{
-//    const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
-//
-//    Logger::outputDebugString(engine.audioFormatManager.getWildcardForAllFormats());
-//
-//    fileChooser = std::make_unique<FileChooser>("Please select the directory you want to import...",
-//                                                File::getSpecialLocation(File::userHomeDirectory),
-//                                                engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
-//
-//    fileChooser->launchAsync(FileBrowserComponent::openMode | FileBrowserComponent::canSelectDirectories,
-//                             [this](const FileChooser &chooser) {
-//                                 auto results = chooser.getURLResults();
-//                                 for (const auto &result : results)
-//                                 {
-//                                     if (result.isLocalFile())
-//                                     {
-//                                         engine.importDirectory(result.getLocalFile());
-//                                         showLibrary();
-//                                     }
-//                                 }
-//                             });
-}
-
-void MainViewController::addFile()
-{
-//    const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
-//
-//    fileChooser = std::make_unique<FileChooser>("Please select the audio file you want to load...",
-//                                                File::getSpecialLocation(File::userHomeDirectory),
-//                                                engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
-//
-//    fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
-//                             [this](const FileChooser &chooser) {
-//                                 auto results = chooser.getURLResults();
-//                                 for (const auto &result : results)
-//                                 {
-//                                     if (result.isLocalFile())
-//                                     {
-//                                         engine.loadAudioFile(result.getLocalFile());
-//                                         showLibrary();
-//                                     }
-//                                 }
-//                             });
-}
 
 void MainViewController::loadProjectFile()
 {

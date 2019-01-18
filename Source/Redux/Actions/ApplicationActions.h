@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../ActionObject.h"
 #include "../Identifier.h"
 
@@ -81,4 +81,3 @@ class ShowViewAction : public  ActionObject {
 public:
 	ShowViewAction(String view) : ActionObject(ShowView, ValueTree{ Args, {{ IDs::application_view, view }} }) {};
 };
-

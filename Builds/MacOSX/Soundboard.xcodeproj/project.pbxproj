@@ -5,6 +5,14 @@
 	};
 	objectVersion = 46;
 	objects = {
+		9C1E1394F973EE947EDC9489 = {
+			isa = PBXBuildFile;
+			fileRef = BFA4C5A23AE34A3536C0B2DE;
+		};
+		BCC81D382CC9BB877F4E7D07 = {
+			isa = PBXBuildFile;
+			fileRef = EA6319B3847B4A332A166E03;
+		};
 		7ED6ED3C80AF5FC1CF4175CE = {
 			isa = PBXBuildFile;
 			fileRef = F1C19114A114308527191CCF;
@@ -61,13 +69,17 @@
 			isa = PBXBuildFile;
 			fileRef = 120A6A533A37B8EEBE5EC0BB;
 		};
-		69B757F5786726C6EE526985 = {
+		51018ACBCD6F94DE0C91CF93 = {
 			isa = PBXBuildFile;
-			fileRef = C019A42620C13DBC360D3E35;
+			fileRef = 7BBFB7E953C17BC369171490;
 		};
 		677EF090E36C03A22EE86EFB = {
 			isa = PBXBuildFile;
 			fileRef = FA52BF6A335964949929F79C;
+		};
+		EEA67115507315C38502A7AE = {
+			isa = PBXBuildFile;
+			fileRef = 312B427E66ED1E77F35F4C67;
 		};
 		66BFE9F071F9C06C4410174F = {
 			isa = PBXBuildFile;
@@ -100,6 +112,10 @@
 		69E2291E99A103844C021346 = {
 			isa = PBXBuildFile;
 			fileRef = D9958FA8DF885C714F854B28;
+		};
+		90487CFBE3002CC98261DD72 = {
+			isa = PBXBuildFile;
+			fileRef = 2CB28623CEB5F08989A10055;
 		};
 		D8BE1B9ACEEAB11DDCAC54DD = {
 			isa = PBXBuildFile;
@@ -148,6 +164,14 @@
 		E0A6524F7CD8B543D808C946 = {
 			isa = PBXBuildFile;
 			fileRef = DA47079D55F0825DCEB1B0C1;
+		};
+		7C37A03FFD64793EEDCE551E = {
+			isa = PBXBuildFile;
+			fileRef = 58FAEF29E5673E0D4406B5A6;
+		};
+		DD1EDFD44E8B43F1A572A2F7 = {
+			isa = PBXBuildFile;
+			fileRef = 71CAC866A8A2BC64D4EC59D8;
 		};
 		9F3DE349DD1302413CC3D431 = {
 			isa = PBXBuildFile;
@@ -456,6 +480,13 @@
 			path = ../../Source/Redux/Middleware/EngineMiddleware.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
+		241046C5A863EC159F0B3EE1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.xml;
+			name = "Info-VST.plist";
+			path = "Info-VST.plist";
+			sourceTree = "SOURCE_ROOT";
+		};
 		272F6E4A76A96DE741F92B57 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -491,6 +522,13 @@
 			path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-Medium.ttf";
 			sourceTree = "SOURCE_ROOT";
 		};
+		2CB28623CEB5F08989A10055 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Mocks.cpp;
+			path = ../../Source/UserInterface/Views/Mocks.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		2E070FF7D85EFDDACE32ABFF = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
@@ -517,6 +555,13 @@
 			lastKnownFileType = image.png;
 			name = "ic_status_bar_HDPI.png";
 			path = "../../Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_HDPI.png";
+			sourceTree = "SOURCE_ROOT";
+		};
+		312B427E66ED1E77F35F4C67 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Icons.cpp;
+			path = ../../Source/LookAndFeel/Icons.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
 		3293DB2906EFAEC9D491865C = {
@@ -715,6 +760,13 @@
 			path = "../../Assets/Icons/sharp-add-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
+		58FAEF29E5673E0D4406B5A6 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "include_juce_audio_plugin_client_VST2.cpp";
+			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
 		597A288EF734F1CFB4104DAE = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
@@ -862,6 +914,13 @@
 			path = ../../Source/UserInterface/Models/LibraryModel.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		71CAC866A8A2BC64D4EC59D8 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "include_juce_audio_plugin_client_VST3.cpp";
+			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST3.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
 		729845C37C49A1B5671F1705 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -902,6 +961,13 @@
 			lastKnownFileType = image.png;
 			name = "Icon-76@2x.png";
 			path = "../../Assets/AppIcons/iOS/Icon-76@2x.png";
+			sourceTree = "SOURCE_ROOT";
+		};
+		7BBFB7E953C17BC369171490 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Colors.cpp;
+			path = ../../Source/LookAndFeel/Colors.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
 		7C8A4CBBFB38D9565FD4228D = {
@@ -951,13 +1017,6 @@
 			lastKnownFileType = image.png;
 			name = "ic_status_bar_MDPI.png";
 			path = "../../Assets/AppIcons/Android/Status Bar Icon/ic_status_bar_MDPI.png";
-			sourceTree = "SOURCE_ROOT";
-		};
-		86AF2076E3A58A244F84B345 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = LookAndFeel.h;
-			path = ../../Source/LookAndFeel/LookAndFeel.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		870E0DA0EA249AA3C4F38D9C = {
@@ -1303,12 +1362,12 @@
 			path = "../../Assets/Icons/sharp-volume_mute-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
-		C019A42620C13DBC360D3E35 = {
+		BFA4C5A23AE34A3536C0B2DE = {
 			isa = PBXFileReference;
-			lastKnownFileType = file.icns;
-			name = Icon.icns;
-			path = Icon.icns;
-			sourceTree = "SOURCE_ROOT";
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = Soundboard.vst;
+			sourceTree = "BUILT_PRODUCTS_DIR";
 		};
 		C045088FDF3AB099F6382E0F = {
 			isa = PBXFileReference;
@@ -1457,13 +1516,6 @@
 			path = "../../Assets/AppIcons/Android/Adaptive App Icon/App Icon Back.png";
 			sourceTree = "SOURCE_ROOT";
 		};
-		D9F5069A907514CC05A120AE = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.ttf;
-			name = "RobotoMono-Bold.ttf";
-			path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-Bold.ttf";
-			sourceTree = "SOURCE_ROOT";
-		};
 		DA47079D55F0825DCEB1B0C1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -1483,13 +1535,6 @@
 			lastKnownFileType = file.svg;
 			name = "sharp-subscriptions-24px.svg";
 			path = "../../Assets/Icons/sharp-subscriptions-24px.svg";
-			sourceTree = "SOURCE_ROOT";
-		};
-		DBB85CE24CAE360664D01BBB = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.ttf;
-			name = "Roboto-Italic.ttf";
-			path = "../../Assets/Fonts/Roboto/Roboto-Italic.ttf";
 			sourceTree = "SOURCE_ROOT";
 		};
 		DE76375E0A36044BFA8D9C15 = {
@@ -1513,6 +1558,13 @@
 			path = "../../JuceLibraryCode/modules/juce_audio_formats";
 			sourceTree = "SOURCE_ROOT";
 		};
+		E63D98114F5D46C33B16516C = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = "sharp-file_copy-24px.svg";
+			path = "../../Assets/Icons/sharp-file_copy-24px.svg";
+			sourceTree = "SOURCE_ROOT";
+		};
 		E75F3157111B190DD4DE44A0 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -1526,6 +1578,48 @@
 			name = Cocoa.framework;
 			path = System/Library/Frameworks/Cocoa.framework;
 			sourceTree = SDKROOT;
+		};
+		EA6319B3847B4A332A166E03 = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = Soundboard.vst3;
+			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		F16F8B9669393C5CC3054C01 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = "sharp-settings_input_antenna-24px.svg";
+			path = "../../Assets/Icons/sharp-settings_input_antenna-24px.svg";
+			sourceTree = "SOURCE_ROOT";
+		};
+		F1C19114A114308527191CCF = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.application;
+			includeInIndex = 0;
+			path = Soundboard.app;
+			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		59F0CB90C21C2B3EF124E447 = {
+			isa = PBXFileReference;
+			explicitFileType = archive.ar;
+			includeInIndex = 0;
+			path = libSoundboard.a;
+			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		D9F5069A907514CC05A120AE = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.ttf;
+			name = "RobotoMono-Bold.ttf";
+			path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-Bold.ttf";
+			sourceTree = "SOURCE_ROOT";
+		};
+		DBB85CE24CAE360664D01BBB = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.ttf;
+			name = "Roboto-Italic.ttf";
+			path = "../../Assets/Fonts/Roboto/Roboto-Italic.ttf";
+			sourceTree = "SOURCE_ROOT";
 		};
 		E8CBFC0B5C8B01B245214C61 = {
 			isa = PBXFileReference;
@@ -1548,39 +1642,11 @@
 			path = ../../JuceLibraryCode/JuceHeader.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		EC6C70A6AC351806E271D0B1 = {
+		EACB497E032FBD692706458D = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = EngineMiddleware.h;
-			path = ../../Source/Redux/Middleware/EngineMiddleware.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		EFBD4D398689EA9E2CAC2D96 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.objcpp;
-			name = "include_juce_audio_devices.mm";
-			path = "../../JuceLibraryCode/include_juce_audio_devices.mm";
-			sourceTree = "SOURCE_ROOT";
-		};
-		F1C19114A114308527191CCF = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.application;
-			includeInIndex = 0;
-			path = Soundboard.app;
-			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
-		59F0CB90C21C2B3EF124E447 = {
-			isa = PBXFileReference;
-			explicitFileType = archive.ar;
-			includeInIndex = 0;
-			path = libSoundboard.a;
-			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
-		E63D98114F5D46C33B16516C = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = "sharp-file_copy-24px.svg";
-			path = "../../Assets/Icons/sharp-file_copy-24px.svg";
+			name = Mocks.h;
+			path = ../../Source/UserInterface/Views/Mocks.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		EAD4D001D6C8846E9B368D72 = {
@@ -1588,6 +1654,13 @@
 			lastKnownFileType = file.svg;
 			name = "sharp-settings-24px.svg";
 			path = "../../Assets/Icons/sharp-settings-24px.svg";
+			sourceTree = "SOURCE_ROOT";
+		};
+		EC6C70A6AC351806E271D0B1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = EngineMiddleware.h;
+			path = ../../Source/Redux/Middleware/EngineMiddleware.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		ECED1FDE827C51E07EE05A51 = {
@@ -1604,11 +1677,11 @@
 			path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-LightItalic.ttf";
 			sourceTree = "SOURCE_ROOT";
 		};
-		F16F8B9669393C5CC3054C01 = {
+		EFBD4D398689EA9E2CAC2D96 = {
 			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = "sharp-settings_input_antenna-24px.svg";
-			path = "../../Assets/Icons/sharp-settings_input_antenna-24px.svg";
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_juce_audio_devices.mm";
+			path = "../../JuceLibraryCode/include_juce_audio_devices.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
 		F2BC0ABB61ECFAF1869F6FC1 = {
@@ -1660,6 +1733,13 @@
 			path = "../../Assets/AppIcons/iOS/Icon-20@3x.png";
 			sourceTree = "SOURCE_ROOT";
 		};
+		F6835AB4AE8E1F4ED7B5D155 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.xml;
+			name = "Info-VST3.plist";
+			path = "Info-VST3.plist";
+			sourceTree = "SOURCE_ROOT";
+		};
 		F9E8C4D4F4FEDDEB2D83DCE7 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -1695,7 +1775,7 @@
 			path = ../../Source/UserInterface/Views/MainView.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		3C080CBF5A04076489C0E11A = {
+		0A8DBB773DE9BDEEC4FC45D1 = {
 			isa = PBXGroup;
 			children = (
 				D9DEB5ADA130DE174ABB944C,
@@ -1704,7 +1784,7 @@
 			name = "Adaptive App Icon";
 			sourceTree = "<group>";
 		};
-		50D0600409AC8C4C2B6AE538 = {
+		0D2B54F9CA5122F098F9FF4D = {
 			isa = PBXGroup;
 			children = (
 				A0CA5D104AE0AE151ADB82C1,
@@ -1717,7 +1797,7 @@
 			name = "App Icon";
 			sourceTree = "<group>";
 		};
-		801BAE6B47ED0B640D7BCE16 = {
+		1EE724E48507ED5D9CB0E8C4 = {
 			isa = PBXGroup;
 			children = (
 				0F315B2AF2FAB3F48FED76D0,
@@ -1729,7 +1809,7 @@
 			name = "Notification Icon";
 			sourceTree = "<group>";
 		};
-		4D91C3FEE4C93852AFD6C475 = {
+		2BE53334FFCB20248C287A0A = {
 			isa = PBXGroup;
 			children = (
 				3100FD4FF492A3FFE1A7ED05,
@@ -1741,18 +1821,18 @@
 			name = "Status Bar Icon";
 			sourceTree = "<group>";
 		};
-		6B673C8418577DF05F1B2D46 = {
+		41C644AAFE2D6478AF8DEF65 = {
 			isa = PBXGroup;
 			children = (
-				3C080CBF5A04076489C0E11A,
-				50D0600409AC8C4C2B6AE538,
-				801BAE6B47ED0B640D7BCE16,
-				4D91C3FEE4C93852AFD6C475,
+				0A8DBB773DE9BDEEC4FC45D1,
+				0D2B54F9CA5122F098F9FF4D,
+				1EE724E48507ED5D9CB0E8C4,
+				2BE53334FFCB20248C287A0A,
 			);
 			name = Android;
 			sourceTree = "<group>";
 		};
-		98CEBB828CF31A80ECC37250 = {
+		6B95728CA2AC84054213583A = {
 			isa = PBXGroup;
 			children = (
 				C62D6416E2579025E6B20A74,
@@ -1774,16 +1854,16 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7241D6F02F3F61F7BE0792AF = {
+		A19DE4E025E46CAED98DCB2F = {
 			isa = PBXGroup;
 			children = (
-				6B673C8418577DF05F1B2D46,
-				98CEBB828CF31A80ECC37250,
+				41C644AAFE2D6478AF8DEF65,
+				6B95728CA2AC84054213583A,
 			);
 			name = AppIcons;
 			sourceTree = "<group>";
 		};
-		E4FD3BA3359CA724E369EFE9 = {
+		18ABA2367C2A55864628488D = {
 			isa = PBXGroup;
 			children = (
 				092EFB608CD5A746E3149020,
@@ -1803,7 +1883,7 @@
 			name = Roboto;
 			sourceTree = "<group>";
 		};
-		19A3F1949CCFCCA3EF72CDCF = {
+		5712F4BFC56E5EBB2E602345 = {
 			isa = PBXGroup;
 			children = (
 				6D728035369730F3217EB818,
@@ -1821,16 +1901,16 @@
 			name = "Roboto_Mono";
 			sourceTree = "<group>";
 		};
-		33007CFFA70A575E9151A178 = {
+		E2BF210973D7523B01D4FE8E = {
 			isa = PBXGroup;
 			children = (
-				E4FD3BA3359CA724E369EFE9,
-				19A3F1949CCFCCA3EF72CDCF,
+				18ABA2367C2A55864628488D,
+				5712F4BFC56E5EBB2E602345,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		EF4D0065FED1381EAB1C6510 = {
+		30CA9E3562D26F7FA1A68ACD = {
 			isa = PBXGroup;
 			children = (
 				57CA84DC312CEACA5A7957DD,
@@ -1860,12 +1940,12 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
-		9387DDB6E238CB29B2C3BFAC = {
+		493EC93F83D01AE982552A21 = {
 			isa = PBXGroup;
 			children = (
-				7241D6F02F3F61F7BE0792AF,
-				33007CFFA70A575E9151A178,
-				EF4D0065FED1381EAB1C6510,
+				A19DE4E025E46CAED98DCB2F,
+				E2BF210973D7523B01D4FE8E,
+				30CA9E3562D26F7FA1A68ACD,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -1873,14 +1953,15 @@
 		CDEDD58DDD99E0529E0DC413 = {
 			isa = PBXGroup;
 			children = (
+				7BBFB7E953C17BC369171490,
 				06DA0C089A682BFD3EBE9408,
 				2E68B00259CBBB98DA05D32C,
 				C045088FDF3AB099F6382E0F,
 				FA52BF6A335964949929F79C,
 				F411E60C6E335A009B812220,
 				702172843FCC27CCF7AF9BB3,
+				312B427E66ED1E77F35F4C67,
 				1AE3CFB052414B61DC09F728,
-				86AF2076E3A58A244F84B345,
 				78306D6E2F123956770B3950,
 				E75F3157111B190DD4DE44A0,
 				1F8FE099283605525CCA6A0F,
@@ -1985,6 +2066,8 @@
 				45017E21BCA38C0978314181,
 				B3491D0DAC4AB1D7CA9DDD91,
 				FDCBB1DF928AEC945CB5DB9D,
+				2CB28623CEB5F08989A10055,
+				EACB497E032FBD692706458D,
 				D1E5DEDA7FBBDFA7AA76D127,
 				9DA36B3279D433577B78E16F,
 				1B902ED14692FF47B18EB24D,
@@ -2039,7 +2122,7 @@
 		6CE64D7D8D711C24FD1C1B80 = {
 			isa = PBXGroup;
 			children = (
-				9387DDB6E238CB29B2C3BFAC,
+				493EC93F83D01AE982552A21,
 				CF1AA77E699C9F52920DAD9D,
 			);
 			name = Soundboard;
@@ -2080,6 +2163,8 @@
 				2F54814A0188E690AE25A2B7,
 				40A80AA6711D6007E0DA6B4D,
 				DA47079D55F0825DCEB1B0C1,
+				58FAEF29E5673E0D4406B5A6,
+				71CAC866A8A2BC64D4EC59D8,
 				5AF5DDFCB8DC513E026BB5EC,
 				C6AD2F5F532AEE3178DEB29A,
 				92F5D65C8C0DFD3AAFF8A0BC,
@@ -2100,9 +2185,10 @@
 		680E232F9E0609FE08597B0E = {
 			isa = PBXGroup;
 			children = (
+				241046C5A863EC159F0B3EE1,
+				F6835AB4AE8E1F4ED7B5D155,
 				BE1E27C2D908067A113B65AD,
 				120A6A533A37B8EEBE5EC0BB,
-				C019A42620C13DBC360D3E35,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2128,6 +2214,8 @@
 		F6DA7EA89C07AD9F11D96523 = {
 			isa = PBXGroup;
 			children = (
+				BFA4C5A23AE34A3536C0B2DE,
+				EA6319B3847B4A332A166E03,
 				F1C19114A114308527191CCF,
 				59F0CB90C21C2B3EF124E447,
 			);
@@ -2162,6 +2250,214 @@
 			};
 			name = Release;
 		};
+		C7BEE43DE1581C25541E6FD7 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_DEBUG=1",
+					"DEBUG=1",
+					"JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0",
+					"JUCER_XCODE_MAC_F6D2F4CF=1",
+					"JUCE_APP_VERSION=4.0.0",
+					"JUCE_APP_VERSION_HEX=0x40000",
+					"JucePlugin_Build_VST=1",
+					"JucePlugin_Build_VST3=0",
+					"JucePlugin_Build_AU=0",
+					"JucePlugin_Build_AUv3=0",
+					"JucePlugin_Build_RTAS=0",
+					"JucePlugin_Build_AAX=0",
+					"JucePlugin_Build_Standalone=0",
+					"JucePlugin_Build_Unity=0",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../JuceLibraryCode",
+					"../../JuceLibraryCode/modules",
+					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Info-VST.plist;
+				INFOPLIST_PREPROCESS = NO;
+				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "-bundle -lSoundboard";
+				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.Soundboard;
+				PRODUCT_NAME = "Soundboard";
+				USE_HEADERMAP = NO;
+				WRAPPER_EXTENSION = vst;
+			};
+			name = Debug;
+		};
+		4B354EC960D0ADDF6135D8A7 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+				DEAD_CODE_STRIPPING = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_NDEBUG=1",
+					"NDEBUG=1",
+					"JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0",
+					"JUCER_XCODE_MAC_F6D2F4CF=1",
+					"JUCE_APP_VERSION=4.0.0",
+					"JUCE_APP_VERSION_HEX=0x40000",
+					"JucePlugin_Build_VST=1",
+					"JucePlugin_Build_VST3=0",
+					"JucePlugin_Build_AU=0",
+					"JucePlugin_Build_AUv3=0",
+					"JucePlugin_Build_RTAS=0",
+					"JucePlugin_Build_AAX=0",
+					"JucePlugin_Build_Standalone=0",
+					"JucePlugin_Build_Unity=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../JuceLibraryCode",
+					"../../JuceLibraryCode/modules",
+					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Info-VST.plist;
+				INFOPLIST_PREPROCESS = NO;
+				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
+				LIBRARY_STYLE = Bundle;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "-bundle -lSoundboard";
+				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.Soundboard;
+				PRODUCT_NAME = "Soundboard";
+				USE_HEADERMAP = NO;
+				WRAPPER_EXTENSION = vst;
+			};
+			name = Release;
+		};
+		6C8DE187273CCF2DB94F6F01 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_DEBUG=1",
+					"DEBUG=1",
+					"JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0",
+					"JUCER_XCODE_MAC_F6D2F4CF=1",
+					"JUCE_APP_VERSION=4.0.0",
+					"JUCE_APP_VERSION_HEX=0x40000",
+					"JucePlugin_Build_VST=0",
+					"JucePlugin_Build_VST3=1",
+					"JucePlugin_Build_AU=0",
+					"JucePlugin_Build_AUv3=0",
+					"JucePlugin_Build_RTAS=0",
+					"JucePlugin_Build_AAX=0",
+					"JucePlugin_Build_Standalone=0",
+					"JucePlugin_Build_Unity=0",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../JuceLibraryCode",
+					"../../JuceLibraryCode/modules",
+					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Info-VST3.plist;
+				INFOPLIST_PREPROCESS = NO;
+				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
+				LIBRARY_STYLE = Bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "-bundle -lSoundboard";
+				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.Soundboard;
+				PRODUCT_NAME = "Soundboard";
+				USE_HEADERMAP = NO;
+				WRAPPER_EXTENSION = vst3;
+			};
+			name = Debug;
+		};
+		7211DE6E4866B772F5339189 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+				DEAD_CODE_STRIPPING = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_NDEBUG=1",
+					"NDEBUG=1",
+					"JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0",
+					"JUCER_XCODE_MAC_F6D2F4CF=1",
+					"JUCE_APP_VERSION=4.0.0",
+					"JUCE_APP_VERSION_HEX=0x40000",
+					"JucePlugin_Build_VST=0",
+					"JucePlugin_Build_VST3=1",
+					"JucePlugin_Build_AU=0",
+					"JucePlugin_Build_AUv3=0",
+					"JucePlugin_Build_RTAS=0",
+					"JucePlugin_Build_AAX=0",
+					"JucePlugin_Build_Standalone=0",
+					"JucePlugin_Build_Unity=0",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../JuceLibraryCode",
+					"../../JuceLibraryCode/modules",
+					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Info-VST3.plist;
+				INFOPLIST_PREPROCESS = NO;
+				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
+				LIBRARY_STYLE = Bundle;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "-bundle -lSoundboard";
+				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.Soundboard;
+				PRODUCT_NAME = "Soundboard";
+				USE_HEADERMAP = NO;
+				WRAPPER_EXTENSION = vst3;
+			};
+			name = Release;
+		};
 		051A0D47FA37DF10D162CEE7 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2191,6 +2487,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../JuceLibraryCode/modules",
 					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
@@ -2236,6 +2533,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../JuceLibraryCode/modules",
 					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
@@ -2270,8 +2568,8 @@
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=4.0.0",
 					"JUCE_APP_VERSION_HEX=0x40000",
-					"JucePlugin_Build_VST=0",
-					"JucePlugin_Build_VST3=0",
+					"JucePlugin_Build_VST=1",
+					"JucePlugin_Build_VST3=1",
 					"JucePlugin_Build_AU=0",
 					"JucePlugin_Build_AUv3=0",
 					"JucePlugin_Build_RTAS=0",
@@ -2282,6 +2580,7 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../JuceLibraryCode/modules",
 					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
@@ -2314,8 +2613,8 @@
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=4.0.0",
 					"JUCE_APP_VERSION_HEX=0x40000",
-					"JucePlugin_Build_VST=0",
-					"JucePlugin_Build_VST3=0",
+					"JucePlugin_Build_VST=1",
+					"JucePlugin_Build_VST3=1",
 					"JucePlugin_Build_AU=0",
 					"JucePlugin_Build_AUv3=0",
 					"JucePlugin_Build_RTAS=0",
@@ -2327,6 +2626,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
 					"../../JuceLibraryCode",
 					"../../JuceLibraryCode/modules",
 					"../../JuceLibraryCode/modules/juce_audio_plugin_client",
@@ -2432,6 +2732,14 @@
 			};
 			name = Release;
 		};
+		FB6CC3863A4EAE7058A5ACEB = {
+			isa = PBXTargetDependency;
+			target = 0FE22D59824C10ED7A129895;
+		};
+		2F5A2F05266B074E5D66A69E = {
+			isa = PBXTargetDependency;
+			target = 3CD145CD6E879BD22372FEC2;
+		};
 		75AC54B8B924D885043F653C = {
 			isa = PBXTargetDependency;
 			target = A227EAE1DD274CECDE9CE256;
@@ -2464,11 +2772,133 @@
 			buildPhases = ( );
 			buildRules = ( );
 			dependencies = (
+				FB6CC3863A4EAE7058A5ACEB,
+				2F5A2F05266B074E5D66A69E,
 				75AC54B8B924D885043F653C,
 				C0E5C3A2F42CB4BA153B260E,
 			);
 			name = "Soundboard - All";
 			productName = Soundboard;
+		};
+		C83984139F294578C31C7F77 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7BEE43DE1581C25541E6FD7,
+				4B354EC960D0ADDF6135D8A7,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FD1E07F54EA7719DBEBD17C4 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514ABF7663AE619D5BAD2F69,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BF48BC0A4B1CE7AFAAEA3CB = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C37A03FFD64793EEDCE551E,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1B4F39EC37118F859545B78 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB9D82B1D60C052155ED7E20,
+				686D1BF75A3D3107CA32948F,
+				53006A7A8BE3BAAFD327DE6A,
+				B339D31FA9ED814E50C2CCB9,
+				4103E484DC062534673D24E8,
+				549827BB3236748F675E3582,
+				731435F9906A6C91467BBE79,
+				BDCA86894446F26186D704AB,
+				1019D57B04F9AA01BE792918,
+				4672859520E1029F7B61FED4,
+				6CB52D736300FAC0900CF245,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FE22D59824C10ED7A129895 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C83984139F294578C31C7F77;
+			buildPhases = (
+				FD1E07F54EA7719DBEBD17C4,
+				1BF48BC0A4B1CE7AFAAEA3CB,
+				F1B4F39EC37118F859545B78,
+			);
+			buildRules = ( );
+			dependencies = (
+				C0E5C3A2F42CB4BA153B260E,
+			);
+			name = "Soundboard - VST";
+			productName = Soundboard;
+			productReference = BFA4C5A23AE34A3536C0B2DE;
+			productType = "com.apple.product-type.bundle";
+		};
+		FF62219AD674E2F13422411F = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C8DE187273CCF2DB94F6F01,
+				7211DE6E4866B772F5339189,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EF897849133C48DB55A5FF8E = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514ABF7663AE619D5BAD2F69,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA12860436971D56AF9676B3 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD1EDFD44E8B43F1A572A2F7,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA2E76A2B9DEED418F671469 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB9D82B1D60C052155ED7E20,
+				686D1BF75A3D3107CA32948F,
+				53006A7A8BE3BAAFD327DE6A,
+				B339D31FA9ED814E50C2CCB9,
+				4103E484DC062534673D24E8,
+				549827BB3236748F675E3582,
+				731435F9906A6C91467BBE79,
+				BDCA86894446F26186D704AB,
+				1019D57B04F9AA01BE792918,
+				4672859520E1029F7B61FED4,
+				6CB52D736300FAC0900CF245,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CD145CD6E879BD22372FEC2 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF62219AD674E2F13422411F;
+			buildPhases = (
+				EF897849133C48DB55A5FF8E,
+				AA12860436971D56AF9676B3,
+				BA2E76A2B9DEED418F671469,
+			);
+			buildRules = ( );
+			dependencies = (
+				C0E5C3A2F42CB4BA153B260E,
+			);
+			name = "Soundboard - VST3";
+			productName = Soundboard;
+			productReference = EA6319B3847B4A332A166E03;
+			productType = "com.apple.product-type.bundle";
 		};
 		9C6FB9AC51F6FD1FAB59D927 = {
 			isa = XCConfigurationList;
@@ -2484,7 +2914,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				514ABF7663AE619D5BAD2F69,
-				69B757F5786726C6EE526985,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2544,7 +2973,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51018ACBCD6F94DE0C91CF93,
 				677EF090E36C03A22EE86EFB,
+				EEA67115507315C38502A7AE,
 				66BFE9F071F9C06C4410174F,
 				4A6529F7AC1999E5BCCA0DB8,
 				0ABBB696104D4AEB3E9F2B44,
@@ -2553,6 +2984,7 @@
 				5A6AFEA7FADBB703B366B073,
 				5BE52C5E1DEDBC0903733059,
 				69E2291E99A103844C021346,
+				90487CFBE3002CC98261DD72,
 				D8BE1B9ACEEAB11DDCAC54DD,
 				29A09A1092963F5068DC9813,
 				FB9DF2BD97395659CA276AEB,
@@ -2595,13 +3027,13 @@
 		ECA06F9644A203082209D7BA = {
 			isa = PBXProject;
 			buildConfigurationList = D74CD9E54452E3CEDE3EFAF0;
-			attributes = { LastUpgradeCheck = 0930; ORGANIZATIONNAME = "Ultraschall"; TargetAttributes = { 0207E2618A3898AA4B045945 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };A227EAE1DD274CECDE9CE256 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };E7990CC233D1A8A8ACEE514F = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 0930; ORGANIZATIONNAME = "Ultraschall"; TargetAttributes = { 0207E2618A3898AA4B045945 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };0FE22D59824C10ED7A129895 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };3CD145CD6E879BD22372FEC2 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };A227EAE1DD274CECDE9CE256 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; };E7990CC233D1A8A8ACEE514F = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = D2432A7E22DC0E7C20410DBC;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (0207E2618A3898AA4B045945, A227EAE1DD274CECDE9CE256, E7990CC233D1A8A8ACEE514F);
+			targets = (0207E2618A3898AA4B045945, 0FE22D59824C10ED7A129895, 3CD145CD6E879BD22372FEC2, A227EAE1DD274CECDE9CE256, E7990CC233D1A8A8ACEE514F);
 		};
 	};
 	rootObject = ECA06F9644A203082209D7BA;

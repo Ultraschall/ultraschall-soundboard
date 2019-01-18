@@ -3,7 +3,7 @@
 #include "../../Engine/Player.h"
 
 LibraryViewController::LibraryViewController(std::shared_ptr<Store> store)
-    : ValueTreeObjectList<PlayerModel>(store->getState().getChildWithName(IDs::LIBRARY)), ViewController(store)
+    : ValueTreeObjectList<PlayerModel>(store->getState().getChildWithName(IDs::PLAYERS)), ViewController(store)
 {
     rebuildObjects();
 }
@@ -39,12 +39,12 @@ void LibraryViewController::deleteObject(PlayerModel *type)
     delete type;
 }
 
-void LibraryViewController::newObjectAdded(PlayerModel *type)
+void LibraryViewController::newObjectAdded(PlayerModel * /*type*/)
 {
     updateContent();
 }
 
-void LibraryViewController::objectRemoved(PlayerModel *type)
+void LibraryViewController::objectRemoved(PlayerModel * /*type*/)
 {
     updateContent();
 }
@@ -54,7 +54,7 @@ void LibraryViewController::objectOrderChanged()
     updateContent();
 }
 
-void LibraryViewController::valueTreePropertyChanged(ValueTree &state, const Identifier &identifier)
+void LibraryViewController::valueTreePropertyChanged(ValueTree &state, const Identifier & /*identifier*/)
 {
 
     if (state.hasType(IDs::PLAYER))
@@ -210,9 +210,9 @@ void LibraryViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerMo
 
 void LibraryViewController::updateContent() const
 {
-    auto view = getLibraryView();
-    if (view != nullptr)
+    auto libraryView = getLibraryView();
+    if (libraryView != nullptr)
     {
-        view->table.updateContent();
+		libraryView->table.updateContent();
     }
 }

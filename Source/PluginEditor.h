@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "LookAndFeel/LookAndFeel.h"
+#include "LookAndFeel/Material.h"
 
 #include "PluginProcessor.h"
 #include "UserInterface/Controllers/MainViewController.h"
@@ -21,7 +21,9 @@ private:
 
     std::unique_ptr<MainViewController> controller;
     MaterialLookAndFeel lookAndFeel;
-//    OpenGLContext openGLContext;
+#if JUCE_LINUX || JUCE_WINDOWS
+    OpenGLContext openGLContext;
+#endif
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UltraschallSoundboardAudioProcessorEditor)
 };

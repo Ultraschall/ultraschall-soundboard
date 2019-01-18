@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Middleware.h"
 #include "../../Engine/Engine.h"
 
@@ -14,8 +14,8 @@ private:
 	Engine &engine;
 	std::unique_ptr<FileChooser> fileChooser;
 
-	void AsyncAddDirectory(Store &store, Engine &engine);
-	void AsyncAddFile(Store &store, Engine &engine);
+	void AsyncAddDirectory(Store &store);
+	void AsyncAddFile(Store &store);
 
 	class EngineSync : public Timer {
 	public:

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../LookAndFeel/Material.h"
 
 class StartupView : public Component

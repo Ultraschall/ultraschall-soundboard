@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 
 #include "../../LookAndFeel/Material.h"
 #include "../../LookAndFeel/IconButton.h"
@@ -18,7 +18,6 @@ public:
         title.setFont(Material::Fonts::getInstance()->H6());
         
         menuButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
-
         addAndMakeVisible(menuButton);
         addAndMakeVisible(title);
 
@@ -39,7 +38,7 @@ public:
         flexBox.alignContent = FlexBox::AlignContent::center;
         flexBox.alignItems = FlexBox::AlignItems::flexStart;
         
-        flexBox.items.add(FlexItem(px(Material::IconButton::minButtonSize), px(Material::IconButton::minButtonSize), menuButton));
+        flexBox.items.add(FlexItem(px<float>(Material::IconButton::minButtonSize), px<float>(Material::IconButton::minButtonSize), menuButton));
         flexBox.items.add(FlexItem(title).withFlex(2));
         
         flexBox.performLayout(getLocalBounds());

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 
 #include "AppBar.h"
 #include "BottomBar.h"
@@ -63,7 +63,7 @@ public:
         g.fillAll(Material::Color::Surface::Light);
 		if (showKeyboardFocus) {
 			g.setColour(Material::Color::Primary::Main);
-			g.drawRect(getLocalBounds(), 2.0f);
+			g.drawRect(getLocalBounds());
 		}
     }
 
@@ -72,7 +72,7 @@ public:
 		int reduced = 0;
 		if (showKeyboardFocus) {
 			if (hasKeyboardFocus(true)) {
-				reduced = 2;
+				reduced = 1;
 			}
 		}
 
@@ -80,11 +80,11 @@ public:
         flexBox.flexDirection = FlexBox::Direction::column;
         flexBox.alignContent = FlexBox::AlignContent::center;
         
-        flexBox.items.add(FlexItem(getWidth() - (reduced * 2), px<float>(AppBar::height), appBar));
+        flexBox.items.add(FlexItem(static_cast<float>(getWidth() - (reduced * 2)), px<float>(AppBar::height), appBar));
         if (contentView != nullptr) {
             flexBox.items.add(FlexItem(*contentView).withFlex(2));
         }
-        flexBox.items.add(FlexItem(getWidth() - (reduced * 2), px<float>(BottomBar::height), bottomBar));
+        flexBox.items.add(FlexItem(static_cast<float>(getWidth() - (reduced * 2)), px<float>(BottomBar::height), bottomBar));
                 
         flexBox.performLayout(getLocalBounds().reduced(reduced));
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../LookAndFeel/Material.h"
 
 class LibraryItem : public Component {
@@ -32,10 +32,10 @@ public:
     ~LibraryItem() noexcept override = default;
 
     void paint(Graphics &g) override {
-		auto colour = error ? Material::Color::Surface::Base : Material::Color::Primary::Main;
+		auto colour = error ? Material::Color::Surface::Dark : Material::Color::Surface::Base;
 		g.fillAll(colour);
         g.setColour(Material::Color::Icons::Selected::OnSurface::Active.withAlpha(0.12f));
-        g.drawLine(0, getHeight() - 1.0f, getWidth(), getHeight() - 1.0f);
+        g.drawLine(0.0f, getHeight() - 1.0f, static_cast<float>(getWidth()), getHeight() - 1.0f);
     }
     
     void resized() override {

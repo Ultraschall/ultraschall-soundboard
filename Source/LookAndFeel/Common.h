@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    Common.h
-    Created: 30 May 2018 1:20:22pm
-    Author:  Daniel Lindenfelser
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
@@ -15,7 +5,7 @@
 template <typename T>
 inline T px(T dp)
 {
-  return T(std::round(dp * 0.75));
+	return T(std::round(dp * 0.75));
 }
 
 //enum DensityQualifier {

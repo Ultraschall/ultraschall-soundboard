@@ -7,11 +7,11 @@ EngineMiddleware::EngineMiddleware(Engine & engine) : engine(engine) {
 
 ActionObject EngineMiddleware::dispatch(const ActionObject &action, Store &store) {
 	if (action.type == AddDirectory) {
-		AsyncAddDirectory(store, engine);
+		AsyncAddDirectory(store);
 		return action;
 	}
 	else if (action.type == AddFile) {
-		AsyncAddFile(store, engine);
+		AsyncAddFile(store);
 		return action;
 	}
 	else if (action.type == EnableEngineSync) {
@@ -54,7 +54,7 @@ void EngineMiddleware::playerDispatch(const ActionObject & action)
 	}
 }
 
-void EngineMiddleware::AsyncAddDirectory(Store &store, Engine &engine)
+void EngineMiddleware::AsyncAddDirectory(Store &store)
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 
@@ -85,7 +85,7 @@ void EngineMiddleware::AsyncAddDirectory(Store &store, Engine &engine)
 		});
 }
 
-void EngineMiddleware::AsyncAddFile(Store & store, Engine & engine)
+void EngineMiddleware::AsyncAddFile(Store & store)
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
 

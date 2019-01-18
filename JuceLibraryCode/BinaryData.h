@@ -12,7 +12,7 @@ namespace BinaryData
     const int            App_Icon_Back_pngSize = 5907;
 
     extern const char*   App_Icon_Front_svg;
-    const int            App_Icon_Front_svgSize = 5015;
+    const int            App_Icon_Front_svgSize = 5050;
 
     extern const char*   GooglePlay_png;
     const int            GooglePlay_pngSize = 92199;
@@ -108,7 +108,7 @@ namespace BinaryData
     const int            iTunesArtwork2x_pngSize = 385993;
 
     extern const char*   LICENSE_txt;
-    const int            LICENSE_txtSize = 11358;
+    const int            LICENSE_txtSize = 11560;
 
     extern const char*   RobotoBlack_ttf;
     const int            RobotoBlack_ttfSize = 171480;
@@ -147,7 +147,7 @@ namespace BinaryData
     const int            RobotoThinItalic_ttfSize = 176300;
 
     extern const char*   LICENSE_txt2;
-    const int            LICENSE_txt2Size = 11358;
+    const int            LICENSE_txt2Size = 11560;
 
     extern const char*   RobotoMonoBold_ttf;
     const int            RobotoMonoBold_ttfSize = 114752;
@@ -180,73 +180,73 @@ namespace BinaryData
     const int            RobotoMonoThinItalic_ttfSize = 121456;
 
     extern const char*   sharpadd24px_svg;
-    const int            sharpadd24px_svgSize = 621;
+    const int            sharpadd24px_svgSize = 636;
 
     extern const char*   sharpcall_made24px_svg;
-    const int            sharpcall_made24px_svgSize = 600;
+    const int            sharpcall_made24px_svgSize = 615;
 
     extern const char*   sharpcreate_new_folder24px_svg;
-    const int            sharpcreate_new_folder24px_svgSize = 525;
+    const int            sharpcreate_new_folder24px_svgSize = 536;
 
     extern const char*   sharpfile_copy24px_svg;
-    const int            sharpfile_copy24px_svgSize = 648;
+    const int            sharpfile_copy24px_svgSize = 663;
 
     extern const char*   sharpformat_list_numbered24px_svg;
-    const int            sharpformat_list_numbered24px_svgSize = 756;
+    const int            sharpformat_list_numbered24px_svgSize = 772;
 
     extern const char*   sharplock24px_svg;
-    const int            sharplock24px_svgSize = 840;
+    const int            sharplock24px_svgSize = 857;
 
     extern const char*   sharplock_open24px_svg;
-    const int            sharplock_open24px_svgSize = 843;
+    const int            sharplock_open24px_svgSize = 862;
 
     extern const char*   sharploop24px_svg;
-    const int            sharploop24px_svgSize = 702;
+    const int            sharploop24px_svgSize = 714;
 
     extern const char*   sharpmenu24px_svg;
-    const int            sharpmenu24px_svgSize = 513;
+    const int            sharpmenu24px_svgSize = 524;
 
     extern const char*   sharpmic24px_svg;
-    const int            sharpmic24px_svgSize = 763;
+    const int            sharpmic24px_svgSize = 779;
 
     extern const char*   sharpmic_none24px_svg;
-    const int            sharpmic_none24px_svgSize = 746;
+    const int            sharpmic_none24px_svgSize = 761;
 
     extern const char*   sharppause24px_svg;
-    const int            sharppause24px_svgSize = 495;
+    const int            sharppause24px_svgSize = 506;
 
     extern const char*   sharpplay_arrow24px_svg;
-    const int            sharpplay_arrow24px_svgSize = 480;
+    const int            sharpplay_arrow24px_svgSize = 491;
 
     extern const char*   sharpsettings24px_svg;
-    const int            sharpsettings24px_svgSize = 1276;
+    const int            sharpsettings24px_svgSize = 1296;
 
     extern const char*   sharpsettings_input_antenna24px_svg;
-    const int            sharpsettings_input_antenna24px_svgSize = 907;
+    const int            sharpsettings_input_antenna24px_svgSize = 924;
 
     extern const char*   sharpsettings_input_svideo24px_svg;
-    const int            sharpsettings_input_svideo24px_svgSize = 1149;
+    const int            sharpsettings_input_svideo24px_svgSize = 1168;
 
     extern const char*   sharpstop24px_svg;
-    const int            sharpstop24px_svgSize = 478;
+    const int            sharpstop24px_svgSize = 489;
 
     extern const char*   sharpsubscriptions24px_svg;
-    const int            sharpsubscriptions24px_svgSize = 540;
+    const int            sharpsubscriptions24px_svgSize = 551;
 
     extern const char*   sharpunarchive24px_svg;
-    const int            sharpunarchive24px_svgSize = 694;
+    const int            sharpunarchive24px_svgSize = 709;
 
     extern const char*   sharpview_comfy24px_svg;
-    const int            sharpview_comfy24px_svgSize = 761;
+    const int            sharpview_comfy24px_svgSize = 777;
 
     extern const char*   sharpvolume_mute24px_svg;
-    const int            sharpvolume_mute24px_svgSize = 485;
+    const int            sharpvolume_mute24px_svgSize = 496;
 
     extern const char*   sharpvolume_off24px_svg;
-    const int            sharpvolume_off24px_svgSize = 923;
+    const int            sharpvolume_off24px_svgSize = 941;
 
     extern const char*   sharpvolume_up24px_svg;
-    const int            sharpvolume_up24px_svgSize = 664;
+    const int            sharpvolume_up24px_svgSize = 676;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 80;

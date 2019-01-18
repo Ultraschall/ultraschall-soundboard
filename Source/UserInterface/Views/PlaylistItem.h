@@ -1,4 +1,22 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
-#include "../Material/Material.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
+
+class PlaylistItem : public Component
+{
+public:
+    PlaylistItem() {
+		setOpaque(true);
+    }
+    
+    ~PlaylistItem() noexcept override = default;
+    
+    void paint(Graphics& g) override {
+    }
+    
+    void resized() override {
+    }
+    
+private:    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaylistItem)
+};
