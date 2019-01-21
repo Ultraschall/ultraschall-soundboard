@@ -55,7 +55,6 @@
 #define JUCE_MODULE_AVAILABLE_juce_audio_processors         1
 #define JUCE_MODULE_AVAILABLE_juce_audio_utils              1
 #define JUCE_MODULE_AVAILABLE_juce_core                     1
-#define JUCE_MODULE_AVAILABLE_juce_cryptography             1
 #define JUCE_MODULE_AVAILABLE_juce_data_structures          1
 #define JUCE_MODULE_AVAILABLE_juce_dsp                      1
 #define JUCE_MODULE_AVAILABLE_juce_events                   1
@@ -214,7 +213,7 @@
 #endif
 
 #ifndef    JUCE_USE_CURL
- #define   JUCE_USE_CURL 1
+ //#define JUCE_USE_CURL 0
 #endif
 
 #ifndef    JUCE_LOAD_CURL_SYMBOLS_LAZILY
@@ -333,7 +332,7 @@
  #define JucePlugin_Build_AU               0
 #endif
 #ifndef  JucePlugin_Build_AUv3
- #define JucePlugin_Build_AUv3             0
+ #define JucePlugin_Build_AUv3             1
 #endif
 #ifndef  JucePlugin_Build_RTAS
  #define JucePlugin_Build_RTAS             0
@@ -372,7 +371,7 @@
  #define JucePlugin_PluginCode             0x536f7562 // 'Soub'
 #endif
 #ifndef  JucePlugin_IsSynth
- #define JucePlugin_IsSynth                0
+ #define JucePlugin_IsSynth                1
 #endif
 #ifndef  JucePlugin_WantsMidiInput
  #define JucePlugin_WantsMidiInput         1
@@ -399,13 +398,13 @@
  #define JucePlugin_VSTUniqueID            JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_VSTCategory
- #define JucePlugin_VSTCategory            kPlugCategEffect
+ #define JucePlugin_VSTCategory            kPlugCategSynth
 #endif
 #ifndef  JucePlugin_Vst3Category
- #define JucePlugin_Vst3Category           "Fx"
+ #define JucePlugin_Vst3Category           "Instrument|Synth"
 #endif
 #ifndef  JucePlugin_AUMainType
- #define JucePlugin_AUMainType             'aumf'
+ #define JucePlugin_AUMainType             'aumu'
 #endif
 #ifndef  JucePlugin_AUSubType
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
@@ -423,7 +422,7 @@
  #define JucePlugin_CFBundleIdentifier     fm.ultraschall.Soundboard
 #endif
 #ifndef  JucePlugin_RTASCategory
- #define JucePlugin_RTASCategory           0
+ #define JucePlugin_RTASCategory           2048
 #endif
 #ifndef  JucePlugin_RTASManufacturerCode
  #define JucePlugin_RTASManufacturerCode   JucePlugin_ManufacturerCode
@@ -447,7 +446,7 @@
  #define JucePlugin_AAXProductId           JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AAXCategory
- #define JucePlugin_AAXCategory            0
+ #define JucePlugin_AAXCategory            2048
 #endif
 #ifndef  JucePlugin_AAXDisableBypass
  #define JucePlugin_AAXDisableBypass       0
@@ -456,7 +455,7 @@
  #define JucePlugin_AAXDisableMultiMono    0
 #endif
 #ifndef  JucePlugin_IAAType
- #define JucePlugin_IAAType                0x6175726d // 'aurm'
+ #define JucePlugin_IAAType                0x61757269 // 'auri'
 #endif
 #ifndef  JucePlugin_IAASubType
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
@@ -465,13 +464,13 @@
  #define JucePlugin_IAAName                "Ultraschall: Soundboard"
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
- #define JucePlugin_MaxNumInputChannels    2
+ #define JucePlugin_MaxNumInputChannels    0
 #endif
 #ifndef  JucePlugin_MaxNumOutputChannels
  #define JucePlugin_MaxNumOutputChannels   2
 #endif
 #ifndef  JucePlugin_PreferredChannelConfigurations
- #define JucePlugin_PreferredChannelConfigurations  {1, 1},{2, 2}
+ #define JucePlugin_PreferredChannelConfigurations  {0,1}, {0,2}
 #endif
 
 //==============================================================================

@@ -25,17 +25,15 @@ void Engine::releaseResources() {
 void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	mixer.getNextAudioBlock(bufferToFill);
 
-	auto *leftBuffer = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
-	auto *rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
-
 	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
 		const auto level = talkOverRange.convertFrom0to1(talkOver.process());
 
-		if (talkOver.getState() == ADSR::env_sustain)
+		if (talkOver.getState() == adsr::env_sustain)
 			continue;
 
-		leftBuffer[sample] = leftBuffer[sample] * level;
-		rightBuffer[sample] = rightBuffer[sample] * level;
+        for (int i = 0; i < bufferToFill.buffer->getNumChannels(); ++i) {
+            bufferToFill.buffer->applyGain(i, sample, 1, level);
+        }
 	}
 
 	if (currentGain == previousGain) {
@@ -152,7 +150,7 @@ void Engine::changeListenerCallback(ChangeBroadcaster *source) {
 void Engine::sync(Store &store) {
 	
 	playersToUpdate.getLock().enter();
-	Array snapshot = playersToUpdate;
+	auto snapshot = playersToUpdate;
 	playersToUpdate.clear();
 	playersToUpdate.getLock().exit();
 

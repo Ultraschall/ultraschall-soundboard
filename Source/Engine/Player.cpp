@@ -31,7 +31,7 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     auto *rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
 
     for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
-        const auto level = adsr.process();
+        const auto level = evelop.process();
         leftBuffer[sample] = leftBuffer[sample] * level;
         rightBuffer[sample] = rightBuffer[sample] * level;
     }
@@ -56,22 +56,22 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
             needUpdate = true;
         }
 
-        switch (adsr.getState()) {
-            case ADSR::envState::env_attack:
+        switch (evelop.getState()) {
+            case adsr::envState::env_attack:
                 if (fadeState != fade_in) {
                     fadeState = fade_in;
                     needUpdate = true;
                 }
                 break;
-            case ADSR::envState::env_release:
+            case adsr::envState::env_release:
                 if (fadeState != fade_out) {
                     fadeState = fade_out;
                     needUpdate = true;
                 }
                 break;
-            case ADSR::envState::env_decay:
-            case ADSR::envState::env_sustain:
-            case ADSR::envState::env_idle:
+            case adsr::envState::env_decay:
+            case adsr::envState::env_sustain:
+            case adsr::envState::env_idle:
             default:
                 if (fadeState != fade_idle) {
                     fadeState = fade_idle;
@@ -127,16 +127,16 @@ float Player::getGain() {
 }
 
 void Player::fadeIn() {
-    adsr.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
-    adsr.gate(1);
+    evelop.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
+    evelop.gate(1);
     audioTransportSource->start();
     playerState = player_playing;
     sendChangeMessage();
 }
 
 void Player::fadeOut() {
-    adsr.setReleaseRate(static_cast<float>((mySampleRate / 1000) * releaseMs));
-    adsr.gate(0);
+    evelop.setReleaseRate(static_cast<float>((mySampleRate / 1000) * releaseMs));
+    evelop.gate(0);
     sendChangeMessage();
 }
 
@@ -147,8 +147,8 @@ void Player::pause() {
 }
 
 void Player::play() {
-    adsr.setAttackRate(0);
-    adsr.gate(1);
+    evelop.setAttackRate(0);
+    evelop.gate(1);
     audioTransportSource->start();
     playerState = player_playing;
     sendChangeMessage();
@@ -157,8 +157,8 @@ void Player::play() {
 void Player::stop() {
     audioTransportSource->stop();
     audioTransportSource->setPosition(0);
-    adsr.gate(0);
-    adsr.reset();
+    evelop.gate(0);
+    evelop.reset();
     if (playerState != player_played) {
         playerState = player_stopped;
     } else {

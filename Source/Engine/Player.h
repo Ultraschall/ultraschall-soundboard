@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "ADSR.h"
+#include "adsr.h"
 
 class Player : public AudioSource, public ChangeBroadcaster {
 public:
@@ -82,7 +82,7 @@ private:
     std::unique_ptr<AudioTransportSource> audioTransportSource;
     std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;
 
-    ADSR adsr;
+    adsr evelop;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
