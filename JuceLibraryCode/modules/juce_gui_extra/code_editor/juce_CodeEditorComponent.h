@@ -57,7 +57,7 @@ public:
                          CodeTokeniser* codeTokeniser);
 
     /** Destructor. */
-    ~CodeEditorComponent() override;
+    ~CodeEditorComponent();
 
     //==============================================================================
     /** Returns the code document that this component is editing. */

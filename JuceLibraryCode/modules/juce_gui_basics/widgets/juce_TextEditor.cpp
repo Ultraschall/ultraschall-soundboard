@@ -77,9 +77,9 @@ public:
 
     // VS2013 can't default move constructors
     UniformTextSection (UniformTextSection&& other)
-        : font (std::move (other.font)),
+        : font (static_cast<Font&&> (other.font)),
           colour (other.colour),
-          atoms (std::move (other.atoms))
+          atoms (static_cast<Array<TextAtom>&&> (other.atoms))
     {
     }
 
@@ -795,7 +795,7 @@ struct TextEditor::TextHolderComponent  : public Component,
         owner.getTextValue().addListener (this);
     }
 
-    ~TextHolderComponent() override
+    ~TextHolderComponent()
     {
         owner.getTextValue().removeListener (this);
     }

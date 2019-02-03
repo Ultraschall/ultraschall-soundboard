@@ -528,7 +528,7 @@ class JUCE_API  SoftwareImageType   : public ImageType
 {
 public:
     SoftwareImageType();
-    ~SoftwareImageType() override;
+    ~SoftwareImageType();
 
     ImagePixelData::Ptr create (Image::PixelFormat, int width, int height, bool clearImage) const override;
     int getTypeID() const override;
@@ -546,7 +546,7 @@ class JUCE_API  NativeImageType   : public ImageType
 {
 public:
     NativeImageType();
-    ~NativeImageType() override;
+    ~NativeImageType();
 
     ImagePixelData::Ptr create (Image::PixelFormat, int width, int height, bool clearImage) const override;
     int getTypeID() const override;

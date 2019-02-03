@@ -116,7 +116,7 @@ public:
  #elif JUCE_ANDROID
 
   #define JUCE_CREATE_APPLICATION_DEFINE(AppClass) \
-    extern "C" juce::JUCEApplicationBase* juce_CreateApplication() { return new AppClass(); }
+    juce::JUCEApplicationBase* juce_CreateApplication() { return new AppClass(); }
 
   #define JUCE_MAIN_FUNCTION_DEFINITION
 

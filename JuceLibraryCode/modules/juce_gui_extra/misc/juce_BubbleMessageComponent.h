@@ -56,7 +56,7 @@ public:
     BubbleMessageComponent (int fadeOutLengthMs = 150);
 
     /** Destructor. */
-    ~BubbleMessageComponent() override;
+    ~BubbleMessageComponent();
 
     //==============================================================================
     /** Shows a message bubble at a particular position.

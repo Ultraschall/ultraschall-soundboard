@@ -30,24 +30,24 @@ NamedValueSet::NamedValue::NamedValue (const Identifier& n, const var& v)  : nam
 NamedValueSet::NamedValue::NamedValue (const NamedValue& other) : NamedValue (other.name, other.value) {}
 
 NamedValueSet::NamedValue::NamedValue (NamedValue&& other) noexcept
-   : NamedValue (std::move (other.name),
-                 std::move (other.value))
+   : NamedValue (static_cast<Identifier&&> (other.name),
+                 static_cast<var&&> (other.value))
 {}
 
 NamedValueSet::NamedValue::NamedValue (const Identifier& n, var&& v) noexcept
-   : name (n), value (std::move (v))
+   : name (n), value (static_cast<var&&> (v))
 {
 }
 
 NamedValueSet::NamedValue::NamedValue (Identifier&& n, var&& v) noexcept
-   : name (std::move (n)),
-     value (std::move (v))
+   : name (static_cast<Identifier&&> (n)),
+     value (static_cast<var&&> (v))
 {}
 
 NamedValueSet::NamedValue& NamedValueSet::NamedValue::operator= (NamedValue&& other) noexcept
 {
-    name = std::move (other.name);
-    value = std::move (other.value);
+    name = static_cast<Identifier&&> (other.name);
+    value = static_cast<var&&> (other.value);
     return *this;
 }
 
@@ -61,10 +61,10 @@ NamedValueSet::~NamedValueSet() noexcept {}
 NamedValueSet::NamedValueSet (const NamedValueSet& other)  : values (other.values) {}
 
 NamedValueSet::NamedValueSet (NamedValueSet&& other) noexcept
-   : values (std::move (other.values)) {}
+   : values (static_cast<Array<NamedValue>&&> (other.values)) {}
 
 NamedValueSet::NamedValueSet (std::initializer_list<NamedValue> list)
-   : values (std::move (list))
+   : values (static_cast<std::initializer_list<NamedValue>&&> (list))
 {
 }
 
@@ -163,11 +163,11 @@ bool NamedValueSet::set (const Identifier& name, var&& newValue)
         if (v->equalsWithSameType (newValue))
             return false;
 
-        *v = std::move (newValue);
+        *v = static_cast<var&&> (newValue);
         return true;
     }
 
-    values.add ({ name, std::move (newValue) });
+    values.add ({ name, static_cast<var&&> (newValue) });
     return true;
 }
 

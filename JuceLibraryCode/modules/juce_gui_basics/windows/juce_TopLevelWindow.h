@@ -64,7 +64,7 @@ public:
     TopLevelWindow (const String& name, bool addToDesktop);
 
     /** Destructor. */
-    ~TopLevelWindow() override;
+    ~TopLevelWindow();
 
     //==============================================================================
     /** True if this is currently the TopLevelWindow that is actively being used.

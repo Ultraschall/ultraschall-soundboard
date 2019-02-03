@@ -44,7 +44,7 @@ class JUCE_API  GenericAudioProcessorEditor      : public AudioProcessorEditor
 public:
     //==============================================================================
     GenericAudioProcessorEditor (AudioProcessor* owner);
-    ~GenericAudioProcessorEditor() override;
+    ~GenericAudioProcessorEditor();
 
     //==============================================================================
     void paint (Graphics&) override;

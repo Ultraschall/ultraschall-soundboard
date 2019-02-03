@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Builds/LinuxMakefile/build/Soundboard",
+            "program": "${workspaceFolder}/.build/Builds/CLion/Soundboard",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

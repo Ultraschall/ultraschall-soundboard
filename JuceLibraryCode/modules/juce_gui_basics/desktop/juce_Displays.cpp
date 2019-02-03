@@ -326,36 +326,19 @@ void Displays::updateToLogical()
         DisplayNode node;
 
         node.display = &d;
-
-        if (d.totalArea.getTopLeft() == Point<int>())
-            node.isRoot = true;
-
         displayNodes.add (node);
     }
 
-    auto* root = [&displayNodes]() -> DisplayNode*
+    DisplayNode* root = nullptr;
+    for (auto& node : displayNodes)
     {
-        for (auto& node : displayNodes)
-            if (node.isRoot)
-                return &node;
-
-        auto minDistance = std::numeric_limits<int>::max();
-        DisplayNode* retVal = nullptr;
-
-        for (auto& node : displayNodes)
+        if (node.display->totalArea.getTopLeft() == Point<int>())
         {
-            auto distance = node.display->totalArea.getTopLeft().getDistanceFrom ({});
-
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                retVal = &node;
-            }
+            root = &node;
+            root->isRoot = true;
+            break;
         }
-
-        retVal->isRoot = true;
-        return retVal;
-    }();
+    }
 
     // Must have a root node!
     jassert (root != nullptr);

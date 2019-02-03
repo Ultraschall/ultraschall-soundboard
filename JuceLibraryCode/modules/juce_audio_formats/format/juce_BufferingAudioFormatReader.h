@@ -54,7 +54,7 @@ public:
                           TimeSliceThread& timeSliceThread,
                           int samplesToBuffer);
 
-    ~BufferingAudioReader() override;
+    ~BufferingAudioReader();
 
     /** Sets a number of milliseconds that the reader can block for in its readSamples()
         method before giving up and returning silence.

@@ -144,6 +144,11 @@ public:
 
             expect (t["testkey"] == var());
         }
+
+        beginTest ("reset value");
+        {
+
+        }
     }
 };
 

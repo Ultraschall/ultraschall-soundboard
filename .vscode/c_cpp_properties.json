@@ -6,11 +6,15 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [],
-            "compilerPath": "/bin/clang",
+            "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64",
-            "compileCommands": "${workspaceFolder}/compile_commands.json"
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceFolder}/.build/.vsdb"
+            },
+            "compileCommands": "${workspaceFolder}/.build/compile_commands.json"
         }
     ],
     "version": 4

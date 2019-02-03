@@ -640,6 +640,9 @@ MemoryMappedFile::~MemoryMappedFile()
 File juce_getExecutableFile();
 File juce_getExecutableFile()
 {
+   #if JUCE_ANDROID
+    return File (android.appFile);
+   #else
     struct DLAddrReader
     {
         static String getFilename()
@@ -654,6 +657,7 @@ File juce_getExecutableFile()
 
     static String filename = DLAddrReader::getFilename();
     return File::getCurrentWorkingDirectory().getChildFile (filename);
+   #endif
 }
 
 //==============================================================================
@@ -887,27 +891,28 @@ void JUCE_API juce_threadEntryPoint (void*);
 extern JavaVM* androidJNIJavaVM;
 #endif
 
-extern "C" void* threadEntryProc (void*);
-extern "C" void* threadEntryProc (void* userData)
+static void* threadEntryProc (void* userData)
 {
-    auto* myself = static_cast<Thread*> (userData);
+   #if JUCE_ANDROID
+
+    if (androidJNIJavaVM != nullptr)
+    {
+        JNIEnv* env;
+        androidJNIJavaVM->AttachCurrentThread (&env, nullptr);
+        setEnv (env);
+    }
+    else
+    {
+        // JNI_OnLoad was not called - make sure you load the JUCE shared library
+        // using System.load inside of Java
+        jassertfalse;
+    }
+   #endif
 
     JUCE_AUTORELEASEPOOL
     {
-        juce_threadEntryPoint (myself);
+        juce_threadEntryPoint (userData);
     }
-
-   #if JUCE_ANDROID
-    if (androidJNIJavaVM != nullptr)
-    {
-        void* env = nullptr;
-        androidJNIJavaVM->GetEnv(&env, JNI_VERSION_1_2);
-
-        // only detach if we have actually been attached
-        if (env != nullptr)
-            androidJNIJavaVM->DetachCurrentThread();
-    }
-   #endif
 
     return nullptr;
 }
@@ -949,7 +954,6 @@ void Thread::launchThread()
         attrPtr = &attr;
         pthread_attr_setstacksize (attrPtr, threadStackSize);
     }
-
 
     if (pthread_create (&handle, attrPtr, threadEntryProc, this) == 0)
     {
@@ -1331,7 +1335,15 @@ private:
 
     static void* timerThread (void* param)
     {
-       #if ! JUCE_ANDROID
+       #if JUCE_ANDROID
+        // JNI_OnLoad was not called - make sure you load the JUCE shared library
+        // using System.load inside of Java
+        jassert (androidJNIJavaVM != nullptr);
+
+        JNIEnv* env;
+        androidJNIJavaVM->AttachCurrentThread (&env, nullptr);
+        setEnv (env);
+       #else
         int dummy;
         pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, &dummy);
        #endif

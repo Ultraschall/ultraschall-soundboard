@@ -54,7 +54,7 @@ public:
                                                     object: nil];
     }
 
-    ~Pimpl() override
+    ~Pimpl()
     {
         [[NSNotificationCenter defaultCenter]  removeObserver: view];
         [[NSStatusBar systemStatusBar] removeStatusItem: statusItem];

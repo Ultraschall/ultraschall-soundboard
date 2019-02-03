@@ -849,7 +849,7 @@ namespace AAXClasses
         AAX_Result GetParameterNumberofSteps (AAX_CParamID paramID, int32_t* result) const
         {
             if (auto* param = getParameterFromID (paramID))
-                *result = getSafeNumberOfParameterSteps (*param);
+                *result = param->getNumSteps();
 
             return AAX_SUCCESS;
         }
@@ -1407,14 +1407,6 @@ namespace AAXClasses
             return false;
         }
 
-        // Some older Pro Tools control surfaces (EUCON [PT version 12.4] and
-        // Avid S6 before version 2.1) cannot cope with a large number of
-        // parameter steps.
-        static int32_t getSafeNumberOfParameterSteps (const AudioProcessorParameter& param)
-        {
-            return jmax (param.getNumSteps(), 2048);
-        }
-
         void addAudioProcessorParameters()
         {
             auto& audioProcessor = getPluginInstance();
@@ -1456,6 +1448,7 @@ namespace AAXClasses
                 aaxParamIDs.add (paramID);
                 auto aaxParamID = aaxParamIDs.getReference (parameterIndex++).getCharPointer();
 
+
                 paramMap.set (AAXClasses::getAAXParamHash (aaxParamID), juceParam);
 
                 // is this a meter?
@@ -1474,7 +1467,7 @@ namespace AAXClasses
 
                 parameter->AddShortenedName (juceParam->getName (4).toRawUTF8());
 
-                auto parameterNumSteps = getSafeNumberOfParameterSteps (*juceParam);
+                auto parameterNumSteps = juceParam->getNumSteps();
                 parameter->SetNumberOfSteps ((uint32_t) parameterNumSteps);
 
                #if JUCE_FORCE_LEGACY_PARAMETER_AUTOMATION_TYPE

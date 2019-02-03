@@ -100,7 +100,7 @@ public:
                        const String& textWhenNothingSelected);
 
     /** Destructor. */
-    ~FilenameComponent() override;
+    ~FilenameComponent();
 
     //==============================================================================
     /** Returns the currently displayed filename. */

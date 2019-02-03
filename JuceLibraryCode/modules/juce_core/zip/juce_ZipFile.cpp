@@ -77,7 +77,7 @@ static int64 findCentralDirectoryFileHeader (InputStream& input, int& numEntries
 
     in.setPosition (in.getTotalLength());
     auto pos = in.getPosition();
-    auto lowestPos = jmax ((int64) 0, pos - 1048576);
+    auto lowestPos = jmax ((int64) 0, pos - 1024);
     char buffer[32] = {};
 
     while (pos > lowestPos)
@@ -154,7 +154,7 @@ struct ZipFile::ZipInputStream  : public InputStream
         }
     }
 
-    ~ZipInputStream() override
+    ~ZipInputStream()
     {
        #if JUCE_DEBUG
         if (inputStream != nullptr && inputStream == file.inputStream)

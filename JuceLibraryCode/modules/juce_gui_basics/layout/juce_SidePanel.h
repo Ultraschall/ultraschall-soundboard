@@ -62,7 +62,7 @@ public:
                bool deleteComponentWhenNoLongerNeeded = true);
 
     /** Destructor */
-    ~SidePanel() override;
+    ~SidePanel();
 
     //==============================================================================
     /** Sets the component that this SidePanel will contain.

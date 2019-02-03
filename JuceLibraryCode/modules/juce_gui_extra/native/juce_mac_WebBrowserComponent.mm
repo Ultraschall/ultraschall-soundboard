@@ -288,43 +288,39 @@ public:
            #else
             urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
            #endif
+            NSMutableURLRequest* r
+                = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: urlString]
+                                          cachePolicy: NSURLRequestUseProtocolCachePolicy
+                                      timeoutInterval: 30.0];
 
-            if (NSURL* nsURL = [NSURL URLWithString: urlString])
+            if (postData != nullptr && postData->getSize() > 0)
             {
-                NSMutableURLRequest* r
-                    = [NSMutableURLRequest requestWithURL: nsURL
-                                              cachePolicy: NSURLRequestUseProtocolCachePolicy
-                                          timeoutInterval: 30.0];
-
-                if (postData != nullptr && postData->getSize() > 0)
-                {
-                    [r setHTTPMethod: nsStringLiteral ("POST")];
-                    [r setHTTPBody: [NSData dataWithBytes: postData->getData()
-                                                   length: postData->getSize()]];
-                }
-
-                if (headers != nullptr)
-                {
-                    for (int i = 0; i < headers->size(); ++i)
-                    {
-                        auto headerName  = (*headers)[i].upToFirstOccurrenceOf (":", false, false).trim();
-                        auto headerValue = (*headers)[i].fromFirstOccurrenceOf (":", false, false).trim();
-
-                        [r setValue: juceStringToNS (headerValue)
-                           forHTTPHeaderField: juceStringToNS (headerName)];
-                    }
-                }
-
-               #if JUCE_MAC
-                [[webView mainFrame] loadRequest: r];
-               #else
-                [webView loadRequest: r];
-               #endif
-
-               #if JUCE_IOS
-                [webView setScalesPageToFit:YES];
-               #endif
+                [r setHTTPMethod: nsStringLiteral ("POST")];
+                [r setHTTPBody: [NSData dataWithBytes: postData->getData()
+                                               length: postData->getSize()]];
             }
+
+            if (headers != nullptr)
+            {
+                for (int i = 0; i < headers->size(); ++i)
+                {
+                    const String headerName  ((*headers)[i].upToFirstOccurrenceOf (":", false, false).trim());
+                    const String headerValue ((*headers)[i].fromFirstOccurrenceOf (":", false, false).trim());
+
+                    [r setValue: juceStringToNS (headerValue)
+                       forHTTPHeaderField: juceStringToNS (headerName)];
+                }
+            }
+
+           #if JUCE_MAC
+            [[webView mainFrame] loadRequest: r];
+           #else
+            [webView loadRequest: r];
+           #endif
+
+           #if JUCE_IOS
+            [webView setScalesPageToFit:YES];
+           #endif
         }
     }
 

@@ -351,14 +351,9 @@ struct JSONFormatter
             auto d = static_cast<double> (v);
 
             if (juce_isfinite (d))
-            {
-                String doubleString (d, maximumDecimalPlaces);
-                out << doubleString.substring (0, (int) CharacterFunctions::findLengthWithoutTrailingZeros (doubleString.getCharPointer()));
-            }
+                out << String (d, maximumDecimalPlaces);
             else
-            {
                 out << "null";
-            }
         }
         else if (v.isArray())
         {

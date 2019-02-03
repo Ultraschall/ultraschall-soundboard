@@ -214,7 +214,7 @@ struct Viewport::DragToScrollListener   : private MouseListener,
         offsetY.behaviour.setMinimumVelocity (60);
     }
 
-    ~DragToScrollListener() override
+    ~DragToScrollListener()
     {
         viewport.contentHolder.removeMouseListener (this);
         Desktop::getInstance().removeGlobalMouseListener (this);

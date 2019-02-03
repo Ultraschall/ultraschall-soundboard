@@ -50,7 +50,7 @@ public:
     NSViewComponent();
 
     /** Destructor. */
-    ~NSViewComponent() override;
+    ~NSViewComponent();
 
     /** Assigns an NSView to this peer.
 

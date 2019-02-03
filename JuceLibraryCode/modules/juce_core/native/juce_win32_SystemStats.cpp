@@ -472,7 +472,7 @@ String SystemStats::getComputerName()
 {
     TCHAR text[128] = { 0 };
     auto len = (DWORD) numElementsInArray (text) - 1;
-    GetComputerNameEx (ComputerNamePhysicalDnsHostname, text, &len);
+    GetComputerName (text, &len);
     return String (text, len);
 }
 

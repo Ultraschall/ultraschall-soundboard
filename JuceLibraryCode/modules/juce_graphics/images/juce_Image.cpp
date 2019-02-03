@@ -158,7 +158,7 @@ class SubsectionPixelData  : public ImagePixelData
 public:
     SubsectionPixelData (ImagePixelData::Ptr source, Rectangle<int> r)
         : ImagePixelData (source->pixelFormat, r.getWidth(), r.getHeight()),
-          sourceImage (std::move (source)), area (r)
+          sourceImage (static_cast<ImagePixelData::Ptr&&> (source)), area (r)
     {
     }
 
@@ -226,7 +226,7 @@ Image::Image() noexcept
 }
 
 Image::Image (ReferenceCountedObjectPtr<ImagePixelData> instance) noexcept
-    : image (std::move (instance))
+    : image (static_cast<ReferenceCountedObjectPtr<ImagePixelData>&&> (instance))
 {
 }
 

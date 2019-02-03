@@ -189,27 +189,29 @@ static bool isFileExecutable (const String& filename)
 
 bool Process::openDocument (const String& fileName, const String& parameters)
 {
-    auto cmdString = fileName.replace (" ", "\\ ", false);
+    String cmdString (fileName.replace (" ", "\\ ",false));
     cmdString << " " << parameters;
 
-    if (cmdString.startsWithIgnoreCase ("file:")
+    if (/*URL::isProbablyAWebsiteURL (fileName)
+          ||*/ cmdString.startsWithIgnoreCase ("file:")
+         /*|| URL::isProbablyAnEmailAddress (fileName)*/
          || File::createFileWithoutCheckingPath (fileName).isDirectory()
          || ! isFileExecutable (fileName))
     {
+        // create a command that tries to launch a bunch of likely browsers
+        static const char* const browserNames[] = { "xdg-open", "/etc/alternatives/x-www-browser", "firefox", "mozilla",
+                                                    "google-chrome", "chromium-browser", "opera", "konqueror" };
         StringArray cmdLines;
 
-        for (auto browserName : { "xdg-open", "/etc/alternatives/x-www-browser", "firefox", "mozilla",
-                                  "google-chrome", "chromium-browser", "opera", "konqueror" })
-        {
-            cmdLines.add (String (browserName) + " " + cmdString.trim());
-        }
+        for (int i = 0; i < numElementsInArray (browserNames); ++i)
+            cmdLines.add (String (browserNames[i]) + " " + cmdString.trim().quoted());
 
         cmdString = cmdLines.joinIntoString (" || ");
     }
 
     const char* const argv[4] = { "/bin/sh", "-c", cmdString.toUTF8(), 0 };
 
-    auto cpid = fork();
+    const int cpid = fork();
 
     if (cpid == 0)
     {

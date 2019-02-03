@@ -70,7 +70,7 @@ class JUCE_API  SettableTooltipClient   : public TooltipClient
 public:
     //==============================================================================
     /** Destructor. */
-    ~SettableTooltipClient() override {}
+    ~SettableTooltipClient() {}
 
     //==============================================================================
     /** Assigns a new tooltip to this object. */

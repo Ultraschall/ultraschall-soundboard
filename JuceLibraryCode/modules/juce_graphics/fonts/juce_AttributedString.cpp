@@ -38,14 +38,14 @@ namespace
     {
         for (int i = atts.size(); --i >= 0;)
         {
-            const auto& att = atts.getUnchecked (i);
-            auto offset = position - att.range.getStart();
+            const AttributedString::Attribute& att = atts.getReference (i);
+            const int offset = position - att.range.getStart();
 
             if (offset >= 0)
             {
                 if (offset > 0 && position < att.range.getEnd())
                 {
-                    atts.insert (i + 1, AttributedString::Attribute (att));
+                    atts.insert (i + 1, att);
                     atts.getReference (i).range.setEnd (position);
                     atts.getReference (i + 1).range.setStart (position);
                 }
@@ -57,7 +57,7 @@ namespace
 
     Range<int> splitAttributeRanges (Array<AttributedString::Attribute>& atts, Range<int> newRange)
     {
-        newRange = newRange.getIntersectionWith ({ 0, getLength (atts) });
+        newRange = newRange.getIntersectionWith (Range<int> (0, getLength (atts)));
 
         if (! newRange.isEmpty())
         {
@@ -72,8 +72,8 @@ namespace
     {
         for (int i = atts.size() - 1; --i >= 0;)
         {
-            auto& a1 = atts.getReference (i);
-            auto& a2 = atts.getReference (i + 1);
+            AttributedString::Attribute& a1 = atts.getReference (i);
+            AttributedString::Attribute& a2 = atts.getReference (i + 1);
 
             if (a1.colour == a2.colour && a1.font == a2.font)
             {
@@ -91,15 +91,16 @@ namespace
     {
         if (atts.size() == 0)
         {
-            atts.add ({ Range<int> (0, length), f != nullptr ? *f : Font(), c != nullptr ? *c : Colour (0xff000000) });
+            atts.add (AttributedString::Attribute (Range<int> (0, length),
+                                                   f != nullptr ? *f : Font(),
+                                                   c != nullptr ? *c : Colour (0xff000000)));
         }
         else
         {
-            auto start = getLength (atts);
-            atts.add ({ Range<int> (start, start + length),
-                        f != nullptr ? *f : atts.getReference (atts.size() - 1).font,
-                        c != nullptr ? *c : atts.getReference (atts.size() - 1).colour });
-
+            const int start = getLength (atts);
+            atts.add (AttributedString::Attribute (Range<int> (start, start + length),
+                                                   f != nullptr ? *f : atts.getReference (atts.size() - 1).font,
+                                                   c != nullptr ? *c : atts.getReference (atts.size() - 1).colour));
             mergeAdjacentRanges (atts);
         }
     }
@@ -109,8 +110,10 @@ namespace
     {
         range = splitAttributeRanges (atts, range);
 
-        for (auto& att : atts)
+        for (int i = 0; i < atts.size(); ++i)
         {
+            AttributedString::Attribute& att = atts.getReference (i);
+
             if (range.getStart() < att.range.getEnd())
             {
                 if (range.getEnd() <= att.range.getStart())
@@ -135,9 +138,12 @@ namespace
 }
 
 //==============================================================================
+AttributedString::Attribute::Attribute() noexcept : colour (0xff000000) {}
+AttributedString::Attribute::~Attribute() noexcept {}
+
 AttributedString::Attribute::Attribute (Attribute&& other) noexcept
     : range (other.range),
-      font (std::move (other.font)),
+      font (static_cast<Font&&> (other.font)),
       colour (other.colour)
 {
 }
@@ -145,7 +151,22 @@ AttributedString::Attribute::Attribute (Attribute&& other) noexcept
 AttributedString::Attribute& AttributedString::Attribute::operator= (Attribute&& other) noexcept
 {
     range = other.range;
-    font = std::move (other.font);
+    font = static_cast<Font&&> (other.font);
+    colour = other.colour;
+    return *this;
+}
+
+AttributedString::Attribute::Attribute (const Attribute& other) noexcept
+    : range (other.range),
+      font (other.font),
+      colour (other.colour)
+{
+}
+
+AttributedString::Attribute& AttributedString::Attribute::operator= (const Attribute& other) noexcept
+{
+    range = other.range;
+    font = other.font;
     colour = other.colour;
     return *this;
 }
@@ -156,32 +177,75 @@ AttributedString::Attribute::Attribute (Range<int> r, const Font& f, Colour c) n
 }
 
 //==============================================================================
-AttributedString::AttributedString (AttributedString&& other) noexcept
-    : text (std::move (other.text)),
+AttributedString::AttributedString()
+    : lineSpacing (0.0f),
+      justification (Justification::left),
+      wordWrap (AttributedString::byWord),
+      readingDirection (AttributedString::natural)
+{
+}
+
+AttributedString::AttributedString (const String& newString)
+    : lineSpacing (0.0f),
+      justification (Justification::left),
+      wordWrap (AttributedString::byWord),
+      readingDirection (AttributedString::natural)
+{
+    setText (newString);
+}
+
+AttributedString::AttributedString (const AttributedString& other)
+    : text (other.text),
       lineSpacing (other.lineSpacing),
       justification (other.justification),
       wordWrap (other.wordWrap),
       readingDirection (other.readingDirection),
-      attributes (std::move (other.attributes))
+      attributes (other.attributes)
+{
+}
+
+AttributedString& AttributedString::operator= (const AttributedString& other)
+{
+    if (this != &other)
+    {
+        text = other.text;
+        lineSpacing = other.lineSpacing;
+        justification = other.justification;
+        wordWrap = other.wordWrap;
+        readingDirection = other.readingDirection;
+        attributes = other.attributes;
+    }
+
+    return *this;
+}
+
+AttributedString::AttributedString (AttributedString&& other) noexcept
+    : text (static_cast<String&&> (other.text)),
+      lineSpacing (other.lineSpacing),
+      justification (other.justification),
+      wordWrap (other.wordWrap),
+      readingDirection (other.readingDirection),
+      attributes (static_cast<Array<Attribute>&&> (other.attributes))
 {
 }
 
 AttributedString& AttributedString::operator= (AttributedString&& other) noexcept
 {
-    text = std::move (other.text);
+    text = static_cast<String&&> (other.text);
     lineSpacing = other.lineSpacing;
     justification = other.justification;
     wordWrap = other.wordWrap;
     readingDirection = other.readingDirection;
-    attributes = std::move (other.attributes);
-
+    attributes = static_cast<Array<Attribute>&&> (other.attributes);
     return *this;
 }
 
+AttributedString::~AttributedString() noexcept {}
+
 void AttributedString::setText (const String& newText)
 {
-    auto newLength = newText.length();
-    auto oldLength = getLength (attributes);
+    const int newLength = newText.length();
+    const int oldLength = getLength (attributes);
 
     if (newLength > oldLength)
         appendRange (attributes, newLength - oldLength, nullptr, nullptr);
@@ -217,12 +281,12 @@ void AttributedString::append (const String& textToAppend, const Font& font, Col
 
 void AttributedString::append (const AttributedString& other)
 {
-    auto originalLength = getLength (attributes);
-    auto originalNumAtts = attributes.size();
+    const int originalLength = getLength (attributes);
+    const int originalNumAtts = attributes.size();
     text += other.text;
     attributes.addArray (other.attributes);
 
-    for (auto i = originalNumAtts; i < attributes.size(); ++i)
+    for (int i = originalNumAtts; i < attributes.size(); ++i)
         attributes.getReference (i).range += originalLength;
 
     mergeAdjacentRanges (attributes);
@@ -266,12 +330,12 @@ void AttributedString::setFont (Range<int> range, const Font& font)
 
 void AttributedString::setColour (Colour colour)
 {
-    setColour ({ 0, getLength (attributes) }, colour);
+    setColour (Range<int> (0, getLength (attributes)), colour);
 }
 
 void AttributedString::setFont (const Font& font)
 {
-    setFont ({ 0, getLength (attributes) }, font);
+    setFont (Range<int> (0, getLength (attributes)), font);
 }
 
 void AttributedString::draw (Graphics& g, const Rectangle<float>& area) const

@@ -540,7 +540,7 @@ public:
     struct BlockingWorker  : public OpenGLContext::AsyncWorker
     {
         BlockingWorker (OpenGLContext::AsyncWorker::Ptr && workerToUse)
-            : originalWorker (std::move (workerToUse))
+            : originalWorker (static_cast<OpenGLContext::AsyncWorker::Ptr&&> (workerToUse))
         {}
 
         void operator() (OpenGLContext& calleeContext)
@@ -590,7 +590,7 @@ public:
         {
             if (shouldBlock)
             {
-                auto blocker = new BlockingWorker (std::move (workerToUse));
+                auto blocker = new BlockingWorker (static_cast<OpenGLContext::AsyncWorker::Ptr&&> (workerToUse));
                 OpenGLContext::AsyncWorker::Ptr worker (*blocker);
                 workQueue.add (worker);
 
@@ -601,7 +601,7 @@ public:
             }
             else
             {
-                workQueue.add (std::move (workerToUse));
+                workQueue.add (static_cast<OpenGLContext::AsyncWorker::Ptr&&> (workerToUse));
 
                 messageManagerLock.abort();
                 context.triggerRepaint();
@@ -1057,7 +1057,7 @@ size_t OpenGLContext::getImageCacheSize() const noexcept            { return ima
 void OpenGLContext::execute (OpenGLContext::AsyncWorker::Ptr workerToUse, bool shouldBlock)
 {
     if (auto* c = getCachedImage())
-        c->execute (std::move (workerToUse), shouldBlock);
+        c->execute (static_cast<OpenGLContext::AsyncWorker::Ptr&&> (workerToUse), shouldBlock);
     else
         jassertfalse; // You must have attached the context to a component
 }
@@ -1218,7 +1218,7 @@ void OpenGLContext::copyTexture (const Rectangle<int>& targetClipArea,
 EGLDisplay OpenGLContext::NativeContext::display = EGL_NO_DISPLAY;
 EGLDisplay OpenGLContext::NativeContext::config;
 
-void OpenGLContext::NativeContext::surfaceCreated (LocalRef<jobject> holder)
+void OpenGLContext::NativeContext::surfaceCreated (jobject holder)
 {
     ignoreUnused (holder);
 
@@ -1235,7 +1235,7 @@ void OpenGLContext::NativeContext::surfaceCreated (LocalRef<jobject> holder)
     }
 }
 
-void OpenGLContext::NativeContext::surfaceDestroyed (LocalRef<jobject> holder)
+void OpenGLContext::NativeContext::surfaceDestroyed (jobject holder)
 {
     ignoreUnused (holder);
 

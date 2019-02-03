@@ -45,7 +45,7 @@ protected:
 
 public:
     /** Destructor. */
-    ~DrawableShape() override;
+    ~DrawableShape();
 
     //==============================================================================
     /** Sets a fill type for the path.

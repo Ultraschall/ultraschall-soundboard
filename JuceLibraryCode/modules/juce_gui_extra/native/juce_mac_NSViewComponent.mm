@@ -113,7 +113,7 @@ public:
         attachViewWatcher (view);
     }
 
-    ~NSViewAttachment() override
+    ~NSViewAttachment()
     {
         detachViewWatcher();
         removeFromParent();

@@ -37,7 +37,7 @@ class JUCE_API  XmlTokeniser   : public CodeTokeniser
 public:
     //==============================================================================
     XmlTokeniser();
-    ~XmlTokeniser() override;
+    ~XmlTokeniser();
 
     //==============================================================================
     int readNextToken (CodeDocument::Iterator&) override;

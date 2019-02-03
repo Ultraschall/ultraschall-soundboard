@@ -42,7 +42,7 @@ Filter<SampleType>::Filter()
 }
 
 template <typename SampleType>
-Filter<SampleType>::Filter (CoefficientsPtr c)  : coefficients (std::move (c))
+Filter<SampleType>::Filter (CoefficientsPtr c)  : coefficients (static_cast<CoefficientsPtr&&> (c))
 {
     reset();
 }

@@ -134,7 +134,7 @@ protected:
     ModalComponentManager();
 
     /** Destructor. */
-    ~ModalComponentManager() override;
+    ~ModalComponentManager();
 
     /** @internal */
     void handleAsyncUpdate() override;

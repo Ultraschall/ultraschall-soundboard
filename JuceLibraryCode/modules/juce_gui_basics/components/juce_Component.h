@@ -63,7 +63,7 @@ public:
         callback. Any ComponentListener objects that have registered with it will also have their
         ComponentListener::componentBeingDeleted() methods called.
     */
-    ~Component() override;
+    virtual ~Component();
 
     //==============================================================================
     /** Creates a component, setting its name at the same time.
@@ -1480,7 +1480,7 @@ public:
                      the source component in which it occurred
         @see mouseEnter, mouseExit, mouseDrag, contains
     */
-    void mouseMove (const MouseEvent& event) override;
+    virtual void mouseMove (const MouseEvent& event) override;
 
     /** Called when the mouse first enters a component.
 
@@ -1496,7 +1496,7 @@ public:
                      the source component in which it occurred
         @see mouseExit, mouseDrag, mouseMove, contains
     */
-    void mouseEnter (const MouseEvent& event) override;
+    virtual void mouseEnter (const MouseEvent& event) override;
 
     /** Called when the mouse moves out of a component.
 
@@ -1511,7 +1511,7 @@ public:
                       the source component in which it occurred
         @see mouseEnter, mouseDrag, mouseMove, contains
     */
-    void mouseExit (const MouseEvent& event) override;
+    virtual void mouseExit (const MouseEvent& event) override;
 
     /** Called when a mouse button is pressed.
 
@@ -1526,7 +1526,7 @@ public:
                       the source component in which it occurred
         @see mouseUp, mouseDrag, mouseDoubleClick, contains
     */
-    void mouseDown (const MouseEvent& event) override;
+    virtual void mouseDown (const MouseEvent& event) override;
 
     /** Called when the mouse is moved while a button is held down.
 
@@ -1538,7 +1538,7 @@ public:
                       the source component in which it occurred
         @see mouseDown, mouseUp, mouseMove, contains, setDragRepeatInterval
     */
-    void mouseDrag (const MouseEvent& event) override;
+    virtual void mouseDrag (const MouseEvent& event) override;
 
     /** Called when a mouse button is released.
 
@@ -1553,7 +1553,7 @@ public:
                       the source component in which it occurred
         @see mouseDown, mouseDrag, mouseDoubleClick, contains
     */
-    void mouseUp (const MouseEvent& event) override;
+    virtual void mouseUp (const MouseEvent& event) override;
 
     /** Called when a mouse button has been double-clicked on a component.
 
@@ -1565,7 +1565,7 @@ public:
                       the source component in which it occurred
         @see mouseDown, mouseUp
     */
-    void mouseDoubleClick (const MouseEvent& event) override;
+    virtual void mouseDoubleClick (const MouseEvent& event) override;
 
     /** Called when the mouse-wheel is moved.
 
@@ -1582,8 +1582,8 @@ public:
         @param event   details about the mouse event
         @param wheel   details about the mouse wheel movement
     */
-    void mouseWheelMove (const MouseEvent& event,
-                         const MouseWheelDetails& wheel) override;
+    virtual void mouseWheelMove (const MouseEvent& event,
+                                 const MouseWheelDetails& wheel) override;
 
     /** Called when a pinch-to-zoom mouse-gesture is used.
 
@@ -1596,7 +1596,7 @@ public:
                             should be changed. A value of 1.0 would indicate no change,
                             values greater than 1.0 mean it should be enlarged.
     */
-    void mouseMagnify (const MouseEvent& event, float scaleFactor) override;
+    virtual void mouseMagnify (const MouseEvent& event, float scaleFactor) override;
 
     //==============================================================================
     /** Ensures that a non-stop stream of mouse-drag events will be sent during the

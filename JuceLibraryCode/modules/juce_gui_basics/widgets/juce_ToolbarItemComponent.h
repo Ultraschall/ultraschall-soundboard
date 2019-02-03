@@ -65,7 +65,7 @@ public:
                           bool isBeingUsedAsAButton);
 
     /** Destructor. */
-    ~ToolbarItemComponent() override;
+    ~ToolbarItemComponent();
 
     //==============================================================================
     /** Returns the item type ID that this component represents.

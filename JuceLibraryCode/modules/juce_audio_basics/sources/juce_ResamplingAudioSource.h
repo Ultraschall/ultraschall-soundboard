@@ -47,7 +47,7 @@ public:
                            int numChannels = 2);
 
     /** Destructor. */
-    ~ResamplingAudioSource() override;
+    ~ResamplingAudioSource();
 
     /** Changes the resampling ratio.
 

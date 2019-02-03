@@ -54,7 +54,7 @@ public:
     HyperlinkButton();
 
     /** Destructor. */
-    ~HyperlinkButton() override;
+    ~HyperlinkButton();
 
     //==============================================================================
     /** Changes the font to use for the text.

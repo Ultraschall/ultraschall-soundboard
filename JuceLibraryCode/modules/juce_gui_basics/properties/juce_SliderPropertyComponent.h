@@ -75,7 +75,7 @@ public:
                              bool symmetricSkew = false);
 
     /** Destructor. */
-    ~SliderPropertyComponent() override;
+    ~SliderPropertyComponent();
 
 
     //==============================================================================

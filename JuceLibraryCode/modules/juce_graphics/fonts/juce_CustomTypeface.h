@@ -65,7 +65,7 @@ public:
     explicit CustomTypeface (InputStream& serialisedTypefaceStream);
 
     /** Destructor. */
-    ~CustomTypeface() override;
+    ~CustomTypeface();
 
     //==============================================================================
     /** Resets this typeface, deleting all its glyphs and settings. */

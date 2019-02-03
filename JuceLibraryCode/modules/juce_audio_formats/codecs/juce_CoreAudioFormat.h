@@ -48,7 +48,7 @@ public:
     CoreAudioFormat();
 
     /** Destructor. */
-    ~CoreAudioFormat() override;
+    ~CoreAudioFormat();
 
     //==============================================================================
     /** Metadata property name used when reading a caf file with a MIDI chunk. */

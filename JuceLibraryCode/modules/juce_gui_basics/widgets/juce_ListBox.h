@@ -193,7 +193,7 @@ public:
              ListBoxModel* model = nullptr);
 
     /** Destructor. */
-    ~ListBox() override;
+    ~ListBox();
 
 
     //==============================================================================

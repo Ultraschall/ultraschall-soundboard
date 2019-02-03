@@ -44,7 +44,7 @@ class JUCE_API  OggVorbisAudioFormat  : public AudioFormat
 public:
     //==============================================================================
     OggVorbisAudioFormat();
-    ~OggVorbisAudioFormat() override;
+    ~OggVorbisAudioFormat();
 
     //==============================================================================
     Array<int> getPossibleSampleRates() override;

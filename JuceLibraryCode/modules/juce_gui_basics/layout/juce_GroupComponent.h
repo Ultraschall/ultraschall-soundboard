@@ -48,7 +48,7 @@ public:
                     const String& labelText = String());
 
     /** Destructor. */
-    ~GroupComponent() override;
+    ~GroupComponent();
 
     //==============================================================================
     /** Changes the text that's shown at the top of the component. */

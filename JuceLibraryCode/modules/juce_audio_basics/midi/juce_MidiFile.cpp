@@ -169,14 +169,14 @@ MidiFile& MidiFile::operator= (const MidiFile& other)
 }
 
 MidiFile::MidiFile (MidiFile&& other)
-    : tracks (std::move (other.tracks)),
+    : tracks (static_cast<OwnedArray<MidiMessageSequence>&&> (other.tracks)),
       timeFormat (other.timeFormat)
 {
 }
 
 MidiFile& MidiFile::operator= (MidiFile&& other)
 {
-    tracks = std::move (other.tracks);
+    tracks = static_cast<OwnedArray<MidiMessageSequence>&&> (other.tracks);
     timeFormat = other.timeFormat;
     return *this;
 }

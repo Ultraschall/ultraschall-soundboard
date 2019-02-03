@@ -65,7 +65,7 @@ public:
     explicit ProgressBar (double& progress);
 
     /** Destructor. */
-    ~ProgressBar() override;
+    ~ProgressBar();
 
     //==============================================================================
     /** Turns the percentage display on or off.

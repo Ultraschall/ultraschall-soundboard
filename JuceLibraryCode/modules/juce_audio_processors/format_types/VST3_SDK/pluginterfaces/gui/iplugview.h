@@ -17,7 +17,6 @@
 #pragma once
 
 #include "pluginterfaces/base/funknown.h"
-#include "pluginterfaces/base/typesizecheck.h"
 
 namespace Steinberg {
 
@@ -49,8 +48,6 @@ struct ViewRect
 	int32 getHeight () const { return bottom - top; }
 };
 
-SMTG_TYPE_SIZE_CHECK (ViewRect, 16, 16, 16, 16)
-
 //------------------------------------------------------------------------
 /**  \defgroup platformUIType Platform UI Types
 \ingroup pluginGUI
@@ -75,8 +72,7 @@ const FIDString kPlatformTypeNSView = "NSView"; ///< NSView pointer. (Mac OS X)
 const FIDString kPlatformTypeUIView = "UIView"; ///< UIView pointer. (iOS)
 
 /** The parent parameter in IPlugView::attached() is a X11 Window supporting XEmbed.
- * You should attach a Window to it that supports the XEmbed extension.
- * See https://standards.freedesktop.org/xembed-spec/xembed-spec-latest.html */
+ * You should attach a Window to it that supports the XEmbed extension. */
 const FIDString kPlatformTypeX11EmbedWindowID = "X11EmbedWindowID"; ///< X11 Window ID. (X11)
 
 /*@}*/
@@ -191,7 +187,6 @@ DECLARE_CLASS_IID (IPlugView, 0x5BC32507, 0xD06049EA, 0xA6151B52, 0x2B755B29)
 \ingroup pluginGUI vstIHost vst300
 - [host imp]
 - [released: 3.0.0]
-- [mandatory]
 
 Enables a Plug-in to resize the view and cause the host to resize the window.
 */

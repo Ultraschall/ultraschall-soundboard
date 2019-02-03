@@ -345,7 +345,7 @@ public:
         owner.getMappings().addChangeListener (this);
     }
 
-    ~TopLevelItem() override
+    ~TopLevelItem()
     {
         owner.getMappings().removeChangeListener (this);
     }

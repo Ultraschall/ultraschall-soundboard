@@ -57,7 +57,7 @@ public:
                         const String& description);
 
     /** Destructor. */
-    ~WildcardFileFilter() override;
+    ~WildcardFileFilter();
 
     //==============================================================================
     /** Returns true if the filename matches one of the patterns specified. */

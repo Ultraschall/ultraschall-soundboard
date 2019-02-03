@@ -29,7 +29,7 @@ namespace juce
 
 namespace GraphicsHelpers
 {
-    LocalRef<jobject> createPaint (Graphics::ResamplingQuality quality)
+    jobject createPaint (Graphics::ResamplingQuality quality)
     {
         jint constructorFlags = 1 /*ANTI_ALIAS_FLAG*/
                                 | 4 /*DITHER_FLAG*/
@@ -38,12 +38,13 @@ namespace GraphicsHelpers
         if (quality > Graphics::lowResamplingQuality)
             constructorFlags |= 2; /*FILTER_BITMAP_FLAG*/
 
-        return LocalRef<jobject>(getEnv()->NewObject (AndroidPaint, AndroidPaint.constructor, constructorFlags));
+        return getEnv()->NewObject (AndroidPaint, AndroidPaint.constructor, constructorFlags);
     }
 
-    const LocalRef<jobject> createMatrix (JNIEnv* env, const AffineTransform& t)
+    //
+    const jobject createMatrix (JNIEnv* env, const AffineTransform& t)
     {
-        auto m = LocalRef<jobject>(env->NewObject (AndroidMatrix, AndroidMatrix.constructor));
+        jobject m = env->NewObject (AndroidMatrix, AndroidMatrix.constructor);
 
         jfloat values[9] = { t.mat00, t.mat01, t.mat02,
                              t.mat10, t.mat11, t.mat12,

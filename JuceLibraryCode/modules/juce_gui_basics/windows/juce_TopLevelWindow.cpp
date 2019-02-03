@@ -32,8 +32,8 @@ class TopLevelWindowManager  : private Timer,
                                private DeletedAtShutdown
 {
 public:
-    TopLevelWindowManager() {}
-    ~TopLevelWindowManager() override    { clearSingletonInstance(); }
+    TopLevelWindowManager()     {}
+    ~TopLevelWindowManager()    { clearSingletonInstance(); }
 
     JUCE_DECLARE_SINGLETON_SINGLETHREADED_MINIMAL (TopLevelWindowManager)
 

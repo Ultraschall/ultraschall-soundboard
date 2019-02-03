@@ -45,7 +45,7 @@ public:
     URLInputSource (URL&& url);
 
     /** Destructor. */
-    ~URLInputSource() override;
+    ~URLInputSource();
 
     InputStream* createInputStream() override;
     InputStream* createInputStreamFor (const String& relatedItemPath) override;

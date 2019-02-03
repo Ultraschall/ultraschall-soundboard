@@ -51,7 +51,7 @@ public:
     MultiDocumentPanelWindow (Colour backgroundColour);
 
     /** Destructor. */
-    ~MultiDocumentPanelWindow() override;
+    ~MultiDocumentPanelWindow();
 
     //==============================================================================
     /** @internal */
@@ -106,7 +106,7 @@ public:
         before closing, then you should call closeAllDocuments (true) and check that
         it returns true before deleting the panel.
     */
-    ~MultiDocumentPanel() override;
+    ~MultiDocumentPanel();
 
     //==============================================================================
     /** Tries to close all the documents.

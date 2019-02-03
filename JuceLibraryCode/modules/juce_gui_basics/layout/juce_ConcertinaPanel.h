@@ -46,7 +46,7 @@ public:
     ConcertinaPanel();
 
     /** Destructor. */
-    ~ConcertinaPanel() override;
+    ~ConcertinaPanel();
 
     /** Adds a component to the panel.
         @param insertIndex          the index at which this component will be inserted, or

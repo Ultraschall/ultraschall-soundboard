@@ -861,7 +861,7 @@ struct VSTPluginInstance     : public AudioPluginInstance,
         {
         }
 
-        float getValue() const override
+        virtual float getValue() const override
         {
             if (auto* effect = pluginInstance.vstEffect)
             {
@@ -873,7 +873,7 @@ struct VSTPluginInstance     : public AudioPluginInstance,
             return 0.0f;
         }
 
-        void setValue (float newValue) override
+        virtual void setValue (float newValue) override
         {
             if (auto* effect = pluginInstance.vstEffect)
             {
@@ -3084,8 +3084,9 @@ private:
 
         pluginRespondsToDPIChanges = plugin.pluginCanDo ("supportsViewDpiScaling") > 0;
 
-        if (auto* peer = getTopLevelComponent()->getPeer())
-            setScaleFactorAndDispatchMessage (peer->getPlatformScaleFactor());
+        if (pluginRespondsToDPIChanges)
+            if (auto* peer = getTopLevelComponent()->getPeer())
+                setScaleFactorAndDispatchMessage (peer->getPlatformScaleFactor());
 
        #if JUCE_WINDOWS && JUCE_WIN_PER_MONITOR_DPI_AWARE
         std::unique_ptr<ScopedDPIAwarenessDisabler> dpiDisabler;

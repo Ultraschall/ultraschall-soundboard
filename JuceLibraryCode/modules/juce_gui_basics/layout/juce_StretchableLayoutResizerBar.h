@@ -60,7 +60,7 @@ public:
                                  bool isBarVertical);
 
     /** Destructor. */
-    ~StretchableLayoutResizerBar() override;
+    ~StretchableLayoutResizerBar();
 
     //==============================================================================
     /** This is called when the bar is dragged.

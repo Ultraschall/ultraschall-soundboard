@@ -37,7 +37,7 @@ void MACAddress::findAllAddresses (Array<MACAddress>& result)
 
             if (sto.sa_family == AF_LINK)
             {
-                auto sadd = reinterpret_cast<const sockaddr_dl*> (cursor->ifa_addr);
+                auto sadd = (const sockaddr_dl*) cursor->ifa_addr;
 
                #ifndef IFT_ETHER
                 enum { IFT_ETHER = 6 };
@@ -127,7 +127,7 @@ public:
         DelegateClass::setState (delegate, this);
     }
 
-    ~URLConnectionState() override
+    ~URLConnectionState()
     {
         signalThreadShouldExit();
 
@@ -1096,44 +1096,38 @@ private:
     {
         jassert (connection == nullptr);
 
-        if (NSURL* nsURL = [NSURL URLWithString: juceStringToNS (url.toString (! isPost))])
+        if (NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: juceStringToNS (url.toString (! isPost))]
+                                                               cachePolicy: NSURLRequestReloadIgnoringLocalCacheData
+                                                           timeoutInterval: timeOutMs <= 0 ? 60.0 : (timeOutMs / 1000.0)])
         {
-            if (NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL: nsURL
-                                                                   cachePolicy: NSURLRequestReloadIgnoringLocalCacheData
-                                                               timeoutInterval: timeOutMs <= 0 ? 60.0 : (timeOutMs / 1000.0)])
+            [req setHTTPMethod: [NSString stringWithUTF8String: httpRequestCmd.toRawUTF8()]];
+
+            if (isPost)
             {
-                if (NSString* httpMethod = [NSString stringWithUTF8String: httpRequestCmd.toRawUTF8()])
-                {
-                    [req setHTTPMethod: httpMethod];
+                WebInputStream::createHeadersAndPostData (url, headers, postData);
 
-                    if (isPost)
-                    {
-                        WebInputStream::createHeadersAndPostData (url, headers, postData);
-
-                        if (postData.getSize() > 0)
-                            [req setHTTPBody: [NSData dataWithBytes: postData.getData()
-                                                             length: postData.getSize()]];
-                    }
-
-                    StringArray headerLines;
-                    headerLines.addLines (headers);
-                    headerLines.removeEmptyStrings (true);
-
-                    for (int i = 0; i < headerLines.size(); ++i)
-                    {
-                        auto key   = headerLines[i].upToFirstOccurrenceOf (":", false, false).trim();
-                        auto value = headerLines[i].fromFirstOccurrenceOf (":", false, false).trim();
-
-                        if (key.isNotEmpty() && value.isNotEmpty())
-                            [req addValue: juceStringToNS (value) forHTTPHeaderField: juceStringToNS (key)];
-                    }
-
-                    // Workaround for an Apple bug. See https://github.com/AFNetworking/AFNetworking/issues/2334
-                    [req HTTPBody];
-
-                    connection.reset (new URLConnectionState (req, numRedirectsToFollow));
-                }
+                if (postData.getSize() > 0)
+                    [req setHTTPBody: [NSData dataWithBytes: postData.getData()
+                                                     length: postData.getSize()]];
             }
+
+            StringArray headerLines;
+            headerLines.addLines (headers);
+            headerLines.removeEmptyStrings (true);
+
+            for (int i = 0; i < headerLines.size(); ++i)
+            {
+                String key   = headerLines[i].upToFirstOccurrenceOf (":", false, false).trim();
+                String value = headerLines[i].fromFirstOccurrenceOf (":", false, false).trim();
+
+                if (key.isNotEmpty() && value.isNotEmpty())
+                    [req addValue: juceStringToNS (value) forHTTPHeaderField: juceStringToNS (key)];
+            }
+
+            // Workaround for an Apple bug. See https://github.com/AFNetworking/AFNetworking/issues/2334
+            [req HTTPBody];
+
+            connection.reset (new URLConnectionState (req, numRedirectsToFollow));
         }
     }
 

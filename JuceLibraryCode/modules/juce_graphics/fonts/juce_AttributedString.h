@@ -43,21 +43,22 @@ class JUCE_API  AttributedString
 {
 public:
     /** Creates an empty attributed string. */
-    AttributedString() = default;
+    AttributedString();
 
     /** Creates an attributed string with the given text. */
-    explicit AttributedString (const String& newString)  { setText (newString); }
+    explicit AttributedString (const String& text);
 
-    AttributedString (const AttributedString&)            = default;
-    AttributedString& operator= (const AttributedString&) = default;
-
-    // VS2013 can't default move constructors and assignments
+    AttributedString (const AttributedString&);
+    AttributedString& operator= (const AttributedString&);
     AttributedString (AttributedString&&) noexcept;
     AttributedString& operator= (AttributedString&&) noexcept;
 
+    /** Destructor. */
+    ~AttributedString() noexcept;
+
     //==============================================================================
     /** Returns the complete text of this attributed string. */
-    const String& getText() const noexcept    { return text; }
+    const String& getText() const noexcept                  { return text; }
 
     /** Replaces all the text.
         This will change the text, but won't affect any of the colour or font attributes
@@ -150,12 +151,10 @@ public:
     class JUCE_API  Attribute
     {
     public:
-        Attribute() = default;
-
-        Attribute (const Attribute&)            = default;
-        Attribute& operator= (const Attribute&) = default;
-
-        // VS2013 can't default move constructors and assignments
+        Attribute() noexcept;
+        ~Attribute() noexcept;
+        Attribute (const Attribute&) noexcept;
+        Attribute& operator= (const Attribute&) noexcept;
         Attribute (Attribute&&) noexcept;
         Attribute& operator= (Attribute&&) noexcept;
 
@@ -169,7 +168,7 @@ public:
         Font font;
 
         /** The colour for this range of characters. */
-        Colour colour { 0xff000000 };
+        Colour colour;
 
     private:
         JUCE_LEAK_DETECTOR (Attribute)
@@ -198,10 +197,10 @@ public:
 
 private:
     String text;
-    float lineSpacing = 0.0f;
-    Justification justification = Justification::left;
-    WordWrap wordWrap = AttributedString::byWord;
-    ReadingDirection readingDirection = AttributedString::natural;
+    float lineSpacing;
+    Justification justification;
+    WordWrap wordWrap;
+    ReadingDirection readingDirection;
     Array<Attribute> attributes;
 
     JUCE_LEAK_DETECTOR (AttributedString)

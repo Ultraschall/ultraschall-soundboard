@@ -42,7 +42,7 @@ public:
         rotaryParams.stopAtEnd = true;
     }
 
-    ~Pimpl() override
+    ~Pimpl()
     {
         currentValue.removeListener (this);
         valueMin.removeListener (this);
@@ -828,7 +828,7 @@ public:
                 showPopupMenu();
             }
             else if (canDoubleClickToValue()
-                     && (singleClickModifiers != ModifierKeys() && e.mods.withoutMouseButtons() == singleClickModifiers))
+                      && e.mods.withoutMouseButtons() == ModifierKeys (ModifierKeys::altModifier))
             {
                 mouseDoubleClick();
             }
@@ -1277,8 +1277,6 @@ public:
     int popupHoverTimeout = 2000;
     double lastPopupDismissal = 0.0;
 
-    ModifierKeys singleClickModifiers;
-
     std::unique_ptr<Label> valueBox;
     std::unique_ptr<Button> incButton, decButton;
 
@@ -1298,7 +1296,7 @@ public:
             setLookAndFeel (&s.getLookAndFeel());
         }
 
-        ~PopupDisplayComponent() override
+        ~PopupDisplayComponent()
         {
             if (owner.pimpl != nullptr)
                 owner.pimpl->lastPopupDismissal = Time::getMillisecondCounterHiRes();
@@ -1545,11 +1543,10 @@ void Slider::setMinAndMaxValues (double newMinValue, double newMaxValue, Notific
     pimpl->setMinAndMaxValues (newMinValue, newMaxValue, notification);
 }
 
-void Slider::setDoubleClickReturnValue (bool isDoubleClickEnabled,  double valueToSetOnDoubleClick, ModifierKeys mods)
+void Slider::setDoubleClickReturnValue (bool isDoubleClickEnabled,  double valueToSetOnDoubleClick)
 {
     pimpl->doubleClickToValue = isDoubleClickEnabled;
     pimpl->doubleClickReturnValue = valueToSetOnDoubleClick;
-    pimpl->singleClickModifiers = mods;
 }
 
 double Slider::getDoubleClickReturnValue() const noexcept       { return pimpl->doubleClickReturnValue; }
@@ -1572,29 +1569,24 @@ String Slider::getTextValueSuffix() const
 
 String Slider::getTextFromValue (double v)
 {
-    auto getText = [this] (double val)
-    {
-        if (textFromValueFunction != nullptr)
-            return textFromValueFunction (val);
+    if (textFromValueFunction != nullptr)
+        return textFromValueFunction (v);
 
-        if (getNumDecimalPlacesToDisplay() > 0)
-            return String (val, getNumDecimalPlacesToDisplay());
+    if (getNumDecimalPlacesToDisplay() > 0)
+        return String (v, getNumDecimalPlacesToDisplay()) + getTextValueSuffix();
 
-        return String (roundToInt (val));
-    };
-
-    return getText (v) + getTextValueSuffix();
+    return String (roundToInt (v)) + getTextValueSuffix();
 }
 
 double Slider::getValueFromText (const String& text)
 {
+    if (valueFromTextFunction != nullptr)
+        return valueFromTextFunction (text);
+
     auto t = text.trimStart();
 
     if (t.endsWith (getTextValueSuffix()))
         t = t.substring (0, t.length() - getTextValueSuffix().length());
-
-    if (valueFromTextFunction != nullptr)
-        return valueFromTextFunction (t);
 
     while (t.startsWithChar ('+'))
         t = t.substring (1).trimStart();

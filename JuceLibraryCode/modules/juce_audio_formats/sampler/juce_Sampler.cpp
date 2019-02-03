@@ -48,8 +48,8 @@ SamplerSound::SamplerSound (const String& soundName,
 
         source.read (data.get(), 0, length + 4, 0, true, true);
 
-        params.attack  = static_cast<float> (attackTimeSecs);
-        params.release = static_cast<float> (releaseTimeSecs);
+        attackSamples  = roundToInt (attackTimeSecs  * sourceSampleRate);
+        releaseSamples = roundToInt (releaseTimeSecs * sourceSampleRate);
     }
 }
 
@@ -87,10 +87,24 @@ void SamplerVoice::startNote (int midiNoteNumber, float velocity, SynthesiserSou
         lgain = velocity;
         rgain = velocity;
 
-        adsr.setSampleRate (sound->sourceSampleRate);
-        adsr.setParameters (sound->params);
+        isInAttack = (sound->attackSamples > 0);
+        isInRelease = false;
 
-        adsr.noteOn();
+        if (isInAttack)
+        {
+            attackReleaseLevel = 0.0f;
+            attackDelta = (float) (pitchRatio / sound->attackSamples);
+        }
+        else
+        {
+            attackReleaseLevel = 1.0f;
+            attackDelta = 0.0f;
+        }
+
+        if (sound->releaseSamples > 0)
+            releaseDelta = (float) (-pitchRatio / sound->releaseSamples);
+        else
+            releaseDelta = -1.0f;
     }
     else
     {
@@ -102,12 +116,12 @@ void SamplerVoice::stopNote (float /*velocity*/, bool allowTailOff)
 {
     if (allowTailOff)
     {
-        adsr.noteOff();
+        isInAttack = false;
+        isInRelease = true;
     }
     else
     {
         clearCurrentNote();
-        adsr.reset();
     }
 }
 
@@ -137,10 +151,35 @@ void SamplerVoice::renderNextBlock (AudioBuffer<float>& outputBuffer, int startS
             float r = (inR != nullptr) ? (inR[pos] * invAlpha + inR[pos + 1] * alpha)
                                        : l;
 
-            auto envelopeValue = adsr.getNextSample();
+            l *= lgain;
+            r *= rgain;
 
-            l *= lgain * envelopeValue;
-            r *= rgain * envelopeValue;
+            if (isInAttack)
+            {
+                l *= attackReleaseLevel;
+                r *= attackReleaseLevel;
+
+                attackReleaseLevel += attackDelta;
+
+                if (attackReleaseLevel >= 1.0f)
+                {
+                    attackReleaseLevel = 1.0f;
+                    isInAttack = false;
+                }
+            }
+            else if (isInRelease)
+            {
+                l *= attackReleaseLevel;
+                r *= attackReleaseLevel;
+
+                attackReleaseLevel += releaseDelta;
+
+                if (attackReleaseLevel <= 0.0f)
+                {
+                    stopNote (0.0f, false);
+                    break;
+                }
+            }
 
             if (outR != nullptr)
             {

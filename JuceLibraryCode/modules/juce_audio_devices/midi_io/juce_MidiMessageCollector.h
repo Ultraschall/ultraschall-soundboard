@@ -44,7 +44,7 @@ public:
     MidiMessageCollector();
 
     /** Destructor. */
-    ~MidiMessageCollector() override;
+    ~MidiMessageCollector();
 
     //==============================================================================
     /** Clears any messages from the queue.

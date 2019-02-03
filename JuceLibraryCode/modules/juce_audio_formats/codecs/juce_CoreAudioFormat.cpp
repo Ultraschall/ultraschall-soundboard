@@ -447,7 +447,7 @@ public:
         }
     }
 
-    ~CoreAudioReader() override
+    ~CoreAudioReader()
     {
         ExtAudioFileDispose (audioFileRef);
         AudioFileClose (audioFileID);

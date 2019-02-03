@@ -54,7 +54,7 @@ public:
     BurgerMenuComponent (MenuBarModel* model = nullptr);
 
     /** Destructor. */
-    ~BurgerMenuComponent() override;
+    ~BurgerMenuComponent();
 
     //==============================================================================
     /** Changes the model object to use to control the burger menu.

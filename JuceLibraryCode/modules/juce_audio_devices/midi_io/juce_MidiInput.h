@@ -89,7 +89,7 @@ public:
 
     @tags{Audio}
 */
-class JUCE_API  MidiInput  final
+class JUCE_API  MidiInput
 {
 public:
     //==============================================================================

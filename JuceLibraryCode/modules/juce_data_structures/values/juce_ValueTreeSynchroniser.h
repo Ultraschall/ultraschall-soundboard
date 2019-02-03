@@ -55,7 +55,7 @@ public:
     ValueTreeSynchroniser (const ValueTree& tree);
 
     /** Destructor. */
-    ~ValueTreeSynchroniser() override;
+    virtual ~ValueTreeSynchroniser();
 
     /** This callback happens when the ValueTree changes and the given state-change message
         needs to be applied to any other trees that need to stay in sync with it.

@@ -33,12 +33,12 @@ StringArray::StringArray (const StringArray& other)
 }
 
 StringArray::StringArray (StringArray&& other) noexcept
-    : strings (std::move (other.strings))
+    : strings (static_cast<Array<String>&&> (other.strings))
 {
 }
 
 StringArray::StringArray (Array<String>&& other) noexcept
-    : strings (std::move (other))
+    : strings (static_cast<Array<String>&&> (other))
 {
 }
 
@@ -85,7 +85,7 @@ StringArray& StringArray::operator= (const StringArray& other)
 
 StringArray& StringArray::operator= (StringArray&& other) noexcept
 {
-    strings = std::move (other.strings);
+    strings = static_cast<Array<String>&&> (other.strings);
     return *this;
 }
 

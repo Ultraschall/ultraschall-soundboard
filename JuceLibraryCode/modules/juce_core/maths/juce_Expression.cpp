@@ -133,7 +133,7 @@ struct Expression::Helpers
     class BinaryTerm  : public Term
     {
     public:
-        BinaryTerm (TermPtr l, TermPtr r) : left (std::move (l)), right (std::move (r))
+        BinaryTerm (TermPtr l, TermPtr r) : left (static_cast<TermPtr&&> (l)), right (static_cast<TermPtr&&> (r))
         {
             jassert (left != nullptr && right != nullptr);
         }
@@ -951,13 +951,13 @@ Expression& Expression::operator= (const Expression& other)
 }
 
 Expression::Expression (Expression&& other) noexcept
-    : term (std::move (other.term))
+    : term (static_cast<ReferenceCountedObjectPtr<Term>&&> (other.term))
 {
 }
 
 Expression& Expression::operator= (Expression&& other) noexcept
 {
-    term = std::move (other.term);
+    term = static_cast<ReferenceCountedObjectPtr<Term>&&> (other.term);
     return *this;
 }
 

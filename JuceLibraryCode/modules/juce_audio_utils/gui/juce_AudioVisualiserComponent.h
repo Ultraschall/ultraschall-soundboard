@@ -51,7 +51,7 @@ public:
     AudioVisualiserComponent (int initialNumChannels);
 
     /** Destructor. */
-    ~AudioVisualiserComponent() override;
+    ~AudioVisualiserComponent();
 
     /** Changes the number of channels that the visualiser stores. */
     void setNumChannels (int numChannels);

@@ -50,7 +50,7 @@ class JUCE_API WebInputStream : public InputStream
     */
     WebInputStream (const URL& url, const bool usePost);
 
-    ~WebInputStream() override;
+    ~WebInputStream();
 
 
     /** Add extra headers to http request

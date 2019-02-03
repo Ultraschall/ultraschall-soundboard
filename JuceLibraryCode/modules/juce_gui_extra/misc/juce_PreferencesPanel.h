@@ -57,7 +57,7 @@ public:
     PreferencesPanel();
 
     /** Destructor. */
-    ~PreferencesPanel() override;
+    ~PreferencesPanel();
 
     //==============================================================================
     /** Creates a page using a set of drawables to define the page's icon.

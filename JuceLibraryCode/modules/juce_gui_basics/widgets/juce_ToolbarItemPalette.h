@@ -56,7 +56,7 @@ public:
                         Toolbar& toolbar);
 
     /** Destructor. */
-    ~ToolbarItemPalette() override;
+    ~ToolbarItemPalette();
 
     //==============================================================================
     /** @internal */

@@ -63,7 +63,7 @@ public:
         }
     }
 
-    ~FileListTreeItem() override
+    ~FileListTreeItem()
     {
         thread.removeTimeSliceClient (this);
         clearSubItems();

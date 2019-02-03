@@ -44,7 +44,7 @@ class JUCE_API  FlacAudioFormat    : public AudioFormat
 public:
     //==============================================================================
     FlacAudioFormat();
-    ~FlacAudioFormat() override;
+    ~FlacAudioFormat();
 
     //==============================================================================
     Array<int> getPossibleSampleRates() override;

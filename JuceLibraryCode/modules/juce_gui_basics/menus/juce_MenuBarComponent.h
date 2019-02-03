@@ -50,7 +50,7 @@ public:
     MenuBarComponent (MenuBarModel* model = nullptr);
 
     /** Destructor. */
-    ~MenuBarComponent() override;
+    ~MenuBarComponent();
 
     //==============================================================================
     /** Changes the model object to use to control the bar.

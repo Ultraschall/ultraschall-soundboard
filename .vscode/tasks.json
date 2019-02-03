@@ -4,19 +4,29 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "type": "process",
-            "command": "make",
+            "label": "CMake",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-G",
+                "Ninja",
+                ".."
+            ],
             "options": {
-                "cwd": "${workspaceFolder}/Builds/LinuxMakefile"
-            },
+                "cwd": "${workspaceFolder}/.build"
+            }
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "ninja",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": [
-                "$gcc"
-            ]
+            "options": {
+                "cwd": "${workspaceFolder}/.build"
+            }
         }
     ]
 }

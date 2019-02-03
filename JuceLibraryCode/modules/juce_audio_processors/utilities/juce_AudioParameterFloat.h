@@ -74,7 +74,7 @@ public:
                          float defaultValue);
 
     /** Destructor. */
-    ~AudioParameterFloat() override;
+    ~AudioParameterFloat();
 
     /** Returns the parameter's current value. */
     float get() const noexcept                  { return value; }

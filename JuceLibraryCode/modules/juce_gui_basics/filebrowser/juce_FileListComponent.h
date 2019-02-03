@@ -52,7 +52,7 @@ public:
     FileListComponent (DirectoryContentsList& listToShow);
 
     /** Destructor. */
-    ~FileListComponent() override;
+    ~FileListComponent();
 
     //==============================================================================
     /** Returns the number of files the user has got selected.

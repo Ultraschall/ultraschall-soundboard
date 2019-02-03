@@ -52,7 +52,7 @@ public:
     PropertyPanel (const String& name);
 
     /** Destructor. */
-    ~PropertyPanel() override;
+    ~PropertyPanel();
 
     //==============================================================================
     /** Deletes all property components from the panel. */

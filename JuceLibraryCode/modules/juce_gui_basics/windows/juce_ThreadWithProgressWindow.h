@@ -111,7 +111,7 @@ public:
                               Component* componentToCentreAround = nullptr);
 
     /** Destructor. */
-    ~ThreadWithProgressWindow() override;
+    ~ThreadWithProgressWindow();
 
     //==============================================================================
    #if JUCE_MODAL_LOOPS_PERMITTED

@@ -43,7 +43,7 @@ ColourGradient::ColourGradient (const ColourGradient& other)
 
 ColourGradient::ColourGradient (ColourGradient&& other) noexcept
     : point1 (other.point1), point2 (other.point2), isRadial (other.isRadial),
-      colours (std::move (other.colours))
+      colours (static_cast<Array<ColourPoint>&&> (other.colours))
 {}
 
 ColourGradient& ColourGradient::operator= (const ColourGradient& other)
@@ -60,7 +60,7 @@ ColourGradient& ColourGradient::operator= (ColourGradient&& other) noexcept
     point1 = other.point1;
     point2 = other.point2;
     isRadial = other.isRadial;
-    colours = std::move (other.colours);
+    colours = static_cast<Array<ColourPoint>&&> (other.colours);
     return *this;
 }
 

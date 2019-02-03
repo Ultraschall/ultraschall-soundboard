@@ -45,7 +45,7 @@ public:
     DrawableRectangle (const DrawableRectangle&);
 
     /** Destructor. */
-    ~DrawableRectangle() override;
+    ~DrawableRectangle();
 
     //==============================================================================
     /** Sets the rectangle's bounds. */

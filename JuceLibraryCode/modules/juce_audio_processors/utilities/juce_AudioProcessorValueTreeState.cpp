@@ -80,7 +80,7 @@ public:
         parameter.addListener (this);
     }
 
-    ~ParameterAdapter() override        { parameter.removeListener (this); }
+    ~ParameterAdapter() noexcept        { parameter.removeListener (this); }
 
     void addListener (Listener* l)      { listeners.add (l); }
     void removeListener (Listener* l)   { listeners.remove (l); }
@@ -113,7 +113,7 @@ public:
     float getDenormalisedValue() const   { return unnormalisedValue; }
     float& getRawDenormalisedValue()     { return unnormalisedValue; }
 
-    bool flushToTree (const Identifier& key, UndoManager* um)
+    bool flushToTree (ValueTree tree, const Identifier& key, UndoManager* um)
     {
         auto needsUpdateTestValue = true;
 
@@ -135,8 +135,6 @@ public:
 
         return true;
     }
-
-    ValueTree tree;
 
 private:
     void parameterGestureChanged (int, bool) override {}
@@ -182,7 +180,7 @@ private:
 //==============================================================================
 AudioProcessorValueTreeState::AudioProcessorValueTreeState (AudioProcessor& processorToConnectTo,
                                                             UndoManager* undoManagerToUse,
-                                                            const Identifier& valueTreeType,
+                                                            const juce::Identifier& valueTreeType,
                                                             ParameterLayout parameterLayout)
     : AudioProcessorValueTreeState (processorToConnectTo, undoManagerToUse)
 {
@@ -199,7 +197,7 @@ AudioProcessorValueTreeState::AudioProcessorValueTreeState (AudioProcessor& proc
                 return;
             }
 
-            state->addParameterAdapter (*param);
+            state->parameters.emplace_back (std::make_unique<ParameterAdapter> (*param));
             state->processor.addParameter (param.release());
         }
 
@@ -215,7 +213,7 @@ AudioProcessorValueTreeState::AudioProcessorValueTreeState (AudioProcessor& proc
             {
                 if (const auto rangedParam = dynamic_cast<RangedAudioParameter*> (param))
                 {
-                    state->addParameterAdapter (*rangedParam);
+                    state->parameters.emplace_back (std::make_unique<ParameterAdapter> (*rangedParam));
                 }
                 else
                 {
@@ -282,23 +280,18 @@ RangedAudioParameter* AudioProcessorValueTreeState::createAndAddParameter (std::
     if (getParameter (param->paramID) != nullptr)
         return nullptr;
 
-    addParameterAdapter (*param);
-
+    parameters.emplace_back (std::make_unique<ParameterAdapter> (*param));
     processor.addParameter (param.get());
 
     return param.release();
 }
 
 //==============================================================================
-void AudioProcessorValueTreeState::addParameterAdapter (RangedAudioParameter& param)
-{
-    adapterTable.emplace (param.paramID, std::make_unique<ParameterAdapter> (param));
-}
-
 AudioProcessorValueTreeState::ParameterAdapter* AudioProcessorValueTreeState::getParameterAdapter (StringRef paramID) const
 {
-    auto it = adapterTable.find (paramID);
-    return it == adapterTable.end() ? nullptr : it->second.get();
+    auto it = find_if (std::begin (parameters), std::end (parameters),
+                       [&](const std::unique_ptr<ParameterAdapter>& p) { return p->getParameter().paramID == paramID; });
+    return it == std::end (parameters) ? nullptr : it->get();
 }
 
 void AudioProcessorValueTreeState::addParameterListener (StringRef paramID, Listener* listener)
@@ -315,9 +308,10 @@ void AudioProcessorValueTreeState::removeParameterListener (StringRef paramID, L
 
 Value AudioProcessorValueTreeState::getParameterAsValue (StringRef paramID) const
 {
-    if (auto* adapter = getParameterAdapter (paramID))
-        if (adapter->tree.isValid())
-            return adapter->tree.getPropertyAsValue (valuePropertyID, undoManager);
+    auto v = getChildValueTree (paramID);
+
+    if (v.isValid())
+        return v.getPropertyAsValue (valuePropertyID, undoManager);
 
     return {};
 }
@@ -363,58 +357,63 @@ void AudioProcessorValueTreeState::replaceState (const ValueTree& newState)
         undoManager->clearUndoHistory();
 }
 
-void AudioProcessorValueTreeState::setNewState (ValueTree vt)
+ValueTree AudioProcessorValueTreeState::getChildValueTree (const String& paramID) const
 {
-    jassert (vt.getParent() == state);
+    return { state.getChildWithProperty (idPropertyID, paramID) };
+}
 
-    if (auto* p = getParameterAdapter (vt.getProperty (idPropertyID).toString()))
+ValueTree AudioProcessorValueTreeState::getOrCreateChildValueTree (const String& paramID)
+{
+    auto v = getChildValueTree (paramID);
+
+    if (! v.isValid())
     {
-        p->tree = vt;
-        p->setDenormalisedValue (p->tree.getProperty (valuePropertyID, p->getDenormalisedDefaultValue()));
+        v = ValueTree (valueType);
+        v.setProperty (idPropertyID, paramID, nullptr);
+        state.appendChild (v, nullptr);
     }
+
+    return v;
+}
+
+void AudioProcessorValueTreeState::setNewState (ParameterAdapter& p)
+{
+    const auto tree = getOrCreateChildValueTree (p.getParameter().paramID);
+    p.setDenormalisedValue (tree.getProperty (valuePropertyID, p.getDenormalisedDefaultValue()));
 }
 
 void AudioProcessorValueTreeState::updateParameterConnectionsToChildTrees()
 {
     ScopedLock lock (valueTreeChanging);
 
-    for (auto& p : adapterTable)
-        p.second->tree = ValueTree();
-
-    for (const auto& child : state)
-        setNewState (child);
-
-    for (auto& p : adapterTable)
-    {
-        auto& adapter = *p.second;
-
-        if (! adapter.tree.isValid())
-        {
-            adapter.tree = ValueTree (valueType);
-            adapter.tree.setProperty (idPropertyID, adapter.getParameter().paramID, nullptr);
-            state.appendChild (adapter.tree, nullptr);
-        }
-    }
-
-    flushParameterValuesToValueTree();
+    for (const auto& p : parameters)
+        setNewState (*p);
 }
 
-void AudioProcessorValueTreeState::valueTreePropertyChanged (ValueTree& tree, const Identifier&)
+void AudioProcessorValueTreeState::valueTreePropertyChanged (ValueTree& tree, const Identifier& property)
 {
-    if (tree.hasType (valueType) && tree.getParent() == state)
-        setNewState (tree);
+    if (! (tree.hasType (valueType) && tree.getParent() == state))
+        return;
+
+    if (property == idPropertyID)
+        updateParameterConnectionsToChildTrees();
+    else if (property == valuePropertyID)
+        if (auto adapter = getParameterAdapter (tree.getProperty (idPropertyID).toString()))
+            adapter->setDenormalisedValue (tree.getProperty (valuePropertyID));
 }
 
 void AudioProcessorValueTreeState::valueTreeChildAdded (ValueTree& parent, ValueTree& tree)
 {
     if (parent == state && tree.hasType (valueType))
-        setNewState (tree);
+        if (auto* param = getParameterAdapter (tree.getProperty (idPropertyID).toString()))
+            setNewState (*param);
 }
 
 void AudioProcessorValueTreeState::valueTreeChildRemoved (ValueTree& parent, ValueTree& tree, int)
 {
     if (parent == state && tree.hasType (valueType))
-        setNewState (tree);
+        if (auto* param = getParameterAdapter (tree.getProperty (idPropertyID).toString()))
+            setNewState (*param);
 }
 
 void AudioProcessorValueTreeState::valueTreeRedirected (ValueTree& v)
@@ -432,8 +431,10 @@ bool AudioProcessorValueTreeState::flushParameterValuesToValueTree()
 
     bool anyUpdated = false;
 
-    for (auto& p : adapterTable)
-        anyUpdated |= p.second->flushToTree (valuePropertyID, undoManager);
+    for (auto& p : parameters)
+        anyUpdated |= p->flushToTree (getChildValueTree (p->getParameter().paramID),
+                                      valuePropertyID,
+                                      undoManager);
 
     return anyUpdated;
 }
@@ -586,7 +587,7 @@ struct AudioProcessorValueTreeState::SliderAttachment::Pimpl  : private Attached
         slider.addListener (this);
     }
 
-    ~Pimpl() override
+    ~Pimpl()
     {
         slider.removeListener (this);
         removeListener();
@@ -638,7 +639,7 @@ struct AudioProcessorValueTreeState::ComboBoxAttachment::Pimpl  : private Attach
         combo.addListener (this);
     }
 
-    ~Pimpl() override
+    ~Pimpl()
     {
         combo.removeListener (this);
         removeListener();
@@ -707,7 +708,7 @@ struct AudioProcessorValueTreeState::ButtonAttachment::Pimpl  : private Attached
         button.addListener (this);
     }
 
-    ~Pimpl() override
+    ~Pimpl()
     {
         button.removeListener (this);
         removeListener();
@@ -791,7 +792,7 @@ static struct ParameterAdapterTests final   : public UnitTest
 
         beginTest ("Floats can be converted to text");
         {
-            const auto test = [&](NormalisableRange<float> range, float value, String expected)
+            const auto test = [&](NormalisableRange<float> range, float value, juce::String expected)
             {
                 AudioParameterFloat param ({}, {}, range, {}, {});
                 AudioProcessorValueTreeState::ParameterAdapter adapter (param);
@@ -799,15 +800,15 @@ static struct ParameterAdapterTests final   : public UnitTest
                 expectEquals (adapter.getTextForDenormalisedValue (value), expected);
             };
 
-            test ({ -100, 100 }, 0, "0.0000000");
-            test ({ -2.5, 12.5 }, 10, "10.0000000");
-            test ({ -20, -10 }, -15, "-15.0000000");
-            test ({ 0, 7.5 }, 2.5, "2.5000000");
+            test ({ -100, 100 }, 0, "0.0");
+            test ({ -2.5, 12.5 }, 10, "10.0");
+            test ({ -20, -10 }, -15, "-15.0");
+            test ({ 0, 7.5 }, 2.5, "2.5");
         }
 
         beginTest ("Text can be converted to floats");
         {
-            const auto test = [&](NormalisableRange<float> range, String text, float expected)
+            const auto test = [&](NormalisableRange<float> range, juce::String text, float expected)
             {
                 AudioParameterFloat param ({}, {}, range, {}, {});
                 AudioProcessorValueTreeState::ParameterAdapter adapter (param);
@@ -1043,7 +1044,7 @@ public:
                 key,
                 String(),
                 String(),
-                NormalisableRange<float> (0.0f, 100.0f, 10.0f),
+                juce::NormalisableRange<float> (0.0f, 100.0f, 10.0f),
                 value,
                 nullptr,
                 nullptr));
@@ -1112,15 +1113,12 @@ public:
         {
             TestAudioProcessor proc;
             const auto key = "id";
-            const auto initialValue = 0.2f;
             auto param = proc.state.createAndAddParameter (std::make_unique<Parameter> (key, String(), String(), NormalisableRange<float>(),
-                                                                                        initialValue, nullptr, nullptr));
+                                                                                        0.0f, nullptr, nullptr));
             proc.state.state = ValueTree { "state" };
 
-            auto value = proc.state.getParameterAsValue (key);
-            expectEquals (float (value.getValue()), initialValue);
-
             const auto newValue = 0.75f;
+            auto value = proc.state.getParameterAsValue (key);
             value = newValue;
 
             expectEquals (param->getValue(), newValue);

@@ -51,7 +51,7 @@ public:
            const String& labelText = String());
 
     /** Destructor. */
-    ~Label() override;
+    ~Label();
 
     //==============================================================================
     /** Changes the label text.

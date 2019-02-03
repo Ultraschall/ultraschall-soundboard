@@ -44,7 +44,7 @@ public:
     DrawableText (const DrawableText&);
 
     /** Destructor. */
-    ~DrawableText() override;
+    ~DrawableText();
 
     //==============================================================================
     /** Sets the text to display.*/

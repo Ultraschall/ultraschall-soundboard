@@ -280,13 +280,13 @@ Font& Font::operator= (const Font& other) noexcept
 }
 
 Font::Font (Font&& other) noexcept
-    : font (std::move (other.font))
+    : font (static_cast<ReferenceCountedObjectPtr<SharedFontInternal>&&> (other.font))
 {
 }
 
 Font& Font::operator= (Font&& other) noexcept
 {
-    font = std::move (other.font);
+    font = static_cast<ReferenceCountedObjectPtr<SharedFontInternal>&&> (other.font);
     return *this;
 }
 

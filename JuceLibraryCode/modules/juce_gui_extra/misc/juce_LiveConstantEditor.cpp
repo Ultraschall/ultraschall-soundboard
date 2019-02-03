@@ -38,7 +38,7 @@ class AllComponentRepainter  : private Timer,
 {
 public:
     AllComponentRepainter()  {}
-    ~AllComponentRepainter() override  { clearSingletonInstance(); }
+    ~AllComponentRepainter() { clearSingletonInstance(); }
 
     JUCE_DECLARE_SINGLETON (AllComponentRepainter, false)
 
@@ -314,7 +314,7 @@ public:
         setVisible (true);
     }
 
-    ~EditorWindow() override
+    ~EditorWindow()
     {
         setLookAndFeel (nullptr);
     }

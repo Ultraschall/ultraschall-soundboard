@@ -149,7 +149,7 @@ public:
         }
     }
 
-    ~OggReader() override
+    ~OggReader()
     {
         ov_clear (&ovFile);
     }
@@ -322,7 +322,7 @@ public:
         }
     }
 
-    ~OggWriter() override
+    ~OggWriter()
     {
         if (ok)
         {

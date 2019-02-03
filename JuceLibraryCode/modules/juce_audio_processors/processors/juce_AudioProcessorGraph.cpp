@@ -191,13 +191,13 @@ private:
     {
         struct LambdaOp  : public RenderingOp
         {
-            LambdaOp (LambdaType&& f) : function (std::move (f)) {}
+            LambdaOp (LambdaType&& f) : function (static_cast<LambdaType&&> (f)) {}
             void perform (const Context& c) override    { function (c); }
 
             LambdaType function;
         };
 
-        renderOps.add (new LambdaOp (std::move (fn)));
+        renderOps.add (new LambdaOp (static_cast<LambdaType&&> (fn)));
     }
 
     //==============================================================================
@@ -1245,11 +1245,7 @@ void AudioProcessorGraph::prepareToPlay (double sampleRate, int estimatedSamples
 {
     setRateAndBufferSizeDetails (sampleRate, estimatedSamplesPerBlock);
     clearRenderingSequence();
-
-    if (isNonRealtime() && MessageManager::getInstance()->isThisTheMessageThread())
-        handleAsyncUpdate();
-    else
-        triggerAsyncUpdate();
+    triggerAsyncUpdate();
 }
 
 bool AudioProcessorGraph::supportsDoublePrecisionProcessing() const

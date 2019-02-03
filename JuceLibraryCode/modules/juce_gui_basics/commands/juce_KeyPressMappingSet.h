@@ -108,7 +108,7 @@ public:
     KeyPressMappingSet (const KeyPressMappingSet&);
 
     /** Destructor. */
-    ~KeyPressMappingSet() override;
+    ~KeyPressMappingSet();
 
     //==============================================================================
     ApplicationCommandManager& getCommandManager() const noexcept       { return commandManager; }

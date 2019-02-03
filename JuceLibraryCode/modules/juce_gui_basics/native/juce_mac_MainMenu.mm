@@ -73,7 +73,7 @@ public:
         JuceMenuCallbackClass::setOwner (callback, this);
     }
 
-    ~JuceMainMenuHandler() override
+    ~JuceMainMenuHandler()
     {
         setMenu (nullptr, nullptr, String());
 

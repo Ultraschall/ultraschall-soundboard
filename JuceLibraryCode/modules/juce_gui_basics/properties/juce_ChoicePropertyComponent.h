@@ -106,7 +106,7 @@ public:
                              const String& propertyName);
 
     /** Destructor. */
-    ~ChoicePropertyComponent() override;
+    ~ChoicePropertyComponent();
 
     //==============================================================================
     /** Called when the user selects an item from the combo box.

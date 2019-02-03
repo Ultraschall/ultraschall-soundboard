@@ -79,7 +79,7 @@ public:
                 Component* parentComponent);
 
     /** Destructor. */
-    ~CallOutBox() override;
+    ~CallOutBox();
 
     //==============================================================================
     /** Changes the base width of the arrow. */

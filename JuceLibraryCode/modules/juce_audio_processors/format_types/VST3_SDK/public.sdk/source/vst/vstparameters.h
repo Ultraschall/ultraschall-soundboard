@@ -12,24 +12,24 @@
 //-----------------------------------------------------------------------------
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
-// 
-//   * Redistributions of source code must retain the above copyright notice, 
+//
+//   * Redistributions of source code must retain the above copyright notice,
 //     this list of conditions and the following disclaimer.
 //   * Redistributions in binary form must reproduce the above copyright notice,
-//     this list of conditions and the following disclaimer in the documentation 
+//     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
 //   * Neither the name of the Steinberg Media Technologies nor the names of its
-//     contributors may be used to endorse or promote products derived from this 
+//     contributors may be used to endorse or promote products derived from this
 //     software without specific prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-// IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-// LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+// IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+// LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 // OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE  OF THIS SOFTWARE, EVEN IF ADVISED
 // OF THE POSSIBILITY OF SUCH DAMAGE.
 //-----------------------------------------------------------------------------
@@ -61,18 +61,18 @@ public:
 	           ParamValue defaultValueNormalized = 0., int32 stepCount = 0,
 	           int32 flags = ParameterInfo::kCanAutomate, UnitID unitID = kRootUnitId,
                const TChar* shortTitle = nullptr);
-	~Parameter () override;
+	virtual ~Parameter ();
 
 	/** Returns its read only info. */
-	virtual const ParameterInfo& getInfo () const { return info; }
+	const ParameterInfo& getInfo () const { return info; }
 
 	/** Returns its writable info. */
-	virtual ParameterInfo& getInfo () { return info; }
+	ParameterInfo& getInfo () { return info; }
 
 	/** Sets its associated UnitId. */
-	virtual void setUnitID (UnitID id) { info.unitId = id; }
+	void setUnitID (UnitID id) { info.unitId = id; }
 	/** Gets its associated UnitId. */
-	virtual UnitID getUnitID () { return info.unitId; }
+	UnitID getUnitID () { return info.unitId; }
 
 	/** Gets its normalized value [0.0, 1.0]. */
 	ParamValue getNormalized () const { return valueNormalized; }
@@ -90,10 +90,10 @@ public:
 	virtual ParamValue toNormalized (ParamValue plainValue) const;
 
 	/** Gets the current precision (used for string representation of float). */
-	virtual int32 getPrecision () const { return precision; }
+	int32 getPrecision () const { return precision; }
 	/** Sets the precision for string representation of float value (for example 4.34 with 2 as
 	 * precision). */
-	virtual void setPrecision (int32 val) { precision = val; }
+	void setPrecision (int32 val) { precision = val; }
 
 	OBJ_METHODS (Parameter, FObject)
 //------------------------------------------------------------------------
@@ -158,7 +158,7 @@ public:
 	StringListParameter (const TChar* title, ParamID tag, const TChar* units = nullptr,
 	                     int32 flags = ParameterInfo::kCanAutomate | ParameterInfo::kIsList,
 	                     UnitID unitID = kRootUnitId, const TChar* shortTitle= nullptr);
-	~StringListParameter () override;
+	virtual ~StringListParameter ();
 
 	/** Appends a string and increases the stepCount. */
 	virtual void appendString (const String128 string);
@@ -178,7 +178,7 @@ public:
 	OBJ_METHODS (StringListParameter, Parameter)
 //------------------------------------------------------------------------
 protected:
-	using StringVector = std::vector<TChar*>;
+	typedef std::vector<TChar*> StringVector;
 	StringVector strings;
 };
 
@@ -227,8 +227,8 @@ public:
 
 //------------------------------------------------------------------------
 protected:
-	using ParameterPtrVector = std::vector<IPtr<Parameter>>;
-	using IndexMap = std::map<ParamID, ParameterPtrVector::size_type>;
+	typedef std::vector<IPtr<Parameter>> ParameterPtrVector;
+	typedef std::map<ParamID, ParameterPtrVector::size_type> IndexMap;
 	ParameterPtrVector* params;
 	IndexMap id2index;
 };

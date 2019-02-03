@@ -218,6 +218,35 @@ namespace CoreMidiHelpers
         }
     }
 
+    static StringArray findDevices (bool forInput)
+    {
+        // It seems that OSX can be a bit picky about the thread that's first used to
+        // search for devices. It's safest to use the message thread for calling this.
+        JUCE_ASSERT_MESSAGE_THREAD
+
+        StringArray s;
+        enableSimulatorMidiSession();
+
+        auto num = forInput ? MIDIGetNumberOfSources()
+                            : MIDIGetNumberOfDestinations();
+
+        for (ItemCount i = 0; i < num; ++i)
+        {
+            String name;
+
+            if (auto dest = forInput ? MIDIGetSource (i)
+                                     : MIDIGetDestination (i))
+                name = getConnectedEndpointName (dest);
+
+            if (name.isEmpty())
+                name = "<error>";
+
+            s.add (name);
+        }
+
+        return s;
+    }
+
     static void globalSystemChangeCallback (const MIDINotification*, void*)
     {
         // TODO.. Should pass-on this notification..
@@ -249,40 +278,6 @@ namespace CoreMidiHelpers
         }
 
         return globalMidiClient;
-    }
-
-    static StringArray findDevices (bool forInput)
-    {
-        // It seems that OSX can be a bit picky about the thread that's first used to
-        // search for devices. It's safest to use the message thread for calling this.
-        JUCE_ASSERT_MESSAGE_THREAD
-
-        if (getGlobalMidiClient() == 0)
-        {
-            jassertfalse;
-            return {};
-        }
-
-        StringArray s;
-        enableSimulatorMidiSession();
-
-        auto num = forInput ? MIDIGetNumberOfSources()
-                            : MIDIGetNumberOfDestinations();
-
-        for (ItemCount i = 0; i < num; ++i)
-        {
-            String name;
-
-            if (auto dest = forInput ? MIDIGetSource (i) : MIDIGetDestination (i))
-                name = getConnectedEndpointName (dest);
-
-            if (name.isEmpty())
-                name = "<error>";
-
-            s.add (name);
-        }
-
-        return s;
     }
 
     //==============================================================================
@@ -380,24 +375,22 @@ MidiOutput* MidiOutput::openDevice (int index)
 {
     MidiOutput* mo = nullptr;
 
-    if (auto client = CoreMidiHelpers::getGlobalMidiClient())
+    if (isPositiveAndBelow (index, MIDIGetNumberOfDestinations()))
     {
-        if (isPositiveAndBelow (index, MIDIGetNumberOfDestinations()))
+        auto endPoint = MIDIGetDestination ((ItemCount) index);
+
+        CoreMidiHelpers::ScopedCFString pname;
+
+        if (CHECK_ERROR (MIDIObjectGetStringProperty (endPoint, kMIDIPropertyName, &pname.cfString)))
         {
-            auto endPoint = MIDIGetDestination ((ItemCount) index);
+            auto client = CoreMidiHelpers::getGlobalMidiClient();
+            MIDIPortRef port;
+            auto deviceName = CoreMidiHelpers::getConnectedEndpointName (endPoint);
 
-            CoreMidiHelpers::ScopedCFString pname;
-
-            if (CHECK_ERROR (MIDIObjectGetStringProperty (endPoint, kMIDIPropertyName, &pname.cfString)))
+            if (client != 0 && CHECK_ERROR (MIDIOutputPortCreate (client, pname.cfString, &port)))
             {
-                MIDIPortRef port;
-                auto deviceName = CoreMidiHelpers::getConnectedEndpointName (endPoint);
-
-                if (CHECK_ERROR (MIDIOutputPortCreate (client, pname.cfString, &port)))
-                {
-                    mo = new MidiOutput (deviceName);
-                    mo->internal = new CoreMidiHelpers::MidiPortAndEndpoint (port, endPoint);
-                }
+                mo = new MidiOutput (deviceName);
+                mo->internal = new CoreMidiHelpers::MidiPortAndEndpoint (port, endPoint);
             }
         }
     }
@@ -407,21 +400,19 @@ MidiOutput* MidiOutput::openDevice (int index)
 
 MidiOutput* MidiOutput::createNewDevice (const String& deviceName)
 {
-    if (auto client = CoreMidiHelpers::getGlobalMidiClient())
+    MIDIClientRef client = CoreMidiHelpers::getGlobalMidiClient();
+    MIDIEndpointRef endPoint;
+
+    CoreMidiHelpers::ScopedCFString name;
+    name.cfString = deviceName.toCFString();
+
+    if (client != 0 && CHECK_ERROR (MIDISourceCreate (client, name.cfString, &endPoint)))
     {
-        MIDIEndpointRef endPoint;
+        CoreMidiHelpers::setUniqueIdForMidiPort (endPoint, deviceName, false);
 
-        CoreMidiHelpers::ScopedCFString name;
-        name.cfString = deviceName.toCFString();
-
-        if (CHECK_ERROR (MIDISourceCreate (client, name.cfString, &endPoint)))
-        {
-            CoreMidiHelpers::setUniqueIdForMidiPort (endPoint, deviceName, false);
-
-            auto mo = new MidiOutput (deviceName);
-            mo->internal = new CoreMidiHelpers::MidiPortAndEndpoint (0, endPoint);
-            return mo;
-        }
+        auto mo = new MidiOutput (deviceName);
+        mo->internal = new CoreMidiHelpers::MidiPortAndEndpoint (0, endPoint);
+        return mo;
     }
 
     return nullptr;
@@ -504,15 +495,15 @@ MidiInput* MidiInput::openDevice (int index, MidiInputCallback* callback)
     using namespace CoreMidiHelpers;
     MidiInput* newInput = nullptr;
 
-    if (auto client = getGlobalMidiClient())
+    if (isPositiveAndBelow (index, MIDIGetNumberOfSources()))
     {
-        if (isPositiveAndBelow (index, MIDIGetNumberOfSources()))
+        if (auto endPoint = MIDIGetSource ((ItemCount) index))
         {
-            if (auto endPoint = MIDIGetSource ((ItemCount) index))
-            {
-                ScopedCFString name;
+            ScopedCFString name;
 
-                if (CHECK_ERROR (MIDIObjectGetStringProperty (endPoint, kMIDIPropertyName, &name.cfString)))
+            if (CHECK_ERROR (MIDIObjectGetStringProperty (endPoint, kMIDIPropertyName, &name.cfString)))
+            {
+                if (auto client = getGlobalMidiClient())
                 {
                     MIDIPortRef port;
                     std::unique_ptr<MidiPortAndCallback> mpc (new MidiPortAndCallback (*callback));

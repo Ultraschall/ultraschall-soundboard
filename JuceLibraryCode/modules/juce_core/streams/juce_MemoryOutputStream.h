@@ -66,7 +66,7 @@ public:
     /** Destructor.
         This will free any data that was written to it.
     */
-    ~MemoryOutputStream() override;
+    ~MemoryOutputStream();
 
     //==============================================================================
     /** Returns a pointer to the data that has been written to the stream.

@@ -49,7 +49,7 @@ public:
     TabBarButton (const String& name, TabbedButtonBar& ownerBar);
 
     /** Destructor. */
-    ~TabBarButton() override;
+    ~TabBarButton();
 
     /** Returns the bar that contains this button. */
     TabbedButtonBar& getTabbedButtonBar() const   { return owner; }
@@ -173,7 +173,7 @@ public:
     TabbedButtonBar (Orientation orientation);
 
     /** Destructor. */
-    ~TabbedButtonBar() override;
+    ~TabbedButtonBar();
 
     //==============================================================================
     /** Changes the bar's orientation.

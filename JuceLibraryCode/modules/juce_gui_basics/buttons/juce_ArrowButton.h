@@ -51,7 +51,7 @@ public:
                  Colour arrowColour);
 
     /** Destructor. */
-    ~ArrowButton() override;
+    ~ArrowButton();
 
     /** @internal */
     void paintButton (Graphics&, bool, bool) override;

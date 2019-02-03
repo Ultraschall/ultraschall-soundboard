@@ -67,7 +67,7 @@ struct AutoRemovingTransportSource  : public AudioTransportSource,
         startTimerHz (10);
     }
 
-    ~AutoRemovingTransportSource() override
+    ~AutoRemovingTransportSource()
     {
         setSource (nullptr);
     }

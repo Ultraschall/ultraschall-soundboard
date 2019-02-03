@@ -168,7 +168,7 @@ TextLayout::TextLayout (const TextLayout& other)
 }
 
 TextLayout::TextLayout (TextLayout&& other) noexcept
-    : lines (std::move (other.lines)),
+    : lines (static_cast<OwnedArray<Line>&&> (other.lines)),
       width (other.width), height (other.height),
       justification (other.justification)
 {
@@ -176,7 +176,7 @@ TextLayout::TextLayout (TextLayout&& other) noexcept
 
 TextLayout& TextLayout::operator= (TextLayout&& other) noexcept
 {
-    lines = std::move (other.lines);
+    lines = static_cast<OwnedArray<Line>&&> (other.lines);
     width = other.width;
     height = other.height;
     justification = other.justification;

@@ -70,7 +70,7 @@ public:
     GZIPDecompressorInputStream (InputStream& sourceStream);
 
     /** Destructor. */
-    ~GZIPDecompressorInputStream() override;
+    ~GZIPDecompressorInputStream();
 
     //==============================================================================
     int64 getPosition() override;

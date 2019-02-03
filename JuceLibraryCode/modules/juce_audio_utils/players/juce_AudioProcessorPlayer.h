@@ -50,7 +50,7 @@ public:
     AudioProcessorPlayer (bool doDoublePrecisionProcessing = false);
 
     /** Destructor. */
-    ~AudioProcessorPlayer() override;
+    virtual ~AudioProcessorPlayer();
 
     //==============================================================================
     /** Sets the processor that should be played.

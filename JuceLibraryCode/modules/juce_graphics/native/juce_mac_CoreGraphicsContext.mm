@@ -111,7 +111,7 @@ public:
         CGColorSpaceRelease (colourSpace);
     }
 
-    ~CoreGraphicsImage() override
+    ~CoreGraphicsImage()
     {
         freeCachedImageRef();
         CGContextRelease (context);

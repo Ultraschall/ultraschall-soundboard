@@ -53,7 +53,7 @@ public:
                          bool allowPluginsWhichRequireAsynchronousInstantiation = false);
 
     /** Destructor. */
-    ~PluginListComponent() override;
+    ~PluginListComponent();
 
     /** Changes the text in the panel's options button. */
     void setOptionsButtonText (const String& newText);

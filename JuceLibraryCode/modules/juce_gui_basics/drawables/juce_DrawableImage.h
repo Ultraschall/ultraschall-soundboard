@@ -43,7 +43,7 @@ public:
     DrawableImage (const DrawableImage&);
 
     /** Destructor. */
-    ~DrawableImage() override;
+    ~DrawableImage();
 
     //==============================================================================
     /** Sets the image that this drawable will render. */

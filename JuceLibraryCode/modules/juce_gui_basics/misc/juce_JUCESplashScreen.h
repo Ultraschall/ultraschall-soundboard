@@ -53,7 +53,7 @@ class JUCE_API  JUCESplashScreen  : public Component,
 {
 public:
     JUCESplashScreen (Component& parentToAddTo);
-    ~JUCESplashScreen() override;
+    ~JUCESplashScreen();
 
     static std::unique_ptr<Drawable> getSplashScreenLogo();
 

@@ -47,7 +47,7 @@ public:
     GlowEffect();
 
     /** Destructor. */
-    ~GlowEffect() override;
+    ~GlowEffect();
 
     //==============================================================================
     /** Sets the glow's radius and colour.

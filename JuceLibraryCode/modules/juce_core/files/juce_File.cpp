@@ -53,13 +53,13 @@ File& File::operator= (const File& other)
 }
 
 File::File (File&& other) noexcept
-    : fullPath (std::move (other.fullPath))
+    : fullPath (static_cast<String&&> (other.fullPath))
 {
 }
 
 File& File::operator= (File&& other) noexcept
 {
-    fullPath = std::move (other.fullPath);
+    fullPath = static_cast<String&&> (other.fullPath);
     return *this;
 }
 

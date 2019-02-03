@@ -30,7 +30,6 @@ namespace juce
 class FileChooser::Native     : public FileChooser::Pimpl
 {
 public:
-    //==============================================================================
     Native (FileChooser& fileChooser, int flags)    : owner (fileChooser)
     {
         if (currentFileChooser == nullptr)
@@ -38,7 +37,7 @@ public:
             currentFileChooser = this;
             auto* env = getEnv();
 
-            auto sdkVersion         = getAndroidSDKVersion();
+            auto sdkVersion = env->CallStaticIntMethod (JuceAppActivity, JuceAppActivity.getAndroidSDKVersion);
             auto saveMode           = ((flags & FileBrowserComponent::saveMode) != 0);
             auto selectsDirectories = ((flags & FileBrowserComponent::canSelectDirectories) != 0);
 
@@ -65,8 +64,8 @@ public:
                                                      : "android.intent.action.GET_CONTENT")));
 
 
-            intent = GlobalRef (LocalRef<jobject> (env->NewObject (AndroidIntent, AndroidIntent.constructWithString,
-                                                                   javaString (action).get())));
+            intent = GlobalRef (env->NewObject (AndroidIntent, AndroidIntent.constructWithString,
+                                                javaString (action).get()));
 
             if (owner.startingFile != File())
             {
@@ -136,7 +135,6 @@ public:
 
     ~Native()
     {
-        masterReference.clear();
         currentFileChooser = nullptr;
     }
 
@@ -148,26 +146,13 @@ public:
 
     void launch() override
     {
-        auto* env = getEnv();
-
         if (currentFileChooser != nullptr)
-        {
-            WeakReference<Native> myself (this);
-
-            startAndroidActivityForResult (LocalRef<jobject> (env->NewLocalRef (intent.get())), /*READ_REQUEST_CODE*/ 42,
-                                           [myself] (int requestCode, int resultCode, LocalRef<jobject> intentData) mutable
-                                           {
-                                               if (myself != nullptr)
-                                                   myself->onActivityResult (requestCode, resultCode, intentData);
-                                           });
-        }
+            android.activity.callVoidMethod (JuceAppActivity.startActivityForResult, intent.get(), /*READ_REQUEST_CODE*/ 42);
         else
-        {
             jassertfalse; // There is already a file chooser running
-        }
     }
 
-    void onActivityResult (int /*requestCode*/, int resultCode, const LocalRef<jobject>& intentData)
+    void completed (int resultCode, jobject intentData)
     {
         currentFileChooser = nullptr;
         auto* env = getEnv();
@@ -176,7 +161,7 @@ public:
 
         if (resultCode == /*Activity.RESULT_OK*/ -1 && intentData != nullptr)
         {
-            LocalRef<jobject> uri (env->CallObjectMethod (intentData.get(), AndroidIntent.getData));
+            LocalRef<jobject> uri (env->CallObjectMethod (intentData, AndroidIntent.getData));
 
             if (uri != nullptr)
             {
@@ -212,23 +197,23 @@ public:
     }
 
 private:
-    JUCE_DECLARE_WEAK_REFERENCEABLE (Native)
-
     FileChooser& owner;
     GlobalRef intent;
 };
 
 FileChooser::Native* FileChooser::Native::currentFileChooser = nullptr;
 
+void juce_fileChooserCompleted (int resultCode, void* intentData)
+{
+    if (FileChooser::Native::currentFileChooser != nullptr)
+        FileChooser::Native::currentFileChooser->completed (resultCode, (jobject) intentData);
+}
+
+
 FileChooser::Pimpl* FileChooser::showPlatformDialog (FileChooser& owner, int flags,
                                                      FilePreviewComponent*)
 {
-    if (FileChooser::Native::currentFileChooser == nullptr)
-        return new FileChooser::Native (owner, flags);
-
-    // there can only be one file chooser on Android at a once
-    jassertfalse;
-    return nullptr;
+    return new FileChooser::Native (owner, flags);
 }
 
 bool FileChooser::isPlatformDialogAvailable()

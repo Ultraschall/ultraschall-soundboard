@@ -69,14 +69,14 @@ public:
 
     /** Move constructor */
     RectangleList (RectangleList&& other) noexcept
-        : rects (std::move (other.rects))
+        : rects (static_cast<Array<RectangleType>&&> (other.rects))
     {
     }
 
     /** Move assignment operator */
     RectangleList& operator= (RectangleList&& other) noexcept
     {
-        rects = std::move (other.rects);
+        rects = static_cast<Array<RectangleType>&&> (other.rects);
         return *this;
     }
 

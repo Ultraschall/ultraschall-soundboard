@@ -45,7 +45,7 @@ public:
     InterprocessConnectionServer();
 
     /** Destructor. */
-    ~InterprocessConnectionServer() override;
+    ~InterprocessConnectionServer();
 
     //==============================================================================
     /** Starts an internal thread which listens on the given port number.

@@ -52,7 +52,7 @@ public:
     explicit ImageButton (const String& name = String());
 
     /** Destructor. */
-    ~ImageButton() override;
+    ~ImageButton();
 
     //==============================================================================
     /** Sets up the images to draw in various states.

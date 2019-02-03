@@ -204,7 +204,7 @@ public:
     */
     AudioProcessorValueTreeState (AudioProcessor& processorToConnectTo,
                                   UndoManager* undoManagerToUse,
-                                  const Identifier& valueTreeType,
+                                  const juce::Identifier& valueTreeType,
                                   ParameterLayout parameterLayout);
 
     /** This constructor is discouraged and will be deprecated in a future version of JUCE!
@@ -220,7 +220,7 @@ public:
     AudioProcessorValueTreeState (AudioProcessor& processorToConnectTo, UndoManager* undoManagerToUse);
 
     /** Destructor. */
-    ~AudioProcessorValueTreeState() override;
+    ~AudioProcessorValueTreeState();
 
     //==============================================================================
     /** This function is deprecated and will be removed in a future version of JUCE!
@@ -518,11 +518,12 @@ private:
     friend struct ParameterAdapterTests;
    #endif
 
-    void addParameterAdapter (RangedAudioParameter&);
     ParameterAdapter* getParameterAdapter (StringRef) const;
 
+    ValueTree getChildValueTree (const String&) const;
+    ValueTree getOrCreateChildValueTree (const String&);
     bool flushParameterValuesToValueTree();
-    void setNewState (ValueTree);
+    void setNewState (ParameterAdapter&);
     void timerCallback() override;
 
     void valueTreePropertyChanged (ValueTree&, const Identifier&) override;
@@ -535,7 +536,7 @@ private:
 
     const Identifier valueType { "PARAM" }, valuePropertyID { "value" }, idPropertyID { "id" };
 
-    std::map<String, std::unique_ptr<ParameterAdapter>> adapterTable;
+    std::vector<std::unique_ptr<ParameterAdapter>> parameters;
 
     CriticalSection valueTreeChanging;
 

@@ -98,7 +98,7 @@ public:
     {
     }
 
-    ~LevelDataSource() override
+    ~LevelDataSource()
     {
         owner.cache.getTimeSliceThread().removeTimeSliceClient (this);
     }

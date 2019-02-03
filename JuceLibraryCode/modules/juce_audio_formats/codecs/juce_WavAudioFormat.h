@@ -43,7 +43,7 @@ public:
     WavAudioFormat();
 
     /** Destructor. */
-    ~WavAudioFormat() override;
+    ~WavAudioFormat();
 
     //==============================================================================
     // BWAV chunk properties:

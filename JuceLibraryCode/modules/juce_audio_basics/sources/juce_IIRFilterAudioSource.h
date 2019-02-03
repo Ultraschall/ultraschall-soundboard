@@ -43,7 +43,7 @@ public:
                           bool deleteInputWhenDeleted);
 
     /** Destructor. */
-    ~IIRFilterAudioSource() override;
+    ~IIRFilterAudioSource();
 
     //==============================================================================
     /** Changes the filter to use the same parameters as the one being passed in. */

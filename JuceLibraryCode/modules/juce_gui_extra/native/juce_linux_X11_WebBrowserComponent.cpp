@@ -707,6 +707,7 @@ private:
 //==============================================================================
 WebBrowserComponent::WebBrowserComponent (const bool unloadPageWhenBrowserIsHidden_)
     : browser (new Pimpl (*this)),
+      blankPageShown (false),
       unloadPageWhenBrowserIsHidden (unloadPageWhenBrowserIsHidden_)
 {
     setOpaque (true);
@@ -735,6 +736,8 @@ void WebBrowserComponent::goToURL (const String& url,
     else
         lastPostData.reset();
 
+    blankPageShown = false;
+
     browser->goToURL (url, headers, postData);
 }
 
@@ -746,6 +749,7 @@ void WebBrowserComponent::stop()
 void WebBrowserComponent::goBack()
 {
     lastURL.clear();
+    blankPageShown = false;
 
     browser->goBack();
 }

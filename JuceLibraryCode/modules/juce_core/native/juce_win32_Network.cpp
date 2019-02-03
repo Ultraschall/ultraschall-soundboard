@@ -343,35 +343,6 @@ private:
         InternetSetOption (sessionHandle, option, &timeOutMs, sizeof (timeOutMs));
     }
 
-    void sendHTTPRequest (INTERNET_BUFFERS& buffers, WebInputStream::Listener* listener)
-    {
-        if (! HttpSendRequestEx (request, &buffers, 0, HSR_INITIATE, 0))
-            return;
-
-        int totalBytesSent = 0;
-
-        while (totalBytesSent < (int) postData.getSize())
-        {
-            auto bytesToSend = jmin (1024, (int) postData.getSize() - totalBytesSent);
-            DWORD bytesSent = 0;
-
-            if (bytesToSend == 0
-                || ! InternetWriteFile (request, static_cast<const char*> (postData.getData()) + totalBytesSent,
-                                        (DWORD) bytesToSend, &bytesSent))
-            {
-                return;
-            }
-
-            totalBytesSent += bytesSent;
-
-            if (listener != nullptr
-                && ! listener->postDataSendProgress (owner, totalBytesSent, (int) postData.getSize()))
-            {
-                return;
-            }
-        }
-    }
-
     void openHTTPConnection (URL_COMPONENTS& uc, const String& address, WebInputStream::Listener* listener)
     {
         const TCHAR* mimeTypes[] = { _T("*/*"), nullptr };
@@ -394,29 +365,43 @@ private:
         if (request != 0)
         {
             INTERNET_BUFFERS buffers = { 0 };
-            buffers.dwStructSize    = sizeof (INTERNET_BUFFERS);
-            buffers.lpcszHeader     = headers.toWideCharPointer();
+            buffers.dwStructSize = sizeof (INTERNET_BUFFERS);
+            buffers.lpcszHeader = headers.toWideCharPointer();
             buffers.dwHeadersLength = (DWORD) headers.length();
-            buffers.dwBufferTotal   = (DWORD) postData.getSize();
+            buffers.dwBufferTotal = (DWORD) postData.getSize();
 
-            auto sendRequestAndTryEnd = [this, &buffers, &listener]() -> bool
+            if (HttpSendRequestEx (request, &buffers, 0, HSR_INITIATE, 0))
             {
-                sendHTTPRequest (buffers, listener);
+                int bytesSent = 0;
 
-                if (HttpEndRequest (request, 0, 0, 0))
-                    return true;
+                for (;;)
+                {
+                    const int bytesToDo = jmin (1024, (int) postData.getSize() - bytesSent);
+                    DWORD bytesDone = 0;
 
-                return false;
-            };
+                    if (bytesToDo > 0
+                         && ! InternetWriteFile (request,
+                                                 static_cast<const char*> (postData.getData()) + bytesSent,
+                                                 (DWORD) bytesToDo, &bytesDone))
+                    {
+                        break;
+                    }
 
-            auto closed = sendRequestAndTryEnd();
+                    if (bytesToDo == 0 || (int) bytesDone < bytesToDo)
+                    {
+                        if (HttpEndRequest (request, 0, 0, 0))
+                            return;
 
-            // N.B. this is needed for some authenticated HTTP connections
-            if (! closed && GetLastError() == ERROR_INTERNET_FORCE_RETRY)
-                closed = sendRequestAndTryEnd();
+                        break;
+                    }
 
-            if (closed)
-                return;
+                    bytesSent += bytesDone;
+
+                    if (listener != nullptr
+                          && ! listener->postDataSendProgress (owner, bytesSent, (int) postData.getSize()))
+                        break;
+                }
+            }
         }
 
         closeConnection();

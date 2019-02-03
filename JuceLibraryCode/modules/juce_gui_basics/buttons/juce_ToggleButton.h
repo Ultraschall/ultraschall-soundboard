@@ -54,7 +54,7 @@ public:
     explicit ToggleButton (const String& buttonText);
 
     /** Destructor. */
-    ~ToggleButton() override;
+    ~ToggleButton();
 
     //==============================================================================
     /** Resizes the button to fit neatly around its current text.

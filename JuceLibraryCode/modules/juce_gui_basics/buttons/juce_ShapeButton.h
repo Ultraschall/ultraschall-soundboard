@@ -52,7 +52,7 @@ public:
                  Colour downColour);
 
     /** Destructor. */
-    ~ShapeButton() override;
+    ~ShapeButton();
 
     //==============================================================================
     /** Sets the shape to use.
