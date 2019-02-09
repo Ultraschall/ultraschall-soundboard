@@ -3,13 +3,17 @@
         {
             "name": "Linux",
             "includePath": [
+                "/usr/include",
+                "/usr/local/include",
                 "${workspaceFolder}/**"
             ],
-            "defines": [],
-            "compilerPath": "/usr/bin/clang",
+            "defines": [
+                "LINUX"
+            ],
+            "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x64",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64",
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": "${workspaceFolder}/.build/.vsdb"

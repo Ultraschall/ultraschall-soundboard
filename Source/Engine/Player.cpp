@@ -27,14 +27,16 @@ void Player::releaseResources() {
 void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     audioTransportSource->getNextAudioBlock(bufferToFill);
 
-    auto *leftBuffer = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
-    auto *rightBuffer = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
-
-    for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
+	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
         const auto level = evelop.process();
-        leftBuffer[sample] = leftBuffer[sample] * level;
-        rightBuffer[sample] = rightBuffer[sample] * level;
-    }
+
+		if (evelop.getState() == adsr::env_sustain)
+			continue;
+
+        for (int i = 0; i < bufferToFill.buffer->getNumChannels(); ++i) {
+            bufferToFill.buffer->applyGain(i, sample, 1, level);
+        }
+	}
 
     if (currentGain == previousGain) {
         bufferToFill.buffer->applyGain(currentGain);

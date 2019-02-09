@@ -125,14 +125,6 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
 void LibraryViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel)
 {
     auto uuid = Identifier(playerModel.id);
-    libraryItem->settingsButton.onClick = [] {
-
-    };
-
-    libraryItem->loopButton.onClick = [this, uuid, libraryItem] {
-		store->dispatch(PlayerToggleLoopingAction(uuid.toString()));
-    };
-
     libraryItem->fadeButton.onClick = [this, uuid, libraryItem] {
         const auto fadeState = libraryItem->fadeButton.getToggleState();
         if (fadeState)
@@ -204,8 +196,6 @@ void LibraryViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerMo
         libraryItem->setIsReady();
         break;
     }
-
-    libraryItem->loopButton.setToggleState(playerModel.loop, dontSendNotification);
 }
 
 void LibraryViewController::updateContent() const

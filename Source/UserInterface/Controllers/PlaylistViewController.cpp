@@ -125,14 +125,6 @@ Component *PlaylistViewController::refreshComponentForRow(int rowNumber, bool is
 void PlaylistViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel &playerModel)
 {
 	auto uuid = Identifier(playerModel.id);
-	libraryItem->settingsButton.onClick = [] {
-
-	};
-
-	libraryItem->loopButton.onClick = [this, uuid, libraryItem] {
-		store->dispatch(PlayerToggleLoopingAction(uuid.toString()));
-	};
-
 	libraryItem->fadeButton.onClick = [this, uuid, libraryItem] {
 		const auto fadeState = libraryItem->fadeButton.getToggleState();
 		if (fadeState)
@@ -204,8 +196,6 @@ void PlaylistViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerM
 		libraryItem->setIsReady();
 		break;
 	}
-
-	libraryItem->loopButton.setToggleState(playerModel.loop, dontSendNotification);
 }
 
 void PlaylistViewController::updateContent() const

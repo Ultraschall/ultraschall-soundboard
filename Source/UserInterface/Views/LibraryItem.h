@@ -9,7 +9,6 @@ public:
     
     LibraryItem() : Component("LibraryItem") {
 		setOpaque(true);
-        settingsButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Active);
         progressBar.setPercentageDisplay(false);
         
         progressBar.setColour(ProgressBar::ColourIds::backgroundColourId, Material::Color::Secondary::_700.withAlpha(0.24f));
@@ -17,8 +16,6 @@ public:
         
         reset();
         
-        addAndMakeVisible(settingsButton);
-        addAndMakeVisible(loopButton);
         addAndMakeVisible(muteButton);
         addAndMakeVisible(title);
         addAndMakeVisible(time);
@@ -41,8 +38,6 @@ public:
     void resized() override {
         FlexBox flexBox;
         
-        flexBox.items.add(FlexItem(settingsButton).withWidth(Material::IconButton::minButtonSize));
-        flexBox.items.add(FlexItem(loopButton).withWidth(Material::IconButton::minButtonSize).withMargin(FlexItem::Margin(0, 8, 0, 0)));
         flexBox.items.add(FlexItem(muteButton).withWidth(Material::IconButton::minButtonSize));
 
         flexBox.items.add(FlexItem(title).withFlex(2));
@@ -61,10 +56,7 @@ public:
         resized();
     }
     
-    void reset() {
-        loopButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
-        loopButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
-        
+    void reset() {        
         muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         muteButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         
@@ -76,7 +68,6 @@ public:
         playButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         playButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
 
-        loopButton.setToggleState(false, dontSendNotification);
         muteButton.setToggleState(false, dontSendNotification);
         fadeButton.setToggleState(false, dontSendNotification);
         playButton.setToggleState(false, dontSendNotification);
@@ -85,8 +76,6 @@ public:
     }
     
     void setError() {
-		settingsButton.setEnabled(false);
-		loopButton.setEnabled(false);
 		muteButton.setEnabled(false);
 		fadeButton.setEnabled(false);
 		stopButton.setEnabled(false);
@@ -125,8 +114,6 @@ public:
         fadeButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
     }
     
-    Material::IconButton settingsButton{ Material::Icons::settings };
-    Material::IconToggleButton loopButton{ Material::Icons::loop, Material::Icons::loop };
     Material::IconToggleButton muteButton{ Material::Icons::volume_mute, Material::Icons::volume_up };
     Material::IconToggleButton fadeButton{ Material::Icons::call_made, Material::Icons::call_made };
     Material::IconButton stopButton{ Material::Icons::stop };
