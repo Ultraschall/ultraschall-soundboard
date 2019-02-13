@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT name="Soundboard" projectType="audioplug" buildStandalone="1"
-              jucerVersion="5.4.1" version="4.0.0" companyName="Ultraschall"
+              jucerVersion="5.4.2" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
               pluginFormats="buildAUv3,buildStandalone,buildVST3" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
@@ -302,10 +302,10 @@
         </GROUP>
       </GROUP>
       <GROUP id="{E42B0E20-4BD1-8A1D-B5DD-808ECB7151EB}" name="Engine">
-        <FILE id="SyXLxu" name="adsr.cpp" compile="1" resource="0" file="Source/Engine/adsr.cpp"/>
-        <FILE id="R9uNNj" name="adsr.h" compile="0" resource="0" file="Source/Engine/adsr.h"/>
         <FILE id="n4BoGf" name="Engine.cpp" compile="1" resource="0" file="Source/Engine/Engine.cpp"/>
         <FILE id="PJiu9r" name="Engine.h" compile="0" resource="0" file="Source/Engine/Engine.h"/>
+        <FILE id="UneR5y" name="Envelope.cpp" compile="1" resource="0" file="Source/Engine/Envelope.cpp"/>
+        <FILE id="mc8xVR" name="Envelope.h" compile="0" resource="0" file="Source/Engine/Envelope.h"/>
         <FILE id="vWGrDR" name="Player.cpp" compile="1" resource="0" file="Source/Engine/Player.cpp"/>
         <FILE id="LRQoRN" name="Player.h" compile="0" resource="0" file="Source/Engine/Player.h"/>
       </GROUP>

@@ -2,8 +2,6 @@
 
 Player::Player(const Identifier &id)
     : identifier(id),
-      playerState(player_idle),
-      fadeState(fade_idle),
       timeSliceThread("Player: " + id.toString()) {
     timeSliceThread.startThread();
     audioTransportSource = std::make_unique<AudioTransportSource>();
@@ -30,8 +28,9 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
         const auto level = evelop.process();
 
-		if (evelop.getState() == adsr::env_sustain)
+		if (evelop.getState() == adsr::env_sustain) {
 			continue;
+        }
 
         for (int i = 0; i < bufferToFill.buffer->getNumChannels(); ++i) {
             bufferToFill.buffer->applyGain(i, sample, 1, level);

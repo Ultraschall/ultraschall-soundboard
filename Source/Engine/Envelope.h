@@ -1,5 +1,5 @@
 //
-//  ADRS.h
+//  Envelope.h
 //
 //  Created by Nigel Redmon on 12/18/12.
 //  EarLevel Engineering: earlevel.com
@@ -18,11 +18,11 @@
 
 #pragma once
 
-class adsr {
+class Envelope {
 public:
-    adsr();
+    Envelope();
 
-    ~adsr();
+    ~Envelope();
 
     float process();
 
@@ -55,25 +55,25 @@ public:
     };
 
 protected:
-    int state;
-    float output;
-    float attackRate;
-    float decayRate;
-    float releaseRate;
-    float attackCoef;
-    float decayCoef;
-    float releaseCoef;
-    float sustainLevel;
-    float targetRatioA;
-    float targetRatioDR;
-    float attackBase;
-    float decayBase;
-    float releaseBase;
+    int state {env_idle};
+    float output {0};
+    float attackRate {0};
+    float decayRate {0};
+    float releaseRate {0};
+    float attackCoef {0};
+    float decayCoef {0};
+    float releaseCoef {0};
+    float sustainLevel {0};
+    float targetRatioA {0};
+    float targetRatioDR {0};
+    float attackBase {0};
+    float decayBase {0};
+    float releaseBase {0};
 
     float calcCoef(float rate, float targetRatio) const;
 };
 
-inline float adsr::process() {
+inline float Envelope::process() {
     switch (state) {
         case env_idle:
             break;
@@ -105,22 +105,22 @@ inline float adsr::process() {
     return output;
 }
 
-inline void adsr::gate(int gate) {
+inline void Envelope::gate(int gate) {
     if (gate)
         state = env_attack;
     else if (state != env_idle)
         state = env_release;
 }
 
-inline int adsr::getState() const {
+inline int Envelope::getState() const {
     return state;
 }
 
-inline void adsr::reset() {
+inline void Envelope::reset() {
     state = env_idle;
     output = 0.0;
 }
 
-inline float adsr::getOutput() const {
+inline float Envelope::getOutput() const {
     return output;
 }

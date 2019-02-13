@@ -5,7 +5,13 @@ Ultraschall Soundboard VST das Soundboard für Podcaster.
 
 ## Requirements
 
-### Fedora
+### Windows
+
+### MacOS
+
+### Ubuntu 18.04
+
+### Fedora 29
 
 - freetype-devel
 - libXinerama-devel

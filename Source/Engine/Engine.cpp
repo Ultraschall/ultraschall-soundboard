@@ -28,8 +28,9 @@ void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
 		const auto level = talkOverRange.convertFrom0to1(talkOver.process());
 
-		if (talkOver.getState() == adsr::env_sustain)
+		if (talkOver.getState() == adsr::env_sustain) {
 			continue;
+		}
 
         for (int i = 0; i < bufferToFill.buffer->getNumChannels(); ++i) {
             bufferToFill.buffer->applyGain(i, sample, 1, level);
@@ -77,7 +78,7 @@ void Engine::toggleTalkOver() {
 	talkOver.setAttackRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
 	talkOver.setReleaseRate(static_cast<float>((currentSampleRate / 1000) * talkOverFadeMs));
 	talkOverState = !talkOverState;
-	talkOver.gate(talkOverState);
+	talkOver.gate(talkOverState ? 1 : 0);
 }
 
 void Engine::openFile(const File & /*file*/) {

@@ -133,13 +133,13 @@
 			isa = PBXBuildFile;
 			fileRef = 2CB28623CEB5F08989A10055;
 		};
-		2F2BCDD193552B9C191C301A = {
-			isa = PBXBuildFile;
-			fileRef = 6C83D82D2AC41303D668AD52;
-		};
 		29A09A1092963F5068DC9813 = {
 			isa = PBXBuildFile;
 			fileRef = 272F6E4A76A96DE741F92B57;
+		};
+		1B3A95D090F5FEACF008A2F1 = {
+			isa = PBXBuildFile;
+			fileRef = 9FC2847F8F0162991837C41E;
 		};
 		FB9DF2BD97395659CA276AEB = {
 			isa = PBXBuildFile;
@@ -378,6 +378,13 @@
 			lastKnownFileType = file.nib;
 			name = RecentFilesMenuTemplate.nib;
 			path = RecentFilesMenuTemplate.nib;
+			sourceTree = "SOURCE_ROOT";
+		};
+		165630D812E6D61C316DDA34 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Envelope.h;
+			path = ../../Source/Engine/Envelope.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		16750C7C569A1B3F6D259F36 = {
@@ -891,13 +898,6 @@
 			path = ../../Source/Redux/Actions/BankActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		6C83D82D2AC41303D668AD52 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = adsr.cpp;
-			path = ../../Source/Engine/adsr.cpp;
-			sourceTree = "SOURCE_ROOT";
-		};
 		6D728035369730F3217EB818 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.txt;
@@ -1136,6 +1136,13 @@
 			path = "../../Assets/AppIcons/iOS/Icon-20@2x.png";
 			sourceTree = "SOURCE_ROOT";
 		};
+		9FC2847F8F0162991837C41E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Envelope.cpp;
+			path = ../../Source/Engine/Envelope.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A04AC5914CD3AB88AD731BF6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -1155,13 +1162,6 @@
 			lastKnownFileType = file.ttf;
 			name = "Roboto-Thin.ttf";
 			path = "../../Assets/Fonts/Roboto/Roboto-Thin.ttf";
-			sourceTree = "SOURCE_ROOT";
-		};
-		A1630CF74B8FD0E87A124116 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = adsr.h;
-			path = ../../Source/Engine/adsr.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		A19019A1C7D6406141317105 = {
@@ -2120,10 +2120,10 @@
 		C397918C63DEB18391F44335 = {
 			isa = PBXGroup;
 			children = (
-				6C83D82D2AC41303D668AD52,
-				A1630CF74B8FD0E87A124116,
 				272F6E4A76A96DE741F92B57,
 				F4D00A9918FC7D075BEF66B4,
+				9FC2847F8F0162991837C41E,
+				165630D812E6D61C316DDA34,
 				0B48A35374A5D87994F6711A,
 				02068BF71F326F58D2111D6B,
 			);
@@ -3024,8 +3024,8 @@
 				5BE52C5E1DEDBC0903733059,
 				69E2291E99A103844C021346,
 				90487CFBE3002CC98261DD72,
-				2F2BCDD193552B9C191C301A,
 				29A09A1092963F5068DC9813,
+				1B3A95D090F5FEACF008A2F1,
 				FB9DF2BD97395659CA276AEB,
 				DF076A7E6C46D049348B9C92,
 				8569FDA14AD7F6E808C0E145,

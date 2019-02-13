@@ -1,5 +1,5 @@
 //
-//  adsr.cpp
+//  Envelope.cpp
 //
 //  Created by Nigel Redmon on 12/18/12.
 //  EarLevel Engineering: earlevel.com
@@ -19,10 +19,10 @@
 //  1.02  2017-01-04  njr   in calcCoef, checked for rate 0, to support non-IEEE compliant compilers
 //
 
-#include "adsr.h"
+#include "Envelope.h"
 #include <cmath>
 
-adsr::adsr() {
+Envelope::Envelope() {
     reset();
     setAttackRate(0.0f);
     setDecayRate(0.0f);
@@ -32,46 +32,48 @@ adsr::adsr() {
     setTargetRatioDR(0.0001f);
 }
 
-adsr::~adsr() = default;
+Envelope::~Envelope() = default;
 
-void adsr::setAttackRate(float rate) {
+void Envelope::setAttackRate(float rate) {
     attackRate = rate;
     attackCoef = calcCoef(rate, targetRatioA);
     attackBase = (1.0f + targetRatioA) * (1.0f - attackCoef);
 }
 
-void adsr::setDecayRate(float rate) {
+void Envelope::setDecayRate(float rate) {
     decayRate = rate;
     decayCoef = calcCoef(rate, targetRatioDR);
     decayBase = (sustainLevel - targetRatioDR) * (1.0f - decayCoef);
 }
 
-void adsr::setReleaseRate(float rate) {
+void Envelope::setReleaseRate(float rate) {
     releaseRate = rate;
     releaseCoef = calcCoef(rate, targetRatioDR);
     releaseBase = -targetRatioDR * (1.0f - releaseCoef);
 }
 
-float adsr::calcCoef(float rate, float targetRatio) const {
+float Envelope::calcCoef(float rate, float targetRatio) const {
     return (rate <= 0) ? 0.0f : float(exp(-log((1.0 + targetRatio) / targetRatio) / rate));
 }
 
-void adsr::setSustainLevel(float level) {
+void Envelope::setSustainLevel(float level) {
     sustainLevel = level;
     decayBase = (sustainLevel - targetRatioDR) * (1.0f - decayCoef);
 }
 
-void adsr::setTargetRatioA(float targetRatio) {
-    if (targetRatio < 0.000000001f)
+void Envelope::setTargetRatioA(float targetRatio) {
+    if (targetRatio < 0.000000001f) {
         targetRatio = 0.000000001f; // -180 dB
+    }
     targetRatioA = targetRatio;
     attackCoef = calcCoef(attackRate, targetRatioA);
     attackBase = (1.0f + targetRatioA) * (1.0f - attackCoef);
 }
 
-void adsr::setTargetRatioDR(float targetRatio) {
-    if (targetRatio < 0.000000001f)
+void Envelope::setTargetRatioDR(float targetRatio) {
+    if (targetRatio < 0.000000001f) {
         targetRatio = 0.000000001f; // -180 dB
+    }
     targetRatioDR = targetRatio;
     decayCoef = calcCoef(decayRate, targetRatioDR);
     releaseCoef = calcCoef(releaseRate, targetRatioDR);

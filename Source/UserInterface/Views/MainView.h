@@ -158,8 +158,6 @@ public:
         {
             navigationDrawer.close();
         }
-        resized();
-        repaint();
     }
 
 	void updateFocusIndicator() {

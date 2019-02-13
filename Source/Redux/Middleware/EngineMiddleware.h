@@ -12,7 +12,7 @@ public:
 	void playerDispatch(const ActionObject & action);
 private:
 	Engine &engine;
-	std::unique_ptr<FileChooser> fileChooser;
+	std::unique_ptr<FileChooser> fileChooser {nullptr};
 
 	void AsyncAddDirectory(Store &store);
 	void AsyncAddFile(Store &store);
@@ -25,5 +25,5 @@ private:
 		Store &store;
 		Engine &engine;
 	};
-	std::unique_ptr<EngineSync> engineSync;
+	std::unique_ptr<EngineSync> engineSync {nullptr};
 };

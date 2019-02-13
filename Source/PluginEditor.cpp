@@ -1,7 +1,7 @@
 #include "PluginEditor.h"
 #include "PluginProcessor.h"
 
-// TODO: implement a own standalone wrapper!
+// TODO(danlin): implement a own standalone wrapper!
 UltraschallSoundboardAudioProcessorEditor::UltraschallSoundboardAudioProcessorEditor(
     UltraschallSoundboardAudioProcessor &p)
     : AudioProcessorEditor(&p), processor(p) {

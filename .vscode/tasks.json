@@ -4,10 +4,19 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "linux": {
+                "options": {
+                    "env": {
+                        "CC": "/usr/bin/clang",
+                        "CXX": "/usr/bin/clang++"
+                    }
+                }
+            },
             "label": "CMake",
             "type": "shell",
             "command": "cmake",
             "args": [
+                "-DCMAKE_CXX_CLANG_TIDY=\"/usr/bin/clang-tidy;-checks=*,-fuchsia*,-clang-analyzer-alpha.*,-llvm-include-order\"",
                 "-G",
                 "Ninja",
                 ".."
@@ -29,7 +38,18 @@
                 "cwd": "${workspaceFolder}/.build"
             },
             "problemMatcher": [
-                "$gcc"
+                {
+                    "owner": "cpp",
+                    "fileLocation": "absolute",
+                    "pattern": {
+                        "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    }
+                }
             ]
         }
     ]

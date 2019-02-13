@@ -26,7 +26,7 @@ std::function<ValueTree(ValueTree, ActionObject)> Store::combineReducers(std::ma
 Store::Store(std::function<ValueTree(ValueTree, ActionObject)> reducer, ValueTree preloadedState)
 	: currentReducer(std::move(reducer)), currentState(std::move(preloadedState))
 {
-	dispatch(INIT);
+	Store::dispatch(INIT);
 }
 
 ValueTree Store::getState() {

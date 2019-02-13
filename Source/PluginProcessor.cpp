@@ -150,8 +150,9 @@ void UltraschallSoundboardAudioProcessor::processBlock(AudioBuffer<float> &buffe
     // This is here to avoid people getting screaming feedback
     // when they first compile a plugin, but obviously you don't need to keep
     // this code if your algorithm always overwrites all the output channels.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i) {
         buffer.clear(i, 0, buffer.getNumSamples());
+    }
 
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...
@@ -200,7 +201,7 @@ void UltraschallSoundboardAudioProcessor::setStateInformation(const void *data, 
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 	auto xmlState = std::unique_ptr<XmlElement>(getXmlFromBinary(data, sizeInBytes));
-	if (xmlState.get() == nullptr) { return;  }
+	if (xmlState == nullptr) { return;  }
 }
 
 std::shared_ptr<Store> UltraschallSoundboardAudioProcessor::getStore() {

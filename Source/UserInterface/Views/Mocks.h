@@ -59,7 +59,6 @@ namespace mock {
 	public:
 		BottomBarMock() {
 			auto control = createMock();
-			control->colourChanged();
 			control->talkoverButton.onClick = [=] {
 
 			};

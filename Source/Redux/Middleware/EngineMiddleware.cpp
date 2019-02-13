@@ -10,11 +10,12 @@ ActionObject EngineMiddleware::dispatch(const ActionObject &action, Store &store
 		AsyncAddDirectory(store);
 		return action;
 	}
-	else if (action.type == AddFile) {
+	if (action.type == AddFile) {
 		AsyncAddFile(store);
 		return action;
 	}
-	else if (action.type == EnableEngineSync) {
+	
+	if (action.type == EnableEngineSync) {
 		jassert(engineSync == nullptr);
 		engineSync = std::make_unique<EngineSync>(store, engine);
 		engineSync->startTimer(100);
