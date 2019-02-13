@@ -28,7 +28,7 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
         const auto level = evelop.process();
 
-		if (evelop.getState() == adsr::env_sustain) {
+		if (evelop.getState() == Envelope::env_sustain) {
 			continue;
         }
 
@@ -58,21 +58,21 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
         }
 
         switch (evelop.getState()) {
-            case adsr::envState::env_attack:
+            case Envelope::envState::env_attack:
                 if (fadeState != fade_in) {
                     fadeState = fade_in;
                     needUpdate = true;
                 }
                 break;
-            case adsr::envState::env_release:
+            case Envelope::envState::env_release:
                 if (fadeState != fade_out) {
                     fadeState = fade_out;
                     needUpdate = true;
                 }
                 break;
-            case adsr::envState::env_decay:
-            case adsr::envState::env_sustain:
-            case adsr::envState::env_idle:
+            case Envelope::envState::env_decay:
+            case Envelope::envState::env_sustain:
+            case Envelope::envState::env_idle:
             default:
                 if (fadeState != fade_idle) {
                     fadeState = fade_idle;

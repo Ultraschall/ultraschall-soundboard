@@ -47,7 +47,7 @@ private:
 	float previousGain{ 1.0f };
 	NormalisableRange<float> gainRange{ Decibels::decibelsToGain<float>(-180), Decibels::decibelsToGain<float>(0), 0, Decibels::decibelsToGain<float>(-12) };
 
-	adsr talkOver;
+	Envelope talkOver;
 	bool talkOverState{ true };
 	int talkOverFadeMs{ 500 };
 	NormalisableRange<float> talkOverRange{ Decibels::decibelsToGain<float>(-30), 1.0f };

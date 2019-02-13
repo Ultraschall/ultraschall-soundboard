@@ -28,7 +28,7 @@ void Engine::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
 		const auto level = talkOverRange.convertFrom0to1(talkOver.process());
 
-		if (talkOver.getState() == adsr::env_sustain) {
+		if (talkOver.getState() == Envelope::env_sustain) {
 			continue;
 		}
 
