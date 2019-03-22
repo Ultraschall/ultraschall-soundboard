@@ -141,7 +141,7 @@ Task("Plugin")
             Zip(artifacts + "/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
             Zip(artifacts + "/VST3", artifacts + "/Soundboard.VST.macOS.zip");
             DeleteDirectory(artifacts + "/AudioUnit", true);
-            DeleteDirectory(artifacts + "/VST", true);
+            DeleteDirectory(artifacts + "/VST3", true);
 	    }
     });
 
