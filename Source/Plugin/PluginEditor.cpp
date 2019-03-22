@@ -33,14 +33,14 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_FolderOpenO);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
-    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
+    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnRight);
     loadDirectoryButton->addListener(this);
 
     addAndMakeVisible(listButton = new TextButton());
     listButton->setLookAndFeel(awesomeLookAndFeel);
     listButton->setButtonText(FontAwesome_List);
     listButton->addListener(this);
-    listButton->setConnectedEdges(TextButton::ConnectedOnRight);
+    listButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
 
     addAndMakeVisible(gridButton = new TextButton());
     gridButton->setLookAndFeel(awesomeLookAndFeel);
@@ -121,15 +121,14 @@ void SoundboardAudioProcessorEditor::resized()
     topBar->setBounds(0, 0, getWidth(), 32);
 
 
-    listButton->setBounds(5, 5, 60, 24);
-    gridButton->setBounds(65, 5, 60, 24);
-
-    duckButton->setBounds(260, 5, 60, 24);
+    loadDirectoryButton->setBounds(5, 5, 60, 24);
+    listButton->setBounds(65, 5, 60, 24);
+    gridButton->setBounds(125, 5, 60, 24);
     
-    gainSlider->setBounds(140, 5, 100, 24);
+    gainSlider->setBounds(190, 5, 100, 24);
+    duckButton->setBounds(295, 5, 60, 24);
 
-    lockButton->setBounds(getWidth() - 185, 5, 60, 24);
-    loadDirectoryButton->setBounds(getWidth() - 125, 5, 60, 24);
+    lockButton->setBounds(getWidth() - 125, 5, 60, 24);
     settingsButton->setBounds(getWidth() - 65, 5, 60, 24);
 
     if (table != nullptr) {
