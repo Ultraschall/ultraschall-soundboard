@@ -75,7 +75,7 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
         addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
-        resizeLimits.setSizeLimits(380, 320, 1024, 768);
+        resizeLimits.setSizeLimits(520, 120, 1024, 768);
     }
 
     refresh();
