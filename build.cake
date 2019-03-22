@@ -139,7 +139,7 @@ Task("Plugin")
             CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/Components/Soundboard.component", artifacts + "/AudioUnit/Soundboard.component");
             CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/VST3/Soundboard.vst3", artifacts + "/VST3/Soundboard.vst3");
             Zip(artifacts + "/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
-            Zip(artifacts + "/VST3", artifacts + "/Soundboard.VST.macOS.zip");
+            Zip(artifacts + "/VST3", artifacts + "/Soundboard.VST3.macOS.zip");
             DeleteDirectory(artifacts + "/AudioUnit", true);
             DeleteDirectory(artifacts + "/VST3", true);
 	    }
