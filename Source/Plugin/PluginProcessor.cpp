@@ -9,7 +9,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "LookAndFeel.h"
+#include "../Shared/UserInterface/LookAndFeel.h"
 
 //==============================================================================
 SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPercentage(0.33f), duckEnabled(false), fadeOutSeconds(6)

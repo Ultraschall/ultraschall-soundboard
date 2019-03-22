@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <string>fm.ultraschall.Soundboard</string>
     <key>CFBundleName</key>
     <string>Plugin</string>
     <key>CFBundleDisplayName</key>
@@ -18,11 +18,11 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>3.0.0</string>
+    <string>3.1.0</string>
     <key>CFBundleVersion</key>
-    <string>3.0.0</string>
+    <string>3.1.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string>Ultraschall</string>
+    <string></string>
     <key>NSHighResolutionCapable</key>
     <true/>
   </dict>

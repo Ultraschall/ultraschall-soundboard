@@ -74,15 +74,18 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 
     if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
-        addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
-        resizeLimits.setSizeLimits(520, 120, 1024, 768);
+        //addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
+        setResizeLimits(520, 320, 0x3fffffff, 0x3fffffff);
+        setResizable(true, true);
     }
 
     refresh();
 
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize(processor.getWindowWidth(), processor.getWindowHeight());
+    if (processor.wrapperType == AudioProcessor::wrapperType_Standalone) {
+        // Make sure that before the constructor has finished, you've set the
+        // editor's size to whatever you need it to be.
+        setSize(processor.getWindowWidth(), processor.getWindowHeight());
+    }
 
     startTimer(TimerIdRefresh, static_cast<int>(1000 * 0.5));
     

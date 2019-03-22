@@ -8,21 +8,21 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <string>fm.ultraschall.Soundboard</string>
     <key>CFBundleName</key>
-    <string>Plugin</string>
+    <string>Soundboard</string>
     <key>CFBundleDisplayName</key>
-    <string>Plugin</string>
+    <string>Soundboard</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleShortVersionString</key>
-    <string>3.0.0</string>
+    <string>3.1.0</string>
     <key>CFBundleVersion</key>
-    <string>3.0.0</string>
+    <string>3.1.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string>Ultraschall</string>
+    <string></string>
     <key>NSHighResolutionCapable</key>
     <true/>
     <key>AudioComponents</key>
@@ -41,7 +41,14 @@
         <key>subtype</key>
         <string>Soub</string>
         <key>version</key>
-        <integer>196608</integer>
+        <integer>196864</integer>
+        <key>resourceUsage</key>
+        <dict>
+          <key>network.client</key>
+          <true/>
+          <key>temporary-exception.files.all.read-write</key>
+          <true/>
+        </dict>
       </dict>
     </array>
   </dict>

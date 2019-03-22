@@ -12,7 +12,7 @@
 #define TABLEBUTTONCELL_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "LookAndFeel.h"
+#include "../LookAndFeel.h"
 
 class SoundboardCellButton : public Button, public Timer
 {

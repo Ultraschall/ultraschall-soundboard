@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="1.9.9"
+<JUCERPROJECT id="BfiVhq" name="Soundboard" projectType="guiapp" version="3.2"
               bundleIdentifier="fm.ultraschall.Soundboard-Standalone" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.4" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="5.4.3" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="" buildVST="0" buildVST3="0"
               buildAU="0" buildRTAS="0" buildAAX="0" pluginName="Soundboard"
               pluginDesc="Soundboard" pluginManufacturer="Ultraschall" pluginManufacturerCode="ULTS"
@@ -10,7 +10,7 @@
               pluginWantsMidiIn="1" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
               pluginEditorRequiresKeys="1" pluginAUExportPrefix="SoundboardAU"
               pluginRTASCategory="" aaxIdentifier="com.yourcompany.Soundboard"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics">
+              pluginAAXCategory="2" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn,pluginEditorRequiresKeys">
   <MAINGROUP id="aO9Y4k" name="Soundboard">
     <GROUP id="{EF900499-3FC3-8B21-E80F-2BF37F9BBD42}" name="Standalone">
       <FILE id="hNY15S" name="Main.cpp" compile="1" resource="0" file="../../Source/Standalone/Main.cpp"/>
@@ -70,10 +70,10 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="Eq5hT1" bigIcon="Eq5hT1">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Soundboard" cppLibType="libc++"/>
-        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
-                       isDebug="0" optimisation="2" targetName="Soundboard" cppLibType="libc++"/>
+        <CONFIGURATION name="Debug" osxCompatibility="10.7 SDK" isDebug="1" optimisation="1"
+                       targetName="Soundboard" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" osxCompatibility="10.7 SDK" isDebug="0" optimisation="2"
+                       targetName="Soundboard" cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
@@ -156,24 +156,27 @@
     </VS2015>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="stk_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="stk_generators" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
   </MODULES>
-  <JUCEOPTIONS JUCE_USE_CDREADER="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_FLAC="enabled"
-               JUCE_USE_OGGVORBIS="enabled" JUCE_USE_MP3AUDIOFORMAT="enabled"/>
+  <JUCEOPTIONS JUCE_USE_CDREADER="0" JUCE_USE_CDBURNER="0" JUCE_USE_FLAC="1"
+               JUCE_USE_OGGVORBIS="1" JUCE_USE_MP3AUDIOFORMAT="1"/>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>

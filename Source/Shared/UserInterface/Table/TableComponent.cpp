@@ -9,7 +9,7 @@
 */
 
 #include "TableComponent.h"
-#include "LookAndFeel.h"
+#include "../LookAndFeel.h"
 
 SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
     : processor(p)

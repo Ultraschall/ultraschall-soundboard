@@ -11,7 +11,7 @@
 #define PLUGINPROCESSOR_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "Player.h"
+#include "../Shared/Player/Player.h"
 
 struct FileSorter
 {

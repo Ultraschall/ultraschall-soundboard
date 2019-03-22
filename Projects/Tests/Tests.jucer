@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="eNyWbM" name="Tests" projectType="consoleapp" version="1.0"
               bundleIdentifier="fm.ultraschall.Tests" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.4" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              jucerVersion="5.4.3" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" defines="JUCE_UNIT_TESTS=1">
   <MAINGROUP id="HDVVGK" name="Tests">
     <GROUP id="{F71CBC7D-7DBE-5EC7-F72F-3986DF1D9230}" name="Shared">
@@ -60,10 +60,8 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="Tests"/>
-        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="0" optimisation="3" targetName="Tests"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Tests"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Tests"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../Submodules/JUCE/modules"/>
@@ -151,25 +149,28 @@
     </VS2015>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_video" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="stk_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="stk_generators" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="danlin_fontawesome" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="danlin_oscpack" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="danlin_oscserver" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_cryptography" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="juce_video" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="stk_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULES id="stk_generators" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS/>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>
