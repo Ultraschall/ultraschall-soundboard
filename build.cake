@@ -59,28 +59,28 @@ Task("Prepare")
 
 Task("Bootstrap")
     .Does(() => {
-	    if(os == "Windows") {
-            Information("Build Projucer");
-            MSBuild("./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/Projucer.sln", settings => settings
-                .SetVerbosity(Verbosity.Quiet)
-                .WithTarget("Build")
-                .SetConfiguration(configuration)
-                .SetPlatformTarget(PlatformTarget.x64));
-	    } else if (os == "macOS") {
-            Information("Build Projucer");
-            DoInDirectory("./Submodules/JUCE/extras/Projucer/Builds/MacOSX", () => {
-                XCodeBuild(new XCodeBuildSettings {
-		            Verbose = verbose,
-		            Configuration = configuration
-		        });
-            });
-	    }
+	    // if(os == "Windows") {
+        //     Information("Build Projucer");
+        //     MSBuild("./Submodules/JUCE/extras/Projucer/Builds/VisualStudio2015/Projucer.sln", settings => settings
+        //         .SetVerbosity(Verbosity.Quiet)
+        //         .WithTarget("Build")
+        //         .SetConfiguration(configuration)
+        //         .SetPlatformTarget(PlatformTarget.x64));
+	    // } else if (os == "macOS") {
+        //     Information("Build Projucer");
+        //     DoInDirectory("./Submodules/JUCE/extras/Projucer/Builds/MacOSX", () => {
+        //         XCodeBuild(new XCodeBuildSettings {
+		//             Verbose = verbose,
+		//             Configuration = configuration
+		//         });
+        //     });
+	    // }
     });
 
 Task("Standalone")
     .Does(() => {
         Information("Build Standalone Application");
-        StartProcess(projucer, "--resave Projects/Standalone/Standalone.jucer");
+        // StartProcess(projucer, "--resave Projects/Standalone/Standalone.jucer");
 	    if(os == "Windows") {
             EnsureDirectoryExists(artifacts + "/Standalone");
             MSBuild("./Projects/Standalone/Builds/VisualStudio2015/Soundboard.sln", settings => settings
@@ -107,7 +107,7 @@ Task("Standalone")
 
 Task("Plugin")
     .Does(() => {
-        StartProcess(projucer, "--resave Projects/Plugin/Plugin.jucer");
+        // StartProcess(projucer, "--resave Projects/Plugin/Plugin.jucer");
         if (os == "Windows") {
             EnsureDirectoryExists(artifacts + "/VST");
             Information("Build Plugin 32bit");
@@ -128,7 +128,7 @@ Task("Plugin")
             DeleteDirectory(artifacts + "/VST", true);
 	    } else if (os == "macOS") {
             EnsureDirectoryExists(artifacts + "/AudioUnit");
-            EnsureDirectoryExists(artifacts + "/VST");
+            EnsureDirectoryExists(artifacts + "/VST3");
             Information("Build Plugin");
 	        DoInDirectory("./Projects/Plugin/Builds/MacOSX", () => {
                 XCodeBuild(new XCodeBuildSettings {
@@ -137,9 +137,9 @@ Task("Plugin")
                 });
             });
             CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/Components/Soundboard.component", artifacts + "/AudioUnit/Soundboard.component");
-            CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/VST/Soundboard.vst", artifacts + "/VST/Soundboard.vst");
+            CopyDirectory(EnvironmentVariable("HOME") + "/Library/Audio/Plug-Ins/VST3/Soundboard.vst3", artifacts + "/VST3/Soundboard.vst3");
             Zip(artifacts + "/AudioUnit", artifacts + "/Soundboard.AudioUnit.macOS.zip");
-            Zip(artifacts + "/VST", artifacts + "/Soundboard.VST.macOS.zip");
+            Zip(artifacts + "/VST3", artifacts + "/Soundboard.VST.macOS.zip");
             DeleteDirectory(artifacts + "/AudioUnit", true);
             DeleteDirectory(artifacts + "/VST", true);
 	    }
