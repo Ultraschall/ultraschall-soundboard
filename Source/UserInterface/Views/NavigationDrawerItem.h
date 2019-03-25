@@ -16,7 +16,7 @@ public:
     NavigationDrawerItem(Material::Icon &icon, String title) : Button("NavigationDrawerItem"), icon(icon), title(title) {
         setOpaque(true);
         setColour(ColourIds::iconOffColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
-        setColour(ColourIds::iconOnColourId, Material::Color::Primary::_700);
+        setColour(ColourIds::iconOnColourId, Material::Color::Secondary::Main);
 		drawableOn.reset(this->icon.getDrawable(findColour(ColourIds::iconOnColourId)));
 		drawableOff.reset(this->icon.getDrawable(findColour(ColourIds::iconOffColourId)));
 
@@ -43,9 +43,9 @@ public:
 			if (drawableOn != nullptr) {
 				drawableOn->drawWithin(g, rect.withTrimmedLeft(px(8.0f)).withWidth(px<float>(iconSize)).withSizeKeepingCentre(px<float>(iconSize), px<float>(iconSize)), RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
 			}
-            g.setColour(Material::Color::Primary::_700.withAlpha(0.12f));
+            g.setColour(Material::Color::Surface::Light.withAlpha(0.12f));
             g.fillRoundedRectangle(rect, 4);
-            g.setColour(Material::Color::Primary::Main);
+            g.setColour(Colours::white);
             g.setFont(Material::Fonts::getInstance()->Body2());
             g.drawText(title, getLocalBounds().withTrimmedBottom(px(16)).withTrimmedTop(px(16)).withTrimmedLeft(px(32 + iconSize)).withTrimmedRight(px(16)), Justification::centredLeft, false);
         } else {

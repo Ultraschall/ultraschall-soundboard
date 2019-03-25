@@ -14,8 +14,7 @@ const Identifier SetMute("SET_MUTE");
 const Identifier ToggleTalkOver("TOGGLE_TALK_OVER");
 const Identifier ToggleMute("TOGGLE_MUTE");
 
-const Identifier AddFile("ADD_FILE");
-const Identifier AddDirectory("ADD_DIRECTORY");
+const Identifier AddFileOrDirectory("ADD_FILE_OR_DIRECTORY");
 const Identifier OpenProject("OPEN_PROJECT");
 const Identifier ShowView("SHOW_VIEW");
 
@@ -62,14 +61,9 @@ public:
     ToggleMuteAction() : ActionObject(ToggleMute) {};
 };
 
-class AddFileAction : public  ActionObject {
+class AddFileOrDirectoryAction : public  ActionObject {
 public:
-	AddFileAction() : ActionObject(AddFile) {};
-};
-
-class AddDirectoryAction : public  ActionObject {
-public:
-	AddDirectoryAction() : ActionObject(AddDirectory) {};
+	AddFileOrDirectoryAction() : ActionObject(AddFileOrDirectory) {};
 };
 
 class OpenProjectAction : public  ActionObject {

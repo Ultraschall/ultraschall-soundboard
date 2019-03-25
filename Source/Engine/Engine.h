@@ -43,6 +43,7 @@ private:
 	Array<Identifier> playersToUpdate;
 
 	double currentSampleRate{ 0 };
+    int currentSamplesPerBlockExpected{ 0 };
 	float currentGain{ 1.0f };
 	float previousGain{ 1.0f };
 	NormalisableRange<float> gainRange{ Decibels::decibelsToGain<float>(-180), Decibels::decibelsToGain<float>(0), 0, Decibels::decibelsToGain<float>(-12) };

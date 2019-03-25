@@ -267,8 +267,9 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_IIRFilter.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.cpp"
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.h"
-    "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LinearSmoothedValue.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_Reverb.h"
+    "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.cpp"
+    "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.cpp"
     "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm"
@@ -1000,6 +1001,8 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.cpp"
     "../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.h"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_FastMathApproximations.h"
+    "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue.h"
+    "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue_test.cpp"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.cpp"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.h"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.cpp"
@@ -1889,8 +1892,9 @@ set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/ut
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_IIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LinearSmoothedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_Reverb.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2622,6 +2626,8 @@ set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/frequency/j
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_FastMathApproximations.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3290,7 +3296,7 @@ if (CMAKE_BUILD_TYPE STREQUAL Debug)
 execute_process (COMMAND uname -m OUTPUT_VARIABLE JUCE_ARCH_LABEL OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 target_include_directories (VST3 PRIVATE
-    "../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK"
+    "/Users/danlin/Projects/VST_SDK/VST3_SDK"
     "../../JuceLibraryCode"
     "../../JuceLibraryCode/modules"
     "../../JuceLibraryCode/modules/juce_audio_plugin_client"
@@ -3332,7 +3338,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/Soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -3340,7 +3346,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/Soundboard/Builds/CLion/Debug-Info-VST3.plist"
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Debug-Info-VST3.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
@@ -3369,7 +3375,7 @@ add_custom_command (TARGET VST3 POST_BUILD
 )
 
 target_include_directories (STANDALONE_PLUGIN PRIVATE
-    "../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK"
+    "/Users/danlin/Projects/VST_SDK/VST3_SDK"
     "../../JuceLibraryCode"
     "../../JuceLibraryCode/modules"
     "../../JuceLibraryCode/modules/juce_audio_plugin_client"
@@ -3408,12 +3414,12 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP NO
     XCODE_ATTRIBUTE_GCC_DYNAMIC_NO_PIC NO
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/Soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/Soundboard/Builds/CLion/Debug-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Debug-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3434,7 +3440,7 @@ target_link_libraries (STANDALONE_PLUGIN PRIVATE
 )
 
 target_include_directories (SHARED_CODE PRIVATE
-    "../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK"
+    "/Users/danlin/Projects/VST_SDK/VST3_SDK"
     "../../JuceLibraryCode"
     "../../JuceLibraryCode/modules"
     "../../JuceLibraryCode/modules/juce_audio_plugin_client"
@@ -3509,7 +3515,7 @@ if (CMAKE_BUILD_TYPE STREQUAL Release)
 execute_process (COMMAND uname -m OUTPUT_VARIABLE JUCE_ARCH_LABEL OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 target_include_directories (VST3 PRIVATE
-    "../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK"
+    "/Users/danlin/Projects/VST_SDK/VST3_SDK"
     "../../JuceLibraryCode"
     "../../JuceLibraryCode/modules"
     "../../JuceLibraryCode/modules/juce_audio_plugin_client"
@@ -3553,7 +3559,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
     XCODE_ATTRIBUTE_GENERATE_PKGINFO_FILE YES
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/Soundboard/Builds/CLion/Release-Info-VST3.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_INSTALL_PATH "$(HOME)/Library/Audio/Plug-Ins/VST3/"
     XCODE_ATTRIBUTE_LIBRARY_STYLE Bundle
@@ -3561,7 +3567,7 @@ set_target_properties (VST3 PROPERTIES
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
     XCODE_ATTRIBUTE_WRAPPER_EXTENSION vst3
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/Soundboard/Builds/CLion/Release-Info-VST3.plist"
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Release-Info-VST3.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     BUNDLE TRUE
     BUNDLE_EXTENSION vst3
@@ -3590,7 +3596,7 @@ add_custom_command (TARGET VST3 POST_BUILD
 )
 
 target_include_directories (STANDALONE_PLUGIN PRIVATE
-    "../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK"
+    "/Users/danlin/Projects/VST_SDK/VST3_SDK"
     "../../JuceLibraryCode"
     "../../JuceLibraryCode/modules"
     "../../JuceLibraryCode/modules/juce_audio_plugin_client"
@@ -3631,12 +3637,12 @@ set_target_properties (STANDALONE_PLUGIN PROPERTIES
     XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS NO
     XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
     XCODE_ATTRIBUTE_GCC_VERSION com.apple.compilers.llvm.clang.1_0
-    XCODE_ATTRIBUTE_INFOPLIST_FILE "/home/danlin/Projects/Soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS NO
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER fm.ultraschall.Soundboard
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     XCODE_ATTRIBUTE_USE_HEADERMAP NO
-    MACOSX_BUNDLE_INFO_PLIST "/home/danlin/Projects/Soundboard/Builds/CLion/Release-Info-Standalone_Plugin.plist"
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Release-Info-Standalone_Plugin.plist"
     XCODE_ATTRIBUTE_PRODUCT_NAME "Soundboard"
     MACOSX_BUNDLE TRUE
 )
@@ -3657,7 +3663,7 @@ target_link_libraries (STANDALONE_PLUGIN PRIVATE
 )
 
 target_include_directories (SHARED_CODE PRIVATE
-    "../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK"
+    "/Users/danlin/Projects/VST_SDK/VST3_SDK"
     "../../JuceLibraryCode"
     "../../JuceLibraryCode/modules"
     "../../JuceLibraryCode/modules/juce_audio_plugin_client"
@@ -3982,8 +3988,9 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_IIRFilter.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.cpp"
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.h"
-    "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LinearSmoothedValue.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_Reverb.h"
+    "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.cpp"
+    "../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.cpp"
     "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.h"
     "../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm"
@@ -4715,6 +4722,8 @@ add_library (SHARED_CODE STATIC
     "../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.cpp"
     "../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.h"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_FastMathApproximations.h"
+    "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue.h"
+    "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue_test.cpp"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.cpp"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.h"
     "../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.cpp"
@@ -5603,8 +5612,9 @@ set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/ut
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_IIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_LinearSmoothedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_Reverb.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/utilities/juce_SmoothedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -6336,6 +6346,8 @@ set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/frequency/j
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/frequency/juce_Windowing.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_FastMathApproximations.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LogRampedValue_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_LookupTable.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../JuceLibraryCode/modules/juce_dsp/maths/juce_Matrix.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)

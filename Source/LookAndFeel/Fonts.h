@@ -19,19 +19,32 @@ namespace Material
 
 		JUCE_DECLARE_SINGLETON(Typefaces, false)
 
-			const Typeface::Ptr H1{ Typeface::createSystemTypefaceFor(BinaryData::RobotoLight_ttf, BinaryData::RobotoLight_ttfSize) };
-		const Typeface::Ptr H2{ Typeface::createSystemTypefaceFor(BinaryData::RobotoLight_ttf, BinaryData::RobotoLight_ttfSize) };
-		const Typeface::Ptr H3{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr H4{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr H5{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr H6{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf, BinaryData::RobotoMedium_ttfSize) };
-		const Typeface::Ptr Body1{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr Body2{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr Subtitle1{ Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr Subtitle2{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf, BinaryData::RobotoMedium_ttfSize) };
-		const Typeface::Ptr Button{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf, BinaryData::RobotoMedium_ttfSize) };
-		const Typeface::Ptr Caption{ Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf, BinaryData::RobotoRegular_ttfSize) };
-		const Typeface::Ptr Overline{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf, BinaryData::RobotoMedium_ttfSize) };
+        const Typeface::Ptr H1{ Typeface::createSystemTypefaceFor(BinaryData::RobotoLight_ttf,
+                                                                  BinaryData::RobotoLight_ttfSize) };
+		const Typeface::Ptr H2{ Typeface::createSystemTypefaceFor(BinaryData::RobotoLight_ttf,
+                                                                  BinaryData::RobotoLight_ttfSize) };
+		const Typeface::Ptr H3{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf,
+                                                                  BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr H4{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf,
+                                                                  BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr H5{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf,
+                                                                  BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr H6{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf,
+                                                                  BinaryData::RobotoMedium_ttfSize) };
+		const Typeface::Ptr Body1{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf,
+                                                                     BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr Body2{ Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf,
+                                                                     BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr Subtitle1{ Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf,
+                                                                         BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr Subtitle2{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf,
+                                                                         BinaryData::RobotoMedium_ttfSize) };
+		const Typeface::Ptr Button{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf,
+                                                                      BinaryData::RobotoMedium_ttfSize) };
+		const Typeface::Ptr Caption{ Typeface::createSystemTypefaceFor(BinaryData::RobotoBlack_ttf,
+                                                                       BinaryData::RobotoRegular_ttfSize) };
+		const Typeface::Ptr Overline{ Typeface::createSystemTypefaceFor(BinaryData::RobotoMedium_ttf,
+                                                                        BinaryData::RobotoMedium_ttfSize) };
 	};
 
 	class Fonts

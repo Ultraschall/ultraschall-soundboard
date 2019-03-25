@@ -17,7 +17,7 @@ public:
         title.setText("Soundboard", dontSendNotification);
         title.setFont(Material::Fonts::getInstance()->H6());
         
-        menuButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
+        menuButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Active);
         addAndMakeVisible(menuButton);
         addAndMakeVisible(title);
 

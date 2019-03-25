@@ -6,12 +6,8 @@ EngineMiddleware::EngineMiddleware(Engine & engine) : engine(engine) {
 }
 
 ActionObject EngineMiddleware::dispatch(const ActionObject &action, Store &store) {
-	if (action.type == AddDirectory) {
-		AsyncAddDirectory(store);
-		return action;
-	}
-	if (action.type == AddFile) {
-		AsyncAddFile(store);
+	if (action.type == AddFileOrDirectory) {
+		AsyncAddFileOrDirectory(store);
 		return action;
 	}
 	
@@ -55,66 +51,56 @@ void EngineMiddleware::playerDispatch(const ActionObject & action)
 	}
 }
 
-void EngineMiddleware::AsyncAddDirectory(Store &store)
+void EngineMiddleware::AsyncAddFileOrDirectory(Store & store)
 {
 	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
-
-	Logger::outputDebugString(engine.audioFormatManager.getWildcardForAllFormats());
-
-	fileChooser = std::make_unique<FileChooser>("Please select the directory you want to import...",
-		File::getSpecialLocation(File::userHomeDirectory),
+    
+	fileChooser = std::make_unique<FileChooser>("Please select the audio file or directory you want to load...",
+		File::getSpecialLocation(File::userMusicDirectory),
 		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
-
-	fileChooser->launchAsync(FileBrowserComponent::openMode | FileBrowserComponent::canSelectDirectories,
+    
+    fileChooser->launchAsync(FileBrowserComponent::openMode
+                             | FileBrowserComponent::canSelectFiles
+                             | FileBrowserComponent::canSelectDirectories
+                             | FileBrowserComponent::canSelectMultipleItems,
 		[&](const FileChooser &chooser) {
 			auto results = chooser.getURLResults();
-			for (const auto &result : results)
-			{
-				if (result.isLocalFile())
-				{
-					auto files = result.getLocalFile().findChildFiles(File::findFiles, true);
-					for (auto &f : files) {
-						Uuid uuid;
-						auto id = Identifier(uuid.toDashedString());
-						if (engine.loadAudioFile(id, f)) {
-							store.dispatch(FileReadyAction(uuid.toDashedString(), f.getFileName(), f.getFullPathName()));
-						}
-					}
-				}
-			}
-			store.dispatch(ShowViewAction("library"));
-		});
-}
-
-void EngineMiddleware::AsyncAddFile(Store & store)
-{
-	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
-
-	fileChooser = std::make_unique<FileChooser>("Please select the audio file you want to load...",
-		File::getSpecialLocation(File::userHomeDirectory),
-		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
-
-	fileChooser->launchAsync(FileBrowserComponent::canSelectMultipleItems | FileBrowserComponent::openMode | FileBrowserComponent::canSelectFiles,
-		[&](const FileChooser &chooser) {
-			auto results = chooser.getURLResults();
-			for (const auto &result : results)
-			{
-				if (result.isLocalFile())
-				{
-					auto file = result.getLocalFile();
-					Uuid uuid;
-					auto id = Identifier(uuid.toDashedString());
-					if (engine.loadAudioFile(id, file)) {
-						store.dispatch(FileReadyAction(uuid.toDashedString(), file.getFileName(), file.getFullPathName()));
-					}
-
-				}
-			}
-			store.dispatch(ShowViewAction("library"));
+            fileLoader = std::make_unique<EngineMiddleware::AsyncFileLoader>(store, engine, results);
+            fileLoader->triggerAsyncUpdate();
 		});
 }
 
 void EngineMiddleware::EngineSync::timerCallback()
 {
 	engine.sync(store);
+}
+
+void EngineMiddleware::AsyncFileLoader::handleAsyncUpdate() {
+    for (const auto &result : files)
+    {
+        if (result.isLocalFile())
+        {
+            store.dispatch(ShowViewAction("library"));
+            
+            auto file = result.getLocalFile();
+            if (file.isDirectory()) {
+                auto files = file.findChildFiles(File::findFiles, true);
+                for (auto &f : files) {
+                    Uuid uuid;
+                    auto id = Identifier(uuid.toDashedString());
+                    
+                    if (engine.loadAudioFile(id, f)) {
+                        store.dispatch(FileReadyAction(uuid.toDashedString(), f.getFileName(), f.getFullPathName()));
+                    }
+                }
+            } else {
+                Uuid uuid;
+                auto id = Identifier(uuid.toDashedString());
+                
+                if (engine.loadAudioFile(id, file)) {
+                    store.dispatch(FileReadyAction(uuid.toDashedString(), file.getFileName(), file.getFullPathName()));
+                }
+            }
+        }
+    }
 }

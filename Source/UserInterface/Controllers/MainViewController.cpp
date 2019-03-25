@@ -14,36 +14,12 @@ void MainViewController::viewDidLoad()
 {
     view->setShowKeyboardFocus(false);
     view->navigationDrawer.viewList.onClick = [this] {
-        view->navigationDrawer.viewList.setToggleState(true, dontSendNotification);
-        view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
-
-        view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
-		view->navigationDrawer.close();
 		store->dispatch(ShowViewAction("library"));
     };
     view->navigationDrawer.viewGrid.onClick = [this] {
-        view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.viewGrid.setToggleState(true, dontSendNotification);
-        view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
-
-        view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
-		view->navigationDrawer.close();
-		store->dispatch(ShowViewAction("grid"));
+		store->dispatch(ShowViewAction("bank"));
     };
     view->navigationDrawer.viewPlaylist.onClick = [this] {
-        view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.viewPlaylist.setToggleState(true, dontSendNotification);
-
-        view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
-        view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
-		view->navigationDrawer.close();
 		store->dispatch(ShowViewAction("playlist"));
     };
 
@@ -82,14 +58,9 @@ void MainViewController::viewDidLoad()
 
     };
 
-    view->addFileButton.onClick = [this] {
+    view->addFileOrDirectoryButton.onClick = [this] {
         view->hideExtendedFloatingActionButtons();
-		store->dispatch(AddFileAction());
-    };
-
-    view->addDirectoryButton.onClick = [this] {
-        view->hideExtendedFloatingActionButtons();
-		store->dispatch(AddDirectoryAction());
+		store->dispatch(AddFileOrDirectoryAction());
     };
 
     view->loadProjectFileButton.onClick = [this] {
@@ -114,6 +85,7 @@ void MainViewController::viewDidLoad()
 	view->bottomBar.muteButton.setToggleState(model.mute, dontSendNotification);
 
 	model.state.addListener(this);
+    triggerAsyncUpdate();
 }
 
 void MainViewController::viewDidUnload() {
@@ -125,12 +97,57 @@ void MainViewController::showLibrary()
     const auto current = dynamic_cast<LibraryViewController *>(contentController.get());
     if (current == nullptr)
     {
+        view->navigationDrawer.viewList.setToggleState(true, dontSendNotification);
+        view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
+        view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
+        
+        view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
+        view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
+        view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+        
         contentController = std::make_unique<LibraryViewController>(store);
         contentController->init();
         view->setContentView(contentController->getView());
     }
 }
 
+void MainViewController::showBank()
+{
+    view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.viewGrid.setToggleState(true, dontSendNotification);
+    view->navigationDrawer.viewPlaylist.setToggleState(false, dontSendNotification);
+    
+    view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+    
+    const auto current = dynamic_cast<BankViewController *>(contentController.get());
+    if (current == nullptr)
+    {
+        contentController = std::make_unique<BankViewController>(store);
+        contentController->init();
+        view->setContentView(contentController->getView());
+    }
+}
+
+void MainViewController::showPlaylist()
+{
+    view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.viewGrid.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.viewPlaylist.setToggleState(true, dontSendNotification);
+    
+    view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
+    view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
+    
+    const auto current = dynamic_cast<PlaylistViewController *>(contentController.get());
+    if (current == nullptr)
+    {
+        contentController = std::make_unique<PlaylistViewController>(store);
+        contentController->init();
+        view->setContentView(contentController->getView());
+    }
+}
 
 void MainViewController::loadProjectFile()
 {
@@ -170,8 +187,12 @@ void MainViewController::handleAsyncUpdate()
 	view->bottomBar.volumeSlider.setValue(model.master_gain, dontSendNotification);
 	view->bottomBar.talkoverButton.setToggleState(model.talkover, dontSendNotification);
 	view->bottomBar.muteButton.setToggleState(model.mute, dontSendNotification);
-	if (model.view != "main") {
-		showLibrary();
-	}
+    if (model.view == "library") {
+        showLibrary();
+    } else if (model.view == "bank") {
+        showBank();
+    } else if (model.view == "playlist") {
+        showPlaylist();
+    }
 }
 

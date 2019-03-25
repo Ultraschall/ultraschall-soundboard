@@ -19,23 +19,29 @@ public:
         addAndMakeVisible(floatingActionButton);
         addAndMakeVisible(startup);
         
-        addFileButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
-        addDirectoryButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
+        addFileOrDirectoryButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
         loadProjectFileButton.setColour(Material::FloatingActionButton::ColourIds::containerColourId, Material::Color::Icons::White::Active);
-        addFileButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
-        addDirectoryButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
+        addFileOrDirectoryButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
         loadProjectFileButton.setColour(Material::FloatingActionButton::ColourIds::iconColourId, Material::Color::Icons::Black::Inactive);
         
-        addAndMakeVisible(addFileButton);
-        addAndMakeVisible(addDirectoryButton);
+        addAndMakeVisible(addFileOrDirectoryButton);
         addAndMakeVisible(loadProjectFileButton);
         
-        addFileButton.setAlpha(0.0f);
-        addDirectoryButton.setAlpha(0.0f);
+        addAndMakeVisible(addFileOrDirectoryLabel);
+        addAndMakeVisible(loadProjectFileLabel);
+        
+        addFileOrDirectoryButton.setAlpha(0.0f);
         loadProjectFileButton.setAlpha(0.0f);
-        addFileButton.setVisible(false);
-        addDirectoryButton.setVisible(false);
+        addFileOrDirectoryButton.setVisible(false);
         loadProjectFileButton.setVisible(false);
+        
+        addFileOrDirectoryLabel.setAlpha(0.0f);
+        loadProjectFileLabel.setAlpha(0.0f);
+        addFileOrDirectoryLabel.setVisible(false);
+        loadProjectFileLabel.setVisible(false);
+        
+        addFileOrDirectoryLabel.setText("Add Files", NotificationType::dontSendNotification);
+        loadProjectFileLabel.setText("Open Project", NotificationType::dontSendNotification);
         
         floatingActionButton.onClick = [this] {
             if (!floatingActionButton.getToggleState()) {
@@ -97,19 +103,20 @@ public:
                                        );
         fabBottom += 16 + Material::FloatingActionButton::miniSize;
         auto fabRight = static_cast<int>((Material::FloatingActionButton::size + 16) - ((Material::FloatingActionButton::size - Material::FloatingActionButton::miniSize) * 0.5));
-        addFileButton.setBounds(getLocalBounds()
+        auto labelRight = fabRight + 150;
+        addFileOrDirectoryButton.setBounds(getLocalBounds()
                                 .removeFromBottom(px(fabBottom))
                                 .removeFromRight(px(fabRight))
                                 .withWidth(px(Material::FloatingActionButton::miniSize))
                                 .withHeight(px(Material::FloatingActionButton::miniSize))
                                 );
-        fabBottom += 16 + Material::FloatingActionButton::miniSize;
-        addDirectoryButton.setBounds(getLocalBounds()
-                                .removeFromBottom(px(fabBottom))
-                                  .removeFromRight(px(fabRight))
-                                .withWidth(px(Material::FloatingActionButton::miniSize))
-                                .withHeight(px(Material::FloatingActionButton::miniSize))
-                                );
+        addFileOrDirectoryLabel.setBounds(getLocalBounds()
+                               .removeFromBottom(px(fabBottom))
+                               .removeFromRight(px(labelRight))
+                               .withWidth(px(150))
+                               .withHeight(px(Material::FloatingActionButton::miniSize))
+                               );
+
         fabBottom += 16 + Material::FloatingActionButton::miniSize;
         loadProjectFileButton.setBounds(getLocalBounds()
                                   .removeFromBottom(px(fabBottom))
@@ -117,6 +124,12 @@ public:
                                   .withWidth(px(Material::FloatingActionButton::miniSize))
                                   .withHeight(px(Material::FloatingActionButton::miniSize))
                                   );
+        loadProjectFileLabel.setBounds(getLocalBounds()
+                               .removeFromBottom(px(fabBottom))
+                               .removeFromRight(px(labelRight))
+                               .withWidth(px(150))
+                               .withHeight(px(Material::FloatingActionButton::miniSize))
+                               );
     }
     
     void showExtendedFloatingActionButtons() {
@@ -124,12 +137,15 @@ public:
 
         floatingActionButton.setRotation(0.785398f);
         
-        addFileButton.setAlpha(1.0f);
-        addDirectoryButton.setAlpha(1.0f);
+        addFileOrDirectoryButton.setAlpha(1.0f);
         loadProjectFileButton.setAlpha(1.0f);
-        addFileButton.setVisible(true);
-        addDirectoryButton.setVisible(true);
+        addFileOrDirectoryButton.setVisible(true);
         loadProjectFileButton.setVisible(true);
+        
+        addFileOrDirectoryLabel.setAlpha(1.0f);
+        loadProjectFileLabel.setAlpha(1.0f);
+        addFileOrDirectoryLabel.setVisible(true);
+        loadProjectFileLabel.setVisible(true);
     }
     
     void hideExtendedFloatingActionButtons() {
@@ -137,12 +153,15 @@ public:
         
         floatingActionButton.setRotation(0);
         
-        addFileButton.setAlpha(0.0f);
-        addDirectoryButton.setAlpha(0.0f);
+        addFileOrDirectoryButton.setAlpha(0.0f);
         loadProjectFileButton.setAlpha(0.0f);
-        addFileButton.setVisible(false);
-        addDirectoryButton.setVisible(false);
+        addFileOrDirectoryButton.setVisible(false);
         loadProjectFileButton.setVisible(false);
+        
+        addFileOrDirectoryLabel.setAlpha(0.0f);
+        loadProjectFileLabel.setAlpha(0.0f);
+        addFileOrDirectoryLabel.setVisible(false);
+        loadProjectFileLabel.setVisible(false);
     }
     
     void setContentView(Component* view) {
@@ -158,6 +177,7 @@ public:
         {
             navigationDrawer.close();
         }
+        resized();
     }
 
 	void updateFocusIndicator() {
@@ -189,10 +209,12 @@ public:
     BottomBar bottomBar;
     Material::FloatingActionButton floatingActionButton { Material::Icons::add };
 
-    Material::FloatingActionButton addFileButton { Material::Icons::file_copy };
-    Material::FloatingActionButton addDirectoryButton { Material::Icons::create_new_folder };
+    Material::FloatingActionButton addFileOrDirectoryButton { Material::Icons::file_copy };
     Material::FloatingActionButton loadProjectFileButton { Material::Icons::unarchive };
-
+    
+    Label addFileOrDirectoryLabel;
+    Label loadProjectFileLabel;
+    
     NavigationDrawer navigationDrawer;
 private:
     StartupView startup;

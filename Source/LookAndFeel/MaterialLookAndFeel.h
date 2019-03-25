@@ -12,16 +12,20 @@ public:
 	{
 		getDefaultLookAndFeel().setDefaultSansSerifTypeface(Material::Typefaces::getInstance()->Body1);
 
-		setColour(Slider::trackColourId, Material::Color::Secondary::Main);
-		setColour(Slider::thumbColourId, Material::Color::Secondary::Main);
-		setColour(Slider::backgroundColourId, Material::Color::Secondary::Main.withAlpha(0.38f));
+		setColour(Slider::trackColourId, Material::Color::Primary::_700);
+		setColour(Slider::thumbColourId, Material::Color::Primary::_700);
+		setColour(Slider::backgroundColourId, Material::Color::Primary::_700.withAlpha(0.38f));
+        
+        setColour(ScrollBar::backgroundColourId, Material::Color::Surface::Base);
+        setColour(ScrollBar::thumbColourId, Material::Color::Surface::Light);
+        setColour(ScrollBar::trackColourId, Material::Color::Surface::Light);
 	}
 
 	void drawLinearSlider(Graphics &g, int x, int y, int width, int height,
 		float sliderPos,
 		float minSliderPos,
 		float maxSliderPos,
-		const Slider::SliderStyle style, Slider &slider)
+		const Slider::SliderStyle style, Slider &slider) override
 	{
 		if (slider.isBar())
 		{

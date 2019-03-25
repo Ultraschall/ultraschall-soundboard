@@ -15,6 +15,7 @@ Engine::Engine() : audioThumbnailCache(21) {
 void Engine::prepareToPlay(int samplesPerBlockExpected, double sampleRate) {
 	mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
 	currentSampleRate = sampleRate;
+    currentSamplesPerBlockExpected = samplesPerBlockExpected;
 	previousGain = currentGain;
 }
 
@@ -51,10 +52,11 @@ bool Engine::loadAudioFile(Identifier id, const File &file) {
 	if (!player->loadFileIntoTransport(file, &audioFormatManager, &audioThumbnailCache)) {
 		return false;
 	}
+    player->prepareToPlay(currentSamplesPerBlockExpected, currentSampleRate);
 	player->addChangeListener(this);
-	mixer.addInputSource(player.get(), false);
 	players[id] = std::move(player);
 	playersToUpdate.addIfNotAlreadyThere(id);
+    mixer.addInputSource(players[id].get(), false);
 	return true;
 }
 

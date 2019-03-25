@@ -14,7 +14,7 @@ public:
     ~StartupView() noexcept override = default;
     
     void paint(Graphics& g) override {
-        g.fillAll(Material::Color::Surface::Light);
+        g.fillAll(Material::Color::Surface::Base);
     }
     
     void resized() override {

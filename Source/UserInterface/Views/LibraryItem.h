@@ -11,8 +11,8 @@ public:
 		setOpaque(true);
         progressBar.setPercentageDisplay(false);
         
-        progressBar.setColour(ProgressBar::ColourIds::backgroundColourId, Material::Color::Secondary::_700.withAlpha(0.24f));
-        progressBar.setColour(ProgressBar::ColourIds::foregroundColourId, Material::Color::Secondary::_700);
+        progressBar.setColour(ProgressBar::ColourIds::backgroundColourId, Material::Color::Primary::_700.withAlpha(0.24f));
+        progressBar.setColour(ProgressBar::ColourIds::foregroundColourId, Material::Color::Primary::_700);
         
         reset();
         
@@ -90,8 +90,8 @@ public:
     }
     
     void setIsPaused() {
-        fadeButton.setToggleState(true, dontSendNotification);
-        playButton.setToggleState(true, dontSendNotification);
+        fadeButton.setToggleState(false, dontSendNotification);
+        playButton.setToggleState(false, dontSendNotification);
     }
     
     void setIsPlayed() {
@@ -99,7 +99,7 @@ public:
     }
     
     void setIsPlaying() {
-        muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+        muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Secondary::Main);
         fadeButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
         stopButton.setColour(Material::IconButton::iconColourId, Material::Color::Icons::Selected::OnSurface::Active);
         playButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);

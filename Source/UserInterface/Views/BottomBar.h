@@ -10,10 +10,10 @@ public:
     BottomBar() noexcept : Component("BottomBar") {
         setOpaque(true);
 
-        talkoverButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+        talkoverButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Secondary::Main);
         talkoverButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
 
-        muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Icons::Selected::OnSurface::Active);
+        muteButton.setColour(Material::IconToggleButton::iconActiveColourId, Material::Color::Secondary::Main);
         muteButton.setColour(Material::IconToggleButton::iconInactiveColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
 
         volumeSlider.setRange (0, 1);

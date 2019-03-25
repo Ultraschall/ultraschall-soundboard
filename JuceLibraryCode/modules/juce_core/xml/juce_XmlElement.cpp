@@ -580,9 +580,7 @@ void XmlElement::setAttribute (const Identifier& attributeName, const int number
 
 void XmlElement::setAttribute (const Identifier& attributeName, const double number)
 {
-    String doubleString (number, 20);
-    setAttribute (attributeName,
-                  doubleString.substring (0, (int) CharacterFunctions::findLengthWithoutTrailingZeros (doubleString.getCharPointer())));
+    setAttribute (attributeName, serialiseDouble (number));
 }
 
 void XmlElement::removeAttribute (const Identifier& attributeName) noexcept
@@ -697,6 +695,8 @@ void XmlElement::removeChildElement (XmlElement* const childToRemove,
 {
     if (childToRemove != nullptr)
     {
+        jassert (containsChildElement (childToRemove));
+
         firstChildElement.remove (childToRemove);
 
         if (shouldDeleteTheChild)
@@ -936,13 +936,32 @@ public:
     void runTest() override
     {
         {
-            beginTest ("Trailing zeros");
+            beginTest ("Float formatting");
 
             auto element = std::make_unique<XmlElement> ("test");
-            Identifier d ("d");
+            Identifier number ("number");
 
-            element->setAttribute (d, 3.0);
-            expectEquals (element->getStringAttribute (d), String ("3.0"));
+            std::map<double, String> tests;
+            tests[1] = "1.0";
+            tests[1.1] = "1.1";
+            tests[1.01] = "1.01";
+            tests[0.76378] = "0.76378";
+            tests[-10] = "-10.0";
+            tests[10.01] = "10.01";
+            tests[0.0123] = "0.0123";
+            tests[-3.7e-27] = "-3.7e-27";
+            tests[1e+40] = "1.0e40";
+            tests[-12345678901234567.0] = "-1.234567890123457e16";
+            tests[192000] = "192000.0";
+            tests[1234567] = "1.234567e6";
+            tests[0.00006] = "0.00006";
+            tests[0.000006] = "6.0e-6";
+
+            for (auto& test : tests)
+            {
+                element->setAttribute (number, test.first);
+                expectEquals (element->getStringAttribute (number), test.second);
+            }
         }
     }
 };

@@ -6,6 +6,8 @@
 #include "ViewController.h"
 
 #include "LibraryViewController.h"
+#include "BankViewController.h"
+#include "PlaylistViewController.h"
 
 #include "../Models/ApplicationModel.h"
 #include "../Models/Utilities.h"
@@ -20,6 +22,8 @@ public:
 	void viewDidUnload() override;
 
 	void showLibrary();
+    void showBank();
+    void showPlaylist();
 
 	void loadProjectFile();
 

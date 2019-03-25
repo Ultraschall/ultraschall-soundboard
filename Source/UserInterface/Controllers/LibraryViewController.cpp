@@ -21,12 +21,12 @@ void LibraryViewController::loadView()
 void LibraryViewController::viewDidLoad()
 {
     getLibraryView()->table.setModel(this);
+    updateContent();
 }
 
 bool LibraryViewController::isSuitableType(const juce::ValueTree &tree) const
 {
     return tree.hasType(IDs::PLAYER);
-    ;
 }
 
 PlayerModel *LibraryViewController::createNewObject(const juce::ValueTree &tree)
