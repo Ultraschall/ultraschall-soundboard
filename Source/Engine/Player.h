@@ -3,7 +3,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "Envelope.h"
 
-class Player : public AudioSource, public ChangeBroadcaster {
+class Player : public AudioSource, public ChangeBroadcaster, public ChangeListener {
 public:
     explicit Player(const Identifier &id);
 
@@ -62,8 +62,9 @@ public:
 
     void setLooping(bool looping);
 
-    //std::shared_ptr<AudioThumbnail> thumbnail;
+    void changeListenerCallback (ChangeBroadcaster* source) override;
 
+    bool isThumbnailFullyLoaded();
 private:
     float currentGain{1.0f};
     float previousGain{1.0f};
@@ -81,7 +82,9 @@ private:
 
     std::unique_ptr<AudioTransportSource> audioTransportSource;
     std::unique_ptr<AudioFormatReaderSource> audioFormatReaderSource;
-
+    std::unique_ptr<AudioThumbnail> thumbnail;
+    MemoryBlock thumbnailData{4096};
+    bool thumbnailFullyLoaded{false};
     Envelope evelop;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)

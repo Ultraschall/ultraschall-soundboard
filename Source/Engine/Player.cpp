@@ -88,7 +88,7 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 
 bool Player::loadFileIntoTransport(const File &audioFile,
     AudioFormatManager *audioFormatManager,
-    AudioThumbnailCache * /*audioThumbnailCache*/) {
+    AudioThumbnailCache *audioThumbnailCache) {
     audioTransportSource->stop();
     audioTransportSource->setSource(nullptr);
 
@@ -103,8 +103,10 @@ bool Player::loadFileIntoTransport(const File &audioFile,
 
     audioTransportSource->setSource(audioFormatReaderSource.get(), 32768, &timeSliceThread, reader->sampleRate);
 
-    //thumbnail = std::make_unique<AudioThumbnail>(4096, *audioFormatManager, *audioThumbnailCache);
-    //thumbnail->setSource(new FileInputSource(audioFile));
+    int sourceSamplesPerThumbnailSample = int(audioFormatReaderSource->getTotalLength() / 512);
+    thumbnail = std::make_unique<AudioThumbnail>(sourceSamplesPerThumbnailSample, *audioFormatManager, *audioThumbnailCache);
+    thumbnail->addChangeListener(this);
+    thumbnail->setSource(new FileInputSource(audioFile));
 
     playerState = player_ready;
 	setGain(1.0f);
@@ -176,4 +178,20 @@ void Player::setLooping(bool looping) {
 
 bool Player::isLooping() {
     return audioFormatReaderSource->isLooping();
+}
+
+void Player::changeListenerCallback (ChangeBroadcaster* source) {
+    auto thumbnail = dynamic_cast<AudioThumbnail*>(source);
+    if (thumbnail == nullptr) {
+        return;
+    }
+    if (thumbnail->isFullyLoaded()) {
+        MemoryOutputStream thumbnailBuffer{thumbnailData, false};
+        thumbnail->saveTo(thumbnailBuffer);
+        thumbnailFullyLoaded = true;
+    }
+}
+
+bool Player::isThumbnailFullyLoaded() {
+    return thumbnailFullyLoaded;
 }

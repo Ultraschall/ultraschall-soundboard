@@ -31,6 +31,9 @@ public:
     void paint(Graphics &g) override {
 		auto colour = error ? Material::Color::Surface::Dark : Material::Color::Surface::Base;
 		g.fillAll(colour);
+        if (thumbnail != nullptr) {
+            thumbnail->drawChannel(g, getBounds().withTrimmedTop(10), 0, thumbnail->getNumSamplesFinished(), 1, 1.0f);
+        }
         g.setColour(Material::Color::Icons::Selected::OnSurface::Active.withAlpha(0.12f));
         g.drawLine(0.0f, getHeight() - 1.0f, static_cast<float>(getWidth()), getHeight() - 1.0f);
     }
@@ -120,7 +123,8 @@ public:
     Material::IconToggleButton playButton{ Material::Icons::play_arrow, Material::Icons::pause };
     Label title;
     Label time;
-    double progress{0.5};
+    double progress{0.0};
+    std::shared_ptr<AudioThumbnail> thumbnail;
 private:
     ProgressBar progressBar{progress};
 	bool error{false};

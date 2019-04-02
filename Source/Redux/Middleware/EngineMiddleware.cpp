@@ -2,7 +2,11 @@
 #include "../Actions/Actions.h"
 
 EngineMiddleware::EngineMiddleware(Engine & engine) : engine(engine) {
-
+    const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
+    
+    fileChooser = std::make_unique<FileChooser>("Please select the audio file or directory you want to load...",
+                                                File::getSpecialLocation(File::userMusicDirectory),
+                                                engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
 }
 
 ActionObject EngineMiddleware::dispatch(const ActionObject &action, Store &store) {
@@ -14,7 +18,7 @@ ActionObject EngineMiddleware::dispatch(const ActionObject &action, Store &store
 	if (action.type == EnableEngineSync) {
 		jassert(engineSync == nullptr);
 		engineSync = std::make_unique<EngineSync>(store, engine);
-		engineSync->startTimer(100);
+		engineSync->startTimerHz(60);
 	}
 	else if (action.type == DisableEngineSync) {
 		engineSync->stopTimer();
@@ -53,12 +57,6 @@ void EngineMiddleware::playerDispatch(const ActionObject & action)
 
 void EngineMiddleware::AsyncAddFileOrDirectory(Store & store)
 {
-	const auto useNativeVersion = FileChooser::isPlatformDialogAvailable();
-    
-	fileChooser = std::make_unique<FileChooser>("Please select the audio file or directory you want to load...",
-		File::getSpecialLocation(File::userMusicDirectory),
-		engine.audioFormatManager.getWildcardForAllFormats(), useNativeVersion);
-    
     fileChooser->launchAsync(FileBrowserComponent::openMode
                              | FileBrowserComponent::canSelectFiles
                              | FileBrowserComponent::canSelectDirectories

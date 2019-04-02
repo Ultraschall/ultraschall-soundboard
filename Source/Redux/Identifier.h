@@ -15,6 +15,7 @@ namespace IDs {
 	DECLARE_ID(application_talkover, state_talkover)
 	DECLARE_ID(application_mute, state_mute)
 	DECLARE_ID(application_view, view)
+    DECLARE_ID(application_last_directory, last_directory)
 
 	// #Players []
     DECLARE_ID(PLAYERS, PLAYERS)
@@ -52,7 +53,7 @@ namespace IDs {
     // #Bank Clip
     DECLARE_ID(CLIP, CLIP)
     DECLARE_ID(clip_id, id)
-    DECLARE_ID(clip_index, index)
+    DECLARE_ID(clip_order, order)
     DECLARE_ID(clip_player_id, player_id)
 	DECLARE_ID(clip_bank_id, bank_id)
 
@@ -73,8 +74,9 @@ namespace IDs {
 
     // #Playlist Item
     DECLARE_ID(ITEM, ITEM)
-    //DECLARE_ID(player_uuid, uuid);
-    
+    DECLARE_ID(item_playlist_id, id)
+    DECLARE_ID(item_player_id, id)
+
 
 #undef DECLARE_ID
 }
