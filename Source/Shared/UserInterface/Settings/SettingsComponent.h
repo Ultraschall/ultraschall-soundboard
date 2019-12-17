@@ -12,8 +12,8 @@
 #define SETTINGSCOMPONENT_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "LookAndFeel.h"
-#include "PluginProcessor.h"
+#include "../LookAndFeel.h"
+#include "../../../Plugin/PluginProcessor.h"
 
 #if SHOW_AUDIO_SETTINGS
 extern ScopedPointer<AudioDeviceManager> deviceManager;

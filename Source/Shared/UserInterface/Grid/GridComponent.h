@@ -12,8 +12,8 @@
 #define GRIDCOMPONENT_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "LookAndFeel.h"
-#include "PluginProcessor.h"
+#include "../LookAndFeel.h"
+#include "../../../Plugin/PluginProcessor.h"
 #include "GridCell.h"
 
 class SoundboardGridComponent : public Component

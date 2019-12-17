@@ -111,15 +111,9 @@ class LookAndFeel_Ultraschall : public LookAndFeel_V3
 public:
     void drawTableHeaderBackground(Graphics &g, TableHeaderComponent &header) override;
 
-    void
-            drawTableHeaderColumn(Graphics &g,
-                                  const String &columnName,
-                                  int /*columnId*/,
-                                  int width,
-                                  int height,
-                                  bool isMouseOver,
-                                  bool isMouseDown,
-                                  int columnFlags) override;
+    void drawTableHeaderColumn (Graphics&, TableHeaderComponent&, const String& columnName,
+                           int columnId, int width, int height, bool isMouseOver,
+                           bool isMouseDown, int columnFlags) override;
 };
 
 class LookAndFeel_Ultraschall_Awesome : public LookAndFeel_Ultraschall

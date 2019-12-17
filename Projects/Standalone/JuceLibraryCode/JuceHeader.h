@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_BFIVHQ__
-#define __APPHEADERFILE_BFIVHQ__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -44,9 +43,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Soundboard";
-    const char* const  versionString  = "1.9.9";
-    const int          versionNumber  = 0x10909;
+    const char* const  companyName    = "Ultraschall";
+    const char* const  versionString  = "3.2";
+    const int          versionNumber  = 0x30200;
 }
 #endif
-
-#endif   // __APPHEADERFILE_BFIVHQ__

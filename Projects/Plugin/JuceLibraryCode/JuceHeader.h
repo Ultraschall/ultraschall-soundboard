@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_CSXMMW__
-#define __APPHEADERFILE_CSXMMW__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -43,10 +42,9 @@
 #if ! JUCE_DONT_DECLARE_PROJECTINFO
 namespace ProjectInfo
 {
-    const char* const  projectName    = "Plugin";
-    const char* const  versionString  = "3.0.0";
-    const int          versionNumber  = 0x30000;
+    const char* const  projectName    = "Soundboard";
+    const char* const  companyName    = "Ultraschall";
+    const char* const  versionString  = "3.1.0";
+    const int          versionNumber  = 0x30100;
 }
 #endif
-
-#endif   // __APPHEADERFILE_CSXMMW__

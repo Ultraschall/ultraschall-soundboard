@@ -11,11 +11,11 @@
 #define PLUGINEDITOR_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "LookAndFeel.h"
+#include "../Shared/UserInterface/LookAndFeel.h"
 #include "PluginProcessor.h"
-#include "TableComponent.h"
-#include "GridComponent.h"
-#include "SettingsComponent.h"
+#include "../Shared/UserInterface/Table/TableComponent.h"
+#include "../Shared/UserInterface/Grid/GridComponent.h"
+#include "../Shared/UserInterface/Settings/SettingsComponent.h"
 
 class SoundboardAudioProcessorEditor : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer, public OscParameterListener
 {

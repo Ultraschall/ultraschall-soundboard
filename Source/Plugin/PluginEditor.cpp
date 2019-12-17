@@ -33,14 +33,14 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_FolderOpenO);
     loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
-    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
+    loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnRight);
     loadDirectoryButton->addListener(this);
 
     addAndMakeVisible(listButton = new TextButton());
     listButton->setLookAndFeel(awesomeLookAndFeel);
     listButton->setButtonText(FontAwesome_List);
     listButton->addListener(this);
-    listButton->setConnectedEdges(TextButton::ConnectedOnRight);
+    listButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
 
     addAndMakeVisible(gridButton = new TextButton());
     gridButton->setLookAndFeel(awesomeLookAndFeel);
@@ -74,15 +74,18 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 
     if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
     {
-        addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
-        resizeLimits.setSizeLimits(380, 320, 1024, 768);
+        //addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
+        setResizeLimits(520, 320, 0x3fffffff, 0x3fffffff);
+        setResizable(true, true);
     }
 
     refresh();
 
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize(processor.getWindowWidth(), processor.getWindowHeight());
+    if (processor.wrapperType == AudioProcessor::wrapperType_Standalone) {
+        // Make sure that before the constructor has finished, you've set the
+        // editor's size to whatever you need it to be.
+        setSize(processor.getWindowWidth(), processor.getWindowHeight());
+    }
 
     startTimer(TimerIdRefresh, static_cast<int>(1000 * 0.5));
     
@@ -118,15 +121,14 @@ void SoundboardAudioProcessorEditor::resized()
     topBar->setBounds(0, 0, getWidth(), 32);
 
 
-    listButton->setBounds(5, 5, 60, 24);
-    gridButton->setBounds(65, 5, 60, 24);
-
-    duckButton->setBounds(260, 5, 60, 24);
+    loadDirectoryButton->setBounds(5, 5, 60, 24);
+    listButton->setBounds(65, 5, 60, 24);
+    gridButton->setBounds(125, 5, 60, 24);
     
-    gainSlider->setBounds(140, 5, 100, 24);
+    gainSlider->setBounds(190, 5, 100, 24);
+    duckButton->setBounds(295, 5, 60, 24);
 
-    lockButton->setBounds(getWidth() - 185, 5, 60, 24);
-    loadDirectoryButton->setBounds(getWidth() - 125, 5, 60, 24);
+    lockButton->setBounds(getWidth() - 125, 5, 60, 24);
     settingsButton->setBounds(getWidth() - 65, 5, 60, 24);
 
     if (table != nullptr) {

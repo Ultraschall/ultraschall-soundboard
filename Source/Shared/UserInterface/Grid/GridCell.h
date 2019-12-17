@@ -12,8 +12,8 @@
 #define GRIDCELL_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "LookAndFeel.h"
-#include "Player.h"
+#include "../LookAndFeel.h"
+#include "../../Player/Player.h"
 
 class SoundboardGridCell : public Component, public ChangeListener
 {

@@ -10,8 +10,7 @@
 
 */
 
-#ifndef __APPHEADERFILE_ENYWBM__
-#define __APPHEADERFILE_ENYWBM__
+#pragma once
 
 #include "AppConfig.h"
 
@@ -46,9 +45,8 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Tests";
+    const char* const  companyName    = "Ultraschall";
     const char* const  versionString  = "1.0";
     const int          versionNumber  = 0x10000;
 }
 #endif
-
-#endif   // __APPHEADERFILE_ENYWBM__
