@@ -11,6 +11,7 @@ $ProjucerExecutable = $ProjucerDirectory + "/x64/Release/Projucer.exe"
 $ConfigureTarget = $False
 $BuildTarget = $True
 $BuildAction = "build"
+$BuildConfiguration = "Debug"
 
 Function Remove-Directory ($Directory) {
   If ((Test-Path -PathType Container $Directory) -ne $False) {
@@ -20,7 +21,7 @@ Function Remove-Directory ($Directory) {
 
 If ($args.Count -gt 0) {
   If ($args[0] -eq "--help") {
-    Write-Host "Usage: build.ps1 [ --bootstrap | --configure | --build | --rebuild | --clean ]"
+    Write-Host "Usage: build.ps1 [ --bootstrap | --configure | --build | --rebuild | --clean ] [ --debug | --release ]"
     Return
   }
   ElseIf ($args[0] -eq "--bootstrap") {
@@ -48,6 +49,19 @@ If ($args.Count -gt 0) {
   ElseIf ($args[0] -eq "--rebuild") {
     $BuildAction = "rebuild"
     $BuildTarget = $True
+  }
+}
+
+If ($args.Count -gt 1) {
+  If ($args[1] -eq "--help") {
+    Write-Host "Usage: build.ps1 [ --bootstrap | --configure | --build | --rebuild | --clean ] [ --debug | --release ]"
+    Return
+  }
+  ElseIf ($args[1] -eq "--debug") {
+    $BuildConfiguration = "Debug"
+  }
+  ElseIf ($args[0] -eq "--release") {
+    $BuildConfiguration = "Release"
   }
 }
 
@@ -144,7 +158,7 @@ if ($BuildFailed -eq $False) {
 
     Push-Location $BuildDirectory | Out-Null
 
-    & msbuild "./win32/ultraschall-soundboard.sln" -nologo -m -consoleloggerparameters:ErrorsOnly -target:$BuildAction -property:Configuration=Release -property:Platform="x64" -property:PlatformToolset="v142"
+    & msbuild "./win32/ultraschall-soundboard.sln" -nologo -m -consoleloggerparameters:ErrorsOnly -target:$BuildAction -property:Configuration=$BuildConfiguration -property:Platform="x64" -property:PlatformToolset="v142"
     if ($LASTEXITCODE -ne 0) {
       $BuildFailed = $True
     }
