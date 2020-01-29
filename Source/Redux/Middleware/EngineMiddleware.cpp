@@ -82,13 +82,13 @@ void EngineMiddleware::AsyncFileLoader::handleAsyncUpdate() {
             
             auto file = result.getLocalFile();
             if (file.isDirectory()) {
-                auto files = file.findChildFiles(File::findFiles, true);
-                for (auto &f : files) {
+                auto child_files = file.findChildFiles(File::findFiles, true);
+                for (auto &child_file : child_files) {
                     Uuid uuid;
                     auto id = Identifier(uuid.toDashedString());
                     
-                    if (engine.loadAudioFile(id, f)) {
-                        store.dispatch(FileReadyAction(uuid.toDashedString(), f.getFileName(), f.getFullPathName()));
+                    if (engine.loadAudioFile(id, child_file)) {
+                        store.dispatch(FileReadyAction(uuid.toDashedString(), child_file.getFileName(), child_file.getFullPathName()));
                     }
                 }
             } else {

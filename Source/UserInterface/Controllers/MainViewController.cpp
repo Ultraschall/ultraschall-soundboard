@@ -14,13 +14,13 @@ void MainViewController::viewDidLoad()
 {
     view->setShowKeyboardFocus(false);
     view->navigationDrawer.viewList.onClick = [this] {
-		store->dispatch(ShowViewAction("library"));
+        const auto _ = store->dispatch(ShowViewAction("library"));
     };
     view->navigationDrawer.viewGrid.onClick = [this] {
-		store->dispatch(ShowViewAction("bank"));
+        const auto _ = store->dispatch(ShowViewAction("bank"));
     };
     view->navigationDrawer.viewPlaylist.onClick = [this] {
-		store->dispatch(ShowViewAction("playlist"));
+        const auto _ = store->dispatch(ShowViewAction("playlist"));
     };
 
 	view->navigationDrawer.midiSettings.onClick = [this] {
@@ -32,7 +32,7 @@ void MainViewController::viewDidLoad()
 		view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
 		view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
 		view->navigationDrawer.close();
-		store->dispatch(ShowViewAction("settings_midi"));
+        const auto _ = store->dispatch(ShowViewAction("settings_midi"));
 	};
 	view->navigationDrawer.oscSettings.onClick = [this] {
 		view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
@@ -43,7 +43,7 @@ void MainViewController::viewDidLoad()
 		view->navigationDrawer.oscSettings.setToggleState(true, dontSendNotification);
 		view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
 		view->navigationDrawer.close();
-		store->dispatch(ShowViewAction("settings_osc"));
+        const auto _ = store->dispatch(ShowViewAction("settings_osc"));
 	};
     view->navigationDrawer.settings.onClick = [this] {
 		view->navigationDrawer.viewList.setToggleState(false, dontSendNotification);
@@ -54,30 +54,29 @@ void MainViewController::viewDidLoad()
 		view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
 		view->navigationDrawer.settings.setToggleState(true, dontSendNotification);
 		view->navigationDrawer.close();
-		store->dispatch(ShowViewAction("settings"));
-
+        const auto _ = store->dispatch(ShowViewAction("settings"));
     };
 
     view->addFileOrDirectoryButton.onClick = [this] {
         view->hideExtendedFloatingActionButtons();
-		store->dispatch(AddFileOrDirectoryAction());
+        const auto _ = store->dispatch(AddFileOrDirectoryAction());
     };
 
     view->loadProjectFileButton.onClick = [this] {
         view->hideExtendedFloatingActionButtons();
-		store->dispatch(OpenProjectAction());
+        const auto _ = store->dispatch(OpenProjectAction());
     };
 
     view->bottomBar.volumeSlider.onValueChange = [this] {
-		store->dispatch(SetGainAction(static_cast<float>(view->bottomBar.volumeSlider.getValue())));
+        const auto _ = store->dispatch(SetGainAction(static_cast<float>(view->bottomBar.volumeSlider.getValue())));
     };
 
     view->bottomBar.talkoverButton.onClick = [this] {
-		store->dispatch(ToggleTalkOverAction());
+        const auto _ = store->dispatch(ToggleTalkOverAction());
     };
 
     view->bottomBar.muteButton.onClick = [this] {
-		store->dispatch(ToggleMuteAction());
+        const auto _ = store->dispatch(ToggleMuteAction());
 	};
 
 	view->bottomBar.volumeSlider.setValue(model.master_gain, dontSendNotification);

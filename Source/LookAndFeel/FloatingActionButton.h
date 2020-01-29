@@ -44,7 +44,7 @@ namespace Material
 
 		void colourChanged() override
 		{
-			drawable.reset(icon.getDrawable(findColour(ColourIds::iconColourId)));
+			drawable = icon.getDrawable(findColour(ColourIds::iconColourId));
 		}
 
 		void setRotation(float angle)

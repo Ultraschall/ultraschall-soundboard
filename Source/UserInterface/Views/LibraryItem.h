@@ -32,7 +32,7 @@ public:
 		auto colour = error ? Material::Color::Surface::Dark : Material::Color::Surface::Base;
 		g.fillAll(colour);
         if (thumbnail != nullptr) {
-            thumbnail->drawChannel(g, getBounds().withTrimmedTop(10), 0, thumbnail->getNumSamplesFinished(), 1, 1.0f);
+            thumbnail->drawChannel(g, getBounds().withTrimmedTop(10), 0, thumbnail->getTotalLength(), 1, 1.0f);
         }
         g.setColour(Material::Color::Icons::Selected::OnSurface::Active.withAlpha(0.12f));
         g.drawLine(0.0f, getHeight() - 1.0f, static_cast<float>(getWidth()), getHeight() - 1.0f);

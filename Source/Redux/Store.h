@@ -41,9 +41,9 @@ private:
     * If the current state is undefined, you must return the initial state.
     * Do not reference these action types directly in your code.
     */
-    ActionObject INIT{"@@redux/INIT" + Uuid().toString()};
-    ActionObject REPLACE{"@@redux/REPLACE" + Uuid().toString()};
-    ActionObject PROBE_UNKNOWN_ACTION{"@@redux/REPLACE" + Uuid().toString()};
+    const ActionObject INIT{"@@redux/INIT" + Uuid().toString()};
+    const ActionObject REPLACE{"@@redux/REPLACE" + Uuid().toString()};
+    const ActionObject PROBE_UNKNOWN_ACTION{"@@redux/REPLACE" + Uuid().toString()};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Store)
 };

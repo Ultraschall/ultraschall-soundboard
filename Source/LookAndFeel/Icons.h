@@ -9,11 +9,10 @@ namespace Material
 	public:
 		explicit Icon(const char *data, const int size)
 		{
-			auto xml = XmlDocument::parse(String::fromUTF8(data, size));
-			svg = std::unique_ptr<XmlElement>(xml);
+			svg = XmlDocument::parse(String::fromUTF8(data, size));
 		}
 
-		Drawable *getDrawable(const Colour &colour = Colours::black)
+		std::unique_ptr<Drawable> getDrawable(const Colour &colour = Colours::black)
 		{
 			auto drawable = Drawable::createFromSVG(*svg);
 			drawable->replaceColour(Colours::black, colour);

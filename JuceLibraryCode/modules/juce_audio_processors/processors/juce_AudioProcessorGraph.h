@@ -145,7 +145,7 @@ public:
         Array<Connection> inputs, outputs;
         bool isPrepared = false, bypassed = false;
 
-        Node (NodeID, AudioProcessor*) noexcept;
+        Node (NodeID, std::unique_ptr<AudioProcessor>) noexcept;
 
         void setParentGraph (AudioProcessorGraph*) const;
         void prepare (double newSampleRate, int newBlockSize, AudioProcessorGraph*, ProcessingPrecision);
@@ -162,6 +162,7 @@ public:
     struct JUCE_API  Connection
     {
         //==============================================================================
+        Connection() = default;
         Connection (NodeAndChannel source, NodeAndChannel destination) noexcept;
 
         Connection (const Connection&) = default;
@@ -173,10 +174,10 @@ public:
 
         //==============================================================================
         /** The channel and node which is the input source for this connection. */
-        NodeAndChannel source;
+        NodeAndChannel source { {}, 0 };
 
         /** The channel and node which is the input source for this connection. */
-        NodeAndChannel destination;
+        NodeAndChannel destination { {}, 0 };
     };
 
     //==============================================================================
@@ -214,7 +215,7 @@ public:
 
         If this succeeds, it returns a pointer to the newly-created node.
     */
-    Node::Ptr addNode (AudioProcessor* newProcessor, NodeID nodeId = {});
+    Node::Ptr addNode (std::unique_ptr<AudioProcessor> newProcessor, NodeID nodeId = {});
 
     /** Deletes a node within the graph which has the specified ID.
         This will also delete any connections that are attached to this node.

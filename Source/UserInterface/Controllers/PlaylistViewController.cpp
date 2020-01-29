@@ -129,11 +129,11 @@ void PlaylistViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel
 		const auto fadeState = libraryItem->fadeButton.getToggleState();
 		if (fadeState)
 		{
-			store->dispatch(PlayerFadeInAction(uuid.toString()));
+			const auto _ = store->dispatch(PlayerFadeInAction(uuid.toString()));
 		}
 		else
 		{
-			store->dispatch(PlayerFadeOutAction(uuid.toString()));
+			const auto _ = store->dispatch(PlayerFadeOutAction(uuid.toString()));
 		}
 	};
 
@@ -141,16 +141,16 @@ void PlaylistViewController::intLibraryRow(LibraryItem *libraryItem, PlayerModel
 		const auto playState = libraryItem->playButton.getToggleState();
 		if (playState)
 		{
-			store->dispatch(PlayerPauseAction(uuid.toString()));
+			const auto _ = store->dispatch(PlayerPauseAction(uuid.toString()));
 		}
 		else
 		{
-			store->dispatch(PlayerPlayAction(uuid.toString()));
+			const auto _ = store->dispatch(PlayerPlayAction(uuid.toString()));
 		}
 	};
 
 	libraryItem->stopButton.onClick = [this, uuid, libraryItem] {
-		store->dispatch(PlayerStopAction(uuid.toString()));
+		const auto _ = store->dispatch(PlayerStopAction(uuid.toString()));
 	};
 }
 
@@ -163,36 +163,36 @@ void PlaylistViewController::refreshLibraryRow(LibraryItem *libraryItem, PlayerM
 
 	switch (playerModel.fadeState)
 	{
-	case Player::fade_out:
+	case static_cast<int>(Player::FadeState::fade_out):
 		libraryItem->fadeButton.setToggleState(false, dontSendNotification);
 		break;
 
 	default:
-	case Player::fade_in:
-	case Player::fade_idle:
+	case static_cast<int>(Player::FadeState::fade_in):
+	case static_cast<int>(Player::FadeState::fade_idle):
 		libraryItem->fadeButton.setToggleState(true, dontSendNotification);
 		break;
 	}
 
 	switch (playerModel.playerState)
 	{
-	case Player::player_error:
+	case static_cast<int>(Player::PlayerState::player_error):
 		libraryItem->setError();
-	case Player::player_stopped:
+	case static_cast<int>(Player::PlayerState::player_stopped):
 		libraryItem->setIsStopped();
 		break;
-	case Player::player_paused:
+	case static_cast<int>(Player::PlayerState::player_paused):
 		libraryItem->setIsPaused();
 		break;
-	case Player::player_played:
+	case static_cast<int>(Player::PlayerState::player_played):
 		libraryItem->setIsPlayed();
 		break;
-	case Player::player_playing:
+	case static_cast<int>(Player::PlayerState::player_playing):
 		libraryItem->setIsPlaying();
 		break;
 	default:
-	case Player::player_ready:
-	case Player::player_idle:
+	case static_cast<int>(Player::PlayerState::player_ready):
+	case static_cast<int>(Player::PlayerState::player_idle):
 		libraryItem->setIsReady();
 		break;
 	}

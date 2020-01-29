@@ -40,7 +40,7 @@ public:
 
     Identifier identifier;
 
-    enum PlayerState {
+    enum class PlayerState {
         player_error = -1,
         player_ready = 0,
         player_stopped = 1,
@@ -49,14 +49,14 @@ public:
         player_played = 4,
         player_idle = 255
     };
-    PlayerState playerState{player_idle};
+    PlayerState playerState{ PlayerState::player_idle};
     double progress{0};
-    enum FadeState {
+    enum class FadeState {
         fade_in = 1,
         fade_out = 2,
         fade_idle = 255
     };
-    FadeState fadeState{fade_idle};
+    FadeState fadeState{ FadeState::fade_idle };
 
     bool isLooping();
 

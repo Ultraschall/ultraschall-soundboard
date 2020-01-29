@@ -39,7 +39,7 @@ namespace Material
 			bool needRepaint = false;
 			if (isColourSpecified(ColourIds::iconColourId))
 			{
-				drawable.reset(icon.getDrawable(findColour(ColourIds::iconColourId)));
+				drawable = icon.getDrawable(findColour(ColourIds::iconColourId));
 				needRepaint = true;
 			}
 			if (needRepaint)
@@ -105,12 +105,12 @@ namespace Material
 			bool needRepaint = false;
 			if (isColourSpecified(ColourIds::iconActiveColourId))
 			{
-				drawableActive.reset(iconActive.getDrawable(findColour(ColourIds::iconActiveColourId)));
+				drawableActive = iconActive.getDrawable(findColour(ColourIds::iconActiveColourId));
 				needRepaint = true;
 			}
 			if (isColourSpecified(ColourIds::iconInactiveColourId))
 			{
-				drawableInactive.reset(iconInactive.getDrawable(findColour(ColourIds::iconInactiveColourId)));
+				drawableInactive = iconInactive.getDrawable(findColour(ColourIds::iconInactiveColourId));
 				needRepaint = true;
 			}
 			if (needRepaint)

@@ -46,27 +46,27 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 
     if (progress != 1) {
         auto needUpdate = false;
-        if (playerState == player_playing) {
+        if (playerState == PlayerState::player_playing) {
             needUpdate = true;
         }
 
         progress = audioTransportSource->getCurrentPosition() / audioTransportSource->getLengthInSeconds();
         if (progress >= 1) {
             progress = 1;
-            playerState = player_played;
+            playerState = PlayerState::player_played;
             needUpdate = true;
         }
 
         switch (evelop.getState()) {
             case Envelope::envState::env_attack:
-                if (fadeState != fade_in) {
-                    fadeState = fade_in;
+                if (fadeState != FadeState::fade_in) {
+                    fadeState = FadeState::fade_in;
                     needUpdate = true;
                 }
                 break;
             case Envelope::envState::env_release:
-                if (fadeState != fade_out) {
-                    fadeState = fade_out;
+                if (fadeState != FadeState::fade_out) {
+                    fadeState = FadeState::fade_out;
                     needUpdate = true;
                 }
                 break;
@@ -74,8 +74,8 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
             case Envelope::envState::env_sustain:
             case Envelope::envState::env_idle:
             default:
-                if (fadeState != fade_idle) {
-                    fadeState = fade_idle;
+                if (fadeState != FadeState::fade_idle) {
+                    fadeState = FadeState::fade_idle;
                     needUpdate = true;
                 }
                 break;
@@ -95,7 +95,7 @@ bool Player::loadFileIntoTransport(const File &audioFile,
     auto reader = audioFormatManager->createReaderFor(audioFile);
 
     if (reader == nullptr) {
-        playerState = player_error;
+        playerState = Player::PlayerState::player_error;
         return false;
     }
 
@@ -108,7 +108,7 @@ bool Player::loadFileIntoTransport(const File &audioFile,
     thumbnail->addChangeListener(this);
     thumbnail->setSource(new FileInputSource(audioFile));
 
-    playerState = player_ready;
+    playerState = PlayerState::player_ready;
 	setGain(1.0f);
     sendChangeMessage();
     return true;
@@ -133,7 +133,7 @@ void Player::fadeIn() {
     evelop.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
     evelop.gate(1);
     audioTransportSource->start();
-    playerState = player_playing;
+    playerState = PlayerState::player_playing;
     sendChangeMessage();
 }
 
@@ -145,7 +145,7 @@ void Player::fadeOut() {
 
 void Player::pause() {
     audioTransportSource->stop();
-    playerState = player_paused;
+    playerState = PlayerState::player_paused;
     sendChangeMessage();
 }
 
@@ -153,7 +153,7 @@ void Player::play() {
     evelop.setAttackRate(0);
     evelop.gate(1);
     audioTransportSource->start();
-    playerState = player_playing;
+    playerState = PlayerState::player_playing;
     sendChangeMessage();
 }
 
@@ -162,10 +162,10 @@ void Player::stop() {
     audioTransportSource->setPosition(0);
     evelop.gate(0);
     evelop.reset();
-    if (playerState != player_played) {
-        playerState = player_stopped;
+    if (playerState != PlayerState::player_played) {
+        playerState = PlayerState::player_stopped;
     } else {
-        playerState = player_ready;
+        playerState = PlayerState::player_ready;
         progress = 0;
     }
     sendChangeMessage();
@@ -181,13 +181,13 @@ bool Player::isLooping() {
 }
 
 void Player::changeListenerCallback (ChangeBroadcaster* source) {
-    auto thumbnail = dynamic_cast<AudioThumbnail*>(source);
-    if (thumbnail == nullptr) {
+    auto changedThumbnail = dynamic_cast<AudioThumbnail*>(source);
+    if (changedThumbnail == nullptr) {
         return;
     }
-    if (thumbnail->isFullyLoaded()) {
+    if (changedThumbnail->isFullyLoaded()) {
         MemoryOutputStream thumbnailBuffer{thumbnailData, false};
-        thumbnail->saveTo(thumbnailBuffer);
+        changedThumbnail->saveTo(thumbnailBuffer);
         thumbnailFullyLoaded = true;
     }
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT name="Soundboard" projectType="audioplug" buildStandalone="1"
-              jucerVersion="5.4.3" version="4.0.0" companyName="Ultraschall"
+              jucerVersion="5.4.5" version="4.0.0" companyName="Ultraschall"
               companyWebsite="http://ultraschall.fm" companyEmail="info@ultraschall.fm"
               reportAppUsage="0" displaySplashScreen="0" bundleIdentifier="fm.ultraschall.Soundboard"
               pluginFormats="buildAUv3,buildStandalone,buildVST3" pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
-              pluginCode="Soub" companyCopyright="Copyright (c) 2014-2019 Daniel Lindenfelser"
+              pluginCode="Soub" companyCopyright="Copyright (c) 2014-2020 Daniel Lindenfelser"
               pluginName="Soundboard" id="V57v4d" buildVST="0" buildVST3="1"
               buildAU="0" buildAUv3="1" buildRTAS="0" buildAAX="0" enableIAA="0"
               defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0&#10;" maxBinaryFileSize="20971520"
-              pluginChannelConfigs="{0,1}, {0,2}">
+              pluginChannelConfigs="{0,1}, {0,2}" cppLanguageStandard="17">
   <MAINGROUP id="bqAFM9" name="Soundboard">
     <GROUP id="{B6877D97-5B69-78EC-D7F6-0EBE4E7F2665}" name="Assets">
       <GROUP id="{A8E97A0B-ACB4-4A34-A43E-BB4D900CCC5C}" name="AppIcons">
@@ -319,8 +319,8 @@
     </GROUP>
   </MAINGROUP>
   <LIVE_SETTINGS>
-    <WINDOWS buildEnabled="0" windowsTargetPlatformVersion="10.0.17763.0"
-             continuousRebuildEnabled="0" defines="LIVE_MOCK=1"/>
+    <WINDOWS buildEnabled="0" continuousRebuildEnabled="0" defines="LIVE_MOCK=1"
+             windowsTargetPlatformVersion="10.0.18362.0"/>
     <LINUX/>
     <OSX buildEnabled="1" defines="LIVE_MOCK=1"/>
   </LIVE_SETTINGS>
@@ -348,29 +348,6 @@
         <MODULEPATH id="juce_dsp" path=""/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2017 targetFolder="Builds/VisualStudio2017" smallIcon="N4X8vV" bigIcon="qUA8yj">
-      <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_core" path=""/>
-        <MODULEPATH id="juce_events" path=""/>
-        <MODULEPATH id="juce_graphics" path=""/>
-        <MODULEPATH id="juce_data_structures" path=""/>
-        <MODULEPATH id="juce_gui_basics" path=""/>
-        <MODULEPATH id="juce_gui_extra" path=""/>
-        <MODULEPATH id="juce_opengl" path=""/>
-        <MODULEPATH id="juce_audio_basics" path=""/>
-        <MODULEPATH id="juce_audio_devices" path=""/>
-        <MODULEPATH id="juce_audio_formats" path=""/>
-        <MODULEPATH id="juce_audio_processors" path=""/>
-        <MODULEPATH id="juce_audio_plugin_client" path=""/>
-        <MODULEPATH id="juce_audio_utils" path=""/>
-        <MODULEPATH id="juce_osc" path=""/>
-        <MODULEPATH id="juce_dsp" path=""/>
-      </MODULEPATHS>
-    </VS2017>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" smallIcon="qIHqxt" bigIcon="LOUuSc">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
@@ -413,6 +390,29 @@
         <MODULEPATH id="juce_audio_basics" path="../../juce"/>
       </MODULEPATHS>
     </CLION>
+    <VS2019 targetFolder="Builds/VisualStudio2019" smallIcon="PeTWCq" bigIcon="SVAIpA">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_osc" path="../../juce"/>
+        <MODULEPATH id="juce_opengl" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_dsp" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </VS2019>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>

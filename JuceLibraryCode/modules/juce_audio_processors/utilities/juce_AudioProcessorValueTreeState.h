@@ -262,12 +262,12 @@ public:
                                                                   const String& labelText,
                                                                   NormalisableRange<float> valueRange,
                                                                   float defaultValue,
-                                                                  std::function<String (float)> valueToTextFunction,
-                                                                  std::function<float (const String&)> textToValueFunction,
+                                                                  std::function<String(float)> valueToTextFunction,
+                                                                  std::function<float(const String&)> textToValueFunction,
                                                                   bool isMetaParameter = false,
                                                                   bool isAutomatableParameter = true,
                                                                   bool isDiscrete = false,
-                                                                  AudioProcessorParameter::Category category = AudioProcessorParameter::genericParameter,
+                                                                  AudioProcessorParameter::Category parameterCategory = AudioProcessorParameter::genericParameter,
                                                                   bool isBoolean = false));
 
     /** This function adds a parameter to the attached AudioProcessor and that parameter will
@@ -362,6 +362,10 @@ public:
     UndoManager* const undoManager;
 
     //==============================================================================
+private:
+    class ParameterAdapter;
+
+public:
     /** A parameter class that maintains backwards compatibility with deprecated
         AudioProcessorValueTreeState functionality.
 
@@ -402,7 +406,7 @@ public:
                    bool isMetaParameter = false,
                    bool isAutomatableParameter = true,
                    bool isDiscrete = false,
-                   AudioProcessorParameter::Category category = AudioProcessorParameter::genericParameter,
+                   AudioProcessorParameter::Category parameterCategory = AudioProcessorParameter::genericParameter,
                    bool isBoolean = false);
 
         float getDefaultValue() const override;
@@ -414,8 +418,15 @@ public:
         bool isBoolean() const override;
 
     private:
+        void valueChanged (float) override;
+
+        std::function<void()> onValueChanged;
+
         const float unsnappedDefault;
         const bool metaParameter, automatable, discrete, boolean;
+        float lastValue = -1.0f;
+
+        friend class AudioProcessorValueTreeState::ParameterAdapter;
     };
 
     //==============================================================================
@@ -516,12 +527,10 @@ private:
         @endcode
     */
     JUCE_DEPRECATED (std::unique_ptr<RangedAudioParameter> createParameter (const String&, const String&, const String&, NormalisableRange<float>,
-                                                                            float, std::function<String (float)>, std::function<float (const String&)>,
+                                                                            float, std::function<String(float)>, std::function<float(const String&)>,
                                                                             bool, bool, bool, AudioProcessorParameter::Category, bool));
 
     //==============================================================================
-    class ParameterAdapter;
-
    #if JUCE_UNIT_TESTS
     friend struct ParameterAdapterTests;
    #endif
@@ -535,9 +544,6 @@ private:
 
     void valueTreePropertyChanged (ValueTree&, const Identifier&) override;
     void valueTreeChildAdded (ValueTree&, ValueTree&) override;
-    void valueTreeChildRemoved (ValueTree&, ValueTree&, int) override;
-    void valueTreeChildOrderChanged (ValueTree&, int, int) override;
-    void valueTreeParentChanged (ValueTree&) override;
     void valueTreeRedirected (ValueTree&) override;
     void updateParameterConnectionsToChildTrees();
 

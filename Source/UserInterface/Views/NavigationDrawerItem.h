@@ -17,8 +17,8 @@ public:
         setOpaque(true);
         setColour(ColourIds::iconOffColourId, Material::Color::Icons::Selected::OnSurface::Inactive);
         setColour(ColourIds::iconOnColourId, Material::Color::Secondary::Main);
-		drawableOn.reset(this->icon.getDrawable(findColour(ColourIds::iconOnColourId)));
-		drawableOff.reset(this->icon.getDrawable(findColour(ColourIds::iconOffColourId)));
+		drawableOn = this->icon.getDrawable(findColour(ColourIds::iconOnColourId));
+		drawableOff = this->icon.getDrawable(findColour(ColourIds::iconOffColourId));
 
         setSize(304, height);
     }

@@ -12,103 +12,103 @@ namespace BinaryData
     const int            App_Icon_Back_pngSize = 5907;
 
     extern const char*   App_Icon_Front_svg;
-    const int            App_Icon_Front_svgSize = 5015;
+    const int            App_Icon_Front_svgSize = 5062;
 
     extern const char*   GooglePlay_png;
-    const int            GooglePlay_pngSize = 92199;
+    const int            GooglePlay_pngSize = 92777;
 
     extern const char*   ic_launcher_HDPI_png;
-    const int            ic_launcher_HDPI_pngSize = 3680;
+    const int            ic_launcher_HDPI_pngSize = 3675;
 
     extern const char*   ic_launcher_MDPI_png;
-    const int            ic_launcher_MDPI_pngSize = 2098;
+    const int            ic_launcher_MDPI_pngSize = 2122;
 
     extern const char*   ic_launcher_XHDPI_png;
-    const int            ic_launcher_XHDPI_pngSize = 5467;
+    const int            ic_launcher_XHDPI_pngSize = 5504;
 
     extern const char*   ic_launcher_XXHDPI_png;
-    const int            ic_launcher_XXHDPI_pngSize = 10257;
+    const int            ic_launcher_XXHDPI_pngSize = 10386;
 
     extern const char*   ic_launcher_XXXHDPI_png;
-    const int            ic_launcher_XXXHDPI_pngSize = 15768;
+    const int            ic_launcher_XXXHDPI_pngSize = 15899;
 
     extern const char*   ic_notification_HDPI_png;
-    const int            ic_notification_HDPI_pngSize = 6821;
+    const int            ic_notification_HDPI_pngSize = 6892;
 
     extern const char*   ic_notification_MDPI_png;
-    const int            ic_notification_MDPI_pngSize = 3822;
+    const int            ic_notification_MDPI_pngSize = 3854;
 
     extern const char*   ic_notification_XHDPI_png;
-    const int            ic_notification_XHDPI_pngSize = 10323;
+    const int            ic_notification_XHDPI_pngSize = 10407;
 
     extern const char*   ic_notification_XXHDPI_png;
-    const int            ic_notification_XXHDPI_pngSize = 19881;
+    const int            ic_notification_XXHDPI_pngSize = 19967;
 
     extern const char*   ic_notification_XXXHDPI_png;
-    const int            ic_notification_XXXHDPI_pngSize = 29991;
+    const int            ic_notification_XXXHDPI_pngSize = 30187;
 
     extern const char*   ic_status_bar_HDPI_png;
-    const int            ic_status_bar_HDPI_pngSize = 957;
+    const int            ic_status_bar_HDPI_pngSize = 788;
 
     extern const char*   ic_status_bar_MDPI_png;
-    const int            ic_status_bar_MDPI_pngSize = 623;
+    const int            ic_status_bar_MDPI_pngSize = 515;
 
     extern const char*   ic_status_bar_XHDPI_png;
-    const int            ic_status_bar_XHDPI_pngSize = 1111;
+    const int            ic_status_bar_XHDPI_pngSize = 921;
 
     extern const char*   ic_status_bar_XXHDPI_png;
-    const int            ic_status_bar_XXHDPI_pngSize = 1603;
+    const int            ic_status_bar_XXHDPI_pngSize = 1376;
 
     extern const char*   ic_status_bar_XXXHDPI_png;
-    const int            ic_status_bar_XXXHDPI_pngSize = 2018;
+    const int            ic_status_bar_XXXHDPI_pngSize = 1784;
 
     extern const char*   Icon201x_png;
-    const int            Icon201x_pngSize = 708;
+    const int            Icon201x_pngSize = 731;
 
     extern const char*   Icon202x_png;
-    const int            Icon202x_pngSize = 1722;
+    const int            Icon202x_pngSize = 1731;
 
     extern const char*   Icon203x_png;
-    const int            Icon203x_pngSize = 2911;
+    const int            Icon203x_pngSize = 2909;
 
     extern const char*   Icon29_png;
-    const int            Icon29_pngSize = 1067;
+    const int            Icon29_pngSize = 1097;
 
     extern const char*   Icon292x_png;
-    const int            Icon292x_pngSize = 2746;
+    const int            Icon292x_pngSize = 2762;
 
     extern const char*   Icon293x_png;
-    const int            Icon293x_pngSize = 5064;
+    const int            Icon293x_pngSize = 5156;
 
     extern const char*   Icon40_png;
-    const int            Icon40_pngSize = 1722;
+    const int            Icon40_pngSize = 1731;
 
     extern const char*   Icon402x_png;
-    const int            Icon402x_pngSize = 4493;
+    const int            Icon402x_pngSize = 4579;
 
     extern const char*   Icon403x_png;
-    const int            Icon403x_pngSize = 8320;
+    const int            Icon403x_pngSize = 8405;
 
     extern const char*   Icon602x_png;
-    const int            Icon602x_pngSize = 8327;
+    const int            Icon602x_pngSize = 8428;
 
     extern const char*   Icon603x_png;
-    const int            Icon603x_pngSize = 17457;
+    const int            Icon603x_pngSize = 17648;
 
     extern const char*   Icon76_png;
-    const int            Icon76_pngSize = 4121;
+    const int            Icon76_pngSize = 4143;
 
     extern const char*   Icon762x_png;
-    const int            Icon762x_pngSize = 12960;
+    const int            Icon762x_pngSize = 13167;
 
     extern const char*   Icon83_52x_png;
-    const int            Icon83_52x_pngSize = 13635;
+    const int            Icon83_52x_pngSize = 13780;
 
     extern const char*   iTunesArtwork2x_png;
-    const int            iTunesArtwork2x_pngSize = 385993;
+    const int            iTunesArtwork2x_pngSize = 387163;
 
     extern const char*   LICENSE_txt;
-    const int            LICENSE_txtSize = 11358;
+    const int            LICENSE_txtSize = 11560;
 
     extern const char*   RobotoBlack_ttf;
     const int            RobotoBlack_ttfSize = 171480;
@@ -147,7 +147,7 @@ namespace BinaryData
     const int            RobotoThinItalic_ttfSize = 176300;
 
     extern const char*   LICENSE_txt2;
-    const int            LICENSE_txt2Size = 11358;
+    const int            LICENSE_txt2Size = 11560;
 
     extern const char*   RobotoMonoBold_ttf;
     const int            RobotoMonoBold_ttfSize = 114752;
@@ -180,73 +180,73 @@ namespace BinaryData
     const int            RobotoMonoThinItalic_ttfSize = 121456;
 
     extern const char*   sharpadd24px_svg;
-    const int            sharpadd24px_svgSize = 621;
+    const int            sharpadd24px_svgSize = 636;
 
     extern const char*   sharpcall_made24px_svg;
-    const int            sharpcall_made24px_svgSize = 600;
+    const int            sharpcall_made24px_svgSize = 615;
 
     extern const char*   sharpcreate_new_folder24px_svg;
-    const int            sharpcreate_new_folder24px_svgSize = 525;
+    const int            sharpcreate_new_folder24px_svgSize = 536;
 
     extern const char*   sharpfile_copy24px_svg;
-    const int            sharpfile_copy24px_svgSize = 648;
+    const int            sharpfile_copy24px_svgSize = 663;
 
     extern const char*   sharpformat_list_numbered24px_svg;
-    const int            sharpformat_list_numbered24px_svgSize = 756;
+    const int            sharpformat_list_numbered24px_svgSize = 772;
 
     extern const char*   sharplock24px_svg;
-    const int            sharplock24px_svgSize = 840;
+    const int            sharplock24px_svgSize = 857;
 
     extern const char*   sharplock_open24px_svg;
-    const int            sharplock_open24px_svgSize = 843;
+    const int            sharplock_open24px_svgSize = 862;
 
     extern const char*   sharploop24px_svg;
-    const int            sharploop24px_svgSize = 702;
+    const int            sharploop24px_svgSize = 714;
 
     extern const char*   sharpmenu24px_svg;
-    const int            sharpmenu24px_svgSize = 513;
+    const int            sharpmenu24px_svgSize = 524;
 
     extern const char*   sharpmic24px_svg;
-    const int            sharpmic24px_svgSize = 763;
+    const int            sharpmic24px_svgSize = 779;
 
     extern const char*   sharpmic_none24px_svg;
-    const int            sharpmic_none24px_svgSize = 746;
+    const int            sharpmic_none24px_svgSize = 761;
 
     extern const char*   sharppause24px_svg;
-    const int            sharppause24px_svgSize = 495;
+    const int            sharppause24px_svgSize = 506;
 
     extern const char*   sharpplay_arrow24px_svg;
-    const int            sharpplay_arrow24px_svgSize = 480;
+    const int            sharpplay_arrow24px_svgSize = 491;
 
     extern const char*   sharpsettings24px_svg;
-    const int            sharpsettings24px_svgSize = 1276;
+    const int            sharpsettings24px_svgSize = 1296;
 
     extern const char*   sharpsettings_input_antenna24px_svg;
-    const int            sharpsettings_input_antenna24px_svgSize = 907;
+    const int            sharpsettings_input_antenna24px_svgSize = 924;
 
     extern const char*   sharpsettings_input_svideo24px_svg;
-    const int            sharpsettings_input_svideo24px_svgSize = 1149;
+    const int            sharpsettings_input_svideo24px_svgSize = 1168;
 
     extern const char*   sharpstop24px_svg;
-    const int            sharpstop24px_svgSize = 478;
+    const int            sharpstop24px_svgSize = 489;
 
     extern const char*   sharpsubscriptions24px_svg;
-    const int            sharpsubscriptions24px_svgSize = 540;
+    const int            sharpsubscriptions24px_svgSize = 551;
 
     extern const char*   sharpunarchive24px_svg;
-    const int            sharpunarchive24px_svgSize = 694;
+    const int            sharpunarchive24px_svgSize = 709;
 
     extern const char*   sharpview_comfy24px_svg;
-    const int            sharpview_comfy24px_svgSize = 761;
+    const int            sharpview_comfy24px_svgSize = 777;
 
     extern const char*   sharpvolume_mute24px_svg;
-    const int            sharpvolume_mute24px_svgSize = 485;
+    const int            sharpvolume_mute24px_svgSize = 496;
 
     extern const char*   sharpvolume_off24px_svg;
-    const int            sharpvolume_off24px_svgSize = 923;
+    const int            sharpvolume_off24px_svgSize = 941;
 
     extern const char*   sharpvolume_up24px_svg;
-    const int            sharpvolume_up24px_svgSize = 664;
+    const int            sharpvolume_up24px_svgSize = 676;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 80;

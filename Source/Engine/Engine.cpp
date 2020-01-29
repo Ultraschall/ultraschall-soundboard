@@ -172,9 +172,9 @@ void Engine::sync(Store &store) {
 		model.fadeoutSamples = 1;
 		model.loop = player->isLooping();
 
-		model.playerState = player->playerState;
-		model.fadeState = player->fadeState;
-		model.missing = player->playerState == Player::player_error;
+		model.playerState = static_cast<int>(player->playerState);
+		model.fadeState = static_cast<int>(player->fadeState);
+		model.missing = (player->playerState == Player::PlayerState::player_error);
 		model.progress = player->progress;
 	}
 }

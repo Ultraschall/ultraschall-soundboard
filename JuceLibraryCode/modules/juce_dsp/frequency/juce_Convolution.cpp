@@ -373,7 +373,7 @@ struct Convolution::Pimpl  : private Thread
         impulseResponse.setSize (2, static_cast<int> (maximumTimeInSamples), false, false, true);
     }
 
-    ~Pimpl()
+    ~Pimpl() override
     {
         stopThread (10000);
     }
@@ -718,7 +718,7 @@ struct Convolution::Pimpl  : private Thread
     /** Convolution processing handling interpolation between previous and new states
         of the convolution engines.
     */
-    void processSamples (const AudioBlock<float>& input, AudioBlock<float>& output)
+    void processSamples (const AudioBlock<const float>& input, AudioBlock<float>& output)
     {
         processFifo();
 
@@ -768,7 +768,7 @@ struct Convolution::Pimpl  : private Thread
         }
 
         if (input.getNumChannels() > 1 && currentInfo.wantsStereo == false)
-            output.getSingleChannelBlock (1).copy (output.getSingleChannelBlock (0));
+            output.getSingleChannelBlock (1).copyFrom (output.getSingleChannelBlock (0));
     }
 
     //==============================================================================
@@ -1197,7 +1197,7 @@ void Convolution::reset() noexcept
     pimpl->reset();
 }
 
-void Convolution::processSamples (const AudioBlock<float>& input, AudioBlock<float>& output, bool isBypassed) noexcept
+void Convolution::processSamples (const AudioBlock<const float>& input, AudioBlock<float>& output, bool isBypassed) noexcept
 {
     if (! isActive)
         return;
@@ -1212,7 +1212,7 @@ void Convolution::processSamples (const AudioBlock<float>& input, AudioBlock<flo
 
     if (volumeDry[0].isSmoothing())
     {
-        dry.copy (input);
+        dry.copyFrom (input);
 
         for (size_t channel = 0; channel < numChannels; ++channel)
             volumeDry[channel].applyGain (dry.getChannelPointer (channel), (int) numSamples);

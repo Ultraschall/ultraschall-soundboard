@@ -22,7 +22,7 @@
     <key>CFBundleVersion</key>
     <string>4.0.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string>Copyright (c) 2014-2019 Daniel Lindenfelser</string>
+    <string>Copyright (c) 2014-2020 Daniel Lindenfelser</string>
     <key>NSHighResolutionCapable</key>
     <true/>
     <key>NSExtension</key>
