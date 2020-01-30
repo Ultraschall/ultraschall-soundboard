@@ -13,7 +13,7 @@ public:
     ~UltraschallSoundboardAudioProcessorEditor();
 
     void paint(Graphics &) override;
-
+    void parentHierarchyChanged() override;
     void resized() override;
 
 private:

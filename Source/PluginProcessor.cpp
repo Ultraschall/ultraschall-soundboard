@@ -177,14 +177,7 @@ bool UltraschallSoundboardAudioProcessor::hasEditor() const {
 }
 
 AudioProcessorEditor *UltraschallSoundboardAudioProcessor::createEditor() {
-    auto editor = new UltraschallSoundboardAudioProcessorEditor(*this);
-    //if (wrapperType == wrapperType_Standalone) {
-    //    if (TopLevelWindow::getNumTopLevelWindows() == 1) {
-    //        TopLevelWindow *w = TopLevelWindow::getTopLevelWindow(0);
-    //        w->setUsingNativeTitleBar(true);
-    //    }
-    //}
-    return editor;
+    return new UltraschallSoundboardAudioProcessorEditor(*this);
 }
 
 //==============================================================================

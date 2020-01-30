@@ -36,6 +36,17 @@ void UltraschallSoundboardAudioProcessorEditor::paint(Graphics &g) {
     g.fillAll(Material::Color::Surface::Main);
 }
 
+void UltraschallSoundboardAudioProcessorEditor::parentHierarchyChanged()
+{
+    if (PluginHostType::getPluginLoadedAs() == AudioProcessor::wrapperType_Standalone) {
+        if (TopLevelWindow::getNumTopLevelWindows() == 1) {
+            auto topLevelWindow = TopLevelWindow::getTopLevelWindow(0);
+            topLevelWindow->setUsingNativeTitleBar(true);
+            //topLevelWindow->setLookAndFeel(&lookAndFeel);
+        }
+    }
+}
+
 void UltraschallSoundboardAudioProcessorEditor::resized() {
     controller->getView()->setBounds(getLocalBounds());
 }
