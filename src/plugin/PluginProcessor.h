@@ -178,7 +178,7 @@ private:
     
     enum MidiFunction
     {
-        PlayStop = 0, PlayPause = 1, PlayFadeOut = 2, HoldAndPlay = 3
+        PlayStop = 0, PlayPause = 1, PlayFadeOut = 2, HoldAndPlay = 3, FadeIn = 4
     };
    
     bool AllPlayersNotPlaying() const noexcept;

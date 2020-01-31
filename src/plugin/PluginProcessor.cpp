@@ -556,6 +556,11 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                         playerAtIndex(playerIndex)->play();
                                     }
                                     break;
+                                case FadeIn:
+                                    if (!playerAtIndex(playerIndex)->isPlaying()) {
+                                        playerAtIndex(playerIndex)->startFadeIn();
+                                    }
+                                    break;
                             }
                         }
                         else if (midiMessage.isNoteOff()) {
