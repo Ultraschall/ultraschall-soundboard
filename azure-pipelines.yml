@@ -31,6 +31,9 @@ jobs:
         script: |
           $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
           ./build.ps1 --release
+          pwd
+          ls
+          ls _build/win32/x64/
         pwsh: true
     - task: CopyFiles@2
       inputs:
