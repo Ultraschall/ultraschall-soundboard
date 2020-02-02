@@ -32,9 +32,13 @@ jobs:
           $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
           ./build.ps1 --release
         pwsh: true
-    - task: CopyPublishBuildArtifacts@1
+    - task: CopyFiles@2
       inputs:
-        CopyRoot: '$(Agent.BuildDirectory)/_build/win32/x64/Release'
-        Contents: '**/*.dll'
-        ArtifactName: 'Windows VST Plugin'
-        ArtifactType: 'Container'
+        SourceFolder: '$(Build.SourcesDirectory)/_build/win32/x64/Release'
+        Contents: '*.dll'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
