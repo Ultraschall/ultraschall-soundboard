@@ -1,0 +1,19 @@
+jobs:
+  - job: Linux
+    pool:
+      vmImage: 'ubuntu-latest'
+      steps:
+      - pwsh: make
+        workingDirectory: $(build.sourcesDirectory)/Builds/Linux
+  - job: macOS
+    pool:
+      vmImage: 'macOS-latest'
+    steps:
+      - pwsh: xcodebuild
+        workingDirectory: $(build.sourcesDirectory)/Builds/MacOSX
+  - job: Windows
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - pwsh: msbuild Soundboard.sln
+      workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
