@@ -1,24 +1,4 @@
 jobs:
-  - job: Linux
-    pool:
-      vmImage: 'ubuntu-latest'
-    container: ubuntu:latest
-    steps:
-      - bash: |
-          apt-get -y install g++ 
-          apt-get -y install libfreetype6-dev 
-          apt-get -y install libx11-dev 
-          apt-get -y install libxinerama-dev 
-          apt-get -y install libxrandr-dev 
-          apt-get -y install libxcursor-dev 
-          apt-get -y install mesa-common-dev 
-          apt-get -y install libasound2-dev 
-          apt-get -y install freeglut3-dev 
-          apt-get -y install libxcomposite-dev
-        displayName: Bootstrap
-      - bash: make
-        displayName: Build
-        workingDirectory: $(build.sourcesDirectory)/Builds/LinuxMakefile
   - job: macOS
     pool:
       vmImage: 'macOS-latest'
