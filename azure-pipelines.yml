@@ -5,7 +5,7 @@ jobs:
     steps:
       - pwsh: make
         displayName: Build
-        workingDirectory: $(build.sourcesDirectory)/Builds/Linux
+        workingDirectory: $(build.sourcesDirectory)/Builds/LinuxMakefile
   - job: macOS
     pool:
       vmImage: 'macOS-latest'
