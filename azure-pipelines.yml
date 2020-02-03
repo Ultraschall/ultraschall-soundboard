@@ -16,6 +16,4 @@ jobs:
       displayName: Build
       workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
     - publish: Plugin
-      artifact: '$(build.sourcesDirectory)/Builds/VisualStudio2019/**/*.vst3'
-    - publish: Standalone
-      artifact: '$(build.sourcesDirectory)/Builds/VisualStudio2019/**/*.exe'
+      artifact: '**/Soundboard.vst3'
