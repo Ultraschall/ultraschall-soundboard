@@ -2,14 +2,16 @@ jobs:
   - job: Linux
     pool:
       vmImage: 'ubuntu-latest'
-      steps:
+    steps:
       - pwsh: make
+        displayName: Build
         workingDirectory: $(build.sourcesDirectory)/Builds/Linux
   - job: macOS
     pool:
       vmImage: 'macOS-latest'
     steps:
       - pwsh: xcodebuild
+        displayName: Build
         workingDirectory: $(build.sourcesDirectory)/Builds/MacOSX
   - job: Windows
     pool:
@@ -18,4 +20,5 @@ jobs:
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
         msbuild Soundboard.sln
+      displayName: Build
       workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
