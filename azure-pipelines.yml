@@ -2,6 +2,7 @@ jobs:
   - job: Linux
     pool:
       vmImage: 'ubuntu-latest'
+    container: ubuntu:latest
     steps:
       - pwsh: make
         displayName: Build
