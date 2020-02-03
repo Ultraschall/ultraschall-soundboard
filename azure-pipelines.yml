@@ -15,5 +15,7 @@ jobs:
     pool:
       vmImage: 'windows-latest'
     steps:
-    - pwsh: msbuild Soundboard.sln
+    - pwsh: |
+        $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
+        msbuild Soundboard.sln
       workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
