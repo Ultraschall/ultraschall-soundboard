@@ -60,7 +60,7 @@ If ($args.Count -gt 1) {
   ElseIf ($args[1] -eq "--debug") {
     $BuildConfiguration = "Debug"
   }
-  ElseIf ($args[0] -eq "--release") {
+  ElseIf ($args[1] -eq "--release") {
     $BuildConfiguration = "Release"
   }
 }
