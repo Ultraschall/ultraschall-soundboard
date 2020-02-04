@@ -5,7 +5,7 @@ jobs:
   steps:
     - pwsh: ./build.ps1 --bootstrap --release
       displayName: Bootstrap
-    - pwsh: ./build.ps1 --bootstrap --release
+    - pwsh: ./build.ps1 --configure --release
       displayName: Configure
     - pwsh: ./build.ps1 --build --release
       displayName: Build
@@ -21,7 +21,7 @@ jobs:
       displayName: Bootstrap
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        ./build.ps1 --bootstrap --release
+        ./build.ps1 --configure --release
       displayName: Configure
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
