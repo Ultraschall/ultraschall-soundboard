@@ -9,7 +9,7 @@ $ProjucerDirectory = $JuceDirectory + "/extras/Projucer/Builds/VisualStudio2015"
 $ProjucerExecutable = $ProjucerDirectory + "/x64/Release/Projucer.exe"
 if ($IsMacOs) {
   $ProjucerDirectory = $JuceDirectory + "/extras/Projucer/Builds/MacOSX"
-  $ProjucerExecutable = $ProjucerDirectory + "/Release/Projucer.app/Contents/MacOS/Projucer"
+  $ProjucerExecutable = $ProjucerDirectory + "/build/Release/Projucer.app/Contents/MacOS/Projucer"
 }
 $ConfigureTarget = $False
 $BuildTarget = $True
