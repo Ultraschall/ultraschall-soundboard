@@ -15,5 +15,5 @@ jobs:
         msbuild Soundboard.sln
       displayName: Build
       workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
-    - publish: Plugin
-      artifact: '**/Soundboard.vst3'
+    - publish: '**/Soundboard.vst3'
+      artifact: Plugin
