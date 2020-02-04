@@ -4,15 +4,15 @@ jobs:
     vmImage: 'macOS-latest'
   steps:
     - pwsh: |
-        sudo xcode-select -s /Applications/Xcode_9.4.1.app/Contents/Developer
+        sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
         ./build.ps1 --bootstrap --release
       displayName: Bootstrap
     - pwsh: |
-        sudo xcode-select -s /Applications/Xcode_9.4.1.app/Contents/Developer
+        sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
         ./build.ps1 --configure --release
       displayName: Configure
     - pwsh: |
-        sudo xcode-select -s /Applications/Xcode_9.4.1.app/Contents/Developer
+        sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
         ./build.ps1 --build --release
       displayName: Build
     - publish: '$(build.sourcesDirectory)/_build/macos/build/Debug'
