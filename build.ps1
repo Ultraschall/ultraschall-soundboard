@@ -7,7 +7,10 @@ $BuildDirectory = "./_build"
 $JuceDirectory = "./JUCE"
 $ProjucerDirectory = $JuceDirectory + "/extras/Projucer/Builds/VisualStudio2015"
 $ProjucerExecutable = $ProjucerDirectory + "/x64/Release/Projucer.exe"
-
+if ($IsMacOs) {
+  $ProjucerDirectory = $JuceDirectory + "/extras/Projucer/Builds/MacOSX"
+  $ProjucerExecutable = $ProjucerDirectory + "/Release/Projucer.app/Contents/MacOS/Projucer"
+}
 $ConfigureTarget = $False
 $BuildTarget = $True
 $BuildAction = "build"
@@ -110,7 +113,12 @@ if ($Bootstrap -eq $True) {
 
     if ($BuildFailed -eq $False) {
       if ((Test-Path -PathType Leaf $ProjucerExecutable) -eq $False) {
-        & msbuild -nologo -m -consoleloggerparameters:ErrorsOnly -target:build -property:Configuration=Release -property:Platform="x64" -property:PlatformToolset="v142" ($ProjucerDirectory + "/Projucer.sln")
+        if ($IsMacOs) {
+          xcodebuild
+        }
+        if ($IsWindows) {
+          & msbuild -nologo -m -consoleloggerparameters:ErrorsOnly -target:build -property:Configuration=Release -property:Platform="x64" -property:PlatformToolset="v142" ($ProjucerDirectory + "/Projucer.sln")
+        }
         if ($LASTEXITCODE -ne 0) {
           $BuildFailed = $True
         }
@@ -157,8 +165,12 @@ if ($BuildFailed -eq $False) {
     Write-Host " ultraschall-soundboard..."
 
     Push-Location $BuildDirectory | Out-Null
-
-    & msbuild "./win32/ultraschall-soundboard.sln" -nologo -m -consoleloggerparameters:ErrorsOnly -target:$BuildAction -property:Configuration=$BuildConfiguration -property:Platform="x64" -property:PlatformToolset="v142"
+    if ($IsMacOs) {
+      xcodebuild -project "./macos/ultraschall-soundboard.xcodeproj" -configuration $BuildConfiguration
+    }
+    if ($IsWindows) {
+      & msbuild "./win32/ultraschall-soundboard.sln" -nologo -m -consoleloggerparameters:ErrorsOnly -target:$BuildAction -property:Configuration=$BuildConfiguration -property:Platform="x64" -property:PlatformToolset="v142"
+    }
     if ($LASTEXITCODE -ne 0) {
       $BuildFailed = $True
     }
