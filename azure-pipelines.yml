@@ -1,7 +1,7 @@
 jobs:
 - job: macOS
   pool:
-    vmImage: 'macOS-latest'
+    vmImage: 'macOS-10.13'
   steps:
     - pwsh: ./build.ps1 --bootstrap --release
       displayName: Bootstrap
