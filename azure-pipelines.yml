@@ -3,11 +3,11 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
-    - pwsh: build.ps1 --bootstrap --release
+    - pwsh: ./build.ps1 --bootstrap --release
       displayName: Bootstrap
-    - pwsh: build.ps1 --bootstrap --release
+    - pwsh: ./build.ps1 --bootstrap --release
       displayName: Configure
-    - pwsh: build.ps1 --build --release
+    - pwsh: ./build.ps1 --build --release
       displayName: Build
     - publish: '$(build.sourcesDirectory)/_build/macos/build/Debug'
       artifact: macOS
@@ -17,15 +17,15 @@ jobs:
   steps:
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        build.ps1 --bootstrap --release
+        ./build.ps1 --bootstrap --release
       displayName: Bootstrap
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        build.ps1 --bootstrap --release
+        ./build.ps1 --bootstrap --release
       displayName: Configure
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        build.ps1 --build --release
+        ./build.ps1 --build --release
       displayName: Build
     - publish: '$(build.sourcesDirectory)/_build/win32/x64'
       artifact: Windows
