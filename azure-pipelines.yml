@@ -5,13 +5,10 @@ jobs:
   steps:
     - pwsh: build.ps1 --bootstrap --release
       displayName: Bootstrap
-      workingDirectory: $(build.sourcesDirectory)/_build
     - pwsh: build.ps1 --bootstrap --release
       displayName: Configure
-      workingDirectory: $(build.sourcesDirectory)/_build
     - pwsh: build.ps1 --build --release
       displayName: Build
-      workingDirectory: $(build.sourcesDirectory)/_build
     - publish: '$(build.sourcesDirectory)/_build/macos/build/Debug'
       artifact: macOS
 - job: Windows
@@ -22,17 +19,14 @@ jobs:
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
         build.ps1 --bootstrap --release
       displayName: Bootstrap
-      workingDirectory: $(build.sourcesDirectory)/_build
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
         build.ps1 --bootstrap --release
       displayName: Configure
-      workingDirectory: $(build.sourcesDirectory)/_build
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
         build.ps1 --build --release
       displayName: Build
-      workingDirectory: $(build.sourcesDirectory)/_build
     - publish: '$(build.sourcesDirectory)/_build/win32/x64'
       artifact: Windows
 
