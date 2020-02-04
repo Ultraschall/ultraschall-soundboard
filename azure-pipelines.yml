@@ -6,6 +6,8 @@ jobs:
       - pwsh: xcodebuild
         displayName: Build
         workingDirectory: $(build.sourcesDirectory)/Builds/MacOSX
+      - publish: '$(System.DefaultWorkingDirectory)/Builds/MacOSX/build/Debug'
+        artifact: macOS
   - job: Windows
     pool:
       vmImage: 'windows-latest'
@@ -16,4 +18,4 @@ jobs:
       displayName: Build
       workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
     - publish: '$(System.DefaultWorkingDirectory)/Builds/VisualStudio2019/x64/Debug'
-      artifact: Debug
+      artifact: Windows
