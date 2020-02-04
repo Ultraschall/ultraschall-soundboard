@@ -114,7 +114,7 @@ if ($Bootstrap -eq $True) {
     if ($BuildFailed -eq $False) {
       if ((Test-Path -PathType Leaf $ProjucerExecutable) -eq $False) {
         if ($IsMacOs) {
-          xcodebuild
+          xcodebuild -project ($ProjucerDirectory + "/Projucer.xcodeproj") -configuration Release
         }
         if ($IsWindows) {
           & msbuild -nologo -m -consoleloggerparameters:ErrorsOnly -target:build -property:Configuration=Release -property:Platform="x64" -property:PlatformToolset="v142" ($ProjucerDirectory + "/Projucer.sln")
