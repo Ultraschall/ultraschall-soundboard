@@ -5,14 +5,6 @@ jobs:
   steps:
     - pwsh: |
         sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
-        ./build.ps1 --bootstrap --release
-      displayName: Bootstrap
-    - pwsh: |
-        sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
-        ./build.ps1 --configure --release
-      displayName: Configure
-    - pwsh: |
-        sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
         ./build.ps1 --build --release
       displayName: Build
     - publish: '$(build.sourcesDirectory)/_build/macos/build/Debug'
@@ -23,16 +15,8 @@ jobs:
   steps:
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        ./build.ps1 --bootstrap --release
-      displayName: Bootstrap
-    - pwsh: |
-        $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        ./build.ps1 --configure --release
-      displayName: Configure
-    - pwsh: |
-        $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        ./build.ps1 --build --release
+        msbuild "./win32/vs_2015/ultraschall-soundboard.sln" -nologo -m -property:Configuration=Release -property:Platform="x64" -property:PlatformToolset="v142"
       displayName: Build
-    - publish: '$(build.sourcesDirectory)/_build/win32/x64'
+    - publish: '$(build.sourcesDirectory)/_build/win32/vs_2015/x64'
       artifact: Windows
 

@@ -185,7 +185,7 @@ void LookAndFeel_Ultraschall::drawTableHeaderBackground(Graphics &g, TableHeader
     }
 }
 
-void LookAndFeel_Ultraschall::drawTableHeaderColumn (Graphics& g, const String& columnName,
+void LookAndFeel_Ultraschall::drawTableHeaderColumn (Graphics& g, TableHeaderComponent&, const String& columnName,
                                                      int columnId, int width, int height, bool isMouseOver,
                                                      bool isMouseDown, int columnFlags)
 {

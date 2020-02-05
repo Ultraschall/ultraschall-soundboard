@@ -19,7 +19,7 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
     tableListBox->setModel(this);
     tableListBox->setHeaderHeight(21);
     tableListBox->getHeader()
-        .addColumn(String::empty,
+        .addColumn("",
             ColumnIdNumberLabel,
             NumberCellWidth,
             NumberCellWidth,
@@ -33,7 +33,7 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
             16000,
             TableHeaderComponent::notSortable);
     tableListBox->getHeader()
-        .addColumn(String::empty,
+        .addColumn("",
             ColumnIdLoopButton,
             ButtonCellWidth,
             ButtonCellWidth,
@@ -47,28 +47,28 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
             TimeCellWidth,
             TableHeaderComponent::notSortable);
     tableListBox->getHeader()
-        .addColumn(String::empty,
+        .addColumn("",
             ColumnIdPlayPauseButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
     tableListBox->getHeader()
-        .addColumn(String::empty,
+        .addColumn("",
             ColumnIdStopButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
     tableListBox->getHeader()
-        .addColumn(String::empty,
+        .addColumn("",
                 ColumnIdFadeButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
     tableListBox->getHeader()
-        .addColumn(String::empty,
+        .addColumn("",
             ColumnIdGainSlider,
             ButtonCellWidth,
             ButtonCellWidth,
@@ -134,7 +134,7 @@ void SoundboardTableComponent::paintCell(Graphics& g,
     g.drawLine(static_cast<float>(width), 0, static_cast<float>(width), static_cast<float>(height), 1.5f);
 
     g.setColour(ThemeForeground1);
-    auto text = String::empty;
+    auto text = String("");
 
     switch (columnId) {
     case ColumnIdNumberLabel:

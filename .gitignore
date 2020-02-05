@@ -383,10 +383,3 @@ warnings.txt
 
 # Rider
 .idea/
-
-Files/
-Artifacts/
-
-_build/
-_tools/
-src/JuceLibraryCode/

@@ -322,7 +322,7 @@ void SoundboardAudioProcessor::getStateInformation(MemoryBlock& destData)
             program.setProperty(PlayerGainIdentifier.toString() + String(index), playerAtIndex(index)->getGain(), nullptr);
         }
     }
-    ScopedPointer<XmlElement> xml(program.createXml());
+    auto  xml = program.createXml();
     copyXmlToBinary(*xml, destData);
 }
 
@@ -346,11 +346,11 @@ void SoundboardAudioProcessor::setStateInformation(const void* data, int sizeInB
 {
     if(!getLocked()) {
         if(AllPlayersNotPlaying()) {
-            ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+            auto xmlState = getXmlFromBinary(data, sizeInBytes);
             auto program = ValueTree::fromXml(*xmlState);
             if (program.isValid()) {
-                auto directoryString = program.getProperty(DirectoryIdentifier, String::empty).toString();
-                if (directoryString != String::empty) {
+                auto directoryString = program.getProperty(DirectoryIdentifier, "").toString();
+                if (directoryString != "") {
                     currentProgramIndex = ProgramNumberCustom;
                     File directory(directoryString);
                     if (directory.exists()) {

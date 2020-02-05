@@ -72,12 +72,11 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
     addAndMakeVisible(table = new SoundboardTableComponent(p));
     listButton->setEnabled(false);
 
-    if (processor.wrapperType != AudioProcessor::wrapperType_Standalone)
-    {
-        //addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
-        setResizeLimits(520, 320, 0x3fffffff, 0x3fffffff);
-        setResizable(true, true);
-    }
+    addAndMakeVisible(resizableCornerComponent = new ResizableCornerComponent(this, &resizeLimits));
+    resizableCornerComponent->setAlwaysOnTop(true);
+    setResizeLimits(520, 320, 0x3fffffff, 0x3fffffff);
+    setResizable(true, true);
+    
 
     refresh();
 
