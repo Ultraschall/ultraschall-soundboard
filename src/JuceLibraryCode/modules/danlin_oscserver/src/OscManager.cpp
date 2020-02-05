@@ -39,7 +39,7 @@ void OscManager::changeListenerCallback(ChangeBroadcaster* source)
 void OscManager::addOscParameter(OscParameter* parameter, bool internal)
 {
     if (parameter) {
-        managedOscParameters.addIfNotAlreadyThere(parameter);
+        managedOscParameters.add(parameter);
         if (!internal) {
             parameter->addChangeListener(this);
         }
@@ -111,7 +111,7 @@ var OscManager::getOscParameterValue(String address)
             return var(managedOscParameters[index]->getValue());
         }
     }
-    return var::null;
+    return var();
 }
 
 void OscManager::setOscParameterValue(String address, var value, OscParameter::OscParameterNotificationType notificationType)

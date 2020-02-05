@@ -49,7 +49,7 @@ int OscServer::getLocalPortNumber()
 const String& OscServer::getLocalHostname()
 {
     
-    return String::empty;
+    return "";
 }
 
 void OscServer::setRemoteHostname(String hostname)
