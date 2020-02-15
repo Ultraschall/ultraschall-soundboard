@@ -10,9 +10,9 @@
     <key>CFBundleIdentifier</key>
     <string>fm.ultraschall.soundboard</string>
     <key>CFBundleName</key>
-    <string>ultraschall-soundboard</string>
+    <string>Soundboard</string>
     <key>CFBundleDisplayName</key>
-    <string>ultraschall-soundboard</string>
+    <string>Soundboard</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleSignature</key>

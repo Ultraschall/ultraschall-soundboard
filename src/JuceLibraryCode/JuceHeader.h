@@ -51,8 +51,8 @@
 #if ! JUCE_DONT_DECLARE_PROJECTINFO
 namespace ProjectInfo
 {
-    const char* const  projectName    = "ultraschall-soundboard";
-    const char* const  companyName    = "The Ultraschall Project";
+    const char* const  projectName    = "Soundboard";
+    const char* const  companyName    = "Ultraschall";
     const char* const  versionString  = "4.0.0";
     const int          versionNumber  = 0x40000;
 }

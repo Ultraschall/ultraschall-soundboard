@@ -13,10 +13,10 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "CompanyName",  "The Ultraschall Project\0"
-      VALUE "FileDescription",  "ultraschall-soundboard\0"
+      VALUE "CompanyName",  "Ultraschall\0"
+      VALUE "FileDescription",  "Soundboard\0"
       VALUE "FileVersion",  "4.0.0\0"
-      VALUE "ProductName",  "ultraschall-soundboard\0"
+      VALUE "ProductName",  "Soundboard\0"
       VALUE "ProductVersion",  "4.0.0\0"
     END
   END
