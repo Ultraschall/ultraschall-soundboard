@@ -335,13 +335,13 @@
  #define JucePlugin_Enable_IAA             0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "ultraschall-soundboard"
+ #define JucePlugin_Name                   "Soundboard"
 #endif
 #ifndef  JucePlugin_Desc
  #define JucePlugin_Desc                   "Ultraschall Soundboard"
 #endif
 #ifndef  JucePlugin_Manufacturer
- #define JucePlugin_Manufacturer           "The Ultraschall Project"
+ #define JucePlugin_Manufacturer           "Ultraschall"
 #endif
 #ifndef  JucePlugin_ManufacturerWebsite
  #define JucePlugin_ManufacturerWebsite    "https://ultraschall.fm"
@@ -446,7 +446,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "The Ultraschall Project: ultraschall-soundboard"
+ #define JucePlugin_IAAName                "Ultraschall: Soundboard"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16
