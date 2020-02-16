@@ -106,30 +106,30 @@ Hold & Play: Solange die Taste gedrückt wird der Player abgespielt.
 | --          | 2           | 93               | A         | Hold & Play     | 22     |
 | --          | 2           | 94               | A#/Bb     | Hold & Play     | 23     |
 | --          | 2           | 95               | B         | Hold & Play     | 24     |
-| --          | 3           | 96               | C         | Fade-In         | 1      |
-| --          | 3           | 97               | C#/Db     | Fade-In         | 2      |
-| --          | 3           | 98               | D         | Fade-In         | 3      |
-| --          | 3           | 99               | D#/Eb     | Fade-In         | 4      |
-| --          | 3           | 100              | E         | Fade-In         | 5      |
-| --          | 3           | 101              | F         | Fade-In         | 6      |
-| --          | 3           | 102              | F#/Gb     | Fade-In         | 7      |
-| --          | 3           | 103              | G         | Fade-In         | 8      |
-| --          | 3           | 104              | G#/Ab     | Fade-In         | 9      |
-| --          | 3           | 105              | A         | Fade-In         | 10     |
-| --          | 3           | 106              | A#/Bb     | Fade-In         | 11     |
-| --          | 3           | 107              | B         | Fade-In         | 12     |
-| --          | 4           | 108              | C         | Fade-In         | 13     |
-| --          | 4           | 109              | C#/Db     | Fade-In         | 14     |
-| --          | 4           | 110              | D         | Fade-In         | 15     |
-| --          | 4           | 111              | D#/Eb     | Fade-In         | 16     |
-| --          | 4           | 112              | E         | Fade-In         | 17     |
-| --          | 4           | 113              | F         | Fade-In         | 18     |
-| --          | 4           | 114              | F#/Gb     | Fade-In         | 19     |
-| --          | 4           | 115              | G         | Fade-In         | 20     |
-| --          | 4           | 116              | G#/Ab     | Fade-In         | 21     |
-| --          | 4           | 117              | A         | Fade-In         | 22     |
-| --          | 4           | 118              | A#/Bb     | Fade-In         | 23     |
-| --          | 4           | 119              | B         | Fade-In         | 24     |
+| --          | 3           | 96               | C         | Fade-In / Pause | 1      |
+| --          | 3           | 97               | C#/Db     | Fade-In / Pause | 2      |
+| --          | 3           | 98               | D         | Fade-In / Pause | 3      |
+| --          | 3           | 99               | D#/Eb     | Fade-In / Pause | 4      |
+| --          | 3           | 100              | E         | Fade-In / Pause | 5      |
+| --          | 3           | 101              | F         | Fade-In / Pause | 6      |
+| --          | 3           | 102              | F#/Gb     | Fade-In / Pause | 7      |
+| --          | 3           | 103              | G         | Fade-In / Pause | 8      |
+| --          | 3           | 104              | G#/Ab     | Fade-In / Pause | 9      |
+| --          | 3           | 105              | A         | Fade-In / Pause | 10     |
+| --          | 3           | 106              | A#/Bb     | Fade-In / Pause | 11     |
+| --          | 3           | 107              | B         | Fade-In / Pause | 12     |
+| --          | 4           | 108              | C         | Fade-In / Pause | 13     |
+| --          | 4           | 109              | C#/Db     | Fade-In / Pause | 14     |
+| --          | 4           | 110              | D         | Fade-In / Pause | 15     |
+| --          | 4           | 111              | D#/Eb     | Fade-In / Pause | 16     |
+| --          | 4           | 112              | E         | Fade-In / Pause | 17     |
+| --          | 4           | 113              | F         | Fade-In / Pause | 18     |
+| --          | 4           | 114              | F#/Gb     | Fade-In / Pause | 19     |
+| --          | 4           | 115              | G         | Fade-In / Pause | 20     |
+| --          | 4           | 116              | G#/Ab     | Fade-In / Pause | 21     |
+| --          | 4           | 117              | A         | Fade-In / Pause | 22     |
+| --          | 4           | 118              | A#/Bb     | Fade-In / Pause | 23     |
+| --          | 4           | 119              | B         | Fade-In / Pause | 24     |
 | --          | 5           | 120              | C         | -               | -      |
 | --          | 5           | 121              | C#/Db     | -               | -      |
 | --          | 5           | 122              | D         | -               | -      |

@@ -560,6 +560,9 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                                     if (!playerAtIndex(playerIndex)->isPlaying()) {
                                         playerAtIndex(playerIndex)->startFadeIn();
                                     }
+                                    else {
+                                        playerAtIndex(playerIndex)->pause();
+                                    }
                                     break;
                             }
                         }
