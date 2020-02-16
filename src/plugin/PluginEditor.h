@@ -13,9 +13,9 @@
 #include "JuceHeader.h"
 #include "../shared/ui/LookAndFeel.h"
 #include "PluginProcessor.h"
-#include "../shared/ui/Table/TableComponent.h"
-#include "../shared/ui/Grid/GridComponent.h"
-#include "../shared/ui/Settings/SettingsComponent.h"
+#include "../shared/ui/table/TableComponent.h"
+#include "../shared/ui/grid/GridComponent.h"
+#include "../shared/ui/settings/SettingsComponent.h"
 
 class SoundboardAudioProcessorEditor : public AudioProcessorEditor, public Button::Listener, public Slider::Listener, public MultiTimer, public OscParameterListener
 {

@@ -13,7 +13,7 @@
 
 #include "JuceHeader.h"
 #include "../LookAndFeel.h"
-#include "../../../Plugin/PluginProcessor.h"
+#include "../../../plugin/PluginProcessor.h"
 #include "GridCell.h"
 
 class SoundboardGridComponent : public Component

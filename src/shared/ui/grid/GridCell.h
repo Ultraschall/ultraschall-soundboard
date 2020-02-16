@@ -13,7 +13,7 @@
 
 #include "JuceHeader.h"
 #include "../LookAndFeel.h"
-#include "../../Player/Player.h"
+#include "../../player/Player.h"
 
 class SoundboardGridCell : public Component, public ChangeListener
 {

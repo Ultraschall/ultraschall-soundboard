@@ -12,7 +12,7 @@
 #define TABLECOMPONENT_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "../../../Plugin/PluginProcessor.h"
+#include "../../../plugin/PluginProcessor.h"
 #include "TableButtonCell.h"
 
 class SoundboardTableComponent

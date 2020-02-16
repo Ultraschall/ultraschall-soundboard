@@ -13,7 +13,7 @@
 
 #include "JuceHeader.h"
 #include "../LookAndFeel.h"
-#include "../../../Plugin/PluginProcessor.h"
+#include "../../../plugin/PluginProcessor.h"
 
 #if SHOW_AUDIO_SETTINGS
 extern ScopedPointer<AudioDeviceManager> deviceManager;
