@@ -5,7 +5,7 @@ jobs:
   steps:
     - pwsh: |
         sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
-        xcodebuild -project "./builds/macos/ultraschall-soundboard.xcodeproj" -configuration Release
+        xcodebuild -project "./builds/macos/Soundboard.xcodeproj" -configuration Release
       displayName: Build
     - publish: '$(build.sourcesDirectory)/builds/macos/build'
       artifact: macOS
@@ -15,7 +15,7 @@ jobs:
   steps:
     - pwsh: |
         $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        msbuild "./builds/win32/vs_2019/ultraschall-soundboard.sln" -nologo -m -property:Configuration=Release -property:Platform="x64"
+        msbuild "./builds/win32/vs_2019/Soundboard.sln" -nologo -m -property:Configuration=Release -property:Platform="x64"
       displayName: Build
     - publish: '$(build.sourcesDirectory)/builds/win32/vs_2019/x64'
       artifact: Windows
