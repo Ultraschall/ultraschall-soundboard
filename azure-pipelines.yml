@@ -19,4 +19,15 @@ jobs:
       displayName: Build
     - publish: '$(build.sourcesDirectory)/builds/win32/vs_2019/x64'
       artifact: Windows
-
+- job: Linux
+  pool:
+    vmImage: 'ubuntu'
+  steps:
+    - task: Docker@2
+      inputs:
+        command: 'build'
+        Dockerfile: './builds/linux/Dockerfile'
+        buildContext: '.'
+        arguments: '-v $(build.sourcesDirectory)/builds/linux/build:/usr/local/src/ultraschall-soundboard/builds/linux/build'
+    - publish: '$(build.sourcesDirectory)/builds/linux/build'
+      artifact: Linux
