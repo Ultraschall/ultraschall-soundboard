@@ -28,6 +28,10 @@ jobs:
         command: 'build'
         Dockerfile: './builds/linux/Dockerfile'
         buildContext: '.'
-        arguments: '-v $(build.sourcesDirectory)/builds/linux/build:/usr/local/src/ultraschall-soundboard/builds/linux/build'
-    - publish: '$(build.sourcesDirectory)/builds/linux/build'
+        tags: 'ultraschall_soundboard:$(Build.BuildId)'
+    - pwsh: |
+        docker container create --name ultraschall_soundboard_extract ultraschall_soundboard:$(Build.BuildId)
+        docker container cp ultraschall_soundboard_extract:/usr/local/src/ultraschall_soundboard/builds/linux/build $(build.sourcesDirectory)
+        docker container rm -f ultraschall_soundboard_extract
+    - publish: '$(build.sourcesDirectory)'
       artifact: Linux
