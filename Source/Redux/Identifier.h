@@ -7,7 +7,6 @@ namespace IDs {
 	// #State
 	DECLARE_ID(STATE, STATE)
 
-
 	// #Application
 	DECLARE_ID(APPLICATION, APPLICATION)
 	DECLARE_ID(application_version, version)

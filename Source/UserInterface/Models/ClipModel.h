@@ -5,7 +5,7 @@
 
 struct ClipModel
 {
-	ClipModel(ValueTree v)
+	explicit ClipModel(ValueTree v)
             : state(v)
     {
         jassert(v.hasType(IDs::CLIP));

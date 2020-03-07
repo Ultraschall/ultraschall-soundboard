@@ -21,6 +21,10 @@
 			isa = PBXBuildFile;
 			fileRef = 59F0CB90C21C2B3EF124E447;
 		};
+		9E779B7F1CCFE8E98B27A7AA = {
+			isa = PBXBuildFile;
+			fileRef = 003870DB8B2E0F9A2A88A1D0;
+		};
 		BB9D82B1D60C052155ED7E20 = {
 			isa = PBXBuildFile;
 			fileRef = 05BF288FAE5EF97EAF3461B9;
@@ -28,10 +32,6 @@
 		686D1BF75A3D3107CA32948F = {
 			isa = PBXBuildFile;
 			fileRef = 9801FF6863B167D3A81B03A7;
-		};
-		9E779B7F1CCFE8E98B27A7AA = {
-			isa = PBXBuildFile;
-			fileRef = 003870DB8B2E0F9A2A88A1D0;
 		};
 		5FC64BE78052226514223C7D = {
 			isa = PBXBuildFile;
@@ -856,13 +856,6 @@
 			path = "../../Assets/AppIcons/Android/App Icon/ic_launcher_MDPI.png";
 			sourceTree = "SOURCE_ROOT";
 		};
-		6678001ED081BBDB3F9095AA = {
-			isa = PBXFileReference;
-			lastKnownFileType = text.plist.xml;
-			name = Soundboard.entitlements;
-			path = Soundboard.entitlements;
-			sourceTree = "SOURCE_ROOT";
-		};
 		66D39B9E55E0D167101F0895 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -1113,6 +1106,13 @@
 			lastKnownFileType = file.svg;
 			name = "sharp-loop-24px.svg";
 			path = "../../Assets/Icons/sharp-loop-24px.svg";
+			sourceTree = "SOURCE_ROOT";
+		};
+		96259DB28AB35777E21AE8E0 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.xml;
+			name = "AUv3_AppExtension.entitlements";
+			path = "AUv3_AppExtension.entitlements";
 			sourceTree = "SOURCE_ROOT";
 		};
 		9801FF6863B167D3A81B03A7 = {
@@ -2221,9 +2221,9 @@
 		616C6837D3A453E7F95D6BA2 = {
 			isa = PBXGroup;
 			children = (
+				003870DB8B2E0F9A2A88A1D0,
 				05BF288FAE5EF97EAF3461B9,
 				9801FF6863B167D3A81B03A7,
-				003870DB8B2E0F9A2A88A1D0,
 				AAE512CB45530BCF93A01E6E,
 				A19019A1C7D6406141317105,
 				E7C87C8632E4A73D4CEAD480,
@@ -2267,6 +2267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2274,6 +2275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2390,7 +2392,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
-				CODE_SIGN_ENTITLEMENTS = "Soundboard.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "AUv3_AppExtension.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -2438,7 +2440,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
-				CODE_SIGN_ENTITLEMENTS = "Soundboard.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "AUv3_AppExtension.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -2711,6 +2713,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Soundboard";
+				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
 			};
@@ -2756,6 +2759,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "Soundboard";
+				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
 			};
@@ -2901,9 +2905,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E779B7F1CCFE8E98B27A7AA,
 				BB9D82B1D60C052155ED7E20,
 				686D1BF75A3D3107CA32948F,
-				9E779B7F1CCFE8E98B27A7AA,
 				5FC64BE78052226514223C7D,
 				53006A7A8BE3BAAFD327DE6A,
 				B339D31FA9ED814E50C2CCB9,
