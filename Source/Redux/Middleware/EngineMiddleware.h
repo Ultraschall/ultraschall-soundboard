@@ -6,7 +6,7 @@
 
 class EngineMiddleware : public Middleware {
 public:
-	EngineMiddleware(Engine &engine);
+	explicit EngineMiddleware(Engine &engine);
 
 	ActionObject dispatch(const ActionObject &action, Store &store) override;
 	void playerDispatch(const ActionObject & action);
