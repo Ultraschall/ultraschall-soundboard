@@ -57,6 +57,10 @@
 			isa = PBXBuildFile;
 			fileRef = 2830A668B98C77922147162C;
 		};
+		25E634550998C0142842239F = {
+			isa = PBXBuildFile;
+			fileRef = 0643E4DCE99881FB1E602FC1;
+		};
 		7AD3B51AA8B214D1CE4F150F = {
 			isa = PBXBuildFile;
 			fileRef = 4A88613DECCF3095E428D8A8;
@@ -234,6 +238,13 @@
 			path = ../../src/shared/player/Player.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		0643E4DCE99881FB1E602FC1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Foundation.framework;
+			path = System/Library/Frameworks/Foundation.framework;
+			sourceTree = SDKROOT;
+		};
 		0AECAE92B9080ED3602D99E3 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -351,6 +362,13 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = GridComponent.cpp;
 			path = ../../src/shared/ui/grid/GridComponent.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		40B913038FC731264479A889 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = JucePluginDefines.h;
+			path = ../../src/JuceLibraryCode/JucePluginDefines.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		41ED9F2AA7BB98B8100E15AC = {
@@ -563,34 +581,6 @@
 			path = "../../src/JuceLibraryCode/include_juce_audio_plugin_client_AU.r";
 			sourceTree = "SOURCE_ROOT";
 		};
-		946BDBB0711B3FB2BDE8297A = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.framework;
-			name = CoreAudioKit.framework;
-			path = System/Library/Frameworks/CoreAudioKit.framework;
-			sourceTree = SDKROOT;
-		};
-		F59231F79674185C7FE9B22C = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.cfbundle;
-			includeInIndex = 0;
-			path = Soundboard.vst3;
-			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
-		93FBC09B69DACFC2D3209D29 = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.cfbundle;
-			includeInIndex = 0;
-			path = Soundboard.component;
-			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
-		8DD5CF06518648F34B09CFE5 = {
-			isa = PBXFileReference;
-			explicitFileType = wrapper.application;
-			includeInIndex = 0;
-			path = Soundboard.app;
-			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
 		8FBC86C523538458057786ED = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.nib;
@@ -598,11 +588,11 @@
 			path = RecentFilesMenuTemplate.nib;
 			sourceTree = "SOURCE_ROOT";
 		};
-		97AEF9A23B2AB035BE76BA62 = {
+		946BDBB0711B3FB2BDE8297A = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
-			name = AudioUnit.framework;
-			path = System/Library/Frameworks/AudioUnit.framework;
+			name = CoreAudioKit.framework;
+			path = System/Library/Frameworks/CoreAudioKit.framework;
 			sourceTree = SDKROOT;
 		};
 		98CCD875BF61EDF685593DC9 = {
@@ -724,13 +714,6 @@
 			path = "../../src/JuceLibraryCode/modules/stk_generators";
 			sourceTree = "SOURCE_ROOT";
 		};
-		D04EF5699D36CA4B0102D045 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = Bank.cpp;
-			path = ../../src/shared/player/Bank.cpp;
-			sourceTree = "SOURCE_ROOT";
-		};
 		DD47F296AF9291917F4F4E2F = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -766,6 +749,48 @@
 			path = "Info-VST3.plist";
 			sourceTree = "SOURCE_ROOT";
 		};
+		F21154FF1B8CDACB684F3B11 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = JuceHeader.h;
+			path = ../../src/JuceLibraryCode/JuceHeader.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		F59231F79674185C7FE9B22C = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = Soundboard.vst3;
+			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		93FBC09B69DACFC2D3209D29 = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = Soundboard.component;
+			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		8DD5CF06518648F34B09CFE5 = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.application;
+			includeInIndex = 0;
+			path = Soundboard.app;
+			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		97AEF9A23B2AB035BE76BA62 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = AudioUnit.framework;
+			path = System/Library/Frameworks/AudioUnit.framework;
+			sourceTree = SDKROOT;
+		};
+		D04EF5699D36CA4B0102D045 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Bank.cpp;
+			path = ../../src/shared/player/Bank.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		ECEC393FAF7A2421A41C0EFE = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -778,13 +803,6 @@
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_audio_formats.mm";
 			path = "../../src/JuceLibraryCode/include_juce_audio_formats.mm";
-			sourceTree = "SOURCE_ROOT";
-		};
-		F21154FF1B8CDACB684F3B11 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = JuceHeader.h;
-			path = ../../src/JuceLibraryCode/JuceHeader.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		F3A70930CB6A0AD7594054F1 = {
@@ -962,6 +980,7 @@
 				E18BF5BDFC7C495CAEAAE912,
 				7D7DD2EC6880DB41CBC36008,
 				F21154FF1B8CDACB684F3B11,
+				40B913038FC731264479A889,
 			);
 			name = "JUCE Library Code";
 			sourceTree = "<group>";
@@ -989,6 +1008,7 @@
 				946BDBB0711B3FB2BDE8297A,
 				7FDD083ECDC6F4A51E79C965,
 				2830A668B98C77922147162C,
+				0643E4DCE99881FB1E602FC1,
 				4A88613DECCF3095E428D8A8,
 				1E5A087C41227A24FB640A7F,
 				038AE9F77A9F5119125744CA,
@@ -1019,6 +1039,34 @@
 			);
 			name = Source;
 			sourceTree = "<group>";
+		};
+		918C1D29FA6D1EA205724665 = {
+			isa = PBXTargetDependency;
+			target = 5BE3FD9785C1C65F36753151;
+		};
+		164E285AB042D7B8EAD0821A = {
+			isa = PBXTargetDependency;
+			target = 912979ECB3018134076FD98F;
+		};
+		0FB5246C8D19D920E7295A42 = {
+			isa = PBXTargetDependency;
+			target = 5960F3A1950F9BB2A2CF8699;
+		};
+		5F4D308490F7DB0398FE6F9B = {
+			isa = PBXTargetDependency;
+			target = 1827FE95985D0C953ED3BEA2;
+		};
+		5306FE843866B189261E5781 = {
+			isa = PBXTargetDependency;
+			target = 1827FE95985D0C953ED3BEA2;
+		};
+		E6C5A959506471EA5095ED99 = {
+			isa = PBXTargetDependency;
+			target = 1827FE95985D0C953ED3BEA2;
+		};
+		FE769B488A8643F8FD021785 = {
+			isa = PBXTargetDependency;
+			target = 1827FE95985D0C953ED3BEA2;
 		};
 		F4E530CB1732BF7EF816D25E = {
 			isa = XCBuildConfiguration;
@@ -1079,10 +1127,17 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lSoundboard";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst3;
 			};
 			name = Debug;
@@ -1116,7 +1171,6 @@
 					"JucePlugin_Build_Standalone=0",
 					"JucePlugin_Build_Unity=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1132,10 +1186,17 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lSoundboard";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst3;
 			};
 			name = Release;
@@ -1183,11 +1244,18 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lSoundboard";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = component;
 			};
 			name = Debug;
@@ -1221,7 +1289,6 @@
 					"JucePlugin_Build_Standalone=0",
 					"JucePlugin_Build_Unity=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1237,11 +1304,18 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lSoundboard";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = component;
 			};
 			name = Release;
@@ -1284,10 +1358,17 @@
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-lSoundboard";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -1318,7 +1399,6 @@
 					"JucePlugin_Build_Standalone=1",
 					"JucePlugin_Build_Unity=0",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
@@ -1331,10 +1411,17 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-lSoundboard";
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Release;
 		};
@@ -1376,10 +1463,17 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -1411,7 +1505,6 @@
 					"JucePlugin_Build_Unity=0",
 					"JUCE_SHARED_CODE=1",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
@@ -1423,10 +1516,17 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../src/JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../src/JuceLibraryCode",
+					"../../src/JuceLibraryCode/modules",
+					"../../src/JuceLibraryCode/modules/juce_audio_plugin_client",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = fm.ultraschall.soundboard;
 				PRODUCT_NAME = "Soundboard";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Release;
 		};
@@ -1455,11 +1555,12 @@
 				CODE_SIGN_IDENTITY = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
@@ -1503,10 +1604,12 @@
 				CODE_SIGN_IDENTITY = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
@@ -1523,22 +1626,6 @@
 				ZERO_LINK = NO;
 			};
 			name = Release;
-		};
-		0D0341A174042B132446B2B3 = {
-			isa = PBXTargetDependency;
-			target = 5BE3FD9785C1C65F36753151;
-		};
-		AD25964425387E2DD3CD1B5B = {
-			isa = PBXTargetDependency;
-			target = 912979ECB3018134076FD98F;
-		};
-		BFC28FAB313AD87902B63DE1 = {
-			isa = PBXTargetDependency;
-			target = 5960F3A1950F9BB2A2CF8699;
-		};
-		0FFAF2722DDFF6C33B6333A8 = {
-			isa = PBXTargetDependency;
-			target = 1827FE95985D0C953ED3BEA2;
 		};
 		E21764EF540B35E52EA0CE9F = {
 			isa = XCConfigurationList;
@@ -1564,10 +1651,10 @@
 			buildPhases = ( );
 			buildRules = ( );
 			dependencies = (
-				0D0341A174042B132446B2B3,
-				AD25964425387E2DD3CD1B5B,
-				BFC28FAB313AD87902B63DE1,
-				0FFAF2722DDFF6C33B6333A8,
+				918C1D29FA6D1EA205724665,
+				164E285AB042D7B8EAD0821A,
+				0FB5246C8D19D920E7295A42,
+				5F4D308490F7DB0398FE6F9B,
 			);
 			name = "Soundboard - All";
 			productName = Soundboard;
@@ -1609,6 +1696,7 @@
 				DE014C8A2FD0740981AEBCDA,
 				97CFE97988A2A1ECEA535628,
 				5CB0B6A2ABCCA825BF0267A7,
+				25E634550998C0142842239F,
 				7AD3B51AA8B214D1CE4F150F,
 				07441BF39EC06F1F3FDDB502,
 				2AFC4B2CDDF897D92CC0CF62,
@@ -1625,7 +1713,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				0FFAF2722DDFF6C33B6333A8,
+				5306FE843866B189261E5781,
 			);
 			name = "Soundboard - VST3";
 			productName = Soundboard;
@@ -1679,6 +1767,7 @@
 				DE014C8A2FD0740981AEBCDA,
 				97CFE97988A2A1ECEA535628,
 				5CB0B6A2ABCCA825BF0267A7,
+				25E634550998C0142842239F,
 				7AD3B51AA8B214D1CE4F150F,
 				07441BF39EC06F1F3FDDB502,
 				2AFC4B2CDDF897D92CC0CF62,
@@ -1696,7 +1785,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				0FFAF2722DDFF6C33B6333A8,
+				E6C5A959506471EA5095ED99,
 			);
 			name = "Soundboard - AU";
 			productName = Soundboard;
@@ -1740,6 +1829,7 @@
 				DE014C8A2FD0740981AEBCDA,
 				97CFE97988A2A1ECEA535628,
 				5CB0B6A2ABCCA825BF0267A7,
+				25E634550998C0142842239F,
 				7AD3B51AA8B214D1CE4F150F,
 				07441BF39EC06F1F3FDDB502,
 				2AFC4B2CDDF897D92CC0CF62,
@@ -1756,7 +1846,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				0FFAF2722DDFF6C33B6333A8,
+				FE769B488A8643F8FD021785,
 			);
 			name = "Soundboard - Standalone Plugin";
 			productName = Soundboard;
@@ -1825,7 +1915,7 @@
 		110892D9837B5DDD89D9B569 = {
 			isa = PBXProject;
 			buildConfigurationList = E21764EF540B35E52EA0CE9F;
-			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = "Ultraschall"; TargetAttributes = { 6A98E6A3CCB2C80A0AB1AB61 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5BE3FD9785C1C65F36753151 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };912979ECB3018134076FD98F = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5960F3A1950F9BB2A2CF8699 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };1827FE95985D0C953ED3BEA2 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 1200; ORGANIZATIONNAME = "Ultraschall"; TargetAttributes = { 6A98E6A3CCB2C80A0AB1AB61 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5BE3FD9785C1C65F36753151 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };912979ECB3018134076FD98F = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };5960F3A1950F9BB2A2CF8699 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };1827FE95985D0C953ED3BEA2 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = 24AF8ED1906BB02C72E88F46;

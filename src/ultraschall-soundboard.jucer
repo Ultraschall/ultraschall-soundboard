@@ -8,12 +8,12 @@
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="1"
               pluginAUExportPrefix="SoundboardAU" pluginRTASCategory="" aaxIdentifier=""
-              pluginAAXCategory="" jucerVersion="5.4.7" companyWebsite="https://ultraschall.fm"
+              pluginAAXCategory="" companyWebsite="https://ultraschall.fm"
               companyEmail="info@ultraschall.fm" companyName="Ultraschall"
               pluginIsMidiEffectPlugin="0" buildAUv3="0" pluginFormats="buildAU,buildStandalone,buildVST3"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn,pluginEditorRequiresKeys"
               buildStandalone="1" enableIAA="0" reportAppUsage="0" displaySplashScreen="0"
-              companyCopyright="The Ultraschall Project">
+              companyCopyright="The Ultraschall Project" jucerFormatVersion="1">
   <MAINGROUP id="AXAawk" name="Soundboard">
     <GROUP id="{8732BDF4-867C-525F-D637-BED716D5C61E}" name="src">
       <GROUP id="{1AD7E629-6AED-94BE-9B39-F6CAB7FE68C4}" name="plugin">
