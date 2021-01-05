@@ -174,7 +174,7 @@ void OscManager::parseOscMessage(osc::ReceivedMessage message)
                 parameter->setValue(var(arg->IsBool()));
             }
             else if (arg->IsInt32()) {
-                parameter->setValue(var(arg->AsInt32()));
+                parameter->setValue(var(int(arg->AsInt32())));
             }
             else if (arg->IsChar()) {
                 parameter->setValue(var(String(arg->AsChar())));
