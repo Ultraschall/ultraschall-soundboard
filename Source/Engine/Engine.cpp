@@ -152,15 +152,26 @@ void Engine::changeListenerCallback(ChangeBroadcaster *source) {
 
 void Engine::sync(Store &store) {
 	
+    auto state = store.getState();
+    auto applicationState = store.getState().getChildWithName(IDs::APPLICATION);
+    
+    if (bool(applicationState.getProperty(IDs::application_mute))) {
+        setGain(0.0);
+    }
+    else {
+        setGain(applicationState.getProperty(IDs::application_master_gain));
+    }
+    
 	playersToUpdate.getLock().enter();
 	auto snapshot = playersToUpdate;
 	playersToUpdate.clear();
 	playersToUpdate.getLock().exit();
 
+    auto playersState = store.getState().getChildWithName(IDs::PLAYERS);
+    jassert(playersState.isValid());
+    
 	for (const auto &p : snapshot) {
 		auto player = playerWithIdentifier(p);
-		auto playersState = store.getState().getChildWithName(IDs::PLAYERS);
-		jassert(playersState.isValid());
 		auto playerState = playersState.getChildWithProperty(IDs::player_id, p.toString());
 		jassert(playerState.isValid());
 		

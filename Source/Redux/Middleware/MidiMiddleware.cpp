@@ -7,23 +7,21 @@ ActionObject MidiMiddleware::dispatch(const ActionObject & action, Store & store
 }
 
 void MidiMiddleware::handleMidiMessages(MidiBuffer & midiMessages) {
-	MidiBuffer processedMidi;
-	int time;
-	MidiMessage m;
-
-	for (MidiBuffer::Iterator i(midiMessages); i.getNextEvent(m, time);) {
-		inputBuffer.addEvent(m, time);
-		processedMidi.addEvent(m, time);
-	}
-
-	midiMessages.swapWith(processedMidi);
+    
+    for (const auto metadata : midiMessages)
+    {
+        const auto msg = metadata.getMessage();
+        inputBuffer.addEvent(msg, metadata.samplePosition);
+    }
+     
+    midiMessages.clear();
 	triggerAsyncUpdate();
 }
 
 void MidiMiddleware::handleAsyncUpdate() {
-	int time;
-	MidiMessage m;
-	for (MidiBuffer::Iterator i(inputBuffer); i.getNextEvent(m, time);) {
-
-	}
+    for (const auto metadata : inputBuffer)
+    {
+        const auto msg = metadata.getMessage();
+        Logger::outputDebugString("[MIDI] Message: " + msg.getDescription());
+    }
 }

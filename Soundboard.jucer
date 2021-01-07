@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT name="Soundboard" projectType="audioplug" buildStandalone="1"
-              version="4.0.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
+              version="5.0.0" companyName="Ultraschall" companyWebsite="http://ultraschall.fm"
               companyEmail="info@ultraschall.fm" reportAppUsage="0" displaySplashScreen="0"
-              bundleIdentifier="fm.ultraschall.Soundboard" pluginFormats="buildAUv3,buildStandalone,buildVST3"
+              bundleIdentifier="fm.ultraschall.Soundboard" pluginFormats="buildAU,buildAUv3,buildStandalone,buildVST3"
               pluginCharacteristicsValue="pluginEditorRequiresKeys,pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="Ultraschall" pluginManufacturerCode="Ultr"
-              pluginCode="Soub" companyCopyright="Copyright (c) 2014-2020 Daniel Lindenfelser"
+              pluginCode="Soub" companyCopyright="Copyright (c) 2014-2021 Daniel Lindenfelser"
               pluginName="Soundboard" id="V57v4d" buildVST="0" buildVST3="1"
-              buildAU="0" buildAUv3="1" buildRTAS="0" buildAAX="0" enableIAA="0"
+              buildAU="1" buildAUv3="1" buildRTAS="0" buildAAX="0" enableIAA="0"
               defines="JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=0&#10;" maxBinaryFileSize="20971520"
               pluginChannelConfigs="{0,1}, {0,2}" cppLanguageStandard="17"
               jucerFormatVersion="1">

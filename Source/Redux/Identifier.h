@@ -10,8 +10,12 @@ namespace IDs {
 	// #Application
 	DECLARE_ID(APPLICATION, APPLICATION)
 	DECLARE_ID(application_version, version)
+
 	DECLARE_ID(application_master_gain, master_gain)
 	DECLARE_ID(application_talkover, state_talkover)
+    DECLARE_ID(application_talkover_gain, state_talkover_gain)
+    DECLARE_ID(application_talkover_restore_gain, state_talkover_restore_gain)
+
 	DECLARE_ID(application_mute, state_mute)
 	DECLARE_ID(application_view, view)
     DECLARE_ID(application_last_directory, last_directory)

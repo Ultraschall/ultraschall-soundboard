@@ -25,5 +25,31 @@
     <string>Copyright (c) 2014-2021 Daniel Lindenfelser</string>
     <key>NSHighResolutionCapable</key>
     <true/>
+    <key>AudioComponents</key>
+    <array>
+      <dict>
+        <key>name</key>
+        <string>Ultraschall: Soundboard</string>
+        <key>description</key>
+        <string>Soundboard</string>
+        <key>factoryFunction</key>
+        <string>SoundboardAUFactory</string>
+        <key>manufacturer</key>
+        <string>Ultr</string>
+        <key>type</key>
+        <string>aumu</string>
+        <key>subtype</key>
+        <string>Soub</string>
+        <key>version</key>
+        <integer>327680</integer>
+        <key>resourceUsage</key>
+        <dict>
+          <key>network.client</key>
+          <true/>
+          <key>temporary-exception.files.all.read-write</key>
+          <true/>
+        </dict>
+      </dict>
+    </array>
   </dict>
 </plist>

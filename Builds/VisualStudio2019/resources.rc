@@ -9,18 +9,18 @@
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION  4,0,0,0
+FILEVERSION  5,0,0,0
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
     BLOCK "040904E4"
     BEGIN
       VALUE "CompanyName",  "Ultraschall\0"
-      VALUE "LegalCopyright",  "Copyright (c) 2014-2020 Daniel Lindenfelser\0"
+      VALUE "LegalCopyright",  "Copyright (c) 2014-2021 Daniel Lindenfelser\0"
       VALUE "FileDescription",  "Soundboard\0"
-      VALUE "FileVersion",  "4.0.0\0"
+      VALUE "FileVersion",  "5.0.0\0"
       VALUE "ProductName",  "Soundboard\0"
-      VALUE "ProductVersion",  "4.0.0\0"
+      VALUE "ProductVersion",  "5.0.0\0"
     END
   END
 

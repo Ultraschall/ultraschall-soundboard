@@ -1,0 +1,13 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "mkdir -p build\ncd build\ncmake ..\ncmake --build ."
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "rm -rf build"
+    }
+  },
+  "identifier" : "7C9CA5A0-0FB6-4EC2-A509-76E6F864C3FC"
+}
