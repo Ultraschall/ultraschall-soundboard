@@ -3,35 +3,39 @@ jobs:
   pool:
     vmImage: 'macOS-latest'
   steps:
-    - pwsh: |
-        sudo xcode-select -s /Applications/Xcode_10.3.app/Contents/Developer
-        xcodebuild -project "./builds/macos/Soundboard.xcodeproj" -configuration Release
-      displayName: Build
-    - publish: '$(build.sourcesDirectory)/builds/macos/build'
+    - task: CMake@1
+      inputs:
+        cmakeArgs: $(build.sourcesDirectory) -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+    - task: CMake@1
+      inputs:
+        cmakeArgs: --build . --config Release
+    - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: macOS
 - job: Windows
   pool:
     vmImage: 'windows-latest'
   steps:
-    - pwsh: |
-        $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        msbuild "./builds/win32/vs_2019/Soundboard.sln" -nologo -m -property:Configuration=Release -property:Platform="x64"
-      displayName: Build
-    - publish: '$(build.sourcesDirectory)/builds/win32/vs_2019/x64'
+    - task: CMake@1
+      inputs:
+        cmakeArgs: $(build.sourcesDirectory)
+    - task: CMake@1
+      inputs:
+        cmakeArgs: --build . --config Release    
+    - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: Windows
 - job: Linux
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'ubuntu-18.04'
   steps:
     - task: Docker@2
       inputs:
         command: 'build'
-        Dockerfile: './builds/linux/Dockerfile'
+        Dockerfile: './Dockerfile'
         buildContext: '.'
         arguments: '-t ultraschall_soundboard:$(Build.BuildId)'
     - pwsh: |
         docker container create --name ultraschall_soundboard_extract ultraschall_soundboard:$(Build.BuildId)
-        docker container cp ultraschall_soundboard_extract:/usr/local/src/ultraschall-soundboard/builds/linux/build $(build.sourcesDirectory)/artifacts
+        docker container cp ultraschall_soundboard_extract:/usr/local/src/ultraschall-soundboard/build/UltraschallSoundboard_artefacts $(build.sourcesDirectory)/artifacts
         docker container rm -f ultraschall_soundboard_extract
     - publish: '$(build.sourcesDirectory)/artifacts'
       artifact: Linux
