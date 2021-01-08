@@ -5,7 +5,7 @@ jobs:
   steps:
     - task: CMake@1
       inputs:
-        cmakeArgs: .. -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+        cmakeArgs: $(build.sourcesDirectory) -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
         runInsideShell: true
     - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: macOS
@@ -15,7 +15,7 @@ jobs:
   steps:
     - task: CMake@1
       inputs:
-        cmakeArgs: ..
+        cmakeArgs: $(build.sourcesDirectory)
         runInsideShell: true
     - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: Windows

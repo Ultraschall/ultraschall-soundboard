@@ -31,7 +31,7 @@ juce_add_modules(
 	modules/stk_core
 	modules/stk_generators)
 
-target_compile_definitions(UltraschallSoundboard PUBLIC DJUCER_ENABLE_GPL_MODE=1)
+target_compile_definitions(UltraschallSoundboard PUBLIC JUCER_ENABLE_GPL_MODE=1)
 target_compile_definitions(UltraschallSoundboard PUBLIC JUCE_DISPLAY_SPLASH_SCREEN=0)
 target_compile_definitions(UltraschallSoundboard PUBLIC JUCE_USE_LAME_AUDIO_FORMAT=1)
 
