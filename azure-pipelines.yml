@@ -13,7 +13,8 @@ jobs:
     vmImage: 'windows-latest'
   steps:
     - task: CMake@1
-      cmakeArgs: ..
+      inputs:
+        cmakeArgs: ..
     - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: Windows
 - job: Linux
