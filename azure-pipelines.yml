@@ -5,7 +5,7 @@ jobs:
   steps:
     - task: CMake@1
       inputs:
-        cmakeArgs: -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+        cmakeArgs: .. -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
     - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: macOS
 - job: Windows
@@ -13,6 +13,7 @@ jobs:
     vmImage: 'windows-latest'
   steps:
     - task: CMake@1
+      cmakeArgs: ..
     - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: Windows
 - job: Linux
@@ -22,7 +23,7 @@ jobs:
     - task: Docker@2
       inputs:
         command: 'build'
-        Dockerfile: './builds/linux/Dockerfile'
+        Dockerfile: './Dockerfile'
         buildContext: '.'
         arguments: '-t ultraschall_soundboard:$(Build.BuildId)'
     - pwsh: |
