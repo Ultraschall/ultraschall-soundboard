@@ -9,7 +9,6 @@ jobs:
     - task: CMake@1
       inputs:
         cmakeArgs: --build . --config Release
-
     - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: macOS
 - job: Windows
@@ -21,7 +20,8 @@ jobs:
         cmakeArgs: $(build.sourcesDirectory)
     - task: CMake@1
       inputs:
-        cmakeArgs: --build . --config Release    - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
+        cmakeArgs: --build . --config Release    
+    - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
       artifact: Windows
 - job: Linux
   pool:
