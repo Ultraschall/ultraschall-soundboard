@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(ULTRASCHALL_SOUNDBOARD VERSION 4.0.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(JUCE)
-include_directories(./JUCE)	
+add_subdirectory("./JUCE" JUCE)	
 
 juce_add_plugin(UltraschallSoundboard
 	IS_SYNTH TRUE
