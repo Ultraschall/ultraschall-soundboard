@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
 	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
@@ -23,6 +23,7 @@ RUN apt-get update \
 	libxrandr-dev \
 	mesa-common-dev \
 	webkit2gtk-4.0 \
+	cmake \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/local/src/ultraschall-soundboard
