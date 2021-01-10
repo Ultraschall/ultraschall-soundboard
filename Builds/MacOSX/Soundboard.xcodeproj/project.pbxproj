@@ -125,6 +125,10 @@
 			isa = PBXBuildFile;
 			fileRef = 19540D8CADCFFAA33FCBCE25;
 		};
+		2059AD5DB12B918FE0FD07B4 = {
+			isa = PBXBuildFile;
+			fileRef = 65891D25BE4052309ACB6759;
+		};
 		5A6AFEA7FADBB703B366B073 = {
 			isa = PBXBuildFile;
 			fileRef = 16750C7C569A1B3F6D259F36;
@@ -876,6 +880,13 @@
 			path = "../../Assets/AppIcons/Android/App Icon/ic_launcher_MDPI.png";
 			sourceTree = "SOURCE_ROOT";
 		};
+		65891D25BE4052309ACB6759 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = ClipViewController.cpp;
+			path = ../../Source/UserInterface/Controllers/ClipViewController.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		66D39B9E55E0D167101F0895 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -981,6 +992,13 @@
 			path = ../../Source/LookAndFeel/Material.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		7A4AC8A1880F37C3BC7ED6DF = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ClipViewController.h;
+			path = ../../Source/UserInterface/Controllers/ClipViewController.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		7B16EAEFBEDBF8419AFB9D80 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.png;
@@ -1077,6 +1095,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = BankViewController.h;
 			path = ../../Source/UserInterface/Controllers/BankViewController.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		90ED49D18AD1D088C97B6649 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = BankSelectorView.h;
+			path = ../../Source/UserInterface/Views/BankSelectorView.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		9154ABC35D48912F2F0BC028 = {
@@ -1261,6 +1286,13 @@
 			path = ../../Source/Redux/ActionObject.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		A4BE84643BD6AF90243ED059 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = BankView.h;
+			path = ../../Source/UserInterface/Views/BankView.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A66253F9B3A165E4F184B9BE = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -1336,6 +1368,13 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = BinaryData.cpp;
 			path = ../../JuceLibraryCode/BinaryData.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		AEEF0551E0F9EF76085D9DF3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ClipItem.h;
+			path = ../../Source/UserInterface/Views/ClipItem.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		AF41CFCD3DF98790C3D85654 = {
@@ -1464,6 +1503,13 @@
 			path = ../../Source/LookAndFeel/FloatingActionButton.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		C60DF2DA9A280D4B41860B93 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = "arrow_forward_ios-24px.svg";
+			path = "../../Assets/Icons/arrow_forward_ios-24px.svg";
+			sourceTree = "SOURCE_ROOT";
+		};
 		C62D6416E2579025E6B20A74 = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.png;
@@ -1553,6 +1599,13 @@
 			lastKnownFileType = file;
 			name = "juce_data_structures";
 			path = "../../JuceLibraryCode/modules/juce_data_structures";
+			sourceTree = "SOURCE_ROOT";
+		};
+		D26231299398DD30A5FD1324 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ClipView.h;
+			path = ../../Source/UserInterface/Views/ClipView.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		D2D286F5416E92D0C72A9421 = {
@@ -1674,11 +1727,11 @@
 			path = "../../JuceLibraryCode/modules/juce_audio_formats";
 			sourceTree = "SOURCE_ROOT";
 		};
-		E63D98114F5D46C33B16516C = {
+		E75F3157111B190DD4DE44A0 = {
 			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = "sharp-file_copy-24px.svg";
-			path = "../../Assets/Icons/sharp-file_copy-24px.svg";
+			lastKnownFileType = sourcecode.c.h;
+			name = MaterialLookAndFeel.h;
+			path = ../../Source/LookAndFeel/MaterialLookAndFeel.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		E7C87C8632E4A73D4CEAD480 = {
@@ -1709,11 +1762,18 @@
 			path = ../../JuceLibraryCode/JuceHeader.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		EAD4D001D6C8846E9B368D72 = {
+		EACB497E032FBD692706458D = {
 			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = "sharp-settings-24px.svg";
-			path = "../../Assets/Icons/sharp-settings-24px.svg";
+			lastKnownFileType = sourcecode.c.h;
+			name = Mocks.h;
+			path = ../../Source/UserInterface/Views/Mocks.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		EC6C70A6AC351806E271D0B1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = EngineMiddleware.h;
+			path = ../../Source/Redux/Middleware/EngineMiddleware.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		EF7A36905F6B12355C49EB8F = {
@@ -1721,20 +1781,6 @@
 			lastKnownFileType = file.ttf;
 			name = "RobotoMono-LightItalic.ttf";
 			path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-LightItalic.ttf";
-			sourceTree = "SOURCE_ROOT";
-		};
-		EFBD4D398689EA9E2CAC2D96 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.objcpp;
-			name = "include_juce_audio_devices.mm";
-			path = "../../JuceLibraryCode/include_juce_audio_devices.mm";
-			sourceTree = "SOURCE_ROOT";
-		};
-		F16F8B9669393C5CC3054C01 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.svg;
-			name = "sharp-settings_input_antenna-24px.svg";
-			path = "../../Assets/Icons/sharp-settings_input_antenna-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		F1C19114A114308527191CCF = {
@@ -1751,25 +1797,18 @@
 			path = libSoundboard.a;
 			sourceTree = "BUILT_PRODUCTS_DIR";
 		};
-		E75F3157111B190DD4DE44A0 = {
+		E63D98114F5D46C33B16516C = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = MaterialLookAndFeel.h;
-			path = ../../Source/LookAndFeel/MaterialLookAndFeel.h;
+			lastKnownFileType = file.svg;
+			name = "sharp-file_copy-24px.svg";
+			path = "../../Assets/Icons/sharp-file_copy-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
-		EACB497E032FBD692706458D = {
+		EAD4D001D6C8846E9B368D72 = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Mocks.h;
-			path = ../../Source/UserInterface/Views/Mocks.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		EC6C70A6AC351806E271D0B1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = EngineMiddleware.h;
-			path = ../../Source/Redux/Middleware/EngineMiddleware.h;
+			lastKnownFileType = file.svg;
+			name = "sharp-settings-24px.svg";
+			path = "../../Assets/Icons/sharp-settings-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		ECED1FDE827C51E07EE05A51 = {
@@ -1777,6 +1816,20 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = PlaylistActionStart.h;
 			path = ../../Source/UserInterface/Views/PlaylistActionStart.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		EFBD4D398689EA9E2CAC2D96 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_juce_audio_devices.mm";
+			path = "../../JuceLibraryCode/include_juce_audio_devices.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		F16F8B9669393C5CC3054C01 = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = "sharp-settings_input_antenna-24px.svg";
+			path = "../../Assets/Icons/sharp-settings_input_antenna-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		F2BC0ABB61ECFAF1869F6FC1 = {
@@ -1826,6 +1879,13 @@
 			lastKnownFileType = image.png;
 			name = "Icon-20@3x.png";
 			path = "../../Assets/AppIcons/iOS/Icon-20@3x.png";
+			sourceTree = "SOURCE_ROOT";
+		};
+		F5ACFBF477AD1AD56C2C807B = {
+			isa = PBXFileReference;
+			lastKnownFileType = file.svg;
+			name = "arrow_back_ios-24px.svg";
+			path = "../../Assets/Icons/arrow_back_ios-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
 		F6835AB4AE8E1F4ED7B5D155 = {
@@ -2008,6 +2068,8 @@
 		30CA9E3562D26F7FA1A68ACD = {
 			isa = PBXGroup;
 			children = (
+				F5ACFBF477AD1AD56C2C807B,
+				C60DF2DA9A280D4B41860B93,
 				57CA84DC312CEACA5A7957DD,
 				5626D5DBCE54FA6338B63D4B,
 				CEB3B59300320B9E44B551FB,
@@ -2127,6 +2189,8 @@
 			children = (
 				19540D8CADCFFAA33FCBCE25,
 				8F14236BF26A57E2673E2535,
+				65891D25BE4052309ACB6759,
+				7A4AC8A1880F37C3BC7ED6DF,
 				16750C7C569A1B3F6D259F36,
 				372AA770F7ADE1CF48FAB072,
 				C720A5F5496C670576B1387B,
@@ -2157,7 +2221,11 @@
 			isa = PBXGroup;
 			children = (
 				4B6D69365987678CCCDE99BB,
+				90ED49D18AD1D088C97B6649,
+				A4BE84643BD6AF90243ED059,
 				D10EB526E1DCA9F94E0DF90A,
+				AEEF0551E0F9EF76085D9DF3,
+				D26231299398DD30A5FD1324,
 				45017E21BCA38C0978314181,
 				B3491D0DAC4AB1D7CA9DDD91,
 				FDCBB1DF928AEC945CB5DB9D,
@@ -3389,6 +3457,7 @@
 				0ABBB696104D4AEB3E9F2B44,
 				CD1AF05CC3E58A9FB5BB8ACA,
 				34B4972759943120C643BE39,
+				2059AD5DB12B918FE0FD07B4,
 				5A6AFEA7FADBB703B366B073,
 				5BE52C5E1DEDBC0903733059,
 				69E2291E99A103844C021346,

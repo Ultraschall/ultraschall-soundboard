@@ -56,7 +56,7 @@ namespace IDs {
     // #Bank Clip
     DECLARE_ID(CLIP, CLIP)
     DECLARE_ID(clip_id, id)
-    DECLARE_ID(clip_order, order)
+    DECLARE_ID(clip_index, index)
     DECLARE_ID(clip_player_id, player_id)
 	DECLARE_ID(clip_bank_id, bank_id)
 

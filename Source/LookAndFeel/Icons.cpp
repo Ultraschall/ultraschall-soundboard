@@ -27,6 +27,8 @@ namespace Material
 		Icon stop{ BinaryData::sharpstop24px_svg, BinaryData::sharpstop24px_svgSize };
 		Icon volume_off{ BinaryData::sharpvolume_off24px_svg, BinaryData::sharpvolume_off24px_svgSize };
 		Icon loop{ BinaryData::sharploop24px_svg, BinaryData::sharploop24px_svgSize };
+        Icon back{ BinaryData::arrow_back_ios24px_svg, BinaryData::arrow_back_ios24px_svgSize };
+        Icon forward{ BinaryData::arrow_forward_ios24px_svg, BinaryData::arrow_forward_ios24px_svgSize };
 
 	} // namespace Icons
 } // namespace Material

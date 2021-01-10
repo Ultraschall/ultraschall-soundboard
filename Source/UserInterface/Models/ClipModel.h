@@ -10,13 +10,13 @@ struct ClipModel
     {
         jassert(v.hasType(IDs::CLIP));
 
-        uuid.referTo(state, IDs::clip_uuid, nullptr);
+        id.referTo(state, IDs::clip_id, nullptr);
         index.referTo(state, IDs::clip_index, nullptr);
-        playerUuid.referTo(state, IDs::player_uuid, nullptr);
+        playerId.referTo(state, IDs::player_id, nullptr);
     }
 
     ValueTree state;
-    CachedValue<String> uuid;
+    CachedValue<String> id;
     CachedValue<int> index;
-    CachedValue<String> playerUuid;
+    CachedValue<String> playerId;
 };

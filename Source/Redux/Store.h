@@ -15,13 +15,13 @@ public:
 	static std::function<ValueTree(ValueTree, ActionObject)> combineReducers(std::map<Identifier, std::function<ValueTree(ValueTree, ActionObject)>> reducers);
 
     explicit Store(std::function<ValueTree(ValueTree, ActionObject)> reducer, ValueTree preloadedState = ValueTree("state"));
-    virtual ~Store(){}
+    virtual ~Store()= default;
 
 	ValueTree getState();
 
 	virtual ActionObject dispatch(const ActionObject &action);
 
-	void subscribe(const std::function<void()> listener);
+	void subscribe(std::function<void()> listener);
 
 	//void unsubscribe(const std::function<void()> listener);
 

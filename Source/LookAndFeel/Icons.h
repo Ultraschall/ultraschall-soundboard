@@ -49,6 +49,8 @@ namespace Material
 		extern Icon stop;
 		extern Icon volume_off;
 		extern Icon loop;
+		extern Icon back;
+		extern Icon forward;
 
 	} // namespace Icons
 } // namespace Material

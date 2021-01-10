@@ -3,7 +3,7 @@
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Actions/Actions.h"
 
-ValueTree playlist(ValueTree state, ActionObject action) {
+ValueTree playlist(ValueTree state, const ActionObject& action) {
     if (state.getNumChildren() == 0) {
         Uuid uuid;
         ValueTree playlist(IDs::PLAYLIST);

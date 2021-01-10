@@ -112,6 +112,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/OscMiddleware_580586f8.o \
   $(JUCE_OBJDIR)/Store_6de3e547.o \
   $(JUCE_OBJDIR)/BankViewController_a89bc7f.o \
+  $(JUCE_OBJDIR)/ClipViewController_99ccbc93.o \
   $(JUCE_OBJDIR)/LibraryViewController_cc8b6c84.o \
   $(JUCE_OBJDIR)/MainViewController_b51eb6bc.o \
   $(JUCE_OBJDIR)/PlaylistViewController_88509015.o \
@@ -224,6 +225,11 @@ $(JUCE_OBJDIR)/Store_6de3e547.o: ../../Source/Redux/Store.cpp
 $(JUCE_OBJDIR)/BankViewController_a89bc7f.o: ../../Source/UserInterface/Controllers/BankViewController.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling BankViewController.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ClipViewController_99ccbc93.o: ../../Source/UserInterface/Controllers/ClipViewController.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ClipViewController.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/LibraryViewController_cc8b6c84.o: ../../Source/UserInterface/Controllers/LibraryViewController.cpp

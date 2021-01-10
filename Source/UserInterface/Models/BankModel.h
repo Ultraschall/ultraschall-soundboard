@@ -11,11 +11,11 @@ struct BankModel
 	{
 		jassert(v.hasType(IDs::BANK));
 
-		uuid.referTo(state, IDs::bank_uuid, nullptr);
+		id.referTo(state, IDs::bank_id, nullptr);
 		title.referTo(state, IDs::bank_title, nullptr);
 	}
 
 	ValueTree state;
-	CachedValue<String> uuid;
+	CachedValue<String> id;
 	CachedValue<String> title;
 };

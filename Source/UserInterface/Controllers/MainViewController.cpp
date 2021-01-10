@@ -103,7 +103,9 @@ void MainViewController::showLibrary()
         view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
         view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
-        
+
+        view->floatingActionButton.setVisible(true);
+
         contentController = std::make_unique<LibraryViewController>(store);
         contentController->init();
         view->setContentView(contentController->getView());
@@ -119,7 +121,9 @@ void MainViewController::showBank()
     view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
     view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
     view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
-    
+
+    view->floatingActionButton.setVisible(false);
+
     const auto current = dynamic_cast<BankViewController *>(contentController.get());
     if (current == nullptr)
     {
@@ -138,7 +142,9 @@ void MainViewController::showPlaylist()
     view->navigationDrawer.midiSettings.setToggleState(false, dontSendNotification);
     view->navigationDrawer.oscSettings.setToggleState(false, dontSendNotification);
     view->navigationDrawer.settings.setToggleState(false, dontSendNotification);
-    
+
+    view->floatingActionButton.setVisible(false);
+
     const auto current = dynamic_cast<PlaylistViewController *>(contentController.get());
     if (current == nullptr)
     {

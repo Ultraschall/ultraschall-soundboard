@@ -145,6 +145,7 @@
     <ClCompile Include="..\..\Source\Redux\Middleware\OscMiddleware.cpp"/>
     <ClCompile Include="..\..\Source\Redux\Store.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\BankViewController.cpp"/>
+    <ClCompile Include="..\..\Source\UserInterface\Controllers\ClipViewController.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\LibraryViewController.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\MainViewController.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\PlaylistViewController.cpp"/>
@@ -2245,6 +2246,7 @@
     <ClInclude Include="..\..\Source\Redux\Redux.h"/>
     <ClInclude Include="..\..\Source\Redux\Store.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\BankViewController.h"/>
+    <ClInclude Include="..\..\Source\UserInterface\Controllers\ClipViewController.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\LibraryViewController.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\MainViewController.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\PlaylistViewController.h"/>
@@ -2258,7 +2260,11 @@
     <ClInclude Include="..\..\Source\UserInterface\Models\Utilities.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Models\ValueTreeObjectList.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Views\AppBar.h"/>
+    <ClInclude Include="..\..\Source\UserInterface\Views\BankSelectorView.h"/>
+    <ClInclude Include="..\..\Source\UserInterface\Views\BankView.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Views\BottomBar.h"/>
+    <ClInclude Include="..\..\Source\UserInterface\Views\ClipItem.h"/>
+    <ClInclude Include="..\..\Source\UserInterface\Views\ClipView.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Views\LibraryItem.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Views\LibraryView.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Views\MainView.h"/>
@@ -3150,6 +3156,8 @@
     <None Include="..\..\Assets\Fonts\Roboto_Mono\RobotoMono-Regular.ttf"/>
     <None Include="..\..\Assets\Fonts\Roboto_Mono\RobotoMono-Thin.ttf"/>
     <None Include="..\..\Assets\Fonts\Roboto_Mono\RobotoMono-ThinItalic.ttf"/>
+    <None Include="..\..\Assets\Icons\arrow_back_ios-24px.svg"/>
+    <None Include="..\..\Assets\Icons\arrow_forward_ios-24px.svg"/>
     <None Include="..\..\Assets\Icons\sharp-add-24px.svg"/>
     <None Include="..\..\Assets\Icons\sharp-call_made-24px.svg"/>
     <None Include="..\..\Assets\Icons\sharp-create_new_folder-24px.svg"/>

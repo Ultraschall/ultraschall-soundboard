@@ -179,6 +179,12 @@ namespace BinaryData
     extern const char*   RobotoMonoThinItalic_ttf;
     const int            RobotoMonoThinItalic_ttfSize = 121456;
 
+    extern const char*   arrow_back_ios24px_svg;
+    const int            arrow_back_ios24px_svgSize = 189;
+
+    extern const char*   arrow_forward_ios24px_svg;
+    const int            arrow_forward_ios24px_svgSize = 184;
+
     extern const char*   sharpadd24px_svg;
     const int            sharpadd24px_svgSize = 621;
 
@@ -249,7 +255,7 @@ namespace BinaryData
     const int            sharpvolume_up24px_svgSize = 664;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 80;
+    const int namedResourceListSize = 82;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

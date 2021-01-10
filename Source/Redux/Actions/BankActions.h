@@ -13,3 +13,10 @@ class NewBankAction : public ActionObject {
 public:
     NewBankAction() : ActionObject(NewBank) {};
 };
+
+class NewClipAction : public ActionObject {
+public:
+    NewClipAction(String bankId, String playerId, int index) : ActionObject(NewClip, ValueTree{ Args, { {IDs::clip_bank_id, bankId}, {IDs::clip_player_id, playerId}, {IDs::clip_index, index}  } }) {
+
+    };
+};

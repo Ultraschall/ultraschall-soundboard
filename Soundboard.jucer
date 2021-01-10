@@ -131,6 +131,10 @@
         </GROUP>
       </GROUP>
       <GROUP id="{9BA4A403-CD3D-8A2D-D5F2-AFA9F75B829B}" name="Icons">
+        <FILE id="DrF93a" name="arrow_back_ios-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/arrow_back_ios-24px.svg"/>
+        <FILE id="mgofF2" name="arrow_forward_ios-24px.svg" compile="0" resource="1"
+              file="Assets/Icons/arrow_forward_ios-24px.svg"/>
         <FILE id="jsmoiB" name="sharp-add-24px.svg" compile="0" resource="1"
               file="Assets/Icons/sharp-add-24px.svg"/>
         <FILE id="LCHEvh" name="sharp-call_made-24px.svg" compile="0" resource="1"
@@ -249,6 +253,10 @@
                 file="Source/UserInterface/Controllers/BankViewController.cpp"/>
           <FILE id="Nv4TQm" name="BankViewController.h" compile="0" resource="0"
                 file="Source/UserInterface/Controllers/BankViewController.h"/>
+          <FILE id="Tz3iAO" name="ClipViewController.cpp" compile="1" resource="0"
+                file="Source/UserInterface/Controllers/ClipViewController.cpp"/>
+          <FILE id="G2ySC3" name="ClipViewController.h" compile="0" resource="0"
+                file="Source/UserInterface/Controllers/ClipViewController.h"/>
           <FILE id="LJAFA3" name="LibraryViewController.cpp" compile="1" resource="0"
                 file="Source/UserInterface/Controllers/LibraryViewController.cpp"/>
           <FILE id="iL39iD" name="LibraryViewController.h" compile="0" resource="0"
@@ -278,7 +286,12 @@
         </GROUP>
         <GROUP id="{F28E88A0-88EA-04F9-13A7-53C1FED7E12D}" name="Views">
           <FILE id="l50LtF" name="AppBar.h" compile="0" resource="0" file="Source/UserInterface/Views/AppBar.h"/>
+          <FILE id="bYtrmz" name="BankSelectorView.h" compile="0" resource="0"
+                file="Source/UserInterface/Views/BankSelectorView.h"/>
+          <FILE id="GuuYbm" name="BankView.h" compile="0" resource="0" file="Source/UserInterface/Views/BankView.h"/>
           <FILE id="XNxHVF" name="BottomBar.h" compile="0" resource="0" file="Source/UserInterface/Views/BottomBar.h"/>
+          <FILE id="mgeAOT" name="ClipItem.h" compile="0" resource="0" file="Source/UserInterface/Views/ClipItem.h"/>
+          <FILE id="MuCjGW" name="ClipView.h" compile="0" resource="0" file="Source/UserInterface/Views/ClipView.h"/>
           <FILE id="rBiNgr" name="LibraryItem.h" compile="0" resource="0" file="Source/UserInterface/Views/LibraryItem.h"/>
           <FILE id="Mk9buD" name="LibraryView.h" compile="0" resource="0" file="Source/UserInterface/Views/LibraryView.h"/>
           <FILE id="NAXb3Y" name="MainView.h" compile="0" resource="0" file="Source/UserInterface/Views/MainView.h"/>
@@ -395,6 +408,25 @@
         <MODULEPATH id="juce_audio_basics"/>
       </MODULEPATHS>
     </LINUX_MAKE>
+    <CLION targetFolder="Builds/CLion" clionXcodeEnabled="1" clionMakefileEnabled="1">
+      <MODULEPATHS>
+        <MODULEPATH id="juce_osc"/>
+        <MODULEPATH id="juce_opengl"/>
+        <MODULEPATH id="juce_gui_extra"/>
+        <MODULEPATH id="juce_gui_basics"/>
+        <MODULEPATH id="juce_graphics"/>
+        <MODULEPATH id="juce_events"/>
+        <MODULEPATH id="juce_dsp"/>
+        <MODULEPATH id="juce_data_structures"/>
+        <MODULEPATH id="juce_core"/>
+        <MODULEPATH id="juce_audio_utils"/>
+        <MODULEPATH id="juce_audio_processors"/>
+        <MODULEPATH id="juce_audio_plugin_client"/>
+        <MODULEPATH id="juce_audio_formats"/>
+        <MODULEPATH id="juce_audio_devices"/>
+        <MODULEPATH id="juce_audio_basics"/>
+      </MODULEPATHS>
+    </CLION>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>

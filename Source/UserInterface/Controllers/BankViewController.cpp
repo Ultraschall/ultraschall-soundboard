@@ -3,7 +3,7 @@
 #include "../../Engine/Player.h"
 
 BankViewController::BankViewController(std::shared_ptr<Store> store)
-	: ValueTreeObjectList<PlayerModel>(store->getState().getChildWithName(IDs::PLAYLISTS)), ViewController(store)
+	: ValueTreeObjectList<BankModel>(store->getState().getChildWithName(IDs::BANKS)), ViewController(store)
 {
 	rebuildObjects();
 }
@@ -15,7 +15,7 @@ BankViewController::~BankViewController()
 
 void BankViewController::loadView()
 {
-	view = std::make_unique<LibraryView>();
+	view = std::make_unique<BankView>();
 }
 
 void BankViewController::viewDidLoad()
@@ -24,26 +24,25 @@ void BankViewController::viewDidLoad()
 
 bool BankViewController::isSuitableType(const juce::ValueTree &tree) const
 {
-	return tree.hasType(IDs::PLAYER);
-	;
+	return tree.hasType(IDs::BANK);
 }
 
-PlayerModel *BankViewController::createNewObject(const juce::ValueTree &tree)
+BankModel *BankViewController::createNewObject(const juce::ValueTree &tree)
 {
-	return new PlayerModel(tree);
+	return new BankModel(tree);
 }
 
-void BankViewController::deleteObject(PlayerModel *type)
+void BankViewController::deleteObject(BankModel *type)
 {
 	delete type;
 }
 
-void BankViewController::newObjectAdded(PlayerModel * /*type*/)
+void BankViewController::newObjectAdded(BankModel * /*type*/)
 {
 	updateContent();
 }
 
-void BankViewController::objectRemoved(PlayerModel * /*type*/)
+void BankViewController::objectRemoved(BankModel * /*type*/)
 {
 	updateContent();
 }

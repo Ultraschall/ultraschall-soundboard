@@ -3,7 +3,7 @@
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Actions/Actions.h"
 
-ValueTree application(ValueTree state, ActionObject action) {
+ValueTree application(ValueTree state, const ActionObject& action) {
 	if (state.getNumProperties() == 0) {
         state.setProperty(IDs::application_version, "4.0.0", nullptr);
 		state.setProperty(IDs::application_master_gain, 1.0f, nullptr);

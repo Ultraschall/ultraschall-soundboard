@@ -1,18 +1,18 @@
 #pragma once
 
-#pragma once
-
 #include "../../../JuceLibraryCode/JuceHeader.h"
 
-#include "../Models/PlayerModel.h"
+#include "../Models/BankModel.h"
 #include "../Models/ValueTreeObjectList.h"
 
-#include "../Views/LibraryItem.h"
-#include "../Views/LibraryView.h"
+#include "../Views/BankSelectorView.h"
+#include "../Views/BankView.h"
+#include "../Views/ClipItem.h"
+#include "../Views/ClipView.h"
 #include "ViewController.h"
 
 class BankViewController
-	: public drow::ValueTreeObjectList<PlayerModel>,
+	: public drow::ValueTreeObjectList<BankModel>,
 	public ViewController<Component>
 {
 public:
@@ -26,13 +26,13 @@ public:
 
 	bool isSuitableType(const juce::ValueTree &tree) const override;
 
-	PlayerModel *createNewObject(const juce::ValueTree &tree) override;
+    BankModel *createNewObject(const juce::ValueTree &tree) override;
 
-	void deleteObject(PlayerModel *type) override;
+	void deleteObject(BankModel *type) override;
 
-	void newObjectAdded(PlayerModel *type) override;
+	void newObjectAdded(BankModel *type) override;
 
-	void objectRemoved(PlayerModel *type) override;
+	void objectRemoved(BankModel *type) override;
 
 	void objectOrderChanged() override;
 

@@ -3,7 +3,7 @@
 #include "Store.h"
 
 std::function<ValueTree(ValueTree, ActionObject)> Store::combineReducers(std::map<Identifier, std::function<ValueTree(ValueTree, ActionObject)>> reducers) {
-	return [reducers](ValueTree state, ActionObject action) -> ValueTree {
+	return [reducers](ValueTree state, const ActionObject& action) -> ValueTree {
 		bool hasChanged = false;
 		ValueTree nextState;
 		for (auto const &reducer : reducers) {

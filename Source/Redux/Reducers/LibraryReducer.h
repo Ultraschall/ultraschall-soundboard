@@ -3,7 +3,7 @@
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Actions/Actions.h"
 
-ValueTree players(ValueTree state, ActionObject action) {
+ValueTree players(ValueTree state, const ActionObject& action) {
     if (state.getNumProperties() == 0) {
     }
 	if (action.type == FileReady) {
