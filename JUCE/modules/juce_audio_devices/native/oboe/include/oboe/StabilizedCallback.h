@@ -57,7 +57,7 @@ private:
  * cpu_relax is an architecture specific method of telling the CPU that you don't want it to
  * do much work. asm volatile keeps the compiler from optimising these instructions out.
  */
-#if defined(__i386__) || defined(__x86_64__) || defined(__arm64__)
+#if defined(__i386__) || defined(__x86_64__)
 #define cpu_relax() asm volatile("rep; nop" ::: "memory");
 
 #elif defined(__arm__) || defined(__mips__)
