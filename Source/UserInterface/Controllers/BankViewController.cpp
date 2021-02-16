@@ -1,9 +1,9 @@
 #include "BankViewController.h"
-#include "../../Redux/Actions/Actions.h"
+#include "../../Store/Actions/Actions.h"
 #include "../../Engine/Player.h"
 
 BankViewController::BankViewController(std::shared_ptr<Store> store)
-	: ValueTreeObjectList<BankModel>(store->getState().getChildWithName(IDs::BANKS)), ViewController(store)
+	: ValueTreeObjectList<BankModel>(store->getState().getChildWithName(IDs::BANKS)), ViewController(store), clipViewController(std::make_unique<ClipViewController>(store))
 {
 	rebuildObjects();
 }
@@ -15,11 +15,17 @@ BankViewController::~BankViewController()
 
 void BankViewController::loadView()
 {
-	view = std::make_unique<BankView>();
+    clipViewController->loadView();
+    view = std::make_unique<BankView>();
 }
 
 void BankViewController::viewDidLoad()
 {
+    auto bankView = dynamic_cast<BankView*>(view.get());
+    if (bankView == nullptr) {
+        return;
+    }
+    bankView->setClipView(clipViewController->getView());
 }
 
 bool BankViewController::isSuitableType(const juce::ValueTree &tree) const

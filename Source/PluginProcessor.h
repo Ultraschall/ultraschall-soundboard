@@ -12,9 +12,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "Redux/Store.h"
+#include "Store/Store.h"
 #include "Engine/Engine.h"
-#include "Redux/Middleware/MidiMiddleware.h"
+#include "Store/Middleware/MidiMiddleware.h"
 
 //==============================================================================
 /**

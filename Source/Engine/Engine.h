@@ -4,7 +4,7 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "Player.h"
-#include "../Redux/Store.h"
+#include "../Store/Store.h"
 
 class Engine : public AudioSource, public ChangeListener {
 public:

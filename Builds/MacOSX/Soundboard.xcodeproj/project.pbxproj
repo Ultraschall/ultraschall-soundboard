@@ -93,6 +93,22 @@
 			isa = PBXBuildFile;
 			fileRef = C019A42620C13DBC360D3E35;
 		};
+		35E87D5FBE34F32E2F88EC2C = {
+			isa = PBXBuildFile;
+			fileRef = 53B967276B36717764A784E9;
+		};
+		C0B409667727BA3F044756EB = {
+			isa = PBXBuildFile;
+			fileRef = ED01C73EE49DA1C16A04ABAE;
+		};
+		4274374DBA9599E954BEC007 = {
+			isa = PBXBuildFile;
+			fileRef = 5F57AAD690CA79A3B5A5A7E0;
+		};
+		EFD5421154CF12AE5704CE56 = {
+			isa = PBXBuildFile;
+			fileRef = 46B55482E3B834E1D54EA359;
+		};
 		51018ACBCD6F94DE0C91CF93 = {
 			isa = PBXBuildFile;
 			fileRef = 7BBFB7E953C17BC369171490;
@@ -104,22 +120,6 @@
 		EEA67115507315C38502A7AE = {
 			isa = PBXBuildFile;
 			fileRef = 312B427E66ED1E77F35F4C67;
-		};
-		66BFE9F071F9C06C4410174F = {
-			isa = PBXBuildFile;
-			fileRef = 23ABF1C306D53054A6C800EC;
-		};
-		4A6529F7AC1999E5BCCA0DB8 = {
-			isa = PBXBuildFile;
-			fileRef = D947A09B2849C2DF3848830A;
-		};
-		0ABBB696104D4AEB3E9F2B44 = {
-			isa = PBXBuildFile;
-			fileRef = 0A3F26289B55D8B19E1AFD46;
-		};
-		CD1AF05CC3E58A9FB5BB8ACA = {
-			isa = PBXBuildFile;
-			fileRef = 38FFCB703E9A65E8392E8869;
 		};
 		34B4972759943120C643BE39 = {
 			isa = PBXBuildFile;
@@ -292,6 +292,13 @@
 			path = ../../Source/UserInterface/Views/PlaylistItem.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		046E01A51B55EAAD1E9B4525 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = OscActions.h;
+			path = ../../Source/Store/Actions/OscActions.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		05BF288FAE5EF97EAF3461B9 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -327,18 +334,11 @@
 			path = "../../Assets/Fonts/Roboto/Roboto-Medium.ttf";
 			sourceTree = "SOURCE_ROOT";
 		};
-		0A3F26289B55D8B19E1AFD46 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = OscMiddleware.cpp;
-			path = ../../Source/Redux/Middleware/OscMiddleware.cpp;
-			sourceTree = "SOURCE_ROOT";
-		};
-		0A812091F49DA0D6B15E8554 = {
+		0B14051A4F4E506E160B8EC7 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = LibraryReducer.h;
-			path = ../../Source/Redux/Reducers/LibraryReducer.h;
+			name = BankActions.h;
+			path = ../../Source/Store/Actions/BankActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		0B48A35374A5D87994F6711A = {
@@ -353,13 +353,6 @@
 			lastKnownFileType = file;
 			name = "juce_core";
 			path = "../../JuceLibraryCode/modules/juce_core";
-			sourceTree = "SOURCE_ROOT";
-		};
-		0C7E9AC49127B43B91BAB836 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = PlaylistReducer.h;
-			path = ../../Source/Redux/Reducers/PlaylistReducer.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		0DA092E7CC15143B2233FAAD = {
@@ -425,6 +418,13 @@
 			path = "../../Assets/Fonts/Roboto/Roboto-MediumItalic.ttf";
 			sourceTree = "SOURCE_ROOT";
 		};
+		19513E6AE3DEFABBE9BC6F64 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = LibraryActions.h;
+			path = ../../Source/Store/Actions/LibraryActions.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		19540D8CADCFFAA33FCBCE25 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -460,6 +460,13 @@
 			path = System/Library/Frameworks/IOKit.framework;
 			sourceTree = SDKROOT;
 		};
+		1B47B312F68C5C4BDF8DD47F = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Reducers.h;
+			path = ../../Source/Store/Reducers/Reducers.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		1B69DC7C9785B298EA5C6394 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.ttf;
@@ -488,13 +495,6 @@
 			path = ../../JuceLibraryCode/AppConfig.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		1F3878369C079D50BF1D55D0 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = BankReducer.h;
-			path = ../../Source/Redux/Reducers/BankReducer.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		1F8FE099283605525CCA6A0F = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -509,18 +509,11 @@
 			path = "../../JuceLibraryCode/include_juce_audio_formats.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		226E6C3EA0EB7D49DFC19598 = {
+		26D8D9188458459D08A8F129 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = Actions.h;
-			path = ../../Source/Redux/Actions/Actions.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		23ABF1C306D53054A6C800EC = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = EngineMiddleware.cpp;
-			path = ../../Source/Redux/Middleware/EngineMiddleware.cpp;
+			name = ApplicationReducer.h;
+			path = ../../Source/Store/Reducers/ApplicationReducer.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		272F6E4A76A96DE741F92B57 = {
@@ -542,13 +535,6 @@
 			lastKnownFileType = file;
 			name = "juce_opengl";
 			path = "../../JuceLibraryCode/modules/juce_opengl";
-			sourceTree = "SOURCE_ROOT";
-		};
-		2B7A9BC82CDD8E0180AECD46 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = LibraryActions.h;
-			path = ../../Source/Redux/Actions/LibraryActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		2C15DD0E330E4F4FD7B6C759 = {
@@ -614,11 +600,11 @@
 			path = System/Library/Frameworks/CoreAudioKit.framework;
 			sourceTree = SDKROOT;
 		};
-		3293DB2906EFAEC9D491865C = {
+		337CBD02EB61FE68657E5F38 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = Redux.h;
-			path = ../../Source/Redux/Redux.h;
+			name = ActionObject.h;
+			path = ../../Source/Store/ActionObject.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		372AA770F7ADE1CF48FAB072 = {
@@ -628,6 +614,13 @@
 			path = ../../Source/UserInterface/Controllers/LibraryViewController.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		373B31B4075BFB6B56A61C84 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = LibraryReducer.h;
+			path = ../../Source/Store/Reducers/LibraryReducer.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		387811731BD5C03A1FAC9E0A = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
@@ -635,11 +628,11 @@
 			path = "../../Assets/Icons/sharp-pause-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
-		38FFCB703E9A65E8392E8869 = {
+		38D00B758C6E2FED0D07F36D = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = Store.cpp;
-			path = ../../Source/Redux/Store.cpp;
+			lastKnownFileType = sourcecode.c.h;
+			name = MidiActions.h;
+			path = ../../Source/Store/Actions/MidiActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		39F213D1AE13FA5DF5A49E1F = {
@@ -677,25 +670,11 @@
 			path = "Info-AUv3_AppExtension.plist";
 			sourceTree = "SOURCE_ROOT";
 		};
-		3D5FCAEC2831F28D1A4D2B87 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = LoggerMiddleware.h;
-			path = ../../Source/Redux/Middleware/LoggerMiddleware.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		3D96DF6E778227515D6885DE = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
 			name = "juce_events";
 			path = "../../JuceLibraryCode/modules/juce_events";
-			sourceTree = "SOURCE_ROOT";
-		};
-		3F95C3DA4E2A1181DC4F1C89 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = ApplicationReducer.h;
-			path = ../../Source/Redux/Reducers/ApplicationReducer.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		40A80AA6711D6007E0DA6B4D = {
@@ -754,6 +733,20 @@
 			path = ../../Source/UserInterface/Views/LibraryItem.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		45EF84C7CDC550A9DF68F729 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Middleware.h;
+			path = ../../Source/Store/Middleware.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		46B55482E3B834E1D54EA359 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Store.cpp;
+			path = ../../Source/Store/Store.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		4787DCBA47264CD85BADFF2B = {
 			isa = PBXFileReference;
 			lastKnownFileType = image.png;
@@ -768,25 +761,11 @@
 			path = ../../Source/UserInterface/Views/AppBar.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		519F8078669CAC6469535A8D = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = ApplicationActions.h;
-			path = ../../Source/Redux/Actions/ApplicationActions.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		5300B77155A0F2541974C64A = {
+		4C1A5C758371D0DEA363E7EC = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
 			name = MidiMiddleware.h;
-			path = ../../Source/Redux/Middleware/MidiMiddleware.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		5356EA5D680D62E3E52F0538 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = PlayerReducer.h;
-			path = ../../Source/Redux/Reducers/PlayerReducer.h;
+			path = ../../Source/Store/Middleware/MidiMiddleware.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		53A505E164528DF4936608DE = {
@@ -796,11 +775,18 @@
 			path = "../../Assets/AppIcons/iOS/Icon-29@3x.png";
 			sourceTree = "SOURCE_ROOT";
 		};
-		556033EBA721BB25AB380423 = {
+		53B967276B36717764A784E9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = EngineMiddleware.cpp;
+			path = ../../Source/Store/Middleware/EngineMiddleware.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		5446C7B31488684D79DA2F94 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = PlayerActions.h;
-			path = ../../Source/Redux/Actions/PlayerActions.h;
+			name = PlaylistActions.h;
+			path = ../../Source/Store/Actions/PlaylistActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		5626D5DBCE54FA6338B63D4B = {
@@ -831,18 +817,18 @@
 			path = ../../Source/UserInterface/Models/BankModel.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		5A93BE910EA66A58F2E0A8DD = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Reducers.h;
-			path = ../../Source/Redux/Reducers/Reducers.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		5AF5DDFCB8DC513E026BB5EC = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
 			name = "include_juce_audio_processors.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_processors.mm";
+			sourceTree = "SOURCE_ROOT";
+		};
+		5F57AAD690CA79A3B5A5A7E0 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = OscMiddleware.cpp;
+			path = ../../Source/Store/Middleware/OscMiddleware.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
 		6004A32F7327153376DF749F = {
@@ -857,13 +843,6 @@
 			lastKnownFileType = file;
 			name = "juce_gui_basics";
 			path = "../../JuceLibraryCode/modules/juce_gui_basics";
-			sourceTree = "SOURCE_ROOT";
-		};
-		6064A6458F5301A48BA66BF4 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = OscMiddleware.h;
-			path = ../../Source/Redux/Middleware/OscMiddleware.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		6209DB29B46AE9B671B5A534 = {
@@ -915,13 +894,6 @@
 			path = "../../JuceLibraryCode/include_juce_audio_basics.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		6BF87D4108E959F604DCA52C = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = BankActions.h;
-			path = ../../Source/Redux/Actions/BankActions.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		6D728035369730F3217EB818 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.txt;
@@ -934,13 +906,6 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = StartupView.h;
 			path = ../../Source/UserInterface/Views/StartupView.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		6F9C517DD3B1FC247CAF9052 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = PlaylistActions.h;
-			path = ../../Source/Redux/Actions/PlaylistActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		702172843FCC27CCF7AF9BB3 = {
@@ -962,6 +927,13 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = "include_juce_audio_plugin_client_VST3.cpp";
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST3.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
+		721D458D574A59420CB5B152 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Store.h;
+			path = ../../Source/Store/Store.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		729845C37C49A1B5671F1705 = {
@@ -990,6 +962,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = Material.h;
 			path = ../../Source/LookAndFeel/Material.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		793BC23C292E52B26D319DBA = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = OscMiddleware.h;
+			path = ../../Source/Store/Middleware/OscMiddleware.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		7A4AC8A1880F37C3BC7ED6DF = {
@@ -1076,6 +1055,13 @@
 			path = "../../Assets/AppIcons/Android/Notification Icon/ic_notification_MDPI.png";
 			sourceTree = "SOURCE_ROOT";
 		};
+		8C02FAA87AA6EBD97A8F96FB = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = PlaylistReducer.h;
+			path = ../../Source/Store/Reducers/PlaylistReducer.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		8C881980A5118699208E37AF = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
@@ -1153,6 +1139,13 @@
 			path = "../../Assets/Icons/sharp-loop-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
+		95F05063AF9D6E6AC8264C97 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Identifier.h;
+			path = ../../Source/Store/Identifier.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		96259DB28AB35777E21AE8E0 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.plist.xml;
@@ -1174,6 +1167,13 @@
 			path = ../../Source/Engine/Envelope.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
+		9FEE2B0695CD92C251F9094E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = BankReducer.h;
+			path = ../../Source/Store/Reducers/BankReducer.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A04AC5914CD3AB88AD731BF6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -1186,6 +1186,13 @@
 			lastKnownFileType = file.ttf;
 			name = "Roboto-Thin.ttf";
 			path = "../../Assets/Fonts/Roboto/Roboto-Thin.ttf";
+			sourceTree = "SOURCE_ROOT";
+		};
+		A26DBA16103606D8EDD7F513 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Actions.h;
+			path = ../../Source/Store/Actions/Actions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		A2BF915633C4C1243A5E78F7 = {
@@ -1279,13 +1286,6 @@
 			path = "../../Assets/AppIcons/iOS/Icon-29.png";
 			sourceTree = "SOURCE_ROOT";
 		};
-		A4ABBD0196044C8D0D1BF1E3 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = ActionObject.h;
-			path = ../../Source/Redux/ActionObject.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		A4BE84643BD6AF90243ED059 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -1347,20 +1347,6 @@
 			lastKnownFileType = file.ttf;
 			name = "Roboto-ThinItalic.ttf";
 			path = "../../Assets/Fonts/Roboto/Roboto-ThinItalic.ttf";
-			sourceTree = "SOURCE_ROOT";
-		};
-		ABDD25F5A15488FEB24C2E9A = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = MidiActions.h;
-			path = ../../Source/Redux/Actions/MidiActions.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		AC336160645F173CAB0AFF6D = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Store.h;
-			path = ../../Source/Redux/Store.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		AC8A7EB18BF0C61D035BDC47 = {
@@ -1447,20 +1433,6 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU.r";
 			sourceTree = "SOURCE_ROOT";
 		};
-		B7C289A41CEC4F2BAD65094C = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = OscActions.h;
-			path = ../../Source/Redux/Actions/OscActions.h;
-			sourceTree = "SOURCE_ROOT";
-		};
-		BA4B61814132AAADEBBA2798 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Middleware.h;
-			path = ../../Source/Redux/Middleware.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		BA74DE370D19766F5BFCC870 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -1503,6 +1475,20 @@
 			path = ../../Source/LookAndFeel/FloatingActionButton.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		C14BD76E28684091424298B4 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = PlayerActions.h;
+			path = ../../Source/Store/Actions/PlayerActions.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		C305E95E980112E4221873BD = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = ClipReducer.h;
+			path = ../../Source/Store/Reducers/ClipReducer.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		C60DF2DA9A280D4B41860B93 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file.svg;
@@ -1537,13 +1523,6 @@
 			name = DiscRecording.framework;
 			path = System/Library/Frameworks/DiscRecording.framework;
 			sourceTree = SDKROOT;
-		};
-		CC354610723B56AA9FD2FD56 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Identifier.h;
-			path = ../../Source/Redux/Identifier.h;
-			sourceTree = "SOURCE_ROOT";
 		};
 		CD0D17821C02DCE18B5675D0 = {
 			isa = PBXFileReference;
@@ -1615,6 +1594,13 @@
 			path = "Info-AU.plist";
 			sourceTree = "SOURCE_ROOT";
 		};
+		D2D54F16FA6B0ED9575DEA40 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = LoggerMiddleware.h;
+			path = ../../Source/Store/Middleware/LoggerMiddleware.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		D4546DDD450BBBFF4FA5A7DC = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -1636,11 +1622,11 @@
 			path = "../../Assets/Fonts/Roboto_Mono/RobotoMono-ThinItalic.ttf";
 			sourceTree = "SOURCE_ROOT";
 		};
-		D947A09B2849C2DF3848830A = {
+		D97AAD437AC346C1FFE96E85 = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = MidiMiddleware.cpp;
-			path = ../../Source/Redux/Middleware/MidiMiddleware.cpp;
+			lastKnownFileType = sourcecode.c.h;
+			name = ApplicationActions.h;
+			path = ../../Source/Store/Actions/ApplicationActions.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		D9958FA8DF885C714F854B28 = {
@@ -1713,6 +1699,13 @@
 			path = ../../JuceLibraryCode/JucePluginDefines.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		E3C5A022F668A3140F39311F = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = PlayerReducer.h;
+			path = ../../Source/Store/Reducers/PlayerReducer.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		E47E6C225CE7A974B34B576E = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -1769,11 +1762,18 @@
 			path = ../../Source/UserInterface/Views/Mocks.h;
 			sourceTree = "SOURCE_ROOT";
 		};
-		EC6C70A6AC351806E271D0B1 = {
+		ECED1FDE827C51E07EE05A51 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = EngineMiddleware.h;
-			path = ../../Source/Redux/Middleware/EngineMiddleware.h;
+			name = PlaylistActionStart.h;
+			path = ../../Source/UserInterface/Views/PlaylistActionStart.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		ED01C73EE49DA1C16A04ABAE = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = MidiMiddleware.cpp;
+			path = ../../Source/Store/Middleware/MidiMiddleware.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
 		EF7A36905F6B12355C49EB8F = {
@@ -1811,11 +1811,11 @@
 			path = "../../Assets/Icons/sharp-settings-24px.svg";
 			sourceTree = "SOURCE_ROOT";
 		};
-		ECED1FDE827C51E07EE05A51 = {
+		EF67005E1C3E9EEF1389289A = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			name = PlaylistActionStart.h;
-			path = ../../Source/UserInterface/Views/PlaylistActionStart.h;
+			name = EngineMiddleware.h;
+			path = ../../Source/Store/Middleware/EngineMiddleware.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		EFBD4D398689EA9E2CAC2D96 = {
@@ -2107,6 +2107,64 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		682F53CC5029D8AFE747534E = {
+			isa = PBXGroup;
+			children = (
+				A26DBA16103606D8EDD7F513,
+				D97AAD437AC346C1FFE96E85,
+				0B14051A4F4E506E160B8EC7,
+				19513E6AE3DEFABBE9BC6F64,
+				38D00B758C6E2FED0D07F36D,
+				046E01A51B55EAAD1E9B4525,
+				C14BD76E28684091424298B4,
+				5446C7B31488684D79DA2F94,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		008B9541A0A9F1E46718AF21 = {
+			isa = PBXGroup;
+			children = (
+				53B967276B36717764A784E9,
+				EF67005E1C3E9EEF1389289A,
+				D2D54F16FA6B0ED9575DEA40,
+				ED01C73EE49DA1C16A04ABAE,
+				4C1A5C758371D0DEA363E7EC,
+				5F57AAD690CA79A3B5A5A7E0,
+				793BC23C292E52B26D319DBA,
+			);
+			name = Middleware;
+			sourceTree = "<group>";
+		};
+		1CC85C63135CFCA6F465B348 = {
+			isa = PBXGroup;
+			children = (
+				26D8D9188458459D08A8F129,
+				9FEE2B0695CD92C251F9094E,
+				C305E95E980112E4221873BD,
+				373B31B4075BFB6B56A61C84,
+				E3C5A022F668A3140F39311F,
+				8C02FAA87AA6EBD97A8F96FB,
+				1B47B312F68C5C4BDF8DD47F,
+			);
+			name = Reducers;
+			sourceTree = "<group>";
+		};
+		F91A6DC0221F2C9162C8D612 = {
+			isa = PBXGroup;
+			children = (
+				682F53CC5029D8AFE747534E,
+				008B9541A0A9F1E46718AF21,
+				1CC85C63135CFCA6F465B348,
+				337CBD02EB61FE68657E5F38,
+				95F05063AF9D6E6AC8264C97,
+				45EF84C7CDC550A9DF68F729,
+				46B55482E3B834E1D54EA359,
+				721D458D574A59420CB5B152,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
 		CDEDD58DDD99E0529E0DC413 = {
 			isa = PBXGroup;
 			children = (
@@ -2124,64 +2182,6 @@
 				1F8FE099283605525CCA6A0F,
 			);
 			name = LookAndFeel;
-			sourceTree = "<group>";
-		};
-		79E2FE532E154676A3B17665 = {
-			isa = PBXGroup;
-			children = (
-				226E6C3EA0EB7D49DFC19598,
-				519F8078669CAC6469535A8D,
-				6BF87D4108E959F604DCA52C,
-				2B7A9BC82CDD8E0180AECD46,
-				ABDD25F5A15488FEB24C2E9A,
-				B7C289A41CEC4F2BAD65094C,
-				556033EBA721BB25AB380423,
-				6F9C517DD3B1FC247CAF9052,
-			);
-			name = Actions;
-			sourceTree = "<group>";
-		};
-		00A9A9BDE932D66EC83AF4B5 = {
-			isa = PBXGroup;
-			children = (
-				23ABF1C306D53054A6C800EC,
-				EC6C70A6AC351806E271D0B1,
-				3D5FCAEC2831F28D1A4D2B87,
-				D947A09B2849C2DF3848830A,
-				5300B77155A0F2541974C64A,
-				0A3F26289B55D8B19E1AFD46,
-				6064A6458F5301A48BA66BF4,
-			);
-			name = Middleware;
-			sourceTree = "<group>";
-		};
-		E1818D0CDB3F617F4FBC80D7 = {
-			isa = PBXGroup;
-			children = (
-				3F95C3DA4E2A1181DC4F1C89,
-				1F3878369C079D50BF1D55D0,
-				0A812091F49DA0D6B15E8554,
-				5356EA5D680D62E3E52F0538,
-				0C7E9AC49127B43B91BAB836,
-				5A93BE910EA66A58F2E0A8DD,
-			);
-			name = Reducers;
-			sourceTree = "<group>";
-		};
-		084D430F1E63B9C70EFBA144 = {
-			isa = PBXGroup;
-			children = (
-				79E2FE532E154676A3B17665,
-				00A9A9BDE932D66EC83AF4B5,
-				E1818D0CDB3F617F4FBC80D7,
-				A4ABBD0196044C8D0D1BF1E3,
-				CC354610723B56AA9FD2FD56,
-				BA4B61814132AAADEBBA2798,
-				3293DB2906EFAEC9D491865C,
-				38FFCB703E9A65E8392E8869,
-				AC336160645F173CAB0AFF6D,
-			);
-			name = Redux;
 			sourceTree = "<group>";
 		};
 		04FCAAF97625AC8369B4191E = {
@@ -2270,8 +2270,8 @@
 		CF1AA77E699C9F52920DAD9D = {
 			isa = PBXGroup;
 			children = (
+				F91A6DC0221F2C9162C8D612,
 				CDEDD58DDD99E0529E0DC413,
-				084D430F1E63B9C70EFBA144,
 				8B6AEF07D07D3C046880A373,
 				C397918C63DEB18391F44335,
 				3C165829B324B98FB564CB8C,
@@ -3449,13 +3449,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E87D5FBE34F32E2F88EC2C,
+				C0B409667727BA3F044756EB,
+				4274374DBA9599E954BEC007,
+				EFD5421154CF12AE5704CE56,
 				51018ACBCD6F94DE0C91CF93,
 				677EF090E36C03A22EE86EFB,
 				EEA67115507315C38502A7AE,
-				66BFE9F071F9C06C4410174F,
-				4A6529F7AC1999E5BCCA0DB8,
-				0ABBB696104D4AEB3E9F2B44,
-				CD1AF05CC3E58A9FB5BB8ACA,
 				34B4972759943120C643BE39,
 				2059AD5DB12B918FE0FD07B4,
 				5A6AFEA7FADBB703B366B073,

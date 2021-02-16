@@ -104,13 +104,13 @@ OBJECTS_STANDALONE_PLUGIN := \
   $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o \
 
 OBJECTS_SHARED_CODE := \
+  $(JUCE_OBJDIR)/EngineMiddleware_be8b2004.o \
+  $(JUCE_OBJDIR)/MidiMiddleware_fe209163.o \
+  $(JUCE_OBJDIR)/OscMiddleware_8350f82b.o \
+  $(JUCE_OBJDIR)/Store_1f5132f4.o \
   $(JUCE_OBJDIR)/Colors_866f194a.o \
   $(JUCE_OBJDIR)/Fonts_d04ee4f4.o \
   $(JUCE_OBJDIR)/Icons_d9373f0a.o \
-  $(JUCE_OBJDIR)/EngineMiddleware_7e410217.o \
-  $(JUCE_OBJDIR)/MidiMiddleware_bffddc36.o \
-  $(JUCE_OBJDIR)/OscMiddleware_580586f8.o \
-  $(JUCE_OBJDIR)/Store_6de3e547.o \
   $(JUCE_OBJDIR)/BankViewController_a89bc7f.o \
   $(JUCE_OBJDIR)/ClipViewController_99ccbc93.o \
   $(JUCE_OBJDIR)/LibraryViewController_cc8b6c84.o \
@@ -187,6 +187,26 @@ $(JUCE_OBJDIR)/include_juce_audio_plugin_client_Standalone_1a871192.o: ../../Juc
 	@echo "Compiling include_juce_audio_plugin_client_Standalone.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_STANDALONE_PLUGIN) $(JUCE_CFLAGS_STANDALONE_PLUGIN) -o "$@" -c "$<"
 
+$(JUCE_OBJDIR)/EngineMiddleware_be8b2004.o: ../../Source/Store/Middleware/EngineMiddleware.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling EngineMiddleware.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/MidiMiddleware_fe209163.o: ../../Source/Store/Middleware/MidiMiddleware.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling MidiMiddleware.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/OscMiddleware_8350f82b.o: ../../Source/Store/Middleware/OscMiddleware.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling OscMiddleware.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Store_1f5132f4.o: ../../Source/Store/Store.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Store.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/Colors_866f194a.o: ../../Source/LookAndFeel/Colors.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Colors.cpp"
@@ -200,26 +220,6 @@ $(JUCE_OBJDIR)/Fonts_d04ee4f4.o: ../../Source/LookAndFeel/Fonts.cpp
 $(JUCE_OBJDIR)/Icons_d9373f0a.o: ../../Source/LookAndFeel/Icons.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Icons.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/EngineMiddleware_7e410217.o: ../../Source/Redux/Middleware/EngineMiddleware.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling EngineMiddleware.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/MidiMiddleware_bffddc36.o: ../../Source/Redux/Middleware/MidiMiddleware.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling MidiMiddleware.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/OscMiddleware_580586f8.o: ../../Source/Redux/Middleware/OscMiddleware.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling OscMiddleware.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/Store_6de3e547.o: ../../Source/Redux/Store.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling Store.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/BankViewController_a89bc7f.o: ../../Source/UserInterface/Controllers/BankViewController.cpp

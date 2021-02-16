@@ -1,5 +1,5 @@
 #include "LibraryViewController.h"
-#include "../../Redux/Actions/Actions.h"
+#include "../../Store/Actions/Actions.h"
 #include "../../Engine/Player.h"
 
 LibraryViewController::LibraryViewController(std::shared_ptr<Store> store)
@@ -93,17 +93,17 @@ Component *LibraryViewController::refreshComponentForRow(int rowNumber, bool isR
 
     LibraryItem *libraryItem = nullptr;
 
-    auto existinglibraryItem = dynamic_cast<LibraryItem *>(existingComponentToUpdate);
+    auto existingLibraryItem = dynamic_cast<LibraryItem *>(existingComponentToUpdate);
     if (nullptr != existingComponentToUpdate)
     {
-        if (nullptr == existinglibraryItem)
+        if (nullptr == existingLibraryItem)
         {
             delete existingComponentToUpdate;
             libraryItem = new LibraryItem();
         }
         else
         {
-            libraryItem = existinglibraryItem;
+            libraryItem = existingLibraryItem;
         }
     }
     else

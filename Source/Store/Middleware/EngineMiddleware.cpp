@@ -84,21 +84,22 @@ void EngineMiddleware::AsyncFileLoader::handleAsyncUpdate() {
             if (file.isDirectory()) {
                 auto child_files = file.findChildFiles(File::findFiles, true);
                 for (auto &child_file : child_files) {
-                    Uuid uuid;
-                    auto id = Identifier(uuid.toDashedString());
-                    
-                    if (engine.loadAudioFile(id, child_file)) {
-                        store.dispatch(FileReadyAction(uuid.toDashedString(), child_file.getFileName(), child_file.getFullPathName()));
-                    }
+                    loadFile(child_file);
                 }
             } else {
-                Uuid uuid;
-                auto id = Identifier(uuid.toDashedString());
-                
-                if (engine.loadAudioFile(id, file)) {
-                    store.dispatch(FileReadyAction(uuid.toDashedString(), file.getFileName(), file.getFullPathName()));
-                }
+                loadFile(file);
             }
         }
+    }
+}
+
+void EngineMiddleware::AsyncFileLoader::loadFile(const File &file) {
+    Uuid uuid;
+    auto id = Identifier(uuid.toDashedString());
+
+    if (this->engine.loadAudioFile(id, file)) {
+        auto bank = this->store.getState().getChildWithName(IDs::BANKS).getChild(0);
+        this->store.dispatch(FileReadyAction(uuid.toDashedString(), file.getFileName(), file.getFullPathName()));
+        this->store.dispatch(CreateClipAction(bank.getProperty(IDs::bank_id), uuid.toDashedString()));
     }
 }

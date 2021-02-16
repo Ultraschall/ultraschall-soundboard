@@ -1,10 +1,10 @@
 #include "ClipViewController.h"
 #include "BankViewController.h"
-#include "../../Redux/Actions/Actions.h"
+#include "../../Store/Actions/Actions.h"
 #include "../../Engine/Player.h"
 
-ClipViewController::ClipViewController(std::shared_ptr<Store> store, ValueTree bank)
-        : ValueTreeObjectList<ClipModel>(bank.getChildWithName(IDs::CLIPS)), ViewController(store)
+ClipViewController::ClipViewController(std::shared_ptr<Store> store)
+        : ValueTreeObjectList<ClipModel>(store->getState().getChildWithName(IDs::CLIPS)), ViewController(store)
 {
     rebuildObjects();
 }
@@ -16,7 +16,7 @@ ClipViewController::~ClipViewController()
 
 void ClipViewController::loadView()
 {
-    view = std::make_unique<BankView>();
+    view = std::make_unique<ClipView>();
 }
 
 void ClipViewController::viewDidLoad()
@@ -60,5 +60,4 @@ void ClipViewController::valueTreePropertyChanged(ValueTree & /*state*/, const I
 
 void ClipViewController::updateContent() const
 {
-
 }

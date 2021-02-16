@@ -19,7 +19,6 @@ class BankView  : public juce::Component
 public:
     BankView() : Component("BankView") {
         addAndMakeVisible(&bankSelectorView);
-        addAndMakeVisible(&clipView);
     }
     ~BankView() override = default;
 
@@ -30,13 +29,28 @@ public:
         FlexBox flexBox;
         flexBox.flexDirection = juce::FlexBox::Direction::column;
         flexBox.items.add(juce::FlexItem(bankSelectorView).withHeight(32));
-        flexBox.items.add(juce::FlexItem(clipView).withFlex(1));
+        if (contentView != nullptr) {
+            flexBox.items.add(FlexItem(*contentView).withFlex(1));
+        }
         flexBox.performLayout(getLocalBounds());
     }
 
-    ClipView clipView;
+    void setClipView(Component* view) {
+        if (view == contentView) return;
+        
+        if (contentView != nullptr) {
+            removeChildComponent(contentView);
+        }
+        contentView = view;
+        addAndMakeVisible(contentView);
+        contentView->toBack();
+        resized();
+    }
+    
     BankSelectorView bankSelectorView;
 
 private:
+    Component *contentView{nullptr};
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BankView)
 };

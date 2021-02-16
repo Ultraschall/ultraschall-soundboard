@@ -137,13 +137,13 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Store\Middleware\EngineMiddleware.cpp"/>
+    <ClCompile Include="..\..\Source\Store\Middleware\MidiMiddleware.cpp"/>
+    <ClCompile Include="..\..\Source\Store\Middleware\OscMiddleware.cpp"/>
+    <ClCompile Include="..\..\Source\Store\Store.cpp"/>
     <ClCompile Include="..\..\Source\LookAndFeel\Colors.cpp"/>
     <ClCompile Include="..\..\Source\LookAndFeel\Fonts.cpp"/>
     <ClCompile Include="..\..\Source\LookAndFeel\Icons.cpp"/>
-    <ClCompile Include="..\..\Source\Redux\Middleware\EngineMiddleware.cpp"/>
-    <ClCompile Include="..\..\Source\Redux\Middleware\MidiMiddleware.cpp"/>
-    <ClCompile Include="..\..\Source\Redux\Middleware\OscMiddleware.cpp"/>
-    <ClCompile Include="..\..\Source\Redux\Store.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\BankViewController.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\ClipViewController.cpp"/>
     <ClCompile Include="..\..\Source\UserInterface\Controllers\LibraryViewController.cpp"/>
@@ -2213,6 +2213,29 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_osc.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Store\Actions\Actions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\ApplicationActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\BankActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\LibraryActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\MidiActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\OscActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\PlayerActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Actions\PlaylistActions.h"/>
+    <ClInclude Include="..\..\Source\Store\Middleware\EngineMiddleware.h"/>
+    <ClInclude Include="..\..\Source\Store\Middleware\LoggerMiddleware.h"/>
+    <ClInclude Include="..\..\Source\Store\Middleware\MidiMiddleware.h"/>
+    <ClInclude Include="..\..\Source\Store\Middleware\OscMiddleware.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\ApplicationReducer.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\BankReducer.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\ClipReducer.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\LibraryReducer.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\PlayerReducer.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\PlaylistReducer.h"/>
+    <ClInclude Include="..\..\Source\Store\Reducers\Reducers.h"/>
+    <ClInclude Include="..\..\Source\Store\ActionObject.h"/>
+    <ClInclude Include="..\..\Source\Store\Identifier.h"/>
+    <ClInclude Include="..\..\Source\Store\Middleware.h"/>
+    <ClInclude Include="..\..\Source\Store\Store.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel\Colors.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel\Common.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel\FloatingActionButton.h"/>
@@ -2222,29 +2245,6 @@
     <ClInclude Include="..\..\Source\LookAndFeel\Material.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel\MaterialLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\LookAndFeel\Shadows.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\Actions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\ApplicationActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\BankActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\LibraryActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\MidiActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\OscActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\PlayerActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Actions\PlaylistActions.h"/>
-    <ClInclude Include="..\..\Source\Redux\Middleware\EngineMiddleware.h"/>
-    <ClInclude Include="..\..\Source\Redux\Middleware\LoggerMiddleware.h"/>
-    <ClInclude Include="..\..\Source\Redux\Middleware\MidiMiddleware.h"/>
-    <ClInclude Include="..\..\Source\Redux\Middleware\OscMiddleware.h"/>
-    <ClInclude Include="..\..\Source\Redux\Reducers\ApplicationReducer.h"/>
-    <ClInclude Include="..\..\Source\Redux\Reducers\BankReducer.h"/>
-    <ClInclude Include="..\..\Source\Redux\Reducers\LibraryReducer.h"/>
-    <ClInclude Include="..\..\Source\Redux\Reducers\PlayerReducer.h"/>
-    <ClInclude Include="..\..\Source\Redux\Reducers\PlaylistReducer.h"/>
-    <ClInclude Include="..\..\Source\Redux\Reducers\Reducers.h"/>
-    <ClInclude Include="..\..\Source\Redux\ActionObject.h"/>
-    <ClInclude Include="..\..\Source\Redux\Identifier.h"/>
-    <ClInclude Include="..\..\Source\Redux\Middleware.h"/>
-    <ClInclude Include="..\..\Source\Redux\Redux.h"/>
-    <ClInclude Include="..\..\Source\Redux\Store.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\BankViewController.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\ClipViewController.h"/>
     <ClInclude Include="..\..\Source\UserInterface\Controllers\LibraryViewController.h"/>

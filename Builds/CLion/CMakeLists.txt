@@ -251,6 +251,33 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Icons/sharp-volume_mute-24px.svg"
     "../../Assets/Icons/sharp-volume_off-24px.svg"
     "../../Assets/Icons/sharp-volume_up-24px.svg"
+    "../../Source/Store/Actions/Actions.h"
+    "../../Source/Store/Actions/ApplicationActions.h"
+    "../../Source/Store/Actions/BankActions.h"
+    "../../Source/Store/Actions/LibraryActions.h"
+    "../../Source/Store/Actions/MidiActions.h"
+    "../../Source/Store/Actions/OscActions.h"
+    "../../Source/Store/Actions/PlayerActions.h"
+    "../../Source/Store/Actions/PlaylistActions.h"
+    "../../Source/Store/Middleware/EngineMiddleware.cpp"
+    "../../Source/Store/Middleware/EngineMiddleware.h"
+    "../../Source/Store/Middleware/LoggerMiddleware.h"
+    "../../Source/Store/Middleware/MidiMiddleware.cpp"
+    "../../Source/Store/Middleware/MidiMiddleware.h"
+    "../../Source/Store/Middleware/OscMiddleware.cpp"
+    "../../Source/Store/Middleware/OscMiddleware.h"
+    "../../Source/Store/Reducers/ApplicationReducer.h"
+    "../../Source/Store/Reducers/BankReducer.h"
+    "../../Source/Store/Reducers/ClipReducer.h"
+    "../../Source/Store/Reducers/LibraryReducer.h"
+    "../../Source/Store/Reducers/PlayerReducer.h"
+    "../../Source/Store/Reducers/PlaylistReducer.h"
+    "../../Source/Store/Reducers/Reducers.h"
+    "../../Source/Store/ActionObject.h"
+    "../../Source/Store/Identifier.h"
+    "../../Source/Store/Middleware.h"
+    "../../Source/Store/Store.cpp"
+    "../../Source/Store/Store.h"
     "../../Source/LookAndFeel/Colors.cpp"
     "../../Source/LookAndFeel/Colors.h"
     "../../Source/LookAndFeel/Common.h"
@@ -263,33 +290,6 @@ add_library (SHARED_CODE STATIC
     "../../Source/LookAndFeel/Material.h"
     "../../Source/LookAndFeel/MaterialLookAndFeel.h"
     "../../Source/LookAndFeel/Shadows.h"
-    "../../Source/Redux/Actions/Actions.h"
-    "../../Source/Redux/Actions/ApplicationActions.h"
-    "../../Source/Redux/Actions/BankActions.h"
-    "../../Source/Redux/Actions/LibraryActions.h"
-    "../../Source/Redux/Actions/MidiActions.h"
-    "../../Source/Redux/Actions/OscActions.h"
-    "../../Source/Redux/Actions/PlayerActions.h"
-    "../../Source/Redux/Actions/PlaylistActions.h"
-    "../../Source/Redux/Middleware/EngineMiddleware.cpp"
-    "../../Source/Redux/Middleware/EngineMiddleware.h"
-    "../../Source/Redux/Middleware/LoggerMiddleware.h"
-    "../../Source/Redux/Middleware/MidiMiddleware.cpp"
-    "../../Source/Redux/Middleware/MidiMiddleware.h"
-    "../../Source/Redux/Middleware/OscMiddleware.cpp"
-    "../../Source/Redux/Middleware/OscMiddleware.h"
-    "../../Source/Redux/Reducers/ApplicationReducer.h"
-    "../../Source/Redux/Reducers/BankReducer.h"
-    "../../Source/Redux/Reducers/LibraryReducer.h"
-    "../../Source/Redux/Reducers/PlayerReducer.h"
-    "../../Source/Redux/Reducers/PlaylistReducer.h"
-    "../../Source/Redux/Reducers/Reducers.h"
-    "../../Source/Redux/ActionObject.h"
-    "../../Source/Redux/Identifier.h"
-    "../../Source/Redux/Middleware.h"
-    "../../Source/Redux/Redux.h"
-    "../../Source/Redux/Store.cpp"
-    "../../Source/Redux/Store.h"
     "../../Source/UserInterface/Controllers/BankViewController.cpp"
     "../../Source/UserInterface/Controllers/BankViewController.h"
     "../../Source/UserInterface/Controllers/ClipViewController.cpp"
@@ -1990,6 +1990,29 @@ set_source_files_properties ("../../Assets/Icons/sharp-view_comfy-24px.svg" PROP
 set_source_files_properties ("../../Assets/Icons/sharp-volume_mute-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_off-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_up-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/MidiActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/OscActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/EngineMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/ClipReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/Colors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1999,29 +2022,6 @@ set_source_files_properties ("../../Source/LookAndFeel/Icons.h" PROPERTIES HEADE
 set_source_files_properties ("../../Source/LookAndFeel/Material.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/Shadows.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/MidiActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/OscActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/EngineMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Redux.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/UserInterface/Controllers/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/UserInterface/Controllers/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/UserInterface/Controllers/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -4430,6 +4430,33 @@ add_library (SHARED_CODE STATIC
     "../../Assets/Icons/sharp-volume_mute-24px.svg"
     "../../Assets/Icons/sharp-volume_off-24px.svg"
     "../../Assets/Icons/sharp-volume_up-24px.svg"
+    "../../Source/Store/Actions/Actions.h"
+    "../../Source/Store/Actions/ApplicationActions.h"
+    "../../Source/Store/Actions/BankActions.h"
+    "../../Source/Store/Actions/LibraryActions.h"
+    "../../Source/Store/Actions/MidiActions.h"
+    "../../Source/Store/Actions/OscActions.h"
+    "../../Source/Store/Actions/PlayerActions.h"
+    "../../Source/Store/Actions/PlaylistActions.h"
+    "../../Source/Store/Middleware/EngineMiddleware.cpp"
+    "../../Source/Store/Middleware/EngineMiddleware.h"
+    "../../Source/Store/Middleware/LoggerMiddleware.h"
+    "../../Source/Store/Middleware/MidiMiddleware.cpp"
+    "../../Source/Store/Middleware/MidiMiddleware.h"
+    "../../Source/Store/Middleware/OscMiddleware.cpp"
+    "../../Source/Store/Middleware/OscMiddleware.h"
+    "../../Source/Store/Reducers/ApplicationReducer.h"
+    "../../Source/Store/Reducers/BankReducer.h"
+    "../../Source/Store/Reducers/ClipReducer.h"
+    "../../Source/Store/Reducers/LibraryReducer.h"
+    "../../Source/Store/Reducers/PlayerReducer.h"
+    "../../Source/Store/Reducers/PlaylistReducer.h"
+    "../../Source/Store/Reducers/Reducers.h"
+    "../../Source/Store/ActionObject.h"
+    "../../Source/Store/Identifier.h"
+    "../../Source/Store/Middleware.h"
+    "../../Source/Store/Store.cpp"
+    "../../Source/Store/Store.h"
     "../../Source/LookAndFeel/Colors.cpp"
     "../../Source/LookAndFeel/Colors.h"
     "../../Source/LookAndFeel/Common.h"
@@ -4442,33 +4469,6 @@ add_library (SHARED_CODE STATIC
     "../../Source/LookAndFeel/Material.h"
     "../../Source/LookAndFeel/MaterialLookAndFeel.h"
     "../../Source/LookAndFeel/Shadows.h"
-    "../../Source/Redux/Actions/Actions.h"
-    "../../Source/Redux/Actions/ApplicationActions.h"
-    "../../Source/Redux/Actions/BankActions.h"
-    "../../Source/Redux/Actions/LibraryActions.h"
-    "../../Source/Redux/Actions/MidiActions.h"
-    "../../Source/Redux/Actions/OscActions.h"
-    "../../Source/Redux/Actions/PlayerActions.h"
-    "../../Source/Redux/Actions/PlaylistActions.h"
-    "../../Source/Redux/Middleware/EngineMiddleware.cpp"
-    "../../Source/Redux/Middleware/EngineMiddleware.h"
-    "../../Source/Redux/Middleware/LoggerMiddleware.h"
-    "../../Source/Redux/Middleware/MidiMiddleware.cpp"
-    "../../Source/Redux/Middleware/MidiMiddleware.h"
-    "../../Source/Redux/Middleware/OscMiddleware.cpp"
-    "../../Source/Redux/Middleware/OscMiddleware.h"
-    "../../Source/Redux/Reducers/ApplicationReducer.h"
-    "../../Source/Redux/Reducers/BankReducer.h"
-    "../../Source/Redux/Reducers/LibraryReducer.h"
-    "../../Source/Redux/Reducers/PlayerReducer.h"
-    "../../Source/Redux/Reducers/PlaylistReducer.h"
-    "../../Source/Redux/Reducers/Reducers.h"
-    "../../Source/Redux/ActionObject.h"
-    "../../Source/Redux/Identifier.h"
-    "../../Source/Redux/Middleware.h"
-    "../../Source/Redux/Redux.h"
-    "../../Source/Redux/Store.cpp"
-    "../../Source/Redux/Store.h"
     "../../Source/UserInterface/Controllers/BankViewController.cpp"
     "../../Source/UserInterface/Controllers/BankViewController.h"
     "../../Source/UserInterface/Controllers/ClipViewController.cpp"
@@ -6168,6 +6168,29 @@ set_source_files_properties ("../../Assets/Icons/sharp-view_comfy-24px.svg" PROP
 set_source_files_properties ("../../Assets/Icons/sharp-volume_mute-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_off-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Assets/Icons/sharp-volume_up-24px.svg" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/MidiActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/OscActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/EngineMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/ClipReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties ("../../Source/Store/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/Colors.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/Common.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/FloatingActionButton.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -6177,29 +6200,6 @@ set_source_files_properties ("../../Source/LookAndFeel/Icons.h" PROPERTIES HEADE
 set_source_files_properties ("../../Source/LookAndFeel/Material.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/MaterialLookAndFeel.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/LookAndFeel/Shadows.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/Actions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/ApplicationActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/BankActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/LibraryActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/MidiActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/OscActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/PlayerActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Actions/PlaylistActions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/EngineMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/LoggerMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/MidiMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware/OscMiddleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/ApplicationReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/BankReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/LibraryReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/PlayerReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/PlaylistReducer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Reducers/Reducers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/ActionObject.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Identifier.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Middleware.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Redux.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties ("../../Source/Redux/Store.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/UserInterface/Controllers/BankViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/UserInterface/Controllers/ClipViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties ("../../Source/UserInterface/Controllers/LibraryViewController.h" PROPERTIES HEADER_FILE_ONLY TRUE)

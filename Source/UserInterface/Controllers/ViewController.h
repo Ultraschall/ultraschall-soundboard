@@ -2,7 +2,7 @@
 
 #include "../../../JuceLibraryCode/JuceHeader.h"
 
-#include "../../Redux/Store.h"
+#include "../../Store/Store.h"
 
 template <typename ViewType>
 class ViewController

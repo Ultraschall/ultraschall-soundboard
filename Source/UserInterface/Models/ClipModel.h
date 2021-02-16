@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../../JuceLibraryCode/JuceHeader.h"
-#include "../../Redux/Identifier.h"
+#include "../../Store/Identifier.h"
 
 struct ClipModel
 {
@@ -11,12 +11,12 @@ struct ClipModel
         jassert(v.hasType(IDs::CLIP));
 
         id.referTo(state, IDs::clip_id, nullptr);
-        index.referTo(state, IDs::clip_index, nullptr);
+        bankId.referTo(state, IDs::clip_bank_id, nullptr);
         playerId.referTo(state, IDs::player_id, nullptr);
     }
 
     ValueTree state;
     CachedValue<String> id;
-    CachedValue<int> index;
+    CachedValue<int> bankId;
     CachedValue<String> playerId;
 };

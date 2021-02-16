@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../../JuceLibraryCode/JuceHeader.h"
-#include "../../Redux/Identifier.h"
+#include "../../Store/Identifier.h"
 
 struct BankModel
 {

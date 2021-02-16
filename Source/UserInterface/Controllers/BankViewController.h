@@ -5,10 +5,8 @@
 #include "../Models/BankModel.h"
 #include "../Models/ValueTreeObjectList.h"
 
-#include "../Views/BankSelectorView.h"
 #include "../Views/BankView.h"
-#include "../Views/ClipItem.h"
-#include "../Views/ClipView.h"
+#include "ClipViewController.h"
 #include "ViewController.h"
 
 class BankViewController
@@ -40,6 +38,7 @@ public:
 
 private:
 	void updateContent() const;
+    std::unique_ptr<ClipViewController> clipViewController;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BankViewController)
 };

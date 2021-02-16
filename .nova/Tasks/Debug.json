@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "mkdir -p build\ncd build\ncmake .. -DCMAKE_OSX_ARCHITECTURES=\"arm64;x86_64\"\ncmake --build . --config Debug"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "rm -rf build"
+    }
+  },
+  "identifier" : "55AB8BAA-33B4-43AD-9AFD-8E1D980B4E92",
+  "openLogOnRun" : "start"
+}

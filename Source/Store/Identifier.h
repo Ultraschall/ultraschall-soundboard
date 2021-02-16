@@ -44,21 +44,22 @@ namespace IDs {
 
     // #Banks []
     DECLARE_ID(BANKS, BANKS)
+    DECLARE_ID(banks_slected_id, selected_id)
 
     // #Bank
     DECLARE_ID(BANK, BANK)
     DECLARE_ID(bank_id, id)
     DECLARE_ID(bank_title, title)
 
-    // #Bank Clips []
+    // #Clips []
     DECLARE_ID(CLIPS, CLIPS)
 
-    // #Bank Clip
+    // #Clip
     DECLARE_ID(CLIP, CLIP)
     DECLARE_ID(clip_id, id)
-    DECLARE_ID(clip_index, index)
     DECLARE_ID(clip_player_id, player_id)
 	DECLARE_ID(clip_bank_id, bank_id)
+    DECLARE_ID(clip_index, clip_index)
 
 
 	// -----------------------------

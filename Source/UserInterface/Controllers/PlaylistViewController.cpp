@@ -1,5 +1,5 @@
 #include "PlaylistViewController.h"
-#include "../../Redux/Actions/Actions.h"
+#include "../../Store/Actions/Actions.h"
 #include "../../Engine/Player.h"
 
 PlaylistViewController::PlaylistViewController(std::shared_ptr<Store> store)

@@ -184,6 +184,53 @@
       </GROUP>
     </GROUP>
     <GROUP id="{E3220441-27C0-E9C2-4B22-9DCC35D456CA}" name="Source">
+      <GROUP id="{CE07E827-00D6-1835-E4F7-47033FB3C517}" name="Store">
+        <GROUP id="{BE2A6439-2A0A-44C0-0CF0-2565EC836171}" name="Actions">
+          <FILE id="ltXJpf" name="Actions.h" compile="0" resource="0" file="Source/Store/Actions/Actions.h"/>
+          <FILE id="ukOewE" name="ApplicationActions.h" compile="0" resource="0"
+                file="Source/Store/Actions/ApplicationActions.h"/>
+          <FILE id="pQXE2w" name="BankActions.h" compile="0" resource="0" file="Source/Store/Actions/BankActions.h"/>
+          <FILE id="uKEB0I" name="LibraryActions.h" compile="0" resource="0"
+                file="Source/Store/Actions/LibraryActions.h"/>
+          <FILE id="jTiEGG" name="MidiActions.h" compile="0" resource="0" file="Source/Store/Actions/MidiActions.h"/>
+          <FILE id="feCbac" name="OscActions.h" compile="0" resource="0" file="Source/Store/Actions/OscActions.h"/>
+          <FILE id="KdQQTG" name="PlayerActions.h" compile="0" resource="0" file="Source/Store/Actions/PlayerActions.h"/>
+          <FILE id="Fvh6no" name="PlaylistActions.h" compile="0" resource="0"
+                file="Source/Store/Actions/PlaylistActions.h"/>
+        </GROUP>
+        <GROUP id="{BC4CD44D-6834-53F9-3C97-D35AEE3F86FF}" name="Middleware">
+          <FILE id="Do5Cjh" name="EngineMiddleware.cpp" compile="1" resource="0"
+                file="Source/Store/Middleware/EngineMiddleware.cpp"/>
+          <FILE id="LVxMz0" name="EngineMiddleware.h" compile="0" resource="0"
+                file="Source/Store/Middleware/EngineMiddleware.h"/>
+          <FILE id="eQ7SeV" name="LoggerMiddleware.h" compile="0" resource="0"
+                file="Source/Store/Middleware/LoggerMiddleware.h"/>
+          <FILE id="q5DPwg" name="MidiMiddleware.cpp" compile="1" resource="0"
+                file="Source/Store/Middleware/MidiMiddleware.cpp"/>
+          <FILE id="F4lT1G" name="MidiMiddleware.h" compile="0" resource="0"
+                file="Source/Store/Middleware/MidiMiddleware.h"/>
+          <FILE id="UKNUer" name="OscMiddleware.cpp" compile="1" resource="0"
+                file="Source/Store/Middleware/OscMiddleware.cpp"/>
+          <FILE id="goSWxq" name="OscMiddleware.h" compile="0" resource="0" file="Source/Store/Middleware/OscMiddleware.h"/>
+        </GROUP>
+        <GROUP id="{D28B0AED-5129-B4F0-F504-08F238A8F0D5}" name="Reducers">
+          <FILE id="x8S436" name="ApplicationReducer.h" compile="0" resource="0"
+                file="Source/Store/Reducers/ApplicationReducer.h"/>
+          <FILE id="NFgADU" name="BankReducer.h" compile="0" resource="0" file="Source/Store/Reducers/BankReducer.h"/>
+          <FILE id="KfmkgE" name="ClipReducer.h" compile="0" resource="0" file="Source/Store/Reducers/ClipReducer.h"/>
+          <FILE id="pG2nn1" name="LibraryReducer.h" compile="0" resource="0"
+                file="Source/Store/Reducers/LibraryReducer.h"/>
+          <FILE id="fml7xK" name="PlayerReducer.h" compile="0" resource="0" file="Source/Store/Reducers/PlayerReducer.h"/>
+          <FILE id="NmdBZZ" name="PlaylistReducer.h" compile="0" resource="0"
+                file="Source/Store/Reducers/PlaylistReducer.h"/>
+          <FILE id="AmlYht" name="Reducers.h" compile="0" resource="0" file="Source/Store/Reducers/Reducers.h"/>
+        </GROUP>
+        <FILE id="x91iOM" name="ActionObject.h" compile="0" resource="0" file="Source/Store/ActionObject.h"/>
+        <FILE id="h8U1Bl" name="Identifier.h" compile="0" resource="0" file="Source/Store/Identifier.h"/>
+        <FILE id="lfUr6B" name="Middleware.h" compile="0" resource="0" file="Source/Store/Middleware.h"/>
+        <FILE id="i7TCT4" name="Store.cpp" compile="1" resource="0" file="Source/Store/Store.cpp"/>
+        <FILE id="MDStsX" name="Store.h" compile="0" resource="0" file="Source/Store/Store.h"/>
+      </GROUP>
       <GROUP id="{699A0378-0DCB-B890-FB53-4FD418588E35}" name="LookAndFeel">
         <FILE id="XEYNtw" name="Colors.cpp" compile="1" resource="0" file="Source/LookAndFeel/Colors.cpp"/>
         <FILE id="CTa8Pi" name="Colors.h" compile="0" resource="0" file="Source/LookAndFeel/Colors.h"/>
@@ -199,53 +246,6 @@
         <FILE id="ehmw9m" name="MaterialLookAndFeel.h" compile="0" resource="0"
               file="Source/LookAndFeel/MaterialLookAndFeel.h"/>
         <FILE id="oZDfre" name="Shadows.h" compile="0" resource="0" file="Source/LookAndFeel/Shadows.h"/>
-      </GROUP>
-      <GROUP id="{58E6F70A-2769-DDB3-96DC-D047B02C8AF5}" name="Redux">
-        <GROUP id="{07F82974-3348-1075-C3FF-1C3FFFB2B95E}" name="Actions">
-          <FILE id="ADFT8M" name="Actions.h" compile="0" resource="0" file="Source/Redux/Actions/Actions.h"/>
-          <FILE id="jbFeVQ" name="ApplicationActions.h" compile="0" resource="0"
-                file="Source/Redux/Actions/ApplicationActions.h"/>
-          <FILE id="saKBWw" name="BankActions.h" compile="0" resource="0" file="Source/Redux/Actions/BankActions.h"/>
-          <FILE id="rcvFCz" name="LibraryActions.h" compile="0" resource="0"
-                file="Source/Redux/Actions/LibraryActions.h"/>
-          <FILE id="YOZjt9" name="MidiActions.h" compile="0" resource="0" file="Source/Redux/Actions/MidiActions.h"/>
-          <FILE id="vGewbT" name="OscActions.h" compile="0" resource="0" file="Source/Redux/Actions/OscActions.h"/>
-          <FILE id="B1qatH" name="PlayerActions.h" compile="0" resource="0" file="Source/Redux/Actions/PlayerActions.h"/>
-          <FILE id="Ks6bin" name="PlaylistActions.h" compile="0" resource="0"
-                file="Source/Redux/Actions/PlaylistActions.h"/>
-        </GROUP>
-        <GROUP id="{10522132-FE58-9925-2815-7132CE8918B1}" name="Middleware">
-          <FILE id="bfXAoA" name="EngineMiddleware.cpp" compile="1" resource="0"
-                file="Source/Redux/Middleware/EngineMiddleware.cpp"/>
-          <FILE id="g0KKko" name="EngineMiddleware.h" compile="0" resource="0"
-                file="Source/Redux/Middleware/EngineMiddleware.h"/>
-          <FILE id="Hz6v25" name="LoggerMiddleware.h" compile="0" resource="0"
-                file="Source/Redux/Middleware/LoggerMiddleware.h"/>
-          <FILE id="yJSi7d" name="MidiMiddleware.cpp" compile="1" resource="0"
-                file="Source/Redux/Middleware/MidiMiddleware.cpp"/>
-          <FILE id="Na0pEK" name="MidiMiddleware.h" compile="0" resource="0"
-                file="Source/Redux/Middleware/MidiMiddleware.h"/>
-          <FILE id="hRI43V" name="OscMiddleware.cpp" compile="1" resource="0"
-                file="Source/Redux/Middleware/OscMiddleware.cpp"/>
-          <FILE id="nyy2cx" name="OscMiddleware.h" compile="0" resource="0" file="Source/Redux/Middleware/OscMiddleware.h"/>
-        </GROUP>
-        <GROUP id="{AF29A0CD-5CFE-1C5A-A343-0BD8A7AFDEA1}" name="Reducers">
-          <FILE id="yu4v6q" name="ApplicationReducer.h" compile="0" resource="0"
-                file="Source/Redux/Reducers/ApplicationReducer.h"/>
-          <FILE id="I8nvcj" name="BankReducer.h" compile="0" resource="0" file="Source/Redux/Reducers/BankReducer.h"/>
-          <FILE id="IXkHda" name="LibraryReducer.h" compile="0" resource="0"
-                file="Source/Redux/Reducers/LibraryReducer.h"/>
-          <FILE id="CBQWhU" name="PlayerReducer.h" compile="0" resource="0" file="Source/Redux/Reducers/PlayerReducer.h"/>
-          <FILE id="k10INK" name="PlaylistReducer.h" compile="0" resource="0"
-                file="Source/Redux/Reducers/PlaylistReducer.h"/>
-          <FILE id="SqVIRx" name="Reducers.h" compile="0" resource="0" file="Source/Redux/Reducers/Reducers.h"/>
-        </GROUP>
-        <FILE id="xPGGnq" name="ActionObject.h" compile="0" resource="0" file="Source/Redux/ActionObject.h"/>
-        <FILE id="rk4cBh" name="Identifier.h" compile="0" resource="0" file="Source/Redux/Identifier.h"/>
-        <FILE id="srNFJT" name="Middleware.h" compile="0" resource="0" file="Source/Redux/Middleware.h"/>
-        <FILE id="EH4saV" name="Redux.h" compile="0" resource="0" file="Source/Redux/Redux.h"/>
-        <FILE id="bsme8J" name="Store.cpp" compile="1" resource="0" file="Source/Redux/Store.cpp"/>
-        <FILE id="JULhuW" name="Store.h" compile="0" resource="0" file="Source/Redux/Store.h"/>
       </GROUP>
       <GROUP id="{BB08034A-C4E8-DEFE-CB27-F65519A694EA}" name="UserInterface">
         <GROUP id="{67F9D19F-CD29-8EBF-CDD9-A197C3ACA3DD}" name="Controllers">

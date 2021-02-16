@@ -29,6 +29,7 @@ private:
         AsyncFileLoader(Store &store, Engine &engine, Array<URL> &files) : store(store), engine(engine), files(files) {}
         void handleAsyncUpdate() override;
     private:
+        void loadFile(const File &file);
         Store &store;
         Engine &engine;
         Array<URL> files;

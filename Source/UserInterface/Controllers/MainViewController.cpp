@@ -1,5 +1,5 @@
 #include "MainViewController.h"
-#include "../../Redux/Actions/Actions.h"
+#include "../../Store/Actions/Actions.h"
 
 MainViewController::MainViewController(std::shared_ptr<Store> store) : ViewController(store), model(store->getState().getChildWithName(IDs::APPLICATION))
 {

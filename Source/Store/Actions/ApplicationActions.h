@@ -5,6 +5,7 @@
 #include "../Identifier.h"
 
 const Identifier ApplicationQuit("QUIT");
+const Identifier Init("INIT");
 const Identifier EnableEngineSync("ENABLE_ENGINE_SYNC");
 const Identifier DisableEngineSync("DISABLE_ENGINE_SYNC");
 
@@ -23,6 +24,11 @@ const Identifier ShowView("SHOW_VIEW");
 class QuitAction : public ActionObject {
 public:
     QuitAction() : ActionObject(ApplicationQuit) {};
+};
+
+class InitAction : public ActionObject {
+public:
+    InitAction() : ActionObject(Init) {};
 };
 
 class EnableEngineSyncAction : public ActionObject {

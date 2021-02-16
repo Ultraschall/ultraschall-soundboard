@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include "../UserInterface/Models/PlayerModel.h"
-#include "../Redux/Identifier.h"
-#include "../Redux/Actions/Actions.h"
+#include "../Store/Identifier.h"
+#include "../Store/Actions/Actions.h"
 
 Engine::Engine() : audioThumbnailCache(21) {
 	Logger::outputDebugString("[ENGINE] Boot...");

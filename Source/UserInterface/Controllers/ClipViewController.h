@@ -16,7 +16,7 @@ class ClipViewController
           public ViewController<Component>
 {
 public:
-    explicit ClipViewController(std::shared_ptr<Store> store, ValueTree bank);
+    explicit ClipViewController(std::shared_ptr<Store> store);
 
     ~ClipViewController() override;
 
@@ -40,6 +40,7 @@ public:
 
 private:
     void updateContent() const;
-
+    String bankId;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ClipViewController)
 };

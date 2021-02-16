@@ -20,58 +20,36 @@ class ClipItem  : public Component
 {
 public:
     ClipItem() : Component("ClipItem") {
-        progressBar.setPercentageDisplay(false);
-        addAndMakeVisible(&progressBar);
-        addAndMakeVisible(&addButton);
-        addAndMakeVisible(&playButton);
-        addAndMakeVisible(&pauseButton);
-        addAndMakeVisible(&stopButton);
-
-        addButton.setColour(Material::IconButton::iconColourId, Colours::whitesmoke.withAlpha(0.5f));
-
-        playButton.setVisible(false);
-        pauseButton.setVisible(false);
-        stopButton.setVisible(false);
+        add = Material::Icons::add.getDrawable(Material::Color::Icons::White::Inactive);
+        play = Material::Icons::play_arrow.getDrawable(Material::Color::Icons::White::Active);
+        pause = Material::Icons::pause.getDrawable(Material::Color::Icons::White::Active);
+        stop = Material::Icons::stop.getDrawable(Material::Color::Icons::White::Active);
+        playing = Material::Icons::volume_up.getDrawable(Material::Color::Icons::White::Active);
     }
     ~ClipItem() override = default;
 
     void paint (juce::Graphics& g) override {
-        // g.fillAll(Colours::black);
+        if (playerId.isEmpty()) {
+            add->drawWithin(g,
+                                 getLocalBounds().toFloat().withSizeKeepingCentre(px<float>(iconSize), px<float>(iconSize)),
+                                 RectanglePlacement(RectanglePlacement::Flags::centred), 1.0f);
+        } else {
+            g.fillAll(Colours::black);
+            auto bounds = getLocalBounds();
+            g.drawRect(bounds.removeFromRight(bounds.getWidth() * progress));
+        }
     }
-    void resized() override {
-        auto bounds = getLocalBounds();
-        progressBar.setBounds(bounds);
-        addButton.setBounds(bounds.withSizeKeepingCentre(16, 16));
-        playButton.setBounds(bounds.withSizeKeepingCentre(16, 16));
-
-        pauseButton.setBounds(2, bounds.getHeight() - 18, 16, 16);
-        stopButton.setBounds(bounds.getWidth() - 18, bounds.getHeight() - 18, 16, 16);
-    }
+    void resized() override {}
 
     void setIsPlaying() {
-        addButton.setVisible(false);
-        playButton.setVisible(true);
 
     }
 
-    void mouseEnter(const MouseEvent &event) override {
-        Component::mouseEnter(event);
-        pauseButton.setVisible(true);
-        stopButton.setVisible(true);
-    }
-
-    void mouseExit(const MouseEvent &event) override {
-        pauseButton.setVisible(false);
-        stopButton.setVisible(false);
-    }
-
-    Material::IconButton addButton{ Material::Icons::add };
-    Material::IconToggleButton playButton{ Material::Icons::play_arrow, Material::Icons::volume_up };
-    Material::IconButton pauseButton{ Material::Icons::pause };
-    Material::IconButton stopButton{ Material::Icons::stop };
-    double progress{0.0};
+    float progress{0};
+    String playerId{""};
 private:
-    ProgressBar progressBar{progress};
+    std::unique_ptr<Drawable> add, play, pause, stop, playing;
+    int iconSize{16};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ClipItem)
 };

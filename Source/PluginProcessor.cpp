@@ -11,11 +11,10 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-#include "Redux/Redux.h"
-
-#include "Redux/Middleware/LoggerMiddleware.h"
-#include "Redux/Middleware/EngineMiddleware.h"
-#include "Redux/Middleware/OscMiddleware.h"
+#include "Store/Reducers/Reducers.h"
+#include "Store/Middleware/LoggerMiddleware.h"
+#include "Store/Middleware/EngineMiddleware.h"
+#include "Store/Middleware/OscMiddleware.h"
 
 //==============================================================================
 UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
@@ -34,7 +33,8 @@ UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
     auto builder = MiddlewareEnhancerBuilder::New(Store::combineReducers({
         {IDs::APPLICATION, application},
         {IDs::PLAYERS, players},
-        {IDs::BANKS, bank},
+        {IDs::BANKS, banks},
+        {IDs::CLIPS, clips},
         {IDs::PLAYLISTS, playlist}
     }));
     store = builder.SetPreloadedStore(ValueTree(IDs::STATE))
@@ -43,7 +43,8 @@ UltraschallSoundboardAudioProcessor::UltraschallSoundboardAudioProcessor()
     .Use<OscMiddleware>()
 	.Use<MidiMiddleware>(midiMiddleware).Build();
 
-    const auto _ = store->dispatch(EnableEngineSyncAction());
+    store->dispatch(InitAction());
+    store->dispatch(EnableEngineSyncAction());
 }
 
 UltraschallSoundboardAudioProcessor::~UltraschallSoundboardAudioProcessor() {
