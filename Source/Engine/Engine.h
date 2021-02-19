@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "Player.h"
 #include "../Store/Store.h"
 

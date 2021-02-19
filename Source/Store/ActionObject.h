@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 const Identifier Args("ARGS");
 

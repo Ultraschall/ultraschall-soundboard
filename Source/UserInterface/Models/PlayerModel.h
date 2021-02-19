@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "../../Store/Identifier.h"
 
 struct PlayerModel

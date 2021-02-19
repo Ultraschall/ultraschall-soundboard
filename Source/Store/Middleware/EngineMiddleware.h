@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "../Middleware.h"
 #include "../../Engine/Engine.h"
 

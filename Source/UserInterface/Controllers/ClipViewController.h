@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 #include "../Models/ClipModel.h"
 #include "../Models/ValueTreeObjectList.h"

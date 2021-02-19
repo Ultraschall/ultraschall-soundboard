@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "Envelope.h"
 
 class Player : public AudioSource, public ChangeBroadcaster, public ChangeListener {

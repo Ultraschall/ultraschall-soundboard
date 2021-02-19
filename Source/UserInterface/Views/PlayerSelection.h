@@ -1,4 +1,4 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "../../LookAndFeel/Material.h"

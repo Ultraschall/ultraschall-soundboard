@@ -4,7 +4,7 @@
 #include <list>
 #include <numeric>
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "ActionObject.h"
 
 class StoreDispatcher;

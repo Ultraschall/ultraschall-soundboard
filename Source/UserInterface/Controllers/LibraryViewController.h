@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 #include "../Models/PlayerModel.h"
 #include "../Models/ValueTreeObjectList.h"

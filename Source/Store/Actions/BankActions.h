@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "../ActionObject.h"
 
 const Identifier CreateBank("CREATE_BANK");

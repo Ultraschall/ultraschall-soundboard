@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 #include "../../Store/Store.h"
 
@@ -34,9 +34,9 @@ class ViewController
         return static_cast<bool>(view);
     }
 
-    virtual void loadView(){};
+    virtual void loadView(){}
 
-    virtual void viewDidLoad(){};
+    virtual void viewDidLoad(){}
 
     void loadViewIfNeeded()
     {

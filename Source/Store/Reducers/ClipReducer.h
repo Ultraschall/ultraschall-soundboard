@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "../Actions/Actions.h"
 
 ValueTree clips(ValueTree state, const ActionObject& action) {

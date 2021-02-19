@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 #include "../Models/BankModel.h"
 #include "../Models/ValueTreeObjectList.h"
