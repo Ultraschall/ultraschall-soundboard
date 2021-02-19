@@ -135,6 +135,7 @@ target_link_libraries(UltraschallSoundboard
 		juce::juce_gui_basics
 		juce::juce_gui_extra
 		juce::juce_osc
+		juce::juce_opengl
 		assets
 	PUBLIC
 		juce::juce_recommended_config_flags
