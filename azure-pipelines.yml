@@ -3,19 +3,39 @@ jobs:
     pool:
       vmImage: 'macOS-latest'
     steps:
-      - pwsh: xcodebuild
-        displayName: Build
-        workingDirectory: $(build.sourcesDirectory)/Builds/MacOSX
-      - publish: '$(System.DefaultWorkingDirectory)/Builds/MacOSX/build/Debug'
+      - task: CMake@1
+        inputs:
+          cmakeArgs: $(build.sourcesDirectory) -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+      - task: CMake@1
+        inputs:
+          cmakeArgs: --build . --config Release
+      - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
         artifact: macOS
   - job: Windows
     pool:
       vmImage: 'windows-latest'
     steps:
-    - pwsh: |
-        $env:PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\;$env:PATH"
-        msbuild Soundboard.sln
-      displayName: Build
-      workingDirectory: $(build.sourcesDirectory)/Builds/VisualStudio2019/
-    - publish: '$(System.DefaultWorkingDirectory)/Builds/VisualStudio2019/x64/Debug'
-      artifact: Windows
+      - task: CMake@1
+        inputs:
+          cmakeArgs: $(build.sourcesDirectory)
+      - task: CMake@1
+        inputs:
+          cmakeArgs: --build . --config Release    
+      - publish: '$(build.sourcesDirectory)/build/UltraschallSoundboard_artefacts'
+        artifact: Windows
+  - job: Linux
+    pool:
+      vmImage: 'ubuntu-18.04'
+    steps:
+      - task: Docker@2
+        inputs:
+          command: 'build'
+          Dockerfile: './Dockerfile'
+          buildContext: '.'
+          arguments: '-t ultraschall_soundboard:$(Build.BuildId)'
+      - pwsh: |
+          docker container create --name ultraschall_soundboard_extract ultraschall_soundboard:$(Build.BuildId)
+          docker container cp ultraschall_soundboard_extract:/usr/local/src/ultraschall-soundboard/build/UltraschallSoundboard_artefacts $(build.sourcesDirectory)/artifacts
+          docker container rm -f ultraschall_soundboard_extract
+      - publish: '$(build.sourcesDirectory)/artifacts'
+        artifact: Linux
