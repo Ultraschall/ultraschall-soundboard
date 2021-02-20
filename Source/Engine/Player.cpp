@@ -26,9 +26,9 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     audioTransportSource->getNextAudioBlock(bufferToFill);
 
 	for (auto sample = 0; sample < bufferToFill.numSamples; ++sample) {
-        const auto level = evelop.process();
+        const auto level = envelope.process();
 
-		if (evelop.getState() == Envelope::env_sustain) {
+		if (envelope.getState() == Envelope::env_sustain) {
 			continue;
         }
 
@@ -57,7 +57,7 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
             needUpdate = true;
         }
 
-        switch (evelop.getState()) {
+        switch (envelope.getState()) {
             case Envelope::envState::env_attack:
                 if (fadeState != FadeState::fade_in) {
                     fadeState = FadeState::fade_in;
@@ -130,16 +130,16 @@ float Player::getGain() {
 }
 
 void Player::fadeIn() {
-    evelop.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
-    evelop.gate(1);
+    envelope.setAttackRate(static_cast<float>((mySampleRate / 1000) * attackMs));
+    envelope.gate(1);
     audioTransportSource->start();
     playerState = PlayerState::player_playing;
     sendChangeMessage();
 }
 
 void Player::fadeOut() {
-    evelop.setReleaseRate(static_cast<float>((mySampleRate / 1000) * releaseMs));
-    evelop.gate(0);
+    envelope.setReleaseRate(static_cast<float>((mySampleRate / 1000) * releaseMs));
+    envelope.gate(0);
     sendChangeMessage();
 }
 
@@ -150,8 +150,8 @@ void Player::pause() {
 }
 
 void Player::play() {
-    evelop.setAttackRate(0);
-    evelop.gate(1);
+    envelope.setAttackRate(0);
+    envelope.gate(1);
     audioTransportSource->start();
     playerState = PlayerState::player_playing;
     sendChangeMessage();
@@ -160,8 +160,8 @@ void Player::play() {
 void Player::stop() {
     audioTransportSource->stop();
     audioTransportSource->setPosition(0);
-    evelop.gate(0);
-    evelop.reset();
+    envelope.gate(0);
+    envelope.reset();
     if (playerState != PlayerState::player_played) {
         playerState = PlayerState::player_stopped;
     } else {

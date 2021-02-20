@@ -85,7 +85,7 @@ private:
     std::unique_ptr<AudioThumbnail> thumbnail;
     MemoryBlock thumbnailData{4096};
     bool thumbnailFullyLoaded{false};
-    Envelope evelop;
+    Envelope envelope;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Player)
 };
