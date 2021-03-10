@@ -116,6 +116,7 @@ public:
     void drawTableHeaderBackground(Graphics &g, TableHeaderComponent &header) override;
 
     void drawTableHeaderColumn(Graphics&, TableHeaderComponent&, const String& columnName, int columnId, int width, int height, bool isMouseOver, bool isMouseDown, int columnFlags) override;
+    JUCE_DECLARE_SINGLETON(LookAndFeel_Ultraschall, false)
 };
 
 class LookAndFeel_Ultraschall_Awesome : public LookAndFeel_Ultraschall
@@ -125,11 +126,8 @@ public:
     {
         return FontAwesome::getInstance()->getFont(buttonHeight * 0.7f);
     }
-
+    JUCE_DECLARE_SINGLETON(LookAndFeel_Ultraschall_Awesome, false)
 };
-
-extern ScopedPointer<LookAndFeel_Ultraschall>         defaultLookAndFeel;
-extern ScopedPointer<LookAndFeel_Ultraschall_Awesome> awesomeLookAndFeel;
 
 class Bar : public Component
 {

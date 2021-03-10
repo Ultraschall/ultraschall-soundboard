@@ -162,13 +162,10 @@ void SwitchTheme(Themes theme)
             break;
         };
     }
-    SetThemeColors(defaultLookAndFeel);
-    SetThemeColors(awesomeLookAndFeel);
-    LookAndFeel::setDefaultLookAndFeel(defaultLookAndFeel);
+    SetThemeColors(LookAndFeel_Ultraschall::getInstance());
+    SetThemeColors(LookAndFeel_Ultraschall_Awesome::getInstance());
+    LookAndFeel::setDefaultLookAndFeel(LookAndFeel_Ultraschall::getInstance());
 }
-
-ScopedPointer<LookAndFeel_Ultraschall>         defaultLookAndFeel;
-ScopedPointer<LookAndFeel_Ultraschall_Awesome> awesomeLookAndFeel;
 
 void LookAndFeel_Ultraschall::drawTableHeaderBackground(Graphics &g, TableHeaderComponent &header)
 {
@@ -202,3 +199,6 @@ void LookAndFeel_Ultraschall::drawTableHeaderColumn (Graphics& g, TableHeaderCom
         g.drawFittedText(columnName, area, Justification::centredLeft, 1);
     }
 }
+
+JUCE_IMPLEMENT_SINGLETON (LookAndFeel_Ultraschall_Awesome)
+JUCE_IMPLEMENT_SINGLETON (LookAndFeel_Ultraschall)

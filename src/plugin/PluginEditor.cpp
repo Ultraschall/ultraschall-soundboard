@@ -32,35 +32,35 @@ SoundboardAudioProcessorEditor::SoundboardAudioProcessorEditor(SoundboardAudioPr
 
     addAndMakeVisible(loadDirectoryButton = new TextButton());
     loadDirectoryButton->setButtonText(FontAwesome_FolderOpenO);
-    loadDirectoryButton->setLookAndFeel(awesomeLookAndFeel);
+    loadDirectoryButton->setLookAndFeel(LookAndFeel_Ultraschall_Awesome::getInstance());
     loadDirectoryButton->setConnectedEdges(TextButton::ConnectedOnRight);
     loadDirectoryButton->addListener(this);
 
     addAndMakeVisible(listButton = new TextButton());
-    listButton->setLookAndFeel(awesomeLookAndFeel);
+    listButton->setLookAndFeel(LookAndFeel_Ultraschall_Awesome::getInstance());
     listButton->setButtonText(FontAwesome_List);
     listButton->addListener(this);
     listButton->setConnectedEdges(TextButton::ConnectedOnLeft | TextButton::ConnectedOnRight);
 
     addAndMakeVisible(gridButton = new TextButton());
-    gridButton->setLookAndFeel(awesomeLookAndFeel);
+    gridButton->setLookAndFeel(LookAndFeel_Ultraschall_Awesome::getInstance());
     gridButton->setButtonText(FontAwesome_Th);
     gridButton->addListener(this);
     gridButton->setConnectedEdges(TextButton::ConnectedOnLeft);
 
     addAndMakeVisible(settingsButton = new TextButton());
-    settingsButton->setLookAndFeel(awesomeLookAndFeel);
+    settingsButton->setLookAndFeel(LookAndFeel_Ultraschall_Awesome::getInstance());
     settingsButton->setButtonText(FontAwesome_Cog);
     settingsButton->addListener(this);
     settingsButton->setConnectedEdges(TextButton::ConnectedOnLeft);
 
     addAndMakeVisible(duckButton = new TextButton());
-    duckButton->setLookAndFeel(awesomeLookAndFeel);
+    duckButton->setLookAndFeel(LookAndFeel_Ultraschall_Awesome::getInstance());
     duckButton->setButtonText(FontAwesome_CommentO);
     duckButton->addListener(this);
     
     addAndMakeVisible(lockButton = new TextButton());
-    lockButton->setLookAndFeel(awesomeLookAndFeel);
+    lockButton->setLookAndFeel(LookAndFeel_Ultraschall_Awesome::getInstance());
     if (processor.getLocked()) {
         lockButton->setButtonText(FontAwesome_Lock);
     } else {

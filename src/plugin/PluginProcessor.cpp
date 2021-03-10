@@ -15,8 +15,6 @@
 SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPercentage(0.33f), duckEnabled(false), fadeOutSeconds(6)
 {
     locked = false;
-    defaultLookAndFeel = new LookAndFeel_Ultraschall();
-    awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
 
     Logger::setCurrentLogger(logger = FileLogger::createDefaultAppLogger("Ultraschall", "Soundboard.txt", "Soundboard Startup"));
 
@@ -136,9 +134,9 @@ SoundboardAudioProcessor::~SoundboardAudioProcessor()
     fallbackProperties = nullptr;
 
     thumbnailCache = nullptr;
-
-    defaultLookAndFeel = nullptr;
-    awesomeLookAndFeel = nullptr;
+    
+    LookAndFeel_Ultraschall::deleteInstance();
+    LookAndFeel_Ultraschall_Awesome::deleteInstance();
 
     Logger::setCurrentLogger(nullptr);
     logger = nullptr;
@@ -751,7 +749,7 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
             SwitchTheme(static_cast<Themes>(value));
             auto editor = getActiveEditor();
             if (editor) {
-                editor->setLookAndFeel(defaultLookAndFeel);
+                editor->setLookAndFeel(LookAndFeel_Ultraschall::getInstance());
             }
         }
     }
