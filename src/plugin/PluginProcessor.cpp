@@ -514,10 +514,8 @@ void SoundboardAudioProcessor::timerCallback(int timerID)
                 midiMessages = midiBuffer;
                 midiBuffer.clear();
             }
-            MidiBuffer::Iterator iterator(midiMessages);
-            MidiMessage midiMessage(0xf0);
-            auto sample = 0;
-            while (iterator.getNextEvent(midiMessage, sample)) {
+            for(auto midiMessageMetadata: midiMessages) {
+                auto midiMessage = midiMessageMetadata.getMessage();
                 if (midiMessage.isNoteOnOrOff()) {
                     auto index = midiMessage.getNoteNumber();
                     auto function = index / 24;
