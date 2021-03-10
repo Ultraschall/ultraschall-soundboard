@@ -11,10 +11,13 @@
 #ifndef GRIDCOMPONENT_H_INCLUDED
 #define GRIDCOMPONENT_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
+
 #include "../LookAndFeel.h"
 #include "../../../plugin/PluginProcessor.h"
 #include "GridCell.h"
+
+using namespace juce;
 
 class SoundboardGridComponent : public Component
 {

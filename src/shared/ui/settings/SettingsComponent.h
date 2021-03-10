@@ -11,9 +11,12 @@
 #ifndef SETTINGSCOMPONENT_H_INCLUDED
 #define SETTINGSCOMPONENT_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
+
 #include "../LookAndFeel.h"
 #include "../../../plugin/PluginProcessor.h"
+
+using namespace juce;
 
 #if SHOW_AUDIO_SETTINGS
 extern ScopedPointer<AudioDeviceManager> deviceManager;

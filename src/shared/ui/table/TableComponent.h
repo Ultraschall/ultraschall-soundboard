@@ -11,9 +11,11 @@
 #ifndef TABLECOMPONENT_H_INCLUDED
 #define TABLECOMPONENT_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
 #include "../../../plugin/PluginProcessor.h"
 #include "TableButtonCell.h"
+
+using namespace juce;
 
 class SoundboardTableComponent
         : public Component,
@@ -82,7 +84,7 @@ private:
     static const int ButtonCellWidth = 32;
     static const int SliderCellWidth = 32;
 
-    ScopedPointer<TableListBox> tableListBox;
+    TableListBox tableListBox;
 
     bool mTimerState;
 

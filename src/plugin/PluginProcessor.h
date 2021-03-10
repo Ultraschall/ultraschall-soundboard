@@ -10,8 +10,14 @@
 #ifndef PLUGINPROCESSOR_H_INCLUDED
 #define PLUGINPROCESSOR_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
+#include <juce_audio_processors/juce_audio_processors.h>
+#include <stk_generators/stk_generators.h>
+#include <danlin_oscserver/danlin_oscserver.h>
+
 #include "../shared/player/Player.h"
+
+using namespace juce;
 
 struct FileSorter
 {

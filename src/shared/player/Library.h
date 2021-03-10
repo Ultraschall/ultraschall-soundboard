@@ -11,7 +11,7 @@
 #ifndef LIBRARY_H_INCLUDED
 #define LIBRARY_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_core/juce_core.h>
 #include "Player.h"
 #include "Slot.h"
 #include "Bank.h"

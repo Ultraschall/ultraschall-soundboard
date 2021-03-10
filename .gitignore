@@ -383,3 +383,4 @@ warnings.txt
 
 # Rider
 .idea/
+cmake-build*/

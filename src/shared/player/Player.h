@@ -10,7 +10,12 @@
 #ifndef SAMPLEPLAYER_H_INCLUDED
 #define SAMPLEPLAYER_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_core/juce_core.h>
+#include <juce_events/juce_events.h>
+#include <juce_audio_formats/juce_audio_formats.h>
+#include <juce_audio_utils/juce_audio_utils.h>
+
+using namespace juce;
 
 class Player : private MultiTimer,
                public ChangeBroadcaster {

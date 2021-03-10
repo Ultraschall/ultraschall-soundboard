@@ -10,7 +10,11 @@
 #ifndef LOOKANDFEEL_H_INCLUDED
 #define LOOKANDFEEL_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
+#include <juce_gui_extra/juce_gui_extra.h>
+#include <danlin_fontawesome/danlin_fontawesome.h>
+
+using namespace juce;
 
 // Tomorrow Night
 static const Colour TomorrowNightBackground1 = Colour::fromRGB(29, 31, 33);

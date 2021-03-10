@@ -11,8 +11,10 @@
 #ifndef BANK_H_INCLUDED
 #define BANK_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_core/juce_core.h>
 #include "Slot.h"
+
+using namespace juce;
 
 const int slotsPerBank = 24;
 

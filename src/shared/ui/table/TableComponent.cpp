@@ -15,59 +15,59 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
     : processor(p)
     , mTimerState(true)
 {
-    addAndMakeVisible(tableListBox = new TableListBox());
-    tableListBox->setModel(this);
-    tableListBox->setHeaderHeight(21);
-    tableListBox->getHeader()
+    addAndMakeVisible(tableListBox);
+    tableListBox.setModel(this);
+    tableListBox.setHeaderHeight(21);
+    tableListBox.getHeader()
         .addColumn("",
             ColumnIdNumberLabel,
             NumberCellWidth,
             NumberCellWidth,
             NumberCellWidth,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn(TRANS("Audio"),
             ColumnIdFileLabel,
             max(getWidth() - 293, 293), // calculated at resize
             1,
             16000,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn("",
             ColumnIdLoopButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn(TRANS("Time"),
             ColumnIdTimeLabel,
             TimeCellWidth,
             TimeCellWidth,
             TimeCellWidth,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn("",
             ColumnIdPlayPauseButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn("",
             ColumnIdStopButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn("",
                 ColumnIdFadeButton,
             ButtonCellWidth,
             ButtonCellWidth,
             ButtonCellWidth,
             TableHeaderComponent::notSortable);
-    tableListBox->getHeader()
+    tableListBox.getHeader()
         .addColumn("",
             ColumnIdGainSlider,
             ButtonCellWidth,
@@ -80,14 +80,13 @@ SoundboardTableComponent::SoundboardTableComponent(SoundboardAudioProcessor& p)
 SoundboardTableComponent::~SoundboardTableComponent()
 {
     stopTimer(TimerIdRepaint);
-    tableListBox = nullptr;
 }
 
 // Component
 void SoundboardTableComponent::resized()
 {
-    tableListBox->setBounds(0, 0, getWidth(), getHeight());
-    tableListBox->getHeader().setColumnWidth(ColumnIdFileLabel, getWidth() - 293);
+    tableListBox.setBounds(0, 0, getWidth(), getHeight());
+    tableListBox.getHeader().setColumnWidth(ColumnIdFileLabel, getWidth() - 293);
 }
 
 // TableListBoxModel
@@ -193,7 +192,7 @@ void SoundboardTableComponent::cellClicked(int /*rowNumber*/, int columnId, cons
 {
     if (columnId == ColumnIdTimeLabel) {
         mTimerState = !mTimerState;
-        tableListBox->repaint();
+        tableListBox.repaint();
     }
 }
 
@@ -324,7 +323,7 @@ void SoundboardTableComponent::timerCallback(int timerID)
 {
     if (isVisible()) {
         if (timerID == TimerIdRepaint) {
-            tableListBox->repaint();
+            tableListBox.repaint();
         }
     }
 }
@@ -376,7 +375,7 @@ void SoundboardTableComponent::buttonClicked(Button* button)
         }
     }
 
-    tableListBox->repaintRow(cellButton->getRowNumber());
+    tableListBox.repaintRow(cellButton->getRowNumber());
 }
 
 // Button Listener
@@ -389,5 +388,5 @@ void SoundboardTableComponent::sliderValueChanged(Slider* slider)
 // Helper
 void SoundboardTableComponent::updateContent()
 {
-    tableListBox->updateContent();
+    tableListBox.updateContent();
 }

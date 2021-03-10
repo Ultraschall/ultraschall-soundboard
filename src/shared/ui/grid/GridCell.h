@@ -11,9 +11,11 @@
 #ifndef GRIDCELL_H_INCLUDED
 #define GRIDCELL_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
 #include "../LookAndFeel.h"
 #include "../../player/Player.h"
+
+using namespace juce;
 
 class SoundboardGridCell : public Component, public ChangeListener
 {

@@ -11,8 +11,10 @@
 #ifndef TABLEBUTTONCELL_H_INCLUDED
 #define TABLEBUTTONCELL_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_gui_basics/juce_gui_basics.h>
 #include "../LookAndFeel.h"
+
+using namespace juce;
 
 class SoundboardCellButton : public Button, public Timer
 {

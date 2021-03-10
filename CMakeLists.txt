@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
-project(ULTRASCHALL_SOUNDBOARD VERSION 4.0.0)
+project("Ultraschall Soundboard" VERSION 4.0.0)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
 
 if(APPLE)
     set(CMAKE_OSX_ARCHITECTURES arm64 x86_64)
@@ -8,7 +14,7 @@ endif()
 
 add_subdirectory("./JUCE" JUCE)
 
-juce_add_plugin(UltraschallSoundboard
+juce_add_plugin(Soundboard
 	IS_SYNTH TRUE
 	NEEDS_MIDI_INPUT TRUE
 	EDITOR_WANTS_KEYBOARD_FOCUS TRUE
@@ -22,7 +28,8 @@ juce_add_plugin(UltraschallSoundboard
 	FORMATS AU VST3 Standalone
 	VST3_CATEGORIES Instrument
 	AU_MAIN_TYPE kAudioUnitType_Generator
-	PRODUCT_NAME "Soundboard")
+	PRODUCT_NAME "Soundboard"
+    )
 
 juce_add_modules(
 	ALIAS_NAMESPACE danlin
@@ -34,34 +41,30 @@ juce_add_modules(
 	modules/stk_core
 	modules/stk_generators)
 
-target_compile_definitions(UltraschallSoundboard PUBLIC JUCER_ENABLE_GPL_MODE=1)
-target_compile_definitions(UltraschallSoundboard PUBLIC JUCE_DISPLAY_SPLASH_SCREEN=0)
-target_compile_definitions(UltraschallSoundboard PUBLIC JUCE_USE_LAME_AUDIO_FORMAT=1)
+target_compile_definitions(Soundboard PUBLIC JUCER_ENABLE_GPL_MODE=1)
+target_compile_definitions(Soundboard PUBLIC JUCE_DISPLAY_SPLASH_SCREEN=0)
+target_compile_definitions(Soundboard PUBLIC JUCE_USE_LAME_AUDIO_FORMAT=1)
 
-juce_generate_juce_header(UltraschallSoundboard)
-
-target_sources(UltraschallSoundboard
+file(GLOB_RECURSE
+    SOURCE_LIST
+    CONFIGURE_DEPENDS
+    src/*.cpp
+    src/*.h
+)
+target_sources(Soundboard
 	PRIVATE
-		src/plugin/PluginEditor.cpp
-		src/plugin/PluginProcessor.cpp
-		src/shared/player/Bank.cpp
-		src/shared/player/Library.cpp
-		src/shared/player/Player.cpp
-		src/shared/player/Slot.cpp
-		src/shared/ui/LookAndFeel.cpp
-		src/shared/ui/grid/GridCell.cpp
-		src/shared/ui/grid/GridComponent.cpp
-		src/shared/ui/settings/SettingsComponent.cpp
-		src/shared/ui/table/TableButtonCell.cpp
-		src/shared/ui/table/TableComponent.cpp)
+    ${SOURCE_LIST}
+)
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_LIST})
 
-target_compile_definitions(UltraschallSoundboard
+
+target_compile_definitions(Soundboard
 	PUBLIC
 		JUCE_WEB_BROWSER=0
 		JUCE_USE_CURL=0
 		JUCE_VST3_CAN_REPLACE_VST2=0)
 
-target_link_libraries(UltraschallSoundboard
+target_link_libraries(Soundboard
 	PRIVATE
 		juce::juce_audio_basics
 		juce::juce_audio_devices

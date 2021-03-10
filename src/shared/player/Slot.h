@@ -11,8 +11,10 @@
 #ifndef SLOT_H_INCLUDED
 #define SLOT_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <juce_core/juce_core.h>
 #include "Player.h"
+
+using namespace juce;
 
 class Slot {
 public:

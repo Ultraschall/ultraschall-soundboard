@@ -11,8 +11,14 @@
 #ifndef FONTAWESOME_H_INCLUDED
 #define FONTAWESOME_H_INCLUDED
 
-#include "JuceHeader.h"
+#include <algorithm>
+
+#include <juce_graphics/juce_graphics.h>
+
 #include "Icons.h"
+
+using namespace std;
+using namespace juce;
 
 typedef juce::Image RenderedIcon;
 

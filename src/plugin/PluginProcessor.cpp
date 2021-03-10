@@ -18,7 +18,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     defaultLookAndFeel = new LookAndFeel_Ultraschall();
     awesomeLookAndFeel = new LookAndFeel_Ultraschall_Awesome();
 
-    Logger::setCurrentLogger(logger = FileLogger::createDefaultAppLogger(ProjectInfo::projectName, String(ProjectInfo::projectName) + ".txt", String(ProjectInfo::projectName) + " " + String(ProjectInfo::versionString)));
+    Logger::setCurrentLogger(logger = FileLogger::createDefaultAppLogger("Ultraschall", "Soundboard.txt", "Soundboard Startup"));
 
     // Internal OSC Parameter
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);

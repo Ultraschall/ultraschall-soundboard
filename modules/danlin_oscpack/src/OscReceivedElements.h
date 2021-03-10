@@ -497,7 +497,7 @@ public:
      
 	ReceivedMessageArgumentIterator ArgumentsEnd() const
     {
-        return ReceivedMessageArgumentIterator( typeTagsEnd_, 0 );
+        return ReceivedMessageArgumentIterator( typeTagsEnd_, nullptr );
     }
 
     ReceivedMessageArgumentStream ArgumentStream() const

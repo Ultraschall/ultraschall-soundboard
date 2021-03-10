@@ -10,7 +10,6 @@
 #ifndef PLUGINEDITOR_H_INCLUDED
 #define PLUGINEDITOR_H_INCLUDED
 
-#include "JuceHeader.h"
 #include "../shared/ui/LookAndFeel.h"
 #include "PluginProcessor.h"
 #include "../shared/ui/table/TableComponent.h"
