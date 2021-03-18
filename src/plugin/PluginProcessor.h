@@ -106,7 +106,7 @@ public:
     // Properties
     PropertiesFile *getPropertiesFile()
     {
-        return propertiesFile;
+        return propertiesFile.get();
     }
     
     // Parameter Helper
@@ -168,8 +168,8 @@ private:
     // Settings
     int                           currentProgramIndex;
     String                        currentDirectory;
-    ScopedPointer<PropertySet>    fallbackProperties;
-    ScopedPointer<PropertiesFile> propertiesFile;   
+    std::unique_ptr<PropertySet>    fallbackProperties;
+    std::unique_ptr<PropertiesFile> propertiesFile;   
     
     // Osc
     OscManager      oscManager;
@@ -180,7 +180,7 @@ private:
     CriticalSection midiCriticalSection;
 
     // Logger
-    ScopedPointer<FileLogger>      logger;
+    std::unique_ptr<FileLogger>      logger;
     
     enum MidiFunction
     {

@@ -16,7 +16,8 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 {
     locked = false;
 
-    Logger::setCurrentLogger(logger = FileLogger::createDefaultAppLogger("Ultraschall", "Soundboard.txt", "Soundboard Startup"));
+    logger = std::unique_ptr<FileLogger>(FileLogger::createDefaultAppLogger("Ultraschall", "Soundboard.txt", "Ultraschall Soundboard Startup"));
+    Logger::setCurrentLogger(logger.get());
 
     // Internal OSC Parameter
     oscManager.addOscParameter(new OscIntegerParameter("/ultraschall/soundboard/setup/ui/theme"), true);
@@ -69,12 +70,12 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
 
     PropertiesFile::Options options;
-    options.applicationName = "Ultraschall Soundboard";
+    options.applicationName = "Soundboard";
     options.filenameSuffix = "properties";
-    options.folderName = "UltraschallSoundboard";
+    options.folderName = "Ultraschall";
     options.osxLibrarySubFolder = "Application Support";
-    propertiesFile = new PropertiesFile(options);
-    fallbackProperties = new PropertySet();
+    propertiesFile = std::make_unique<PropertiesFile>(options);
+    fallbackProperties = std::make_unique<PropertySet>();
     fallbackProperties->setValue(CurrentProgramIndexIdentifier.toString(), var(255));
 
     fallbackProperties->setValue(OscReceiveEnabledIdentifier.toString(), var(false));
@@ -97,7 +98,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
     fallbackProperties->setValue(ThemeIdentifier.toString(), var(static_cast<int>(ThemeTomorrowNightEighties)));
 
-    propertiesFile->setFallbackPropertySet(fallbackProperties);
+    propertiesFile->setFallbackPropertySet(fallbackProperties.get());
 
     oscManager.setOscParameterValue("/ultraschall/soundboard/duck/percentage",
             propertiesFile->getValue(DuckingIdentifier));
