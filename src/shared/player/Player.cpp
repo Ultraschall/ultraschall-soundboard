@@ -9,9 +9,9 @@
 
 #include "Player.h"
 
-Player::Player(int index, const File &audioFile, AudioFormatManager *formatManager, AudioThumbnailCache *thumbnailCache) 
+Player::Player(int index, const File &audioFile, AudioFormatManager *formatManager, AudioThumbnailCache *thumbnailCache, TimeSliceThread& timeSliceThread)
                                 : playerIndex(index), 
-                                  timeSliceThread("Player: " + audioFile.getFileNameWithoutExtension()), title(audioFile.getFileNameWithoutExtension()),
+                                  timeSliceThread(timeSliceThread),
                                   playerState(Ready),
                                   fadeGain(1.0f),
                                   fadeGainBackup(1.0f),

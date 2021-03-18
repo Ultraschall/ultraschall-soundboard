@@ -395,7 +395,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         if (MaximumSamplePlayers <= count) {
             break;
         }
-        Player* audioFile = new Player(count, f, &formatManager, thumbnailCache);
+        Player* audioFile = new Player(count, f, &formatManager, thumbnailCache, playerTimeSliceThread);
         if (audioFile->getState() != Player::Error) {
             audioFile->addChangeListener(this);
             players.add(audioFile);

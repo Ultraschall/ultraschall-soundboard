@@ -188,6 +188,8 @@ private:
     };
    
     bool AllPlayersNotPlaying() const noexcept;
+    
+    TimeSliceThread playerTimeSliceThread = TimeSliceThread("Player Time Slice Thread");
    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardAudioProcessor)

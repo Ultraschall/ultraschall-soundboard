@@ -20,7 +20,7 @@ using namespace juce;
 class Player : private MultiTimer,
                public ChangeBroadcaster {
 public:
-    Player(int index, const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache);
+    Player(int index, const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache, TimeSliceThread &timeSliceThread);
     ~Player();
 
     String getTitle();
@@ -76,7 +76,7 @@ private:
     void loadFileIntoTransport(const File& audioFile);
 
     int playerIndex;
-    TimeSliceThread timeSliceThread;
+    TimeSliceThread &timeSliceThread;
     String title;
     PlayerState playerState;
     float fadeGain;
