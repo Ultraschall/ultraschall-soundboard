@@ -15,7 +15,7 @@
 SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPercentage(0.33f), duckEnabled(false), fadeOutSeconds(6)
 {
     locked = false;
-
+    
     logger = std::unique_ptr<FileLogger>(FileLogger::createDefaultAppLogger("Ultraschall", "Soundboard.txt", "Ultraschall Soundboard Startup"));
     Logger::setCurrentLogger(logger.get());
 
@@ -67,7 +67,7 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
 
     playersLocked = true;
     formatManager.registerBasicFormats();
-    thumbnailCache = new AudioThumbnailCache(MaximumSamplePlayers);
+    thumbnailCache = std::make_unique<AudioThumbnailCache>(MaximumSamplePlayers);
 
     PropertiesFile::Options options;
     options.applicationName = "Soundboard";
@@ -270,17 +270,17 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
     // channels that didn't contain input data, (because these aren't
     // guaranteed to be empty - they may contain garbage).
     // I've added this to avoid people getting screaming feedback.
-    for (int i = getNumInputChannels(); i < getNumOutputChannels(); ++i) {
+    for (int i = getTotalNumInputChannels(); i < getTotalNumOutputChannels(); ++i) {
         buffer.clear(i, 0, buffer.getNumSamples());
     }
 
-    AudioSampleBuffer output(getNumOutputChannels(), buffer.getNumSamples());
+    AudioSampleBuffer output(getTotalNumOutputChannels(), buffer.getNumSamples());
     sourceChannelInfo.buffer = &output;
     sourceChannelInfo.startSample = 0;
     sourceChannelInfo.numSamples = output.getNumSamples();
     mixerAudioSource.getNextAudioBlock(sourceChannelInfo);
 
-    for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
+    for (int channel = 0; channel < getTotalNumOutputChannels(); ++channel) {
         buffer.addFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
 
@@ -288,7 +288,7 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
         float gain = 1.0f;
         for (int sample = 0; sample < output.getNumSamples(); ++sample) {
             gain = duckEnvelope.tick() * masterGain;
-            for (int channel = 0; channel < getNumOutputChannels(); ++channel) {
+            for (int channel = 0; channel < getTotalNumOutputChannels(); ++channel) {
                 buffer.setSample(channel, sample, gain * buffer.getSample(channel, sample));
             }
         }
@@ -396,7 +396,7 @@ void SoundboardAudioProcessor::openDirectory(File directory)
         if (MaximumSamplePlayers <= count) {
             break;
         }
-        Player* audioFile = new Player(count, f, &formatManager, thumbnailCache, playerTimeSliceThread);
+        Player* audioFile = new Player(count, f, &formatManager, thumbnailCache.get(), playerTimeSliceThread);
         if (audioFile->getState() != Player::Error) {
             audioFile->addChangeListener(this);
             players.add(audioFile);

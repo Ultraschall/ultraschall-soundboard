@@ -58,7 +58,7 @@ class SoundboardAudioProcessor : public AudioProcessor, public MultiTimer, publi
 {
 public:
     SoundboardAudioProcessor();
-    ~SoundboardAudioProcessor();
+    ~SoundboardAudioProcessor() override;
 
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -120,7 +120,7 @@ public:
     void setDuckingFade(float seconds);
 
     // Maximum Number of Sampler Slots
-    static const int MaximumSamplePlayers = 24;
+    const int MaximumSamplePlayers = 24;
 
     // OscParameterListener
     void handleOscParameterMessage(OscParameter *parameter) override;
@@ -150,7 +150,7 @@ private:
     // Audio IO
     OwnedArray<Player>                 players;
     AudioFormatManager                 formatManager;
-    ScopedPointer<AudioThumbnailCache> thumbnailCache;
+    std::unique_ptr<AudioThumbnailCache> thumbnailCache;
     AudioSourceChannelInfo             sourceChannelInfo;
     MixerAudioSource                   mixerAudioSource;
     bool                               playersLocked;
