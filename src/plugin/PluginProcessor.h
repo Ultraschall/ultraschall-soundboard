@@ -12,10 +12,10 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_processors/juce_audio_processors.h>
-#include <stk_generators/stk_generators.h>
 #include <danlin_oscserver/danlin_oscserver.h>
 
 #include "../shared/player/Player.h"
+#include "../shared/generators/Envelope.h"
 
 using namespace juce;
 
@@ -158,7 +158,7 @@ private:
     float                              duckPercentage;
     float                              duckFade;
     bool                               duckEnabled;
-    stk::Envelope                      duckEnvelope;
+    Envelope                           duckEnvelope;
 
     bool                               locked;
 

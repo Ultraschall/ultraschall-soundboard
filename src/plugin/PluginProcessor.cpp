@@ -114,8 +114,6 @@ SoundboardAudioProcessor::SoundboardAudioProcessor() : masterGain(1.0f), duckPer
     fadeOutRange.interval = 1.0;
     fadeOutRange.skew = 0.5;
 
-    duckEnvelope.setTime(1.0f);
-
     // delay osc server start
     startTimer(TimerOscServerDelay, 1000 * 1);
     startTimer(TimerMidiEvents, 20);
@@ -284,10 +282,10 @@ void SoundboardAudioProcessor::processBlock(AudioSampleBuffer& buffer, MidiBuffe
         buffer.addFrom(channel, 0, output, channel, 0, sourceChannelInfo.numSamples);
     }
 
-    if (duckEnvelope.getState()) {
+    if (duckEnvelope.isActive()) {
         float gain = 1.0f;
         for (int sample = 0; sample < output.getNumSamples(); ++sample) {
-            gain = duckEnvelope.tick() * masterGain;
+            gain = duckEnvelope.getNextSample() * masterGain;
             for (int channel = 0; channel < getTotalNumOutputChannels(); ++channel) {
                 buffer.setSample(channel, sample, gain * buffer.getSample(channel, sample));
             }
@@ -698,11 +696,9 @@ void SoundboardAudioProcessor::handleOscParameterMessage(OscParameter* parameter
     } else if (parameter->addressMatch("/ultraschall/soundboard/duck/enabled$")) {
         bool value = static_cast<bool>(parameter->getValue());
         if (value) {
-            duckEnvelope.setValue(1.0f);
-            duckEnvelope.setTarget(duckPercentage);
+            duckEnvelope.setParameters({1.0f, 1.0f, duckPercentage});
         } else {
-            duckEnvelope.setValue(duckPercentage);
-            duckEnvelope.setTarget(1.0f);
+            duckEnvelope.setParameters({1.0f, duckPercentage, 1.0f});
         }
         duckEnabled = value;
     } else if (parameter->addressMatch("/ultraschall/soundboard/setup/.+")) {

@@ -36,10 +36,6 @@ juce_add_modules(
 	modules/danlin_fontawesome
 	modules/danlin_oscpack
 	modules/danlin_oscserver)
-juce_add_modules(
-	ALIAS_NAMESPACE stk
-	modules/stk_core
-	modules/stk_generators)
 
 target_compile_definitions(Soundboard PUBLIC JUCER_ENABLE_GPL_MODE=1)
 target_compile_definitions(Soundboard PUBLIC JUCE_DISPLAY_SPLASH_SCREEN=0)
@@ -81,8 +77,6 @@ target_link_libraries(Soundboard
 		danlin::danlin_fontawesome
 		danlin::danlin_oscpack
 		danlin::danlin_oscserver
-		stk::stk_core
-		stk::stk_generators
 	PUBLIC
 		juce::juce_recommended_config_flags
 		juce::juce_recommended_lto_flags
