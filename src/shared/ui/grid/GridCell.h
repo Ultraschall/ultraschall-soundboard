@@ -21,7 +21,7 @@ class SoundboardGridCell : public Component, public ChangeListener
 {
 public:
     explicit SoundboardGridCell(Player *p);
-    ~SoundboardGridCell();
+    ~SoundboardGridCell() override;
     
     void mouseUp(const MouseEvent &event) override;
     void paint(Graphics &g) override;

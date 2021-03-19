@@ -19,8 +19,8 @@ using namespace juce;
 class SoundboardCellButton : public Button, public Timer
 {
 public:
-    SoundboardCellButton(String buttonName, String icon);
-    ~SoundboardCellButton();
+    SoundboardCellButton(String buttonName, String iconGlyph);
+    ~SoundboardCellButton() override;
 
     void setHighlighted(bool value);
     void setHighlightColour(Colour color);

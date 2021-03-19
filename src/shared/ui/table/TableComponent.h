@@ -26,7 +26,7 @@ class SoundboardTableComponent
 {
 public:
     explicit SoundboardTableComponent(SoundboardAudioProcessor &);
-    ~SoundboardTableComponent();
+    ~SoundboardTableComponent() override;
 
     // Component
     void resized() override;

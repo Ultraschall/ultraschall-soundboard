@@ -46,10 +46,9 @@ int OscServer::getLocalPortNumber()
     return receivePortNumber;
 }
 
-const String& OscServer::getLocalHostname()
+const String OscServer::getLocalHostname()
 {
-    
-    return "";
+    return SystemStats::getComputerName();
 }
 
 void OscServer::setRemoteHostname(String hostname)

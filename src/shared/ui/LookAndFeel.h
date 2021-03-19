@@ -196,7 +196,7 @@ private: JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Hud)
 class AwesomeButton : public TextButton
 {
 public:
-    AwesomeButton(String icon) : icon(icon)
+    AwesomeButton(String iconGlyph) : icon(iconGlyph)
     {
     }
 

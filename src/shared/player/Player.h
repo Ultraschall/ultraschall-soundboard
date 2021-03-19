@@ -21,7 +21,7 @@ class Player : private MultiTimer,
                public ChangeBroadcaster {
 public:
     Player(int index, const File& audioFile, AudioFormatManager* formatManager, AudioThumbnailCache* thumbnailCache, TimeSliceThread &timeSliceThread);
-    ~Player();
+    ~Player() override;
 
     String getTitle();
 

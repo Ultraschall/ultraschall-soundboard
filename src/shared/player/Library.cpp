@@ -27,10 +27,6 @@ void Library::validateFiles() {
 
 }
 
-bool Library::addFile(File file) {
-    return false;
-}
-
 Slot *Library::getSlotAtIndex(int index) {
     return slots[index];
 }

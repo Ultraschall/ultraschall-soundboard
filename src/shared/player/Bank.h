@@ -27,11 +27,10 @@ public:
     void setName(String name);
 
     void setSlotAtIndex(Slot* slot, int index);
-    void loadFileAtIndex(File *file, int index);
     void clearSlotAtIndex(int index);
     Slot* getSlotAtIndex(int index);
 private:
-    String name;
+    String currentName;
     Array<Slot*> slots;
 };
 

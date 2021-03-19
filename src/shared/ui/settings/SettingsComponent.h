@@ -31,7 +31,7 @@ class SoundboardSettingsComponent: public Component,
 {
 public:
     explicit SoundboardSettingsComponent(SoundboardAudioProcessor&);
-    ~SoundboardSettingsComponent();
+    ~SoundboardSettingsComponent() override;
 
     // Component
     void resized() override;
@@ -53,36 +53,36 @@ public:
     void handleOscParameterMessage(OscParameter *parameter) override;
 
 private:
-    ScopedPointer<Bar> globalBar;
-    ScopedPointer<Label> globalLabel;
+    Bar globalBar;
+    Label globalLabel;
 
-    ScopedPointer<Label> themeLabel;
-    ScopedPointer<ComboBox> themeComboBox;
+    Label themeLabel;
+    ComboBox themeComboBox;
 
-    ScopedPointer<Slider> duckingSlider;
-    ScopedPointer<Label> duckingLabel;
+    Slider duckingSlider;
+    Label duckingLabel;
 
-    ScopedPointer<Slider> fadeOutSlider;
-    ScopedPointer<Label> fadeOutLabel;
+    Slider fadeOutSlider;
+    Label fadeOutLabel;
 
-    ScopedPointer<Bar> oscBar;
-    ScopedPointer<Label> oscLabel;
+    Bar oscBar;
+    Label oscLabel;
 
-    ScopedPointer<ToggleButton> oscLocalEnabledToggleButton;
-    ScopedPointer<TextEditor> oscLocalHostnameTextEditor;
-    ScopedPointer<TextEditor> oscLocalPortNumberTextEditor;
+    ToggleButton oscLocalEnabledToggleButton;
+    TextEditor oscLocalHostnameTextEditor;
+    TextEditor oscLocalPortNumberTextEditor;
 
-    ScopedPointer<ToggleButton> oscRemoteEnabledToggleButton;
-    ScopedPointer<TextEditor> oscRemoteHostnameTextEditor;
-    ScopedPointer<TextEditor> oscRemotePortNumberTextEditor;
+    ToggleButton oscRemoteEnabledToggleButton;
+    TextEditor oscRemoteHostnameTextEditor;
+    TextEditor oscRemotePortNumberTextEditor;
 
-    ScopedPointer<ToggleButton> oscRepeaterEnabledToggleButton;
-    ScopedPointer<TextEditor> oscRepeaterHostnameTextEditor;
-    ScopedPointer<TextEditor> oscRepeaterPortNumberTextEditor;
+    ToggleButton oscRepeaterEnabledToggleButton;
+    TextEditor oscRepeaterHostnameTextEditor;
+    TextEditor oscRepeaterPortNumberTextEditor;
 
-    ScopedPointer<Bar> audioBar;
-    ScopedPointer<Label> audioLabel;
-    ScopedPointer<AudioDeviceSelectorComponent> audioDeviceSelectorComponent;
+    Bar audioBar;
+    Label audioLabel;
+    std::unique_ptr<AudioDeviceSelectorComponent> audioDeviceSelectorComponent;
 
     SoundboardAudioProcessor& processor;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundboardSettingsComponent)

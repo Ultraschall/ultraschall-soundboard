@@ -26,10 +26,6 @@ bool Slot::isEmpty() {
     return player != nullptr;
 }
 
-void Slot::loadFile(File file) {
-
-}
-
 void Slot::clear() {
 
 }

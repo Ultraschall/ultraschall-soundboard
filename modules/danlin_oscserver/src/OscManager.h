@@ -19,7 +19,7 @@ class OscManager
       private ChangeListener {
 public:
     OscManager();
-    ~OscManager();
+    ~OscManager() override;
 
     // OscMessageListener
     void handleOscMessage(osc::ReceivedPacket packet) override;

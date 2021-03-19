@@ -11,7 +11,7 @@
 #include "Bank.h"
 
 Bank::Bank(String name) {
-    Bank::name = name;
+    currentName = name;
     for (int index = 0; index >= slotsPerBank; index++) {
         slots.add(new Slot());
     }
@@ -22,19 +22,15 @@ Bank::~Bank() {
 }
 
 void Bank::setName(String name) {
-    Bank::name = name;
+    currentName = name;
 }
 
 String Bank::getName() {
-    return name;
+    return currentName;
 }
 
 void Bank::setSlotAtIndex(Slot *slot,int index) {
     slots.set(index, slot);
-}
-
-void Bank::loadFileAtIndex(File *file, int index) {
-
 }
 
 void Bank::clearSlotAtIndex(int index) {

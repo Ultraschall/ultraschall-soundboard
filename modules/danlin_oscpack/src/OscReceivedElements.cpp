@@ -65,7 +65,7 @@ static inline const char* FindStr4End( const char *p )
 static inline const char* FindStr4End( const char *p, const char *end )
 {
     if( p >= end )
-        return 0;
+        return nullptr;
 
 	if( p[0] == '\0' )    // special case for SuperCollider integer address pattern
 		return p + 4;
@@ -77,7 +77,7 @@ static inline const char* FindStr4End( const char *p, const char *end )
         p += 4;
 
     if( *p )
-        return 0;
+        return nullptr;
     else
         return p + 1;
 }
@@ -594,16 +594,16 @@ void ReceivedMessage::Init( const char *message, osc_bundle_element_size_t size 
     const char *end = message + size;
 
     typeTagsBegin_ = FindStr4End( addressPattern_, end );
-    if( typeTagsBegin_ == 0 ){
+    if( typeTagsBegin_ == nullptr ){
         // address pattern was not terminated before end
         throw MalformedMessageException( "unterminated address pattern" );
     }
 
     if( typeTagsBegin_ == end ){
         // message consists of only the address pattern - no arguments or type tags.
-        typeTagsBegin_ = 0;
-        typeTagsEnd_ = 0;
-        arguments_ = 0;
+        typeTagsBegin_ = nullptr;
+        typeTagsEnd_ = nullptr;
+        arguments_ = nullptr;
             
     }else{
         if( *typeTagsBegin_ != ',' )
@@ -611,15 +611,15 @@ void ReceivedMessage::Init( const char *message, osc_bundle_element_size_t size 
 
         if( *(typeTagsBegin_ + 1) == '\0' ){
             // zero length type tags
-            typeTagsBegin_ = 0;
-            typeTagsEnd_ = 0;
-            arguments_ = 0;
+            typeTagsBegin_ = nullptr;
+            typeTagsEnd_ = nullptr;
+            arguments_ = nullptr;
 
         }else{
             // check that all arguments are present and well formed
                 
             arguments_ = FindStr4End( typeTagsBegin_, end );
-            if( arguments_ == 0 ){
+            if( arguments_ == nullptr ){
                 throw MalformedMessageException( "type tags were not terminated before end of message" );
             }
 
@@ -681,7 +681,7 @@ void ReceivedMessage::Init( const char *message, osc_bundle_element_size_t size 
                         if( argument == end )
                             throw MalformedMessageException( "arguments exceed message size" );
                         argument = FindStr4End( argument, end );
-                        if( argument == 0 )
+                        if( argument == nullptr )
                             throw MalformedMessageException( "unterminated string argument" );
                         break;
 

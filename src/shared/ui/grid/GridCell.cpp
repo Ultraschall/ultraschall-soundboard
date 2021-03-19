@@ -221,7 +221,7 @@ void SoundboardGridCell::paint(Graphics &g)
             if (player->isPlayed())
             {
                 FontAwesome::drawAt(g, FontAwesome_SquareO, iconSize, colour.withAlpha(0.9f),
-                                   helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
+                                   helperRect.getWidth() - iconSize - int(gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
             else
@@ -235,7 +235,7 @@ void SoundboardGridCell::paint(Graphics &g)
                     iconColour = ThemeForeground1.withAlpha(0.5f);
                 }
                 FontAwesome::drawAt(g, FontAwesome_Square, iconSize, colour.withAlpha(0.9f),
-                                   helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
+                                   helperRect.getWidth() - iconSize - int(gainWidth * 0.5f),
                                    helperRect.getHeight() - iconSize + + helperRect.getY());
             }
 
@@ -256,7 +256,7 @@ void SoundboardGridCell::paint(Graphics &g)
             }
 
             FontAwesome::drawAtRotated(g, icon, iconSize, colour.withAlpha(0.9f),
-                               helperRect.getWidth() - iconSize - (gainWidth * 0.5f),
+                               helperRect.getWidth() - iconSize - int(gainWidth * 0.5f),
                                helperRect.getX(), 0.5f);
         }
     }

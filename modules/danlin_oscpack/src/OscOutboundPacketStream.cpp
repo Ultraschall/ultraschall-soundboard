@@ -158,7 +158,7 @@ OutboundPacketStream::OutboundPacketStream( char *buffer, std::size_t capacity )
     , typeTagsCurrent_( end_ )
     , messageCursor_( data_ )
     , argumentCurrent_( data_ )
-    , elementSizePtr_( 0 )
+, elementSizePtr_( nullptr )
     , messageIsInProgress_( false )
 {
     // sanity check integer types declared in OscTypes.h 
@@ -178,7 +178,7 @@ OutboundPacketStream::~OutboundPacketStream()
 
 char *OutboundPacketStream::BeginElement( char *beginPtr )
 {
-    if( elementSizePtr_ == 0 ){
+    if( elementSizePtr_ == nullptr ){
 
         elementSizePtr_ = reinterpret_cast<uint32*>(data_);
 
@@ -199,11 +199,11 @@ char *OutboundPacketStream::BeginElement( char *beginPtr )
 
 void OutboundPacketStream::EndElement( char *endPtr )
 {
-    assert( elementSizePtr_ != 0 );
+    assert( elementSizePtr_ != nullptr );
 
     if( elementSizePtr_ == reinterpret_cast<uint32*>(data_) ){
 
-        elementSizePtr_ = 0;
+        elementSizePtr_ = nullptr;
 
     }else{
         // while building an element, an offset to the containing element's
@@ -229,7 +229,7 @@ void OutboundPacketStream::EndElement( char *endPtr )
 
 bool OutboundPacketStream::ElementSizeSlotRequired() const
 {
-    return (elementSizePtr_ != 0);
+    return (elementSizePtr_ != nullptr);
 }
 
 
@@ -269,7 +269,7 @@ void OutboundPacketStream::Clear()
     typeTagsCurrent_ = end_;
     messageCursor_ = data_;
     argumentCurrent_ = data_;
-    elementSizePtr_ = 0;
+    elementSizePtr_ = nullptr;
     messageIsInProgress_ = false;
 }
 
@@ -313,7 +313,7 @@ bool OutboundPacketStream::IsMessageInProgress() const
 
 bool OutboundPacketStream::IsBundleInProgress() const
 {
-    return (elementSizePtr_ != 0);
+    return (elementSizePtr_ != nullptr);
 }
 
 

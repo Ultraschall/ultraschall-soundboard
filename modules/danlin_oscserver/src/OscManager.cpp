@@ -196,11 +196,11 @@ void OscManager::parseOscMessage(osc::ReceivedMessage message)
 void OscManager::parseOscBundle(osc::ReceivedBundle bundle)
 {
     osc::ReceivedBundleElementIterator initiator = bundle.ElementsBegin();
-    for (int i = 0; i < bundle.ElementCount(); i++) {
+    for (osc::uint32 i = 0; i < bundle.ElementCount(); i++) {
         initiator++;
         if (initiator->IsBundle()) {
-            osc::ReceivedBundle bundle(*initiator);
-            parseOscBundle(bundle);
+            osc::ReceivedBundle nextBundle(*initiator);
+            parseOscBundle(nextBundle);
         }
         else {
             osc::ReceivedMessage message(*initiator);

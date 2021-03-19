@@ -21,10 +21,6 @@ public:
         setValue(getDefaultValue());
     }
 
-    ~OscFloatParameter()
-    {
-    }
-
     var getDefaultValue() override
     {
         return var(0.0f);
@@ -45,9 +41,6 @@ public:
         : OscParameter(address)
     {
         setValue(getDefaultValue());
-    }
-    ~OscBooleanParameter()
-    {
     }
 
     var getDefaultValue() override
@@ -71,9 +64,6 @@ public:
     {
         setValue(getDefaultValue());
     }
-    ~OscIntegerParameter()
-    {
-    }
 
     var getDefaultValue() override
     {
@@ -95,10 +85,6 @@ public:
         : OscParameter(address)
     {
         setValue(getDefaultValue());
-    }
-
-    ~OscStringParameter()
-    {
     }
 
     var getDefaultValue() override

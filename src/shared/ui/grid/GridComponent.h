@@ -23,7 +23,7 @@ class SoundboardGridComponent : public Component
 {
 public:
     explicit SoundboardGridComponent(SoundboardAudioProcessor &);
-    ~SoundboardGridComponent();
+    ~SoundboardGridComponent() override;
 
     // Component
     void resized() override;

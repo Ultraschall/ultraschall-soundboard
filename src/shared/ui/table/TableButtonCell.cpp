@@ -10,9 +10,9 @@
 
 #include "TableButtonCell.h"
 
-SoundboardCellButton::SoundboardCellButton(String buttonName, String icon)
+SoundboardCellButton::SoundboardCellButton(String buttonName, String iconGlyph)
         : Button(buttonName),
-          icon(icon),
+          icon(iconGlyph),
           iconRotation(0.0f),
           highlightState(false),
           highlightColour(ThemeForeground2),

@@ -17,10 +17,10 @@ using namespace std;
 
 class OscMessage : public Message {
 public:
-    OscMessage(osc::ReceivedPacket packet, bool isOutgoing = false)
-        : packet(packet)
-        , isOutgoing(isOutgoing)
-        , isIncoming(isOutgoing)
+    OscMessage(osc::ReceivedPacket receivedPacket, bool outgoing = false)
+        : packet(receivedPacket)
+        , isOutgoing(outgoing)
+        , isIncoming(!outgoing)
     {
     }
 
@@ -71,7 +71,7 @@ public:
     // UDP Setup
     void setLocalPortNumber(int portNumber);
     int getLocalPortNumber();
-    const String& getLocalHostname();
+    const String getLocalHostname();
 
     void setRemoteHostname(String hostname);
     String getRemoteHostname();
