@@ -67,7 +67,8 @@ set(SOUNDBOARD_SOURCES
 		src/shared/ui/table/TableButtonCell.cpp
 		src/shared/ui/table/TableComponent.cpp)
 
-set_source_files_properties(${SOUNDBOARD_SOURCES} PROPERTIES COMPILE_FLAGS "-Wno-float-conversion -Wno-shadow-field -Wno-shadow -Wno-sign-conversion -Wno-implicit-float-conversion -Wno-unused-parameter -Wno-inconsistent-missing-destructor-override -Wno-shadow-field-in-constructor -Wno-zero-as-null-pointer-constant -Wno-extra-semi -Wno-deprecated-declarations")
+# TODO: Add options for msvc and probalby gcc
+# set_source_files_properties(${SOUNDBOARD_SOURCES} PROPERTIES COMPILE_FLAGS "-Wno-float-conversion -Wno-shadow-field -Wno-shadow -Wno-sign-conversion -Wno-implicit-float-conversion -Wno-unused-parameter -Wno-inconsistent-missing-destructor-override -Wno-shadow-field-in-constructor -Wno-zero-as-null-pointer-constant -Wno-extra-semi -Wno-deprecated-declarations")
 
 target_sources(UltraschallSoundboard PRIVATE ${SOUNDBOARD_SOURCES})
 
