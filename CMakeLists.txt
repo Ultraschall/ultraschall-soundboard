@@ -1,9 +1,22 @@
 cmake_minimum_required(VERSION 3.15)
-project(ULTRASCHALL_SOUNDBOARD VERSION 4.0.0)
+project(ULTRASCHALL_SOUNDBOARD VERSION 5.1.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+
 if(APPLE)
-    set(CMAKE_OSX_ARCHITECTURES arm64 x86_64)
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET 10.11 CACHE INTERNAL "")
+    add_compile_options(-mmacosx-version-min=10.11)
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 12)
+      message(STATUS "Building for x86_64 using clang ${CMAKE_CXX_COMPILER_VERSION}.")
+      set(CMAKE_OSX_ARCHITECTURES x86_64 CACHE INTERNAL "")
+    else()
+      message(STATUS "Building for x86_64 and arm64 using clang ${CMAKE_CXX_COMPILER_VERSION}.")
+      set(CMAKE_OSX_ARCHITECTURES arm64 x86_64 CACHE INTERNAL "")
+    endif()
+  else()
+      message(FATAL_ERROR "macOS builds require clang.")
+  endif()
 endif()
 
 add_subdirectory("./JUCE" JUCE)
@@ -40,8 +53,7 @@ target_compile_definitions(UltraschallSoundboard PUBLIC JUCE_USE_LAME_AUDIO_FORM
 
 juce_generate_juce_header(UltraschallSoundboard)
 
-target_sources(UltraschallSoundboard
-	PRIVATE
+set(SOUNDBOARD_SOURCES
 		src/plugin/PluginEditor.cpp
 		src/plugin/PluginProcessor.cpp
 		src/shared/player/Bank.cpp
@@ -54,6 +66,10 @@ target_sources(UltraschallSoundboard
 		src/shared/ui/settings/SettingsComponent.cpp
 		src/shared/ui/table/TableButtonCell.cpp
 		src/shared/ui/table/TableComponent.cpp)
+
+set_source_files_properties(${SOUNDBOARD_SOURCES} PROPERTIES COMPILE_FLAGS "-Wno-float-conversion -Wno-shadow-field -Wno-shadow -Wno-sign-conversion -Wno-implicit-float-conversion -Wno-unused-parameter -Wno-inconsistent-missing-destructor-override -Wno-shadow-field-in-constructor -Wno-zero-as-null-pointer-constant -Wno-extra-semi -Wno-deprecated-declarations")
+
+target_sources(UltraschallSoundboard PRIVATE ${SOUNDBOARD_SOURCES})
 
 target_compile_definitions(UltraschallSoundboard
 	PUBLIC
